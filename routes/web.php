@@ -22,6 +22,7 @@ Route::prefix('admin')->middleware('isModer')->group(function () {
     Route::resource('prices', \App\Http\Controllers\Admin\PriceController::class);
     Route::resource('webinars', \App\Http\Controllers\Admin\WebinarController::class);
     Route::resource('courses', \App\Http\Controllers\Admin\CourseController::class);
+    Route::resource('certificates', \App\Http\Controllers\Admin\CertificateController::class);
 });
 
 Route::prefix('personal')->middleware("auth")->group(function (){
@@ -32,7 +33,7 @@ Route::prefix('lector')->middleware("auth")->group(function (){
     Route::get('lector', [App\Http\Controllers\HomeController::class, 'index'])->name('lector');
 });
 
-Route::get('/file-upload', [\App\Http\Controllers\CertificateController::class, 'index']);
-Route::post('/create', [\App\Http\Controllers\CertificateController::class, 'imageFileUpload'])->name('image.create');
+//Route::get('/file-upload', [\App\Http\Controllers\CertificateController::class, 'index']);
+//Route::post('/create', [\App\Http\Controllers\CertificateController::class, 'imageFileUpload'])->name('image.create');
 
-Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+//Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');

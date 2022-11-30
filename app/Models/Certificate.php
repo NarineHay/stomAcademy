@@ -21,6 +21,7 @@ class Certificate extends Model
         'type',
         'hours_number',
         'date',
+        'image'
     ];
 
     function course(){

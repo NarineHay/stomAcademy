@@ -11,10 +11,6 @@ class CountrySeeder extends Seeder
 {
     public function run()
     {
-        dd(Storage::directories("./"));
-        foreach (scandir("./storage/flags") as $flag){
-            dd($flag);
-        }
         Country::truncate();
         $countries = [
                 'AU' => 'Австралия',
@@ -267,8 +263,6 @@ class CountrySeeder extends Seeder
                 'JM' => 'Ямайка',
                 'JP' => 'Япония'
         ];
-
-
         foreach ($countries as $key => $value) {
             Country::create(['title' => $value,'code'=>$key]);
         }
