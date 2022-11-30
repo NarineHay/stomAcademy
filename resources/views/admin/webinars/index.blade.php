@@ -128,6 +128,8 @@
                                             </div>
                                         </div>
                                     </th>
+
+                                    <th>Кнопки управления</th>
                                 </tr>
                                 </thead>
 
@@ -159,7 +161,7 @@
                                             <a>{{$webinar->status == 1 ? "Активен" : "Отключен"}}</a>
                                         </td>
                                         <td class="project-actions text-right">
-                                            <form action="{{route('webinars.destroy',$webinars)}}" method="POST" class="d-flex justify-content-between">
+                                            <form action="{{route('webinars.destroy',$webinars)}}" method="POST" class="d-flex justify-content-around">
                                                 @csrf
                                                 @method('DELETE')
                                                 <a class="btn btn-primary mx-1" href="{{ route('webinars.edit',$webinar) }}">Изменить</a>

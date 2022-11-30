@@ -171,12 +171,13 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('prices.index') }}" class="nav-link">Цены</a>
+                        <a href="{{ route('certificates.index') }}" class="nav-link">Сертификаты</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('certificates.index') }}" class="nav-link">Сертификаты</a>
+                        <a href="{{ route('prices.index') }}" class="nav-link">Цены</a>
                     </li>
+
                 </ul>
             </nav>
         </div>

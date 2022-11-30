@@ -71,7 +71,7 @@
                                             <a>{{$user->userinfo->status == 1 ? "Активна" : "Отключена"}}</a>
                                         </td>
                                        <td class="project-actions text-right">
-                                            <form action="{{route('lectors.destroy',$user)}}" method="POST" class="d-flex justify-content-between">
+                                            <form action="{{route('lectors.destroy',$user)}}" method="POST" class="d-flex justify-content-around">
                                                @csrf
                                               @method('DELETE')
                                                <a class="btn btn-primary mx-1" href="{{ route('lectors.edit',$user) }}">Изменить</a>

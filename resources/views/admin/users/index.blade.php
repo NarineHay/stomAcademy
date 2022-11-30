@@ -151,7 +151,7 @@
                                             </a>
                                         </td>
                                         <td class="project-actions text-right">
-                                            <form action="{{route('users.destroy',$user)}}" method="POST" class="d-flex justify-content-between">
+                                            <form action="{{route('users.destroy',$user)}}" method="POST" class="d-flex justify-content-around">
                                                 @csrf
                                                 @method('DELETE')
                                                 <a class="btn btn-primary mx-1" href="{{ route('users.edit',$user) }}">Изменить</a>

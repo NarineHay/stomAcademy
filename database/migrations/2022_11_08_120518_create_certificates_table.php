@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('type');
             $table->integer('hours_number');
             $table->date('date');
-            $table->date('image');
+            $table->string('image');
         });
     }
 

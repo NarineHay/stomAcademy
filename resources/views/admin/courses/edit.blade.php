@@ -83,10 +83,12 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">ВЕБИНАРЫ:</label><br>
                         @foreach($data['webinars'] as $webinar)
-                            <input type="checkbox" name="webinar[]" value="{{ $webinar->id }}"
-                                   @if( $course->webinars->where("webinar_id",$webinar->id)->count()) checked @endif
-                                   class="mr-1">
-                            {{$webinar->title}}<br>
+                            @if($webinar->status != 0)
+                                <input type="checkbox" name="webinar[]" value="{{ $webinar->id }}"
+                                       @if( $course->webinars->where("webinar_id",$webinar->id)->count()) checked @endif
+                                       class="mr-1">
+                                {{$webinar->title}}
+                            @endif
                         @endforeach
                     </div>
                 </div>
