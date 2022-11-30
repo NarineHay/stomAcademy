@@ -5,11 +5,16 @@ namespace Database\Seeders;
 use App\Models\Country;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class CountrySeeder extends Seeder
 {
     public function run()
     {
+        dd(Storage::directories("./"));
+        foreach (scandir("./storage/flags") as $flag){
+            dd($flag);
+        }
         Country::truncate();
         $countries = [
                 'AU' => 'Австралия',
