@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Card course</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/dist/css/lib.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/dist/font/font.css">
+  <link rel="stylesheet" type="text/css" href="/dist/5.12.0/all.css">
+  <link rel="stylesheet" type="text/css" href="/dist/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/dist/css/responsive.css">
+  <link rel="icon" href="dist/image/aboutLogo.png">
+</head>
+<body>
+<header class="position-fixed bg-primary w-100" style="z-index: 1111111">
+  <div class="container d-flex justify-content-between p-3 align-items-center">
+    <div>
+      <a href="index.html"><img src="/dist/image/logo.png" alt="logoPic"></a>
+    </div>
+    <div class="d-flex">
+      <nav class="navbar p-0">
+        <ul class="text-decoration-none list-unstyled d-lg-flex d-none mb-0">
+          <li><a href="education.html" class="text-decoration-none me-2 me-xl-3 text-white fs-16 f-600">Наши курсы</a></li>
+          <li><a href="lecturers.html" class="text-decoration-none ms-3 me-2 me-xl-3 ms-xl-4 text-white fs-16 f-600">Лектора</a></li>
+          <li><a href="about.html" class="text-decoration-none ms-3 me-2 me-xl-3 ms-xl-4 text-white fs-16 f-600">О нас</a></li>
+          <li><a href="state.html" class="text-decoration-none ms-3 me-2 me-xl-3 ms-xl-4 text-white fs-16 f-600">Статьи</a></li>
+          <li><a href="contact.html" class="text-decoration-none ms-3 me-2 me-xl-3 ms-xl-4 text-white fs-16 f-600">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="text-white mb-0 fs-14 f-500 d-none d-sm-block">Jane Cooper</p>
+      <div class="d-flex mb-0 align-items-center">
+        <div class="d-flex align-items-center mb-0">
+          <i class="far fa-user-circle text-white ms-2 fs-20"></i>
+          <i class="far fa-shopping-bag text-white ms-3 ms-lg-4 fs-20"></i>
+        </div>
+        <div class="text-white d-none d-lg-block">
+          <p class="fs-12 f-700 d-flex rounded-circle justify-content-center noticeCount">4</p>
+        </div>
+        <div class="ms-3 d-lg-none">
+          <i class="fas fa-bars text-white fs-20 mt-1"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="card_course" style="background-image: url('/dist/image/cardbg.png'); background-repeat: no-repeat; background-size: cover;">
+  <div class="bg">
+    <div class="container text-white">
+      <div class="d-flex py-3">
+        <a><span class="fs-12 f-500">Главная</span></a>
+        <a><span class="fs-12 f-500 ms-3 main">Онлайн обучение</span></a>
+      </div>
+      <div class="mt-5 mt-lg-6 d-flex flex-column flex-lg-row justify-content-between align-items-lg-center">
+        <div>
+          <div>
+            <h1 class="f-700 m-0">Английский язык для<br>врачей-стоматологов!</h1>
+          </div>
+          <div class="mt-3">
+            <p class="f-500 fs-20 m-0">15 занятий с домашними заданиями.</p>
+          </div>
+          <div class="d-flex mt-4 mt-lg-6 flex-column flex-lg-row">
+            <div class="d-flex">
+              <div>
+                <img src="dist/image/person1.png" alt="personPic">
+                <img src="dist/image/person2.png" class="m-25" alt="personPic">
+                <img src="dist/image/person3.png" class="m-25" alt="personPic">
+              </div>
+              <div class="ms-3">
+                <p class="f-500 fs-16 m-0">Преподаватели</p>
+                <select name="lecturer" id="lecturer" class="text-white mt-1" style="background-color: transparent; border: none; margin-left: -4px">
+                  <option value="cameron">Cameron Williamson</option>
+                  <option value="cameron">Cameron Williamson</option>
+                  <option value="cameron">Cameron Williamson</option>
+                  <option value="cameron">Cameron Williamson</option>
+                </select>
+              </div>
+            </div>
+            <div class="ms-0 ms-lg-6 mb-3 mb-lg-0 d-flex mt-4 mt-lg-0 align-items-center align-items-lg-start flex-lg-column">
+              <p class="fs-16 f-500 m-0">Старт</p>
+              <p class="fs-20 f-700 m-0 ms-1 ms-lg-0">29 июня</p>
+            </div>
+          </div>
+        </div>
+        <div class="course_form bg-white text-black br-12 p-3 p-lg-4 mt-2 mt-lg-0">
+          <p class="m-0 text-secondary fs-14 f-500">Цена за весь курс</p>
+          <h3 class="f-700 mt-3 text-primary">3000 ₽</h3>
+          <div class="mt-3 d-flex justify-content-between flex-column flex-lg-row">
+            <div class="d-flex align-items-center">
+              <input type="checkbox" id="lecture" name="lecture" value="lecture">
+              <label for="lecture" class="fs-14 f-500 ms-2">1 лекция ( бесплатно)</label><br>
+            </div>
+            <div class="ms-0 ms-lg-4 ms-xl-5 d-flex align-items-center mt-2 mt-lg-0">
+              <input type="checkbox" checked id="course" name="course" value="course">
+              <label for="course" class="fs-14 f-500 ms-2">Весь курс (3000 ₽)</label><br>
+            </div>
+          </div>
+          <div class="mt-3 mt-lg-4">
+            <p class="fs-14 f-500 m-0 text-secondary">Купили уже 12 человек</p>
+          </div>
+          <div class="mt-2 mt-lg-4">
+            <button class="btn btn-primary w-100 fs-16 f-600 br-12 py-2">Добавить в корзину</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container mt-4">
+  <div class="d-flex justify-content-start justify-content-sm-center mt-6 mt-lg-4 course_scroll pt-md-6 pt-lg-0">
+    <p class="fs-16 f-700 m-0 purchaseActive py-2 py-lg-3 cursor">О курсе</p>
+    <p class="fs-16 f-500 m-0 ms-3 ms-lg-4 py-2 py-lg-3 cursor">Программа</p>
+    <p class="fs-16 f-500 m-0 ms-3 ms-lg-4 py-2 py-lg-3 cursor">Преподаватели</p>
+    <p class="fs-16 f-500 m-0 ms-3 ms-lg-4 py-2 py-lg-3 cursor">Вопросы</p>
+  </div>
+</div>
+
+<div class="container mt-4 mt-lg-5">
+  <h3 class="f-700 m-0">Кратко об онлайн-курсе</h3>
+  <p class="m-0 mt-3 fs-16 f-500">Популярность концепции DSD обусловлена тем, что у нее есть преимущества как для <br class="d-none d-lg-block">пациента, так и
+    для врача. Концепция DSD позволяет ускорить процесс эстетической реставрации зубов</p>
+</div>
+
+<div class="container">
+  <div class="row mt-4 h-100">
+    <div class="col-6 col-xl-3">
+      <div class="d-flex p-2 p-xl-3 bg-white align-items-xl-center br-12 flex-column flex-lg-row">
+        <div class="rounded-circle d-flex align-items-center justify-content-center short_course_icons">
+          <i class="far fa-clock text-primary fs-22"></i>
+        </div>
+        <div class="ms-0 ms-lg-4 mt-3 mt-lg-0 ms-l-4">
+          <p class="text-secondary m-0 fs-14 f-500">Количество часов</p>
+          <p class="fs-24 f-600 m-0">168</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-xl-3">
+      <div class="d-flex p-2 p-xl-3 bg-white align-items-xl-center br-12 flex-column flex-lg-row">
+        <div class="rounded-circle d-flex align-items-center justify-content-center short_course_icons">
+          <i class="fal fa-play-circle text-primary fs-22"></i>
+        </div>
+        <div class="ms-0 ms-lg-4 mt-3 mt-lg-0 ms-l-4">
+          <p class="text-secondary m-0 fs-14 f-500">Количество лекций</p>
+          <p class="fs-24 f-600 m-0">15</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-xl-3">
+      <div class="d-flex p-2 p-xl-3 bg-white align-items-xl-center br-12 flex-column flex-lg-row mt-2 mt-xl-0">
+        <div class="rounded-circle d-flex align-items-center justify-content-center short_course_icons">
+          <i class="far fa-file-minus text-primary fs-22"></i>
+        </div>
+        <div class="ms-0 ms-lg-4 mt-3 mt-lg-0 ms-l-4">
+          <p class="text-secondary m-0 fs-14 f-500">Сертификат</p>
+          <p class="fs-24 f-600 m-0">OHI-S</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-xl-3">
+      <div class="d-flex p-2 p-xl-3 bg-white align-items-xl-center br-12 flex-column flex-lg-row mt-2 mt-xl-0">
+        <div class="rounded-circle d-flex align-items-center justify-content-center short_course_icons">
+          <i class="far fa-headphones text-primary fs-22"></i>
+        </div>
+        <div class="ms-0 ms-lg-4 mt-3 mt-lg-0 ms-l-4">
+          <p class="text-secondary m-0 fs-14 f-500">Количество спикеров</p>
+          <p class="fs-24 f-600 m-0">4</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 mt-lg-5">
+<!--  <img src="dist/image/course1.png" alt="pic" class="course_img">-->
+  <div style="background-image: url('dist/image/course1.png'); background-size: cover; background-repeat: no-repeat;
+    height: 208px; width: 340px" class="course_img br-12 d-flex justify-content-center align-items-center">
+    <div class="bg d-flex align-items-center justify-content-center">
+      <div class="rounded-circle d-flex align-items-center justify-content-center icon-style border-0" style="background: rgba(255, 255, 255, 0.3);">
+        <i class="fas fa-play text-white fs-16"></i>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container mt-4 mt-lg-6">
+  <h3 class="f-700 m-0">Программа курса</h3>
+  <div class="mt-4">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item br-12">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <div class="d-flex align-items-md-center flex-column flex-md-row justify-content-between">
+              <div class="d-flex">
+                <p class="fs-16 f-500 m-0">1</p> <p class="fs-16 f-700 ms-4 m-0">Терапия</p>
+              </div>
+              <div class="d-flex align-items-center mt-3 mt-md-0">
+                <img src="dist/image/kamil.png" class="me-2" alt="videoPic">
+                <p class="m-0 f-500 fs-14">Камиль Хабиев</p>
+              </div>
+              <div class="d-flex d-none d-lg-block">
+                <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">160 мин</span>
+              </div>
+              <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between">
+                <p class="m-0 f-700 fs-16 text-primary">3000 ₽</p>
+                <div class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600">Купить</div>
+              </div>
+            </div>
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <div class="p-2 py-lg-3 px-lg-6">
+              <p class="m-0 f-600 fs-16">Webinar program</p>
+              <ul class="mt-2 fs-16 f-500">
+                <li>Treatment Protocol for impaction: lower arch. Surgical and Orthodontic Approaches</li>
+                <li class="mt-1">Types of impaction cases</li>
+                <li class="mt-1">Closure of space in the area of extracted teeth</li>
+                <li class="mt-1">Use of buccal shelf screws combined with 3-D lever arms as an ideal mechanical design</li>
+                <li class="mt-1">Protocols for the treatment of complex clinical cases of retained teeth</li>
+                <li class="mt-1">Clinical cases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item mt-2 br-12">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            <div class="d-flex align-items-md-center flex-column flex-md-row justify-content-between">
+              <div class="d-flex">
+                <p class="fs-16 f-500 m-0">2</p> <p class="fs-16 f-700 ms-4 m-0">Терапия</p>
+              </div>
+              <div class="d-flex align-items-center mt-3 mt-md-0">
+                <img src="dist/image/kamil.png" class="me-2" alt="videoPic">
+                <p class="m-0 f-500 fs-14">Камиль Хабиев</p>
+              </div>
+              <div class="d-flex d-none d-lg-block">
+                <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">160 мин</span>
+              </div>
+              <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between">
+                <p class="m-0 f-700 fs-16 text-primary">3000 ₽</p>
+                <div class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600">Купить</div>
+              </div>
+            </div>
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+             data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <div class="p-2 py-lg-3 px-lg-6">
+              <p class="m-0 f-600 fs-16">Webinar program</p>
+              <ul class="mt-2 fs-16 f-500">
+                <li>Treatment Protocol for impaction: lower arch. Surgical and Orthodontic Approaches</li>
+                <li class="mt-1">Types of impaction cases</li>
+                <li class="mt-1">Closure of space in the area of extracted teeth</li>
+                <li class="mt-1">Use of buccal shelf screws combined with 3-D lever arms as an ideal mechanical design</li>
+                <li class="mt-1">Protocols for the treatment of complex clinical cases of retained teeth</li>
+                <li class="mt-1">Clinical cases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item mt-2 br-12">
+        <h2 class="accordion-header" id="flush-headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            <div class="d-flex align-items-md-center flex-column flex-md-row justify-content-between">
+              <div class="d-flex">
+                <p class="fs-16 f-500 m-0">3</p> <p class="fs-16 f-700 ms-4 m-0">Терапия</p>
+              </div>
+              <div class="d-flex align-items-center mt-3 mt-md-0">
+                <img src="dist/image/kamil.png" class="me-2" alt="videoPic">
+                <p class="m-0 f-500 fs-14">Камиль Хабиев</p>
+              </div>
+              <div class="d-flex d-none d-lg-block">
+                <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">160 мин</span>
+              </div>
+              <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between">
+                <p class="m-0 f-700 fs-16 text-primary">3000 ₽</p>
+                <div class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600">Купить</div>
+              </div>
+            </div>
+          </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+             data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <div class="p-2 py-lg-3 px-lg-6">
+              <p class="m-0 f-600 fs-16">Webinar program</p>
+              <ul class="mt-2 fs-16 f-500">
+                <li>Treatment Protocol for impaction: lower arch. Surgical and Orthodontic Approaches</li>
+                <li class="mt-1">Types of impaction cases</li>
+                <li class="mt-1">Closure of space in the area of extracted teeth</li>
+                <li class="mt-1">Use of buccal shelf screws combined with 3-D lever arms as an ideal mechanical design</li>
+                <li class="mt-1">Protocols for the treatment of complex clinical cases of retained teeth</li>
+                <li class="mt-1">Clinical cases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item mt-2 br-12">
+        <h2 class="accordion-header" id="flush-headingFour">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            <div class="d-flex align-items-md-center flex-column flex-md-row justify-content-between">
+              <div class="d-flex">
+                <p class="fs-16 f-500 m-0">4</p> <p class="fs-16 f-700 ms-4 m-0">Терапия</p>
+              </div>
+              <div class="d-flex align-items-center mt-3 mt-md-0">
+                <img src="dist/image/kamil.png" class="me-2" alt="videoPic">
+                <p class="m-0 f-500 fs-14">Камиль Хабиев</p>
+              </div>
+              <div class="d-flex d-none d-lg-block">
+                <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">160 мин</span>
+              </div>
+              <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between">
+                <p class="m-0 f-700 fs-16 text-primary">3000 ₽</p>
+                <div class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600">Купить</div>
+              </div>
+            </div>
+          </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+             data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <div class="p-2 py-lg-3 px-lg-6">
+              <p class="m-0 f-600 fs-16">Webinar program</p>
+              <ul class="mt-2 fs-16 f-500">
+                <li>Treatment Protocol for impaction: lower arch. Surgical and Orthodontic Approaches</li>
+                <li class="mt-1">Types of impaction cases</li>
+                <li class="mt-1">Closure of space in the area of extracted teeth</li>
+                <li class="mt-1">Use of buccal shelf screws combined with 3-D lever arms as an ideal mechanical design</li>
+                <li class="mt-1">Protocols for the treatment of complex clinical cases of retained teeth</li>
+                <li class="mt-1">Clinical cases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item mt-2 br-12">
+        <h2 class="accordion-header" id="flush-headingFive">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+            <div class="d-flex align-items-md-center flex-column flex-md-row justify-content-between">
+              <div class="d-flex">
+                <p class="fs-16 f-500 m-0">5</p> <p class="fs-16 f-700 ms-4 m-0">Терапия</p>
+              </div>
+              <div class="d-flex align-items-center mt-3 mt-md-0">
+                <img src="dist/image/kamil.png" class="me-2" alt="videoPic">
+                <p class="m-0 f-500 fs-14">Камиль Хабиев</p>
+              </div>
+              <div class="d-flex d-none d-lg-block">
+                <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">160 мин</span>
+              </div>
+              <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between">
+                <p class="m-0 f-700 fs-16 text-primary">3000 ₽</p>
+                <div class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600">Купить</div>
+              </div>
+            </div>
+          </button>
+        </h2>
+        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
+             data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <div class="p-2 py-lg-3 px-lg-6py-3 px-6">
+              <p class="m-0 f-600 fs-16">Webinar program</p>
+              <ul class="mt-2 fs-16 f-500">
+                <li>Treatment Protocol for impaction: lower arch. Surgical and Orthodontic Approaches</li>
+                <li class="mt-1">Types of impaction cases</li>
+                <li class="mt-1">Closure of space in the area of extracted teeth</li>
+                <li class="mt-1">Use of buccal shelf screws combined with 3-D lever arms as an ideal mechanical design</li>
+                <li class="mt-1">Protocols for the treatment of complex clinical cases of retained teeth</li>
+                <li class="mt-1">Clinical cases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item mt-2 br-12">
+        <h2 class="accordion-header" id="flush-headingSix">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseSix">
+            <div class="d-flex align-items-md-center flex-column flex-md-row justify-content-between">
+              <div class="d-flex">
+                <p class="fs-16 f-500 m-0">6</p> <p class="fs-16 f-700 ms-4 m-0">Терапия</p>
+              </div>
+              <div class="d-flex align-items-center mt-3 mt-md-0">
+                <img src="dist/image/kamil.png" class="me-2" alt="videoPic">
+                <p class="m-0 f-500 fs-14">Камиль Хабиев</p>
+              </div>
+              <div class="d-flex d-none d-lg-block">
+                <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">160 мин</span>
+              </div>
+              <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between">
+                <p class="m-0 f-700 fs-16 text-primary">3000 ₽</p>
+                <div class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600">Купить</div>
+              </div>
+            </div>
+          </button>
+        </h2>
+        <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix"
+             data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">
+            <div class="p-2 py-lg-3 px-lg-6">
+              <p class="m-0 f-600 fs-16">Webinar program</p>
+              <ul class="mt-2 fs-16 f-500">
+                <li>Treatment Protocol for impaction: lower arch. Surgical and Orthodontic Approaches</li>
+                <li class="mt-1">Types of impaction cases</li>
+                <li class="mt-1">Closure of space in the area of extracted teeth</li>
+                <li class="mt-1">Use of buccal shelf screws combined with 3-D lever arms as an ideal mechanical design</li>
+                <li class="mt-1">Protocols for the treatment of complex clinical cases of retained teeth</li>
+                <li class="mt-1">Clinical cases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 mt-lg-6">
+  <h3 class="m-0 f-700 mb-4">Лекторы</h3>
+  <div class="row">
+    <div class="col-6 col-xl-4">
+      <div class="d-flex flex-column flex-md-row align-items-md-center bg-white br-12">
+        <div>
+          <img src="dist/image/course2.png" alt="pic" class="br-12 w-100">
+        </div>
+        <div class="ms-0 ms-md-4 p-2 p-lg-0">
+          <p class="f-700 fs-20 m-0">Дахер Рами Насер</p>
+          <p class="m-0 fs-14 f-500 text-secondary mt-2">Врач-стоматолог общей <br class="d-none d-lg-block">практики</p>
+          <div class="mt-2">
+            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-xl-4">
+      <div class="d-flex flex-column flex-md-row align-items-md-center bg-white br-12">
+        <div>
+          <img src="dist/image/course3.png" alt="pic" class="br-12 w-100">
+        </div>
+        <div class="ms-0 ms-md-4 p-2 p-lg-0">
+          <p class="f-700 fs-20 m-0">Дахер Рами Насер</p>
+          <p class="m-0 fs-14 f-500 text-secondary mt-2">Врач-стоматолог общей <br class="d-none d-lg-block">практики</p>
+          <div class="mt-2">
+            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-xl-4 mt-3 mt-xl-0">
+      <div class="d-flex flex-column flex-md-row align-items-md-center bg-white br-12">
+        <div>
+          <img src="dist/image/course4.png" alt="pic" class="br-12 w-100">
+        </div>
+        <div class="ms-0 ms-md-4 p-2 p-lg-0">
+          <p class="f-700 fs-20 m-0">Дахер Рами Насер</p>
+          <p class="m-0 fs-14 f-500 text-secondary mt-2">Врач-стоматолог общей <br class="d-none d-lg-block">практики</p>
+          <div class="mt-2">
+            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-xl-4 mt-3">
+      <div class="d-flex flex-column flex-md-row align-items-md-center bg-white br-12">
+        <div>
+          <img src="dist/image/course2.png" alt="pic" class="br-12 w-100">
+        </div>
+        <div class="ms-0 ms-md-4 p-2 p-lg-0">
+          <p class="f-700 fs-20 m-0">Дахер Рами Насер</p>
+          <p class="m-0 fs-14 f-500 text-secondary mt-2">Врач-стоматолог общей <br class="d-none d-lg-block">практики</p>
+          <div class="mt-2">
+            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-xl-4 mt-3">
+      <div class="d-flex flex-column flex-md-row align-items-md-center bg-white br-12">
+        <div>
+          <img src="dist/image/course3.png" alt="pic" class="br-12 w-100">
+        </div>
+        <div class="ms-0 ms-md-4 p-2 p-lg-0">
+          <p class="f-700 fs-20 m-0">Дахер Рами Насер</p>
+          <p class="m-0 fs-14 f-500 text-secondary mt-2">Врач-стоматолог общей <br class="d-none d-lg-block">практики</p>
+          <div class="mt-2">
+            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-xl-4 mt-3">
+      <div class="d-flex flex-column flex-md-row align-items-md-center bg-white br-12">
+        <div>
+          <img src="dist/image/course4.png" alt="pic" class="br-12 w-100">
+        </div>
+        <div class="ms-0 ms-md-4 p-2 p-lg-0">
+          <p class="f-700 fs-20 m-0">Дахер Рами Насер</p>
+          <p class="m-0 fs-14 f-500 text-secondary mt-2">Врач-стоматолог общей <br class="d-none d-lg-block">практики</p>
+          <div class="mt-2">
+            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 mt-lg-6">
+  <h3 class="f-700 mb-4">Часто задаваемые вопросы</h3>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse" data-bs-target="#one">
+        <div class="d-flex align-items-center">
+          <i class="far fa-plus plus_icon"></i>
+          <i class="fal fa-minus d-none minus_icon"></i>
+          <p class="fs-16 m-0 f-700 ms-4 main_text">Как я могу быть уверен в качестве онлайн-уроков?</p>
+        </div>
+        <div class="collapse" id="one">
+          <div class="p-3">
+            <span class="m-0">Самый простой способ - связаться с нашим менеджером и рассказать о<br class="d-none d-xxl-block">
+              своих сомнениях. Менеджер поможет выбрать лучший тариф исходя из ваших пожеланий</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 mt-1 mt-lg-0">
+      <div class="bg-white br-12 p-3" data-bs-toggle="collapse" data-bs-target="#two">
+        <div class="d-flex align-items-center">
+          <i class="far fa-plus plus_icon"></i>
+<!--          <i class="fal fa-minus d-none minus_icon"></i>-->
+          <p class="fs-16 m-0 f-700 ms-4">Как я могу быть уверен в качестве онлайн-уроков?</p>
+        </div>
+        <div class="collapse" id="two">
+          <div class="p-3">
+            <span class="m-0">Самый простой способ - связаться с нашим менеджером и рассказать о<br class="d-none d-xxl-block">
+              своих сомнениях. Менеджер поможет выбрать лучший тариф исходя из ваших пожеланий</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 mt-1">
+      <div class="bg-white br-12 p-3" data-bs-toggle="collapse" data-bs-target="#three">
+        <div class="d-flex align-items-center">
+          <i class="far fa-plus plus_icon"></i>
+<!--          <i class="fal fa-minus d-none minus_icon"></i>-->
+          <p class="fs-16 m-0 f-700 ms-4">Что, если я передумаю и хочу деактивировать подписку?</p>
+        </div>
+        <div class="collapse" id="three">
+          <div class="p-3">
+            <span class="m-0">Самый простой способ - связаться с нашим менеджером и рассказать о<br class="d-none d-xxl-block">
+              своих сомнениях. Менеджер поможет выбрать лучший тариф исходя из ваших пожеланий</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 mt-1">
+      <div class="bg-white br-12 p-3" data-bs-toggle="collapse" data-bs-target="#four">
+        <div class="d-flex align-items-center">
+          <i class="far fa-plus plus_icon"></i>
+<!--          <i class="fal fa-minus d-none minus_icon"></i>-->
+          <p class="fs-16 m-0 f-700 ms-4">Что, если я передумаю и хочу деактивировать подписку?</p>
+        </div>
+        <div class="collapse" id="four">
+          <div class="p-3">
+            <span class="m-0">Самый простой способ - связаться с нашим менеджером и рассказать о<br class="d-none d-xxl-block">
+              своих сомнениях. Менеджер поможет выбрать лучший тариф исходя из ваших пожеланий</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 mt-1">
+      <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse" data-bs-target="#five">
+        <div class="d-flex align-items-center">
+          <i class="far fa-plus plus_icon"></i>
+<!--          <i class="fal fa-minus d-none minus_icon"></i>-->
+          <p class="fs-16 m-0 f-700 ms-4 main_text">Как не ошибиться в выборе варианта подписки?</p>
+        </div>
+        <div class="collapse show" id="five">
+          <div class="p-3">
+            <span class="m-0">Самый простой способ - связаться с нашим менеджером и рассказать о<br class="d-none d-xxl-block">
+              своих сомнениях. Менеджер поможет выбрать лучший тариф исходя из ваших пожеланий</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 mt-1">
+      <div class="bg-white br-12 p-3" data-bs-toggle="collapse" data-bs-target="#six">
+        <div class="d-flex align-items-center">
+          <i class="far fa-plus plus_icon"></i>
+<!--          <i class="fal fa-minus d-none minus_icon"></i>-->
+          <p class="fs-16 m-0 f-700 ms-4">Что, если я передумаю и хочу деактивировать подписку?</p>
+        </div>
+        <div class="collapse" id="six">
+          <div class="p-3">
+            <span class="m-0">Самый простой способ - связаться с нашим менеджером и рассказать о<br class="d-none d-xxl-block">
+              своих сомнениях. Менеджер поможет выбрать лучший тариф исходя из ваших пожеланий</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 mt-lg-6">
+  <div class="d-flex justify-content-between">
+    <h3 class="f-700 mb-4">Еще курсы с этой категории</h3>
+    <div class="slider_navigatioin AdditionsSwiper_nav mb-4 d-none d-md-block">
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+  <div class="swiper AdditionsSwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="bg-white br-12">
+          <img src="dist/image/addition1.png" class="w-100" alt="addPic">
+          <div class="p-3">
+            <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+            <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+            <div class="mt-3">
+              <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+              <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+            </div>
+            <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
+              <div class="d-flex align-items-center">
+                <img src="dist/image/kamil.png" class="me-2" alt="customerPic">
+                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+              </div>
+              <div class="mt-3 mt-xl-0">
+                <span class="f-700 text-primary fs-16">3000 ₽</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="bg-white br-12">
+          <img src="dist/image/addition1.png" class="w-100" alt="addPic">
+          <div class="p-3">
+            <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+            <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+            <div class="mt-3">
+              <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+              <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+            </div>
+            <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
+              <div class="d-flex align-items-center">
+                <img src="dist/image/kamil.png" class="me-2" alt="customerPic">
+                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+              </div>
+              <div class="mt-3 mt-xl-0">
+                <span class="f-700 text-primary fs-16">3000 ₽</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="bg-white br-12">
+          <img src="dist/image/addition1.png" class="w-100" alt="addPic">
+          <div class="p-3">
+            <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+            <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+            <div class="mt-3">
+              <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+              <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+            </div>
+            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
+              <div class="d-flex align-items-center">
+                <img src="dist/image/kamil.png" class="me-2" alt="customerPic">
+                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+              </div>
+              <div class="mt-3 mt-xl-0">
+                <span class="f-700 text-primary fs-16">3000 ₽</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="bg-white br-12">
+          <img src="dist/image/addition1.png" class="w-100" alt="addPic">
+          <div class="p-3">
+            <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+            <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+            <div class="mt-3">
+              <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+              <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+            </div>
+            <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
+              <div class="d-flex align-items-center">
+                <img src="dist/image/kamil.png" class="me-2" alt="customerPic">
+                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+              </div>
+              <div class="mt-3 mt-xl-0">
+                <span class="f-700 text-primary fs-16">3000 ₽</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="bg-white br-12">
+          <img src="dist/image/addition1.png" class="w-100" alt="addPic">
+          <div class="p-3">
+            <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+            <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+            <div class="mt-3">
+              <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+              <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+            </div>
+            <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
+              <div class="d-flex align-items-center">
+                <img src="dist/image/kamil.png" class="me-2" alt="customerPic">
+                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+              </div>
+              <div class="mt-3 mt-xl-0">
+                <span class="f-700 text-primary fs-16">3000 ₽</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="bg-white br-12">
+          <img src="dist/image/addition1.png" class="w-100" alt="addPic">
+          <div class="p-3">
+            <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+            <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+            <div class="mt-3">
+              <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+              <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+            </div>
+            <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
+              <div class="d-flex align-items-center">
+                <img src="dist/image/kamil.png" class="me-2" alt="customerPic">
+                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+              </div>
+              <div class="mt-3 mt-xl-0">
+                <span class="f-700 text-primary fs-16">3000 ₽</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="bg-white br-12">
+          <img src="dist/image/addition1.png" class="w-100" alt="addPic">
+          <div class="p-3">
+            <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+            <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+            <div class="mt-3">
+              <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+              <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+            </div>
+            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
+              <div class="d-flex align-items-center">
+                <img src="dist/image/kamil.png" class="me-2" alt="customerPic">
+                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+              </div>
+              <div class="mt-3 mt-xl-0">
+                <span class="f-700 text-primary fs-16">3000 ₽</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="bg-white br-12">
+          <img src="dist/image/addition1.png" class="w-100" alt="addPic">
+          <div class="p-3">
+            <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+            <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+            <div class="mt-3">
+              <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+              <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+            </div>
+            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
+              <div class="d-flex align-items-center">
+                <img src="dist/image/kamil.png" class="me-2" alt="customerPic">
+                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+              </div>
+              <div class="mt-3 mt-xl-0">
+                <span class="f-700 text-primary fs-16">3000 ₽</span>
+              </div>
+            </div>
+            <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3 mt-lg-6">
+  <div style="background-image: url('dist/image/coursecover.png'); background-size: cover; background-repeat: no-repeat" class="br-12">
+    <div class="d-flex flex-column-reverse flex-lg-row align-items-center justify-content-between p-3 p-lg-5">
+      <div class="text-white">
+        <p class="m-0 fs-36 f-700 mt-2 mt-lg-0">Купить весь курс английский язык<br class="d-none d-lg-block"> для врачей-стоматологов!</p>
+        <p class="fs-14 f-500 text-secondary mt-4 m-0">Цена за весь курс</p>
+        <p class="m-0 fs-50 f-700">3000 ₽</p>
+        <button class="btn fs-18 f-700 mt-4 br-12 text-white course_btn" style="padding: 15px 130px; background-color: #5CB1FF">Добавить в корзину</button>
+        <p class="m-0 fs-14 f-500 mt-3">Купили 12 человек</p>
+      </div>
+      <div>
+        <img src="dist/image/course5.png" alt="pic" class="br-12 w-100">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-4 mt-lg-6 mb-4 mb-lg-6">
+      <div class="d-flex justify-content-center flex-column text-center">
+        <h2 class="m-0 f-700">Остались вопросы?</h2>
+        <p class="m-0 fs-14 text-secondary f-500 mt-4">Связавшись с нашими специалистами, вы получите подробную<br>
+          консультацию и ответы на все вопросы.</p>
+        <a href="tel:+375295948888"><h3 class="f-500 mt-4 m-0 text-black">+375 (29) 594-88-88</h3></a>
+        <div class="mt-4 d-flex justify-content-center">
+          <div class="rounded-circle d-flex align-items-center justify-content-center icon-style2">
+            <a href="https://www.youtube.com/"><i class="fab fa-telegram-plane text-primary"></i></a>
+          </div>
+          <div class="rounded-circle d-flex align-items-center justify-content-center ms-2 icon-style2">
+            <a href="https://web.telegram.org/k/"><i class="fab fa-twitter text-primary"></i></a>
+          </div>
+          <div class="rounded-circle d-flex align-items-center justify-content-center ms-2 icon-style2">
+            <a href="https://twitter.com/"><i class="fab fa-facebook-f text-primary fs-16"></i></a>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+<footer class="text-white bg-gray">
+  <div class="container">
+    <div class="row footer-border-bottom">
+      <div class="col-12 col-lg-3 mt-5 mt-lg-6 mb-2 mb-md-3 fs-12">
+        <a href="index.html"><img src="dist/image/logo.png" alt="footerLogoPic"></a>
+        <p class="mt-3 fs-12">Республика Беларусь:
+          <br><br>
+          ООО «Стоматологическое образование»<br>
+          УНП 193237965<br>
+          220002, Республика Беларусь, г. Минск, ул.<br>В.Хоружей, 31А, каб. 313
+          <br><br>
+          Управление регистрации и лицензирования главного<br>управления юстиции Мингорисполкома от<br>10.04.20219г.
+          №193237965</p>
+      </div>
+      <div class="col-12 col-lg-2 mt-lg-6 mb-2 mb-md-4 fs-20 f-600">
+        <a href="education.html"><p>Наши курсы</p></a>
+        <a href="lecturers.html"><p>Лектора</p></a>
+        <a href="about.html"><p>О нас</p></a>
+        <a href="state.html"><p>Статьи</p></a>
+        <a href="contact.html"><p>Контакты</p></a>
+      </div>
+      <div class="col-12 col-lg-2 mt-2 mt-lg-6 mb-4 fs-20 f-600 d-none d-lg-block">
+        <a href="education.html"><p>Наши курсы</p></a>
+        <a href="lecturers.html"><p>Лектора</p></a>
+        <a href="about.html"><p>О нас</p></a>
+        <a href="state.html"><p>Статьи</p></a>
+        <a href="contact.html"><p>Контакты</p></a>
+      </div>
+      <div class="col-12 col-lg-5 mt-2 mt-lg-6 mb-4">
+        <div class="d-flex flex-wrap flex-md-nowrap">
+          <div class="me-3 text-white">
+            <p class="opacity-50 fs-14 f-500">Россия</p>
+            <a href="tel:+7(499)113-19-28"><p class="fs-16 f-600">+7(499)113-19-28</p></a>
+            <p class="opacity-50 mt-4 fs-14 f-500">Украина</p>
+            <a href="tel:+7(499)113-19-28"><p class="fs-16 f-600">+7(499)113-19-28</p></a>
+          </div>
+          <div class="ms-md-6 text-white">
+            <p class="opacity-50 fs-14 f-500">Литва</p>
+            <a href="tel:+7(499)113-19-28"><p class="fs-16 f-600">+7(499)113-19-28</p></a>
+            <p class="opacity-50 mt-4 fs-14 f-500">Беларась</p>
+            <a href="tel:+375(44)775-54-20"><p class="fs-16 f-600">+375 (44) 775-54-20 <br class="d-block d-md-none">(Viber/WatsApp/Telegram)</p></a>
+          </div>
+        </div>
+        <div class="mt-4 mt-lg-5 d-flex mb-0 mb-lg-4">
+          <div class="rounded-circle d-flex align-items-center justify-content-center bg-gray icon-style">
+            <a href="https://www.youtube.com/"><i class="fab fa-youtube text-white fs-16"></i></a>
+          </div>
+          <div class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
+            <a href="https://web.telegram.org/k/"><i class="fab fa-telegram-plane text-white fs-16"></i></a>
+          </div>
+          <div class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
+            <a href="https://twitter.com/"><i class="fab fa-twitter text-white fs-16"></i></a>
+          </div>
+          <div class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
+            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f text-white fs-16"></i></a>
+          </div>
+          <div class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram text-white fs-16"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row d-flex flex-column-reverse flex-lg-row justify-content-between align-items-lg-center py-3">
+      <div class="col-md-7">
+        <div>
+          <p class="fs-12 f-500 m-0">© Сервис обучения врачей<br class="d-block d-lg-none">стоматологов Stom-Academy - сайт<br class="d-block d-lg-none">для стоматологов,
+            2016 – 2021</p>
+        </div>
+      </div>
+      <div class="col-md-5 d-flex justify-content-between align-items-center mb-3 mb-md-0 flex-wrap flex-md-nowrap">
+        <a href="#"><img src="dist/image/pay1.png" alt="payPic"></a>
+        <a href="#"><img src="dist/image/pay2.png" alt="payPic"></a>
+        <a href="#"><img src="dist/image/pay3.png" alt="payPic"></a>
+        <a href="#"><img src="dist/image/pay4.png" alt="payPic"></a>
+        <a href="#"><img src="dist/image/pay5.png" alt="payPic"></a>
+        <a href="#"><img src="dist/image/pay6.png" alt="payPic"></a>
+        <a href="#"><img src="dist/image/pay7.png" alt="payPic"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="dist/js/script.js"></script>
+</body>
+</html>

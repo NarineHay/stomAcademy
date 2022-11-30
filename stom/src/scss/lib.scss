@@ -1,0 +1,11 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/mixins";
+@import "variables";
+
+@import "~bootstrap";
+
+@for $i from 10 through 100 {
+  .fs-#{$i}{
+    font-size: #{$i}px;
+  }
+}

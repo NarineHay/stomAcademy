@@ -1,0 +1,27 @@
+++++education:
+    ++++++++cursor pointer
+
+++++mobile body bg-color
+
+course.html
+    accordion: !!!!!!!!!!!!!!!
+        ++remove box-shadow, ++change bg-color,+++remove padding (p-4)
+    collapse:
+        +++++remove p-3
+        fix open color
+        open change icon + -
+    +++.card_course {
+        height: 595px;
+    }
+
+    ++++Лекторы 6 item
+
+    ++++background-position: center center;
+
+
+    +++++++++++++++++background-color: #fff;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+    right: 0;
+    width: 100vw;

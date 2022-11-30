@@ -86,7 +86,7 @@
                                 <li>
                                     <label class="form-check-label">
                                         <input type="checkbox" value="{{$webinar->id}}" class="mr-2" name="webinar[]">
-                                            <span>{{$webinar->title}}</span>
+                                        <span>{{$webinar->title}}</span>
                                     </label>
                                 </li>
                             @endforeach

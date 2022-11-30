@@ -44,8 +44,6 @@
                                         </div>
                                     </th>
 
-                                    <th>Изображение</th>
-
                                     <th>
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Название курса</span>
@@ -60,6 +58,8 @@
                                         </div>
                                     </th>
 
+                                    <th>Изображение</th>
+
                                     <th>Кнопки управления</th>
                                 </tr>
                                 </thead>
@@ -71,16 +71,16 @@
                                             <a>{{$certificate->id}}</a>
                                         </td>
                                         <td>
-                                            <a><img src="{{\Illuminate\Support\Facades\Storage::url($certificate->image) }}" height="70" alt=""/></a>
-                                        </td>
-                                        <td>
                                             <a>{{$certificate->course->title}}</a>
                                         </td>
+                                        <td>
+                                            <a><img src="{{\Illuminate\Support\Facades\Storage::url($certificate->image) }}" height="70" alt=""/></a>
+                                        </td>
                                         <td class="project-actions text-right">
-                                            <form action="{{route('certificates.destroy',$certificate)}}" method="POST" class="d-flex justify-content-around">
+                                            <form action="{{route('certificate.destroy',$certificate)}}" method="POST" class="d-flex justify-content-between">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a class="btn btn-primary mx-1" href="{{ route('certificates.edit',$certificate) }}">Изменить</a>
+                                                <a class="btn btn-primary mx-1" href="{{ route('certificate.edit',$certificate) }}">Изменить</a>
                                                 <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mx-1" id="button">Удалить</button>
                                             </form>
                                         </td>
@@ -90,9 +90,9 @@
                             </table>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center">
-                        {{ $certificates->links() }}
-                    </div>
+{{--                    <div class="d-flex justify-content-center">--}}
+{{--                        {{ $certificates->links() }}--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
