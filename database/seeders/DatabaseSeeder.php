@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CountrySeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(DirectionSeeder::class);
         $this->call(LectorSeeder::class);
         $this->call(UserInfoSeeder::class);
-        $this->call(DirectionSeeder::class);
         $this->call(PricesSeeder::class);
         $this->call(UserDirectionSeeder::class);
         $this->call(WebinarSeeder::class);

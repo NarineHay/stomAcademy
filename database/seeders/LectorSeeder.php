@@ -10,6 +10,11 @@ class LectorSeeder extends Seeder
 {
     public function run()
     {
+
+        User::factory(50)->create([
+            "role" => User::ROLE_LECTOR
+        ]);
+
         $users = User::query()->where("role",User::ROLE_LECTOR)->get();
         foreach($users as $user)
             $user->lector()->update(Lector::factory(1)->make()->first()->toArray());

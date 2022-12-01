@@ -5,10 +5,19 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/sass/app.scss',
-                'resources/js/app.js',
+                'resources/sass/lib.scss',
+                'resources/js/style.js',
             ],
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: [
+            {
+                // this is required for the SCSS modules
+                find: /^~(.*)$/,
+                replacement: '$1',
+            },
+        ],
+    },
 });

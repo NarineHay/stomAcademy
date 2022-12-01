@@ -1,22 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
-    <section class="section_top" style="background-image: url('/dist/image/headerBackground1.jpg');
-                             background-repeat: no-repeat; background-size: cover;">
-        <div class="container d-flex justify-content-between align-items-center text-white">
-            <div class="mt-6 w-100">
-                <div class="d-flex mt-3 mt-lg-4">
-                    <a><span class="fs-12 f-500 text-white">Главная</span></a>
-                    <a><span class="fs-12 f-500 ms-3 text-white main">О нас</span></a>
-                </div>
-                <div class="py-md-5 py-lg-6">
-                    <h1 class="mt-3 f-600 m-0">STOM-ACADEMY - Cервис <br class="d-none d-sm-block">обучения врачей-стоматологов.</h1>
-                    <p class="fs-20 f-500 mt-2 m-0">Никаких ограничений по опыту и специальности. Огромный<br class="d-none d-sm-block">
-                        выбор лекторов и тем. Online-обучение, практический курс,<br class="d-none d-sm-block"> семинары или конгрессы – выбор за вами.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!--About project-->
     <div class="container mt-4 mt-lg-6">
