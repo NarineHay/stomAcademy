@@ -7,18 +7,25 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+//         \App\Models\User::factory(10)->create();
+//
+//         \App\Models\User::factory()->create([
+//             'name' => 'Test User',
+//             'email' => 'admin@gmail.com',
+//         ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call(CountrySeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(LectorSeeder::class);
+        $this->call(UserInfoSeeder::class);
+        $this->call(DirectionSeeder::class);
+        $this->call(PricesSeeder::class);
+        $this->call(UserDirectionSeeder::class);
+        $this->call(WebinarSeeder::class);
+        $this->call(CourseSeeder::class);
+        $this->call(CourseWebinarSeeder::class);
+        $this->call(BalanceSeeder::class);
     }
 }

@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Certificate extends Model
+{
+    public $timestamps = false;
+    use HasFactory;
+
+    protected $fillable = [
+        'course_id',
+        'name_x',
+        'name_y',
+        'hour_x',
+        'hour_y',
+        'id_x',
+        'id_y',
+        'type',
+        'hours_number',
+        'date',
+    ];
+
+    function course(){
+        return $this->hasOne(Course::class,"course_id","id");
+    }
+}
