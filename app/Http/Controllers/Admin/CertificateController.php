@@ -7,6 +7,7 @@ use App\Models\Certificate;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminCertificateStoreRequest;
+use Intervention\Image\Facades\Image;
 
 class CertificateController extends Controller
 {
@@ -30,6 +31,27 @@ class CertificateController extends Controller
         $certificate->date = $request->get('date');
         $certificate->image = $request->file('image')->store('public/certificates');
 
+//        $image = $certificate->image;
+//        $input['image'] = time().'.'.$image->getClientOriginalExtension();
+//        $imgFile = Image::make($image->getRealPath());
+//
+//        $width = $imgFile->width();
+//        $height = $imgFile->height();
+//        if(($width/$height)>(3508/2480)){
+//            $nh = 2480;
+//            $nw = ($width * $nh) / $height;
+//            $y = 0;
+//            $x = intval(($nw - 3508) / 2);
+//        }
+//        else if(($width/$height)<(3508/2480)) {
+//            $nw = 3508;
+//            $nh = ($height * $nw) / $width;
+//            $y = intval(($nh - 2480) / 2);
+//            $x = 0;
+//        }
+//        $imgFile->resize($nw,$nh);
+//        $imgFile->crop(3508,2480,$x,$y);
+
         $certificate->save();
         return redirect()->route('admin.certificates.edit',$certificate->id)
             ->with('success', 'Certificate has been created successfully.');
@@ -37,8 +59,7 @@ class CertificateController extends Controller
 
     public function edit(Certificate $certificate)
     {
-        $data['courses'] = Course::all();
-        return view('admin.certificates.edit',compact('certificate','data'));
+        return view('admin.certificates.edit',compact('certificate'));
     }
 
     public function update(Request $request,Certificate $certificate)
@@ -61,6 +82,12 @@ class CertificateController extends Controller
             ]);
             $certificate->image = $request->file('image')->store('public/certificates');
         }
+
+//        $certificate->image->text('Stom Academy', 1000, 1000, function($font) {
+//            $font->file('verdana.ttf');
+//            $font->size(200);
+//            $font->color('#000000');
+//        })->save(storage_path('app\public\certificates').'\\'.$input['file']);
 
         $certificate->course_id = $request->course_id;
         $certificate->name_x = $request->name_x;

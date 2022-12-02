@@ -27,4 +27,8 @@ class Certificate extends Model
     function course(){
         return $this->hasOne(Course::class,"id","course_id");
     }
+
+//    function user(){
+//        return $this->hasOne(User::class,"id","user_id");
+//    }
 }
