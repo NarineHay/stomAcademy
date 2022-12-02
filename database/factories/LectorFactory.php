@@ -29,7 +29,7 @@ class LectorFactory extends Factory
         $name = substr($image, strrpos($image, '/') + 1);
         Storage::put("public/lector/".$name, $contents);
         return [
-            'specialization' => $directions->random(1)->first()->title,
+            'direction_id' => $directions->random(1)->first()->id,
             'biography' => $this->faker->realText(),
             'photo' => 'public/lector/'.$name,
             'per_of_sales' => $this->faker->numberBetween(1,50),

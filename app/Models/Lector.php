@@ -12,7 +12,7 @@ class Lector extends Model
 
     protected $fillable=[
         'user_id',
-        'specialization',
+        'direction_id',
         'biography',
         'photo',
         'per_of_sales',
@@ -20,6 +20,9 @@ class Lector extends Model
 
     function user(){
         return $this->hasOne(User::class,"id","user_id");
+    }
+    function direction(){
+        return $this->hasOne(Direction::class,"id","direction_id");
     }
 
     function getCourseCount(){

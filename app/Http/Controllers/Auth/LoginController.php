@@ -21,7 +21,7 @@ class LoginController extends Controller
 
     function redirectPath(){
         if(Auth::user() && (Auth::user()->role=="admin" || Auth::user()->role=="moder")){
-            return route('users.index');
+            return route('admin.users.index');
         }
         else if(Auth::user()->role=="lector"){
             return route('lector');

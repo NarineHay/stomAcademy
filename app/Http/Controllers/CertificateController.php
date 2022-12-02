@@ -18,6 +18,7 @@ class CertificateController extends Controller
             'file' => 'required|image|mimes:jpg,jpeg,png,svg|max:4096',
         ]);
         $image = $request->file('file');
+
         $input['file'] = time().'.'.$image->getClientOriginalExtension();
         $imgFile = Image::make($image->getRealPath());
         $width = $imgFile->width();

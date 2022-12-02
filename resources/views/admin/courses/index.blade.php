@@ -8,7 +8,7 @@
                     <h1 class="m-0">Курсы</h1>
                 </div>
                 <div>
-                    <a class="btn btn-primary" href="{{route('courses.create')}}" role="button">Добавить</a>
+                    <a class="btn btn-primary" href="{{route('admin.courses.create')}}" role="button">Добавить</a>
                 </div>
             </div>
 
@@ -34,10 +34,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>ID</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('courses.index',['order'=>'ID','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.courses.index',['order'=>'ID','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('courses.index',['order'=>'ID','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.courses.index',['order'=>'ID','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -48,10 +48,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Название курса</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('courses.index',['order'=>'title','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.courses.index',['order'=>'title','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('courses.index',['order'=>'title','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.courses.index',['order'=>'title','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -62,10 +62,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Дата проведения</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('courses.index',['order'=>'start_date','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.courses.index',['order'=>'start_date','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('courses.index',['order'=>'start_date','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.courses.index',['order'=>'start_date','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -76,10 +76,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Дата окончания</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('courses.index',['order'=>'end_date','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.courses.index',['order'=>'end_date','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('courses.index',['order'=>'end_date','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.courses.index',['order'=>'end_date','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -90,10 +90,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Цены</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('courses.index',['order'=>'','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.courses.index',['order'=>'','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('courses.index',['order'=>'','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.courses.index',['order'=>'','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -124,10 +124,10 @@
                                             <a>{{$course->price->name}}</a>
                                         </td>
                                         <td class="project-actions text-right">
-                                            <form action="{{route('courses.destroy',$course)}}" method="POST" class="d-flex justify-content-between">
+                                            <form action="{{route('admin.courses.destroy',$course)}}" method="POST" class="d-flex justify-content-around">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a class="btn btn-primary mx-1" href="{{ route('courses.edit',$course) }}">Изменить</a>
+                                                <a class="btn btn-primary mx-1" href="{{ route('admin.courses.edit',$course) }}">Изменить</a>
                                                 <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mx-1" id="button">Удалить</button>
                                             </form>
                                         </td>

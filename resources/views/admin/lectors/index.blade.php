@@ -31,10 +31,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>ID</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('lectors.index',['order'=>'ID','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.lectors.index',['order'=>'ID','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('lectors.index',['order'=>'ID','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.lectors.index',['order'=>'ID','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -59,7 +59,7 @@
                                             <a>{{$user->name}}</a>
                                         </td>
                                         <td>
-                                            <a>{{$user->lector->specialization ?? ""}}</a>
+                                            <a>{{$user->lector->direction->title}}</a>
                                         </td>
                                         <td>
                                             <a>{{$user->lector ? $user->lector->getCourseCount() : 0}}</a>
@@ -71,10 +71,10 @@
                                             <a>{{$user->userinfo->status == 1 ? "Активна" : "Отключена"}}</a>
                                         </td>
                                        <td class="project-actions text-right">
-                                            <form action="{{route('lectors.destroy',$user)}}" method="POST" class="d-flex justify-content-between">
+                                            <form action="{{route('admin.lectors.destroy',$user)}}" method="POST" class="d-flex justify-content-around">
                                                @csrf
                                               @method('DELETE')
-                                               <a class="btn btn-primary mx-1" href="{{ route('lectors.edit',$user) }}">Изменить</a>
+                                               <a class="btn btn-primary mx-1" href="{{ route('admin.lectors.edit',$user) }}">Изменить</a>
                                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mx-1" id="button">Удалить</button>
                                            </form>
                                        </td>

@@ -8,7 +8,7 @@
                     <h1 class="m-0">Все цены</h1>
                 </div>
                 <div>
-                    <a class="btn btn-primary" href="{{route('prices.create')}}" role="button">Добавить</a>
+                    <a class="btn btn-primary" href="{{route('admin.prices.create')}}" role="button">Добавить</a>
                 </div>
             </div>
 
@@ -34,10 +34,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>ID</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('prices.index',['order'=>'ID','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.prices.index',['order'=>'ID','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('prices.index',['order'=>'ID','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.prices.index',['order'=>'ID','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -85,10 +85,10 @@
                                         </td>
 
                                         <td class="project-actions text-right">
-                                            <form action="{{route('prices.destroy',$price)}}" method="POST" class="d-flex justify-content-around">
+                                            <form action="{{route('admin.prices.destroy',$price)}}" method="POST" class="d-flex justify-content-around">
                                                 @csrf
                                                @method('DELETE')
-                                               <a class="btn btn-primary mx-1" href="{{ route('prices.edit',$price) }}">Изменить</a>
+                                               <a class="btn btn-primary mx-1" href="{{ route('admin.prices.edit',$price) }}">Изменить</a>
                                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mx-1" id="button">Удалить</button>
                                             </form>
                                        </td>

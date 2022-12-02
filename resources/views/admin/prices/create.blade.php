@@ -31,7 +31,7 @@
         @endif
 
         <div class="card card-primary">
-            <form action="{{ route('prices.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.prices.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">

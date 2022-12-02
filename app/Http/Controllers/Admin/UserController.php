@@ -52,7 +52,7 @@ class UserController extends Controller
             ],),
         ]);
 
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
             ->with('success', 'User has been created successfully.');
     }
 
@@ -106,14 +106,14 @@ class UserController extends Controller
         ]);
 
         $user->save();
-        return redirect()->route('users.index',$user)
+        return redirect()->route('admin.users.index',$user)
             ->with('success','User updated successfully');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
             ->with('success','User has been deleted successfully');
     }
 }

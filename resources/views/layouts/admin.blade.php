@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
     <link rel="stylesheet" href="/admin/plugins/select2/css/select2.css">
     <link rel="stylesheet" href="/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.css">
+
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -146,7 +148,7 @@
     </nav>
 
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <a href="{{route('users.index')}}" class="brand-link">
+        <a href="{{route('admin.users.index')}}" class="brand-link">
             <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">Admin Panel</span>
         </a>
@@ -155,27 +157,27 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column">
                     <li class="nav-item">
-                        <a href="{{ route('users.index') }}" class="nav-link">Пользователи</a>
+                        <a href="{{ route('admin.users.index') }}" class="nav-link">Пользователи</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('lectors.index') }}" class="nav-link">Лекторы</a>
+                        <a href="{{ route('admin.lectors.index') }}" class="nav-link">Лекторы</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('courses.index') }}" class="nav-link">Курсы</a>
+                        <a href="{{ route('admin.courses.index') }}" class="nav-link">Курсы</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('webinars.index') }}" class="nav-link">Вебинары</a>
+                        <a href="{{ route('admin.webinars.index') }}" class="nav-link">Вебинары</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('prices.index') }}" class="nav-link">Цены</a>
+                        <a href="{{ route('admin.prices.index') }}" class="nav-link">Цены</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('certificates.index') }}" class="nav-link">Сертификаты</a>
+                        <a href="{{ route('admin.certificates.index') }}" class="nav-link">Сертификаты</a>
                     </li>
                 </ul>
             </nav>

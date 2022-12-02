@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('lectors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('specialization')->nullable();
+            $table->unsignedBigInteger('direction_id')->nullable();
             $table->longText('biography')->nullable();
             $table->string('photo')->nullable();
             $table->float('per_of_sales')->nullable();

@@ -8,7 +8,7 @@
                     <h1 class="m-0">Вебинары</h1>
                 </div>
                 <div>
-                    <a class="btn btn-primary" href="{{route('webinars.create')}}" role="button">Добавить</a>
+                    <a class="btn btn-primary" href="{{route('admin.webinars.create')}}" role="button">Добавить</a>
                 </div>
             </div>
 
@@ -33,10 +33,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>ID</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('webinars.index',['order'=>'ID','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'ID','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('webinars.index',['order'=>'ID','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'ID','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -49,10 +49,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Название вебинара</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('webinars.index',['order'=>'title','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'title','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('webinars.index',['order'=>'title','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'title','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -63,10 +63,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Лектор</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('webinars.index',['order'=>'','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('webinars.index',['order'=>'','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -77,10 +77,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Дата проведения</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('webinars.index',['order'=>'start_date','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'start_date','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('webinars.index',['order'=>'start_date','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'start_date','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -91,10 +91,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Дата окончания</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('webinars.index',['order'=>'end_date','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'end_date','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('webinars.index',['order'=>'end_date','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'end_date','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -105,10 +105,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Количество пользователей</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('webinars.index',['order'=>'','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('webinars.index',['order'=>'','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -119,10 +119,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Статус</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('webinars.index',['order'=>'status','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'status','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('webinars.index',['order'=>'status','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.webinars.index',['order'=>'status','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -159,10 +159,10 @@
                                             <a>{{$webinar->status == 1 ? "Активен" : "Отключен"}}</a>
                                         </td>
                                         <td class="project-actions text-right">
-                                            <form action="{{route('webinars.destroy',$webinars)}}" method="POST" class="d-flex justify-content-between">
+                                            <form action="{{route('admin.webinars.destroy',$webinars)}}" method="POST" class="d-flex justify-content-around">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a class="btn btn-primary mx-1" href="{{ route('webinars.edit',$webinar) }}">Изменить</a>
+                                                <a class="btn btn-primary mx-1" href="{{ route('admin.webinars.edit',$webinar) }}">Изменить</a>
                                                 <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mx-1" id="button">Удалить</button>
                                             </form>
                                         </td>

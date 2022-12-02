@@ -31,7 +31,7 @@
         @endif
 
         <div class="card card-primary">
-            <form action="{{ route('webinars.update',$webinar->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.webinars.update',$webinar->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card-body">

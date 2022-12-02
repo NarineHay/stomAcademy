@@ -15,12 +15,12 @@ class AdminCertificateStoreRequest extends FormRequest
     {
         return [
             'course_id' => 'required',
-            'name_x' => 'required',
-            'name_y' => 'required',
-            'hour_x' => 'required',
-            'hour_y' => 'required',
-            'id_x' => 'required',
-            'id_y' => 'required',
+//            'name_x' => 'required',
+//            'name_y' => 'required',
+//            'hour_x' => 'required',
+//            'hour_y' => 'required',
+//            'id_x' => 'required',
+//            'id_y' => 'required',
             'type' => 'required',
             'date' => 'required',
             'image' => 'required',

@@ -43,7 +43,7 @@ class WebinarController extends Controller
 
         $webinar->save();
 
-        return redirect()->route('webinars.index')
+        return redirect()->route('admin.webinars.index')
             ->with('success', 'Webinar has been created successfully.');
     }
 
@@ -87,14 +87,14 @@ class WebinarController extends Controller
         $webinar->price_id = $request->price_id;
         $webinar->status = $request->status;
         $webinar->save();
-        return redirect()->route('webinars.index',$webinar)
+        return redirect()->route('admin.webinars.index',$webinar)
             ->with('success','Webinar has been updated successfully');
     }
 
     public function destroy(Webinar $webinar)
     {
         $webinar->delete();
-        return redirect()->route('webinars.index')
+        return redirect()->route('admin.webinars.index')
             ->with('success','Webinar has been deleted successfully');
     }
 }

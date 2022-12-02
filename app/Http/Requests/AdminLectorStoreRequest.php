@@ -15,7 +15,6 @@ class AdminLectorStoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'specialization' => 'required',
             'biography' => 'required',
             'per_of_sales' => 'required',
             'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5000',

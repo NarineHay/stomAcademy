@@ -31,7 +31,7 @@
         @endif
 
         <div class="card card-primary">
-            <form action="{{ route('users.update',$user->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.users.update',$user->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card-body">

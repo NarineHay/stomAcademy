@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminLectorStoreRequest;
 use App\Models\Country;
+use App\Models\Direction;
 use App\Models\Lector;
 use App\Models\User;
 use App\Models\UserInfo;
@@ -23,14 +24,15 @@ class LectorController extends Controller
     public function create()
     {
         $data['countries'] =  Country::all();
+        $data['directions'] =  Direction::all();
         return view('admin.lectors.create', $data);
     }
 
     public function store(AdminLectorStoreRequest $request)
     {
         $lector = new Lector();
-        $lector->specialization = $request->get('specialization');
         $lector->biography = $request->get('biography');
+        $lector->direction_id = $request->get('direction_id');
         $lector->per_of_sales = $request->get('per_of_sales');
         $lector->avatar = $request->file('avatar')->store('public/lector');
         $lector->photo = $request->file('photo')->store('public/lector');
@@ -40,11 +42,15 @@ class LectorController extends Controller
             new User([
                 "name" => $request->get('name'),],),
             ]);
+        $lector->direction()->saveMany([
+            new Direction([
+                "direction_id" => $request->get('direction|_id'),],),
+        ]);
         $lector->user()->userinfo()->saveMany([
             new UserInfo([
                 "country_id" => $request->get('country_id'),],),
         ]);
-        return redirect()->route('lectors.index')
+        return redirect()->route('admin.lectors.index')
             ->with('success', 'Lector has been created successfully.');
     }
 
@@ -54,6 +60,7 @@ class LectorController extends Controller
             $lector['lector'] = new Lector();
         }
         $data['countries'] = Country::all();
+        $data['directions'] =  Direction::all();
         $data['user'] = $lector;
         return view('admin.lectors.edit',$data);
     }
@@ -61,7 +68,6 @@ class LectorController extends Controller
     public function update(Request $request, Lector $lector)
     {
         $request->validate([
-            'specialization' => 'required',
             'biography' => 'required',
             'per_of_sales' => 'required',
         ]);
@@ -80,7 +86,6 @@ class LectorController extends Controller
             $lector->photo = $request->file('photo')->store('public/lector');
         }
 
-        $lector->specialization = $request->specialization;
         $lector->biography = $request->biography;
         $lector->per_of_sales = $request->per_of_sales;
         $lector->user->update([
@@ -89,15 +94,18 @@ class LectorController extends Controller
         $lector->user->userinfo->update([
             "country_id" => $request->country_id,
         ]);
+        $lector->direction->update([
+            "direction_id" => $request->direction_id,
+        ]);
         $lector->save();
-        return redirect()->route('lectors.index',$lector)
+        return redirect()->route('admin.lectors.index',$lector)
             ->with('success','Lector updated successfully');
     }
 
     public function destroy(Lector $lector)
     {
         $lector->delete();
-        return redirect()->route('lectors.index')
+        return redirect()->route('admin.lectors.index')
             ->with('success','Lector has been deleted successfully');
     }
 }
