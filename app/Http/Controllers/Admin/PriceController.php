@@ -33,7 +33,7 @@ class PriceController extends Controller
         $price->uah = $request->get('uah');
 
         $price->save();
-        return redirect()->route('prices.index')
+        return redirect()->route('admin.prices.index')
             ->with('success', 'Price has been created successfully.');
     }
 
@@ -61,14 +61,14 @@ class PriceController extends Controller
         $price->eur = $request->eur;
         $price->uah = $request->uah;
         $price->save();
-        return redirect()->route('prices.index',$price)
+        return redirect()->route('admin.prices.index',$price)
             ->with('success','Price updated successfully');
     }
 
     public function destroy(Prices $price)
     {
         $price->delete();
-        return redirect()->route('prices.index')
+        return redirect()->route('admin.prices.index')
             ->with('success','Price has been deleted successfully');
     }
 }

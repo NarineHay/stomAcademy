@@ -39,10 +39,13 @@
                 <div class="form-group d-flex justify-content-center">
                     <img src="{{ \Illuminate\Support\Facades\Storage::url($image) }}" height="300" alt=""/>
                 </div>
-                <div class="custom-file">
-                    <input wire:model="image" type="file" name="image" class="form-control" id="customFile2">
-                    <label class="custom-file-label" for="customFile2">Choose file</label>
-                </div>
+                <form wire:submit.prevent="save">
+                    <div class="custom-file d-flex">
+                        <input type="file" wire:model="file" class="form-control" id="customFile2">
+{{--                        <label class="custom-file-label" for="customFile2">Choose file</label>--}}
+                        <button type="submit">Upload</button>
+                    </div>
+                </form>
             </div>
             <div class="row">
                 <div class="col-6">

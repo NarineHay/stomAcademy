@@ -111,5 +111,4 @@ class CertificateController extends Controller
         return redirect()->route('admin.certificates.index')
             ->with('success','Certificate has been deleted successfully');
     }
-
 }

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/admin/plugins/select2/css/select2.css">
     <link rel="stylesheet" href="/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.css">
 
-
+    @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -189,6 +189,7 @@
     </div>
     <aside class="control-sidebar control-sidebar-dark"></aside>
 </div>
+@livewireScripts
 <script>
     document.querySelectorAll("input[type=file]").forEach(function (input){
         let label = input.parentNode.querySelector("label");

@@ -45,7 +45,7 @@ class CourseController extends Controller
             ]);
         }
 
-        return redirect()->route('courses.index')
+        return redirect()->route('admin.courses.index')
             ->with('success', 'Course has been created successfully.');
     }
 
@@ -85,14 +85,14 @@ class CourseController extends Controller
         $course->price_id = $request->price_id;
 
         $course->save();
-        return redirect()->route('courses.index',$course)
+        return redirect()->route('admin.courses.index',$course)
             ->with('success','Course has been updated successfully');
     }
 
     public function destroy(Course $course)
     {
         $course->delete();
-        return redirect()->route('courses.index')
+        return redirect()->route('admin.courses.index')
             ->with('success','Course has been deleted successfully');
     }
 }

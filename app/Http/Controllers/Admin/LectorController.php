@@ -17,7 +17,7 @@ class LectorController extends Controller
         $order = $request->get("order","id");
         $sort = $request->get("sort","asc");
         $lectors = User::query()->where("role",User::ROLE_LECTOR)->with("lector")->orderBY($order,$sort)->paginate(10);
-
+//        dd($lectors[0]->lector->direction);
         return view('admin.lectors.index', compact('lectors'));
     }
 
@@ -72,6 +72,7 @@ class LectorController extends Controller
             'per_of_sales' => 'required',
         ]);
 
+
         $lector = Lector::find($lector->id);
         if($request->hasFile('image')){
             $request->validate([
@@ -88,15 +89,14 @@ class LectorController extends Controller
 
         $lector->biography = $request->biography;
         $lector->per_of_sales = $request->per_of_sales;
+        $lector->direction_id = $request->direction_id;
         $lector->user->update([
             "name" => $request->name,
         ]);
         $lector->user->userinfo->update([
             "country_id" => $request->country_id,
         ]);
-        $lector->direction->update([
-            "direction_id" => $request->direction_id,
-        ]);
+
         $lector->save();
         return redirect()->route('admin.lectors.index',$lector)
             ->with('success','Lector updated successfully');

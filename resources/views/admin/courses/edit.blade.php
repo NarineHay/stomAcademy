@@ -87,7 +87,7 @@
                                 <input type="checkbox" name="webinar[]" value="{{ $webinar->id }}"
                                        @if( $course->webinars->where("webinar_id",$webinar->id)->count()) checked @endif
                                        class="mr-1">
-                                {{$webinar->title}}
+                                {{$webinar->title}}<br>
                             @endif
                         @endforeach
                     </div>

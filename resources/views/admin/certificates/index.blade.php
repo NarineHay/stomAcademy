@@ -47,17 +47,17 @@
                                     <th>Изображение</th>
 
                                     <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
+{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
                                             <span>Название курса</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.certificates.index',['order'=>'','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.certificates.index',['order'=>'','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
+{{--                                            <div class="sort ml-2 d-flex flex-nowrap">--}}
+{{--                                                <a href = {{route('admin.certificates.index',['order'=>'','sort'=>'asc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                                <a href = {{route('admin.certificates.index',['order'=>'','sort'=>'desc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                     </th>
 
                                     <th>Кнопки управления</th>

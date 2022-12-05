@@ -17,3 +17,7 @@
     height: 70px;
     margin-top: 16px;
 }
+
+.card-body{
+    overflow: auto;
+}

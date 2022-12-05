@@ -63,17 +63,17 @@
                                     </th>
 
                                     <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
+{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
                                             <span>Страна</span>
-                                            <div class="sort ml-2">
-                                                <a href={{route('admin.users.index',['order'=>'country_id','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href={{route('admin.users.index',['order'=>'country_id','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
+{{--                                            <div class="sort ml-2">--}}
+{{--                                                <a href={{route('admin.users.index',['order'=>'country_id','sort'=>'asc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                                <a href={{route('admin.users.index',['order'=>'country_id','sort'=>'desc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                     </th>
 
                                     <th>
@@ -85,17 +85,17 @@
                                     </th>
 
                                     <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
+{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
                                             <span>Статус</span>
-                                            <div class="sort ml-2">
-                                                <a href={{route('admin.users.index',['order'=>'','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href={{route('admin.users.index',['order'=>'','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
+{{--                                            <div class="sort ml-2">--}}
+{{--                                                <a href={{route('admin.users.index',['order'=>'','sort'=>'asc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                                <a href={{route('admin.users.index',['order'=>'','sort'=>'desc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
                                     </th>
 
                                     <th>
