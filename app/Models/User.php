@@ -50,4 +50,8 @@ class User extends Authenticatable
     function lector(){
         return $this->hasOne(Lector::class,"user_id","id");
     }
+
+    function webinars(){
+        return $this->hasMany(Webinar::class,"user_id","id");
+    }
 }
