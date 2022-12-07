@@ -9,9 +9,8 @@ use Illuminate\Http\Request;
 class LectorsController extends Controller
 {
     function index(){
-        $data['lectors'] = User::query()->where("role",User::ROLE_LECTOR)->with("lector")->paginate(15);
-        $data['directions'] = Direction::all();
-        return view("front.lectors.index",$data);
+
+        return view("front.lectors.index");
     }
 
     function show($lector){

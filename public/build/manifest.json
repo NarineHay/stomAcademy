@@ -1,0 +1,12 @@
+{
+  "resources/js/script.js": {
+    "file": "assets/script.d3ca8aee.js",
+    "src": "resources/js/script.js",
+    "isEntry": true
+  },
+  "resources/sass/lib.scss": {
+    "file": "assets/lib.7d1169fd.css",
+    "src": "resources/sass/lib.scss",
+    "isEntry": true
+  }
+}

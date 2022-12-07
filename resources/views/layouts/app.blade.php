@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/dist/5.12.0/all.css">
     <link rel="icon" href="dist/image/aboutLogo.png">
     @vite(['resources/sass/lib.scss', 'resources/js/script.js'])
+    @livewireStyles
 </head>
 <body>
 @if(\Illuminate\Support\Facades\Route::currentRouteName() == "home")
@@ -237,5 +238,6 @@
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+@livewireScripts
 </body>
 </html>
