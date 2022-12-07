@@ -8,14 +8,14 @@ use App\Models\Access;
 use App\Models\Course;
 use App\Models\User;
 use App\Models\Webinar;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccessController extends Controller
 {
     public function index(){
-        $data['courses'] = Course::all();
-        $data['webinars'] = Webinar::all();
-        $data['users'] = User::all();
+        $data['accesses'] = Access::all();
         return view('admin.accesses.index',$data);
     }
 
@@ -28,13 +28,20 @@ class AccessController extends Controller
 
     public function store(AdminAccessStoreRequest $request)
     {
-        $access = new Access();
-        $access->user_id = $request->get('user_id');
-        $access->course_id = $request->get('course_id');
-        $access->webinar_id = $request->get('webinar_id');
-        $access->access_time = $request->get('access_time');
-        $access->duration = $request->get('duration');
-        $access->save();
+        foreach ($request->get('user_ids') as $user_id){
+            $access = new Access();
+            $access->manager_id = Auth::user()->id;
+            $access->user_id = $user_id;
+            if($request->get("type") == "course"){
+                $access->course_id = $request->get('course_id');
+            }else{
+                $access->webinar_id = $request->get('webinar_id');
+            }
+            $access->access_time = $request->boolean("access_time");
+
+            $access->duration = $request->get('duration');
+            $access->save();
+        }
 
         return redirect()->route('admin.accesses.index');
     }
@@ -48,10 +55,6 @@ class AccessController extends Controller
 
     public function update(Request $request, Access $access)
     {
-//        $request->validate([
-//            'user_id' => 'required',
-//        ]);
-
         $access = Course::find($access->id);
 
         $access->user_id = $request->user_id;

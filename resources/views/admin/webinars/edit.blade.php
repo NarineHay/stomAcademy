@@ -59,11 +59,7 @@
                         <label for="exampleInputEmail1">ОПИСАНИЕ ВЕБИНАРА</label>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card card-outline card-info">
-                                    <div class="card-body">
-                                        <textarea class="summernote" name="description">{{$webinar->description}}</textarea>
-                                    </div>
-                                </div>
+                                <textarea class="summernote" name="description">{{$webinar->description}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -72,11 +68,7 @@
                         <label for="exampleInputEmail1">ПРОГРАММА</label>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card card-outline card-info">
-                                    <div class="card-body">
-                                        <textarea class="summernote" name="program">{{$webinar->program}}</textarea>
-                                    </div>
-                                </div>
+                                    <textarea class="summernote" name="program">{{$webinar->program}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -91,7 +83,7 @@
                         <select class="form-control form-control select2" name="price_id">
                             @foreach($data['prices'] as $price)
                                 <option value="{{ $price->id }}" {{ $price->id == $webinar->price_id ? 'selected' : '' }}>
-                                    {{ $price->name }}
+                                    {{ $price->name }} - ${{$price->usd}}
                                 </option>
                             @endforeach
                         </select>

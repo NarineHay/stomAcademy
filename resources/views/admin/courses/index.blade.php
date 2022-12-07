@@ -121,7 +121,7 @@
                                         </td>
 
                                         <td>
-                                            <a>{{$course->price->name}}</a>
+                                            <a>${{$course->price->usd}}</a>
                                         </td>
                                         <td class="project-actions text-right">
                                             <form action="{{route('admin.courses.destroy',$course)}}" method="POST" class="d-flex justify-content-around">

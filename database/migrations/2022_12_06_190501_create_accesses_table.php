@@ -10,10 +10,11 @@ return new class extends Migration
     {
         Schema::create('accesses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedSmallInteger('user_id');
-            $table->unsignedSmallInteger('course_id')->nullable();
-            $table->unsignedSmallInteger('webinar_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('course_id')->nullable();
+            $table->unsignedBigInteger('webinar_id')->nullable();
             $table->boolean('access_time');
+            $table->unsignedBigInteger("manager_id");
             $table->integer('duration')->nullable();
             $table->timestamps();
         });

@@ -52,19 +52,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Биография</label>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card card-outline card-info">
-                                    <div class="card-body">
-                                        <textarea class="summernote" name="biography">{{$user->lector->biography}}</textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label for="exampleInputEmail1">Аватарка лектора</label>
                         <div class="form-group">
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($user->userinfo->image) }}" height="100" alt=""/>

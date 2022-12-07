@@ -58,11 +58,7 @@
                         <label for="exampleInputEmail1">Биография</label>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card card-outline card-info">
-                                    <div class="card-body">
-                                        <textarea class="summernote" name="biography"></textarea>
-                                    </div>
-                                </div>
+                                  <textarea class="summernote" name="biography"></textarea>
                             </div>
                         </div>
                     </div>

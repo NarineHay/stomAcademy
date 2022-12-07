@@ -54,11 +54,7 @@
                         <label for="exampleInputEmail1">ОПИСАНИЕ КУРСА</label>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card card-outline card-info">
-                                    <div class="card-body">
-                                        <textarea class="summernote" name="description"></textarea>
-                                    </div>
-                                </div>
+                                <textarea class="summernote" name="description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -73,7 +69,7 @@
                         <select class="form-control form-control select2" name="price_id">
                             @foreach($prices as $price)
                                 <option value="{{ $price->id }}">
-                                    {{ $price->name }}
+                                    {{ $price->name }} - ${{$price->usd}}
                                 </option>
                             @endforeach
                         </select>

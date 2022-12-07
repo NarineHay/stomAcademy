@@ -15,6 +15,7 @@ class Access extends Model
         'webinar_id',
         'access_time',
         'duration',
+        'manager_id'
     ];
 
     function user(){

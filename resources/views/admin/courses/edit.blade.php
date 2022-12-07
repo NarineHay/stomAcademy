@@ -55,11 +55,7 @@
                         <label for="exampleInputEmail1">ОПИСАНИЕ КУРСА</label>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card card-outline card-info">
-                                    <div class="card-body">
-                                        <textarea class="summernote" name="description">{{$course->description}}</textarea>
-                                    </div>
-                                </div>
+                                <textarea class="summernote" name="description">{{$course->description}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -74,7 +70,7 @@
                         <select class="form-control form-control" name="price_id">
                             @foreach($data['prices'] as $price)
                                 <option value="{{ $price->id }}" {{ $price->id == $course->price_id ? 'selected' : '' }}>
-                                    {{ $price->name }}
+                                    {{ $price->name }} - ${{$price->usd}}
                                 </option>
                             @endforeach
                         </select>

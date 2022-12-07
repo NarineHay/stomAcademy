@@ -37,7 +37,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Пользователь</label>
-                        <select class="form-control select2" multiple="multiple" name="user_id">
+                        <select class="form-control select2" multiple="multiple" name="user_ids[]">
                             @foreach($users as $user)
                                 <option value="{{ $user->id }}">
                                     {{ $user->name }}*{{$user->email}}
