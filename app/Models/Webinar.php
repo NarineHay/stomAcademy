@@ -22,7 +22,8 @@ class Webinar extends Model
         'video',
         'status',
         'image',
-        'user_id'
+        'user_id',
+        'url_to_page',
     ];
 
     function user(){

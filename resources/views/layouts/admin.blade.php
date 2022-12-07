@@ -157,6 +157,9 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column">
                     <li class="nav-item">
+                        <a href="{{ route('admin.accesses.index') }}" class="nav-link">Доступы</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.users.index') }}" class="nav-link">Пользователи</a>
                     </li>
 
@@ -226,9 +229,37 @@
         $('.summernote').summernote()
         $('.select2').select2({
             theme: 'bootstrap4',
+            tags:true,
         });
     })
 </script>
+
+<script>
+    var radios = document.querySelectorAll('input[type=radio][name="type"]');
+    radios.forEach(radio => radio.addEventListener('change', function check(){
+        if(radio.value == 'webinar'){
+            document.getElementById('webinarDiv').classList.remove("d-none");
+            document.getElementById('courseDiv').classList.add("d-none");
+        }
+        else if(radio.value == 'course'){
+            document.getElementById('webinarDiv').classList.add("d-none");
+            document.getElementById('courseDiv').classList.remove("d-none");
+        }
+    }));
+</script>
+
+<script>
+    var radios = document.querySelectorAll('input[type=radio][name="access_time"]');
+    radios.forEach(radio => radio.addEventListener('change', function check(){
+        if(radio.value == '0'){
+            document.getElementById('duration').classList.remove("d-none");
+        }
+        else if(radio.value == '1'){
+            document.getElementById('duration').classList.add("d-none");
+        }
+    }));
+</script>
+
 <script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/admin/plugins/chart.js/Chart.min.js"></script>
 <script src="/admin/plugins/sparklines/sparkline.js"></script>

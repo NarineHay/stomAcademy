@@ -80,7 +80,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ВЕБИНАРЫ:</label>
+                        <label for="exampleInputEmail1">ВЕБИНАРЫ</label>
                         <ul class="list-unstyled">
                             @foreach($webinars as $webinar)
                                 <li>
@@ -91,6 +91,11 @@
                                 </li>
                             @endforeach
                         </ul>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ССЫЛКА НА СТРАНИЦУ</label>
+                        <input type="text" name="url_to_page" class="form-control">
                     </div>
                 </div>
 

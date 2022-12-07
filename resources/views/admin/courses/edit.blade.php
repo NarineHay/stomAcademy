@@ -91,6 +91,11 @@
                             @endif
                         @endforeach
                     </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ССЫЛКА НА СТРАНИЦУ</label>
+                        <input type="text" value="{{$course->url_to_page}}" name="url_to_page" class="form-control">
+                    </div>
                 </div>
 
                 <div class="card-footer mt-3">

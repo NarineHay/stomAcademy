@@ -14,6 +14,7 @@ class CourseFactory extends Factory
             'end_date'=> $this->faker->dateTime,
             'description'=> $this->faker->realText(300),
             'video'=> $this->faker->url,
+            'url_to_page' => $this->faker->url,
         ];
     }
 }

@@ -38,6 +38,7 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::resource('webinars', \App\Http\Controllers\Admin\WebinarController::class);
     Route::resource('courses', \App\Http\Controllers\Admin\CourseController::class);
     Route::resource('certificates', \App\Http\Controllers\Admin\CertificateController::class);
+    Route::resource('accesses', \App\Http\Controllers\Admin\AccessController::class);
 });
 
 

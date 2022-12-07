@@ -114,11 +114,16 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">СТАТУС:</label>
+                        <label for="exampleInputEmail1">СТАТУС</label>
                         <select class="form-control select2" id="type" name="status">
                             <option value="1" {{$webinar->status == 1 ? " selected" : ""}}>Активен</option>
                             <option value="0" {{$webinar->status == 0 ? " selected" : ""}}>Отключен</option>
                         </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ССЫЛКА НА СТРАНИЦУ</label>
+                        <input type="text" value="{{$webinar->url_to_page}}" name="url_to_page" class="form-control">
                     </div>
 
                 </div>

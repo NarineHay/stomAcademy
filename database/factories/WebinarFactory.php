@@ -17,7 +17,8 @@ class WebinarFactory extends Factory
             'program'=> $this->faker->text,
             'video_invitation'=> $this->faker->url,
             'video'=> $this->faker->url,
-            'image' => 'public/webinar/webinarimage.jpg'
+            'image' => 'public/webinar/webinarimage.jpg',
+            'url_to_page' => $this->faker->url,
         ];
     }
 }

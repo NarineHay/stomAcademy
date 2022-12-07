@@ -17,7 +17,6 @@ class LectorController extends Controller
         $order = $request->get("order","id");
         $sort = $request->get("sort","asc");
         $lectors = User::query()->where("role",User::ROLE_LECTOR)->with("lector")->orderBY($order,$sort)->paginate(10);
-//        dd($lectors[0]->lector->direction);
         return view('admin.lectors.index', compact('lectors'));
     }
 

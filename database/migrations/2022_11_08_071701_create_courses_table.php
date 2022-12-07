@@ -16,6 +16,7 @@ return new class extends Migration
             $table->longText('description');
             $table->string('video');
             $table->unsignedBigInteger('price_id');
+            $table->string('url_to_page')->nullable();
         });
     }
 
