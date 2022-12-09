@@ -7,7 +7,6 @@ use App\Models\Certificate;
 use App\Models\Course;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminCertificateStoreRequest;
-use Intervention\Image\Facades\Image;
 
 class CertificateController extends Controller
 {
@@ -30,7 +29,6 @@ class CertificateController extends Controller
         $certificate->hours_number = $request->get('hours_number');
         $certificate->date = $request->get('date');
         $certificate->image = $request->file('image')->store('public/certificates');
-
 //        $image = $certificate->image;
 //        $input['image'] = time().'.'.$image->getClientOriginalExtension();
 //        $imgFile = Image::make($image->getRealPath());
@@ -51,7 +49,6 @@ class CertificateController extends Controller
 //        }
 //        $imgFile->resize($nw,$nh);
 //        $imgFile->crop(3508,2480,$x,$y);
-
         $certificate->save();
         return redirect()->route('admin.certificates.edit',$certificate->id)
             ->with('success', 'Certificate has been created successfully.');
@@ -71,8 +68,8 @@ class CertificateController extends Controller
             'hour_y' => 'required',
             'id_x' => 'required',
             'id_y' => 'required',
-            'type' => 'required',
             'date' => 'required',
+            'hours_number' => 'required',
         ]);
 
         $certificate = Certificate::find($certificate->id);
@@ -82,12 +79,6 @@ class CertificateController extends Controller
             ]);
             $certificate->image = $request->file('image')->store('public/certificates');
         }
-
-//        $certificate->image->text('Stom Academy', 1000, 1000, function($font) {
-//            $font->file('verdana.ttf');
-//            $font->size(200);
-//            $font->color('#000000');
-//        })->save(storage_path('app\public\certificates').'\\'.$input['file']);
 
         $certificate->course_id = $request->course_id;
         $certificate->name_x = $request->name_x;

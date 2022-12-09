@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AccessController extends Controller
 {
-    public function index(){
-        $data['accesses'] = Access::all();
-        return view('admin.accesses.index',$data);
+    public function index(Request $request){
+        $order = $request->get("order","id");
+        $sort = $request->get("sort","asc");
+        $accesses = Access::query()->orderBY($order,$sort)->paginate(10);
+        return view('admin.accesses.index',compact('accesses'));
     }
 
     public function create(){
@@ -37,12 +39,13 @@ class AccessController extends Controller
             }else{
                 $access->webinar_id = $request->get('webinar_id');
             }
-            $access->access_time = $request->boolean("access_time");
-
-            $access->duration = $request->get('duration');
+            $access_time = $request->boolean("access_time");
+            $access->access_time = $access_time;
+            if(!$access_time){
+                $access->duration = $request->get('duration');
+            }
             $access->save();
         }
-
         return redirect()->route('admin.accesses.index');
     }
 
@@ -55,14 +58,17 @@ class AccessController extends Controller
 
     public function update(Request $request, Access $access)
     {
-        $access = Course::find($access->id);
-
         $access->user_id = $request->user_id;
-        $access->course_id = $request->course_id;
-        $access->webinar_id = $request->webinar_id;
+        if($request->get("type") == "course"){
+            $access->course_id = $request->course_id;
+        }else{
+            $access->webinar_id = $request->webinar_id;
+        }
+        $access_time = $request->boolean("access_time");
         $access->access_time = $request->access_time;
-        $access->duration = $request->duration;
-
+        if(!$access_time){
+            $access->duration = $request->duration;
+        }
         $access->save();
         return redirect()->route('admin.accesses.index',$access);
     }

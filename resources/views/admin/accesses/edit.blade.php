@@ -81,15 +81,15 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Статус просмотра</label>
                         <div>
-                            <input type="radio" id="permanent" name="access_time" value="1" {{$access->access_time == true ? 'checked' : ''}}>
-                            <label for="permanent" style="margin-right: 10px">Постоянный доступ</label>
-
                             <input type="radio" id="temporary" name="access_time" value="0" {{$access->access_time == false ? 'checked' : ''}}>
-                            <label for="temporary">Доступ определенный период</label>
+                            <label for="temporary" style="margin-right: 10px">Доступ определенный период</label>
+
+                            <input type="radio" id="permanent" name="access_time" value="1" {{$access->access_time == true ? 'checked' : ''}}>
+                            <label for="permanent" >Постоянный доступ</label>
                         </div>
                     </div>
 
-                    <select class="form-control d-none" name="duration" id="duration">
+                    <select class="form-control @if($access->access_time) d-none @endif" name="duration" id="duration">
                         @for($i = 15; $i <= 30; $i+=5)
                             <option value="{{$i}}">{{ $i }}</option>
                         @endfor

@@ -22,6 +22,10 @@ class Access extends Model
         return $this->hasOne(User::class,"id","user_id");
     }
 
+    function manager(){
+        return $this->hasOne(User::class,"id","manager_id");
+    }
+
     function course(){
         return $this->hasOne(Course::class,"id","course_id");
     }

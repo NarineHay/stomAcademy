@@ -65,7 +65,7 @@
                                             <a>{{$access->user->name}} ({{$access->user->email}})</a>
                                         </td>
                                         <td>
-                                            <a>{{$access->manager_id}}</a>
+                                            <a>{{$access->manager->name}}</a>
                                         </td>
                                         <td>
                                             <a>{{$access->created_at}}</a>
@@ -92,9 +92,9 @@
                             </table>
                         </div>
                     </div>
-{{--                    <div class="d-flex justify-content-center">--}}
-{{--                        {{ $accesses->links() }}--}}
-{{--                    </div>--}}
+                    <div class="d-flex justify-content-center">
+                        {{ $accesses->links() }}
+                    </div>
                 </div>
             </div>
         </div>
