@@ -3,9 +3,10 @@
         <div class="col-6">
             <div class="form-group">
                 <label for="exampleInputEmail1">КУРС</label>
-                <select class="form-control form-control select2" name="course_id" wire:model="course_id">
+                <select class="form-control select2" name="course_id" wire:model="course_id">
                     @foreach($courses as $course)
-                        <option value="{{ $course->id }}" {{ $course->id == $certificate->course->id ? 'selected' : '' }} >
+{{--                        <option value="{{ $course->id }}"{{ $course->id == $certificate->course->id ? 'selected' : '' }}>--}}
+                        <option value="{{ $course->id }}">
                             {{ $course->title }}
                         </option>
                     @endforeach
@@ -19,7 +20,7 @@
 
             <div class="form-group">
                 <label for="exampleInputEmail1">ДАТА КУРСА</label>
-                <input type="date" name="date" value="{{$certificate->date}}" class="form-control" wire:model="date">
+                <input wire:model="date" type="date" name="date" value="{{$certificate->date}}" class="form-control">
             </div>
 
             <div class="form-group">
@@ -41,7 +42,7 @@
                 </div>
                 <form wire:submit.prevent="save">
                     <div class="custom-file d-flex">
-                        <input type="file" wire:model="file" class="form-control">
+                        <input type="file" wire:model="file" class="form-control" name="image">
                         <button type="submit" class="btn btn-primary">Upload</button>
                     </div>
                 </form>

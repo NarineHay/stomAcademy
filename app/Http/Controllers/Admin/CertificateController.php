@@ -61,17 +61,6 @@ class CertificateController extends Controller
 
     public function update(Request $request,Certificate $certificate)
     {
-        $request->validate([
-            'name_x' => 'required',
-            'name_y' => 'required',
-            'hour_x' => 'required',
-            'hour_y' => 'required',
-            'id_x' => 'required',
-            'id_y' => 'required',
-            'date' => 'required',
-            'hours_number' => 'required',
-        ]);
-
         $certificate = Certificate::find($certificate->id);
         if($request->hasFile('image')){
             $request->validate([

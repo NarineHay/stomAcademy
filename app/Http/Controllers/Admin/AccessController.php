@@ -17,7 +17,26 @@ class AccessController extends Controller
     public function index(Request $request){
         $order = $request->get("order","id");
         $sort = $request->get("sort","asc");
-        $accesses = Access::query()->orderBY($order,$sort)->paginate(10);
+        $search_webinar = $request->get("search_webinar",null);
+        $search_user = $request->get("search_user",null);
+
+        $access_query = Access::query();
+        if($search_webinar){
+            $webinar_ids = Webinar::query()->where("title","LIKE",$search_webinar."%")->get()
+                ->map(function ($item){ return $item->id; })->toArray();
+            $course_ids = Course::query()->where("title","LIKE",$search_webinar."%")->get()
+                ->map(function ($item){ return $item->id; })->toArray();
+            $access_query = $access_query->whereIn("course_id",$course_ids)->orWhereIn("webinar_id",$webinar_ids);
+        }
+
+        if($search_user){
+            $user_ids = User::query()->where("name","LIKE",$search_user."%")
+                ->orWhere("email","LIKE",$search_user."%")->get()
+                ->map(function ($item){ return $item->id; })->toArray();
+            $access_query = $access_query->whereIn("user_id",$user_ids);
+        }
+
+        $accesses = $access_query->orderBY($order,$sort)->paginate(10);
         return view('admin.accesses.index',compact('accesses'));
     }
 

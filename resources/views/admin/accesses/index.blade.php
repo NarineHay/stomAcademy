@@ -3,7 +3,7 @@
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-2">
                 <div>
                     <h1 class="m-0">Доступы</h1>
                 </div>
@@ -11,7 +11,19 @@
                     <a class="btn btn-primary" href="{{route('admin.accesses.create')}}" role="button">Добавить</a>
                 </div>
             </div>
-
+            <form method="get">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <label class="mr-1">Поиск по пользователю</label>
+                        <input type="text" name="search_user">
+                    </div>
+                    <div>
+                        <label class="mr-1">Поиск по курсу/вебинару</label>
+                        <input type="text" name="search_webinar">
+                    </div>
+                    <button class="btn btn-outline-primary" type="submit">Поиск</button>
+                </div>
+            </form>
         </div>
     </div>
 
