@@ -39,6 +39,7 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::resource('courses', \App\Http\Controllers\Admin\CourseController::class);
     Route::resource('certificates', \App\Http\Controllers\Admin\CertificateController::class);
     Route::resource('accesses', \App\Http\Controllers\Admin\AccessController::class);
+    Route::resource('promo', \App\Http\Controllers\Admin\PromoController::class);
 });
 
 
