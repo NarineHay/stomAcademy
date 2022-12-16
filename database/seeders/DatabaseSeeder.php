@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BalanceSeeder::class);
         $this->call(AccessSeeder::class);
         $this->call(PromoSeeder::class);
+        $this->call(CurrencySeeder::class);
+        $this->call(PageSeeder::class);
     }
 }

@@ -147,14 +147,15 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column">
                     <li class="nav-item">
-                        <a href="{{ route('admin.accesses.index') }}" class="nav-link @if(request()->is('admin/accesses*')) active @endif">Доступы</a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{{ route('admin.users.index') }}" class="nav-link @if(request()->is('admin/users*')) active @endif">Пользователи</a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{ route('admin.lectors.index') }}" class="nav-link @if(request()->is('admin/lectors*')) active @endif">Лекторы</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('admin.accesses.index') }}" class="nav-link @if(request()->is('admin/accesses*')) active @endif">Доступы</a>
                     </li>
 
                     <li class="nav-item">
@@ -166,11 +167,23 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="{{ route('admin.certificates.index') }}" class="nav-link @if(request()->is('admin/certificates*')) active @endif">Сертификаты</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{ route('admin.prices.index') }}" class="nav-link @if(request()->is('admin/prices*')) active @endif">Цены</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('admin.certificates.index') }}" class="nav-link @if(request()->is('admin/certificates*')) active @endif">Сертификаты</a>
+                        <a href="{{ route('admin.promo.index') }}" class="nav-link @if(request()->is('admin/promos*')) active @endif">Промокоды</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('admin.payment.index') }}" class="nav-link @if(request()->is('admin/payments*')) active @endif">Оплаты</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('admin.pages.index') }}" class="nav-link @if(request()->is('admin/pages*')) active @endif">Страницы</a>
                     </li>
                 </ul>
             </nav>

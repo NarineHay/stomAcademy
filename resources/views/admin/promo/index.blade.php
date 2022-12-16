@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h1 class="m-0">Промокодт</h1>
+                    <h1 class="m-0">Промокоды</h1>
                 </div>
                 <div>
                     <a class="btn btn-primary" href="{{route('admin.promo.create')}}" role="button">Добавить</a>

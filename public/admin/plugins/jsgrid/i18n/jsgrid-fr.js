@@ -4,7 +4,7 @@
         grid: {
             noDataContent: "Pas de données",
             deleteConfirm: "Êtes-vous sûr ?",
-            pagerFormat: "Pages: {first} {prev} {pages} {next} {last} &nbsp;&nbsp; {pageIndex} de {pageCount}",
+            pagerFormat: "Page: {first} {prev} {pages} {next} {last} &nbsp;&nbsp; {pageIndex} de {pageCount}",
             pagePrevText: "<",
             pageNextText: ">",
             pageFirstText: "<<",

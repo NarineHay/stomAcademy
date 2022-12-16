@@ -129,7 +129,7 @@
         pageIndex: 1,
         pageSize: 20,
         pageButtonCount: 15,
-        pagerFormat: "Pages: {first} {prev} {pages} {next} {last} &nbsp;&nbsp; {pageIndex} of {pageCount}",
+        pagerFormat: "Page: {first} {prev} {pages} {next} {last} &nbsp;&nbsp; {pageIndex} of {pageCount}",
         pagePrevText: "Prev",
         pageNextText: "Next",
         pageFirstText: "First",

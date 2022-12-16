@@ -40,6 +40,8 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::resource('certificates', \App\Http\Controllers\Admin\CertificateController::class);
     Route::resource('accesses', \App\Http\Controllers\Admin\AccessController::class);
     Route::resource('promo', \App\Http\Controllers\Admin\PromoController::class);
+    Route::resource('payment', \App\Http\Controllers\Admin\PaymentController::class);
+    Route::resource('pages', \App\Http\Controllers\Admin\PagesController::class);
 });
 
 
