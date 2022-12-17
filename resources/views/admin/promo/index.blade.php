@@ -81,7 +81,7 @@
                                             <a>{{$promo->max}}</a>
                                         </td>
                                         <td>
-                                            <a>{{$promo->status}}</a>
+                                            <a>{{$promo->status == 1 ? "Активна" : "Отключена"}}</a>
                                         </td>
 
                                         <td class="project-actions text-right">

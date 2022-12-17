@@ -91,8 +91,7 @@ class WebinarController extends Controller
             ->with('success','Webinar has been updated successfully');
     }
 
-    public function destroy(Webinar $webinar)
-    {
+    public function destroy(Webinar $webinar){
         $webinar->delete();
         return redirect()->route('admin.webinars.index')
             ->with('success','Webinar has been deleted successfully');

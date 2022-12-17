@@ -153,9 +153,11 @@
                                         <td class="project-actions text-right">
                                             <form action="{{route('admin.users.destroy',$user)}}" method="POST" class="d-flex justify-content-around">
                                                 @csrf
-                                                @method('DELETE')
-                                                <a class="btn btn-primary mx-1" href="{{ route('admin.users.edit',$user) }}">Изменить</a>
+                                                    @method('DELETE')
+                                                    <a class="btn btn-primary mx-1" href="{{ route('admin.users.edit',$user) }}">Изменить</a>
+                                                @if($user->id != 1)
                                                     <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mx-1" id="button">Удалить</button>
+                                                @endif
                                             </form>
                                         </td>
                                     </tr>

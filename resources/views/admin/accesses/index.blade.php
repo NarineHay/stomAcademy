@@ -58,8 +58,8 @@
                                     <th>Название Курса/Вебинара</th>
                                     <th>Пользователь</th>
                                     <th>Менеджер</th>
-                                    <th>Дата открытия доступа </th>
-                                    <th>Дата окончания доступа </th>
+                                    <th>Дата открытия доступа</th>
+                                    <th>Дата окончания доступа</th>
                                     <th>Кнопки управления</th>
                                 </tr>
                                 </thead>
@@ -83,7 +83,7 @@
                                             <a>{{$access->created_at}}</a>
                                         </td>
                                         <td>
-                                            @if($access->access_time == false)
+                                            @if($access->access_time == 0)
                                                 <a>Никогда</a>
                                             @else
                                                 <a>{{ \Carbon\Carbon::make($access->created_at)->addDay($access->duration) }}</a>

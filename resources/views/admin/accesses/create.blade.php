@@ -81,16 +81,16 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Статус просмотра</label>
                         <div>
-                            <input type="radio" id="temporary" name="access_time" value="0" checked>
+                            <input type="radio" id="temporary" name="access_time" value="1" checked>
                             <label for="temporary" style="margin-right: 10px">Доступ определенный период</label>
 
-                            <input type="radio" id="permanent" name="access_time" value="1">
+                            <input type="radio" id="permanent" name="access_time" value="0">
                             <label for="permanent" >Постоянный доступ</label>
                         </div>
                     </div>
 
                     <select class="form-control" name="duration" id="duration">
-                        @for($i = 15; $i <= 30; $i+=5)
+                        @for($i = 5; $i <= 30; $i+=5)
                             <option value="{{$i}}">{{ $i }}</option>
                         @endfor
                     </select>

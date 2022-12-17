@@ -1,5 +1,7 @@
 @extends('layouts.admin')
+
 @section('title', 'Webinar')
+
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
@@ -162,7 +164,7 @@
                                             <a>{{$webinar->status == 1 ? "Активен" : "Отключен"}}</a>
                                         </td>
                                         <td class="project-actions text-right">
-                                            <form action="{{route('admin.webinars.destroy',$webinars)}}" method="POST" class="d-flex justify-content-around">
+                                            <form action="{{route('admin.webinars.destroy',$webinar)}}" method="POST" class="d-flex justify-content-around">
                                                 @csrf
                                                 @method('DELETE')
                                                 <a class="btn btn-primary mx-1" href="{{ route('admin.webinars.edit',$webinar) }}">Изменить</a>

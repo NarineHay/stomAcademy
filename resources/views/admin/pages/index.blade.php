@@ -49,10 +49,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Meta title</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.pages.index',['order'=>'Meta title','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.pages.index',['order'=>'meta_title','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('admin.pages.index',['order'=>'Meta title','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.pages.index',['order'=>'meta_title','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -63,10 +63,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Meta description</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.pages.index',['order'=>'Meta description','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.pages.index',['order'=>'meta_description','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('admin.pages.index',['order'=>'Meta description','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.pages.index',['order'=>'meta_description','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>

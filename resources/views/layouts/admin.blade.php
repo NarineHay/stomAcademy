@@ -238,26 +238,23 @@
 </script>
 
 <script>
-    var radios = document.querySelectorAll('input[type=radio][name="type"]');
-    radios.forEach(radio => radio.addEventListener('change', function check(){
+    document.querySelectorAll('input[type=radio][name="type"]').forEach(radio => radio.addEventListener('change', function check(){
         if(radio.value == 'webinar'){
-            document.getElementById('webinarDiv').classList.remove("d-none");
             document.getElementById('courseDiv').classList.add("d-none");
+            document.getElementById('webinarDiv').classList.remove("d-none");
         }
         else if(radio.value == 'course'){
             document.getElementById('webinarDiv').classList.add("d-none");
             document.getElementById('courseDiv').classList.remove("d-none");
         }
     }));
-</script>
 
-<script>
-    var radios = document.querySelectorAll('input[type=radio][name="access_time"]');
-    radios.forEach(radio => radio.addEventListener('change', function check(){
-        if(radio.value == '0'){
+    document.querySelectorAll('input[type=radio][name="access_time"]').forEach(radio => radio.addEventListener('change', function check(){
+
+        if(radio.value == '1'){
             document.getElementById('duration').classList.remove("d-none");
         }
-        else if(radio.value == '1'){
+        else if(radio.value == '0'){
             document.getElementById('duration').classList.add("d-none");
         }
     }));

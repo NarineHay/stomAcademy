@@ -85,7 +85,7 @@ class AccessController extends Controller
         }
         $access_time = $request->boolean("access_time");
         $access->access_time = $request->access_time;
-        if(!$access_time){
+        if($access_time){
             $access->duration = $request->duration;
         }
         $access->save();

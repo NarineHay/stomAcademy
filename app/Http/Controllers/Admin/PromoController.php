@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 use App\Models\Prices;
 use App\Models\Promo;
 use Illuminate\Database\Eloquent\Model;
@@ -18,22 +19,12 @@ class PromoController extends Controller
         return view('admin.promo.index', compact('promos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('admin.promo.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $promo = new Promo();
@@ -46,35 +37,12 @@ class PromoController extends Controller
         return response()->redirectToRoute("admin.promo.index");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Promo $promo)
     {
         return view('admin.promo.edit',compact('promo'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Promo $promo)
     {
         $promo->code = $request->get("code");
@@ -86,14 +54,9 @@ class PromoController extends Controller
         return response()->redirectToRoute("admin.promo.index");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Promo $promo)
     {
-        //
+        $promo->delete();
+        return redirect()->route('admin.promo.index');
     }
 }

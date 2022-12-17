@@ -11,11 +11,6 @@ use Illuminate\Database\Seeder;
 
 class AccessSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         $users = User::query()->where("role",User::ROLE_USER)->get()->random(8);
