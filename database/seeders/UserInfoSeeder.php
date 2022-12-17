@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Balance;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Database\Seeder;
@@ -16,6 +17,8 @@ class UserInfoSeeder extends Seeder
             $info = UserInfo::factory(1)->make(['image' => $images[$k]])->first();
             $info->user_id = $user->id;
             $info->save();
+
+            $user->balance()->create(["balance" => rand(0,10000)/10]);
         }
     }
 }

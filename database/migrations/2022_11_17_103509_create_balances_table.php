@@ -10,7 +10,8 @@ return new class extends Migration
     {
         Schema::create('balances', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->unsignedBigInteger("user_id");
+            $table->float('balance')->default(0);
         });
     }
 

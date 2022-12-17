@@ -11,13 +11,13 @@ return new class extends Migration
         Schema::create('user_infos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('youtube_email')->unique();
-            $table->string('phone');
-            $table->date('birth_date');
-            $table->unsignedBigInteger("country_id");
-            $table->string('city');
+            $table->string('youtube_email')->nullable();
+            $table->string('phone')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->unsignedBigInteger("country_id")->nullable();
+            $table->string('city')->nullable();
             $table->boolean('status')->default(true);
-            $table->string('image');
+            $table->string('image')->nullable();
         });
     }
 

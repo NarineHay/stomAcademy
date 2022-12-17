@@ -11,6 +11,7 @@ class Balance extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'title'
+        'balance',
+        'user_id'
     ];
 }

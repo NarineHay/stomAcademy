@@ -8,6 +8,7 @@ use App\Models\Direction;
 use App\Models\User;
 use App\Models\UserInfo;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -48,7 +49,7 @@ class UserController extends Controller
                 "country_id" => $request->get('country_id'),
                 "city" => $request->get('city'),
                 "status" => $request->boolean('status'),
-                "image" => $request->file('image')->store('public/userimages')
+                "image" => $request->hasFile("image") ? $request->file('image')->store('public/userimages') : "",
             ],),
         ]);
 
@@ -68,11 +69,11 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'youtube_email' => 'required',
-            'phone' => 'required',
-            'birth_date' => 'required',
-            'country_id' => 'required',
-            'city' => 'required',
+//            'youtube_email' => 'string',
+//            'phone' => 'string',
+//            'birth_date' => 'date',
+//            'country_id' => 'integer',
+//            'city' => 'string',
         ]);
 
         $user = User::find($user->id);
@@ -97,11 +98,11 @@ class UserController extends Controller
         $user->role = $request->role;
 
         $user->userinfo->update([
-            "youtube_email" => $request->youtube_email,
-            "phone" => $request->phone,
-            "birth_date" => $request->birth_date,
-            "country_id" => $request->country_id,
-            "city" => $request->city,
+            "youtube_email" => $request->get('youtube_email',$user->youtube_email),
+            "phone" => $request->get('phone',$user->phone),
+            "birth_date" => $request->get('birth_date',$user->birth_date),
+            "country_id" => $request->get('country_id',$user->country_id),
+            "city" => $request->get('city',$user->city),
             "status" => $request->boolean('status'),
         ]);
 

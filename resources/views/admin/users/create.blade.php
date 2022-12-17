@@ -36,39 +36,39 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">ИМЯ И ФАМИЛИЯ:</label>
-                        <input type="text" name="name" class="form-control" placeholder="Введите Имя и Фамилию...">
+                        <input value="{{ old("name") }}" type="text" name="name" class="form-control" placeholder="Введите Имя и Фамилию...">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ПАРОЛЬ:</label>
-                        <input type="text" name="password" class="form-control" placeholder="ПАРОЛЬ...">
+                        <input value="{{ old("password") }}" type="text" name="password" class="form-control" placeholder="ПАРОЛЬ...">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ЭЛЕКТРОНАНЯ ПОЧТА:</label>
-                        <input type="email" name="email" class="form-control" placeholder="Введите электронную почту...">
+                        <input value="{{ old("email") }}" type="email" name="email" class="form-control" placeholder="Введите электронную почту...">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">EMAIL YOUTUBE.COM:</label>
-                        <input type="email" name="youtube_email" class="form-control" placeholder="Введите Email для youtube.com...">
+                        <input value="{{ old("youtube_email") }}" type="email" name="youtube_email" class="form-control" placeholder="Введите Email для youtube.com...">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ТЕЛЕФОН:</label>
-                        <input type="text" name="phone" class="form-control" placeholder="Введите телефон...">
+                        <input value="{{ old("phone") }}" type="text" name="phone" class="form-control" placeholder="Введите телефон...">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ДАТА РОЖДЕНИЯ:</label>
-                        <input type="date" name="birth_date" class="form-control">
+                        <input value="{{ old("birth_date") }}" type="date" name="birth_date" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">СТРАНА:</label>
                         <select class="form-control form-control select2" name="country_id">
                             @foreach($countries as $country)
-                                <option value="{{ $country->id }}">{{ $country->title }}</option>
+                                <option @if($country->id == old("country_id")) selected @endif value="{{ $country->id }}">{{ $country->title }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -84,7 +84,7 @@
                         @foreach($directions as $direction)
                             <li>
                                 <label class="form-check-label">
-                                    <input type="checkbox" value="{{$direction->id}}" class="mr-2" name="directions[]">
+                                    <input @if(old('directions') && in_array($direction->id,old('directions'))) checked @endif type="checkbox" value="{{$direction->id}}" class="mr-2" name="directions[]">
                                         <span>{{$direction->title}}</span>
                                 </label>
                             </li>

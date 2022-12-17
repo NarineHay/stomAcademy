@@ -37,8 +37,4 @@ class UserInfo extends Model
     function country(){
         return $this->hasOne(Country::class,"id","country_id");
     }
-
-    function balance(){
-        return $this->hasOne(Balance::class,"id","user_id");
-    }
 }

@@ -54,4 +54,8 @@ class User extends Authenticatable
     function webinars(){
         return $this->hasMany(Webinar::class,"user_id","id");
     }
+
+    function balance(){
+        return $this->hasOne(Balance::class,"user_id","id");
+    }
 }

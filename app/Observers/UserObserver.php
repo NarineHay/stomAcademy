@@ -15,6 +15,7 @@ class UserObserver
     public function created(user $user)
     {
         $user->lector()->create();
+        $user->balance()->create();
     }
 
     /**

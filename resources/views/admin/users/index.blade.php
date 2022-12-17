@@ -138,7 +138,7 @@
                                             <a>{{$user->userinfo->phone}}</a>
                                         </td>
                                         <td>
-                                            <a>{{$user->userinfo->balance->title}}</a>
+                                            <a>{{$user->balance->balance}}$</a>
                                         </td>
                                         <td>
                                             <a>{{$user->userinfo->status == 1 ? "Активирован" : "Не активирован"}}</a>

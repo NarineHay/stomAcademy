@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class AdminUserStoreRequest extends FormRequest
 {
@@ -15,15 +16,15 @@ class AdminUserStoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required',
+            'email' => ['required',Rule::unique('users')],
             'password' => 'required',
             'role' => 'required',
-            'youtube_email' => 'required',
-            'phone' => 'required',
-            'birth_date' => 'required',
-            'city' => 'required',
+//            'youtube_email' => 'required',
+//            'phone' => 'required',
+//            'birth_date' => 'required',
+//            'city' => 'required',
             'status' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5000',
+//            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:5000',
         ];
     }
 }
