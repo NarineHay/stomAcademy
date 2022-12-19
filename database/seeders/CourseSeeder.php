@@ -12,7 +12,7 @@ class CourseSeeder extends Seeder
     public function run()
     {
         $price = Prices::all();
-        for($i = 0;$i < 20;$i++){
+        for($i = 0;$i < 100;$i++){
             $info = Course::factory(1)->make()->first();
             $info->price_id = $price->random(1)->first()->id;
             $info->save();

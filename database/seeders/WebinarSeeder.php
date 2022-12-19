@@ -15,7 +15,7 @@ class WebinarSeeder extends Seeder
     {
         $price = Prices::all();
         $user = User::all();
-        for($i = 0;$i < 20;$i++){
+        for($i = 0;$i < 500;$i++){
             $info = Webinar::factory(1)->make()->first();
             $info->price_id = $price->random(1)->first()->id;
             $info->user_id = $user->random(1)->first()->id;
