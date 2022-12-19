@@ -56,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group" id="courseDiv">
+                    <div class="form-group @if($access->course_id == null) d-none @endif" id="courseDiv">
                         <label for="exampleInputEmail1">Курс</label>
                         <select class="form-control select2" name="course_id">
                             @foreach($data['courses'] as $course)
@@ -67,7 +67,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group d-none" id="webinarDiv">
+                    <div class="form-group @if($access->webinar_id == null) d-none @endif" id="webinarDiv">
                         <label for="exampleInputEmail1">Вебинар</label>
                         <select class="form-control select2" name="webinar_id">
                             @foreach($data['webinars'] as $webinar)
@@ -82,7 +82,7 @@
                         <label for="exampleInputEmail1">Статус просмотра</label>
                         <div>
                             <input type="radio" id="temporary" name="access_time" value="1" {{$access->access_time == 1 ? 'checked' : ''}}>
-                            <label for="temporary" style="margin-right: 10px">Доступ определенный период</label>
+                            <label for="temporary" class="mr-1">Доступ определенный период</label>
 
                             <input type="radio" id="permanent" name="access_time" value="0" {{$access->access_time == 0 ? 'checked' : ''}}>
                             <label for="permanent">Постоянный доступ</label>
