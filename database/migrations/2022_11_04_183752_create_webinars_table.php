@@ -12,7 +12,6 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->dateTime('start_date');
-            $table->dateTime('end_date');
             $table->integer('duration');
             $table->longText('description');
             $table->longText('program');

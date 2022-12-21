@@ -11,7 +11,6 @@ class WebinarFactory extends Factory
         return [
             'title'=> $this->faker->jobTitle,
             'start_date'=> $this->faker->dateTime,
-            'end_date'=> $this->faker->dateTime,
             'duration'=> $this->faker->numberBetween(30,120),
             'description'=> $this->faker->realText(300),
             'program'=> $this->faker->text,

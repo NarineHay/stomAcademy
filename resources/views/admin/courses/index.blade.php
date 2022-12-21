@@ -30,19 +30,7 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
-                                            <span>ID</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.courses.index',['order'=>'ID','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.courses.index',['order'=>'ID','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
+                                    <th>Изображение</th>
 
                                     <th>
                                         <div class="d-flex align-items-center flex-nowrap">
@@ -86,19 +74,7 @@
                                         </div>
                                     </th>
 
-                                    <th>
-{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
-                                            <span>Цены</span>
-{{--                                            <div class="sort ml-2 d-flex flex-nowrap">--}}
-{{--                                                <a href = {{route('admin.courses.index',['order'=>'','sort'=>'asc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                                <a href = {{route('admin.courses.index',['order'=>'','sort'=>'desc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-                                    </th>
+                                    <th>Цены</th>
 
                                     <th>Кнопки управления</th>
                                 </tr>
@@ -108,7 +84,7 @@
                                 @foreach($courses as $course)
                                     <tr>
                                         <td>
-                                            <a>{{$course->id}}</a>
+                                            <a><img src="{{\Illuminate\Support\Facades\Storage::url($course->image) }}" height="70" alt=""/></a>
                                         </td>
                                         <td>
                                             <a>{{$course->title}}</a>

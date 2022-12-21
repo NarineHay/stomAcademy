@@ -185,6 +185,14 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.pages.index') }}" class="nav-link @if(request()->is('admin/pages*')) active @endif">Страницы</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('admin.blogs.index') }}" class="nav-link @if(request()->is('admin/blogs*')) active @endif">Блог</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('admin.lectorpage.index') }}" class="nav-link @if(request()->is('admin/lectorpages*')) active @endif">Панель лектора</a>
+                    </li>
                 </ul>
             </nav>
         </div>

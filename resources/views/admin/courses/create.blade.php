@@ -35,33 +35,32 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">НАЗВАНИЕ КУРСА</label>
-                        <input type="text" name="title" class="form-control">
+                        <label for="exampleInputEmail1">НАЗВАНИЕ КУРСА*</label>
+                        <input type="text" value="{{ old('title') ?? "" }}" name="title" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ДАТА КУРСА</label>
-                        <input type="datetime-local" name="start_date" class="form-control">
+                        <label for="exampleInputEmail1">ДАТА КУРСА*</label>
+                        <input type="datetime-local" value="{{ old('start_date') ?? "" }}" name="start_date" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ДАТА ОКОНЧАНИЯ КУРСА</label>
-                        <input type="datetime-local" name="end_date" class="form-control">
+                        <label for="exampleInputEmail1">ДАТА ОКОНЧАНИЯ КУРСА*</label>
+                        <input type="datetime-local" value="{{ old('end_date') ?? "" }}" name="end_date" class="form-control">
                     </div>
 
-
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ОПИСАНИЕ КУРСА</label>
+                        <label for="exampleInputEmail1">ОПИСАНИЕ КУРСА*</label>
                         <div class="row">
                             <div class="col-md-12">
-                                <textarea class="summernote" name="description"></textarea>
+                                <textarea class="summernote" name="description">{{ old('description') ?? "" }}</textarea>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ВИДЕО ПРИГЛАШЕНИЕ/ТРЕЙЛЕРЫ</label>
-                        <input type="text" name="video" class="form-control">
+                        <input type="text" value="{{ old('video') ?? "" }}" name="video" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -76,22 +75,29 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ВЕБИНАРЫ</label>
-                        <ul class="list-unstyled">
+                        <label for="exampleInputEmail1">ВЕБИНАРЫ*</label><br>
+                        <select class="form-control select2" multiple="multiple" name="webinar[]">
                             @foreach($webinars as $webinar)
-                                <li>
-                                    <label class="form-check-label">
-                                        <input type="checkbox" value="{{$webinar->id}}" class="mr-2" name="webinar[]">
-                                        <span>{{$webinar->title}}</span>
-                                    </label>
-                                </li>
+                                @if($webinar->status != 0)
+                                    <option value="{{ $webinar->id }}">
+                                        {{ $webinar->title }}
+                                    </option>
+                                @endif
                             @endforeach
-                        </ul>
+                        </select>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ССЫЛКА НА СТРАНИЦУ</label>
-                        <input type="text" name="url_to_page" class="form-control">
+                        <input type="text" value="{{ old('url_to_page') ?? "" }}" name="url_to_page" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ</label>
+                        <div class="custom-file">
+                            <input type="file" name="image" class="form-control" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
                     </div>
                 </div>
 

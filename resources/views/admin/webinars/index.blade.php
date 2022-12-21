@@ -31,19 +31,19 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
-                                            <span>ID</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.webinars.index',['order'=>'ID','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.webinars.index',['order'=>'ID','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
+{{--                                    <th>--}}
+{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
+{{--                                            <span>ID</span>--}}
+{{--                                            <div class="sort ml-2 d-flex flex-nowrap">--}}
+{{--                                                <a href = {{route('admin.webinars.index',['order'=>'ID','sort'=>'asc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                                <a href = {{route('admin.webinars.index',['order'=>'ID','sort'=>'desc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </th>--}}
 
                                     <th>Изображение</th>
 
@@ -61,19 +61,7 @@
                                         </div>
                                     </th>
 
-                                    <th>
-{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
-                                            <span>Лектор</span>
-{{--                                            <div class="sort ml-2 d-flex flex-nowrap">--}}
-{{--                                                <a href = {{route('admin.webinars.index',['order'=>'','sort'=>'asc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                                <a href = {{route('admin.webinars.index',['order'=>'','sort'=>'desc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-                                    </th>
+                                    <th>Лектор</th>
 
                                     <th>
                                         <div class="d-flex align-items-center flex-nowrap">
@@ -89,33 +77,7 @@
                                         </div>
                                     </th>
 
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
-                                            <span>Дата окончания</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.webinars.index',['order'=>'end_date','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.webinars.index',['order'=>'end_date','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
-
-                                    <th>
-{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
-                                            <span>Кол-во польз.</span>
-{{--                                            <div class="sort ml-2 d-flex flex-nowrap">--}}
-{{--                                                <a href = {{route('admin.webinars.index',['order'=>'','sort'=>'asc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                                <a href = {{route('admin.webinars.index',['order'=>'','sort'=>'desc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-                                    </th>
+                                    <th><span>Кол-во польз.</span></th>
 
                                     <th>
                                         <div class="d-flex align-items-center flex-nowrap">
@@ -139,9 +101,9 @@
                                 <tbody>
                                 @foreach($webinars as $webinar)
                                     <tr>
-                                        <td>
-                                            <a>{{$webinar->id}}</a>
-                                        </td>
+{{--                                        <td>--}}
+{{--                                            <a>{{$webinar->id}}</a>--}}
+{{--                                        </td>--}}
                                         <td>
                                             <a><img src="{{\Illuminate\Support\Facades\Storage::url($webinar->image) }}" height="70" alt=""/></a>
                                         </td>
@@ -153,9 +115,6 @@
                                         </td>
                                         <td>
                                             <a>{{$webinar->start_date}}</a>
-                                        </td>
-                                        <td>
-                                            <a>{{$webinar->end_date}}</a>
                                         </td>
                                         <td>
                                             <a>0</a>

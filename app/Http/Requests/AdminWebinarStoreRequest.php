@@ -16,13 +16,9 @@ class AdminWebinarStoreRequest extends FormRequest
         return [
             'title' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
             'duration' => 'required',
             'description' => 'required',
             'program' => 'required',
-            'video_invitation' => 'required',
-            'video' => 'required',
-            'image' => 'required',
         ];
     }
 }

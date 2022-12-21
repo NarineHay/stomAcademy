@@ -18,7 +18,6 @@ class AdminCourseStoreRequest extends FormRequest
             'start_date' => 'required',
             'end_date' => 'required',
             'description' => 'required',
-            'video' => 'required',
         ];
     }
 }

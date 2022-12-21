@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">ЛЕКТОР</label>
-                        <select class="form-control form-control select2">
+                        <select class="form-control select2">
                             @foreach($lectors as $lector)
                                 @if($lector->user->role == 'lector')
                                     <option value="{{ $lector->id }}">
@@ -48,39 +48,34 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">НАЗВАНИЕ ВЕБИНАРА</label>
-                        <input type="text" name="title" class="form-control">
+                        <label for="exampleInputEmail1">НАЗВАНИЕ ВЕБИНАРА*</label>
+                        <input type="text" name="title" value="{{ old('title') ?? "" }}" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ДАТА ВЕБИНАРА</label>
-                        <input type="datetime-local" name="start_date" class="form-control">
+                        <label for="exampleInputEmail1">ДАТА ВЕБИНАРА*</label>
+                        <input type="datetime-local" value="{{ old('start_date') ?? "" }}" name="start_date" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ДАТА ОКОНЧАНИЯ ВЕБИНАРА</label>
-                        <input type="datetime-local" name="end_date" class="form-control">
+                        <label for="exampleInputEmail1">КОЛИЧЕСТВО МИНУТ*</label>
+                        <input type="number" value="{{ old('duration') ?? "" }}" name="duration" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">КОЛИЧЕСТВО МИНУТ</label>
-                        <input type="number" name="duration" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">ОПИСАНИЕ ВЕБИНАРА</label>
+                        <label for="exampleInputEmail1">ОПИСАНИЕ ВЕБИНАРА*</label>
                         <div class="row">
                             <div class="col-md-12">
-                                <textarea class="summernote" name="description"></textarea>
+                                <textarea class="summernote" name="description">{{ old('description') ?? "" }}</textarea>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ПРОГРАММА</label>
+                        <label for="exampleInputEmail1">ПРОГРАММА*</label>
                         <div class="row">
                             <div class="col-md-12">
-                                 <textarea class="summernote" name="program"></textarea>
+                                 <textarea class="summernote" name="program">{{ old('program') ?? "" }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -103,7 +98,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ВИДЕО(Vimeo YouTube)</label>
-                        <input type="text" name="video" class="form-control">
+                        <input type="text" name="video" value="{{ old('video') ?? "" }}" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -116,7 +111,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ССЫЛКА НА СТРАНИЦУ</label>
-                        <input type="text" name="url_to_page" class="form-control">
+                        <input type="text" value="{{ old('url_to_page') ?? "" }}" name="url_to_page" class="form-control">
                     </div>
                 </div>
 

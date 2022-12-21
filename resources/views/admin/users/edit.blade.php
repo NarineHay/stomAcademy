@@ -36,37 +36,37 @@
                 @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ИМЯ И ФАМИЛИЯ:</label>
+                        <label for="exampleInputEmail1">ИМЯ И ФАМИЛИЯ*</label>
                         <input type="text" value="{{ $user->name }}" name="name" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ПАРОЛЬ:</label>
+                        <label for="exampleInputEmail1">ПАРОЛЬ*</label>
                         <input type="text" value="{{ $user->password }}" name="password" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ЭЛЕКТРОНАНЯ ПОЧТА:</label>
+                        <label for="exampleInputEmail1">ЭЛЕКТРОНАНЯ ПОЧТА*</label>
                         <input type="text" value="{{ $user->email }}" name="email" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">EMAIL YOUTUBE.COM:</label>
+                        <label for="exampleInputEmail1">EMAIL YOUTUBE.COM</label>
                         <input type="text" value="{{ $user->userinfo->youtube_email }}" name="youtube_email" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ТЕЛЕФОН:</label>
+                        <label for="exampleInputEmail1">ТЕЛЕФОН</label>
                         <input type="text" value="{{ $user->userinfo->phone }}" name="phone" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ДАТА РОЖДЕНИЯ:</label>
+                        <label for="exampleInputEmail1">ДАТА РОЖДЕНИЯ</label>
                         <input type="date" value="{{ $user->userinfo->birth_date }}" name="birth_date" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">СТРАНА:</label>
+                        <label for="exampleInputEmail1">СТРАНА</label>
                         <select class="form-control form-control" id="type" name="country_id">
                             @foreach($data['countries'] as $country)
                                 <option value="{{ $country->id }}" {{ $country->id == $user->userinfo->country_id ? 'selected' : '' }}>
@@ -77,12 +77,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ГОРОД:</label>
+                        <label for="exampleInputEmail1">ГОРОД</label>
                         <input type="text" value="{{ $user->userinfo->city }}" name="city" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ИНТЕРЕСУЮЩИЕ НАПРАВЛЕНИЯ:</label><br>
+                        <label for="exampleInputEmail1">ИНТЕРЕСУЮЩИЕ НАПРАВЛЕНИЯ</label><br>
                         @foreach($data['directions'] as $direction)
                             <input type="checkbox" name="direction[]" value="{{ $direction->id }}"
                                 @if( $user->directions->where("direction_id",$direction->id)->count()) checked @endif
@@ -91,7 +91,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">СТАТУС:</label>
+                        <label for="exampleInputEmail1">СТАТУС</label>
                         <select class="form-control" id="type" name="status">
                             <option value="1" {{$user->userinfo->status == 1 ? " selected" : ""}}>Активирован</option>
                             <option value="0" {{$user->userinfo->status == 0 ? " selected" : ""}}>Не активирован</option>
@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ПРИВИЛЕГИИ:</label>
+                        <label for="exampleInputEmail1">ПРИВИЛЕГИИ</label>
                         <select class="form-control select2" id="type" name="role">
                             <option {{$user->role == \App\Models\User::ROLE_USER ? " selected" : ""}} value="{{ \App\Models\User::ROLE_USER }}">Пользователь</option>
                             <option {{$user->role == \App\Models\User::ROLE_ADMIN ? " selected" : ""}} value="{{ \App\Models\User::ROLE_ADMIN }}">Администратор</option>

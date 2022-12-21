@@ -30,5 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PromoSeeder::class);
         $this->call(CurrencySeeder::class);
         $this->call(PageSeeder::class);
+        $this->call(BlogSeeder::class);
+        $this->call(BlogCategorySeeder::class);
+        $this->call(LanguagesSeeder::class);
     }
 }

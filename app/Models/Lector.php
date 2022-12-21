@@ -21,8 +21,21 @@ class Lector extends Model
     function user(){
         return $this->hasOne(User::class,"id","user_id");
     }
+
+    function userinfo(){
+        return $this->hasOne(User::class,"id","user_id");
+    }
+
     function direction(){
         return $this->hasOne(Direction::class,"id","direction_id");
+    }
+
+    function webinar(){
+        return $this->hasOne(Webinar::class,"user_id","id");
+    }
+
+    function course(){
+        return $this->hasOne(Course::class,"user_id","id");
     }
 
     function getCourseCount(){

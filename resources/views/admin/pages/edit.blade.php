@@ -36,16 +36,16 @@
                 @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Meta title:</label>
+                        <label for="exampleInputEmail1">Meta title*</label>
                         <input type="text" name="meta_title" class="form-control" value="{{$page->meta_title}}">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Meta description:</label>
+                        <label for="exampleInputEmail1">Meta description*</label>
                         <textarea class="form-control" name="meta_description">{{$page->meta_description}}</textarea>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">H1:</label>
+                        <label for="exampleInputEmail1">H1</label>
                         <input type="text" name="heading" value="{{$page->heading}}" class="form-control">
                     </div>
                 </div>

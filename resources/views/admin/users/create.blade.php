@@ -35,38 +35,38 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ИМЯ И ФАМИЛИЯ:</label>
+                        <label for="exampleInputEmail1">ИМЯ И ФАМИЛИЯ*</label>
                         <input value="{{ old("name") }}" type="text" name="name" class="form-control" placeholder="Введите Имя и Фамилию...">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ПАРОЛЬ:</label>
+                        <label for="exampleInputEmail1">ПАРОЛЬ*</label>
                         <input value="{{ old("password") }}" type="text" name="password" class="form-control" placeholder="ПАРОЛЬ...">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ЭЛЕКТРОНАНЯ ПОЧТА:</label>
+                        <label for="exampleInputEmail1">ЭЛЕКТРОНАНЯ ПОЧТА*</label>
                         <input value="{{ old("email") }}" type="email" name="email" class="form-control" placeholder="Введите электронную почту...">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">EMAIL YOUTUBE.COM:</label>
+                        <label for="exampleInputEmail1">EMAIL YOUTUBE.COM</label>
                         <input value="{{ old("youtube_email") }}" type="email" name="youtube_email" class="form-control" placeholder="Введите Email для youtube.com...">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ТЕЛЕФОН:</label>
+                        <label for="exampleInputEmail1">ТЕЛЕФОН</label>
                         <input value="{{ old("phone") }}" type="text" name="phone" class="form-control" placeholder="Введите телефон...">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ДАТА РОЖДЕНИЯ:</label>
+                        <label for="exampleInputEmail1">ДАТА РОЖДЕНИЯ</label>
                         <input value="{{ old("birth_date") }}" type="date" name="birth_date" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">СТРАНА:</label>
-                        <select class="form-control form-control select2" name="country_id">
+                        <label for="exampleInputEmail1">СТРАНА</label>
+                        <select class="form-control select2" name="country_id">
                             @foreach($countries as $country)
                                 <option @if($country->id == old("country_id")) selected @endif value="{{ $country->id }}">{{ $country->title }}</option>
                             @endforeach
@@ -74,12 +74,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ГОРОД:</label>
+                        <label for="exampleInputEmail1">ГОРОД</label>
                         <input type="text" name="city" class="form-control" placeholder="Введите город проживания...">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ИНТЕРЕСУЮЩИЕ НАПРАВЛЕНИЯ:</label>
+                        <label for="exampleInputEmail1">ИНТЕРЕСУЮЩИЕ НАПРАВЛЕНИЯ</label>
                         <ul class="list-unstyled">
                         @foreach($directions as $direction)
                             <li>
@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">СТАТУС:</label>
+                        <label for="exampleInputEmail1">СТАТУС</label>
                         <select class="form-control" name="status">
                             <option value="1">Активирован</option>
                             <option value="0">Не активирован</option>
@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ПРИВИЛЕГИИ:</label>
+                        <label for="exampleInputEmail1">ПРИВИЛЕГИИ</label>
                         <select class="form-control select2" name="role">
                             <option value="{{ \App\Models\User::ROLE_USER }}">Пользователь</option>
                             <option value="{{ \App\Models\User::ROLE_ADMIN }}">Администратор</option>

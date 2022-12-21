@@ -1,5 +1,7 @@
 @extends('layouts.admin')
+
 @section('title', 'User')
+
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
@@ -36,20 +38,6 @@
 
                                     <th>
                                         <div class="d-flex align-items-center flex-nowrap">
-                                            <span>ID</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.users.index',['order'=>'ID','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.users.index',['order'=>'ID','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
-
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
                                             <span>Пользователь</span>
                                             <div class="sort ml-2">
                                                 <a href={{route('admin.users.index',['order'=>'name','sort'=>'asc'])}}>
@@ -62,41 +50,13 @@
                                         </div>
                                     </th>
 
-                                    <th>
-{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
-                                            <span>Страна</span>
-{{--                                            <div class="sort ml-2">--}}
-{{--                                                <a href={{route('admin.users.index',['order'=>'country_id','sort'=>'asc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                                <a href={{route('admin.users.index',['order'=>'country_id','sort'=>'desc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-                                    </th>
+                                    <th><span>Страна</span></th>
 
-                                    <th>
-                                        <span>Телефон</span>
-                                    </th>
+                                    <th><span>Телефон</span></th>
 
-                                    <th>
-                                        <span>Баланс</span>
-                                    </th>
+                                    <th><span>Баланс</span></th>
 
-                                    <th>
-{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
-                                            <span>Статус</span>
-{{--                                            <div class="sort ml-2">--}}
-{{--                                                <a href={{route('admin.users.index',['order'=>'','sort'=>'asc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                                <a href={{route('admin.users.index',['order'=>'','sort'=>'desc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-                                    </th>
+                                    <th><span>Статус</span></th>
 
                                     <th>
                                         <div class="d-flex align-items-center flex-nowrap">
@@ -123,9 +83,9 @@
                                         <td>
                                             <a><img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image) }}" height="70" alt=""/></a>
                                         </td>
-                                        <td>
-                                            <a>{{$user->id}}</a>
-                                        </td>
+{{--                                        <td>--}}
+{{--                                            <a>{{$user->id}}</a>--}}
+{{--                                        </td>--}}
                                         <td>
                                             <p class="mb-0"><b>{{$user->name}}</b></p>
                                             <p class="mb-0">{{$user->email}}</p>

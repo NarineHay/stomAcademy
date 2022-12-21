@@ -30,19 +30,19 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
-                                            <span>ID</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.prices.index',['order'=>'ID','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.prices.index',['order'=>'ID','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
+{{--                                    <th>--}}
+{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
+{{--                                            <span>ID</span>--}}
+{{--                                            <div class="sort ml-2 d-flex flex-nowrap">--}}
+{{--                                                <a href = {{route('admin.prices.index',['order'=>'ID','sort'=>'asc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                                <a href = {{route('admin.prices.index',['order'=>'ID','sort'=>'desc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </th>--}}
                                     <th>Название</th>
 
                                     <th>BYN</th>
@@ -62,9 +62,9 @@
                                 <tbody>
                                 @foreach($prices as $price)
                                     <tr>
-                                        <td>
-                                            <a>{{$price->id}}</a>
-                                        </td>
+{{--                                        <td>--}}
+{{--                                            <a>{{$price->id}}</a>--}}
+{{--                                        </td>--}}
                                         <td>
                                             <a>{{$price->name}}</a>
                                         </td>

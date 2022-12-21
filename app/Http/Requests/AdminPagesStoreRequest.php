@@ -16,7 +16,6 @@ class AdminPagesStoreRequest extends FormRequest
         return [
             'meta_title' => 'required',
             'meta_description' => 'required',
-            'heading' => 'required',
         ];
     }
 }

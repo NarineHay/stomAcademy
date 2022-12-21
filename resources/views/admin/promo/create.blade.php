@@ -35,23 +35,23 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Код:</label>
+                        <label for="exampleInputEmail1">Код</label>
                         <input type="text" value="{{ \Illuminate\Support\Str::random(8) }}" name="code" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Процент:</label>
-                        <input type="text" name="prc" class="form-control">
+                        <label for="exampleInputEmail1">Процент*</label>
+                        <input type="text" value="{{ old('prc') ?? "" }}" name="prc" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Min:</label>
-                        <input type="text" name="min" class="form-control">
+                        <label for="exampleInputEmail1">Min*</label>
+                        <input type="text" value="{{ old('min') ?? "" }}" name="min" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Макс. кол. ( "0" если можно использовать бесконечно ):</label>
-                        <input type="text" value="0" name="max" class="form-control">
+                        <label for="exampleInputEmail1">Макс. кол.( "0" если можно использовать бесконечно ):</label>
+                        <input type="text" value="{{ old('max') ?? 0 }}" name="max" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Статус:</label>
+                        <label for="exampleInputEmail1">Статус</label>
                         <select name="status" class="form-control">
                             <option value="1" selected>Активен</option>
                             <option value="0" >Отключен</option>

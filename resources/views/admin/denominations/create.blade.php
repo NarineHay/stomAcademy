@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">НАЗВАНИЕ НАИМЕНОВАНИЯ</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" value="{{ old('name') ?? "" }}" name="name" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -45,7 +45,7 @@
                             <div class="col-md-12">
                                 <div class="card card-outline card-info">
                                     <div class="card-body">
-                                        <textarea class="summernote" name="description"></textarea>
+                                        <textarea class="summernote" name="description">{{ old('description') ?? "" }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                         </div>
                         <div>
                             <label for="exampleInputEmail1">ЦЕНА</label>
-                            <input type="number" name="price" class="form-control">
+                            <input type="number" value="{{ old('price') ?? "" }}" name="price" class="form-control">
                         </div>
                     </div>
                 </div>

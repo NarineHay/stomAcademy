@@ -18,6 +18,8 @@ class Course extends Model
         'video',
         'price_id',
         'url_to_page',
+        'image',
+        'user_id'
     ];
 
     function price(){

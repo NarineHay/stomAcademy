@@ -15,6 +15,7 @@ class CourseFactory extends Factory
             'description'=> $this->faker->realText(300),
             'video'=> $this->faker->url,
             'url_to_page' => $this->faker->url,
+            'image' => 'public/course/courseimage.jpg',
         ];
     }
 }

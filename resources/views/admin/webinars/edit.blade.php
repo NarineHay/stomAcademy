@@ -36,27 +36,22 @@
                 @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">НАЗВАНИЕ ВЕБИНАРА</label>
+                        <label for="exampleInputEmail1">НАЗВАНИЕ ВЕБИНАРА*</label>
                         <input type="text" value="{{$webinar->title}}" name="title" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ДАТА ВЕБИНАРА</label>
+                        <label for="exampleInputEmail1">ДАТА ВЕБИНАРА*</label>
                         <input type="datetime-local" value="{{$webinar->start_date}}" name="start_date" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ДАТА ОКОНЧАНИЯ ВЕБИНАРА</label>
-                        <input type="datetime-local" value="{{$webinar->end_date}}" name="end_date" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">КОЛИЧЕСТВО МИНУТ</label>
+                        <label for="exampleInputEmail1">КОЛИЧЕСТВО МИНУТ*</label>
                         <input type="number" value="{{$webinar->duration}}" name="duration" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ОПИСАНИЕ ВЕБИНАРА</label>
+                        <label for="exampleInputEmail1">ОПИСАНИЕ ВЕБИНАРА*</label>
                         <div class="row">
                             <div class="col-md-12">
                                 <textarea class="summernote" name="description">{{$webinar->description}}</textarea>
@@ -65,7 +60,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ПРОГРАММА</label>
+                        <label for="exampleInputEmail1">ПРОГРАММА*</label>
                         <div class="row">
                             <div class="col-md-12">
                                     <textarea class="summernote" name="program">{{$webinar->program}}</textarea>

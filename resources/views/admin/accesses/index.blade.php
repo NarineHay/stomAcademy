@@ -14,17 +14,33 @@
                 </div>
             </div>
             <form method="get">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <label class="mr-1">Поиск по пользователю</label>
-                        <input type="text" name="search_user">
-                    </div>
-                    <div>
-                        <label class="mr-1">Поиск по курсу/вебинару</label>
-                        <input type="text" name="search_webinar">
-                    </div>
-                    <button class="btn btn-outline-primary" type="submit">Поиск</button>
-                </div>
+{{--                <div>--}}
+{{--                    <div class="d-flex justify-content-sm-start">--}}
+{{--                        <label class="mr-1">Поиск по курсу/вебинару</label>--}}
+{{--                        <select class="form-control select2" name="search_webinar">--}}
+{{--                            @foreach($courses as $course)--}}
+{{--                                <option value="{{ $course->id }}">--}}
+{{--                                    {{ $course->title }}--}}
+{{--                                </option>--}}
+{{--                            @endforeach--}}
+{{--                            @foreach($webinars as $webinar)--}}
+{{--                                <option value="{{ $webinar->id }}">--}}
+{{--                                    {{ $webinar->title }}--}}
+{{--                                </option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+
+{{--                        <label class="mr-1">Поиск по по пользователю</label>--}}
+{{--                        <select class="form-control select2" name="search_user">--}}
+{{--                            @foreach($users as $user)--}}
+{{--                                <option value="{{ $user->id }}">--}}
+{{--                                    {{ $user->name }}--}}
+{{--                                </option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
+{{--                    <button class="btn btn-outline-primary" type="submit">Поиск</button>--}}
+{{--                </div>--}}
             </form>
         </div>
     </div>
@@ -44,19 +60,6 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
-                                            <span>ID</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.accesses.index',['order'=>'ID','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.accesses.index',['order'=>'ID','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
                                     <th>Название Курса/Вебинара</th>
                                     <th>Пользователь</th>
                                     <th>Менеджер</th>
@@ -69,9 +72,6 @@
                                 <tbody>
                                 @foreach($accesses as $access)
                                     <tr>
-                                        <td>
-                                            <a>{{$access->id}}</a>
-                                        </td>
                                         <td>
                                             <a>{{$access->course->title ?? $access->webinar->title}}</a>
                                         </td>

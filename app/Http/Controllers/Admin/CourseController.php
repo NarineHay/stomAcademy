@@ -36,6 +36,8 @@ class CourseController extends Controller
         $course->description = $request->get('description');
         $course->video = $request->get('video');
         $course->price_id = $request->get('price_id');
+        $course->url_to_page = $request->get('url_to_page');
+        $course->image = $request->file('image')->store('public/course');
 
         $course->save();
         $webinars = $request->get('webinar',[]);
@@ -64,10 +66,15 @@ class CourseController extends Controller
             'start_date' => 'required',
             'end_date' => 'required',
             'description' => 'required',
-            'video' => 'required',
         ]);
 
         $course = Course::find($course->id);
+        if($request->hasFile('image')){
+            $request->validate([
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+            $course->image = $request->file('image')->store('public/course');
+        }
 
         $webinars = $request->get('webinar',[]);
         $course->webinars()->delete();
@@ -82,6 +89,7 @@ class CourseController extends Controller
         $course->end_date = $request->end_date;
         $course->description = $request->description;
         $course->video = $request->video;
+        $course->url_to_page = $request->url_to_page;
         $course->price_id = $request->price_id;
 
         $course->save();

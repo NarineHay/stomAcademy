@@ -15,11 +15,6 @@ class AdminPriceStoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'byn' => 'required',
-            'rub' => 'required',
-            'usd' => 'required',
-            'eur' => 'required',
-            'uah' => 'required',
         ];
     }
 }

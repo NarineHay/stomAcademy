@@ -35,28 +35,28 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">НАЗВАНИЕ:</label>
-                        <input type="text" name="name" class="form-control">
+                        <label for="exampleInputEmail1">НАЗВАНИЕ*</label>
+                        <input type="text" value="{{ old('name') ?? "" }}" name="name" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">BYN:</label>
-                        <input type="text" name="byn" class="form-control">
+                        <label for="exampleInputEmail1">BYN</label>
+                        <input type="text" value="{{ old('byn') ?? "" }}" name="byn" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">RUB:</label>
-                        <input type="text" name="rub" class="form-control">
+                        <label for="exampleInputEmail1">RUB</label>
+                        <input type="text" value="{{ old('rub') ?? "" }}" name="rub" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">USD:</label>
-                        <input type="text" name="usd" class="form-control">
+                        <label for="exampleInputEmail1">USD</label>
+                        <input type="text" value="{{ old('usd') ?? "" }}" name="usd" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">EUR:</label>
-                        <input type="text" name="eur" class="form-control">
+                        <label for="exampleInputEmail1">EUR</label>
+                        <input type="text" value="{{ old('eur') ?? "" }}" name="eur" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">UAH:</label>
-                        <input type="text" name="uah" class="form-control">
+                        <label for="exampleInputEmail1">UAH</label>
+                        <input type="text" value="{{ old('uah') ?? "" }}" name="uah" class="form-control">
                     </div>
 
                     <div class="card-footer">

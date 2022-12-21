@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('video');
             $table->unsignedBigInteger('price_id');
             $table->string('url_to_page')->nullable();
+            $table->string('image');
+            $table->unsignedBigInteger('user_id');
         });
     }
 

@@ -55,16 +55,16 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">КОЛИЧЕСТВО ЧАСОВ(ТОЛЬКО ДЛЯ СЕМИНАРОВ)</label>
-                        <input type="number" name="hours_number" class="form-control">
+                        <input type="number" value="{{ old('number') ?? "" }}"name="hours_number" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ДАТА КУРСА</label>
-                        <input type="date" name="date" class="form-control">
+                        <label for="exampleInputEmail1">ДАТА КУРСА*</label>
+                        <input type="date" value="{{ old('date') ?? "" }}" name="date" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ</label>
+                        <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ*</label>
                         <div class="custom-file">
                             <input type="file" name="image" class="form-control" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose file</label>

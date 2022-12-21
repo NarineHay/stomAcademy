@@ -5,7 +5,6 @@
                 <label for="exampleInputEmail1">КУРС</label>
                 <select class="form-control select2" name="course_id" wire:model="course_id">
                     @foreach($courses as $course)
-{{--                        <option value="{{ $course->id }}"{{ $course->id == $certificate->course->id ? 'selected' : '' }}>--}}
                         <option value="{{ $course->id }}">
                             {{ $course->title }}
                         </option>
@@ -19,7 +18,7 @@
             </div>
 
             <div class="form-group">
-                <label for="exampleInputEmail1">ДАТА КУРСА</label>
+                <label for="exampleInputEmail1">ДАТА КУРСА*</label>
                 <input wire:model="date" type="date" name="date" value="{{$certificate->date}}" class="form-control">
             </div>
 

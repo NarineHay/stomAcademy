@@ -1,5 +1,7 @@
 @extends('layouts.admin')
+
 @section('title', 'Certificate')
+
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
@@ -30,35 +32,9 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
-                                            <span>ID</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.certificates.index',['order'=>'ID','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.certificates.index',['order'=>'ID','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
-
                                     <th>Изображение</th>
 
-                                    <th>
-{{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
-                                            <span>Название курса</span>
-{{--                                            <div class="sort ml-2 d-flex flex-nowrap">--}}
-{{--                                                <a href = {{route('admin.certificates.index',['order'=>'','sort'=>'asc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                                <a href = {{route('admin.certificates.index',['order'=>'','sort'=>'desc'])}}>--}}
-{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
-{{--                                                </a>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-                                    </th>
+                                    <th>Название курса</th>
 
                                     <th>Кнопки управления</th>
                                 </tr>
@@ -67,9 +43,9 @@
                                 <tbody>
                                 @foreach($certificates as $certificate)
                                     <tr>
-                                        <td>
-                                            <a>{{$certificate->id}}</a>
-                                        </td>
+{{--                                        <td>--}}
+{{--                                            <a>{{$certificate->id}}</a>--}}
+{{--                                        </td>--}}
 
                                         <td>
                                             <a><img src="{{\Illuminate\Support\Facades\Storage::url($certificate->image) }}" height="70" alt=""/></a>

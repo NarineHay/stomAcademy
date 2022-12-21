@@ -42,7 +42,7 @@
 
                     <div class="form-group mt-3">
                         <label for="exampleInputEmail1">Специализация</label>
-                        <select class="form-control form-control select2" name="direction_id">
+                        <select class="form-control select2" name="direction_id">
                             @foreach($directions as $direction)
                                 <option value="{{ $direction->id }}" {{ $direction->id == $user->lector->direction_id ? 'selected' : '' }}>
                                     {{ $direction->title }}
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Биография</label>
+                        <label for="exampleInputEmail1">Биография*</label>
                         <div class="row">
                             <div class="col-md-12">
                                 <textarea class="summernote" name="biography">{{$user->lector->biography}}</textarea>
@@ -84,7 +84,7 @@
 
                     <div class="form-group mt-3">
                         <label for="exampleInputEmail1">Страна лектора</label>
-                        <select class="form-control form-control select2" name="country_id">
+                        <select class="form-control select2" name="country_id">
                             @foreach($countries as $country)
                                 <option value="{{ $country->id }}" {{ $country->id == $user->userinfo->country_id ? 'selected' : '' }}>
                                     {{ $country->title }}
@@ -94,7 +94,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">% От продаж</label>
+                        <label for="exampleInputEmail1">% От продаж*</label>
                         <input type="number" value="{{$user->lector->per_of_sales}}" name="per_of_sales" class="form-control">
                     </div>
                 </div>

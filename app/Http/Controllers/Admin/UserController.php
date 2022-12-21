@@ -69,11 +69,6 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-//            'youtube_email' => 'string',
-//            'phone' => 'string',
-//            'birth_date' => 'date',
-//            'country_id' => 'integer',
-//            'city' => 'string',
         ]);
 
         $user = User::find($user->id);

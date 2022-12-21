@@ -46,11 +46,6 @@ class PriceController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'byn' => 'required',
-            'rub' => 'required',
-            'usd' => 'required',
-            'eur' => 'required',
-            'uah' => 'required',
         ]);
 
         $price = Prices::find($price->id);

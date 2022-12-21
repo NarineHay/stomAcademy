@@ -64,8 +64,6 @@ class WebinarController extends Controller
             'duration' => 'required',
             'description' => 'required',
             'program' => 'required',
-            'video' => 'required',
-            'video_invitation' => 'required',
         ]);
 
         $webinar = Webinar::find($webinar->id);

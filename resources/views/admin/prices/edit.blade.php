@@ -36,27 +36,27 @@
                 @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">НАЗВАНИЕ:</label>
+                        <label for="exampleInputEmail1">НАЗВАНИЕ*</label>
                         <input type="text" value="{{ $price->name }}" name="name" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">BYN:</label>
+                        <label for="exampleInputEmail1">BYN</label>
                         <input type="text" value="{{ $price->byn }}" name="byn" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">RUB:</label>
+                        <label for="exampleInputEmail1">RUB</label>
                         <input type="text" value="{{ $price->rub }}" name="rub" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">USD:</label>
+                        <label for="exampleInputEmail1">USD</label>
                         <input type="text" value="{{ $price->usd }}" name="usd" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">EUR:</label>
+                        <label for="exampleInputEmail1">EUR</label>
                         <input type="text" value="{{ $price->eur }}" name="eur" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">UAH:</label>
+                        <label for="exampleInputEmail1">UAH</label>
                         <input type="text" value="{{ $price->uah }}" name="uah" class="form-control">
                     </div>
                 </div>

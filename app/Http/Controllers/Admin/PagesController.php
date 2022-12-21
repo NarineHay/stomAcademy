@@ -42,7 +42,6 @@ class PagesController extends Controller
         $request->validate([
             'meta_title' => 'required',
             'meta_description' => 'required',
-            'heading' => 'required',
         ]);
 
         $page = Page::find($page->id);

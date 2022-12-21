@@ -36,23 +36,23 @@
                 @method('put')
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Код:</label>
+                        <label for="exampleInputEmail1">Код</label>
                         <input type="text" value="{{ $promo->code }}" name="code" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Процент:</label>
+                        <label for="exampleInputEmail1">Процент*</label>
                         <input type="text" value="{{ $promo->prc }}" name="prc" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Min:</label>
+                        <label for="exampleInputEmail1">Min*</label>
                         <input type="text" value="{{ $promo->min }}" name="min" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Макс. кол. ( "0" если можно использовать бесконечно ):</label>
+                        <label for="exampleInputEmail1">Макс. кол.( "0" если можно использовать бесконечно ):</label>
                         <input type="text" value="{{ $promo->max }}" name="max" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Статус:</label>
+                        <label for="exampleInputEmail1">Статус</label>
                         <select name="status" class="form-control">
                             <option @if($promo->status) selected @endif value="1" selected>Активен</option>
                             <option @if(!$promo->status) selected @endif value="0" >Отключен</option>

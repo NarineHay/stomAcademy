@@ -29,19 +29,7 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
-                                            <span>ID</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.lectors.index',['order'=>'ID','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.lectors.index',['order'=>'ID','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
+                                    <th>Аватар</th>
                                     <th>Фио лектора</th>
                                     <th>Специализация</th>
                                     <th>Кол-во курсов</th>
@@ -53,7 +41,7 @@
                                 @foreach($lectors as $user)
                                     <tr>
                                         <td>
-                                            <a>{{$user->id}}</a>
+                                            <a><img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image) }}" height="70" alt=""/></a>
                                         </td>
                                         <td>
                                             <a>{{$user->name}}</a>
