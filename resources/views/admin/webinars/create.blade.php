@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">ЛЕКТОР</label>
-                        <select class="form-control select2">
+                        <select name="user_id" class="form-control select2">
                             @foreach($lectors as $lector)
                                 @if($lector->user->role == 'lector')
                                     <option value="{{ $lector->id }}">
@@ -48,11 +48,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">НАЗВАНИЕ ВЕБИНАРА*</label>
-                        <input type="text" name="title" value="{{ old('title') ?? "" }}" class="form-control">
-                    </div>
-
-                    <div class="form-group">
                         <label for="exampleInputEmail1">ДАТА ВЕБИНАРА*</label>
                         <input type="datetime-local" value="{{ old('start_date') ?? "" }}" name="start_date" class="form-control">
                     </div>
@@ -60,29 +55,6 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">КОЛИЧЕСТВО МИНУТ*</label>
                         <input type="number" value="{{ old('duration') ?? "" }}" name="duration" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">ОПИСАНИЕ ВЕБИНАРА*</label>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <textarea class="summernote" name="description">{{ old('description') ?? "" }}</textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">ПРОГРАММА*</label>
-                        <div class="row">
-                            <div class="col-md-12">
-                                 <textarea class="summernote" name="program">{{ old('program') ?? "" }}</textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">ВИДЕО ПРИГЛАШЕНИЕ/ТРЕЙЛЕРЫ</label>
-                        <input type="text" name="video_invitation" class="form-control">
                     </div>
 
                     <div class="form-group">
@@ -97,12 +69,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ВИДЕО(Vimeo YouTube)</label>
-                        <input type="text" name="video" value="{{ old('video') ?? "" }}" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Фотография</label>
+                        <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ*</label>
                         <div class="custom-file">
                             <input type="file" name="image" class="form-control" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose file</label>
@@ -112,6 +79,59 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">ССЫЛКА НА СТРАНИЦУ</label>
                         <input type="text" value="{{ old('url_to_page') ?? "" }}" name="url_to_page" class="form-control">
+                    </div>
+
+                    <div class="card card-primary card-outline card-outline-tabs">
+                        <div class="card-header p-0 border-bottom-0">
+                            <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+                                @foreach(\App\Models\Language::all() as $k => $lg)
+                                    <li class="nav-item">
+                                        <a class="nav-link @if($k == 0) active @endif" data-toggle="pill" href="#lg_tab_{{ $lg->id }}" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">{{ $lg->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="tab-content" id="custom-tabs-four-tabContent">
+                                @foreach(\App\Models\Language::all() as $k => $lg)
+                                    <div class="tab-pane fade @if($k == 0) show active @endif" id="lg_tab_{{ $lg->id }}" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">НАЗВАНИЕ ВЕБИНАРА*</label>
+                                            <input type="text" name="title[{{ $lg->id }}]" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">ОПИСАНИЕ ВЕБИНАРА*</label>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <textarea class="summernote" name="description[{{ $lg->id }}]"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">ПРОГРАММА*</label>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <textarea class="summernote" name="program[{{ $lg->id }}]"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">ВИДЕО ПРИГЛАШЕНИЕ/ТРЕЙЛЕРЫ</label>
+                                            <input type="text" name="video_invitation[{{ $lg->id }}]" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">ВИДЕО</label>
+                                            <input type="text" name="video[{{ $lg->id }}]" class="form-control">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
 

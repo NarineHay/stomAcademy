@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h1 class="m-0">Панель лектора</h1>
+                    <h1 class="m-0">{{$user->name}}</h1>
                 </div>
             </div>
         </div>
@@ -30,30 +30,28 @@
                                 <tr>
                                     <th>Название курса/вебинара</th>
                                     <th>Кол-во продаж</th>
-                                    <th>Процент лектора</th>
+                                    <th>Процент</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                @foreach($lectors as $user)
-                                    <tr>
-                                        <td>
-                                            <a>{{$user->lector->webinar->title ?? $user->lector->course->title}}</a>
-                                        </td>
-                                        <td>
-                                            <a>0</a>
-                                        </td>
-                                        <td>
-                                            <a>{{$user->lector->per_of_sales ?? ""}}</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
+{{--                                {{dd($user->lector)}}--}}
+                                    @foreach($user->lector->webinars as $webinar)
+                                        <tr>
+                                            <td>
+                                                <a>{{$webinar->title}}</a>
+                                            </td>
+                                            <td>
+                                                <a>0</a>
+                                            </td>
+                                            <td>
+                                                <a>{{$webinar->user->lector->per_of_sales ?? ""}}</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        {{ $lectors->links() }}
                     </div>
                 </div>
             </div>

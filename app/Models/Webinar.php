@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 
 class Webinar extends Model
 {
@@ -11,14 +12,9 @@ class Webinar extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'title',
         'start_date',
         'duration',
-        'description',
-        'program',
-        'video_invitation',
         'price_id',
-        'video',
         'status',
         'image',
         'user_id',
@@ -27,5 +23,15 @@ class Webinar extends Model
 
     function user(){
         return $this->hasOne(User::class,"id","user_id");
+    }
+
+    function infos(){
+        return $this->hasMany(WebinarInfo::class,"webinar_id",'id');
+    }
+
+    function info(){
+        $lg_id = Session::get("lg");
+        return $this->hasOne(WebinarInfo::class,"webinar_id",'id')
+            ->where("lg_id",$lg_id);
     }
 }

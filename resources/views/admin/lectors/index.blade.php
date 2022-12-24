@@ -60,7 +60,7 @@
                                                @csrf
                                                @method('DELETE')
                                                <a class="btn btn-primary mx-1" href="{{ route('admin.lectors.edit',$user) }}">Изменить</a>
-{{--                                               <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mx-1" id="button">Удалить</button>--}}
+                                               <a class="btn btn-success mx-1" href="{{ route('admin.lectors.show',$user) }}">Показать</a>
                                            </form>
                                        </td>
                                     </tr>

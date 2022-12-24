@@ -10,8 +10,8 @@ class LanguagesSeeder extends Seeder
     public function run()
     {
         $languages = [
-            ['name' => 'English'],
             ['name' => 'Русский'],
+            ['name' => 'English'],
             ['name' => 'Español'],
         ];
         foreach ($languages as $language){

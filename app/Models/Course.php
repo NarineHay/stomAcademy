@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 
 class Course extends Model
 {
@@ -11,15 +12,12 @@ class Course extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'title',
         'start_date',
         'end_date',
-        'description',
         'video',
         'price_id',
         'url_to_page',
         'image',
-        'user_id'
     ];
 
     function price(){
@@ -29,5 +27,15 @@ class Course extends Model
     function webinars()
     {
         return $this->hasMany(CourseWebinar::class, "course_id", "id");
+    }
+
+    function infos(){
+        return $this->hasMany(CourseInfo::class,"","id");
+    }
+
+    function info(){
+        $lg_id = Session::get("lg");
+        return $this->hasOne(CourseInfo::class,"course_id",'id')
+            ->where("lg_id",$lg_id);
     }
 }

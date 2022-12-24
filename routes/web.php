@@ -43,7 +43,6 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::resource('payment', \App\Http\Controllers\Admin\PaymentController::class);
     Route::resource('pages', \App\Http\Controllers\Admin\PagesController::class);
     Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
-    Route::resource('lectorpage', \App\Http\Controllers\Admin\LectorPageController::class);
 });
 
 

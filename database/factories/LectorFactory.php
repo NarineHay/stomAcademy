@@ -30,7 +30,7 @@ class LectorFactory extends Factory
 //        Storage::put("public/lector/".$name, $contents);
         return [
             'direction_id' => $directions->random(1)->first()->id,
-            'biography' => $this->faker->realText(),
+//            'biography' => $this->faker->realText(),
 //            'photo' => 'public/lector/'.$name,
             'per_of_sales' => $this->faker->numberBetween(1,50),
         ];

@@ -14,11 +14,9 @@ class AdminWebinarStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
             'start_date' => 'required',
             'duration' => 'required',
-            'description' => 'required',
-            'program' => 'required',
+            'user_id' => 'required'
         ];
     }
 }

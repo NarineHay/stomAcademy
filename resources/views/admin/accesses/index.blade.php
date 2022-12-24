@@ -13,34 +13,40 @@
                     <a class="btn btn-primary" href="{{route('admin.accesses.create')}}" role="button">Добавить</a>
                 </div>
             </div>
-            <form method="get">
-{{--                <div>--}}
-{{--                    <div class="d-flex justify-content-sm-start">--}}
-{{--                        <label class="mr-1">Поиск по курсу/вебинару</label>--}}
-{{--                        <select class="form-control select2" name="search_webinar">--}}
-{{--                            @foreach($courses as $course)--}}
-{{--                                <option value="{{ $course->id }}">--}}
-{{--                                    {{ $course->title }}--}}
-{{--                                </option>--}}
-{{--                            @endforeach--}}
-{{--                            @foreach($webinars as $webinar)--}}
-{{--                                <option value="{{ $webinar->id }}">--}}
-{{--                                    {{ $webinar->title }}--}}
-{{--                                </option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
 
-{{--                        <label class="mr-1">Поиск по по пользователю</label>--}}
-{{--                        <select class="form-control select2" name="search_user">--}}
-{{--                            @foreach($users as $user)--}}
-{{--                                <option value="{{ $user->id }}">--}}
-{{--                                    {{ $user->name }}--}}
-{{--                                </option>--}}
-{{--                            @endforeach--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
-{{--                    <button class="btn btn-outline-primary" type="submit">Поиск</button>--}}
-{{--                </div>--}}
+            <form method="get">
+                <div>
+                    <div class="d-flex align-items-end">
+                        <div class="w-25 mr-3">
+                            <label>Курс/Вебинар</label>
+                            <select class="form-control select2" name="search_webinar">
+                                @foreach($courses as $course)
+                                    <option value="{{ $course->id }}">
+                                        {{ $course->title }}
+                                    </option>
+                                @endforeach
+
+                                @foreach($webinars as $webinar)
+                                    <option value="{{ $webinar->id }}">
+                                        {{ $webinar->title }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mr-3 w-25">
+                            <label>Пользователь</label>
+                            <select class="form-control select2" name="search_user">
+                                @foreach($users as $user)
+                                    <option value="{{ $user->id }}">
+                                        {{ $user->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button class="btn btn-outline-primary" type="submit" style="height: 38px">Поиск</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

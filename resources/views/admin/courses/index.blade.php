@@ -87,7 +87,7 @@
                                             <a><img src="{{\Illuminate\Support\Facades\Storage::url($course->image) }}" height="70" alt=""/></a>
                                         </td>
                                         <td>
-                                            <a>{{$course->title}}</a>
+                                            <a>{{$course->info->title}}</a>
                                         </td>
                                         <td>
                                             <a>{{$course->start_date}}</a>
@@ -95,7 +95,6 @@
                                         <td>
                                             <a>{{$course->end_date}}</a>
                                         </td>
-
                                         <td>
                                             <a>${{$course->price->usd}}</a>
                                         </td>

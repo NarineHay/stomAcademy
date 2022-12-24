@@ -37,7 +37,10 @@ class AccessController extends Controller
         }
 
         $accesses = $access_query->orderBY($order,$sort)->paginate(10);
-        return view('admin.accesses.index',compact('accesses'));
+        $users = User::query()->where("role",User::ROLE_USER)->get();
+        $courses = Course::all();
+        $webinars = Webinar::all();
+        return view('admin.accesses.index',compact('accesses','users','webinars','courses'));
     }
 
     public function create(){

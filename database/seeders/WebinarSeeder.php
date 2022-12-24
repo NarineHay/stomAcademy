@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Language;
 use App\Models\Prices;
 use App\Models\User;
-use App\Models\UserInfo;
 use App\Models\Webinar;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\WebinarInfo;
 use Illuminate\Database\Seeder;
 
 class WebinarSeeder extends Seeder
@@ -16,10 +16,14 @@ class WebinarSeeder extends Seeder
         $price = Prices::all();
         $user = User::all();
         for($i = 0;$i < 500;$i++){
-            $info = Webinar::factory(1)->make()->first();
-            $info->price_id = $price->random(1)->first()->id;
-            $info->user_id = $user->random(1)->first()->id;
-            $info->save();
+            $webinar = Webinar::factory(1)->make()->first();
+            $webinar->price_id = $price->random(1)->first()->id;
+            $webinar->user_id = $user->random(1)->first()->id;
+            $webinar->save();
+            foreach (Language::all() as $lg){
+                $info = WebinarInfo::factory(1)->make(['lg_id' => $lg->id])->first();
+                $webinar->infos()->create($info->toArray());
+            }
         }
     }
 }

@@ -14,10 +14,8 @@ class AdminCourseStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'description' => 'required',
         ];
     }
 }

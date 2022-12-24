@@ -134,6 +134,12 @@
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
+            <li>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button class="btn btn-warning">Logout</button>
+                </form>
+            </li>
         </ul>
     </nav>
 
@@ -188,10 +194,6 @@
 
                     <li class="nav-item">
                         <a href="{{ route('admin.blogs.index') }}" class="nav-link @if(request()->is('admin/blogs*')) active @endif">Блог</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="{{ route('admin.lectorpage.index') }}" class="nav-link @if(request()->is('admin/lectorpages*')) active @endif">Панель лектора</a>
                     </li>
                 </ul>
             </nav>

@@ -52,15 +52,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Биография*</label>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <textarea class="summernote" name="biography">{{$user->lector->biography}}</textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label for="exampleInputEmail1">Аватарка лектора</label>
                         <div class="form-group">
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($user->userinfo->image) }}" height="100" alt=""/>
@@ -96,6 +87,34 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">% От продаж*</label>
                         <input type="number" value="{{$user->lector->per_of_sales}}" name="per_of_sales" class="form-control">
+                    </div>
+
+                    <div class="card card-primary card-outline card-outline-tabs">
+                        <div class="card-header p-0 border-bottom-0">
+                            <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+                                @foreach(\App\Models\Language::all() as $k => $lg)
+                                <li class="nav-item">
+                                    <a class="nav-link @if($k == 0) active @endif" data-toggle="pill" href="#lg_tab_{{ $lg->id }}" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">{{ $lg->name }}</a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content" id="custom-tabs-four-tabContent">
+                                @foreach($user->lector->infos as $k => $info)
+                                    <div class="tab-pane fade @if($k == 0) show active @endif" id="lg_tab_{{ $info->lg_id }}" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Биография*</label>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <textarea class="summernote" name="biography[{{ $info->lg_id }}]">{{$info->biography}}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
 

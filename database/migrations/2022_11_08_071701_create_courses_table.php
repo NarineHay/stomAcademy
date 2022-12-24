@@ -10,15 +10,12 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-            $table->longText('description');
-            $table->string('video');
+            $table->string('video')->nullable();
             $table->unsignedBigInteger('price_id');
             $table->string('url_to_page')->nullable();
             $table->string('image');
-            $table->unsignedBigInteger('user_id');
         });
     }
 

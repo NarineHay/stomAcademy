@@ -12,7 +12,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('direction_id')->nullable();
-            $table->longText('biography')->nullable();
             $table->string('photo')->nullable();
             $table->float('per_of_sales')->nullable();
             $table->timestamps();

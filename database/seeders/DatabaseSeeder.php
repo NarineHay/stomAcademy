@@ -16,22 +16,22 @@ class DatabaseSeeder extends Seeder
 //             'email' => 'admin@gmail.com',
 //         ]);
 
+        $this->call(LanguagesSeeder::class);
         $this->call(CountrySeeder::class);
+        $this->call(PricesSeeder::class);
+        $this->call(PromoSeeder::class);
+        $this->call(CurrencySeeder::class);
         $this->call(UserSeeder::class);
         $this->call(DirectionSeeder::class);
         $this->call(LectorSeeder::class);
         $this->call(UserInfoSeeder::class);
-        $this->call(PricesSeeder::class);
         $this->call(UserDirectionSeeder::class);
         $this->call(WebinarSeeder::class);
         $this->call(CourseSeeder::class);
         $this->call(CourseWebinarSeeder::class);
         $this->call(AccessSeeder::class);
-        $this->call(PromoSeeder::class);
-        $this->call(CurrencySeeder::class);
         $this->call(PageSeeder::class);
         $this->call(BlogSeeder::class);
         $this->call(BlogCategorySeeder::class);
-        $this->call(LanguagesSeeder::class);
     }
 }

@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminWebinarStoreRequest;
 use App\Models\Direction;
+use App\Models\Language;
 use App\Models\Lector;
 use App\Models\Prices;
 use App\Models\Webinar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 class WebinarController extends Controller
 {
@@ -30,23 +33,36 @@ class WebinarController extends Controller
     public function store(AdminWebinarStoreRequest $request)
     {
         $webinar = new Webinar();
-        $webinar->title = $request->get('title');
+        $webinar->user_id = $request->get("user_id");
         $webinar->start_date = $request->get('start_date');
-        $webinar->end_date = $request->get('end_date');
         $webinar->duration = $request->get('duration');
-        $webinar->description = $request->get('description');
-        $webinar->program = $request->get('program');
-        $webinar->video_invitation = $request->get('video_invitation');
         $webinar->price_id = $request->get('price_id');
-        $webinar->video = $request->get('video');
         $webinar->image = $request->file('image')->store('public/webinar');
-
         $webinar->save();
+
+        $titles = $request->get("title");
+        $descriptions = $request->get("description");
+        $programs = $request->get("program");
+        $video_invitations = $request->get("video_invitation");
+        $videos = $request->get("video");
+
+        foreach (Language::all() as $lg){
+            $webinar->infos()->create(
+                [
+                    'webinar_id' => $webinar->id,
+                    'lg_id' => $lg->id,
+                    'title' => $titles[$lg->id],
+                    'description' => $descriptions[$lg->id],
+                    'program' => $programs[$lg->id],
+                    'video_invitation' => $video_invitations[$lg->id],
+                    'video' => $videos[$lg->id],
+                ]
+            );
+        }
 
         return redirect()->route('admin.webinars.index')
             ->with('success', 'Webinar has been created successfully.');
     }
-
 
     public function edit(Webinar $webinar)
     {
@@ -58,12 +74,11 @@ class WebinarController extends Controller
     public function update(Request $request, Webinar $webinar)
     {
         $request->validate([
-            'title' => 'required',
+            'title.*' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required',
             'duration' => 'required',
-            'description' => 'required',
-            'program' => 'required',
+            'description.*' => 'required',
+            'program.*' => 'required',
         ]);
 
         $webinar = Webinar::find($webinar->id);
@@ -74,16 +89,31 @@ class WebinarController extends Controller
             $webinar->image = $request->file('image')->store('public/webinar');
         }
 
-        $webinar->title = $request->title;
         $webinar->start_date = $request->start_date;
-        $webinar->end_date = $request->end_date;
         $webinar->duration = $request->duration;
-        $webinar->description = $request->description;
-        $webinar->program = $request->program;
-        $webinar->video = $request->video;
-        $webinar->video_invitation = $request->video_invitation;
         $webinar->price_id = $request->price_id;
         $webinar->status = $request->status;
+
+        foreach ($request->get("title",[]) as $lg_id => $title){
+            $webinar->infos()->where("lg_id",$lg_id)->update(['title' => $title]);
+        }
+
+        foreach ($request->get("description",[]) as $lg_id => $desc){
+            $webinar->infos()->where("lg_id",$lg_id)->update(['description' => $desc]);
+        }
+
+        foreach ($request->get("program",[]) as $lg_id => $program){
+            $webinar->infos()->where("lg_id",$lg_id)->update(['program' => $program]);
+        }
+
+        foreach ($request->get("video_invitation",[]) as $lg_id => $video_inv){
+            $webinar->infos()->where("lg_id",$lg_id)->update(['video_invitation' => $video_inv]);
+        }
+
+        foreach ($request->get("video",[]) as $lg_id => $video){
+            $webinar->infos()->where("lg_id",$lg_id)->update(['video' => $video]);
+        }
+
         $webinar->save();
         return redirect()->route('admin.webinars.index',$webinar)
             ->with('success','Webinar has been updated successfully');
