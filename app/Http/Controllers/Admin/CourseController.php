@@ -31,7 +31,6 @@ class CourseController extends Controller
 
     public function store(AdminCourseStoreRequest $request)
     {
-
         $course = new Course();
         $course->start_date = $request->get('start_date');
         $course->end_date = $request->get('end_date');

@@ -35,7 +35,6 @@
                 @csrf
                 @method('PUT')
                 <div class="card-body">
-
                     <div class="form-group">
                         <label for="exampleInputEmail1">ДАТА КУРСА*</label>
                         <input type="datetime-local" value="{{$course->start_date}}" name="start_date" class="form-control">

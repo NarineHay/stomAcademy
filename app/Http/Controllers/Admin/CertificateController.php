@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Certificate;
 use App\Models\Course;
+use App\Models\Language;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminCertificateStoreRequest;
 
@@ -28,7 +29,20 @@ class CertificateController extends Controller
         $certificate->type = $request->get('type');
         $certificate->hours_number = $request->get('hours_number');
         $certificate->date = $request->get('date');
-        $certificate->image = $request->file('image')->store('public/certificates');
+        $certificate->save();
+
+        $images = $request->get("image");
+
+        foreach (Language::all() as $lg){
+            $certificate->infos()->create(
+                [
+                    'lg_id' => $lg->id,
+                    'image' => $images[$lg->id],
+                ]
+            );
+        }
+//        $certificate->image = $request->file('image')->store('public/certificates');
+
 //        $image = $certificate->image;
 //        $input['image'] = time().'.'.$image->getClientOriginalExtension();
 //        $imgFile = Image::make($image->getRealPath());
@@ -49,7 +63,8 @@ class CertificateController extends Controller
 //        }
 //        $imgFile->resize($nw,$nh);
 //        $imgFile->crop(3508,2480,$x,$y);
-        $certificate->save();
+
+
         return redirect()->route('admin.certificates.edit',$certificate->id)
             ->with('success', 'Certificate has been created successfully.');
     }
@@ -62,12 +77,12 @@ class CertificateController extends Controller
     public function update(Request $request,Certificate $certificate)
     {
         $certificate = Certificate::find($certificate->id);
-        if($request->hasFile('image')){
-            $request->validate([
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            ]);
-            $certificate->image = $request->file('image')->store('public/certificates');
-        }
+//        if($request->hasFile('image')){
+//            $request->validate([
+//                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+//            ]);
+//            $certificate->image = $request->file('image')->store('public/certificates');
+//        }
 
         $certificate->course_id = $request->course_id;
         $certificate->name_x = $request->name_x;
@@ -79,6 +94,10 @@ class CertificateController extends Controller
         $certificate->type = $request->type;
         $certificate->hours_number = $request->hours_number;
         $certificate->date = $request->date;
+
+        foreach ($request->get("image",[]) as $lg_id => $image){
+            $certificate->infos()->where("lg_id",$lg_id)->update(['image' => $image]);
+        }
 
         $certificate->save();
         return redirect()->route('admin.certificates.index',$certificate)

@@ -13,6 +13,8 @@ return new class extends Migration
             $table->string('meta_title')->nullable();
             $table->longText('meta_description')->nullable();
             $table->string('heading')->nullable();
+            $table->unsignedBigInteger('lg_id')->nullable();
+            $table->string('url')->nullable();
         });
     }
 

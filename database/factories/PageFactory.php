@@ -11,6 +11,7 @@ class PageFactory extends Factory
     {
         return [
             "meta_description" => fake()->text(),
+            "url" => fake()->url()
         ];
     }
 }
