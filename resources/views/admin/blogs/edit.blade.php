@@ -35,18 +35,6 @@
                 @csrf
                 @method('PUT')
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">НАЗВАНИЕ*</label>
-                        <input type="text" value="{{ $blog->title }}" name="title" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">ОПИСАНИЕ*</label>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <textarea class="summernote" name="text">{{$blog->text}}</textarea>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group mt-3">
                         <label for="exampleInputEmail1">КАТЕГОРИЯ</label>
                         <select class="form-control select2" name="category_id">
@@ -57,14 +45,49 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ*</label>
-                        <div class="form-group">
-                            <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->image) }}" height="100" alt=""/>
+
+                    <div class="card card-primary card-outline card-outline-tabs">
+                        <div class="card-header p-0 border-bottom-0">
+                            <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+                                @foreach(\App\Models\Language::all() as $k => $lg)
+                                    <li class="nav-item">
+                                        <a class="nav-link @if($k == 0) active @endif" data-toggle="pill" href="#lg_tab_{{ $lg->id }}" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">{{ $lg->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div>
-                        <div class="custom-file">
-                            <input type="file" name="image" class="form-control" id="customFile">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+
+                        <div class="card-body">
+                            <div class="tab-content" id="custom-tabs-four-tabContent">
+                                @foreach($blog->infos as $k => $info)
+                                    <div class="tab-pane fade @if($k == 0) show active @endif" id="lg_tab_{{ $info->lg_id }}" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">НАЗВАНИЕ*</label>
+                                            <input type="text" value="{{ $info->title }}" name="title[{{$info->lg_id}}]" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">ОПИСАНИЕ*</label>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <textarea class="summernote" name="text[{{$info->lg_id}}]">{{$info->text}}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ*</label>
+                                            <div class="form-group">
+                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($info->image) }}" height="100" alt=""/>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" name="image[{{$info->lg_id}}]" class="form-control" id="customFile_{{ $info->lg_id }}">
+                                                <label class="custom-file-label" for="customFile_{{ $info->lg_id }}">Choose file</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>

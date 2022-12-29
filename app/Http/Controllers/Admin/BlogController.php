@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminBlogStoreRequest;
 use App\Models\Blog;
 use App\Models\Direction;
+use App\Models\Language;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -23,14 +25,32 @@ class BlogController extends Controller
         return view('admin.blogs.create',compact('data'));
     }
 
-    public function store(Request $request)
+    public function store(AdminBlogStoreRequest $request)
     {
+        $request->validate([
+            'title.*' => 'required',
+            'text.*' => 'required',
+            'image.*' => 'required',
+        ]);
+
         $blog = new Blog();
-        $blog->title = $request->get('title');
-        $blog->text = $request->get('text');
-        $blog->image = $request->file('image')->store('public/blog');
         $blog->category_id = $request->get('category_id');
         $blog->save();
+
+        $titles = $request->get("title");
+        $texts = $request->get("text");
+        $images = $request->file("image");
+
+        foreach (Language::all() as $lg){
+            $blog->infos()->create(
+                [
+                    'lg_id' => $lg->id,
+                    'title' => $titles[$lg->id],
+                    'text' => $texts[$lg->id],
+                    'image' => $images[$lg->id]->store('public/blog'),
+                ]
+            );
+        }
 
         return redirect()->route('admin.blogs.index')
             ->with('success', 'Blog has been created successfully.');
@@ -45,21 +65,27 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         $request->validate([
-            'title' => 'required',
-            'text' => 'required',
+            'title.*' => 'required',
+            'text.*' => 'required',
+            'image.*' => 'required',
         ]);
 
         $blog = Blog::find($blog->id);
-        if($request->hasFile('image')){
-            $request->validate([
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            ]);
-            $blog->image = $request->file('image')->store('public/blog');
+
+        $blog->category_id = $request->category_id;
+        foreach ($request->get("title",[]) as $lg_id => $title){
+            $blog->infos()->where("lg_id",$lg_id)->update(['title' => $title]);
         }
 
-        $blog->title = $request->title;
-        $blog->text = $request->text;
-        $blog->category_id = $request->category_id;
+        foreach ($request->get("text",[]) as $lg_id => $text){
+            $blog->infos()->where("lg_id",$lg_id)->update(['text' => $text]);
+        }
+
+        foreach ($request->file("image",[]) as $lg_id => $image){
+            $blog->infos()->where("lg_id",$lg_id)->update([
+                'image' => $image->store('public/blog')
+            ]);
+        }
 
         $blog->save();
         return redirect()->route('admin.blogs.index',$blog)

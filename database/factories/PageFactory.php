@@ -10,8 +10,7 @@ class PageFactory extends Factory
     public function definition()
     {
         return [
-            "meta_description" => fake()->text(),
-            "url" => fake()->url()
+            "url" => fake()->url(),
         ];
     }
 }

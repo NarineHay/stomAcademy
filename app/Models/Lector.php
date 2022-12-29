@@ -42,11 +42,19 @@ class Lector extends Model
     }
 
     function getCourseCount(){
+        return count($this->getCourses());
+    }
+
+    function getCourses(){
         $sql = 'select courses.id from webinars
                 join course_webinars on course_webinars.webinar_id = webinars.id
                 join courses on courses.id = course_webinars.course_id
                 where webinars.user_id = '.$this->user_id.'
                 GROUP by courses.id;';
-        return count(DB::select(DB::raw($sql)));
+        $ids = [];
+        foreach (DB::select(DB::raw($sql)) as $item){
+            $ids[] = $item->id;
+        }
+        return Course::query()->whereIn("id",$ids)->get();
     }
 }

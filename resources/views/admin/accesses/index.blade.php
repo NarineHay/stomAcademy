@@ -20,15 +20,16 @@
                         <div class="w-25 mr-3">
                             <label>Курс/Вебинар</label>
                             <select class="form-control select2" name="search_webinar">
+                                <option value="0">---</option>
                                 @foreach($courses as $course)
-                                    <option value="{{ $course->id }}">
-                                        {{ $course->title }}
+                                    <option @if($course->id == $search_webinar) selected @endif value="{{ $course->id }}">
+                                        {{ $course->info->title }}
                                     </option>
                                 @endforeach
 
                                 @foreach($webinars as $webinar)
-                                    <option value="{{ $webinar->id }}">
-                                        {{ $webinar->title }}
+                                    <option @if($webinar->id == $search_webinar) selected @endif  value="{{ $webinar->id }}">
+                                        {{ $webinar->info->title }}
                                     </option>
                                 @endforeach
                             </select>
@@ -37,8 +38,9 @@
                         <div class="mr-3 w-25">
                             <label>Пользователь</label>
                             <select class="form-control select2" name="search_user">
+                                <option value="0">---</option>
                                 @foreach($users as $user)
-                                    <option value="{{ $user->id }}">
+                                    <option @if($user->id == $search_user) selected @endif value="{{ $user->id }}">
                                         {{ $user->name }}
                                     </option>
                                 @endforeach
@@ -79,7 +81,7 @@
                                 @foreach($accesses as $access)
                                     <tr>
                                         <td>
-                                            <a>{{$access->course->title ?? $access->webinar->title}}</a>
+                                            <a>{{$access->course->info->title ?? $access->webinar->info->title}}</a>
                                         </td>
                                         <td>
                                             <a>{{$access->user->name}} ({{$access->user->email}})</a>

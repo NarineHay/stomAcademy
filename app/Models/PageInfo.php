@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LectorInfo extends Model
+class PageInfo extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
     protected $fillable = [
-        'biography',
-        'lg_id'
+        'meta_title',
+        'meta_description',
+        'heading',
+        'lg_id',
+        'page_id'
     ];
 }

@@ -35,17 +35,30 @@
                                 </thead>
 
                                 <tbody>
-{{--                                {{dd($user->lector)}}--}}
-                                    @foreach($user->lector->webinars as $webinar)
+
+                                    @foreach($user->lector->getCourses() as $course)
                                         <tr>
                                             <td>
-                                                <a>{{$webinar->title}}</a>
+                                                <a href="{{ route("admin.courses.edit",$course) }}">{{$course->info->title}}</a>
                                             </td>
                                             <td>
                                                 <a>0</a>
                                             </td>
                                             <td>
-                                                <a>{{$webinar->user->lector->per_of_sales ?? ""}}</a>
+                                                <a >{{$user->lector->per_of_sales ?? ""}}</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach($user->lector->webinars as $webinar)
+                                        <tr>
+                                            <td>
+                                                <a href="{{ route("admin.webinars.edit",$webinar) }}">{{$webinar->info->title}}</a>
+                                            </td>
+                                            <td>
+                                                <a>0</a>
+                                            </td>
+                                            <td>
+                                                <a>{{$user->lector->per_of_sales ?? ""}}</a>
                                             </td>
                                         </tr>
                                     @endforeach

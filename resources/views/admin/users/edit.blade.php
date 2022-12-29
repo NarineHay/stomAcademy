@@ -42,7 +42,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ПАРОЛЬ*</label>
-                        <input type="text" value="{{ $user->password }}" name="password" class="form-control">
+                        <input type="text" value="" name="password" class="form-control">
                     </div>
 
                     <div class="form-group">

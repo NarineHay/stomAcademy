@@ -2,18 +2,27 @@
 
 namespace Database\Seeders;
 
+use App\Models\Language;
 use App\Models\Page;
-use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class PageSeeder extends Seeder
 {
     public function run()
     {
-        Page::factory(10)->state(new Sequence(
-            ['meta_title' => 'Контакты', 'heading'=>'Контакты', 'lg_id' => '1'],
-        ))->create();
+        $lgs = Language::all();
 
-        Page::factory(40)->create();
+        for($i = 0;$i < 10;$i++){
+            $page = Page::factory(1)->make()->first();
+            $page->save();
+            foreach ($lgs as $lg) {
+                $page->infos()->create([
+                    'lg_id' => $lg->id,
+                    'meta_title' => fake()->jobTitle,
+                    'meta_description' => fake()->realText(),
+                    'heading' => fake()->word()
+                ]);
+            }
+        }
     }
 }

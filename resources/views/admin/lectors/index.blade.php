@@ -47,7 +47,7 @@
                                             <a>{{$user->name}}</a>
                                         </td>
                                         <td>
-                                            <a>{{$user->lector->direction->title}}</a>
+                                            <a>{{$user->lector->direction->title ?? ""}}</a>
                                         </td>
                                         <td>
                                             <a>{{$user->lector ? $user->lector->getCourseCount() : 0}}</a>

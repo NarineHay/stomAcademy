@@ -35,6 +35,11 @@
                 @csrf
                 @method('PUT')
                 <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">URL</label>
+                        <input type="text" value="{{$page->url}}" name="url" class="form-control">
+                    </div>
+
                     <div class="card card-primary card-outline card-outline-tabs">
                         <div class="card-header p-0 border-bottom-0">
                             <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
@@ -48,7 +53,7 @@
 
                         <div class="card-body">
                             <div class="tab-content" id="custom-tabs-four-tabContent">
-                                @foreach($page as $k => $info)
+                                @foreach($page->infos as $k => $info)
                                     <div class="tab-pane fade @if($k == 0) show active @endif" id="lg_tab_{{ $info->lg_id }}" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Meta title*</label>
@@ -65,7 +70,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">H1*</label>
+                                            <label for="exampleInputEmail1">Heading*</label>
                                             <input type="text" name="heading[{{$info->lg_id}}]" value="{{$info->heading}}" class="form-control">
                                         </div>
                                     </div>

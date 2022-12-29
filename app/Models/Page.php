@@ -13,15 +13,16 @@ class Page extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'meta_title',
-        'meta_description',
-        'heading',
         'url',
-        'lg_id',
     ];
 
-//    function info(){
-//        $lg_id = Session::get("lg");
-//        //return $this->where("lg_id",$lg_id);
-//    }
+    function infos(){
+        return $this->hasMany(PageInfo::class,"","id");
+    }
+
+    function info(){
+        $lg_id = Session::get("lg");
+        return $this->hasOne(PageInfo::class,"page_id",'id')
+            ->where("lg_id",$lg_id);
+    }
 }

@@ -30,56 +30,19 @@
                         <div class="card-body">
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
-                                <tr>
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
-                                            <span>Meta title</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.pages.index',['order'=>'meta_title','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.pages.index',['order'=>'meta_title','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
+                                    <tr>
+                                        <th><span>Meta title</span></th>
 
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
-                                            <span>Meta description</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.pages.index',['order'=>'meta_description','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.pages.index',['order'=>'meta_description','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
+                                        <th><span>Meta description</span></th>
 
-                                    <th>
-                                        <div class="d-flex align-items-center flex-nowrap">
-                                            <span>H1</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.pages.index',['order'=>'H1','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.pages.index',['order'=>'H1','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </th>
+                                        <th><span>Heading</span></th>
 
-                                    <th>Кнопки управления</th>
-                                </tr>
+                                        <th><span>Кнопки управления</span></th>
+                                    </tr>
                                 </thead>
 
                                 <tbody>
-                                @foreach($pages as $page)
-
+                                    @foreach($pages as $page)
                                         <tr>
                                             <td>
                                                 <a>{{$page->info->meta_title}}</a>
@@ -102,8 +65,7 @@
                                                 </form>
                                             </td>
                                         </tr>
-
-                                @endforeach
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

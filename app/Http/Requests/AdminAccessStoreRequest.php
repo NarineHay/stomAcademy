@@ -13,8 +13,6 @@ class AdminAccessStoreRequest extends FormRequest
 
     public function rules()
     {
-        return [
-            'user_ids' => 'required',
-        ];
+        return [];
     }
 }

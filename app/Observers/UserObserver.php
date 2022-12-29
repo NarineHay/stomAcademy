@@ -9,9 +9,10 @@ class UserObserver
 {
     public function created(user $user)
     {
-        $user->lector()->create();
+        $user->userinfo()->create();
+        $lector = $user->lector()->create();
         foreach (Language::all() as $lg){
-            $user->lector->infos()->create([
+            $lector->infos()->create([
                 "lg_id" => $lg->id
             ]);
         }

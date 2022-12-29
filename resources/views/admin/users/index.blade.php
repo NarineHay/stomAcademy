@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+ @extends('layouts.admin')
 
 @section('title', 'User')
 
@@ -83,16 +83,13 @@
                                         <td>
                                             <a><img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image) }}" height="70" alt=""/></a>
                                         </td>
-{{--                                        <td>--}}
-{{--                                            <a>{{$user->id}}</a>--}}
-{{--                                        </td>--}}
                                         <td>
                                             <p class="mb-0"><b>{{$user->name}}</b></p>
                                             <p class="mb-0">{{$user->email}}</p>
                                             <p class="mb-0">Зарегистрован։{{$user->created_at}}</p>
                                         </td>
                                         <td>
-                                            <a>{{$user->userinfo->country->title}}</a>
+                                            <a>{{$user->userinfo->country->title  ?? ""}}</a>
                                         </td>
                                         <td>
                                             <a>{{$user->userinfo->phone}}</a>

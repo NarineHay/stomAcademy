@@ -34,6 +34,11 @@
             <form action="{{ route('admin.pages.store') }}" method="POST">
                 @csrf
                 <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">URL</label>
+                        <input type="text" value="{{old('url')}}" name="url" class="form-control">
+                    </div>
+
                     <div class="card card-primary card-outline card-outline-tabs">
                         <div class="card-header p-0 border-bottom-0">
                             <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
@@ -64,7 +69,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">H1*</label>
+                                            <label for="exampleInputEmail1">Heading*</label>
                                             <input type="text" name="heading[{{$lg->id}}]" value="{{old('heading') ?? ""}}" class="form-control">
                                         </div>
                                     </div>

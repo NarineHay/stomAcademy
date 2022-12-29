@@ -14,23 +14,25 @@ class PagesController extends Controller
     {
         $order = $request->get("order","id");
         $sort = $request->get("sort","asc");
-        $pages = Page::query()->orderBY($order,$sort)->paginate(10);
-        return view('admin.pages.index', compact('pages'));
+        $data['pages'] = Page::query()->orderBY($order,$sort)->paginate(10);
+        return view('admin.pages.index', $data);
     }
     public function create()
     {
         return view('admin.pages.create');
     }
 
-    public function store(AdminPagesStoreRequest $request)
+    public function store(Request $request)
     {
         $page = new Page();
+        $page->url = $request->get('url');
+
         $page->save();
         $meta_titles = $request->get("meta_title");
         $meta_descriptions = $request->get("meta_description");
         $headings = $request->get("heading");
         foreach (Language::all() as $lg){
-            $page->create(
+            $page->infos()->create(
                 [
                     'lg_id' => $lg->id,
                     'meta_title' => $meta_titles[$lg->id],
@@ -39,7 +41,8 @@ class PagesController extends Controller
                 ]
             );
         }
-        return redirect()->route('admin.pages.index');
+        return redirect()->route('admin.pages.index')
+            ->with('success', 'Page has been created successfully.');
     }
 
     public function edit(Page $page)
@@ -53,18 +56,21 @@ class PagesController extends Controller
             'meta_title.*' => 'required',
             'meta_description.*' => 'required',
             'heading.*' => 'required',
+            'url' => 'required'
         ]);
 
         $page = Page::find($page->id);
 
+        $page->url = $request->url;
+
         foreach ($request->get("meta_title",[]) as $lg_id => $meta_title){
-            $page->where("lg_id",$lg_id)->update(['meta_title' => $meta_title]);
+            $page->infos()->where("lg_id",$lg_id)->update(['meta_title' => $meta_title]);
         }
         foreach ($request->get("meta_description",[]) as $lg_id => $meta_description){
-            $page->where("lg_id",$lg_id)->update(['meta_description' => $meta_description]);
+            $page->infos()->where("lg_id",$lg_id)->update(['meta_description' => $meta_description]);
         }
         foreach ($request->get("heading",[]) as $lg_id => $heading){
-            $page->where("lg_id",$lg_id)->update(['heading' => $heading]);
+            $page->infos()->where("lg_id",$lg_id)->update(['heading' => $heading]);
         }
 
         $page->save();
@@ -76,6 +82,6 @@ class PagesController extends Controller
     {
         $page->delete();
         return redirect()->route('admin.pages.index')
-            ->with('success','page has been deleted successfully');
+            ->with('success','Page has been deleted successfully');
     }
 }

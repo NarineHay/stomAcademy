@@ -193,7 +193,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('admin.blogs.index') }}" class="nav-link @if(request()->is('admin/blogs*')) active @endif">Блог</a>
+                        <a href="{{ route('admin.blogs.index') }}" class="nav-link @if(request()->is('admin/blogs*')) active @endif">Статьи</a>
                     </li>
                 </ul>
             </nav>
@@ -248,26 +248,27 @@
 </script>
 
 <script>
-    document.querySelectorAll('input[type=radio][name="type"]').forEach(radio => radio.addEventListener('change', function check(){
-        if(radio.value == 'webinar'){
-            document.getElementById('courseDiv').classList.add("d-none");
-            document.getElementById('webinarDiv').classList.remove("d-none");
-        }
-        else if(radio.value == 'course'){
-            document.getElementById('webinarDiv').classList.add("d-none");
-            document.getElementById('courseDiv').classList.remove("d-none");
-        }
-    }));
+    document.querySelectorAll(".access_form").forEach(function (form){
+        form.querySelectorAll('input[type=radio][name="type"]').forEach(radio => radio.addEventListener('change', function check(){
+            if(radio.value == 'webinar'){
+                form.querySelector('.courseDiv').classList.add("d-none");
+                form.querySelector('.webinarDiv').classList.remove("d-none");
+            }
+            else if(radio.value == 'course'){
+                form.querySelector('.webinarDiv').classList.add("d-none");
+                form.querySelector('.courseDiv').classList.remove("d-none");
+            }
+        }));
 
-    document.querySelectorAll('input[type=radio][name="access_time"]').forEach(radio => radio.addEventListener('change', function check(){
-
-        if(radio.value == '1'){
-            document.getElementById('duration').classList.remove("d-none");
-        }
-        else if(radio.value == '0'){
-            document.getElementById('duration').classList.add("d-none");
-        }
-    }));
+        form.querySelectorAll('input[type=radio][name="access_time"]').forEach(radio => radio.addEventListener('change', function check(){
+            if(radio.value == '1'){
+                form.querySelector('.duration').classList.remove("d-none");
+            }
+            else if(radio.value == '0'){
+                form.querySelector('.duration').classList.add("d-none");
+            }
+        }));
+    })
 </script>
 
 <script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

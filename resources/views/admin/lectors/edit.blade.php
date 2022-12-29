@@ -43,6 +43,7 @@
                     <div class="form-group mt-3">
                         <label for="exampleInputEmail1">Специализация</label>
                         <select class="form-control select2" name="direction_id">
+                            <option >---</option>
                             @foreach($directions as $direction)
                                 <option value="{{ $direction->id }}" {{ $direction->id == $user->lector->direction_id ? 'selected' : '' }}>
                                     {{ $direction->title }}

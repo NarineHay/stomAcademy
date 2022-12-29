@@ -71,13 +71,13 @@
                                 @foreach($blogs as $blog)
                                     <tr>
                                         <td>
-                                            <a><img src="{{\Illuminate\Support\Facades\Storage::url($blog->image) }}" height="70" alt=""/></a>
+                                            <a><img src="{{\Illuminate\Support\Facades\Storage::url($blog->info->image) }}" height="70" alt=""/></a>
                                         </td>
                                         <td>
-                                            <a>{{$blog->title}}</a>
+                                            <a>{{$blog->info->title}}</a>
                                         </td>
                                         <td>
-                                            <a>{{strip_tags($blog->text)}}</a>
+                                            <a>{{strip_tags($blog->info->text)}}</a>
                                         </td>
                                         <td class="project-actions text-right">
                                             <form action="{{route('admin.blogs.destroy',$blog)}}" method="POST" class="d-flex justify-content-around">

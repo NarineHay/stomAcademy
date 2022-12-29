@@ -31,7 +31,7 @@
         @endif
 
         <div class="card card-primary">
-            <form action="{{ route('admin.accesses.update',$access->id) }}" method="POST">
+            <form class="access_form" action="{{ route('admin.accesses.update',$access->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
@@ -48,31 +48,33 @@
 
                     <div class="form-group">
                         <div>
-                            <input type="radio" id="course" name="type" value="course" {{$access->course_id != null ? 'checked' : ''}}>
-                            <label for="course" style="margin-right: 10px">Курс</label>
+                            <label for="course" style="margin-right: 10px">
+                                <input type="radio" id="course" name="type" value="course" {{$access->course_id != null ? 'checked' : ''}}>
+                                Курс</label>
 
-                            <input type="radio" id="webinar" name="type" value="webinar" {{$access->webinar_id != null ? 'checked' : ''}}>
-                            <label for="webinar">Вебинар</label>
+                            <label for="webinar">
+                                <input type="radio" id="webinar" name="type" value="webinar" {{$access->webinar_id != null ? 'checked' : ''}}>
+                                Вебинар</label>
                         </div>
                     </div>
 
-                    <div class="form-group @if($access->course_id == null) d-none @endif" id="courseDiv">
+                    <div class="form-group @if($access->course_id == null) d-none @endif courseDiv" id="">
                         <label for="exampleInputEmail1">Курс</label>
                         <select class="form-control select2" name="course_id">
                             @foreach($data['courses'] as $course)
                                 <option value="{{ $course->id }}" {{ $course->id == $access->course_id ? 'selected' : '' }}>
-                                    {{ $course->title }}
+                                    {{ $course->info->title }}
                                 </option>
                             @endforeach
                         </select>
                     </div>
 
-                    <div class="form-group @if($access->webinar_id == null) d-none @endif" id="webinarDiv">
+                    <div class="form-group @if($access->webinar_id == null) d-none @endif webinarDiv">
                         <label for="exampleInputEmail1">Вебинар</label>
                         <select class="form-control select2" name="webinar_id">
                             @foreach($data['webinars'] as $webinar)
                                 <option value="{{ $webinar->id }}" {{ $webinar->id == $access->webinar_id ? 'selected' : '' }}>
-                                    {{ $webinar->title }}
+                                    {{ $webinar->info->title }}
                                 </option>
                             @endforeach
                         </select>
@@ -81,15 +83,19 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Статус просмотра</label>
                         <div>
-                            <input type="radio" id="temporary" name="access_time" value="1" {{$access->access_time == 1 ? 'checked' : ''}}>
-                            <label for="temporary" class="mr-1">Доступ определенный период</label>
+                            <label for="temporary" class="mr-1">
+                                <input type="radio" id="temporary" name="access_time" value="1" {{$access->access_time == 1 ? 'checked' : ''}}>
 
-                            <input type="radio" id="permanent" name="access_time" value="0" {{$access->access_time == 0 ? 'checked' : ''}}>
-                            <label for="permanent">Постоянный доступ</label>
+                                Доступ определенный период</label>
+
+                            <label for="permanent">
+                                <input type="radio" id="permanent" name="access_time" value="0" {{$access->access_time == 0 ? 'checked' : ''}}>
+
+                                Постоянный доступ</label>
                         </div>
                     </div>
 
-                    <select class="form-control @if($access->access_time == 0) d-none @endif" name="duration" id="duration">
+                    <select class="form-control @if($access->access_time == 0) d-none @endif duration" name="duration">
                         @for($i = 5; $i <= 30; $i+=5)
                             <option {{ $access->duration == $i ? 'selected' : '' }} >{{$i}}</option>
                         @endfor
