@@ -52,7 +52,7 @@
                                         </td>
 
                                         <td>
-                                            <a>{{$certificate->course->title}}</a>
+                                            <a>{{$certificate->course->info->title}}</a>
                                         </td>
 
                                         <td class="project-actions text-right">

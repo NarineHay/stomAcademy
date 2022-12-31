@@ -22,6 +22,7 @@ class CertificateController extends Controller
         $data['courses'] = Course::all();
         return view('admin.certificates.create', $data);
     }
+
     public function store(AdminCertificateStoreRequest $request)
     {
         $certificate = new Certificate();
@@ -29,18 +30,19 @@ class CertificateController extends Controller
         $certificate->type = $request->get('type');
         $certificate->hours_number = $request->get('hours_number');
         $certificate->date = $request->get('date');
+        $certificate->image = $request->file('image')->store('public/certificates');
         $certificate->save();
 
-        $images = $request->get("image");
-
-        foreach (Language::all() as $lg){
-            $certificate->infos()->create(
-                [
-                    'lg_id' => $lg->id,
-                    'image' => $images[$lg->id],
-                ]
-            );
-        }
+//        $images = $request->get("image");
+//
+//        foreach (Language::all() as $lg){
+//            $certificate->infos()->create(
+//                [
+//                    'lg_id' => $lg->id,
+//                    'image' => $images[$lg->id],
+//                ]
+//            );
+//        }
 //        $certificate->image = $request->file('image')->store('public/certificates');
 
 //        $image = $certificate->image;

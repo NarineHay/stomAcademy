@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\LG;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
@@ -34,7 +35,7 @@ class Certificate extends Model
     }
 
     function info(){
-        $lg_id = Session::get("lg");
+        $lg_id = LG::get();
         return $this->hasOne(CertificateImage::class,"",'id')
             ->where("lg_id",$lg_id);
     }

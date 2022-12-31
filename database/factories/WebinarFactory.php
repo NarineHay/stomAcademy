@@ -13,7 +13,7 @@ class WebinarFactory extends Factory
             'start_date'=> $this->faker->dateTime,
             'duration'=> $this->faker->numberBetween(30,120),
 
-            'image' => 'public/webinar/webinarimage.jpg',
+            //'image' => 'public/webinar/webinarimage.jpg',
             'url_to_page' => $this->faker->url,
         ];
     }

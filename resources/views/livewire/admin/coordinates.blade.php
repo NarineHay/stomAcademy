@@ -6,7 +6,7 @@
                 <select class="form-control select2" name="course_id" wire:model="course_id">
                     @foreach($courses as $course)
                         <option value="{{ $course->id }}">
-                            {{ $course->title }}
+                            {{ $course->info->title }}
                         </option>
                     @endforeach
                 </select>
@@ -37,7 +37,7 @@
         <div class="col-6">
             <div class="form-group">
                 <div class="form-group d-flex justify-content-center">
-                    <img src="{{ \Illuminate\Support\Facades\Storage::url($image) }}" height="300" alt=""/>
+                    <img src="{{ \Illuminate\Support\Facades\Storage::url($image."?".\Illuminate\Support\Str::random(9)) }}" height="300" alt=""/>
                 </div>
                 <form wire:submit.prevent="save">
                     <div class="custom-file d-flex">
@@ -48,42 +48,99 @@
             </div>
             <form wire:submit.prevent="preview">
                 <div class="row">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">КООРДИНАТА ИМЕНИ X</label>
-                        <input wire:model="name_x" type="number" name="name_x" value="{{$certificate->name_x ?? ""}}" class="form-control">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>Название курса</h4>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">X</label>
+                                    <input wire:model="name.x" type="number" value="{{$certificate->name['x'] ?? ""}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">Y</label>
+                                    <input wire:model="name.y" type="number" value="{{$certificate->name['y'] ?? ""}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">Color</label>
+                                    <input wire:model="name.color" type="color" value="{{$certificate->name['color'] ?? ""}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">Size</label>
+                                    <input wire:model="name.size" type="number" value="{{$certificate->name['size'] ?? 32}}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">КООРДИНАТА ИМЕНИ Y</label>
-                        <input wire:model="name_y" type="number" name="name_y" value="{{$certificate->name_y ?? ""}}" class="form-control">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>ID</h4>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">X</label>
+                                    <input wire:model="cert_id.x" type="number" value="{{$certificate->cert_id['x'] ?? ""}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">Y</label>
+                                    <input wire:model="cert_id.y" type="number" value="{{$certificate->cert_id['y'] ?? ""}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">Color</label>
+                                    <input wire:model="cert_id.color" type="color" value="{{$certificate->cert_id['color'] ?? ""}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">Size</label>
+                                    <input wire:model="cert_id.size" type="number" value="{{$certificate->cert_id['size'] ?? 32}}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">КООРДИНАТА ЧАСОВ X</label>
-                        <input wire:model="hour_x" type="number" name="hour_x" value="{{$certificate->hour_x ?? ""}}" class="form-control">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>КОЛИЧЕСТВО ЧАСОВ(ТОЛЬКО ДЛЯ СЕМИНАРОВ)</h4>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">X</label>
+                                    <input wire:model="hour.x" type="number" value="{{$certificate->hour['x'] ?? ""}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">Y</label>
+                                    <input wire:model="hour.y" type="number" value="{{$certificate->hour['y'] ?? ""}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">Color</label>
+                                    <input wire:model="hour.color" type="color" value="{{$certificate->hour['color'] ?? ""}}" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="small">Size</label>
+                                    <input wire:model="hour.size" type="number" value="{{$certificate->hour['size'] ?? 32}}" class="form-control">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">КООРДИНАТА ЧАСОВ Y</label>
-                        <input wire:model="hour_y" type="number" name="hour_y" value="{{$certificate->hour_y ?? ""}}" class="form-control">
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">КООРДИНАТА ID X</label>
-                        <input wire:model="id_x" type="number" name="id_x" value="{{$certificate->id_x ?? ""}}" class="form-control">
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">КООРДИНАТА ID Y</label>
-                        <input wire:model="id_y" type="number" name="id_y" value="{{$certificate->id_y ?? ""}}" class="form-control">
-                    </div>
-                </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-success">Preview</button>
                 </div>

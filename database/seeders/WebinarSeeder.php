@@ -15,8 +15,9 @@ class WebinarSeeder extends Seeder
     {
         $price = Prices::all();
         $user = User::all();
+        $images = RandomImagesApi::getImages("webinar",10,"courses");
         for($i = 0;$i < 500;$i++){
-            $webinar = Webinar::factory(1)->make()->first();
+            $webinar = Webinar::factory(1)->make(['image' => $images[rand(0,9)]])->first();
             $webinar->price_id = $price->random(1)->first()->id;
             $webinar->user_id = $user->random(1)->first()->id;
             $webinar->save();

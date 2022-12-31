@@ -38,31 +38,30 @@
                                     <th>
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Название блога</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.blogs.index',['order'=>'title','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.blogs.index',['order'=>'title','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
+{{--                                            <div class="sort ml-2 d-flex flex-nowrap">--}}
+{{--                                                <a href = {{route('admin.blogs.index',['order'=>'title','sort'=>'asc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                                <a href = {{route('admin.blogs.index',['order'=>'title','sort'=>'desc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
                                         </div>
                                     </th>
-
+                                    <th>Категория</th>
                                     <th>
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Описание блога</span>
-                                            <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.blogs.index',['order'=>'text','sort'=>'asc'])}}>
-                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
-                                                </a>
-                                                <a href = {{route('admin.blogs.index',['order'=>'text','sort'=>'desc'])}}>
-                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
+{{--                                            <div class="sort ml-2 d-flex flex-nowrap">--}}
+{{--                                                <a href = {{route('admin.blogs.index',['order'=>'text','sort'=>'asc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                                <a href = {{route('admin.blogs.index',['order'=>'text','sort'=>'desc'])}}>--}}
+{{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
+{{--                                                </a>--}}
+{{--                                            </div>--}}
                                         </div>
                                     </th>
-
                                     <th>Кнопки управления</th>
                                 </tr>
                                 </thead>
@@ -77,7 +76,10 @@
                                             <a>{{$blog->info->title}}</a>
                                         </td>
                                         <td>
-                                            <a>{{strip_tags($blog->info->text)}}</a>
+                                            <a>{{ $blog->category->title }}</a>
+                                        </td>
+                                        <td>
+                                            <a>{{ substr(strip_tags($blog->info->text),0,200) }}...</a>
                                         </td>
                                         <td class="project-actions text-right">
                                             <form action="{{route('admin.blogs.destroy',$blog)}}" method="POST" class="d-flex justify-content-around">

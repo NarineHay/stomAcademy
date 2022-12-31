@@ -12,9 +12,18 @@ class PageSeeder extends Seeder
     {
         $lgs = Language::all();
 
-        for($i = 0;$i < 10;$i++){
-            $page = Page::factory(1)->make()->first();
-            $page->save();
+        $urls = [
+            "/",
+            "contacts",
+            "about",
+            "courses",
+            "lectors",
+            "webinars"
+        ];
+
+
+        foreach ($urls as $url){
+            $page = Page::create(['url' => $url]);
             foreach ($lgs as $lg) {
                 $page->infos()->create([
                     'lg_id' => $lg->id,

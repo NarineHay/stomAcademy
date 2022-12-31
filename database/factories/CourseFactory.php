@@ -13,7 +13,7 @@ class CourseFactory extends Factory
             'end_date'=> $this->faker->dateTime,
             'video'=> $this->faker->url,
             'url_to_page' => $this->faker->url,
-            'image' => 'public/course/courseimage.jpg',
+            //'image' => 'public/course/courseimage.jpg',
         ];
     }
 }

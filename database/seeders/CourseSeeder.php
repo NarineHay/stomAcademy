@@ -15,9 +15,9 @@ class CourseSeeder extends Seeder
     {
         $price = Prices::all();
         $lgs = Language::all();
-
+        $images = RandomImagesApi::getImages("webinar",10,"courses");
         for ($i = 0; $i < 100; $i++) {
-            $course = Course::factory(1)->make()->first();
+            $course = Course::factory(1)->make(['image' => $images[rand(0,9)]])->first();
             $course->price_id = $price->random(1)->first()->id;
             $course->save();
             foreach ($lgs as $lg) {

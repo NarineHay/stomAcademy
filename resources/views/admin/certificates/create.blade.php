@@ -39,7 +39,7 @@
                         <select class="form-control select2" name="course_id">
                             @foreach($courses as $course)
                                 <option value="{{ $course->id }}">
-                                    {{ $course->title }}
+                                    {{ $course->info->title }}
                                 </option>
                             @endforeach
                         </select>
@@ -62,38 +62,46 @@
                         <label for="exampleInputEmail1">ДАТА КУРСА*</label>
                         <input type="date" value="{{ old('date') ?? "" }}" name="date" class="form-control">
                     </div>
-
-                    <div class="card card-primary card-outline card-outline-tabs">
-                        <div class="card-header p-0 border-bottom-0">
-                            <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
-                                @foreach(\App\Models\Language::all() as $k => $lg)
-                                    <li class="nav-item">
-                                        <a class="nav-link @if($k == 0) active @endif" data-toggle="pill" href="#lg_tab_{{ $lg->id }}"
-                                           role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">{{ $lg->name }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                        <div class="card-body">
-                            <div class="tab-content" id="custom-tabs-four-tabContent">
-                                @foreach(\App\Models\Language::all() as $k => $lg)
-                                    <div class="tab-pane fade @if($k == 0) show active @endif" id="lg_tab_{{ $lg->id }}" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ*</label>
-                                            <div class="custom-file">
-                                                <input type="file" name="image[{{$lg->id}}]" class="form-control" id="customFile">
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ*</label>
+                        <div class="custom-file">
+                            <input type="file" name="image" class="form-control" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
 
-                    <div class="card-footer mt-4">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+{{--                    <div class="card card-primary card-outline card-outline-tabs">--}}
+{{--                        <div class="card-header p-0 border-bottom-0">--}}
+{{--                            <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">--}}
+{{--                                @foreach(\App\Models\Language::all() as $k => $lg)--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a class="nav-link @if($k == 0) active @endif" data-toggle="pill" href="#lg_tab_{{ $lg->id }}"--}}
+{{--                                           role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">{{ $lg->name }}</a>--}}
+{{--                                    </li>--}}
+{{--                                @endforeach--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <div class="tab-content" id="custom-tabs-four-tabContent">--}}
+{{--                                @foreach(\App\Models\Language::all() as $k => $lg)--}}
+{{--                                    <div class="tab-pane fade @if($k == 0) show active @endif" id="lg_tab_{{ $lg->id }}" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ*</label>--}}
+{{--                                            <div class="custom-file">--}}
+{{--                                                <input type="file" name="image[{{$lg->id}}]" class="form-control" id="customFile">--}}
+{{--                                                <label class="custom-file-label" for="customFile">Choose file</label>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+                    <div class="mt-5">
+                        <div class="card-footer mt-4">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                     </div>
                 </div>
             </form>

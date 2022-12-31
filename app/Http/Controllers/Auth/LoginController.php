@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Helpers\LG;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -23,7 +24,7 @@ class LoginController extends Controller
 
     function redirectPath(){
         if(Auth::user() && (Auth::user()->role=="admin" || Auth::user()->role=="moder")){
-            Session::put("lg",1);
+            LG::set(1);
             return route('admin.users.index');
         }
         else if(Auth::user()->role=="lector"){

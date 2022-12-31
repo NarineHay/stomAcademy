@@ -32,6 +32,5 @@ class DatabaseSeeder extends Seeder
         $this->call(AccessSeeder::class);
         $this->call(PageSeeder::class);
         $this->call(BlogSeeder::class);
-        $this->call(BlogCategorySeeder::class);
     }
 }

@@ -181,11 +181,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('admin.promo.index') }}" class="nav-link @if(request()->is('admin/promos*')) active @endif">Промокоды</a>
+                        <a href="{{ route('admin.promo.index') }}" class="nav-link @if(request()->is('admin/promo*')) active @endif">Промокоды</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('admin.payment.index') }}" class="nav-link @if(request()->is('admin/payments*')) active @endif">Оплаты</a>
+                        <a href="{{ route('admin.payment.index') }}" class="nav-link @if(request()->is('admin/payment*')) active @endif">Оплаты</a>
                     </li>
 
                     <li class="nav-item">

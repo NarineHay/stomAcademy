@@ -20,12 +20,24 @@ class Coordinates extends Component
     public $course_id = '';
     public $type = '';
     public $date = '';
-    public $name_x = '';
-    public $name_y = '';
-    public $hour_x = '';
-    public $hour_y = '';
-    public $id_x = '';
-    public $id_y = '';
+    public $name = [
+        'x' => 0,
+        'y' => 0,
+        'color' => '#000000',
+        'size' => 32
+    ];
+    public $hour = [
+        'x' => 0,
+        'y' => 0,
+        'color' => '#000000',
+        'size' => 32
+    ];
+    public $cert_id = [
+        'x' => 0,
+        'y' => 0,
+        'color' => '#000000',
+        'size' => 32
+    ];
     public $original = '';
 
     function mount(){
@@ -34,24 +46,24 @@ class Coordinates extends Component
         $this->original = $this->certificate->image;
         $this->hours_number = $this->certificate->hours_number;
         $this->type = $this->certificate->type;
-        $this->name_x = $this->certificate->name_x;
-        $this->name_y = $this->certificate->name_y;
-        $this->hour_x = $this->certificate->hour_x;
-        $this->hour_y = $this->certificate->hour_y;
-        $this->id_x = $this->certificate->id_x;
-        $this->id_y = $this->certificate->id_y;
+//        $this->name_x = $this->certificate->name_x;
+//        $this->name_y = $this->certificate->name_y;
+//        $this->hour_x = $this->certificate->hour_x;
+//        $this->hour_y = $this->certificate->hour_y;
+//        $this->id_x = $this->certificate->id_x;
+//        $this->id_y = $this->certificate->id_y;
 
         $this->course_id = $this->certificate->course_id;
     }
 
-    protected $rules = [
-        'name_x' => 'required',
-        'name_y' => 'required',
-        'hour_x' => 'required',
-        'hour_y' => 'required',
-        'id_x' => 'required',
-        'id_y' => 'required',
-    ];
+//    protected $rules = [
+//        'name_x' => 'required',
+//        'name_y' => 'required',
+//        'hour_x' => 'required',
+//        'hour_y' => 'required',
+//        'id_x' => 'required',
+//        'id_y' => 'required',
+//    ];
 
     public function save()
     {
@@ -70,12 +82,12 @@ class Coordinates extends Component
         $this->certificate->hours_number = $this->hours_number;
         $this->certificate->type = $this->type;
         $this->certificate->date = $this->date;
-        $this->certificate->name_x = $this->name_x;
-        $this->certificate->name_y = $this->name_y;
-        $this->certificate->hour_x = $this->hour_x;
-        $this->certificate->hour_y = $this->hour_y;
-        $this->certificate->id_x = $this->id_x;
-        $this->certificate->id_y = $this->id_y;
+//        $this->certificate->name_x = $this->name_x;
+//        $this->certificate->name_y = $this->name_y;
+//        $this->certificate->hour_x = $this->hour_x;
+//        $this->certificate->hour_y = $this->hour_y;
+//        $this->certificate->id_x = $this->id_x;
+//        $this->certificate->id_y = $this->id_y;
         $this->certificate->image = $this->image;
         $this->certificate->save();
 
@@ -85,26 +97,32 @@ class Coordinates extends Component
 
     public function preview(){
         if($this->tmp){
-            Storage::delete("public\\".$this->tmp);
+            Storage::delete($this->tmp);
+        }else{
+            $this->tmp = "public\\certificates\\".Str::random(9).".jpg";
         }
-        $this->tmp = 'certificates'.'\\'.Str::random(8).'.jpg';
-        $this->image = $this->image ?? $this->certificate->image;
-        $this->image = str_replace("public","",$this->image);
-        $image = Image::make(storage_path("app\\public\\".$this->image));
+        Storage::copy($this->certificate->image,$this->tmp);
+        $image = Image::make(storage_path("app\\".$this->tmp));
 
-        $image->text($this->certificate->hours_number, $this->hour_x, $this->hour_y, function($font) {
+        $image->text($this->certificate->hours_number, $this->hour['x'], $this->hour['y'], function($font) {
             $font->file('verdana.ttf');
-            $font->size(36);
-            $font->color('#FFFFFF');
+            $font->size($this->hour['size']);
+            $font->color($this->hour['color']);
         });
 
-        $image->text($this->certificate->course->title, $this->name_x, $this->name_y, function($font) {
+        $image->text($this->certificate->course->info->title, $this->name['x'], $this->name['y'], function($font) {
             $font->file('verdana.ttf');
-            $font->size(36);
-            $font->color('#FFFFFF');
+            $font->size($this->name['size']);
+            $font->color($this->name['color']);
         });
 
-        $image->save(storage_path('app\\public\\'.$this->tmp));
-        $this->image = $this->tmp;
+        $image->text($this->certificate->course->id, $this->cert_id['x'], $this->cert_id['y'], function($font) {
+            $font->file('verdana.ttf');
+            $font->size($this->cert_id['size']);
+            $font->color($this->cert_id['color']);
+        });
+
+        $image->save();
+        $this->image = str_replace("\\","/",$this->tmp);
     }
 }

@@ -11,14 +11,12 @@ class UserInfoSeeder extends Seeder
 {
     public function run()
     {
-//        $users = User::all();
-//        $images = RandomImagesApi::getImages("human+face",count($users),"userimages");
-//        foreach($users as $k => $user){
-//            $info = UserInfo::factory(1)->make(['image' => $images[$k]])->first();
-//            $info->user_id = $user->id;
-//            $info->save();
-//
-//            $user->balance()->create(["balance" => rand(0,10000)/10]);
-//        }
+        $users = User::all();
+        $images = RandomImagesApi::getImages("human+face",count($users),"userimages");
+        foreach($users as $k => $user){
+            $info = UserInfo::factory(1)->make(['image' => $images[$k]])->first();
+            $user->userinfo()->update($info->toArray());
+            $user->balance()->update(["balance" => rand(0,10000)/10]);
+        }
     }
 }
