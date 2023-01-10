@@ -11,7 +11,7 @@ class LectorSeeder extends Seeder
 {
     public function run()
     {
-        User::factory(5)->create([
+        User::factory(50)->create([
             "role" => User::ROLE_LECTOR
         ]);
 

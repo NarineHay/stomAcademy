@@ -1,16 +1,16 @@
-@if($data['password'])
-    <p><b>Логин: </b></p> {{$data['email']}}
-    <p><b>Пароль: </b></p> {{$data['password']}}
+@if($password)
+    <p><b>Логин: </b></p> {{$email}}
+    <p><b>Пароль: </b></p> {{$password}}
 @endif
-<p>-- {{ $data['name'] }} -- </p>
-    @if($data['type'] =='course')
-        <p>Вам открыт доступ к просмотру курса {{$data['course']->info->title}}</p>
-    @elseif($data['type'] =='webinar')
-        <p>Вам открыт доступ к просмотру вебинара {{$data['webinar']->info->title}}</p>
+<p>-- {{ $name }} -- </p>
+    @if($type =='course')
+        <p>Вам открыт доступ к просмотру курса {{$course->info->title}}</p>
+    @elseif($type =='webinar')
+        <p>Вам открыт доступ к просмотру вебинара {{$webinar->info->title}}</p>
     @endif
 
-    @if($data['access_time'])
-        <p>Доступность {{$data['duration']}} дней</p>
+    @if($access_time)
+        <p>Доступность {{$duration}} дней</p>
     @else
         <p>У вас есть постоянный доступ</p>
     @endif

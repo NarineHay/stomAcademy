@@ -19,10 +19,15 @@ class Course extends Model
         'price_id',
         'url_to_page',
         'image',
+        'direction_id'
     ];
 
     function price(){
         return $this->hasOne(Prices::class,"id","price_id");
+    }
+
+    function directions(){
+        return $this->hasOne(Direction::class,"id","direction_id");
     }
 
     function webinars()

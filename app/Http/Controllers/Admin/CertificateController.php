@@ -32,7 +32,6 @@ class CertificateController extends Controller
         $certificate->date = $request->get('date');
         $certificate->image = $request->file('image')->store('public/certificates');
         $certificate->save();
-
 //        $images = $request->get("image");
 //
 //        foreach (Language::all() as $lg){
@@ -65,8 +64,6 @@ class CertificateController extends Controller
 //        }
 //        $imgFile->resize($nw,$nh);
 //        $imgFile->crop(3508,2480,$x,$y);
-
-
         return redirect()->route('admin.certificates.edit',$certificate->id)
             ->with('success', 'Certificate has been created successfully.');
     }
@@ -85,7 +82,6 @@ class CertificateController extends Controller
 //            ]);
 //            $certificate->image = $request->file('image')->store('public/certificates');
 //        }
-
         $certificate->course_id = $request->course_id;
         $certificate->name_x = $request->name_x;
         $certificate->name_y = $request->name_y;

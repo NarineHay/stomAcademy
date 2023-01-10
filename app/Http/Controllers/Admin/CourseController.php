@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminCourseStoreRequest;
 use App\Models\Course;
+use App\Models\Direction;
 use App\Models\Language;
 use App\Models\Lector;
 use App\Models\Prices;
@@ -26,6 +27,7 @@ class CourseController extends Controller
     {
         $data['webinars'] = Webinar::all();
         $data['prices'] = Prices::all();
+        $data['directions'] = Direction::all();
         return view('admin.courses.create', $data);
     }
 
@@ -36,18 +38,22 @@ class CourseController extends Controller
         $course->end_date = $request->get('end_date');
         $course->video = $request->get('video');
         $course->price_id = $request->get('price_id');
+        $course->direction_id = $request->get('direction_id');
         $course->url_to_page = $request->get('url_to_page');
         $course->image = $request->file('image')->store('public/course');
 
         $course->save();
+
         $titles = $request->get("title");
         $descriptions = $request->get("description");
+
         $webinars = $request->get('webinar',[]);
         foreach ($webinars as $webinar_id){
             $course->webinars()->create([
                 "webinar_id" => $webinar_id
             ]);
         }
+
         foreach (Language::all() as $lg){
             $course->infos()->create(
                 [
@@ -58,15 +64,15 @@ class CourseController extends Controller
             );
         }
 
-        return redirect()->route('admin.courses.index')
+        return redirect()->route('admin.course.index')
             ->with('success', 'Course has been created successfully.');
     }
 
     public function edit(Course $course)
     {
         $data['prices'] = Prices::all();
-        $data['courses'] = Course::all();
-        $data['webinars'] = Webinar::all();
+        $data['webinar'] = Webinar::all();
+        $data['directions'] = Direction::all();
         return view('admin.courses.edit',compact('course','data'));
     }
 
@@ -100,6 +106,7 @@ class CourseController extends Controller
         $course->video = $request->video;
         $course->url_to_page = $request->url_to_page;
         $course->price_id = $request->price_id;
+        $course->direction_id = $request->direction_id;
 
         foreach ($request->get("description",[]) as $lg_id => $desc){
             $course->infos()->where("lg_id",$lg_id)->update(['description' => $desc]);
@@ -110,14 +117,14 @@ class CourseController extends Controller
         }
 
         $course->save();
-        return redirect()->route('admin.courses.index',$course)
+        return redirect()->route('admin.course.index',$course)
             ->with('success','Course has been updated successfully');
     }
 
     public function destroy(Course $course)
     {
         $course->delete();
-        return redirect()->route('admin.courses.index')
+        return redirect()->route('admin.course.index')
             ->with('success','Course has been deleted successfully');
     }
 }

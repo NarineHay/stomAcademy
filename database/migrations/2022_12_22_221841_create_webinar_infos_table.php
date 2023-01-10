@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('webinar_infos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("webinar_id")->index();
+            $table->foreign('webinar_id')->references('id')->on('webinars')->onDelete("cascade");
             $table->unsignedBigInteger("lg_id")->index();
             $table->string('title');
             $table->longText('description');

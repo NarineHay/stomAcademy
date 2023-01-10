@@ -165,11 +165,11 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('admin.courses.index') }}" class="nav-link @if(request()->is('admin/courses*')) active @endif">Курсы</a>
+                        <a href="{{ route('admin.webinar.index') }}" class="nav-link @if(request()->is('admin/webinar*')) active @endif">Вебинары</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('admin.webinars.index') }}" class="nav-link @if(request()->is('admin/webinars*')) active @endif">Вебинары</a>
+                        <a href="{{ route('admin.course.index') }}" class="nav-link @if(request()->is('admin/course*')) active @endif">Курсы</a>
                     </li>
 
                     <li class="nav-item">

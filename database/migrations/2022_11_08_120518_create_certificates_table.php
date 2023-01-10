@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('course_id');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete("cascade");
             $table->integer('name_x')->nullable();
             $table->integer('name_y')->nullable();
             $table->integer('hour_x')->nullable();

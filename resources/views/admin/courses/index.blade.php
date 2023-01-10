@@ -1,5 +1,7 @@
 @extends('layouts.admin')
+
 @section('title', 'Course')
+
 @section('content')
     <div class="content-header">
         <div class="container-fluid">
@@ -8,10 +10,9 @@
                     <h1 class="m-0">Курсы</h1>
                 </div>
                 <div>
-                    <a class="btn btn-primary" href="{{route('admin.courses.create')}}" role="button">Добавить</a>
+                    <a class="btn btn-primary" href="{{route('admin.course.create')}}" role="button">Добавить</a>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -38,10 +39,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Дата проведения</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.courses.index',['order'=>'start_date','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.course.index',['order'=>'start_date','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('admin.courses.index',['order'=>'start_date','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.course.index',['order'=>'start_date','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -52,10 +53,10 @@
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Дата окончания</span>
                                             <div class="sort ml-2 d-flex flex-nowrap">
-                                                <a href = {{route('admin.courses.index',['order'=>'end_date','sort'=>'asc'])}}>
+                                                <a href = {{route('admin.course.index',['order'=>'end_date','sort'=>'asc'])}}>
                                                     <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>
                                                 </a>
-                                                <a href = {{route('admin.courses.index',['order'=>'end_date','sort'=>'desc'])}}>
+                                                <a href = {{route('admin.course.index',['order'=>'end_date','sort'=>'desc'])}}>
                                                     <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>
                                                 </a>
                                             </div>
@@ -87,10 +88,10 @@
                                             <a>${{$course->price->usd}}</a>
                                         </td>
                                         <td class="project-actions text-right">
-                                            <form action="{{route('admin.courses.destroy',$course)}}" method="POST" class="d-flex justify-content-around">
+                                            <form action="{{route('admin.course.destroy',$course)}}" method="POST" class="d-flex justify-content-around">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a class="btn btn-primary mx-1" href="{{ route('admin.courses.edit',$course) }}">Изменить</a>
+                                                <a class="btn btn-primary mx-1" href="{{ route('admin.course.edit',$course) }}">Изменить</a>
                                                 <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mx-1" id="button">Удалить</button>
                                             </form>
                                         </td>

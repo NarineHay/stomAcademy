@@ -14,7 +14,7 @@ class BlogSeeder extends Seeder
     public function run()
     {
         $directions = Direction::all();
-        $images = RandomImagesApi::getImages("webinar",10,"courses");
+        $images = RandomImagesApi::getImages("webinar",10,"webinar");
         for($i=0;$i<100;$i++){
             $blog = Blog::create(['category_id' => $directions->random(1)->first()->id]);
             foreach (Language::all() as $lg){

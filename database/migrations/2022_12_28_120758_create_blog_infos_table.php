@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('image');
             $table->unsignedBigInteger("lg_id")->index();
             $table->unsignedBigInteger("blog_id")->index();
+            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete("cascade");
         });
     }
 

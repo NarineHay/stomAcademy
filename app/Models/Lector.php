@@ -50,7 +50,7 @@ class Lector extends Model
                 join course_webinars on course_webinars.webinar_id = webinars.id
                 join courses on courses.id = course_webinars.course_id
                 where webinars.user_id = '.$this->user_id.'
-                GROUP by courses.id;';
+                GROUP by courses.id';
         $ids = [];
         foreach (DB::select(DB::raw($sql)) as $item){
             $ids[] = $item->id;

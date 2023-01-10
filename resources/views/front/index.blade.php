@@ -25,7 +25,7 @@
                     <h3 class="f-700 m-0">Популярные курсы</h3>
                 </div>
                 <div class="ms-lg-4 mt-2 mt-lg-0">
-                    <a href="#" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                    <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
             <div class="slider_navigatioin videoPopularSwiper_nav mb-4 d-none d-md-block">
@@ -35,66 +35,23 @@
         </div>
         <div class="swiper videoPopularSwiper br-12">
             <div class="swiper-wrapper">
-                <div class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12">
-                    <img src="/dist/image/videoPic1.png" alt="videoPic">
-                    <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
-                        <p class="text-primary text-uppercase f-700 fs-10">Терапия</p>
-                        <h5 class="f-700">Экспертный курс по <br class="d-none d-md-block">имплантации</h5>
-                        <div class="mt-2">
-                            <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">42 мин</span>
-                            <i class="far fa-tasks me-1"></i> <span class="f-500 f-14">3 видео</span>
-                        </div>
-                        <div class="d-flex align-items-center mt-3">
-                            <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">
-                            <p class="m-0 f-500 fs-16">Камиль Хабиев</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12">
-                    <img src="/dist/image/videoPic1.png" alt="videoPic">
-                    <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
-                        <p class="text-primary text-uppercase f-700 fs-10">Терапия</p>
-                        <h5 class="f-700">Экспертный курс по <br class="d-none d-md-block">имплантации</h5>
-                        <div class="mt-2">
-                            <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">42 мин</span>
-                            <i class="far fa-tasks me-1"></i> <span class="f-500 f-14">3 видео</span>
-                        </div>
-                        <div class="d-flex align-items-center mt-3">
-                            <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">
-                            <p class="m-0 f-500 fs-16">Камиль Хабиев</p>
+                @foreach($courses as $course)
+                    <div class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12">
+                        <img src='{{\Illuminate\Support\Facades\Storage::url($course->image)}}' alt="videoPic">
+                        <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
+                            <p class="text-primary text-uppercase f-700 fs-10">{{$course->directions->title}}</p>
+                            <h5 class="f-700">{{$course->info->title}}</h5>
+                            <div class="mt-2">
+                                <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">42 мин</span>
+                                <i class="far fa-tasks me-1"></i> <span class="f-500 f-14">3 видео</span>
+                            </div>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">
+                                <p class="m-0 f-500 fs-16">Камиль Хабиев</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12">
-                    <img src="/dist/image/videoPic1.png" alt="videoPic">
-                    <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
-                        <p class="text-primary text-uppercase f-700 fs-10">Терапия</p>
-                        <h5 class="f-700">Экспертный курс по <br class="d-none d-md-block">имплантации</h5>
-                        <div class="mt-2">
-                            <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">42 мин</span>
-                            <i class="far fa-tasks me-1"></i> <span class="f-500 f-14">3 видео</span>
-                        </div>
-                        <div class="d-flex align-items-center mt-3">
-                            <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">
-                            <p class="m-0 f-500 fs-16">Камиль Хабиев</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12">
-                    <img src="/dist/image/videoPic1.png" alt="videoPic">
-                    <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
-                        <p class="text-primary text-uppercase f-700 fs-10">Терапия</p>
-                        <h5 class="f-700">Экспертный курс по <br class="d-none d-md-block">имплантации</h5>
-                        <div class="mt-2">
-                            <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">42 мин</span>
-                            <i class="far fa-tasks me-1"></i> <span class="f-500 f-14">3 видео</span>
-                        </div>
-                        <div class="d-flex align-items-center mt-3">
-                            <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">
-                            <p class="m-0 f-500 fs-16">Камиль Хабиев</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

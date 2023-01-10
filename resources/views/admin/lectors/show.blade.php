@@ -39,7 +39,7 @@
                                     @foreach($user->lector->getCourses() as $course)
                                         <tr>
                                             <td>
-                                                <a href="{{ route("admin.courses.edit",$course) }}">{{$course->info->title}}</a>
+                                                <a href="{{ route("admin.webinar.edit",$course) }}">{{$course->info->title}}</a>
                                             </td>
                                             <td>
                                                 <a>0</a>
@@ -52,7 +52,7 @@
                                     @foreach($user->lector->webinars as $webinar)
                                         <tr>
                                             <td>
-                                                <a href="{{ route("admin.webinars.edit",$webinar) }}">{{$webinar->info->title}}</a>
+                                                <a href="{{ route("admin.webinar.edit",$webinar) }}">{{$webinar->info->title}}</a>
                                             </td>
                                             <td>
                                                 <a>0</a>

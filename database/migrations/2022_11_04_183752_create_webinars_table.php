@@ -14,9 +14,12 @@ return new class extends Migration
             $table->integer('duration');
             $table->unsignedBigInteger('price_id');
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->string('image');
             $table->boolean('status')->default(1);
             $table->string('url_to_page')->nullable();
+            $table->unsignedBigInteger('direction_id');
+            $table->foreign('direction_id')->references('id')->on('directions')->onDelete("cascade");
         });
     }
 

@@ -11,7 +11,7 @@ class CountrySeeder extends Seeder
 {
     public function run()
     {
-        Country::truncate();
+
         $countries = [
                 'AU' => 'Австралия',
                 'AT' => 'Австрия',

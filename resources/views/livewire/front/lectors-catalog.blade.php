@@ -11,7 +11,7 @@
             @foreach($lectors as $lector)
                 <div class="col-xxl-55 col-lg-3 col-md-4 col-6 mb-3">
                     <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}" class="lector_card_photo w-100" alt="lecturerPic">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}" class="lector_card_photo w-100" alt="lecturerPic">
                         <div class="p-3">
                             <p class="fs-20 f-700">{{ $lector->name }}</p>
                             <p class="fs-14 f-500 text-secondary">{{ $lector->lector->specialization }}</p>

@@ -31,7 +31,7 @@
         @endif
 
         <div class="card card-primary">
-            <form action="{{ route('admin.webinars.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.webinar.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
@@ -63,6 +63,17 @@
                             @foreach($prices as $price)
                                 <option value="{{ $price->id }}">
                                     {{ $price->name }} - ${{$price->usd}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">КАТЕГОРИЯ</label><br>
+                        <select class="form-control" name="direction_id">
+                            @foreach($directions as $direction)
+                                <option value="{{ $direction->id }}">
+                                    {{ $direction->title }}
                                 </option>
                             @endforeach
                         </select>

@@ -27,6 +27,7 @@ class WebinarController extends Controller
     {
         $data['lectors'] = Lector::all();
         $data['prices'] = Prices::all();
+        $data['directions'] = Direction::all();
         return view('admin.webinars.create', $data);
     }
 
@@ -37,8 +38,10 @@ class WebinarController extends Controller
         $webinar->start_date = $request->get('start_date');
         $webinar->duration = $request->get('duration');
         $webinar->price_id = $request->get('price_id');
+        $webinar->direction_id = $request->get('direction_id');
         $webinar->image = $request->file('image')->store('public/webinar');
         $webinar->save();
+
 
         $titles = $request->get("title");
         $descriptions = $request->get("description");
@@ -60,7 +63,7 @@ class WebinarController extends Controller
             );
         }
 
-        return redirect()->route('admin.webinars.index')
+        return redirect()->route('admin.webinar.index')
             ->with('success', 'Webinar has been created successfully.');
     }
 
@@ -93,6 +96,7 @@ class WebinarController extends Controller
         $webinar->duration = $request->duration;
         $webinar->price_id = $request->price_id;
         $webinar->status = $request->status;
+        $webinar->direction_id = $request->get('direction_id');
 
         foreach ($request->get("title",[]) as $lg_id => $title){
             $webinar->infos()->where("lg_id",$lg_id)->update(['title' => $title]);
@@ -115,13 +119,13 @@ class WebinarController extends Controller
         }
 
         $webinar->save();
-        return redirect()->route('admin.webinars.index',$webinar)
+        return redirect()->route('admin.webinar.index',$webinar)
             ->with('success','Webinar has been updated successfully');
     }
 
     public function destroy(Webinar $webinar){
         $webinar->delete();
-        return redirect()->route('admin.webinars.index')
+        return redirect()->route('admin.webinar.index')
             ->with('success','Webinar has been deleted successfully');
     }
 }

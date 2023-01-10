@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminAccessStoreRequest;
+use App\Jobs\SendAccessMail;
 use App\Mail\UserAccessMail;
 use App\Models\Access;
 use App\Models\Course;
@@ -107,7 +108,8 @@ class AccessController extends Controller
                     "access_time" => $access_time,
                     "duration" => $duration
                 ];
-                Mail::to($new_user)->send(new UserAccessMail($data));
+                SendAccessMail::dispatch($data);
+                //Mail::to($new_user)->send(new UserAccessMail($data));
             }
 
         }else{

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('heading')->nullable();
             $table->unsignedBigInteger('lg_id')->nullable();
             $table->unsignedBigInteger('page_id')->nullable();
+            $table->foreign('page_id')->references('id')->on('pages')->onDelete("cascade");
         });
     }
 

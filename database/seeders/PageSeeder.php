@@ -16,9 +16,9 @@ class PageSeeder extends Seeder
             "/",
             "contacts",
             "about",
-            "courses",
+            "webinar",
             "lectors",
-            "webinars"
+            "webinar"
         ];
 
 

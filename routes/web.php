@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Auth;
 */
 Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::prefix("courses")->group(function (){
-    Route::get("/",[\App\Http\Controllers\CourseController::class,'index'])->name("courses.index");
+
+Route::prefix("webinars")->group(function (){
+    Route::get("/",[\App\Http\Controllers\WebinarsController::class,'index'])->name("webinar.index");
 });
+
 Route::get('about',[\App\Http\Controllers\AboutController::class,'index'])->name("about");
 Route::group(["prefix" => "lectors","as" => "lectors."],function (){
     Route::get('/',[\App\Http\Controllers\LectorsController::class,'index'])->name("index");
@@ -35,8 +37,8 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('lectors', \App\Http\Controllers\Admin\LectorController::class);
     Route::resource('prices', \App\Http\Controllers\Admin\PriceController::class);
-    Route::resource('webinars', \App\Http\Controllers\Admin\WebinarController::class);
-    Route::resource('courses', \App\Http\Controllers\Admin\CourseController::class);
+    Route::resource('webinar', \App\Http\Controllers\Admin\WebinarController::class);
+    Route::resource('course', \App\Http\Controllers\Admin\CourseController::class);
     Route::resource('certificates', \App\Http\Controllers\Admin\CertificateController::class);
     Route::resource('accesses', \App\Http\Controllers\Admin\AccessController::class);
     Route::resource('promo', \App\Http\Controllers\Admin\PromoController::class);

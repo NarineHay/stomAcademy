@@ -6,7 +6,7 @@
                 <select class="form-control select2" name="course_id" wire:model="course_id">
                     @foreach($courses as $course)
                         <option value="{{ $course->id }}">
-                            {{ $course->info->title }}
+                            {{ $course->info->title}}
                         </option>
                     @endforeach
                 </select>

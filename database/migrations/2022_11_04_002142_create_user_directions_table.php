@@ -11,7 +11,9 @@ return new class extends Migration
         Schema::create('user_directions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->unsignedBigInteger('direction_id');
+            //$table->foreign('direction_id')->references('id')->on('directions')->onDelete("cascade");
         });
     }
 

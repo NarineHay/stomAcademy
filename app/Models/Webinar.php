@@ -15,6 +15,7 @@ class Webinar extends Model
     protected $fillable = [
         'start_date',
         'duration',
+        'direction_id',
         'price_id',
         'status',
         'image',
@@ -24,6 +25,14 @@ class Webinar extends Model
 
     function user(){
         return $this->hasOne(User::class,"id","user_id");
+    }
+
+    function price(){
+        return $this->hasOne(Prices::class,"id","price_id");
+    }
+
+    function directions(){
+        return $this->hasOne(Direction::class,"id","direction_id");
     }
 
     function infos(){

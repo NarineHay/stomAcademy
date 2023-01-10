@@ -11,7 +11,9 @@ return new class extends Migration
         Schema::create('lector_infos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("lg_id")->index();
+            $table->foreign('lg_id')->references('id')->on('languages')->onDelete("cascade");
             $table->unsignedBigInteger("user_id")->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->longText('biography')->nullable();
         });
     }

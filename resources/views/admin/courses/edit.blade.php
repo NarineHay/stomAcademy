@@ -31,10 +31,21 @@
         @endif
 
         <div class="card card-primary">
-            <form action="{{ route('admin.courses.update',$course->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.course.update',$course->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">КАТЕГОРИЯ</label><br>
+                        <select class="form-control" name="direction_id">
+                            @foreach($data['directions'] as $direction)
+                                <option value="{{ $direction->id }}" {{ $direction->id == $course->direction_id ? 'selected' : '' }}>
+                                    {{ $direction->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="exampleInputEmail1">ДАТА КУРСА*</label>
                         <input type="datetime-local" value="{{$course->start_date}}" name="start_date" class="form-control">
@@ -64,7 +75,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">ВЕБИНАРЫ*</label><br>
                         <select class="form-control select2" multiple="multiple" name="webinar[]">
-                                @foreach($data['webinars'] as $webinar)
+                                @foreach($data['webinar'] as $webinar)
                                     @if($webinar->status != 0)
                                         <option value="{{ $webinar->id }}" @if( $course->webinars->where("webinar_id",$webinar->id)->count()) selected @endif>
                                             {{ $webinar->info->title }}
