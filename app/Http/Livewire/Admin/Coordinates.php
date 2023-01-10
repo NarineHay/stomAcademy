@@ -103,27 +103,27 @@ class Coordinates extends Component
             $this->tmp = "certificates\\".Str::random(9).".jpg";
         }
         $disc->copy(str_replace("public/","",$this->certificate->image),$this->tmp);
-        $image = Image::make("storage/".$this->tmp);
+
+        $image = Image::make($disc->get($this->tmp));
 
         $image->text($this->certificate->hours_number, $this->hour['x'], $this->hour['y'], function($font) {
-            $font->file('verdana.ttf');
+            $font->file(public_path('verdana.ttf'));
             $font->size($this->hour['size']);
             $font->color($this->hour['color']);
         });
 
         $image->text($this->certificate->course->info->title, $this->name['x'], $this->name['y'], function($font) {
-            $font->file('verdana.ttf');
+            $font->file(public_path('verdana.ttf'));
             $font->size($this->name['size']);
             $font->color($this->name['color']);
         });
 
         $image->text($this->certificate->course->id, $this->cert_id['x'], $this->cert_id['y'], function($font) {
-            $font->file('verdana.ttf');
+            $font->file(public_path('verdana.ttf'));
             $font->size($this->cert_id['size']);
             $font->color($this->cert_id['color']);
         });
-
-        $image->save();
+        $disc->put($this->tmp,$image->encode());
         $this->image = "public/".$this->tmp;
     }
 }
