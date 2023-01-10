@@ -96,13 +96,14 @@ class Coordinates extends Component
     }
 
     public function preview(){
+        $disc = Storage::disk("public");
         if($this->tmp){
-            Storage::delete($this->tmp);
+            $disc->delete($this->tmp);
         }else{
-            $this->tmp = "public\\certificates\\".Str::random(9).".jpg";
+            $this->tmp = "certificates\\".Str::random(9).".jpg";
         }
-        Storage::copy($this->certificate->image,$this->tmp);
-        $image = Image::make(storage_path("app\\".$this->tmp));
+        $disc->copy(str_replace("public/","",$this->certificate->image),$this->tmp);
+        $image = Image::make("storage/".$this->tmp);
 
         $image->text($this->certificate->hours_number, $this->hour['x'], $this->hour['y'], function($font) {
             $font->file('verdana.ttf');
@@ -123,6 +124,6 @@ class Coordinates extends Component
         });
 
         $image->save();
-        $this->image = str_replace("\\","/",$this->tmp);
+        $this->image = "public/".$this->tmp;
     }
 }
