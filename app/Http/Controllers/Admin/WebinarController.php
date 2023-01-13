@@ -119,8 +119,7 @@ class WebinarController extends Controller
         }
 
         $webinar->save();
-        return redirect()->route('admin.webinar.index',$webinar)
-            ->with('success','Webinar has been updated successfully');
+        return redirect()->back()->with('success','Webinar has been updated successfully');
     }
 
     public function destroy(Webinar $webinar){

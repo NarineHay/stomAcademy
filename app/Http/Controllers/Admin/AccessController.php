@@ -156,7 +156,7 @@ class AccessController extends Controller
             $access->duration = $request->duration;
         }
         $access->save();
-        return redirect()->route('admin.accesses.index', $access);
+        return redirect()->back()->with('success','Access has been updated successfully');
     }
 
     public function destroy(Access $access)

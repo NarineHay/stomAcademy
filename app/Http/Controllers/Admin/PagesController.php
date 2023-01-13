@@ -74,8 +74,7 @@ class PagesController extends Controller
         }
 
         $page->save();
-        return redirect()->route('admin.pages.index',$page)
-            ->with('success','Page updated successfully');
+        return redirect()->back()->with('success','Page has been updated successfully');
     }
 
     public function destroy(Page $page)

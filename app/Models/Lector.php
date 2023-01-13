@@ -22,10 +22,10 @@ class Lector extends Model
     }
 
     function userinfo(){
-        return $this->hasOne(User::class,"id","user_id");
+        return $this->hasOne(UserInfo::class,"id","user_id");
     }
 
-    function direction(){
+    function directions(){
         return $this->hasOne(Direction::class,"id","direction_id");
     }
 

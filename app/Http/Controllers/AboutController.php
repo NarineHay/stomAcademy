@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 
 class AboutController extends Controller
 {
     function index(){
-        return view("front.about");
+        $data['lectors'] = User::query()->withCount("webinars")->where("role",User::ROLE_LECTOR)->with("lector")->limit(4)->get();
+        return view("front.about",$data);
     }
 }

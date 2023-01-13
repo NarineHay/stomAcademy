@@ -11,8 +11,6 @@ class Blog extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $fillable = [
         'category_id',
     ];
@@ -27,7 +25,7 @@ class Blog extends Model
             ->where("lg_id",$lg_id);
     }
 
-    function category(){
+    function directions(){
         return $this->hasOne(Direction::class,"id","category_id");
     }
 }

@@ -98,8 +98,7 @@ class CertificateController extends Controller
         }
 
         $certificate->save();
-        return redirect()->route('admin.certificates.index',$certificate)
-            ->with('success','Certificate has been updated successfully');
+        return redirect()->back()->with('success','Certificate has been updated successfully');
     }
 
     public function destroy(Certificate $certificate)

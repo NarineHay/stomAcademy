@@ -117,8 +117,7 @@ class CourseController extends Controller
         }
 
         $course->save();
-        return redirect()->route('admin.course.index',$course)
-            ->with('success','Course has been updated successfully');
+        return redirect()->back()->with('success','Course has been updated successfully');
     }
 
     public function destroy(Course $course)

@@ -1,9 +1,6 @@
 @extends("layouts.app")
 
 @section("content")
-
-
-    <!--About project-->
     <div class="container mt-4 mt-lg-6">
         <div class="row">
             <div class="col-12 col-lg-6">
@@ -78,82 +75,26 @@
         </div>
     </div>
 
+
+
     <!--dentistry-->
     <div class="container mt-5 mt-lg-6">
         <h3 class="f-700 mb-3 mb-lg-5 m-0">Вас будут обучать лучшие<br>
-            специалисты в облисти<br>
+            специалисты в области<br>
             стоматологии</h3>
         <div class="row lecturers pb-6">
-            <div class="col-6 col-lg-3">
-                <div class="bg-white br-12">
-                    <img src="dist/image/about1.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
+            @foreach($lectors as $lector)
+                <div class="col-6 col-lg-3">
+                    <div class="bg-white br-12">
+                        <img src="{{\Illuminate\Support\Facades\Storage::url($lector->userinfo->image)}}" class="w-100" alt="lecturerPic">
+                        <div class="text-black p-3">
+                            <p class="fs-20 f-700">{{$lector->name}}</p>
+                            <p class="text-secondary fs-14 f-500">{{$lector->lector->directions->title}}</p>
+                            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="bg-white br-12">
-                    <img src="dist/image/about2.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="bg-white br-12">
-                    <img src="dist/image/about3.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="bg-white br-12">
-                    <img src="dist/image/about4.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="bg-white br-12">
-                    <img src="dist/image/about1.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="bg-white br-12">
-                    <img src="dist/image/about2.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="bg-white br-12">
-                    <img src="dist/image/about3.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

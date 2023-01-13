@@ -51,7 +51,8 @@ class PromoController extends Controller
         $promo->max = $request->get("max");
         $promo->status = $request->boolean("status");
         $promo->save();
-        return response()->redirectToRoute("admin.promo.index");
+        //return response()->redirectToRoute("admin.promo.index");
+        return redirect()->back()->with('success','Promo has been updated successfully');
     }
 
     public function destroy(Promo $promo)

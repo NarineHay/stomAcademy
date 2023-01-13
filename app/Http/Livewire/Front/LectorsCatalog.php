@@ -13,6 +13,7 @@ class LectorsCatalog extends Component
 {
 
     use WithPagination;
+
     public $selectedDirections = [];
 
     public $perPage = 15;

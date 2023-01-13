@@ -76,7 +76,7 @@
                                             <a>{{$blog->info->title}}</a>
                                         </td>
                                         <td>
-                                            <a>{{ $blog->category->title }}</a>
+                                            <a>{{ $blog->directions->title }}</a>
                                         </td>
                                         <td>
                                             <a>{{ substr(strip_tags($blog->info->text),0,200) }}...</a>

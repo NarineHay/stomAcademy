@@ -16,8 +16,8 @@
             <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Другое</button>
         </div>
     </div>
-    <!--Video menu part-->
 
+    <!--Популярные курсы-->
     <div class="container mt-4 mt-lg-6">
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
@@ -28,7 +28,7 @@
                     <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
-            <div class="slider_navigatioin videoPopularSwiper_nav mb-4 d-none d-md-block">
+            <div class="slider_navigation videoPopularSwiper_nav mb-4 d-none d-md-block">
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
@@ -45,10 +45,10 @@
                                 <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">42 мин</span>
                                 <i class="far fa-tasks me-1"></i> <span class="f-500 f-14">3 видео</span>
                             </div>
-                            <div class="d-flex align-items-center mt-3">
-                                <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">
-                                <p class="m-0 f-500 fs-16">Камиль Хабиев</p>
-                            </div>
+{{--                            <div class="d-flex align-items-center mt-3">--}}
+{{--                                <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">--}}
+{{--                                <p class="m-0 f-500 fs-16">Камиль Хабиев</p>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 @endforeach
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <!--Additions-->
+    <!--Новые курсы-->
     <div class="container mt-4 mt-lg-6">
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
@@ -67,196 +67,48 @@
                     <a href="#" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
-            <div class="slider_navigatioin AdditionsSwiper_nav mb-4 d-none d-md-block">
+            <div class="slider_navigation AdditionsSwiper_nav mb-4 d-none d-md-block">
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
         <div class="swiper AdditionsSwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                @foreach($courses as $course)
+                    <div class="swiper-slide">
                     <div class="bg-white br-12">
-                        <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
+                        <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}" class="w-100" alt="addPic">
                         <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                            <p class="f-700 fs-16">Экспертный курс по имплантации</p>
-                            <div class="mt-2">
-                                <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
-                            </div>
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                                    <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
+                            <p class="f-700 fs-16">{{$course->info->title}}</p>
+                            <div class="mt-2 d-flex justify-content-between">
+                                <div>
+                                    <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+                                    <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
                                 </div>
-                                <div class="mt-3 mt-xl-0">
-                                    <span class="f-700 text-primary fs-16">3000 ₽</span>
+                                <div>
+                                    <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
                                 </div>
                             </div>
+{{--                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">--}}
+{{--                                <div class="d-flex align-items-center">--}}
+{{--                                    <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">--}}
+{{--                                    <p class="m-0 fs-14 f-500">Камиль Хабиев</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="mt-3 mt-xl-0">--}}
+{{--                                    <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="bg-white br-12">
-                        <img src="/dist/image/addition2.png" class="w-100" alt="addPic">
-                        <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                            <p class="f-700 fs-16">Экспертный курс по имплантации</p>
-                            <div class="mt-2">
-                                <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
-                            </div>
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                                    <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                                </div>
-                                <div class="mt-3 mt-xl-0">
-                                    <span class="f-700 text-primary fs-16">3000 ₽</span>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary w-100 f-600 br-12 py-2 mt-3 fs-14">Купить лекцию</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-white br-12">
-                        <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
-                        <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                            <p class="f-700 fs-16">Экспертный курс по имплантации</p>
-                            <div class="mt-2">
-                                <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
-                            </div>
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                                    <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary w-100 f-600 br-12 py-2 fs-14 mt-5 mt-xl-3">Смотреть</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-white br-12">
-                        <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
-                        <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                            <p class="f-700 fs-16">Экспертный курс по имплантации</p>
-                            <div class="mt-2">
-                                <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
-                            </div>
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                                    <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                                </div>
-                                <div class="mt-3 mt-xl-0">
-                                    <span class="f-700 text-primary fs-16">3000 ₽</span>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary w-100 f-600 br-12 py-2 mt-3 fs-14">Купить лекцию</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-white br-12">
-                        <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
-                        <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                            <p class="f-700 fs-16">Экспертный курс по имплантации</p>
-                            <div class="mt-2">
-                                <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
-                            </div>
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                                    <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                                </div>
-                                <div class="mt-3 mt-xl-0">
-                                    <span class="f-700 text-primary fs-16">3000 ₽</span>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary w-100 f-600 br-12 mt-3 fs-14 py-2">Купить лекцию</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-white br-12">
-                        <img src="/dist/image/addition2.png" class="w-100" alt="addPic">
-                        <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                            <p class="f-700 fs-16">Экспертный курс по имплантации</p>
-                            <div class="mt-2">
-                                <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
-                            </div>
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                                    <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                                </div>
-                                <div class="mt-3 mt-xl-0">
-                                    <span class="f-700 text-primary fs-16">3000 ₽</span>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-white br-12">
-                        <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
-                        <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                            <p class="f-700 fs-16">Экспертный курс по имплантации</p>
-                            <div class="mt-2">
-                                <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
-                            </div>
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                                    <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary w-100 f-600 br-12 py-2 fs-14 mt-5 mt-xl-3">Смотреть</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-white br-12">
-                        <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
-                        <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                            <p class="f-700 fs-16">Экспертный курс по имплантации</p>
-                            <div class="mt-2">
-                                <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
-                            </div>
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                                    <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                                </div>
-                                <div class="mt-3 mt-xl-0">
-                                    <span class="f-700 text-primary fs-16">3000 ₽</span>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 
-    <!--Watched-->
+    <!--Онлайн-конференции-->
     <div class="container mt-4 mt-lg-6">
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
@@ -267,7 +119,7 @@
                     <a href="#" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
-            <div class="slider_navigatioin WatchedSwiper_nav mb-4 d-none d-md-block">
+            <div class="slider_navigation WatchedSwiper_nav mb-4 d-none d-md-block">
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
@@ -726,143 +578,40 @@
         </div>
     </div>
 
-    <!--Notes-->
+    <!--Webinars-->
     <div class="container mt-4 mt-lg-6 useful_articles overflow-auto">
         <div class="d-flex align-items-lg-center flex-column flex-lg-row">
             <div>
                 <h3 class="f-700 m-0">Онлайн-лекции</h3>
             </div>
             <div class="ms-lg-4">
-                <a href="#" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
             </div>
         </div>
         <div class="row flex-nowrap flex-md-wrap">
-            <div class="col-10 col-md-4 col-xxl-2 mt-3">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/note1.png" class="w-100" alt="notePic">
-                    <div class="d-flex flex-column p-3">
-                        <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                        <p class="f-700 mt-1 fs-16">Экспертный курс <br class="d-none d-lg-block">по имплантации</p>
-                        <div class="d-flex align-items-center mt-2">
-                            <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                            <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                            <div class="mb-3 mb-md-0">
-                                <span class="f-700 text-primary fs-16">3000 ₽</span>
+            @foreach($webinars as $webinar)
+                <div class="col-10 col-md-4 col-xxl-2 mt-3">
+                    <div class="bg-white br-12">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" class="w-100" alt="notePic">
+                        <div class="d-flex flex-column p-3">
+                                <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->title}}</p>
+                                <p class="f-700 mt-1 fs-16">{{$webinar->info->title}}</p>
+                            <div class="d-flex align-items-center mt-2">
+                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" width="30" height="30">
+                                 <p class="m-0 fs-14 f-500">{{$webinar->user->name}}</p>
                             </div>
-                            <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
-                                Купить
-                            </button>
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
+                                <div class="mb-3 mb-md-0">
+                                    <span class="f-700 text-primary fs-16">{{$webinar->price->rub}} ₽</span>
+                                </div>
+                                <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
+                                    Купить
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-10 col-md-4 col-xxl-2 mt-3">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/note2.png" class="w-100" alt="notePic">
-                    <div class="d-flex flex-column p-3">
-                        <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                        <p class="f-700 mt-1 fs-16">Экспертный курс <br class="d-none d-lg-block">по имплантации</p>
-                        <div class="d-flex align-items-center mt-2">
-                            <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                            <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                            <div class="mb-3 mb-md-0">
-                                <span class="f-700 text-primary fs-16">4000 ₽</span>
-                            </div>
-                            <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
-                                Купить
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-10 col-md-4 col-xxl-2 mt-3">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/note3.png" class="w-100" alt="notePic">
-                    <div class="d-flex flex-column p-3">
-                        <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                        <p class="f-700 mt-1 fs-16">Экспертный курс <br class="d-none d-lg-block">по имплантации</p>
-                        <div class="d-flex align-items-center mt-2">
-                            <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                            <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                            <div class="mb-3 mb-md-0">
-                                <span class="f-700 text-primary fs-16">2000 ₽</span>
-                            </div>
-                            <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
-                                Купить
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-10 col-md-4 col-xxl-2 mt-3">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/note4.png" class="w-100" alt="notePic">
-                    <div class="d-flex flex-column p-3">
-                        <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                        <p class="f-700 mt-1 fs-16">Экспертный курс <br class="d-none d-lg-block">по имплантации</p>
-                        <div class="d-flex align-items-center mt-2">
-                            <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                            <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                            <div class="mb-3 mb-md-0">
-                                <span class="f-700 text-primary fs-16">3000 ₽</span>
-                            </div>
-                            <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
-                                Купить
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-10 col-md-4 col-xxl-2 mt-3">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/note1.png" class="w-100" alt="notePic">
-                    <div class="d-flex flex-column p-3">
-                        <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                        <p class="f-700 mt-1 fs-16">Экспертный курс <br class="d-none d-lg-block">по имплантации</p>
-                        <div class="d-flex align-items-center mt-2">
-                            <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                            <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                            <div class="mb-3 mb-md-0">
-                                <span class="f-700 text-primary fs-16">3000 ₽</span>
-                            </div>
-                            <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
-                                Купить
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-10 col-md-4 col-xxl-2 mt-3">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/note6.png" class="w-100" alt="notePic">
-                    <div class="d-flex flex-column p-3">
-                        <p class="text-primary text-uppercase f-700 mt-2 fs-10">Терапия</p>
-                        <p class="f-700 mt-1 fs-16">Экспертный курс <br class="d-none d-lg-block">по имплантации</p>
-                        <div class="d-flex align-items-center mt-2">
-                            <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
-                            <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                            <div class="mb-3 mb-md-0">
-                                <span class="f-700 text-primary fs-16">3000 ₽</span>
-                            </div>
-                            <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
-                                Купить
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
@@ -931,7 +680,7 @@
                 <h3 class="f-700 m-0">Наши партнеры</h3>
             </div>
             <div class="ms-lg-4 mt-2 mt-lg-0">
-                <a href="#" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                <a href="{{route('about')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
             </div>
         </div>
         <div class="row">
@@ -973,133 +722,61 @@
         </div>
     </div>
 
-    <!--Useful articles-->
+    <!--Blog-->
     <div class="container mt-4 mt-lg-6 useful_articles">
         <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
             <div>
-                <h3 class="f-700 m-0">Полесзные статьи</h3>
+                <h3 class="f-700 m-0">Полезные статьи</h3>
             </div>
             <div class="ms-lg-4 mt-2 mt-lg-0">
-                <a href="#" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                <a href="{{route('blog.index')}}" class="text-info text-decoration-underline">
+                    <p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p>
+                </a>
             </div>
         </div>
         <div>
             <div class="mt-4 d-flex useful_article_row">
-                <div class="d-flex flex-column useful_article_item">
-                    <div>
-                        <img src="/dist/image/articles1.png" alt="articlePic">
+                @foreach($blogs as $blog)
+                    <div class="d-flex flex-column useful_article_item @if($blog->id%2!=0)flex-lg-column-reverse @endif">
+                        <div>
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}" alt="articlePic">
+                        </div>
+                        <div class="p-3 p-lg-4">
+                            <p class="text-primary text-uppercase f-700 fs-10 m-0">{{$blog->directions->title}}</p>
+                            <h5 class="f-700 mt-2 m-0">{{$blog->info->title}}</h5>
+                            <p class="mt-2 mt-lg-6 fs-14 f-500 m-0 mt-3">
+                                <i class="far fa-calendar me-2"></i>{{date('d-m-Y', strtotime($blog->created_at))}}
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-3 p-lg-4">
-                        <p class="text-primary text-uppercase f-700 fs-10 m-0">Терапия</p>
-                        <h5 class="f-700 mt-2 m-0">Экспертный курс по<br class="d-block d-md-none">имплантации</h5>
-                        <p class="mt-2 mt-lg-6 fs-14 f-500 m-0 mt-3"><i class="far fa-calendar me-2"></i>16.06.2021</p>
-                    </div>
-                </div>
-                <div class="d-flex flex-column flex-lg-column-reverse useful_article_item">
-                    <div>
-                        <img src="/dist/image/articles2.png" alt="articlePic">
-                    </div>
-                    <div class="p-3 p-lg-4">
-                        <p class="text-primary text-uppercase f-700 fs-10 m-0">Терапия</p>
-                        <h5 class="f-700 mt-2 m-0">Экспертный курс по<br class="d-block d-md-none">имплантации</h5>
-                        <p class="mt-2 mt-lg-6 fs-14 f-500 fs-14 m-0 mt-3"><i class="far fa-calendar me-2"></i>16.06.2021</p>
-                    </div>
-                </div>
-                <div class="d-flex flex-column useful_article_item">
-                    <div>
-                        <img src="/dist/image/articles3.png" alt="articlePic">
-                    </div>
-                    <div class="p-3 p-lg-4">
-                        <p class="text-primary text-uppercase f-700 fs-10 m-0">Терапия</p>
-                        <h5 class="f-700 mt-2 m-0">Экспертный курс по<br class="d-block d-md-none">имплантации</h5>
-                        <p class="mt-2 mt-lg-6 fs-14 f-500 m-0 mt-3"><i class="far fa-calendar me-2"></i>16.06.2021</p>
-                    </div>
-                </div>
-                <div class="d-flex flex-column flex-lg-column-reverse useful_article_item">
-                    <div>
-                        <img src="/dist/image/articles4.png" alt="articlePic">
-                    </div>
-                    <div class="p-3 p-lg-4">
-                        <p class="text-primary text-uppercase f-700 fs-10 m-0">Терапия</p>
-                        <h5 class="f-700 mt-2 m-0">Экспертный курс по<br class="d-block d-md-none">имплантации</h5>
-                        <p class="mt-2 mt-lg-6 fs-14 f-500 fs-14 m-0 mt-3"><i class="far fa-calendar me-2"></i>16.06.2021</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 
-    <!--lecturers-->
+    <!--lectors-->
     <div class="container mt-5">
         <div class="d-flex align-items-lg-center flex-column flex-lg-row">
             <div>
                 <h3 class="f-700 m-0">Наши лекторы</h3>
             </div>
             <div class="ms-lg-4 mt-2 mt-lg-0">
-                <a href="#" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                <a href="{{route('lectors.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
             </div>
         </div>
         <div class="row">
-            <div class="col-6 col-sm-4 col-lg-2 mt-3 mt-lg-4">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/lecturer1.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей<br class="d-none d-md-block"> практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
+            @foreach($lectors as $lector)
+                <div class="col-6 col-sm-4 col-lg-2 mt-3 mt-lg-4">
+                    <div class="bg-white br-12">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}" class="w-100" alt="lecturerPic">
+                        <div class="text-black p-3">
+                            <p class="fs-20 f-700">{{ $lector->name }}</p>
+                            <p class="text-secondary fs-14 f-500">{{$lector->lector->directions->title}}</p>
+                            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-sm-4 col-lg-2 mt-3 mt-lg-4">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/lecturer2.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей<br class="d-none d-md-block"> практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-lg-2 mt-2 mt-lg-4">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/lecturer3.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей<br class="d-none d-md-block"> практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-lg-2 mt-2 mt-lg-4">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/lecturer4.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей<br class="d-none d-md-block"> практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-lg-2 mt-2 mt-lg-4">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/lecturer1.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей<br class="d-none d-md-block"> практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-lg-2 mt-2 mt-lg-4">
-                <div class="bg-white br-12">
-                    <img src="/dist/image/lecturer6.png" class="w-100" alt="lecturerPic">
-                    <div class="text-black p-3">
-                        <p class="fs-20 f-700">Дахер Рами Насер</p>
-                        <p class="text-secondary fs-14 f-500">Врач-стоматолог общей<br class="d-none d-md-block"> практики</p>
-                        <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">23 лекции</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

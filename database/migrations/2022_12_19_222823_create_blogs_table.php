@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('category_id');
+            $table->timestamps();
         });
     }
 

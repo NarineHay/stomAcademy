@@ -109,8 +109,7 @@ class LectorController extends Controller
         }
 
         $lector->save();
-        return redirect()->route('admin.lectors.index',$lector)
-            ->with('success','Lector updated successfully');
+        return redirect()->back()->with('success','Lector has been updated successfully');
     }
 
     public function destroy(Lector $lector)

@@ -4,8 +4,8 @@
     <div class="container mb-5 mb-lg-6">
         <div class="py-5 py-lg-6">
             <div class="d-flex mt-4">
-                <a><p class="fs-12 f-500 text-secondary m-0">Главная</p></a>
-                <a><p class="fs-12 f-500 text-black ms-3 m-0 main">Контакты</p></a>
+                <a href="{{route('home')}}"><p class="fs-12 f-500 text-secondary m-0">Главная</p></a>
+                <a href="{{route('contacts')}}"><p class="fs-12 f-500 text-black ms-3 m-0 main">Контакты</p></a>
             </div>
             <div class="mt-3">
                 <h2 class="f-600 m-0">Контакты</h2>

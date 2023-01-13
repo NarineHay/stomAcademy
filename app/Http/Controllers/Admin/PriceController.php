@@ -56,8 +56,7 @@ class PriceController extends Controller
         $price->eur = $request->eur;
         $price->uah = $request->uah;
         $price->save();
-        return redirect()->route('admin.prices.index',$price)
-            ->with('success','Price updated successfully');
+        return redirect()->back()->with('success','Price has been updated successfully');
     }
 
     public function destroy(Prices $price)
