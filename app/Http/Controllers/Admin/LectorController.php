@@ -17,8 +17,23 @@ class LectorController extends Controller
     public function index(Request $request){
         $order = $request->get("order","id");
         $sort = $request->get("sort","asc");
-        $lectors = User::query()->where("role",User::ROLE_LECTOR)->with("lector")->orderBY($order,$sort)->paginate(10);
-        return view('admin.lectors.index', compact('lectors'));
+
+        $search_direction = $request->integer("search_direction", 0);
+        $search_user = $request->integer("search_user", 0);
+
+
+        $lector_query = User::query()->where("role",User::ROLE_LECTOR)->with('lector',function ($q){
+            return $q->with('directions');
+        });
+
+        if ($search_user > 0) {
+            $lector_query = $lector_query->where("id", $search_user);
+        }
+
+        $users = User::query()->where("role",User::ROLE_LECTOR)->get();
+        $directions = Direction::all();
+        $lectors = $lector_query->orderBY($order,$sort)->paginate(10);
+        return view('admin.lectors.index', compact('lectors','search_user','search_direction','directions','users'));
     }
 
     public function create()

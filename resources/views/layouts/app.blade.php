@@ -132,7 +132,7 @@
     <div class="container">
         <div class="row footer-border-bottom">
             <div class="col-12 col-lg-3 mt-5 mt-lg-6 mb-2 mb-md-3 fs-12">
-                <a href="/"><img src="dist/image/logo.png" alt="footerLogoPic"></a>
+                <a href="/"><img src="/dist/image/logo.png" alt="footerLogoPic"></a>
                 <p class="mt-3 fs-12">Республика Беларусь:
                     <br><br>
                     ООО «Стоматологическое образование»<br>
@@ -143,11 +143,11 @@
                     №193237965</p>
             </div>
             <div class="col-12 col-lg-2 mt-lg-6 mb-2 mb-md-4 fs-20 f-600">
-                <a href="education.html"><p>Наши курсы</p></a>
-                <a href="lecturers.html"><p>Лектора</p></a>
-                <a href="about.html"><p>О нас</p></a>
-                <a href="state.html"><p>Статьи</p></a>
-                <a href="contact.html"><p>Контакты</p></a>
+                <a href="{{route('course.index')}}"><p>Наши курсы</p></a>
+                <a href="{{route('lectors.index')}}"><p>Лектора</p></a>
+                <a href="{{route('about')}}"><p>О нас</p></a>
+                <a href="{{route('blog.index')}}"><p>Статьи</p></a>
+                <a href="{{route('contacts')}}"><p>Контакты</p></a>
             </div>
             <div class="col-12 col-lg-2 mt-2 mt-lg-6 mb-4 fs-20 f-600 d-none d-lg-block">
                 <a href="education.html"><p>Наши курсы</p></a>
@@ -167,7 +167,7 @@
                     <div class="ms-md-6 text-white">
                         <p class="opacity-50 fs-14 f-500">Литва</p>
                         <a href="tel:+7(499)113-19-28"><p class="fs-16 f-600">+7(499)113-19-28</p></a>
-                        <p class="opacity-50 mt-4 fs-14 f-500">Беларась</p>
+                        <p class="opacity-50 mt-4 fs-14 f-500">Беларусь</p>
                         <a href="tel:+375(44)775-54-20"><p class="fs-16 f-600">+375 (44) 775-54-20 <br class="d-block d-md-none">(Viber/WatsApp/Telegram)</p></a>
                     </div>
                 </div>
@@ -200,13 +200,13 @@
                 </div>
             </div>
             <div class="col-md-5 d-flex justify-content-between align-items-center mb-3 mb-md-0 flex-wrap flex-md-nowrap">
-                <a href="#"><img src="dist/image/pay1.png" alt="payPic"></a>
-                <a href="#"><img src="dist/image/pay2.png" alt="payPic"></a>
-                <a href="#"><img src="dist/image/pay3.png" alt="payPic"></a>
-                <a href="#"><img src="dist/image/pay4.png" alt="payPic"></a>
-                <a href="#"><img src="dist/image/pay5.png" alt="payPic"></a>
-                <a href="#"><img src="dist/image/pay6.png" alt="payPic"></a>
-                <a href="#"><img src="dist/image/pay7.png" alt="payPic"></a>
+                <a href="#"><img src="/dist/image/pay1.png" alt="payPic"></a>
+                <a href="#"><img src="/dist/image/pay2.png" alt="payPic"></a>
+                <a href="#"><img src="/dist/image/pay3.png" alt="payPic"></a>
+                <a href="#"><img src="/dist/image/pay4.png" alt="payPic"></a>
+                <a href="#"><img src="/dist/image/pay5.png" alt="payPic"></a>
+                <a href="#"><img src="/dist/image/pay6.png" alt="payPic"></a>
+                <a href="#"><img src="/dist/image/pay7.png" alt="payPic"></a>
             </div>
         </div>
     </div>

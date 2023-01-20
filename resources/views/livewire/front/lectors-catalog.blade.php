@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-10 col-12 mb-5 mb-lg-6">
         <div class="d-flex mt-6 py-2">
-            <a><span class="fs-12 f-500 text-secondary">Главная</span></a>
+            <a href="{{route('home')}}" class="text-dark"><span class="fs-12 f-500 text-secondary">Главная</span></a>
             <a><span class="fs-12 f-500 ms-4 main">Лекторы</span></a>
         </div>
         <div class="mt-3">
@@ -13,7 +13,9 @@
                     <div class="bg-white br-12">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}" class="lector_card_photo w-100" alt="lecturerPic">
                         <div class="p-3">
-                            <p class="fs-20 f-700">{{ $lector->name }}</p>
+                            <p class="fs-20 f-700">
+                                <a href="{{route('lectors.show',$lector->id)}}" class="text-black">{{ $lector->name }}</a>
+                            </p>
                             <p class="fs-14 f-500 text-secondary">{{$lector->lector->directions->title}}</p>
                             <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
                         </div>

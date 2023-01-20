@@ -16,8 +16,15 @@ class UserController extends Controller
     {
         $order = $request->get("order","id");
         $sort = $request->get("sort","asc");
-        $users = User::query()->with('userinfo')->orderBY($order,$sort)->paginate(10);
-        return view('admin.users.index', compact('users'));
+        $search_user = $request->integer("search_user", 0);
+
+        $user_query = User::query();
+        if ($search_user > 0) {
+            $user_query = $user_query->where("id", $search_user);
+        }
+        $all_users = User::all();
+        $users = $user_query->with('userinfo')->orderBY($order,$sort)->paginate(10);
+        return view('admin.users.index', compact('users','search_user','all_users'));
     }
 
     public function create()

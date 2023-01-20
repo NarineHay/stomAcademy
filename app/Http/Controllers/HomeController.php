@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data['courses'] = Course::query()->withCount('webinars')->limit(10)->orderBy('id','desc')->get();
+        $data['courses'] = Course::query()->withSum('webinars_object','duration')->withCount('webinars')->limit(10)->orderBy('id','desc')->get();
         $data['blogs'] = Blog::query()->limit(4)->orderBy('id','desc')->get();
         $data['lectors'] = User::query()->withCount('webinars')->where("role",User::ROLE_LECTOR)->with("lector")->limit(6)->get();
         $data['webinars'] = Webinar::query()->limit(6)->orderBy('id','desc')->get();

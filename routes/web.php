@@ -20,14 +20,18 @@ Route::prefix("webinars")->group(function (){
     Route::get("/",[\App\Http\Controllers\WebinarsController::class,'index'])->name("webinar.index");
 });
 
+Route::prefix("courses")->group(function (){
+    Route::get("/",[\App\Http\Controllers\CourseController::class,'index'])->name("course.index");
+});
+
 Route::get('about',[\App\Http\Controllers\AboutController::class,'index'])->name("about");
 Route::group(["prefix" => "lectors","as" => "lectors."],function (){
     Route::get('/',[\App\Http\Controllers\LectorsController::class,'index'])->name("index");
-    Route::get('{lector}',[\App\Http\Controllers\LectorsController::class,'show'])->name("show");
+    Route::get('{id}',[\App\Http\Controllers\LectorsController::class,'show'])->name("show");
 });
 Route::group(["prefix" => "blog","as" => "blog."],function (){
     Route::get('/',[\App\Http\Controllers\BlogController::class,'index'])->name("index");
-    Route::get('{blog}',[\App\Http\Controllers\BlogController::class,'show'])->name("show");
+    Route::get('{id}',[\App\Http\Controllers\BlogController::class,'show'])->name("show");
 });
 Route::prefix("contacts")->group(function (){
     Route::get("/",[\App\Http\Controllers\ContactsController::class,"index"])->name("contacts");

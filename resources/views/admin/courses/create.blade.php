@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Webinar')
+@section('title', 'Course')
 
 @section('content')
     <div class="content-header">

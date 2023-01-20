@@ -14,6 +14,19 @@
                 </div>
             </div>
 
+            <form method="get">
+                <div class="d-flex justify-content-sm-start mt-3 w-50">
+                    <select class="form-control select2" name="search_user">
+                        <option value="0">---</option>
+                        @foreach($all_users as $user)
+                            <option @if($user->id == $search_user) selected @endif value="{{ $user->id }}">
+                                {{ $user->name }}/{{$user->email}}/{{$user->userinfo->phone}}
+                            </option>
+                        @endforeach
+                    </select>
+                    <button class="btn btn-outline-primary ml-2" type="submit" style="height: 38px">Поиск</button>
+                </div>
+            </form>
         </div>
     </div>
 

@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class CourseController extends Controller
 {
     function index(){
-        $data['webinar'] = Course::all();
-        return view("front.webinar.index",compact('data'));
+        return view("front.course.index");
     }
 }

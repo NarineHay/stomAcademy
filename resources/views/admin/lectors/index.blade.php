@@ -10,8 +10,26 @@
                     <h1 class="m-0">Лекторы</h1>
                 </div>
             </div>
-
         </div>
+
+        <form method="get" class="mt-4 ml-2">
+            <div>
+                <div class="d-flex align-items-end">
+                    <div class="mr-3 w-25">
+                        <label>Лектор</label>
+                        <select class="form-control select2" name="search_user">
+                            <option value="0">---</option>
+                            @foreach($users as $user)
+                                <option @if($user->id == $search_user) selected @endif value="{{ $user->id }}">
+                                    {{ $user->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button class="btn btn-outline-primary" type="submit" style="height: 38px">Поиск</button>
+                </div>
+            </div>
+        </form>
     </div>
 
     <section class="content">

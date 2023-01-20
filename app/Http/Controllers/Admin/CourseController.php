@@ -19,8 +19,14 @@ class CourseController extends Controller
     public function index(Request $request){
         $order = $request->get("order","id");
         $sort = $request->get("sort","asc");
-        $data['courses'] = Course::query()->orderBY($order,$sort)->paginate(10);
-        return view('admin.courses.index',$data);
+        $search_course = $request->integer("search_course", 0);
+        $course_query = Course::query();
+        if ($search_course > 0) {
+            $course_query = $course_query->where("id", $search_course);
+        }
+        $all_courses = Course::all();
+        $courses = $course_query->orderBY($order,$sort)->paginate(10);
+        return view('admin.courses.index',compact('courses','search_course','all_courses'));
     }
 
     public function create()

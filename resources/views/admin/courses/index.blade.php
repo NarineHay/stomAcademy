@@ -14,6 +14,19 @@
                 </div>
             </div>
         </div>
+        <form method="get" class="ml-2">
+            <div class="d-flex justify-content-sm-start mt-3 w-50">
+                <select class="form-control select2" name="search_course">
+                    <option value="0">---</option>
+                    @foreach($all_courses as $course)
+                        <option @if($course->id == $search_course) selected @endif value="{{ $course->id }}">
+                            {{ $course->info->title }}
+                        </option>
+                    @endforeach
+                </select>
+                <button class="btn btn-outline-primary ml-2" type="submit" style="height: 38px">Поиск</button>
+            </div>
+        </form>
     </div>
 
     <section class="content">

@@ -1,28 +1,14 @@
 @extends("layouts.app")
 
 @section("content")
-    <div class="container mt-4 mt-lg-5">
-        <div class="d-flex justify-content-center flex-wrap gap-2">
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Все направления</button>
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Программирование</button>
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Дизайн</button>
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Маркетинг</button>
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Управление</button>
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Игры</button>
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Кино и музыка</button>
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Психология</button>
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Общее развитие</button>
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Инженерия</button>
-            <button class="btn btn-outline-primary rounded-5 fs-20 f-600 py-2 px-3">Другое</button>
-        </div>
-    </div>
+    <livewire:front.show-all-directions/>
 
     <!--Популярные курсы-->
     <div class="container mt-4 mt-lg-6">
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
                 <div>
-                    <h3 class="f-700 m-0">Популярные курсы</h3>
+                    <h3 class="f-700 m-0">{{ __("index.popular_courses") }}</h3>
                 </div>
                 <div class="ms-lg-4 mt-2 mt-lg-0">
                     <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
@@ -64,7 +50,7 @@
                     <h3 class="f-700 m-0">Новые курсы</h3>
                 </div>
                 <div class="ms-lg-4 mt-2 mt-lg-0">
-                    <a href="#" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                    <a href="{{route('course.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
             <div class="slider_navigation AdditionsSwiper_nav mb-4 d-none d-md-block">
@@ -83,7 +69,7 @@
                             <p class="f-700 fs-16">{{$course->info->title}}</p>
                             <div class="mt-2 d-flex justify-content-between">
                                 <div>
-                                    <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+                                    <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
                                     <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
                                 </div>
                                 <div>
@@ -742,8 +728,14 @@
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}" alt="articlePic">
                         </div>
                         <div class="p-3 p-lg-4">
-                            <p class="text-primary text-uppercase f-700 fs-10 m-0">{{$blog->directions->title}}</p>
-                            <h5 class="f-700 mt-2 m-0">{{$blog->info->title}}</h5>
+                            <p class="text-primary text-uppercase f-700 fs-10 m-0">
+                                {{$blog->directions->title}}
+                            </p>
+                            <h5 class="f-700 mt-2 m-0">
+                                <a href="{{route('blog.show',$blog->id)}}" class="text-black">
+                                    {{$blog->info->title}}
+                                </a>
+                            </h5>
                             <p class="mt-2 mt-lg-6 fs-14 f-500 m-0 mt-3">
                                 <i class="far fa-calendar me-2"></i>{{date('d-m-Y', strtotime($blog->created_at))}}
                             </p>

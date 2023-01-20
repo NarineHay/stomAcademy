@@ -9,10 +9,10 @@
         </div>
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 align-items-lg-center">
             <div class="d-flex education_tags mb-3 mb-lg-0">
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text">
+                <button class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
                     <a href="{{route('course.index')}}" class="text-black">Онлайн-курсы</a>
                 </button>
-                <button class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
+                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
                     <a href="{{route('webinar.index')}}" class="text-black">Вебинары</a>
                 </button>
                 <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">Онлайн-конференции</button>
@@ -42,33 +42,31 @@
         </div>
 
         <div class="row mt-4">
-            @foreach($webinars as $webinar)
+            @foreach($courses as $course)
                 <div class="col-xxl-55 col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
                     <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" class="w-100" alt="addPic">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" class="w-100" alt="addPic">
                         <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->title}}</p>
-                            <p class="f-700 fs-16">{{$webinar->info->title}}</p>
-{{--                            <div class="mt-2 d-flex flex-lg-column flex-xl-row">--}}
-{{--                                <div>--}}
-{{--                                    <i class="far fa-clock me-1"></i>--}}
-{{--                                    <span class="me-2 fs-14 f-500">{{$webinar->duration}} мин</span>--}}
-{{--                                </div>--}}
-{{--                                <div class="mt-lg-2 mt-xl-0">--}}
-{{--                                    <i class="far fa-tasks me-1"></i>--}}
-{{--                                    <span class="fs-14 f-500">3 видео</span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" style="height: 40px; width: 40px">
-                                    <p class="m-0 fs-14 f-500">{{$webinar->user->name}}</p>
-                                </div>
-                                <div class="mt-3 mt-xl-0">
-                                    <span class="f-700 text-primary fs-16 white-space">{{$webinar->price->rub}} ₽</span>
+                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
+                            <p class="f-700 fs-16">{{$course->info->title}}</p>
+                            <div class="mt-2 d-flex justify-content-between">
+                                <div>
+                                    <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
+                                    <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
                                 </div>
                             </div>
-                            <button class="btn btn-outline-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
+                                <div class="mb-3 mb-md-0">
+                                    <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
+                                </div>
+                                <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
+                                    Купить
+                                </button>
+                            </div>
+{{--                            <div>--}}
+{{--                                <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>--}}
+{{--                            </div>--}}
+{{--                            <button class="btn btn-outline-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>--}}
                         </div>
                     </div>
                 </div>
@@ -79,7 +77,7 @@
 
         <div class="mt-4 d-flex justify-content-center d-lg-block">
             <nav>
-                {{ $webinars->links() }}
+                {{ $courses->links() }}
             </nav>
         </div>
     </div>
@@ -118,10 +116,16 @@
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor" data-bs-toggle="collapse" data-bs-target="#fg-2"><span>Преподаватели</span><i class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-2">
                         <div class="mt-2">
-                            @foreach($lectors as $user)
-                                <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}" value="{{ $user->id }}" class="mt-2 cursor">
-                                <label for="lec-{{ $user->id }}" class="f-500 fs-14 cursor">{{$user->name}}</label><br>
-                            @endforeach
+                            <input type="checkbox" id="vehicle15" name="vehicle1" class="mt-2 cursor">
+                            <label for="vehicle15" class="f-500 fs-14 cursor">Крис Чанг</label><br>
+                            <input type="checkbox" id="vehicle16" name="vehicle2" class="mt-2 cursor">
+                            <label for="vehicle16" class="f-500 fs-14 cursor">Джеффри П. Окесон</label><br>
+                            <input type="checkbox" id="vehicle17" name="vehicle2" class="mt-2 cursor">
+                            <label for="vehicle17" class="f-500 fs-14 cursor">Садао Сато</label><br>
+                            <input type="checkbox" id="vehicle18" name="vehicle2" class="mt-2 cursor">
+                            <label for="vehicle18" class="f-500 fs-14 cursor">Вальтер Девото</label><br>
+                            <input type="checkbox" id="vehicle19" name="vehicle2" class="mt-2 cursor">
+                            <label for="vehicle19" class="f-500 fs-14 cursor">Анджело Путиньяно</label><br>
                         </div>
                     </div>
                 </div>
@@ -144,3 +148,4 @@
 {{--        </ul>--}}
 {{--    </nav>--}}
 {{--</div>--}}
+

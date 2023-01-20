@@ -8,6 +8,7 @@ use App\Models\Direction;
 use App\Models\Language;
 use App\Models\Lector;
 use App\Models\Prices;
+use App\Models\User;
 use App\Models\Webinar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -19,8 +20,26 @@ class WebinarController extends Controller
     {
         $order = $request->get("order","id");
         $sort = $request->get("sort","asc");
-        $webinars = Webinar::query()->with('user')->orderBY($order,$sort)->paginate(10);
-        return view('admin.webinars.index', compact('webinars'));
+
+        $search_webinar = $request->integer("search_webinar", 0);
+        $search_user = $request->integer("search_user", 0);
+
+        $webinar_query = Webinar::query();
+        if ($search_webinar > 0) {
+            $webinar_query = $webinar_query->where("id", $search_webinar);
+        }
+
+        if ($search_user > 0) {
+            if ($search_webinar > 0) {
+                $webinar_query = $webinar_query->orWhere("user_id", $search_user);
+            } else {
+                $webinar_query = $webinar_query->where("user_id", $search_user);
+            }
+        }
+        $all_webinars = Webinar::all();
+        $users = User::query()->where("role",User::ROLE_LECTOR)->get();
+        $webinars = $webinar_query->with('user')->orderBY($order,$sort)->paginate(10);
+        return view('admin.webinars.index', compact('webinars','search_webinar','search_user','all_webinars','users'));
     }
 
     public function create()

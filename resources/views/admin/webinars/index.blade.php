@@ -13,8 +13,37 @@
                     <a class="btn btn-primary" href="{{route('admin.webinar.create')}}" role="button">Добавить</a>
                 </div>
             </div>
-
         </div>
+
+        <form method="get" class="ml-2">
+            <div>
+                <div class="d-flex align-items-end">
+                    <div class="w-25 mr-3">
+                        <select class="form-control select2" name="search_webinar">
+                            <option value="0">---</option>
+                            @foreach($all_webinars as $webinar)
+                                <option @if($webinar->id == $search_webinar) selected @endif value="{{ $webinar->id }}">
+                                    {{ $webinar->info->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mr-3 w-25">
+                        <label>Пользователь</label>
+                        <select class="form-control select2" name="search_user">
+                            <option value="0">---</option>
+                            @foreach($users as $user)
+                                <option @if($user->id == $search_user) selected @endif value="{{ $user->id }}">
+                                    {{ $user->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <button class="btn btn-outline-primary" type="submit" style="height: 38px">Поиск</button>
+                </div>
+            </div>
+        </form>
     </div>
     <section class="content">
         @if(session('success'))
@@ -31,25 +60,10 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-
-                                    <th>Изображение</th>
-
-                                    <th>
-                                        {{--                                        <div class="d-flex align-items-center flex-nowrap">--}}
-                                        <span>Название вебинара</span>
-                                        {{--                                            <div class="sort ml-2 d-flex flex-nowrap">--}}
-                                        {{--                                                <a href = {{route('admin.webinars.index',['order'=>'title','sort'=>'asc'])}}>--}}
-                                        {{--                                                    <i class="fa fa-arrow-up fs-6" aria-hidden="true"></i>--}}
-                                        {{--                                                </a>--}}
-                                        {{--                                                <a href = {{route('admin.webinars.index',['order'=>'title','sort'=>'desc'])}}>--}}
-                                        {{--                                                    <i class="fa fa-arrow-down fs-6" aria-hidden="true"></i>--}}
-                                        {{--                                                </a>--}}
-                                        {{--                                            </div>--}}
-                                        {{--                                        </div>--}}
+                                    <th><span>Изображение</span></th>
+                                    <th><span>Название вебинара</span>
                                     </th>
-
                                     <th><span>Лектор</span></th>
-
                                     <th>
                                         <div class="d-flex align-items-center flex-nowrap">
                                             <span>Дата проведения</span>
