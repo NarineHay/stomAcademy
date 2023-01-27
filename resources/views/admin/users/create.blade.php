@@ -35,8 +35,13 @@
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ИМЯ И ФАМИЛИЯ*</label>
-                        <input value="{{ old("name") }}" type="text" name="name" class="form-control" placeholder="Введите Имя и Фамилию...">
+                        <label for="exampleInputEmail1">ИМЯ*</label>
+                        <input value="{{ old("fname") }}" type="text" name="fname" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ФАМИЛИЯ*</label>
+                        <input value="{{ old("lname") }}" type="text" name="lname" class="form-control">
                     </div>
 
                     <div class="form-group">

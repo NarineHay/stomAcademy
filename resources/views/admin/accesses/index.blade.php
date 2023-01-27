@@ -41,7 +41,7 @@
                                 <option value="0">---</option>
                                 @foreach($users as $user)
                                     <option @if($user->id == $search_user) selected @endif value="{{ $user->id }}">
-                                        {{ $user->name }}
+                                        {{ $user->userinfo->fname }} {{$user->userinfo->lname}}
                                     </option>
                                 @endforeach
                             </select>
@@ -84,10 +84,10 @@
                                             <a>{{$access->course->info->title ?? $access->webinar->info->title}}</a>
                                         </td>
                                         <td>
-                                            <a>{{$access->user->name}} ({{$access->user->email}})</a>
+                                            <a>{{$access->user->userinfo->fname}} {{$access->user->userinfo->lname}}  ({{$access->user->email}})</a>
                                         </td>
                                         <td>
-                                            <a>{{$access->manager->name}}</a>
+                                            <a>{{$access->manager->userinfo->fname}} {{$access->manager->userinfo->lname}}</a>
                                         </td>
                                         <td>
                                             <a>{{$access->created_at}}</a>

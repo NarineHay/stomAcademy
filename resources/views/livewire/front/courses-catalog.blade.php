@@ -59,9 +59,14 @@
                                 <div class="mb-3 mb-md-0">
                                     <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
                                 </div>
-                                <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
-                                    Купить
-                                </button>
+                                <form method="POST" action="{{route('addToCart')}}">
+                                    @csrf
+                                    <input type="hidden" value="{{ $course->id }}" name="id">
+                                    <input type="hidden" value="course" name="type">
+                                    <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
+                                        Купить
+                                    </button>
+                                </form>
                             </div>
 {{--                            <div>--}}
 {{--                                <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>--}}
@@ -81,7 +86,7 @@
             </nav>
         </div>
     </div>
-    <div class="col-lg-2 col-12 position-relative" style="z-index: 100;">
+    <div wire:ignore class="col-lg-2 col-12 position-relative" style="z-index: 100;">
         <div class="aside d-none d-lg-block">
             <div class="position-fixed">
                 <div class="mt-4 ms-3 pt-5">
@@ -116,16 +121,10 @@
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor" data-bs-toggle="collapse" data-bs-target="#fg-2"><span>Преподаватели</span><i class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-2">
                         <div class="mt-2">
-                            <input type="checkbox" id="vehicle15" name="vehicle1" class="mt-2 cursor">
-                            <label for="vehicle15" class="f-500 fs-14 cursor">Крис Чанг</label><br>
-                            <input type="checkbox" id="vehicle16" name="vehicle2" class="mt-2 cursor">
-                            <label for="vehicle16" class="f-500 fs-14 cursor">Джеффри П. Окесон</label><br>
-                            <input type="checkbox" id="vehicle17" name="vehicle2" class="mt-2 cursor">
-                            <label for="vehicle17" class="f-500 fs-14 cursor">Садао Сато</label><br>
-                            <input type="checkbox" id="vehicle18" name="vehicle2" class="mt-2 cursor">
-                            <label for="vehicle18" class="f-500 fs-14 cursor">Вальтер Девото</label><br>
-                            <input type="checkbox" id="vehicle19" name="vehicle2" class="mt-2 cursor">
-                            <label for="vehicle19" class="f-500 fs-14 cursor">Анджело Путиньяно</label><br>
+                            @foreach($lectors as $user)
+                                <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}" value="{{ $user->id }}" class="mt-2 cursor">
+                                <label for="lec-{{ $user->id }}" class="f-500 fs-14 cursor">{{$user->name}}</label><br>
+                            @endforeach
                         </div>
                     </div>
                 </div>

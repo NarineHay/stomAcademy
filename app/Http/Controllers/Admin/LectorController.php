@@ -112,11 +112,14 @@ class LectorController extends Controller
 
         $lector->per_of_sales = $request->per_of_sales;
         $lector->direction_id = $request->direction_id;
-        $lector->user->update([
-            "name" => $request->name,
+//        $lector->user->update([
+//            "name" => $request->name,
+//        ]);
+        $lector->user->userinfo->update([
+            "fname" => $request->fname,
         ]);
         $lector->user->userinfo->update([
-            "country_id" => $request->country_id,
+            "lname" => $request->lname,
         ]);
 
         foreach ($request->get("biography",[]) as $lg_id => $bio){

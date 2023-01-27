@@ -68,7 +68,12 @@
                                     <span class="f-700 text-primary fs-16 white-space">{{$webinar->price->rub}} ₽</span>
                                 </div>
                             </div>
-                            <button class="btn btn-outline-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                            <form method="POST" action="{{route('addToCart')}}">
+                                @csrf
+                                <input type="hidden" value="{{ $webinar->id }}" name="id">
+                                <input type="hidden" value="webinar" name="type">
+                                <button class="btn btn-outline-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -83,7 +88,7 @@
             </nav>
         </div>
     </div>
-    <div class="col-lg-2 col-12 position-relative" style="z-index: 100;">
+    <div wire:ignore class="col-lg-2 col-12 position-relative" style="z-index: 100;">
         <div class="aside d-none d-lg-block">
             <div class="position-fixed">
                 <div class="mt-4 ms-3 pt-5">

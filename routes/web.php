@@ -37,6 +37,27 @@ Route::prefix("contacts")->group(function (){
     Route::get("/",[\App\Http\Controllers\ContactsController::class,"index"])->name("contacts");
 });
 
+Route::group(['prefix' => "personal",'middleware' => 'auth','as' => 'personal.'],function () {
+    Route::get("/",[\App\Http\Controllers\ProfileController::class,'index'])->name("index");
+    Route::get("/information",[\App\Http\Controllers\InformationController::class,'index'])->name("information");
+    Route::get("/certificate",[\App\Http\Controllers\CertificateController::class,'index'])->name("certificates");
+    Route::get("/history",[\App\Http\Controllers\HistoryController::class,'index'])->name("history");
+    Route::get("/help",[\App\Http\Controllers\HelpController::class,'index'])->name("help");
+    Route::get("/courses",[\App\Http\Controllers\UserCoursesController::class,'index'])->name("courses");
+    Route::get("/course",[\App\Http\Controllers\SettingsController::class,'index'])->name("course");
+    Route::get("/settings",[\App\Http\Controllers\SettingsController::class,'index'])->name("settings");
+    Route::get("/cart",[\App\Http\Controllers\CartController::class,'index'])->name("cart");
+});
+
+Route::get('certificate-download/{image}', [\App\Http\Controllers\CertificateController::class, 'download'])->name('download');
+
+Route::middleware("auth")->group(function (){
+    Route::post('addToCart', [\App\Http\Controllers\CartController::class, 'add'])->name('addToCart');
+    Route::get('removeFromCart/{cart}', [\App\Http\Controllers\CartController::class, 'remove'])->name('removeFromCart');
+    Route::get('removeAllFromCart', [\App\Http\Livewire\Front\CartComponent::class, 'removeAllFromCart'])->name('removeAllFromCart');
+});
+
+
 Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],function () {
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('lectors', \App\Http\Controllers\Admin\LectorController::class);
@@ -49,6 +70,7 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::resource('payment', \App\Http\Controllers\Admin\PaymentController::class);
     Route::resource('pages', \App\Http\Controllers\Admin\PagesController::class);
     Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
+    Route::resource('chats', \App\Http\Controllers\Admin\HelpController::class);
 });
 
 

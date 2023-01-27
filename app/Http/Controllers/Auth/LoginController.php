@@ -32,12 +32,12 @@ class LoginController extends Controller
         else if(Auth::user()->role=="lector"){
             return route('lector');
         }
-        return route('account');
+        return route('personal.index');
     }
 
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }

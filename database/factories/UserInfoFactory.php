@@ -15,6 +15,8 @@ class UserInfoFactory extends Factory
     public function definition()
     {
             return [
+                'fname' => fake()->unique()->firstName(),
+                'lname' => fake()->unique()->lastName(),
                 'youtube_email' => fake()->unique()->safeEmail(),
                 'phone' => $this->faker->phoneNumber(),
                 'birth_date' => $this->faker->date(),

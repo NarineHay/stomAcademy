@@ -40,7 +40,7 @@
                         <select class="form-control form-control" name="user_id">
                             @foreach($data['users'] as $user)
                                 <option value="{{ $user->id }}" {{ $user->id == $access->user_id ? 'selected' : '' }}>
-                                    {{ $user->name }}*{{$user->email}}
+                                    {{ $user->userinfo->fname }} {{$user->userinfo->lname}}*{{$user->email}}
                                 </option>
                             @endforeach
                         </select>

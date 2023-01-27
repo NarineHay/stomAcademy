@@ -1,4 +1,5 @@
 <div>
+    @if(!\Illuminate\Support\Facades\Auth::check())
     <div class="bg-white d-flex justify-content-center flex-column align-items-center mt-6 br-12 d-none d-lg-block p-4">
         <p class="fs-20 f-600 text-center text-dark m-0">Авторизоваться</p>
         <div class="form-group">
@@ -25,4 +26,5 @@
                 class="text-primary fs-14 f-500 m-0">Зарегистрироваться</span>
         </div>
     </div>
+    @endif
 </div>

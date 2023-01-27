@@ -43,10 +43,6 @@
                                 <tbody>
                                 @foreach($certificates as $certificate)
                                     <tr>
-{{--                                        <td>--}}
-{{--                                            <a>{{$certificate->id}}</a>--}}
-{{--                                        </td>--}}
-
                                         <td>
                                             <a><img src="{{\Illuminate\Support\Facades\Storage::url($certificate->image) }}" height="70" alt=""/></a>
                                         </td>

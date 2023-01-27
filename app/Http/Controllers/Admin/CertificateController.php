@@ -32,38 +32,6 @@ class CertificateController extends Controller
         $certificate->date = $request->get('date');
         $certificate->image = $request->file('image')->store('public/certificates');
         $certificate->save();
-//        $images = $request->get("image");
-//
-//        foreach (Language::all() as $lg){
-//            $certificate->infos()->create(
-//                [
-//                    'lg_id' => $lg->id,
-//                    'image' => $images[$lg->id],
-//                ]
-//            );
-//        }
-//        $certificate->image = $request->file('image')->store('public/certificates');
-
-//        $image = $certificate->image;
-//        $input['image'] = time().'.'.$image->getClientOriginalExtension();
-//        $imgFile = Image::make($image->getRealPath());
-//
-//        $width = $imgFile->width();
-//        $height = $imgFile->height();
-//        if(($width/$height)>(3508/2480)){
-//            $nh = 2480;
-//            $nw = ($width * $nh) / $height;
-//            $y = 0;
-//            $x = intval(($nw - 3508) / 2);
-//        }
-//        else if(($width/$height)<(3508/2480)) {
-//            $nw = 3508;
-//            $nh = ($height * $nw) / $width;
-//            $y = intval(($nh - 2480) / 2);
-//            $x = 0;
-//        }
-//        $imgFile->resize($nw,$nh);
-//        $imgFile->crop(3508,2480,$x,$y);
         return redirect()->route('admin.certificates.edit',$certificate->id)
             ->with('success', 'Certificate has been created successfully.');
     }
@@ -76,12 +44,6 @@ class CertificateController extends Controller
     public function update(Request $request,Certificate $certificate)
     {
         $certificate = Certificate::find($certificate->id);
-//        if($request->hasFile('image')){
-//            $request->validate([
-//                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-//            ]);
-//            $certificate->image = $request->file('image')->store('public/certificates');
-//        }
         $certificate->course_id = $request->course_id;
         $certificate->name_x = $request->name_x;
         $certificate->name_y = $request->name_y;

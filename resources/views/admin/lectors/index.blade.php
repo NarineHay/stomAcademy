@@ -21,7 +21,7 @@
                             <option value="0">---</option>
                             @foreach($users as $user)
                                 <option @if($user->id == $search_user) selected @endif value="{{ $user->id }}">
-                                    {{ $user->name }}
+                                    {{ $user->userinfo->fname }} {{$user->userinfo->lname}}
                                 </option>
                             @endforeach
                         </select>
@@ -62,7 +62,7 @@
                                             <a><img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image) }}" height="70" alt=""/></a>
                                         </td>
                                         <td>
-                                            <a>{{$user->name}}</a>
+                                            <a>{{$user->userinfo->fname}} {{$user->userinfo->lname}}</a>
                                         </td>
                                         <td>
                                             <a>{{$user->lector->directions->title ?? ""}}</a>

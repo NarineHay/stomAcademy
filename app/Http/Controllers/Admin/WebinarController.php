@@ -90,6 +90,7 @@ class WebinarController extends Controller
     {
         $data['prices'] = Prices::all();
         $data['directions'] = Direction::all();
+        $data['users'] =  User::query()->where("role",User::ROLE_LECTOR)->get();
         return view('admin.webinars.edit',compact('webinar','data'));
     }
 

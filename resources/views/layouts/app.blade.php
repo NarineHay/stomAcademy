@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" type="text/css" href="/dist/font/font.css">
     <link rel="stylesheet" type="text/css" href="/dist/5.12.0/all.css">
+    <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
     <link rel="icon" href="dist/image/aboutLogo.png">
     @vite(['resources/sass/lib.scss', 'resources/js/script.js'])
     @livewireStyles
@@ -19,21 +20,7 @@
                 <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
             </div>
             @include('front.components.header_menu')
-            <div class="d-flex justify-content-between align-items-center">
-                <p class="text-white mb-0 fs-14 f-500 d-none d-sm-block">Jane Cooper</p>
-                <div class="d-flex mb-0 align-items-center">
-                    <div class="d-flex align-items-center mb-0">
-                        <i class="far fa-user-circle text-white ms-2 fs-20"></i>
-                        <i class="far fa-shopping-bag text-white ms-3 ms-lg-4 fs-20"></i>
-                    </div>
-                    <div class="text-white d-none d-lg-block">
-                        <p class="fs-12 f-700 d-flex rounded-circle justify-content-center noticeCount">4</p>
-                    </div>
-                    <div class="ms-3 d-lg-none">
-                        <i class="fas fa-bars text-white fs-20 mt-1"></i>
-                    </div>
-                </div>
-            </div>
+            <x-header-user></x-header-user>
         </div>
     </header>
     <section class="section_top" style="background-image: url('/dist/image/headerBackground1.jpg'); background-size: cover">
@@ -65,21 +52,7 @@
                 <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
             </div>
             @include('front.components.header_menu')
-            <div class="d-flex justify-content-between align-items-center">
-                <p class="text-white mb-0 fs-14 f-500 d-none d-sm-block">Jane Cooper</p>
-                <div class="d-flex mb-0 align-items-center">
-                    <div class="d-flex align-items-center mb-0">
-                        <i class="far fa-user-circle text-white ms-2 fs-20"></i>
-                        <i class="far fa-shopping-bag text-white ms-3 ms-lg-4 fs-20"></i>
-                    </div>
-                    <div class="text-white d-none d-lg-block">
-                        <p class="fs-12 f-700 d-flex rounded-circle justify-content-center noticeCount">4</p>
-                    </div>
-                    <div class="ms-3 d-lg-none">
-                        <i class="fas fa-bars text-white fs-20 mt-1"></i>
-                    </div>
-                </div>
-            </div>
+            <x-header-user></x-header-user>
         </div>
     </header>
     <section class="section_top" style="background-image: url('/dist/image/headerBackground1.jpg');background-repeat: no-repeat; background-size: cover;">
@@ -104,21 +77,7 @@
                 <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
             </div>
             @include('front.components.header_menu')
-            <div class="d-flex justify-content-between align-items-center">
-                <p class="text-white mb-0 fs-14 f-500 d-none d-sm-block">Jane Cooper</p>
-                <div class="d-flex mb-0 align-items-center">
-                    <div class="d-flex align-items-center mb-0">
-                        <i class="far fa-user-circle text-white ms-2 fs-20"></i>
-                        <i class="far fa-shopping-bag text-white ms-3 ms-lg-4 fs-20"></i>
-                    </div>
-                    <div class="text-white d-none d-lg-block">
-                        <p class="fs-12 f-700 d-flex rounded-circle justify-content-center noticeCount">4</p>
-                    </div>
-                    <div class="ms-3 d-lg-none">
-                        <i class="fas fa-bars text-white fs-20 mt-1"></i>
-                    </div>
-                </div>
-            </div>
+            <x-header-user></x-header-user>
         </div>
     </header>
 @endif

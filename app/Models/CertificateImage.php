@@ -14,5 +14,4 @@ class CertificateImage extends Model
     protected $fillable = [
         'image'
     ];
-
 }

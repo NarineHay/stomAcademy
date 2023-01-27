@@ -56,7 +56,7 @@
                                         <select class="form-control select2" multiple="multiple" name="user_ids[]">
                                             @foreach($users as $user)
                                                 <option value="{{ $user->id }}">
-                                                    {{ $user->name }}*{{$user->email}}
+                                                    {{ $user->userinfo->fname }} {{$user->userinfo->lname}}*{{$user->email}}
                                                 </option>
                                             @endforeach
                                         </select>

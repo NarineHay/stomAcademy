@@ -50,6 +50,8 @@ class UserController extends Controller
         }
         $user->userinfo()->saveMany([
             new UserInfo([
+                "fname" => $request->get('fname'),
+                "lname" => $request->get('lname'),
                 "youtube_email" => $request->get('youtube_email'),
                 "phone" => $request->get('phone'),
                 "birth_date" => $request->get('birth_date'),
@@ -74,7 +76,6 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required',
             'email' => 'required',
         ]);
 
@@ -100,6 +101,8 @@ class UserController extends Controller
         $user->role = $request->role;
 
         $user->userinfo->update([
+            "fname" => $request->get('fname',$user->fname),
+            "lname" => $request->get('lname',$user->lname),
             "youtube_email" => $request->get('youtube_email',$user->youtube_email),
             "phone" => $request->get('phone',$user->phone),
             "birth_date" => $request->get('birth_date',$user->birth_date),

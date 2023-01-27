@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Информация о вебинаре</h1>
+                    <h1 class="m-0">Редактировать</h1>
                 </div>
             </div>
         </div>
@@ -35,6 +35,17 @@
                 @csrf
                 @method('PUT')
                 <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ЛЕКТОР</label>
+                        <select class="form-control form-control" name="user_id">
+                            @foreach($data['users'] as $user)
+                                <option value="{{ $user->id }}" {{ $user->id == $webinar->user_id ? 'selected' : '' }}>
+                                    {{ $user->userinfo->fname }} {{$user->userinfo->lname}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="exampleInputEmail1">ДАТА ВЕБИНАРА*</label>
                         <input type="datetime-local" value="{{$webinar->start_date}}" name="start_date" class="form-control">

@@ -20,7 +20,7 @@
                         <option value="0">---</option>
                         @foreach($all_users as $user)
                             <option @if($user->id == $search_user) selected @endif value="{{ $user->id }}">
-                                {{ $user->name }}/{{$user->email}}/{{$user->userinfo->phone}}
+                                {{ $user->userinfo->fname}}{{ $user->userinfo->fname}}/{{$user->email}}/{{$user->userinfo->phone}}
                             </option>
                         @endforeach
                     </select>
@@ -97,7 +97,7 @@
                                             <a><img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image) }}" height="70" alt=""/></a>
                                         </td>
                                         <td>
-                                            <p class="mb-0"><b>{{$user->name}}</b></p>
+                                            <p class="mb-0"><b>{{$user->userinfo->fname}} {{$user->userinfo->lname}}</b></p>
                                             <p class="mb-0">{{$user->email}}</p>
                                             <p class="mb-0">Зарегистрован։{{$user->created_at}}</p>
                                         </td>

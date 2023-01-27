@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h1 class="m-0">{{$user->name}}</h1>
+                    <h1 class="m-0">{{$user->userinfo->fname}} {{$user->userinfo->lname}}</h1>
                 </div>
             </div>
         </div>

@@ -40,7 +40,7 @@
                             @foreach($lectors as $lector)
                                 @if($lector->user->role == 'lector')
                                     <option value="{{ $lector->id }}">
-                                        {{ $lector->user->name }}
+                                        {{ $lector->user->userinfo->fname }} {{ $lector->user->userinfo->lname }}
                                     </option>
                                 @endif
                             @endforeach

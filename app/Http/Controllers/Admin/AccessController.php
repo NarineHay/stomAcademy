@@ -101,7 +101,8 @@ class AccessController extends Controller
                 $data = [
                     "password" => $user['password'] ?? null,
                     "email" => $new_user->email,
-                    "name" => $new_user->name,
+                    "fname" => $new_user->fname,
+                    "lname" => $new_user->lname,
                     "type" => $type,
                     "course" => $course,
                     "webinar" => $webinar,

@@ -36,8 +36,13 @@
                 @method('PUT')
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ИМЯ И ФАМИЛИЯ*</label>
-                        <input type="text" value="{{ $user->name }}" name="name" class="form-control">
+                        <label for="exampleInputEmail1">ИМЯ*</label>
+                        <input type="text" value="{{ $user->userinfo->fname }}" name="fname" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ФАМИЛИЯ*</label>
+                        <input type="text" value="{{$user->userinfo->lname}}" name="lname" class="form-control">
                     </div>
 
                     <div class="form-group">

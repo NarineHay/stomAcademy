@@ -35,7 +35,7 @@
                             <option value="0">---</option>
                             @foreach($users as $user)
                                 <option @if($user->id == $search_user) selected @endif value="{{ $user->id }}">
-                                    {{ $user->name }}
+                                    {{ $user->userinfo->fname }} {{ $user->userinfo->lname }}
                                 </option>
                             @endforeach
                         </select>
@@ -108,7 +108,7 @@
                                             <a>{{$webinar->info->title}}</a>
                                         </td>
                                         <td>
-                                            <a>{{$webinar->user->name}}</a>
+                                            <a>{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</a>
                                         </td>
                                         <td>
                                             <a>{{$webinar->start_date}}</a>

@@ -68,4 +68,8 @@ class User extends Authenticatable
     function balance(){
         return $this->hasOne(Balance::class,"user_id","id");
     }
+
+    function cart(){
+        return $this->hasMany(Cart::class,"user_id","id");
+    }
 }

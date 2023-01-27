@@ -13,13 +13,15 @@ class UserInfo extends Model
 
     protected $fillable=[
         'user_id',
+        'fname',
+        'lname',
         'youtube_email',
         'phone',
         'birth_date',
         'country_id',
         'city',
         'status',
-        'image'
+        'image',
     ];
 
     protected $hidden = [

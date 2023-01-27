@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
     <link rel="stylesheet" href="/admin/plugins/select2/css/select2.css">
     <link rel="stylesheet" href="/admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.css">
-
+    <link rel="stylesheet" type="text/css" href="/dist/5.12.0/all.css">
+    @vite(['resources/sass/admin.scss'])
     @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -194,6 +195,10 @@
 
                     <li class="nav-item">
                         <a href="{{ route('admin.blogs.index') }}" class="nav-link @if(request()->is('admin/blogs*')) active @endif">Статьи</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('admin.chats.index') }}" class="nav-link @if(request()->is('admin/chats*')) active @endif">Чат</a>
                     </li>
                 </ul>
             </nav>
