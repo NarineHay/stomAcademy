@@ -1,6 +1,6 @@
 @auth()
     <div class="d-flex justify-content-between align-items-center">
-        <a href="{{ $href }}" class="text-white mb-0 fs-14 f-500 d-none d-sm-block">{{ $user->name }}</a>
+        <a href="{{ $href }}" class="text-white mb-0 fs-14 f-500 d-none d-sm-block">{{$user->userinfo->fname}} {{$user->userinfo->lname}}</a>
         <div class="d-flex mb-0 align-items-center">
             <a href="{{ $href }}" class="d-flex align-items-center mb-0">
                 @if($user->userInfo->image)

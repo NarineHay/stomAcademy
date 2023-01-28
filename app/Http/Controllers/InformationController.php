@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class InformationController extends Controller
 {
     public function index(){
-        $user_id = Auth::user()->id;
-        $user = User::query()->where('id',$user_id)->with('userinfo')->get();
-//        dd($user);
-        return view('front.personal.information',$user);
+        return view('front.personal.information');
+    }
+
+    public function deleteAccount(User $user){
+        $user->delete();
+        return route('home');
+
+//        $user = Auth::user()->id;
+//        User::query()->where('id',$user)->delete();
     }
 }

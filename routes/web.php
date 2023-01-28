@@ -47,6 +47,7 @@ Route::group(['prefix' => "personal",'middleware' => 'auth','as' => 'personal.']
     Route::get("/course",[\App\Http\Controllers\SettingsController::class,'index'])->name("course");
     Route::get("/settings",[\App\Http\Controllers\SettingsController::class,'index'])->name("settings");
     Route::get("/cart",[\App\Http\Controllers\CartController::class,'index'])->name("cart");
+    Route::get("/deleteAccount/{id}", [\App\Http\Controllers\InformationController::class,'deleteAccount'])->name('deleteAccount');
 });
 
 Route::get('certificate-download/{image}', [\App\Http\Controllers\CertificateController::class, 'download'])->name('download');

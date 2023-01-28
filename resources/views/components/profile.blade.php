@@ -1,7 +1,7 @@
 <div class="py-5 py-lg-6">
     <div class="mb-6 my-4 my-lg-6" style="z-index: 1">
         <img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image)}}" alt="profilePic" class="rounded-circle" width="73px" height="73px">
-        <h5 class="f-700 mt-3 m-0">{{$user->name}}</h5>
+        <h5 class="f-700 mt-3 m-0">{{$user->userinfo->fname}} {{$user->userinfo->lname}}</h5>
         <div class="d-flex mt-3">
             <i class="fal fa-pencil"></i>
             <p class="m-0 fs-14 f-500 text-secondary ms-2">

@@ -62,7 +62,7 @@
                             <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
                                 <div class="d-flex align-items-center">
                                     <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" style="height: 40px; width: 40px">
-                                    <p class="m-0 fs-14 f-500">{{$webinar->user->name}}</p>
+                                    <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
                                 </div>
                                 <div class="mt-3 mt-xl-0">
                                     <span class="f-700 text-primary fs-16 white-space">{{$webinar->price->rub}} ₽</span>

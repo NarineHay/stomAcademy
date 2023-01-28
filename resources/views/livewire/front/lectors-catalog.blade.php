@@ -14,7 +14,7 @@
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}" class="lector_card_photo w-100" alt="lecturerPic">
                         <div class="p-3">
                             <p class="fs-20 f-700">
-                                <a href="{{route('lectors.show',$lector->id)}}" class="text-black">{{ $lector->name }}</a>
+                                <a href="{{route('lectors.show',$lector->id)}}" class="text-black">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</a>
                             </p>
                             <p class="fs-14 f-500 text-secondary">{{$lector->lector->directions->title}}</p>
                             <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>

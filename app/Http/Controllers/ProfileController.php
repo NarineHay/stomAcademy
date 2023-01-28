@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     public function index(){
-        $data['user'] = Auth::user();
-        return view('front.personal.profile',$data);
+        return view('front.personal.profile');
     }
 }

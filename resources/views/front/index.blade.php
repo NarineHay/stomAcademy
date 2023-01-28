@@ -589,7 +589,7 @@
                                 <p class="f-700 mt-1 fs-16">{{$webinar->info->title}}</p>
                             <div class="d-flex align-items-center mt-2">
                                  <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" width="30" height="30">
-                                 <p class="m-0 fs-14 f-500">{{$webinar->user->name}}</p>
+                                 <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
                             </div>
                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
                                 <div class="mb-3 mb-md-0">
@@ -772,7 +772,7 @@
                     <div class="bg-white br-12">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}" class="w-100" alt="lecturerPic">
                         <div class="text-black p-3">
-                            <p class="fs-20 f-700">{{ $lector->name }}</p>
+                            <p class="fs-20 f-700">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</p>
                             <p class="text-secondary fs-14 f-500">{{$lector->lector->directions->title}}</p>
                             <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
                         </div>

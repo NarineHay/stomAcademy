@@ -6,6 +6,7 @@ use App\Models\Chat;
 use App\Models\ChatMessage;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
 class Support extends Component
@@ -28,6 +29,7 @@ class Support extends Component
         if($this->active_chat){
             $this->active_chat = Chat::query()->where("id",$this->active_chat['id'])->with("messages")->first();
         }
+        $data['route'] = Route::current()->uri();
         return view('livewire.front.support',$data);
     }
 

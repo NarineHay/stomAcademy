@@ -1,7 +1,9 @@
 <div class="row">
     <div class="col-lg-2 position-relative d-none d-lg-block" style="z-index: 1;">
         <div class="account_left_aside_bg profile_left"></div>
-        <x-profile></x-profile>
+        @if(!str_contains('admin', $route))
+            <x-profile></x-profile>
+        @endif
     </div>
     <div class="col-lg-3 bg-white border-start bg-white message_content">
         <div class="container">
@@ -19,16 +21,14 @@
                                     <div>
                                         <div class="me-2">
                                             <img class="chat_avatar"
-                                                 src="{{ \Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE_USER ? $chat->moder->userInfo->image : $chat->user->userInfo->image) }}"
-                                                 alt="pic">
+                                                 src="{{ \Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE_USER ? $chat->moder->userInfo->image : $chat->user->userInfo->image) }}">
                                         </div>
                                     </div>
                                     <div>
-                                        <a class="text-black"><p
-                                                class="m-0 fs-14 f-700">{{ \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE_USER ? $chat->moder->name : $chat->user->name }}</p>
+                                        <a class="text-black">
+                                            <p class="m-0 fs-14 f-700">{{ \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE_USER ? $chat->moder->name : $chat->user->name }}</p>
                                         </a>
-                                        <p class="m-0 fs-13">{{ \Illuminate\Support\Str::of($chat->messages->last()->message)->substr(0,35)}}
-                                            ...</p>
+                                        <p class="m-0 fs-13">{{ \Illuminate\Support\Str::of($chat->messages->last()->message)->substr(0,35)}}...</p>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between">
@@ -49,7 +49,8 @@
             <div class="py-4 px-5 mt-5 mt-lg-4 py-lg-6 h-100">
                 <div class="d-flex justify-content-center message_text">
                     <p class="m-0 fs-12 text-secondary message_text"><span
-                            class="message_text2">{{$chat->created_at}}</span></p>
+                            class="message_text2">{{$chat->created_at}}</span>
+                    </p>
                 </div>
                 <div class="mt-4 d-flex flex-column justify-content-between h-100">
                     @foreach($this->active_chat->messages as $message)
