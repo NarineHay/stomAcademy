@@ -11,11 +11,9 @@ class InformationController extends Controller
         return view('front.personal.information');
     }
 
-    public function deleteAccount(User $user){
+    public function deleteAccount(){
+        $user = Auth::user();
         $user->delete();
-        return route('home');
-
-//        $user = Auth::user()->id;
-//        User::query()->where('id',$user)->delete();
+        return redirect()->route("home");
     }
 }

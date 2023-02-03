@@ -6,11 +6,12 @@
                 @if($user->userInfo->image)
                     <img class="me-2 rounded-circle ms-2" style="height: 30px;width: 30px" src="{{ \Illuminate\Support\Facades\Storage::url($user->userInfo->image) }}">
                 @else
-                    <i class="far fa-user-circle text-white ms-2 fs-20"></i>
+                    <img class="me-2 rounded-circle ms-2" style="height: 30px;width: 30px" src="{{ \Illuminate\Support\Facades\Storage::url('userinfo/unknown.png') }}">
+{{--                    <i class="far fa-user-circle text-white ms-2 fs-20"></i>--}}
                 @endif
             </a>
             <a href="{{route('personal.cart')}}">
-                <i class="far fa-shopping-bag text-white ms-3 ms-lg-4 fs-20"></i>
+                <i class="fal fa-shopping-bag text-white ms-3 ms-lg-4 fs-20"></i>
             </a>
             <div class="text-white d-none d-lg-block">
                 <p class="fs-12 f-700 d-flex rounded-circle justify-content-center noticeCount">{{$count ?? '0'}}</p>

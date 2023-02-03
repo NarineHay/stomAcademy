@@ -1,6 +1,6 @@
 <div class="py-5 py-lg-6">
     <div class="mb-6 my-4 my-lg-6" style="z-index: 1">
-        <img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image)}}" alt="profilePic" class="rounded-circle" width="73px" height="73px">
+        <img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image ?? "userinfo/unknown.png") }}" alt="profilePic" class="rounded-circle" width="73px" height="73px">
         <h5 class="f-700 mt-3 m-0">{{$user->userinfo->fname}} {{$user->userinfo->lname}}</h5>
         <div class="d-flex mt-3">
             <i class="fal fa-pencil"></i>
@@ -27,7 +27,7 @@
             <a href="{{route('personal.history')}}" class="text-decoration-none text-black fs-14 f-500">История покупок</a>
         </div>
         <div class="d-flex mb-4 mt-4">
-            <i class="far fa-cart-arrow-down me-2"></i>
+            <i class="fal fa-cart-arrow-down me-2"></i>
             <a href="{{route('personal.cart')}}" class="text-decoration-none text-black fs-14 f-500">Корзина</a>
         </div>
         <div class="d-flex mb-4 mt-4">

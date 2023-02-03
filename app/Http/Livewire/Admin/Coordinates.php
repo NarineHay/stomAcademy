@@ -46,24 +46,9 @@ class Coordinates extends Component
         $this->original = $this->certificate->image;
         $this->hours_number = $this->certificate->hours_number;
         $this->type = $this->certificate->type;
-//        $this->name_x = $this->certificate->name_x;
-//        $this->name_y = $this->certificate->name_y;
-//        $this->hour_x = $this->certificate->hour_x;
-//        $this->hour_y = $this->certificate->hour_y;
-//        $this->id_x = $this->certificate->id_x;
-//        $this->id_y = $this->certificate->id_y;
-
         $this->course_id = $this->certificate->course_id;
     }
 
-//    protected $rules = [
-//        'name_x' => 'required',
-//        'name_y' => 'required',
-//        'hour_x' => 'required',
-//        'hour_y' => 'required',
-//        'id_x' => 'required',
-//        'id_y' => 'required',
-//    ];
 
     public function save()
     {
@@ -82,12 +67,6 @@ class Coordinates extends Component
         $this->certificate->hours_number = $this->hours_number;
         $this->certificate->type = $this->type;
         $this->certificate->date = $this->date;
-//        $this->certificate->name_x = $this->name_x;
-//        $this->certificate->name_y = $this->name_y;
-//        $this->certificate->hour_x = $this->hour_x;
-//        $this->certificate->hour_y = $this->hour_y;
-//        $this->certificate->id_x = $this->id_x;
-//        $this->certificate->id_y = $this->id_y;
         $this->certificate->image = $this->image;
         $this->certificate->save();
 

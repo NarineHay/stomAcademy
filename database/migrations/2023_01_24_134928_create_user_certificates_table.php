@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('user_certificates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->unsignedBigInteger('certificate_id');
             $table->string('image');
             $table->timestamps();

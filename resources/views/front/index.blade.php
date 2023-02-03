@@ -23,13 +23,13 @@
             <div class="swiper-wrapper">
                 @foreach($courses as $course)
                     <div class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12">
-                        <img src='{{\Illuminate\Support\Facades\Storage::url($course->image)}}' alt="videoPic">
+                        <img src='{{\Illuminate\Support\Facades\Storage::url($course->image)}}' alt="videoPic" style="width: 348px; height: 192px; object-fit: cover">
                         <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
                             <p class="text-primary text-uppercase f-700 fs-10">{{$course->directions->title}}</p>
                             <h5 class="f-700">{{$course->info->title}}</h5>
                             <div class="mt-2">
-                                <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">42 мин</span>
-                                <i class="far fa-tasks me-1"></i> <span class="f-500 f-14">3 видео</span>
+                                <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">{{$course->getDuration()}}</span>
+                                <i class="far fa-tasks me-1"></i> <span class="f-500 f-14">{{$course->webinars_count}} видео</span>
                             </div>
 {{--                            <div class="d-flex align-items-center mt-3">--}}
 {{--                                <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">--}}
@@ -63,7 +63,7 @@
                 @foreach($courses as $course)
                     <div class="swiper-slide">
                     <div class="bg-white br-12">
-                        <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}" class="w-100" alt="addPic">
+                        <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}" alt="addPic" style="width: 386px; height: 214px; object-fit: cover">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
                             <p class="f-700 fs-16">{{$course->info->title}}</p>
@@ -583,7 +583,7 @@
             @foreach($webinars as $webinar)
                 <div class="col-10 col-md-4 col-xxl-2 mt-3">
                     <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" class="w-100" alt="notePic">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" style="width: 250px; height: 150px; object-fit: cover" alt="notePic">
                         <div class="d-flex flex-column p-3">
                                 <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->title}}</p>
                                 <p class="f-700 mt-1 fs-16">{{$webinar->info->title}}</p>
@@ -735,7 +735,7 @@
                 @foreach($blogs as $blog)
                     <div class="d-flex flex-column useful_article_item @if($blog->id%2!=0)flex-lg-column-reverse @endif">
                         <div>
-                            <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}" alt="articlePic">
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}" alt="articlePic" >
                         </div>
                         <div class="p-3 p-lg-4">
                             <p class="text-primary text-uppercase f-700 fs-10 m-0">
@@ -770,7 +770,7 @@
             @foreach($lectors as $lector)
                 <div class="col-6 col-sm-4 col-lg-2 mt-3 mt-lg-4">
                     <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}" class="w-100" alt="lecturerPic">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}" style="width: 251px; height: 203px; object-fit: cover" alt="lecturerPic">
                         <div class="text-black p-3">
                             <p class="fs-20 f-700">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</p>
                             <p class="text-secondary fs-14 f-500">{{$lector->lector->directions->title}}</p>
@@ -790,7 +790,7 @@
                     <div>
                         <div class="rounded-circle d-flex align-items-center justify-content-center"
                              style="width: 93px; height: 93px;background-color: rgba(25, 31, 112, 0.1)">
-                            <i class="far fa-chalkboard-teacher text-primary fs-25"></i>
+                            <i class="fal fa-chalkboard-teacher text-primary fs-25"></i>
                         </div>
                     </div>
                     <div class="ms-4 mt-2">
@@ -800,6 +800,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col mt-4">
                 <div class="bg-white br-12 p-2 p-md-3 p-lg-5 d-flex h-100">
                     <div>

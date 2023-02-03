@@ -31,6 +31,6 @@ class HomeLogin extends Component
         else if(Auth::user()->role=="lector"){
             return route('lector');
         }
-        return route('account');
+        return route('personal.index');
     }
 }

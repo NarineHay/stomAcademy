@@ -14,34 +14,31 @@
                         <div class="mt-4 d-flex flex-column w-100">
                             <div class="d-flex flex-column">
                                 <label for="fio">ФИО (для сертификата)</label>
-                                <input wire:model='name' name="name" type="text" id="fio" class="form-control mt-1" value="{{$user->name}}">
+                                <input wire:model='name' name="name" type="text" id="fio" class="form-control mt-1" >
                             </div>
-                            <div class="d-flex mt-3 flex-column flex-md-row">
-                                <div class="w-100">
-                                    <label for="fname">Имя</label>
-                                    <input wire:model='fname' name="fname" type="text" id="fname" class="form-control mt-1" value="{{$user->userinfo->fname ?? ''}}">
-                                </div>
-                                <div class="w-100 ms-md-2 mt-3 mt-md-0">
-                                    <label for="lname">Фамилия</label>
-                                    <input wire:model='lname' name='lname' type="text" id="lname" class="form-control mt-1" value="{{$user->userinfo->lname ?? ''}}">
-                                </div>
-                            </div>
+{{--                            <div class="d-flex mt-3 flex-column flex-md-row">--}}
+{{--                                <div class="w-100">--}}
+{{--                                    <label for="fname">Имя</label>--}}
+{{--                                    <input wire:model='fname' name="fname" type="text" id="fname" class="form-control mt-1">--}}
+{{--                                </div>--}}
+{{--                                <div class="w-100 ms-md-2 mt-3 mt-md-0">--}}
+{{--                                    <label for="lname">Фамилия</label>--}}
+{{--                                    <input wire:model='lname' name='lname' type="text" id="lname" class="form-control mt-1" >--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="d-flex mt-3 flex-column flex-md-row">
                                 <div class="w-100">
                                     <label for="name">Дата рождения</label>
-                                    <input wire:model="birth_date" name="birth_date" type="date" id="date" class="form-control mt-1" value="{{$user->userinfo->birth_date ?? ''}}">
+                                    <input wire:model="birth_date" name="birth_date" type="date" id="date" class="form-control mt-1">
                                 </div>
-                                <div class="w-100 ms-md-2 mt-3 mt-md-0">
-                                    <label for="num">Ваш телефон</label>
-                                    <input wire:model="phone"  type="text" id="num"  class="form-control mt-1" value="{{$user->userinfo->phone ?? ''}}">
-                                </div>
+{{--                                <div class="w-100 ms-md-2 mt-3 mt-md-0">--}}
+{{--                                    <label for="num">Ваш телефон</label>--}}
+{{--                                    <input wire:model="phone"  type="text" id="num"  class="form-control mt-1">--}}
+{{--                                </div>--}}
                             </div>
                             <div class="d-flex flex-column mt-3">
                                 <label for="clinic">Ваша клиника</label>
                                 <input wire:model="hospital" name="hospital" type="text" id="clinic" class="form-control mt-1">
-                            </div>
-                            <div class="mt-3">
-                                <button class="btn btn-secondary text-white br-12 p-2">Изменить аватар</button>
                             </div>
                         </div>
                     </div>
@@ -86,9 +83,10 @@
                 <div class="mt-4 d-flex flex-column justify-content-between">
                     <div class="direction-list">
                         @foreach($directions as $direction)
-                            <div>
-                                <input type="checkbox" id="vehicle1" name="vehicle1" class="mt-2 cursor">
-                                <label for="vehicle1" class="f-500 fs-16 ms-2 cursor">{{$direction->title}}</label>
+                            <div class="form-check">
+                                <input type="checkbox" wire:model="userDirections" value="{{ $direction->id }}"
+                                @if( $user->directions->where("direction_id",$direction->id)->count()) checked @endif
+                                       class="mr-1 form-check-input"><label class="form-check-label">{{$direction->title}}</label>
                             </div>
                         @endforeach
                     </div>
@@ -98,5 +96,12 @@
                 </div>
             </div>
         </div>
+
+        @if($success)
+            <div data-mdb-delay="5000" data-mdb-autohide="true" class="alert alert-success alert-dismissible fade show mt-3 profile_alert" role="alert">
+                <strong>{{ $success }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
     </div>
 </div>

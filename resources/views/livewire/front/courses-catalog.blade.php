@@ -45,7 +45,7 @@
             @foreach($courses as $course)
                 <div class="col-xxl-55 col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
                     <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" class="w-100" alt="addPic">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" style="width: 250px; height: 150px; object-fit: cover" alt="addPic">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
                             <p class="f-700 fs-16">{{$course->info->title}}</p>

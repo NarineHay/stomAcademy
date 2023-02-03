@@ -12,8 +12,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('chat_id');
             $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
             $table->text('message');
-            $table->boolean('status')->default(0);
+            $table->unsignedInteger('status')->default(0);
             $table->timestamps();
         });
     }
