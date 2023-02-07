@@ -172,5 +172,14 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 @livewireScripts
+<script>
+    $(function () {
+        $('.summernote').summernote()
+        $('.select2').select2({
+            theme: 'bootstrap4',
+            tags:true,
+        });
+    })
+</script>
 </body>
 </html>

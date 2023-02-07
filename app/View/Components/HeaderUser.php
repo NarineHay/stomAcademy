@@ -28,7 +28,7 @@ class HeaderUser extends Component
                     $data['href'] = route("admin.users.index");
                     break;
                 case User::ROLE_LECTOR:
-                    $data['href'] = "";
+                    $data['href'] = route("lector.profile");
                     break;
                 case User::ROLE_MODER:
                     $data['href'] = "";

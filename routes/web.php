@@ -74,6 +74,14 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::resource('chats', \App\Http\Controllers\Admin\HelpController::class);
 });
 
+Route::group(['prefix' => "lector",'middleware' => 'isLector','as' => 'lector.'],function () {
+    Route::get("/personal",[\App\Http\Controllers\Lector\PersonalController::class,'index'])->name("personal");
+    Route::get("/profile",[\App\Http\Controllers\Lector\ProfileController::class,'index'])->name("profile");
+    Route::get("/webinars",[\App\Http\Controllers\Lector\WebinarsController::class,'index'])->name("webinars");
+    Route::get("/courses",[\App\Http\Controllers\Lector\CoursesController::class,'index'])->name("courses");
+    Route::get("/chats",[\App\Http\Controllers\Lector\ChatsController::class,'index'])->name("chats");
+});
+
 
 //Route::prefix('personal')->middleware("auth")->group(function (){
 //    Route::get('/account', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('account');

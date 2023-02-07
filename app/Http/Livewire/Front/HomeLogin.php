@@ -29,7 +29,7 @@ class HomeLogin extends Component
             return route('admin.users.index');
         }
         else if(Auth::user()->role=="lector"){
-            return route('lector');
+            return route('lector.personal');
         }
         return route('personal.index');
     }

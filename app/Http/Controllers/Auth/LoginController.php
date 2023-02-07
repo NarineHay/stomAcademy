@@ -30,7 +30,9 @@ class LoginController extends Controller
             return route('admin.users.index');
         }
         else if(Auth::user()->role=="lector"){
-            return route('lector');
+            LG::set(1);
+            Carbon::setLocale('ru');
+            return route('lector.profile');
         }
         return route('personal.index');
     }
