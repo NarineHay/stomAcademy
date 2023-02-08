@@ -200,6 +200,10 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.chats.index') }}" class="nav-link @if(request()->is('admin/chats*')) active @endif">Чат</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('admin.videos.index') }}" class="nav-link @if(request()->is('admin/videos*')) active @endif">Видео</a>
+                    </li>
                 </ul>
             </nav>
         </div>

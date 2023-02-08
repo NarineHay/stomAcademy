@@ -7,7 +7,6 @@
                     <img class="me-2 rounded-circle ms-2" style="height: 30px;width: 30px" src="{{ \Illuminate\Support\Facades\Storage::url($user->userInfo->image) }}">
                 @else
                     <img class="me-2 rounded-circle ms-2" style="height: 30px;width: 30px" src="{{ \Illuminate\Support\Facades\Storage::url('userinfo/unknown.png') }}">
-{{--                    <i class="far fa-user-circle text-white ms-2 fs-20"></i>--}}
                 @endif
             </a>
             <a href="{{route('personal.cart')}}">

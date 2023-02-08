@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->unsignedBigInteger('direction_id');
             $table->foreign('direction_id')->references('id')->on('directions')->onDelete("cascade");
+            $table->boolean('online')->default(0);
         });
     }
 

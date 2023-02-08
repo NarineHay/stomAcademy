@@ -13,6 +13,8 @@ class ChangeLectorProfileInfo extends Component
     public $per_of_sales;
     public $birth_date;
     public $hospital;
+    public $experience;
+    public $education;
     public $userDirections = [];
     public $success_ = null;
 

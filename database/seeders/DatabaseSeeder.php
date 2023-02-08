@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BlogSeeder::class);
         $this->call(ChatSeeder::class);
         $this->call(ChatMessageSeeder::class);
+        $this->call(VideosSeeder::class);
     }
 }

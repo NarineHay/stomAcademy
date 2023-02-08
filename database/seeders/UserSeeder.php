@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         User::factory(4)->state(new Sequence(
             ['email' => 'admin@gmail.com','role' => User::ROLE_ADMIN],
             ['email' => 'moder@gmail.com','role' => User::ROLE_MODER],
-            ['email' => 'users@gmail.com','role' => User::ROLE_USER],
+            ['email' => 'user@gmail.com','role' => User::ROLE_USER],
             ['email' => 'lector@gmail.com','role' => User::ROLE_LECTOR],
         ))->create();
 

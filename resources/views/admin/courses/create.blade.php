@@ -34,6 +34,11 @@
             <form action="{{ route('admin.course.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
+{{--                    <div class="form-check mb-3">--}}
+{{--                        <input type="checkbox" class="form-check-input" id="exampleCheck1">--}}
+{{--                        <label class="form-check-label fw-bold" for="exampleCheck1">Онлайн-конференция</label>--}}
+{{--                    </div>--}}
+
                     <div class="form-group">
                         <label for="exampleInputEmail1">ДАТА КУРСА*</label>
                         <input type="datetime-local" value="{{ old('start_date') ?? "" }}" name="start_date" class="form-control">
@@ -129,6 +134,13 @@
                                     </div>
                                 @endforeach
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" name="online">
+                            <label class="form-check-label" for="gridCheck">Онлайн-конференция</label>
                         </div>
                     </div>
                 </div>

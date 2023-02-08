@@ -22,7 +22,8 @@ class Course extends Model
         'price_id',
         'url_to_page',
         'image',
-        'direction_id'
+        'direction_id',
+        'online',
     ];
 
     function price(){

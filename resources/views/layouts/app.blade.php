@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/dist/font/font.css">
     <link rel="stylesheet" type="text/css" href="/dist/5.12.0/all.css">
     <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
-    <link rel="icon" href="dist/image/aboutLogo.png">
+    <link rel="icon" href="/dist/image/aboutLogo.png">
     @vite(['resources/sass/lib.scss', 'resources/js/script.js'])
     @livewireStyles
 </head>

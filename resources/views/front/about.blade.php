@@ -51,11 +51,12 @@
         <div class="row">
             <div class="col-12 mt-4 mt-lg-6">
                 <div class="position-relative d-flex justify-content-center align-items-center">
-                    <img src="dist/image/aboutContent.png" alt="pic" class="br-12 w-100">
-                    <div class="rounded-circle d-flex align-items-center justify-content-center icon-style4 border-0 bg-primary position-absolute cursor"
-                         style="background: rgba(255, 255, 255, 0.3);">
-                        <i class="fas fa-play text-white fs-22"></i>
-                    </div>
+{{--                    <img src="dist/image/aboutContent.png" alt="pic" class="br-12 w-100">--}}
+                    <iframe width="1400" height="630" src="{{$video->url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+{{--                    <div class="rounded-circle d-flex align-items-center justify-content-center icon-style4 border-0 bg-primary position-absolute cursor"--}}
+{{--                         style="background: rgba(255, 255, 255, 0.3);">--}}
+{{--                        <i class="fas fa-play text-white fs-22"></i>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <div class="col-12 mt-4 mt-lg-6 mb-4 mb-lg-6">
@@ -74,8 +75,6 @@
             </div>
         </div>
     </div>
-
-
 
     <!--dentistry-->
     <div class="container mt-5 mt-lg-6">
@@ -123,61 +122,64 @@
             <h2 class="f-700 m-0">Что о нас<br> говорят лектора</h2>
             <div class="col-12 col-md-6 col-xl-3 mt-4 mt-lg-5">
                 <div>
-                    <img src="dist/image/about6.png" class="w-100" alt="picture">
+                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/X-kpSmXVuJw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class=" d-flex align-items-center mt-2 mt-lg-0">
                     <div class="position-relative">
                         <img src="dist/image/profileback.png" alt="userPic">
-                        <img src="dist/image/kamil.png" class="position-absolute top-0 bottom-0 end-0 start-0 m-auto mb-2" alt="pic">
+                        <img src="dist/image/lector1.png" class="position-absolute top-0 bottom-0 end-0 start-0 m-auto mb-2 lector_avatar" alt="pic" width="42px" height="42px">
                     </div>
                     <div class="ms-3">
-                        <p class="fs-200 f-700 m-0">Дахер Рами Насер</p>
-                        <p class="m-0 fs-14 text-secondary f-500">Врач-стоматолог общей практики</p>
+                        <p class="fs-200 f-700 m-0">Walter Devoto</p>
+                        <p class="m-0 fs-14 text-secondary f-500">
+                            Основатель Итальянской Академии эстетической стоматологии и всемирно известного клуба реставраторов StyleItaliano
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-3 mt-4 mt-lg-5">
                 <div>
-                    <img src="dist/image/about7.png" class="w-100" alt="picture">
+                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/tW0k--u0URc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class=" d-flex align-items-center mt-2 mt-lg-0">
                     <div class="position-relative">
                         <img src="dist/image/profileback.png" alt="userPic">
-                        <img src="dist/image/kamil.png" class="position-absolute top-0 bottom-0 end-0 start-0 m-auto mb-2" alt="pic">
+                        <img src="dist/image/lector4.png" class="position-absolute top-0 bottom-0 end-0 start-0 m-auto mb-2 lector_avatar" alt="pic">
                     </div>
                     <div class="ms-3">
-                        <p class="fs-200 f-700 m-0">Дахер Рами Насер</p>
-                        <p class="m-0 fs-14 text-secondary f-500">Врач-стоматолог общей практики</p>
+                        <p class="fs-200 f-700 m-0">Rui Falacho</p>
+                        <p class="m-0 fs-14 text-secondary f-500">Президент Португальского общества цифровой стоматологической медицины</p>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-3 mt-4 mt-lg-5">
                 <div>
-                    <img src="dist/image/about8.png" class="w-100" alt="picture">
+                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/5Ok9oDQgzxs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class=" d-flex align-items-center mt-2 mt-lg-0">
                     <div class="position-relative">
                         <img src="dist/image/profileback.png" alt="userPic">
-                        <img src="dist/image/kamil.png" class="position-absolute top-0 bottom-0 end-0 start-0 m-auto mb-2" alt="pic">
+                        <img src="dist/image/lector2.png" class="position-absolute top-0 bottom-0 end-0 start-0 m-auto mb-2 lector_avatar" alt="pic" width="42px" height="42px">
                     </div>
                     <div class="ms-3">
-                        <p class="fs-200 f-700 m-0">Дахер Рами Насер</p>
-                        <p class="m-0 fs-14 text-secondary f-500">Врач-стоматолог общей практики</p>
+                        <p class="fs-200 f-700 m-0">Antonio Cerutti</p>
+                        <p class="m-0 fs-14 text-secondary f-500">Профессор реставрационной стоматологии в стоматологической школе и школе стоматологической гигиены университета г. Брешии (Италия)</p>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-xl-3 mt-4 mt-lg-5">
                 <div>
-                    <img src="dist/image/about9.png" class="w-100" alt="picture">
+                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/QPXue2tybcs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class="d-flex align-items-center mt-2 mt-lg-0">
                     <div class="position-relative">
                         <img src="dist/image/profileback.png" alt="userPic">
-                        <img src="dist/image/kamil.png" class="position-absolute top-0 bottom-0 end-0 start-0 m-auto mb-2" alt="pic">
+                        <img src="dist/image/lector3.png" class="position-absolute top-0 bottom-0 end-0 start-0 m-auto mb-2 lector_avatar" width="42px" height="42px" alt="pic">
                     </div>
                     <div class="ms-3">
-                        <p class="fs-200 f-700 m-0">Дахер Рами Насер</p>
-                        <p class="m-0 fs-14 text-secondary f-500">Врач-стоматолог общей практики</p>
+                        <p class="fs-200 f-700 m-0">Claudio Farnararo</p>
+                        <p class="m-0 fs-14 text-secondary f-500">
+                            Основатель учебного центра «Dental Art» во Флоренции</p>
                     </div>
                 </div>
             </div>

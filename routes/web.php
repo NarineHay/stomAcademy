@@ -72,6 +72,7 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::resource('pages', \App\Http\Controllers\Admin\PagesController::class);
     Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
     Route::resource('chats', \App\Http\Controllers\Admin\HelpController::class);
+    Route::resource('videos', \App\Http\Controllers\Admin\VideoController::class);
 });
 
 Route::group(['prefix' => "lector",'middleware' => 'isLector','as' => 'lector.'],function () {

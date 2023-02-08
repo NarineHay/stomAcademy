@@ -466,6 +466,14 @@ a:hover {
     border-radius: 50%;
 }
 
+.lector_avatar {
+    border: 2px solid white;
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
 .profile_alert{
     position: fixed;
     bottom: 20px;
