@@ -107,7 +107,7 @@
                     <p class="m-0 fs-16 f-500 mt-2 mt-lg-3">Мы всегда готовы познакомиться с отличными<br class="d-none d-lg-block">
                         специалистами. Пришлите нам ваше резюме для<br class="d-none d-lg-block">
                         рассмотрения.</p>
-                    <button class="btn btn-primary py-2 px-4 px-lg-5 br-12 fs-16 f-600 mt-3 mt-lg-5">Хочу стать лектором</button>
+                    <button class="btn btn-primary py-2 px-4 px-lg-5 br-12 fs-16 f-600 mt-3 mt-lg-5" data-bs-toggle="modal" data-bs-target="#lectorModal">Хочу стать лектором</button>
                 </div>
             </div>
             <div class="col mt-4 mt-lg-0">

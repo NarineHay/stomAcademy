@@ -806,7 +806,7 @@
                     <div class="ms-4 mt-2">
                         <h4 class="f-700">Хочешь стать лектором?</h4>
                         <p class="fs-16 mb-4">Отправьте заявку и мы свяжимся с вами в ближайшее время</p>
-                        <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12 white-space">Отправить завку</button>
+                        <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12 white-space" data-bs-toggle="modal" data-bs-target="#lectorModal">Отправить заявку</button>
                     </div>
                 </div>
             </div>
@@ -822,7 +822,7 @@
                     <div class="ms-4 mt-2">
                         <h4 class="f-700">Оповестить о новых лекциях?</h4>
                         <p class="fs-16 mb-4">Никакого спама, все только по делу!</p>
-                        <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12">Подписаться</button>
+                        <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12" data-bs-toggle="modal" data-bs-target="#lectorFollowModal">Подписаться</button>
                     </div>
                 </div>
             </div>

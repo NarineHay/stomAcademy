@@ -4,6 +4,47 @@ body, html {
     background-color: #F9F9F9;
 }
 
+#lectorFollowModal{
+    input{
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid #000000;
+        border-radius: 0;
+        padding-left: 0;
+
+        &::placeholder{
+            font-style: normal;
+            padding-left: 0;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 17px;
+            color: rgba(85, 85, 85, 0.5);
+        }
+    }
+
+}
+#lectorModal{
+    input{
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid #000000;
+        border-radius: 0;
+        padding-left: 0;
+
+        &::placeholder{
+            font-style: normal;
+            padding-left: 0;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 17px;
+            color: rgba(85, 85, 85, 0.5);
+        }
+    }
+
+}
+
 .headerBorder {
     border-bottom: 1px solid rgba(255, 255, 255, 0.23);
 }

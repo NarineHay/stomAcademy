@@ -170,6 +170,82 @@
         </div>
     </div>
 </footer>
+
+{{-- MODAL Lector --}}
+
+<div class="modal fade" id="lectorModal" tabindex="-1" aria-labelledby="lectorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 f-700" id="lectorModalLabel">Хочешь стать лектором?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+{{--                <div class="input-group mb-3">--}}
+{{--                    <span class="input-group-text text-capitalize" id="inputGroup-sizing-default">имя</span>--}}
+{{--                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">--}}
+{{--                </div>--}}
+{{--                <div class="input-group mb-3">--}}
+{{--                    <span class="input-group-text text-capitalize" id="inputGroup-sizing-default">телефон </span>--}}
+{{--                    <input type="tel" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">--}}
+{{--                </div>--}}
+{{--                <div class="input-group mb-3">--}}
+{{--                    <span class="input-group-text text-capitalize" id="inputGroup-sizing-default">почта</span>--}}
+{{--                    <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">--}}
+{{--                </div>--}}
+
+                <input type="text" class="form-control mb-4" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Имя">
+                <input type="tel" class="form-control mb-4" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Телефон">
+                <input type="email" class="form-control mb-4" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Почта">
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12 white-space">Отправить заявку</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- END MODAL  --}}
+
+
+{{-- MODAL Lector Follow --}}
+
+<div class="modal fade" id="lectorFollowModal" tabindex="-1" aria-labelledby="lectorFollowModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 f-700" id="lectorFollowModalLabel">Оповестить о новых лекциях?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+{{--                <div class="input-group mb-3">--}}
+{{--                    <span class="input-group-text text-capitalize" id="inputGroup-sizing-default">имя</span>--}}
+{{--                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">--}}
+{{--                </div>--}}
+{{--                <div class="input-group mb-3">--}}
+{{--                    <span class="input-group-text text-capitalize" id="inputGroup-sizing-default">почта</span>--}}
+{{--                    <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">--}}
+{{--                </div>--}}
+
+                <input type="text" class="form-control mb-4" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Имя">
+                <input type="email" class="form-control mb-4" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Почта">
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12 white-space">Подписаться</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- END MODAL  --}}
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 @livewireScripts
 <script>
