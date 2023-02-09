@@ -770,7 +770,7 @@
     <div class="container mt-5">
         <div class="d-flex align-items-lg-center flex-column flex-lg-row">
             <div>
-                <h3 class="f-700 m-0">Наши лекторы</h3>
+                <h3 class="f-700 m-0">Наши Лектора</h3>
             </div>
             <div class="ms-lg-4 mt-2 mt-lg-0">
                 <a href="{{route('lectors.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>

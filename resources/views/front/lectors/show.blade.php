@@ -5,7 +5,7 @@
         <div class="py-5 py-lg-6">
             <div class="d-flex mt-4">
                 <a href="{{route('home')}}" class="text-dark"><p class="fs-12 f-500 text-secondary">Главная</p></a>
-                <a href="{{route('lectors.index')}}" class="text-dark"><p class="fs-12 f-500 text-secondary ms-3 d-none d-lg-block main">Лекторы</p></a>
+                <a href="{{route('lectors.index')}}" class="text-dark"><p class="fs-12 f-500 text-secondary ms-3 d-none d-lg-block main">Лектора</p></a>
                 <a><p class="fs-12 f-500 ms-3 main">{{$lector->name}}</p></a>
             </div>
             <div class="row mt-3 mt-lg-5">

@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h1 class="m-0">Лекторы</h1>
+                    <h1 class="m-0">Лектора</h1>
                 </div>
             </div>
         </div>

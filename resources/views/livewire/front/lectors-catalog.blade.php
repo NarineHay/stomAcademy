@@ -2,10 +2,10 @@
     <div class="col-lg-10 col-12 mb-5 mb-lg-6">
         <div class="d-flex mt-6 py-2">
             <a href="{{route('home')}}" class="text-dark"><span class="fs-12 f-500 text-secondary">Главная</span></a>
-            <a><span class="fs-12 f-500 ms-4 main">Лекторы</span></a>
+            <a><span class="fs-12 f-500 ms-4 main">Лектора</span></a>
         </div>
         <div class="mt-3">
-            <h2 class="f-600 m-0">Лекторы</h2>
+            <h2 class="f-600 m-0">Лектора</h2>
         </div>
         <div class="row mt-4">
             @foreach($lectors as $lector)

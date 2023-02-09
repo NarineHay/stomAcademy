@@ -5,17 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminAccessStoreRequest;
 use App\Jobs\SendAccessMail;
-use App\Mail\UserAccessMail;
 use App\Models\Access;
 use App\Models\Course;
-use App\Models\CourseInfo;
 use App\Models\User;
 use App\Models\Webinar;
-use App\Models\WebinarInfo;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class AccessController extends Controller

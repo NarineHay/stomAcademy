@@ -2,41 +2,41 @@
 
 namespace App\Http\Livewire\Front;
 
-use App\Jobs\SendMail;
+use App\Jobs\SendLectorMail;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
-class Contact extends Component
+class BecomeLector extends Component
 {
     public $name;
     public $email;
-    public $question;
+    public $phone;
     public $success = false;
 
     protected $rules = [
         'name' => 'required',
         'email' => 'required|email',
-        'question' => 'nullable',
+        'phone' => 'nullable',
     ];
 
     function __construct($id = null)
     {
         parent::__construct($id);
-        $this->isContactPage = Route::is('contacts');
+        $this->isHomePage = Route::is('home');
     }
 
     public function submit()
     {
         $data = $this->validate();
-        SendMail::dispatch($data);
+        SendLectorMail::dispatch($data);
         $this->success = true;
         $this->name = "";
         $this->email = "";
-        $this->question = "";
+        $this->phone = "";
     }
 
     public function render()
     {
-        return view('livewire.front.contact');
+        return view('livewire.front.become-lector');
     }
 }

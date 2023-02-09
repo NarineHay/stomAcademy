@@ -158,7 +158,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('admin.lectors.index') }}" class="nav-link @if(request()->is('admin/lectors*')) active @endif">Лекторы</a>
+                        <a href="{{ route('admin.lectors.index') }}" class="nav-link @if(request()->is('admin/lectors*')) active @endif">Лектора</a>
                     </li>
 
                     <li class="nav-item">
