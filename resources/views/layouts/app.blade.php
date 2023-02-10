@@ -23,29 +23,33 @@
             <x-header-user></x-header-user>
         </div>
     </header>
-    <section class="section_top" style="background-image: url('/dist/image/headerBackground1.jpg'); background-size: cover;">
-        <div class="bg">
-            <div class="container d-flex justify-content-between align-items-center text-white">
-                <div class="mt-6 d-flex justify-content-between align-items-center w-100 p-2 p-md-0">
-                    <div class="d-flex flex-column">
-                        <div>
-                            <h1 class="mt-3 f-600 m-0 header_text">Stom academy<br>
-                                dental education</h1>
-                            <p class="fs-18 f-500 m-0 pt-3 pb-4">stom-academy — это сервис обучения врачей-стоматологов, который <br class="d-none d-lg-block">проводит
-                                вебинары, семинары,
-                                практические курсы конгрессы.</p>
+    @auth()
+        <section class="section_top" style="background-image: url('/dist/image/headerBackground1.jpg'); background-size: cover;">
+    @endauth
+         <section class="section_top" style="background-image: url('/dist/image/headerBackground1.jpg'); background-size: cover;">
+            <div class="bg">
+                <div class="container d-flex justify-content-between align-items-center text-white">
+                    <div class="mt-6 d-flex justify-content-between align-items-center w-100 p-2 p-md-0">
+                        <div class="d-flex flex-column">
+                            <div>
+                                <h1 class="mt-3 f-600 m-0 header_text">Stom academy<br>
+                                    dental education</h1>
+                                <p class="fs-18 f-500 m-0 pt-3 pb-4">stom-academy — это сервис обучения врачей-стоматологов, который <br class="d-none d-lg-block">проводит
+                                    вебинары, семинары,
+                                    практические курсы конгрессы.</p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn d-flex d-lg-none text-white border-white  br-12 bg-transparent fs-14 f-500" style="padding: 10px 50px">Войти</button>
+                                <button class="btn btn-primary d-flex d-lg-none text-white border-white br-12 border-0 fs-14 f-500" style="padding: 10px 27px">Регистрация</button>
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <button class="btn d-flex d-lg-none text-white border-white  br-12 bg-transparent fs-14 f-500" style="padding: 10px 50px">Войти</button>
-                            <button class="btn btn-primary d-flex d-lg-none text-white border-white br-12 border-0 fs-14 f-500" style="padding: 10px 27px">Регистрация</button>
-                        </div>
+                        <livewire:front.home-login/>
                     </div>
-                    <livewire:front.home-login/>
                 </div>
             </div>
-        </div>
-    </section>
-@elseif(\Illuminate\Support\Facades\Route::currentRouteName() == "about")
+        </section>
+
+    @elseif(\Illuminate\Support\Facades\Route::currentRouteName() == "about")
     <header class="position-relative bg-primary ">
         <div class="container d-flex justify-content-between p-3 align-items-center">
             <div>

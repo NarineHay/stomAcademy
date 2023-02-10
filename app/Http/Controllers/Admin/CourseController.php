@@ -47,6 +47,7 @@ class CourseController extends Controller
         $course->direction_id = $request->get('direction_id');
         $course->url_to_page = $request->get('url_to_page');
         $course->image = $request->file('image')->store('public/course');
+        $course->online = $request->boolean('online');
 
         $course->save();
 
@@ -113,6 +114,7 @@ class CourseController extends Controller
         $course->url_to_page = $request->url_to_page;
         $course->price_id = $request->price_id;
         $course->direction_id = $request->direction_id;
+        $course->online = $request->boolean('online');
 
         foreach ($request->get("description",[]) as $lg_id => $desc){
             $course->infos()->where("lg_id",$lg_id)->update(['description' => $desc]);

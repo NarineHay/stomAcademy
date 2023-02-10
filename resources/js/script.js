@@ -43,8 +43,22 @@ new Swiper(".AdditionsSwiper", {
 });
 
 new Swiper(".WatchedSwiper", {
-    slidesPerView: 1,
-    spaceBetween: 20,
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+    },
+    // slidesPerView: 3,
+    // spaceBetween: 20,
     navigation: {
         nextEl: ".WatchedSwiper_nav .swiper-button-next",
         prevEl: ".WatchedSwiper_nav .swiper-button-prev",

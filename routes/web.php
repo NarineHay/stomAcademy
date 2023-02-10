@@ -25,6 +25,10 @@ Route::prefix("courses")->group(function (){
     Route::get("{id}",[\App\Http\Controllers\CourseController::class,'show'])->name("course.show");
 });
 
+Route::prefix("conferences")->group(function (){
+    Route::get("/",[\App\Http\Controllers\OnlineCoursesController::class,'index'])->name("conference");
+});
+
 Route::get('about',[\App\Http\Controllers\AboutController::class,'index'])->name("about");
 Route::group(["prefix" => "lectors","as" => "lectors."],function (){
     Route::get('/',[\App\Http\Controllers\LectorsController::class,'index'])->name("index");

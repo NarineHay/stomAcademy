@@ -77,4 +77,12 @@ class Course extends Model
         }
         return Course::query()->whereIn("id",$ids)->get();
     }
+
+    function getLectors(){
+        $webinars = $this->webinars_object;
+        return collect($webinars)->map(function ($webinar){
+            return $webinar->user;
+        })->unique("id")->values();
+    }
+
 }

@@ -7,7 +7,8 @@
                 Все направления
             </a>
             @foreach($directions as $direction)
-                <a href="{{ route("course.index",['direction_id' => $direction->id]) }}" class="btn btn-outline-primary rounded-5 fs-15 f-600 py-2 px-3">
+                <a href="{{ route("course.index",['direction_id' => $direction->id]) }}"
+                   class="btn btn-outline-primary rounded-5 fs-15 f-600 py-2 px-3">
                     {{$direction->title}}
                 </a>
             @endforeach
@@ -21,7 +22,8 @@
                     <h3 class="f-700 m-0">{{ __("index.popular_courses") }}</h3>
                 </div>
                 <div class="ms-lg-4 mt-2 mt-lg-0">
-                    <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                    <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p
+                            class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
             <div class="slider_navigation videoPopularSwiper_nav mb-4 d-none d-md-block">
@@ -33,18 +35,20 @@
             <div class="swiper-wrapper">
                 @foreach($courses as $course)
                     <div class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12">
-                        <img src='{{\Illuminate\Support\Facades\Storage::url($course->image)}}' alt="videoPic" style="width: 348px; height: 192px; object-fit: cover">
+                        <img src='{{\Illuminate\Support\Facades\Storage::url($course->image)}}' alt="videoPic"
+                             style="width: 348px; height: 192px; object-fit: cover">
                         <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
                             <p class="text-primary text-uppercase f-700 fs-10">{{$course->directions->title}}</p>
                             <h5 class="f-700">{{$course->info->title}}</h5>
                             <div class="mt-2">
-                                <i class="far fa-clock me-1"></i> <span class="me-2 f-500 f-14">{{$course->getDuration()}}</span>
+                                <i class="far fa-clock me-1"></i> <span
+                                    class="me-2 f-500 f-14">{{$course->getDuration()}}</span>
                                 <i class="far fa-tasks me-1"></i> <span class="f-500 f-14">{{$course->webinars_count}} видео</span>
                             </div>
-{{--                            <div class="d-flex align-items-center mt-3">--}}
-{{--                                <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">--}}
-{{--                                <p class="m-0 f-500 fs-16">Камиль Хабиев</p>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="d-flex align-items-center mt-3">--}}
+                            {{--                                <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">--}}
+                            {{--                                <p class="m-0 f-500 fs-16">Камиль Хабиев</p>--}}
+                            {{--                            </div>--}}
                         </div>
                     </div>
                 @endforeach
@@ -60,7 +64,8 @@
                     <h3 class="f-700 m-0">Новые курсы</h3>
                 </div>
                 <div class="ms-lg-4 mt-2 mt-lg-0">
-                    <a href="{{route('course.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                    <a href="{{route('course.index')}}" class="text-info text-decoration-underline"><p
+                            class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
             <div class="slider_navigation AdditionsSwiper_nav mb-4 d-none d-md-block">
@@ -72,38 +77,32 @@
             <div class="swiper-wrapper">
                 @foreach($courses as $course)
                     <div class="swiper-slide">
-                    <div class="bg-white br-12">
-                        <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}" alt="addPic" style="width: 386px; height: 214px; object-fit: cover">
-                        <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
-                            <p class="f-700 fs-16">{{$course->info->title}}</p>
-                            <div class="mt-2 d-flex justify-content-between">
-                                <div>
-                                    <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
-                                    <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
+                        <div class="bg-white br-12">
+                            <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}" alt="addPic"
+                                 style="width: 386px; height: 214px; object-fit: cover">
+                            <div class="p-3">
+                                <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
+                                <p class="f-700 fs-16">{{$course->info->title}}</p>
+                                <div class="mt-2 d-flex justify-content-between">
+                                    <div>
+                                        <i class="far fa-clock me-1"></i> <span
+                                            class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
+                                        <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
+                                    </div>
+                                    <div>
+                                        <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
+                                    </div>
                                 </div>
-                                <div>
-                                    <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
-                                </div>
+                                <form method="POST" action="{{route('addToCart')}}">
+                                    @csrf
+                                    <input type="hidden" value="{{ $course->id }}" name="id">
+                                    <input type="hidden" value="course" name="type">
+                                    <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию
+                                    </button>
+                                </form>
                             </div>
-{{--                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">--}}
-{{--                                <div class="d-flex align-items-center">--}}
-{{--                                    <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">--}}
-{{--                                    <p class="m-0 fs-14 f-500">Камиль Хабиев</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="mt-3 mt-xl-0">--}}
-{{--                                    <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                            <form method="POST" action="{{route('addToCart')}}">
-                                @csrf
-                                <input type="hidden" value="{{ $course->id }}" name="id">
-                                <input type="hidden" value="course" name="type">
-                                <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
-                            </form>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -117,7 +116,8 @@
                     <h3 class="f-700 m-0">Онлайн-конференции</h3>
                 </div>
                 <div class="ms-lg-4 mt-2 mt-lg-0">
-                    <a href="#" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                    <a href="{{route('conference')}}" class="text-info text-decoration-underline">
+                        <p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
             <div class="slider_navigation WatchedSwiper_nav mb-4 d-none d-md-block">
@@ -127,457 +127,34 @@
         </div>
         <div class="swiper WatchedSwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="row">
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched1.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
+                @foreach($conferences as $conference)
+                    <div class="swiper-slide">
+                        <div style="background-image: url({{\Illuminate\Support\Facades\Storage::url($conference->image)}})" class="watched-bg br-12 mb-3 mb-lg-0">
+                            <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
+                                <div>
+                                    <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
+                                    <h5 class="f-700">{{$conference->info->title}}</h5>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched2.png');" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
+                                <div class="d-flex align-items-center">
                                     <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
+                                        @foreach($course->getLectors()->take(3) as $k => $lector)
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" width="50px" height="50px" @if($k > 0) class="m-25 rounded-circle" @endif alt="personPic">
+                                        @endforeach
                                     </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div style="background-image: url('dist/image/watched3.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
                                     <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
+                                        @if($course->getLectors()->count() > 3)
+                                            <span class="fs-20 f-600 ms-2">{{ $course->getLectors()->count() - 3 }}+</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="row">
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched1.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched2.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div style="background-image: url('dist/image/watched3.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="row">
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched1.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched2.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div style="background-image: url('dist/image/watched3.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="row">
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched1.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched2.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div style="background-image: url('dist/image/watched3.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="row">
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched1.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4  mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched2.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div style="background-image: url('dist/image/watched3.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="row">
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched1.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched2.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div style="background-image: url('dist/image/watched3.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="row">
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched1.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
-                            <div style="background-image: url('dist/image/watched2.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div style="background-image: url('dist/image/watched3.png')" class="watched-bg br-12">
-                                <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
-                                    <div>
-                                        <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
-                                        <h5 class="f-700">Экспертный курс по<br>имплантации</h5>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            <img src="/dist/image/person1.png" alt="personPic">
-                                            <img src="/dist/image/person2.png" class="m-25" alt="personPic">
-                                            <img src="/dist/image/person3.png" class="m-25" alt="personPic">
-                                        </div>
-                                        <div>
-                                            <span class="fs-20 f-600 ms-2">23 +</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
+
 
     <!--Webinars-->
     <div class="container mt-4 mt-lg-6 useful_articles overflow-auto">
@@ -586,22 +163,27 @@
                 <h3 class="f-700 m-0">Онлайн-лекции</h3>
             </div>
             <div class="ms-lg-4">
-                <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p
+                        class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
             </div>
         </div>
         <div class="row flex-nowrap flex-md-wrap">
             @foreach($webinars as $webinar)
                 <div class="col-10 col-md-4 col-xxl-2 mt-3">
                     <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" style="width: 250px; height: 150px; object-fit: cover" alt="notePic">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}"
+                             style="width: 250px; height: 150px; object-fit: cover" alt="notePic">
                         <div class="d-flex flex-column p-3">
-                                <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->title}}</p>
-                                <p class="f-700 mt-1 fs-16">{{$webinar->info->title}}</p>
+                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->title}}</p>
+                            <p class="f-700 mt-1 fs-16">{{$webinar->info->title}}</p>
                             <div class="d-flex align-items-center mt-2">
-                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" width="30" height="30">
-                                 <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
+                                <img
+                                    src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}"
+                                    class="me-2 rounded-circle" alt="customerPic" width="30" height="30">
+                                <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
                             </div>
-                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
+                            <div
+                                class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
                                 <div class="mb-3 mb-md-0">
                                     <span class="f-700 text-primary fs-16">{{$webinar->price->rub}} ₽</span>
                                 </div>
@@ -650,7 +232,8 @@
                 <div class="col-lg-3 col-6">
                     <div class="position-relative">
                         <img src="/dist/image/video3.png" alt="videoPic">
-                        <div class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
+                        <div
+                            class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
                             <i class="fas fa-play"></i>
                         </div>
                     </div>
@@ -686,7 +269,8 @@
                 <h3 class="f-700 m-0">Наши партнеры</h3>
             </div>
             <div class="ms-lg-4 mt-2 mt-lg-0">
-                <a href="{{route('about')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                <a href="{{route('about')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">
+                        Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
             </div>
         </div>
         <div class="row">
@@ -743,9 +327,11 @@
         <div>
             <div class="mt-4 d-flex useful_article_row">
                 @foreach($blogs as $blog)
-                    <div class="d-flex flex-column useful_article_item @if($blog->id%2!=0)flex-lg-column-reverse @endif">
+                    <div
+                        class="d-flex flex-column useful_article_item @if($blog->id%2!=0)flex-lg-column-reverse @endif">
                         <div>
-                            <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}" alt="articlePic" >
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}"
+                                 alt="articlePic">
                         </div>
                         <div class="p-3 p-lg-4">
                             <p class="text-primary text-uppercase f-700 fs-10 m-0">
@@ -773,14 +359,16 @@
                 <h3 class="f-700 m-0">Наши Лектора</h3>
             </div>
             <div class="ms-lg-4 mt-2 mt-lg-0">
-                <a href="{{route('lectors.index')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                <a href="{{route('lectors.index')}}" class="text-info text-decoration-underline"><p
+                        class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
             </div>
         </div>
         <div class="row">
             @foreach($lectors as $lector)
                 <div class="col-6 col-sm-4 col-lg-2 mt-3 mt-lg-4">
                     <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}" style="width: 251px; height: 203px; object-fit: cover" alt="lecturerPic">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}"
+                             style="width: 251px; height: 203px; object-fit: cover" alt="lecturerPic">
                         <div class="text-black p-3">
                             <p class="fs-20 f-700">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</p>
                             <p class="text-secondary fs-14 f-500">{{$lector->lector->directions->title}}</p>
@@ -806,7 +394,9 @@
                     <div class="ms-4 mt-2">
                         <h4 class="f-700">Хочешь стать лектором?</h4>
                         <p class="fs-16 mb-4">Отправьте заявку и мы свяжимся с вами в ближайшее время</p>
-                        <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12 white-space" data-bs-toggle="modal" data-bs-target="#lectorModal">Отправить заявку</button>
+                        <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12 white-space" data-bs-toggle="modal"
+                                data-bs-target="#lectorModal">Отправить заявку
+                        </button>
                     </div>
                 </div>
             </div>
@@ -822,7 +412,9 @@
                     <div class="ms-4 mt-2">
                         <h4 class="f-700">Оповестить о новых лекциях?</h4>
                         <p class="fs-16 mb-4">Никакого спама, все только по делу!</p>
-                        <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12" data-bs-toggle="modal" data-bs-target="#lectorFollowModal">Подписаться</button>
+                        <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12" data-bs-toggle="modal"
+                                data-bs-target="#lectorFollowModal">Подписаться
+                        </button>
                     </div>
                 </div>
             </div>

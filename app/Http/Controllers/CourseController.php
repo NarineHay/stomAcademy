@@ -15,6 +15,6 @@ class CourseController extends Controller
 
     function show($id){
         $data['course'] = Course::find($id);
-        return view("front.course.show");
+        return view("front.course.show",$data);
     }
 }

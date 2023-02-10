@@ -136,6 +136,13 @@
                     </div>
                 </div>
 
+                <div class="form-group ml-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" name="online" @if($course->online==1) checked @endif>
+                        <label class="form-check-label" for="gridCheck">Онлайн-конференция</label>
+                    </div>
+                </div>
+
                 <div class="card-footer mt-3">
                     <button type="submit" class="btn btn-primary">Изменить</button>
                 </div>

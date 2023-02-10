@@ -9,26 +9,30 @@
         </div>
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 align-items-lg-center">
             <div class="d-flex education_tags mb-3 mb-lg-0">
-                <button class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
+                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text ms-2">
                     <a href="{{route('course.index')}}" class="text-black">Онлайн-курсы</a>
                 </button>
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
+                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text ms-2">
                     <a href="{{route('webinar.index')}}" class="text-black">Вебинары</a>
                 </button>
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
+                <button class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
                     <a href="{{route('conference')}}" class="text-black">Онлайн-конференции</a>
                 </button>
             </div>
 
             <div class="col-12 d-flex d-lg-none justify-content-between mt-2 filter_buttons_mobile mb-2">
-                <button class="fs-12 f-600 py-2 w-50 bg-transparent"><a href="filter.html" class="text-black">Фильтр</a></button>
-                <button class="fs-12 f-600 py-2 w-50 bg-transparent text-black"><a href="sorting.html" class="text-black">Сортировка</a></button>
+                <button class="fs-12 f-600 py-2 w-50 bg-transparent"><a href="filter.html" class="text-black">Фильтр</a>
+                </button>
+                <button class="fs-12 f-600 py-2 w-50 bg-transparent text-black"><a href="sorting.html"
+                                                                                   class="text-black">Сортировка</a>
+                </button>
             </div>
 
             <div class="d-flex align-items-center d-none d-lg-block">
                 <div class="dropdown">
                     <span class="text-secondary fs-14 f-500">Сортировать по:</span>
-                    <button class="btn dropdown-toggle text-primary fs-14 f-600 border-0" type="button" id="dropdownMenuButton1"
+                    <button class="btn dropdown-toggle text-primary fs-14 f-600 border-0" type="button"
+                            id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">Релевантности
                     </button>
                     <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">
@@ -47,14 +51,25 @@
             @foreach($courses as $course)
                 <div class="col-xxl-55 col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
                     <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" style="width: 250px; height: 150px; object-fit: cover" alt="addPic">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" class="w-100"
+                             alt="addPic" style="width: 250px; height: 150px; object-fit: cover">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
                             <p class="f-700 fs-16">{{$course->info->title}}</p>
-                            <div class="mt-2 d-flex justify-content-between">
-                                <div>
-                                    <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
-                                    <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
+                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            @foreach($course->getLectors()->take(3) as $k => $lector)
+                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" width="48px" height="48px" @if($k > 0) class="m-25 rounded-circle" @endif alt="personPic">
+                                            @endforeach
+                                        </div>
+                                        <div>
+                                            @if($course->getLectors()->count() > 3)
+                                                <span class="fs-20 f-600 ms-2">{{ $course->getLectors()->count() - 3 }}+</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
@@ -70,17 +85,15 @@
                                     </button>
                                 </form>
                             </div>
-{{--                            <div>--}}
-{{--                                <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>--}}
-{{--                            </div>--}}
-{{--                            <button class="btn btn-outline-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>--}}
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
 
-        <button wire:click="loadNext" class="w-100 fs-14 f-500 mt-3 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">Показать еще</button>
+        <button wire:click="loadNext"
+                class="w-100 fs-14 f-500 mt-3 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">Показать еще
+        </button>
 
         <div class="mt-4 d-flex justify-content-center d-lg-block">
             <nav>
@@ -93,14 +106,17 @@
             <div class="position-fixed">
                 <div class="mt-4 ms-3 pt-5">
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
-                           data-bs-toggle="collapse" data-bs-target="#fg-1"><span>Области</span><i class="fal fa-angle-right"></i></label>
+                           data-bs-toggle="collapse" data-bs-target="#fg-1"><span>Области</span><i
+                            class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-1">
                         <div class="mt-2">
                             <ul class="list-unstyled m-0 p-0">
                                 @foreach($directions as $direction)
                                     <li>
-                                        <input wire:model="selectedDirections" type="checkbox" id="dir-{{ $direction->id }}" value="{{ $direction->id }}" class="mt-2">
-                                        <label for="dir-{{ $direction->id }}" class="f-500 fs-14">{{ $direction->title }}</label><br>
+                                        <input wire:model="selectedDirections" type="checkbox" id="dir-{{ $direction->id }}"
+                                               value="{{ $direction->id }}" class="mt-2">
+                                        <label for="dir-{{ $direction->id }}"
+                                               class="f-500 fs-14">{{ $direction->title }}</label><br>
                                     </li>
                                 @endforeach
                             </ul>
@@ -108,7 +124,9 @@
                     </div>
                 </div>
                 <div class="mt-4 ms-3">
-                    <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor" data-bs-toggle="collapse" data-bs-target="#fg-3"><span>Оплата</span><i class="fal fa-angle-right"></i></label>
+                    <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
+                           data-bs-toggle="collapse" data-bs-target="#fg-3"><span>Оплата</span><i
+                            class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-3">
                         <div class="mt-2">
                             <input type="checkbox" id="vehicle13" name="vehicle1" class="mt-2 cursor">
@@ -120,11 +138,14 @@
                     </div>
                 </div>
                 <div class="mt-4 ms-3">
-                    <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor" data-bs-toggle="collapse" data-bs-target="#fg-2"><span>Преподаватели</span><i class="fal fa-angle-right"></i></label>
+                    <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
+                           data-bs-toggle="collapse" data-bs-target="#fg-2"><span>Преподаватели</span><i
+                            class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-2">
                         <div class="mt-2">
                             @foreach($lectors as $user)
-                                <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}" value="{{ $user->id }}" class="mt-2 cursor">
+                                <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}"
+                                       value="{{ $user->id }}" class="mt-2 cursor">
                                 <label for="lec-{{ $user->id }}" class="f-500 fs-14 cursor">{{$user->name}}</label><br>
                             @endforeach
                         </div>
@@ -134,19 +155,4 @@
         </div>
     </div>
 </div>
-
-{{--<div class="mt-4 d-flex justify-content-center d-lg-block">--}}
-{{--    <nav>--}}
-{{--        <ul class="pagination d-flex align-items-center">--}}
-{{--            <li class="page-item"><a href="#" class="text-black"><i class="fal fa-angle-left"></i></a></li>--}}
-{{--            <li class="page-item ms-5"><a class="btn btn-outline-primary rounded-circle bg-light-gray text-dark"--}}
-{{--                                          style="border: none" href="#">1</a></li>--}}
-{{--            <li class="page-item ms-3"><a class="btn btn-outline-primary rounded-circle text-white bg-primary"--}}
-{{--                                          style="border: none" href="#">2</a></li>--}}
-{{--            <li class="page-item ms-3"><a class="btn btn-outline-primary rounded-circle bg-light-gray text-dark"--}}
-{{--                                          style="border: none" href="#">3</a></li>--}}
-{{--            <li class="page-item ms-5"><a href="#" class="text-black"><i class="fal fa-angle-right"></i></a></li>--}}
-{{--        </ul>--}}
-{{--    </nav>--}}
-{{--</div>--}}
 

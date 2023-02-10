@@ -15,7 +15,9 @@
                 <button class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
                     <a href="{{route('webinar.index')}}" class="text-black">Вебинары</a>
                 </button>
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">Онлайн-конференции</button>
+                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text ms-2">
+                    <a href="{{route('conference')}}" class="text-black">Онлайн-конференции</a>
+                </button>
             </div>
 
             <div class="col-12 d-flex d-lg-none justify-content-between mt-2 filter_buttons_mobile mb-2">
