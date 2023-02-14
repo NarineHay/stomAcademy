@@ -25,13 +25,13 @@
                                 <input wire:model="hospital" name="hospital" type="text" id="clinic"
                                        class="form-control mt-1">
                             </div>
-                            <div class="d-flex flex-column flex-md-row mt-3">
-                                <div class="w-100">
-                                    <label for="per_cent">% От продаж</label>
-                                    <input wire:model="per_of_sales" name="per_of_sales" type="text" id="per_cent"
-                                           class="form-control mt-1">
-                                </div>
-                            </div>
+{{--                            <div class="d-flex flex-column flex-md-row mt-3">--}}
+{{--                                <div class="w-100">--}}
+{{--                                    <label for="per_cent">% От продаж</label>--}}
+{{--                                    <input wire:model="per_of_sales" name="per_of_sales" type="text" id="per_cent"--}}
+{{--                                           class="form-control mt-1">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                     <div class="mt-4">

@@ -9,7 +9,7 @@
                     <x-profile></x-profile>
                 </div>
                 <div class="col-lg-1"></div>
-                <livewire:front.personal-courses/>
+                <livewire:front.personal-conferences/>
             </div>
         </div>
     </section>

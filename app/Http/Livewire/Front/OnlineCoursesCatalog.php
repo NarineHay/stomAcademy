@@ -39,9 +39,6 @@ class OnlineCoursesCatalog extends Component
     public function render()
     {
         $courses_q = Course::query()->where('online',1);
-        $courses_ids = Course::all()->map(function ($course){
-            return $course->id;
-        });
         if(count($this->selectedDirections) > 0){
             $courses_q = $courses_q->whereIn("direction_id",$this->selectedDirections);
         }
@@ -55,20 +52,11 @@ class OnlineCoursesCatalog extends Component
             $courses_q = $courses_q->whereIn("id",$courses_ids);
         }
 
-        $courses = $courses_q->withSum('webinars_object','duration')->with("price")
-            ->with("info")->with("directions")
+        $data['courses'] = $courses_q->withSum('webinars_object','duration')
             ->withCount('webinars')->paginate($this->perPage);
-//        $courses_ids = [];
-//        foreach ($courses->items() as $course){
-//            $courses_ids[] = $course['id'];
-//        }
-//        $webinars_ids = CourseWebinar::query()->whereIn("course_id",$courses_ids)->get()->map(function ($cw){
-//            return $cw['webinar_id'];
-//        })->unique();
-
-        $data['courses'] = $courses;
         $data['lectors'] = User::query()->get();
         $data['directions'] = Direction::all();
+
         return view('livewire.front.online-courses-catalog',$data);
     }
 }

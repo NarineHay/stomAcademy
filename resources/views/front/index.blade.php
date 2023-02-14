@@ -137,13 +137,13 @@
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <div>
-                                        @foreach($course->getLectors()->take(3) as $k => $lector)
-                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" width="50px" height="50px" @if($k > 0) class="m-25 rounded-circle" @endif alt="personPic">
+                                        @foreach($conference->getLectors()->take(3) as $k => $lector)
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" width="50px" height="50px" class="@if ($k>0) m-25 @endif rounded-circle" alt="personPic">
                                         @endforeach
                                     </div>
                                     <div>
-                                        @if($course->getLectors()->count() > 3)
-                                            <span class="fs-20 f-600 ms-2">{{ $course->getLectors()->count() - 3 }}+</span>
+                                        @if($conference->getLectors()->count() > 3)
+                                            <span class="fs-20 f-600 ms-2">{{ $conference->getLectors()->count()-3}}+</span>
                                         @endif
                                     </div>
                                 </div>
@@ -154,7 +154,6 @@
             </div>
         </div>
     </div>
-
 
     <!--Webinars-->
     <div class="container mt-4 mt-lg-6 useful_articles overflow-auto">

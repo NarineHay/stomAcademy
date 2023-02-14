@@ -70,10 +70,6 @@
                                     </button>
                                 </form>
                             </div>
-{{--                            <div>--}}
-{{--                                <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>--}}
-{{--                            </div>--}}
-{{--                            <button class="btn btn-outline-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>--}}
                         </div>
                     </div>
                 </div>
@@ -135,18 +131,4 @@
     </div>
 </div>
 
-{{--<div class="mt-4 d-flex justify-content-center d-lg-block">--}}
-{{--    <nav>--}}
-{{--        <ul class="pagination d-flex align-items-center">--}}
-{{--            <li class="page-item"><a href="#" class="text-black"><i class="fal fa-angle-left"></i></a></li>--}}
-{{--            <li class="page-item ms-5"><a class="btn btn-outline-primary rounded-circle bg-light-gray text-dark"--}}
-{{--                                          style="border: none" href="#">1</a></li>--}}
-{{--            <li class="page-item ms-3"><a class="btn btn-outline-primary rounded-circle text-white bg-primary"--}}
-{{--                                          style="border: none" href="#">2</a></li>--}}
-{{--            <li class="page-item ms-3"><a class="btn btn-outline-primary rounded-circle bg-light-gray text-dark"--}}
-{{--                                          style="border: none" href="#">3</a></li>--}}
-{{--            <li class="page-item ms-5"><a href="#" class="text-black"><i class="fal fa-angle-right"></i></a></li>--}}
-{{--        </ul>--}}
-{{--    </nav>--}}
-{{--</div>--}}
 

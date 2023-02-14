@@ -50,7 +50,7 @@ class ChangeLectorProfileInfo extends Component
     public function saveBiography()
     {
         $data['user'] = Auth::user();
-        $data['user']->lector->info->biography = $this->birth_date;
+        $data['user']->lector->info->biography = $this->biography;
         $data['user']->lector->save();
         $this->success_ = "Success";
     }

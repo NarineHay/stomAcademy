@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Models\Direction;
 use Illuminate\Http\Request;
 
-class UserCoursesController extends Controller
+class UserConferencesController extends Controller
 {
     public function index(){
-        return view('front.personal.courses');
+        return view('front.personal.conferences');
     }
 
     public function show($id){
         $data['course'] = Course::findOrFail($id);
-        return view('front.personal.course',$data);
+        return view('front.personal.conference',$data);
     }
 }

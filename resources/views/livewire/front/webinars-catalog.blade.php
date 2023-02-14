@@ -51,16 +51,6 @@
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->title}}</p>
                             <p class="f-700 fs-16">{{$webinar->info->title}}</p>
-{{--                            <div class="mt-2 d-flex flex-lg-column flex-xl-row">--}}
-{{--                                <div>--}}
-{{--                                    <i class="far fa-clock me-1"></i>--}}
-{{--                                    <span class="me-2 fs-14 f-500">{{$webinar->duration}} мин</span>--}}
-{{--                                </div>--}}
-{{--                                <div class="mt-lg-2 mt-xl-0">--}}
-{{--                                    <i class="far fa-tasks me-1"></i>--}}
-{{--                                    <span class="fs-14 f-500">3 видео</span>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
                                 <div class="d-flex align-items-center">
                                     <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" style="height: 40px; width: 40px">
@@ -137,17 +127,3 @@
     </div>
 </div>
 
-{{--<div class="mt-4 d-flex justify-content-center d-lg-block">--}}
-{{--    <nav>--}}
-{{--        <ul class="pagination d-flex align-items-center">--}}
-{{--            <li class="page-item"><a href="#" class="text-black"><i class="fal fa-angle-left"></i></a></li>--}}
-{{--            <li class="page-item ms-5"><a class="btn btn-outline-primary rounded-circle bg-light-gray text-dark"--}}
-{{--                                          style="border: none" href="#">1</a></li>--}}
-{{--            <li class="page-item ms-3"><a class="btn btn-outline-primary rounded-circle text-white bg-primary"--}}
-{{--                                          style="border: none" href="#">2</a></li>--}}
-{{--            <li class="page-item ms-3"><a class="btn btn-outline-primary rounded-circle bg-light-gray text-dark"--}}
-{{--                                          style="border: none" href="#">3</a></li>--}}
-{{--            <li class="page-item ms-5"><a href="#" class="text-black"><i class="fal fa-angle-right"></i></a></li>--}}
-{{--        </ul>--}}
-{{--    </nav>--}}
-{{--</div>--}}

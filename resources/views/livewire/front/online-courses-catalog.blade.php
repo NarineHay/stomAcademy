@@ -21,11 +21,8 @@
             </div>
 
             <div class="col-12 d-flex d-lg-none justify-content-between mt-2 filter_buttons_mobile mb-2">
-                <button class="fs-12 f-600 py-2 w-50 bg-transparent"><a href="filter.html" class="text-black">Фильтр</a>
-                </button>
-                <button class="fs-12 f-600 py-2 w-50 bg-transparent text-black"><a href="sorting.html"
-                                                                                   class="text-black">Сортировка</a>
-                </button>
+                <button class="fs-12 f-600 py-2 w-50 bg-transparent"><a href="filter.html" class="text-black">Фильтр</a></button>
+                <button class="fs-12 f-600 py-2 w-50 bg-transparent text-black"><a href="sorting.html" class="text-black">Сортировка</a></button>
             </div>
 
             <div class="d-flex align-items-center d-none d-lg-block">
@@ -61,7 +58,7 @@
                                     <div class="d-flex align-items-center">
                                         <div>
                                             @foreach($course->getLectors()->take(3) as $k => $lector)
-                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" width="48px" height="48px" @if($k > 0) class="m-25 rounded-circle" @endif alt="personPic">
+                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" width="48px" height="48px" class="@if ($k>0) m-25 @endif rounded-circle" alt="personPic">
                                             @endforeach
                                         </div>
                                         <div>

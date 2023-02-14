@@ -122,6 +122,21 @@
             <h2 class="f-700 m-0">Что о нас<br> говорят лектора</h2>
             <div class="col-12 col-md-6 col-xl-3 mt-4 mt-lg-5">
                 <div>
+                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/5Ok9oDQgzxs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class=" d-flex align-items-center mt-2 mt-lg-0">
+                    <div class="position-relative">
+                        <img src="dist/image/profileback.png" alt="userPic">
+                        <img src="dist/image/lector2.png" class="position-absolute top-0 bottom-0 end-0 start-0 m-auto mb-2 lector_avatar" alt="pic" width="42px" height="42px">
+                    </div>
+                    <div class="ms-3">
+                        <p class="fs-200 f-700 m-0">Antonio Cerutti</p>
+                        <p class="m-0 fs-14 text-secondary f-500">Профессор реставрационной стоматологии в стоматологической школе и школе стоматологической гигиены университета г. Брешии (Италия)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3 mt-4 mt-lg-5">
+                <div>
                     <iframe class="w-100" height="235" src="https://www.youtube.com/embed/X-kpSmXVuJw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 <div class=" d-flex align-items-center mt-2 mt-lg-0">
@@ -149,21 +164,6 @@
                     <div class="ms-3">
                         <p class="fs-200 f-700 m-0">Rui Falacho</p>
                         <p class="m-0 fs-14 text-secondary f-500">Президент Португальского общества цифровой стоматологической медицины</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-3 mt-4 mt-lg-5">
-                <div>
-                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/5Ok9oDQgzxs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class=" d-flex align-items-center mt-2 mt-lg-0">
-                    <div class="position-relative">
-                        <img src="dist/image/profileback.png" alt="userPic">
-                        <img src="dist/image/lector2.png" class="position-absolute top-0 bottom-0 end-0 start-0 m-auto mb-2 lector_avatar" alt="pic" width="42px" height="42px">
-                    </div>
-                    <div class="ms-3">
-                        <p class="fs-200 f-700 m-0">Antonio Cerutti</p>
-                        <p class="m-0 fs-14 text-secondary f-500">Профессор реставрационной стоматологии в стоматологической школе и школе стоматологической гигиены университета г. Брешии (Италия)</p>
                     </div>
                 </div>
             </div>
