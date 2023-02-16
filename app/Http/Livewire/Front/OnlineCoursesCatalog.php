@@ -26,8 +26,6 @@ class OnlineCoursesCatalog extends Component
 
     public $selectedLectors = [];
 
-    public $sort = null;
-
     public $perPage = 15;
 
     protected $paginationTheme = 'bootstrap';
@@ -56,7 +54,6 @@ class OnlineCoursesCatalog extends Component
             ->withCount('webinars')->paginate($this->perPage);
         $data['lectors'] = User::query()->get();
         $data['directions'] = Direction::all();
-
         return view('livewire.front.online-courses-catalog',$data);
     }
 }

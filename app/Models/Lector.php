@@ -16,6 +16,9 @@ class Lector extends Model
         'direction_id',
         'photo',
         'per_of_sales',
+        'hospital',
+//        'education',
+//        'experience'
     ];
 
     function user(){

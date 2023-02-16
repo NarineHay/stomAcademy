@@ -33,11 +33,11 @@
                             data-bs-toggle="dropdown" aria-expanded="false">Релевантности
                     </button>
                     <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">
-                        <input type="radio" id="vehicle111" name="vehicle" class="mt-2 cursor">
+                        <input wire:model="price" type="radio" id="vehicle111" name="price" class="mt-2 cursor">
                         <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">Цена</label><br>
-                        <input type="radio" id="vehicle1112" name="vehicle" class="mt-2 cursor">
+                        <input wire:model="name" type="radio" id="vehicle1112" name="name" class="mt-2 cursor">
                         <label for="vehicle1112" class="f-500 fs-14 ms-2 cursor">Названия</label><br>
-                        <input type="radio" id="vehicle3333" name="vehicle" class="mt-2 cursor">
+                        <input wire:model="popular" type="radio" id="vehicle3333" name="popular" class="mt-2 cursor">
                         <label for="vehicle3333" class="f-500 fs-14 ms-2 cursor">По популярность</label><br>
                     </div>
                 </div>
@@ -77,9 +77,7 @@
                                     @csrf
                                     <input type="hidden" value="{{ $course->id }}" name="id">
                                     <input type="hidden" value="course" name="type">
-                                    <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
-                                        Купить
-                                    </button>
+                                    <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">Купить</button>
                                 </form>
                             </div>
                         </div>

@@ -29,11 +29,13 @@ class ChangeLectorProfileInfo extends Component
     public function mount()
     {
         $user = Auth::user();
-        $this->biography = $user->lector->info->biography;
         $this->userDirections = $user->directions->map(function ($direction) {
             return $direction->direction_id;
         });
+        $this->biography = $user->lector->info->biography;
         $this->birth_date = $user->userinfo->birth_date;
+        $this->per_of_sales = $user->lector->per_of_sales;
+        $this->hospital = $user->lector->hospital;
     }
 
     public function savePersonalData()
@@ -41,6 +43,7 @@ class ChangeLectorProfileInfo extends Component
         $data['user'] = Auth::user();
         $data['user']->userinfo->birth_date = $this->birth_date;
         $data['user']->lector->per_of_sales = $this->per_of_sales;
+        $data['user']->lector->hospital = $this->hospital;
         $data['user']->save();
         $data['user']->lector->save();
         $data['user']->userinfo->save();
@@ -51,7 +54,7 @@ class ChangeLectorProfileInfo extends Component
     {
         $data['user'] = Auth::user();
         $data['user']->lector->info->biography = $this->biography;
-        $data['user']->lector->save();
+        $data['user']->lector->info->save();
         $this->success_ = "Success";
     }
 

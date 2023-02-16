@@ -33,6 +33,7 @@ class LectorFactory extends Factory
 //            'biography' => $this->faker->realText(),
 //            'photo' => 'public/lector/'.$name,
             'per_of_sales' => $this->faker->numberBetween(1,50),
+            'hospital' => $this->faker->word()
         ];
     }
 

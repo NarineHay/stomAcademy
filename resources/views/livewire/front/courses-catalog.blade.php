@@ -50,7 +50,8 @@
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" style="width: 250px; height: 150px; object-fit: cover" alt="addPic">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
-                            <p class="f-700 fs-16">{{$course->info->title}}</p>
+                            <span><a href="{{route('course.show',$course->id)}}" class="text-black f-700 fs-16">{{$course->info->title}}</a></span>
+
                             <div class="mt-2 d-flex justify-content-between">
                                 <div>
                                     <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>

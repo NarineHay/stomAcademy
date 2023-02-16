@@ -30,6 +30,12 @@ class CoursesCatalog extends Component
 
     public $perPage = 15;
 
+    public $price;
+
+    public $popular;
+
+    public $name;
+
     protected $paginationTheme = 'bootstrap';
 
     function loadNext(){

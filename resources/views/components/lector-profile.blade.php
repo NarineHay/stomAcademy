@@ -18,10 +18,10 @@
             <i class="fal fa-play-circle me-2"></i>
             <a href="{{route('lector.courses')}}" class="text-decoration-none text-black fs-14 f-500">Курсы</a>
         </div>
-        <div class="d-flex mb-4 mt-4">
-            <i class="fal fa-play-circle me-2"></i>
-            <a href="{{route('lector.webinars')}}" class="text-decoration-none text-black fs-14 f-500">Вебинары</a>
-        </div>
+{{--        <div class="d-flex mb-4 mt-4">--}}
+{{--            <i class="fal fa-play-circle me-2"></i>--}}
+{{--            <a href="{{route('lector.webinars')}}" class="text-decoration-none text-black fs-14 f-500">Вебинары</a>--}}
+{{--        </div>--}}
         <div class="d-flex mb-4 mt-4">
             <i class="fal fa-comment me-2"></i>
             <a href="{{route('lector.chats')}}" class="text-decoration-none text-black fs-14 f-500">Поддержка</a>

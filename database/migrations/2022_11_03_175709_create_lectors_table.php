@@ -15,6 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('direction_id')->nullable();
             $table->foreign('direction_id')->references('id')->on('directions')->onDelete("cascade");
             $table->string('photo')->nullable();
+            $table->string('hospital')->nullable();
             $table->float('per_of_sales')->nullable();
             $table->timestamps();
         });
