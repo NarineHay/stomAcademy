@@ -66,7 +66,7 @@ new Swiper(".WatchedSwiper", {
 });
 
 
-if(document.querySelector(".aside")){
+if(document.querySelector(".aside") && document.querySelector(".col-lg-8")){
     let w = document.querySelector("body").clientWidth;
     let wc = document.querySelector(".col-lg-8").clientWidth;
     let wl = (w - wc) / 2 - 20;

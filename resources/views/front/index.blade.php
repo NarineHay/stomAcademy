@@ -208,55 +208,27 @@
             <div class="row images py-6">
                 <div class="col-12 col-lg-6">
                     <div class="position-relative">
-                        <img src="/dist/image/video1.png" alt="videoPic" class="big">
+                        <img src="{{\Illuminate\Support\Facades\Storage::url($videos[1]->image)}}" alt="videoPic" class="big">
                         <div class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
                             <i class="fas fa-play"></i>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
-                    <div class="position-relative">
-                        <img src="/dist/image/video2.png" alt="videoPic">
-                        <div class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                    <div class="position-relative mt-3">
-                        <img src="/dist/image/video4.png" alt="videoPic">
-                        <div class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="position-relative">
-                        <img src="/dist/image/video3.png" alt="videoPic">
-                        <div
-                            class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                    <div class="position-relative mt-3">
-                        <img src="/dist/image/video5.png" alt="videoPic">
-                        <div class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
-                            <i class="fas fa-play"></i>
-                        </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-6">
+                        @foreach($videos as $video)
+                            <div class="position-relative">
+                                <img src="{{\Illuminate\Support\Facades\Storage::url($video->image)}}" alt="videoPic">
+                                <div class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="col-lg-3 col-6">
-                    <div class="position-relative">
-                        <img src="/dist/image/video2.png" alt="videoPic">
-                        <div class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                    <div class="position-relative mt-3">
-                        <img src="/dist/image/video4.png" alt="videoPic">
-                        <div class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
         </div>
     </div>

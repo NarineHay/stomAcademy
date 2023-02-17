@@ -31,14 +31,19 @@
                     <button class="btn dropdown-toggle text-primary fs-14 f-600 border-0" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">Релевантности
                     </button>
-                    <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">
-                        <input type="radio" id="vehicle111" name="vehicle" class="mt-2 cursor">
-                        <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">Цена</label><br>
-                        <input type="radio" id="vehicle1112" name="vehicle" class="mt-2 cursor">
-                        <label for="vehicle1112" class="f-500 fs-14 ms-2 cursor">Названия</label><br>
-                        <input type="radio" id="vehicle3333" name="vehicle" class="mt-2 cursor">
-                        <label for="vehicle3333" class="f-500 fs-14 ms-2 cursor">По популярность</label><br>
-                    </div>
+                    <select name="sortBy" class="chosen dropdown-menu p-3 border-0" wire:model="sortBy">
+                        <option value="price">Цена</option>
+                        <option value="title">Названия</option>
+                        <option value="popularity">По популярность</option>
+                    </select>
+{{--                    <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">--}}
+{{--                        <input type="radio" id="vehicle111" name="vehicle" class="mt-2 cursor">--}}
+{{--                        <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">Цена</label><br>--}}
+{{--                        <input type="radio" id="vehicle1112" name="vehicle" class="mt-2 cursor">--}}
+{{--                        <label for="vehicle1112" class="f-500 fs-14 ms-2 cursor">Названия</label><br>--}}
+{{--                        <input type="radio" id="vehicle3333" name="vehicle" class="mt-2 cursor">--}}
+{{--                        <label for="vehicle3333" class="f-500 fs-14 ms-2 cursor">По популярность</label><br>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -50,7 +55,7 @@
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" class="w-100" alt="addPic" style="width: 250px; height: 150px; object-fit: cover">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->title}}</p>
-                            <p class="f-700 fs-16">{{$webinar->info->title}}</p>
+                            <p class="f-700 fs-16">{{$webinar->info->title}} {{$webinar->id}}</p>
                             <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
                                 <div class="d-flex align-items-center">
                                     <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" style="height: 40px; width: 40px">
