@@ -13,7 +13,10 @@ class VideosSeeder extends Seeder
             ['url' => 'https://www.youtube.com/embed/X-kpSmXVuJw'],
             ['url' => 'https://www.youtube.com/embed/5Ok9oDQgzxs'],
             ['url' => 'https://www.youtube.com/embed/QPXue2tybcs'],
-
+            ['url' => 'https://www.youtube.com/embed/X-kpSmXVuJw'],
+            ['url' => 'https://www.youtube.com/embed/5Ok9oDQgzxs'],
+            ['url' => 'https://www.youtube.com/embed/QPXue2tybcs'],
+            ['url' => 'https://www.youtube.com/embed/X-kpSmXVuJw'],
         ];
         foreach ($videos as $video){
             Video::create($video);

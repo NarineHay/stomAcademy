@@ -12,6 +12,7 @@ class Video extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'url'
+        'url',
+        'image'
     ];
 }

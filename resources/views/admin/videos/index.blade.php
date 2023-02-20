@@ -10,7 +10,7 @@
                     <h1 class="m-0">Видео</h1>
                 </div>
                 <div>
-                    <a class="btn btn-primary" href="{{route('admin.promo.create')}}" role="button">Добавить</a>
+                    <a class="btn btn-primary" href="{{route('admin.videos.create')}}" role="button">Добавить</a>
                 </div>
             </div>
 
@@ -32,8 +32,8 @@
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
+                                    <th>Фото</th>
                                     <th>URL</th>
-
                                     <th>Кнопки управления</th>
                                 </tr>
                                 </thead>
@@ -42,9 +42,11 @@
                                 @foreach($videos as $video)
                                     <tr>
                                         <td>
-                                            <a>{{$video->url}}</a>
+                                            <a><img src="{{\Illuminate\Support\Facades\Storage::url($video->image) }}" height="70" alt=""/></a>
                                         </td>
-
+                                        <td>
+                                            <span>{{$video->url}}</span>
+                                        </td>
                                         <td class="project-actions text-right">
                                             <form action="{{route('admin.videos.destroy',$video)}}" method="POST"
                                                   class="d-flex justify-content-around">

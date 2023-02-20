@@ -24,12 +24,9 @@
             <x-header-user></x-header-user>
         </div>
     </header>
-    @auth()
-        <section class="section_top"
-                 style="background-image: url('/dist/image/headerBackground1.jpg'); background-size: cover;">
-            @endauth
+
             <section class="section_top"
-                     style="background-image: url('/dist/image/headerBackground1.jpg'); background-size: cover;">
+                     style="background-image: url('/dist/image/headerBackground1.jpg'); background-size: cover;@auth() height:360px; @endauth">
                 <div class="bg">
                     <div class="container d-flex justify-content-between align-items-center text-white">
                         <div class="mt-6 d-flex justify-content-between align-items-center w-100 p-2 p-md-0">
@@ -226,14 +223,18 @@
 
             {{-- END MODAL  --}}
 
+            <script src="/admin/plugins/jquery/jquery.js"></script>
             <script src="/admin/plugins/summernote/summernote-bs4.min.js"></script>
 
 
             <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
             <script>
-                $(function () {
-                    $('.summernote').summernote()
-                })
+                if(document.querySelector('.summernote')){
+                    $(function () {
+                        $('.summernote').summernote()
+                    })
+                }
+
             </script>
 
             @livewireScripts

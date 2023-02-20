@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Price')
+@section('title', 'Video')
 
 @section('content')
     <div class="content-header">
@@ -31,11 +31,18 @@
         @endif
 
         <div class="card card-primary">
-            <form action="{{ route('admin.videos.store') }}" method="POST">
+            <form action="{{ route('admin.videos.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">About page URL</label>
+                        <label for="exampleInputEmail1">Фото</label>
+                        <div class="custom-file">
+                            <input type="file" name="image" class="form-control" id="customFile">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">URL</label>
                         <input type="text" name="url" class="form-control">
                     </div>
                     <div class="card-footer">
