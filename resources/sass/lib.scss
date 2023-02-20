@@ -6,7 +6,7 @@
 
 @for $i from 10 through 100 {
   .fs-#{$i}{
-    font-size: #{$i}px;
+    font-size: #{$i}px !important;
   }
 }
 

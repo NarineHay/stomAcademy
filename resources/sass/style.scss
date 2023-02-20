@@ -520,3 +520,141 @@ a:hover {
     bottom: 20px;
     right: 20px;
 }
+
+
+//Courses show
+
+.courses-show-div{
+    .div-menu-2{
+        height: 240px;
+        margin-top: 70px;
+        padding-top: 28px;
+        position: relative;
+
+        &:before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            opacity: 0.4;
+        }
+        .menu{
+            position: absolute;
+            color: #FFFFFF;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 15px;
+            span{
+                margin: 0 20px;
+            }
+        }
+    }
+
+    .main2{
+        //position: relative;
+        .eng-doctors-txt{
+            background: #FFFFFF;
+            padding-top: 21px;
+
+            h1{
+                line-height: 79px;
+                max-width: 1123px;
+
+            }
+            p{
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                margin-bottom: 38px;
+            }
+            .images{
+                margin-right: 42px;
+                img{
+                    width: 74px;
+                    height: 74px;
+                    border-radius: 50%;
+                    &:last-child{
+                        margin-top: 0;
+                    }
+                    &:first-child{
+                        margin-left: 0;
+                    }
+                    margin-left: -40px;
+                }
+            }
+            .txts1{
+                margin-right: 45px;
+                .txts-1-title{
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 19px;
+                    color: #7A7A7A;
+                    margin-bottom: 11px;
+                }
+                p{
+                    font-weight: 700;
+                    font-size: 20px;
+                    line-height: 25px;
+                    color: #232323;
+                    margin-bottom: 0;
+
+                }
+                .p-name{
+                    margin-right: 6px;
+                }
+                svg{
+                    margin: 8px 5px;
+                }
+            }
+        }
+        .card-div{
+            max-width: 461px;
+            width: 100%;
+            //position: absolute;
+            //z-index: 99;
+            //top: -155px;
+            //right: 150px;
+            margin-top: -155px;
+            .card-body{
+                .img_video{
+                    position: relative;
+                    margin-bottom: 20px;
+                    img{
+                        width: -webkit-fill-available;
+
+                    }
+                    &:after{
+                        content: "";
+                        position: absolute;
+                        width: 100%;
+                        top: 0;
+                        left: 0;
+                        cursor: pointer;
+                        background-position: center center;
+                        height: 100%;
+                        background-repeat: no-repeat;
+                        background-image: url("../../public/dist/image/play.svg");
+                    }
+                }
+                .card-txts{
+                    .card-title-txt{
+                        line-height: 40px;
+                        margin-bottom: 20px;
+                    }
+                    .card-price-txt{
+                        line-height: 17px;
+                    }
+                    h3{
+                        line-height: 40px;
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
