@@ -527,7 +527,7 @@ a:hover {
 .courses-show-div{
     .div-menu-2{
         height: 240px;
-        margin-top: 70px;
+        margin-top: 67px;
         padding-top: 28px;
         position: relative;
 
@@ -555,10 +555,25 @@ a:hover {
 
     .main2{
         //position: relative;
+        .card{
+            border-radius: 10px;
+        }
         .eng-doctors-txt{
-            background: #FFFFFF;
+            //background: #FFFFFF;
+            background: linear-gradient(180deg, #FFFFFF 56%, #F9F9F9 50%);
             padding-top: 21px;
-
+            padding-bottom: 51px;
+            //position: relative;
+            &:after{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #ffffff;
+                z-index: -1;
+            }
             h1{
                 line-height: 79px;
                 max-width: 1123px;
@@ -609,9 +624,18 @@ a:hover {
                     margin: 8px 5px;
                 }
             }
+            .about-course1{
+                margin-bottom: 90px;
+            }
+            .about-course-txt{
+                //margin-top: -167px;
+                h2{
+                    margin-bottom: 22px;
+                }
+            }
         }
         .card-div{
-            max-width: 461px;
+            //max-width: 461px;
             width: 100%;
             //position: absolute;
             //z-index: 99;
@@ -652,9 +676,101 @@ a:hover {
                     }
 
                 }
+                .course-card-form{
+                    button{
+                        padding: 18px 12px;
+                    }
+                }
+                .div-icons{
+                    gap: 20px;
+                    div{
+                        width: 196px;
+                    }
+                }
             }
         }
     }
 
+    .main3 {
+        .accordion-item{
+            margin-bottom: 10px;
+            border-radius: 12px !important;
+            .accordion-collapse{
+                border-top: 1px solid #E6E6E6;
+            }
+            .videoPic{
+                height: 45px;
+                width: 45px;
+
+            }
+            .accordion-body{
+                ul{
+                    li{
+                        color: #000000;
+                    }
+                }
+
+            }
+        }
+    }
+
+
+    .main4{
+        margin-top: 70px;
+        margin-bottom: 80px;
+        .one-lector{
+            background-color: #FFFFFF;
+            padding: 100px 164px;
+            .txts{
+                ul{
+                    padding-left: 17px;
+                    li{
+                        font-size: 15px;
+                        font-weight: 500;
+                        //line-height: 15px;
+                        color: #232323;
+                    }
+                }
+            }
+            .image{
+                img{
+                    height: 313px;
+                    width: 100%;
+                    object-fit: cover;
+                }
+
+            }
+        }
+        .many-lector{
+            .img-fluid {
+                max-width: 100%;
+                height: 100%;
+                object-fit: cover;
+                width: 100%;
+            }
+
+        }
+    }
 }
 
+.lh-17{
+    line-height: 17px !important;
+}
+.lh-19{
+    line-height: 19px !important;
+}
+.lh-24{
+    line-height: 24px !important;
+}
+.lh-27{
+    line-height: 27px !important;
+}
+.lh-20{
+    line-height: 20px !important;
+}
+.lh-40{
+    line-height: 40px !important;
+}
+.color-23{
+    color: #232323 !important;
+}
