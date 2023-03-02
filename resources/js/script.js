@@ -79,3 +79,4 @@ Livewire.on('image_uploaded',function (){
     let image_update_input = document.querySelector(".image_update_input");
     image_update_input.parentNode.parentNode.querySelector("button").click();
 })
+

@@ -469,6 +469,7 @@ a:hover {
     }
 }
 
+
 .lector_card_photo {
     width: 100%;
     height: 210px;
@@ -754,7 +755,8 @@ a:hover {
 
 
     .main5 {
-        padding: 50px 0;
+        padding: 50px 11px;
+        margin-bottom: 80px;
         .main5-1{
             .strikethrough {
                 position: relative;
@@ -806,7 +808,48 @@ a:hover {
         }
 
     }
+
+    .main6{
+        margin-bottom: 80px;
+        .collapse_text_color:not(.collapsed) {
+            .plus_icon{
+                display: none;
+            }
+            .minus_icon {
+                color: #191F70 !important;
+                display: block !important;
+            }
+        }
+    }
+
+    .main7{
+        margin-bottom: 80px;
+    }
+
+    .main8{
+        margin-bottom: 80px;
+        padding: 40px;
+    }
 }
+
+.are_any_questions_div{
+    input{
+        padding: 16px 0;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid #000000;
+        border-radius: 0;
+
+        &::placeholder{
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 17px;
+        }
+
+    }
+}
+
 .mb-13{
     margin-bottom: 13px !important;
 }

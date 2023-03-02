@@ -20,6 +20,11 @@
     .big {
         width: 100%;
     }
+    .are_any_questions_div{
+        input{
+            max-width: 350px;
+        }
+    }
 }
 
 @media (max-width: 991px) {
@@ -210,6 +215,36 @@
 }
 
 @media (max-width: 768px) {
+    .courses-show-div {
+        .main5{
+            padding: 11px;
+            margin-bottom: 30px;
+            .main5-1{
+                h3{
+                    font-size: 26px !important;
+                    line-height: 38px !important;
+                }
+            }
+            .main5-2{
+                h3{
+                    font-size: 26px !important;
+                    line-height: 32px !important;
+                }
+            }
+        }
+        .main6{
+            margin-bottom: 30px;
+        }
+        .main7{
+            margin-bottom: 30px;
+        }
+        .main8{
+            padding: 10px;
+            margin-bottom: 30px;
+        }
+    }
+
+
     h1 {
         font-size: 36px;
     }

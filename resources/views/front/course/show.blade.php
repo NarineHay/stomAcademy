@@ -180,7 +180,6 @@
 
             </div>
 
-
             <div class="main3">
                 <div class="container">
                     <div class="row">
@@ -383,40 +382,340 @@
                 </div>
             </div>
 
-            <div class="main5" style="background-color: #191F70;">
-                <div class="container">
-                    <div class="d-flex">
-                        <div class="main5-1 me-4">
-                            <h3 class="text-white fw-bold mb-4" style="max-width: 370px;">Окклюзия. Концепции Р. Славичека</h3>
-                            <p class="color-ad fs-14 f-500 lh-17 mb-13">Стоимость участия в онлайн-курсе 1 лекции:</p>
-                            <p class="color-ad fs-14 f-500 lh-17 mb-13">При оплате до старта мероприятия</p>
-                            <p class="fw-bold fs-43 lh-43 text-white">
-                                40 EUR
-                                <sup class="fs-23 lh-23 fw-normal align-middle strikethrough">80 EUR</sup>
-                            </p>
-                            <ul class="text-white ps-2 mb-4">
-                                <li class="fw-normal fs-14 lh-23">Запись лекций</li>
-                                <li class="fw-normal fs-14 lh-23">Cертификат</li>
-                                <li class="fw-normal fs-14 lh-23">Ответы на вопросы</li>
-                            </ul>
-                            <p class="text-white fw-normal fs-14 lh-23 mb-0" style="max-width: 307px;">Также мы поддерживаем молодых специалистов и предоставляем скидку:</p>
-                            <ul  class="text-white ps-2">
-                                <li class="fw-normal fs-14 lh-23">25% для студентов, интернов и ординаторов</li>
-                            </ul>
+            <div class="container">
+                <div class="main5 br-12" style="background-color: #191F70;">
+                        <div class="d-flex flex-column flex-lg-row justify-content-evenly">
+                            <div class="main5-1 me-4">
+                                <h3 class="text-white fw-bold mb-4" style="max-width: 370px;">Окклюзия. Концепции Р. Славичека</h3>
+                                <p class="color-ad fs-14 f-500 lh-17 mb-13">Стоимость участия в онлайн-курсе 1 лекции:</p>
+                                <p class="color-ad fs-14 f-500 lh-17 mb-13">При оплате до старта мероприятия</p>
+                                <p class="fw-bold fs-43 lh-43 text-white">
+                                    40 EUR
+                                    <sup class="fs-23 lh-23 fw-normal align-middle strikethrough">80 EUR</sup>
+                                </p>
+                                <ul class="text-white ps-2 mb-4">
+                                    <li class="fw-normal fs-14 lh-23">Запись лекций</li>
+                                    <li class="fw-normal fs-14 lh-23">Cертификат</li>
+                                    <li class="fw-normal fs-14 lh-23">Ответы на вопросы</li>
+                                </ul>
+                                <p class="text-white fw-normal fs-14 lh-23 mb-0" style="max-width: 307px;">Также мы поддерживаем молодых специалистов и предоставляем скидку:</p>
+                                <ul  class="text-white ps-2 mb-5 mb-lg-0">
+                                    <li class="fw-normal fs-14 lh-23">25% для студентов, интернов и ординаторов</li>
+                                </ul>
+                            </div>
+                            <div class="main5-2">
+                                <h3 class="text-white f-700 fs-32 lh-32">Регистрация на онлайн-курс</h3>
+                                <form action="#">
+                                    <label class="text-white fs-14 lh-14 fw-normal">Ваше имя</label>
+                                    <input type="text" class="form-control mb-3 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Имя Фамилия">
+                                    <label class="text-white fs-14 lh-14 fw-normal">Ваш e-mail</label>
+                                    <input type="text" class="form-control mb-3 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="mail@example.com">
+                                    <label class="text-white fs-14 lh-14 fw-normal">Ваш номер телефона</label>
+                                    <input type="text" class="form-control mb-3 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Ваш номер телефона">
+                                    <button class="btn btn-outline-primary w-100 fs-18 f-600 br-12 lh-23 text-white py-3 mt-3" style="background-color: #5CB0FF;">Зарегистрироваться</button>
+                                </form>
+                            </div>
                         </div>
-                        <div class="main5-2">
-                            <h3 class="text-white f-700 fs-32 lh-32">Регистрация на онлайн-курс</h3>
-                            <label class="text-white fs-14 lh-14 fw-normal">Ваше имя</label>
-                            <input type="text" class="form-control mb-3 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Имя Фамилия">
-                            <label class="text-white fs-14 lh-14 fw-normal">Ваш e-mail</label>
-                            <input type="text" class="form-control mb-3 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="mail@example.com">
-                            <label class="text-white fs-14 lh-14 fw-normal">Ваш номер телефона</label>
-                            <input type="text" class="form-control mb-3 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Ваш номер телефона">
-                            <button class="btn btn-outline-primary w-100 fs-18 f-600 br-12 mb-3 lh-23 text-white py-3 mt-3" style="background-color: #5CB0FF;">Зарегистрироваться</button>
+
+                </div>
+
+                <div class="main6">
+                    <h3 class="f-700 mb-4 color-23">Часто задаваемые вопросы</h3>
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <div class="mb-1 courses-show-accordion-item">
+                                <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse" data-bs-target="#two">
+                                    <div class="d-flex align-items-center">
+                                        <i class="far fa-plus plus_icon"></i>
+                                                <i class="fal fa-minus d-none minus_icon"></i>
+                                        <p class="fs-16 m-0 f-700 ms-4">Как я могу быть уверен в качестве онлайн-уроков?</p>
+                                    </div>
+                                    <div class="collapse" id="two">
+                                        <div class="p-3">
+                <span class="m-0">Самый простой способ - связаться с нашим менеджером и рассказать о<br class="d-none d-xxl-block">
+                  своих сомнениях. Менеджер поможет выбрать лучший тариф исходя из ваших пожеланий</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="mb-1 courses-show-accordion-item">
+                                <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse" data-bs-target="#three">
+                                    <div class="d-flex align-items-center">
+                                        <i class="far fa-plus plus_icon"></i>
+                                        <i class="fal fa-minus d-none minus_icon"></i>
+                                        <p class="fs-16 m-0 f-700 ms-4">Что, если я передумаю и хочу деактивировать подписку?</p>
+                                    </div>
+                                    <div class="collapse" id="three">
+                                        <div class="p-3">
+                <span class="m-0">Самый простой способ - связаться с нашим менеджером и рассказать о<br class="d-none d-xxl-block">
+                  своих сомнениях. Менеджер поможет выбрать лучший тариф исходя из ваших пожеланий</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6">
+                            <div class="mb-1 courses-show-accordion-item">
+                                <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse" data-bs-target="#five">
+                                <div class="d-flex align-items-center">
+                                    <i class="far fa-plus plus_icon"></i>
+                                    <i class="fal fa-minus d-none minus_icon"></i>
+                                    <p class="fs-16 m-0 f-700 ms-4 main_text">Как не ошибиться в выборе варианта подписки?</p>
+                                </div>
+                                <div class="collapse show" id="five">
+                                    <div class="p-3">
+            <span class="m-0">Самый простой способ - связаться с нашим менеджером и рассказать о<br class="d-none d-xxl-block">
+              своих сомнениях. Менеджер поможет выбрать лучший тариф исходя из ваших пожеланий</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="mb-1 courses-show-accordion-item">
+                                <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse" data-bs-target="#six">
+                                <div class="d-flex align-items-center">
+                                    <i class="far fa-plus plus_icon"></i>
+                                    <i class="fal fa-minus d-none minus_icon"></i>
+                                    <p class="fs-16 m-0 f-700 ms-4">Что, если я передумаю и хочу деактивировать подписку?</p>
+                                </div>
+                                <div class="collapse" id="six">
+                                    <div class="p-3">
+            <span class="m-0">Самый простой способ - связаться с нашим менеджером и рассказать о<br class="d-none d-xxl-block">
+              своих сомнениях. Менеджер поможет выбрать лучший тариф исходя из ваших пожеланий</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main7">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="f-700 mb-4">Еще курсы с этой категории</h3>
+                        <div class="slider_navigatioin AdditionsSwiper_nav mb-4 d-none d-md-block">
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                    <div class="swiper AdditionsSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="bg-white br-12">
+                                    <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
+                                    <div class="p-3">
+                                        <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+                                        <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+                                        <div class="mt-3">
+                                            <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                        </div>
+                                        <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
+                                            <div class="d-flex align-items-center">
+                                                <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
+                                                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+                                            </div>
+                                            <div class="mt-3 mt-xl-0">
+                                                <span class="f-700 text-primary fs-16">3000 ₽</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-white br-12">
+                                    <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
+                                    <div class="p-3">
+                                        <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+                                        <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+                                        <div class="mt-3">
+                                            <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                        </div>
+                                        <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
+                                            <div class="d-flex align-items-center">
+                                                <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
+                                                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+                                            </div>
+                                            <div class="mt-3 mt-xl-0">
+                                                <span class="f-700 text-primary fs-16">3000 ₽</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-white br-12">
+                                    <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
+                                    <div class="p-3">
+                                        <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+                                        <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+                                        <div class="mt-3">
+                                            <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                        </div>
+                                        <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
+                                            <div class="d-flex align-items-center">
+                                                <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
+                                                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+                                            </div>
+                                            <div class="mt-3 mt-xl-0">
+                                                <span class="f-700 text-primary fs-16">3000 ₽</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-white br-12">
+                                    <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
+                                    <div class="p-3">
+                                        <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+                                        <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+                                        <div class="mt-3">
+                                            <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                        </div>
+                                        <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
+                                            <div class="d-flex align-items-center">
+                                                <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
+                                                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+                                            </div>
+                                            <div class="mt-3 mt-xl-0">
+                                                <span class="f-700 text-primary fs-16">3000 ₽</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-white br-12">
+                                    <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
+                                    <div class="p-3">
+                                        <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+                                        <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+                                        <div class="mt-3">
+                                            <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                        </div>
+                                        <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
+                                            <div class="d-flex align-items-center">
+                                                <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
+                                                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+                                            </div>
+                                            <div class="mt-3 mt-xl-0">
+                                                <span class="f-700 text-primary fs-16">3000 ₽</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-white br-12">
+                                    <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
+                                    <div class="p-3">
+                                        <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+                                        <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+                                        <div class="mt-3">
+                                            <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                        </div>
+                                        <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
+                                            <div class="d-flex align-items-center">
+                                                <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
+                                                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+                                            </div>
+                                            <div class="mt-3 mt-xl-0">
+                                                <span class="f-700 text-primary fs-16">3000 ₽</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-white br-12">
+                                    <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
+                                    <div class="p-3">
+                                        <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+                                        <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+                                        <div class="mt-3">
+                                            <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                        </div>
+                                        <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
+                                            <div class="d-flex align-items-center">
+                                                <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
+                                                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+                                            </div>
+                                            <div class="mt-3 mt-xl-0">
+                                                <span class="f-700 text-primary fs-16">3000 ₽</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="bg-white br-12">
+                                    <img src="/dist/image/addition1.png" class="w-100" alt="addPic">
+                                    <div class="p-3">
+                                        <p class="text-primary text-uppercase f-700 mt-0 mt-lg-2 fs-10 m-0">Терапия</p>
+                                        <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
+                                        <div class="mt-3">
+                                            <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
+                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                        </div>
+                                        <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
+                                            <div class="d-flex align-items-center">
+                                                <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">
+                                                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>
+                                            </div>
+                                            <div class="mt-3 mt-xl-0">
+                                                <span class="f-700 text-primary fs-16">3000 ₽</span>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main8 br-12 bg-white">
+                    <div class="d-flex flex-column flex-lg-row justify-content-between">
+                        <div class="main8-1 are_any_questions_div">
+                            <h3 class="f-700 mb-3 lh-40 color-23">Остались вопросы?</h3>
+                            <p class="f-500 lh-20 color-23">Заполните форму и получите ответ на ваш вопрос</p>
+                            <form action="#">
+                                <div class="d-flex flex-wrap" style="column-gap: 40px;">
+                                    <input type="text" class="form-control mb-2 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Ваше ФИО">
+                                    <input type="email" class="form-control mb-2 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="mail@example.com">
+                                    <input type="text" class="form-control mb-2 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Ваш номер телефона">
+                                    <input type="text" class="form-control mb-2" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Введите ваш вопрос">
+                                </div>
+                                <button class="btn btn-primary w-100 fs-18 f-600 br-12 mb-2 py-3 lh-22 mt-5" style="max-width: 737px;">Зарегистрироваться</button>
+
+                            </form>
+                        </div>
+                        <div class="main8-2">
+                            <h3 class="f-700 mb-3 lh-40 color-23">Контакты</h3>
+                            <p class="f-500 fs-16 lh-27 color-23" style="max-width: 647px;">Свяжитесь с нашими специалистами, чтобы получить подробную консультацию и ответы на все вопросы.</p>
                         </div>
                     </div>
                 </div>
             </div>
+
 
         </div>
 
