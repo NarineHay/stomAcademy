@@ -751,13 +751,76 @@ a:hover {
 
         }
     }
-}
 
+
+    .main5 {
+        padding: 50px 0;
+        .main5-1{
+            .strikethrough {
+                position: relative;
+                &:before {
+                    position: absolute;
+                    content: "";
+                    left: 0;
+                    top: 50%;
+                    right: 0;
+                    border-top: 2px solid;
+                    border-color: inherit;
+                    -webkit-transform:rotate(160deg);
+                    -moz-transform:rotate(160deg);
+                    -ms-transform:rotate(160deg);
+                    -o-transform:rotate(160deg);
+                    transform:rotate(160deg);
+                }
+            }
+
+            ul{
+                list-style-type: " - ";
+            }
+
+
+
+        }
+        .main5-2{
+            input{
+                border-top: none;
+                border-right: none;
+                border-left: none;
+                border-bottom: 1px solid #ffffff;
+                border-radius: 0;
+                padding-left: 0;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                background-color: inherit;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 20px;
+                color: white;
+                &::placeholder{
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 20px;
+                    color: rgba(255, 255, 255, 0.5);
+                }
+            }
+        }
+
+    }
+}
+.mb-13{
+    margin-bottom: 13px !important;
+}
+.lh-14{
+    line-height: 14px !important;
+}
 .lh-17{
     line-height: 17px !important;
 }
 .lh-19{
     line-height: 19px !important;
+}
+.lh-23{
+    line-height: 23px !important;
 }
 .lh-24{
     line-height: 24px !important;
@@ -771,6 +834,12 @@ a:hover {
 .lh-40{
     line-height: 40px !important;
 }
+.lh-43{
+    line-height: 43px !important;
+}
 .color-23{
     color: #232323 !important;
+}
+.color-ad{
+    color: #ADADAD !important;
 }

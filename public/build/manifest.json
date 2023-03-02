@@ -1,6 +1,6 @@
 {
   "public/dist/image/play.svg": {
-    "file": "assets/play.6ef6a48c.svg",
+    "file": "assets/play.cd91bcf7.svg",
     "src": "public/dist/image/play.svg"
   },
   "resources/js/script.js": {
@@ -14,7 +14,7 @@
     "isEntry": true
   },
   "resources/sass/lib.scss": {
-    "file": "assets/lib.73ce0c4f.css",
+    "file": "assets/lib.fc19affa.css",
     "src": "resources/sass/lib.scss",
     "isEntry": true
   }

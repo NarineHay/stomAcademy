@@ -30,15 +30,17 @@
                                         <div class="txts d-flex flex-row">
                                             <div class="txts1">
                                                 <p class="txts-1-title">Преподаватели</p>
-                                                <div class="d-flex flex-row align-items-center">
-                                                    <p class="p-name">Cameron Williamson</p>
-                                                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
-                                                              fill="#232323"/>
-                                                    </svg>
-                                                </div>
+                                                <a href="#lectors">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <p class="p-name">Cameron Williamson</p>
+                                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                  d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
+                                                                  fill="#232323"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
                                             </div>
                                             <div class="txts1 d-xl-block d-none">
                                                 <p class="txts-1-title">Старт</p>
@@ -254,7 +256,7 @@
                 </div>
             </div>
 
-            <div class="main4">
+            <div id="lectors" class="main4">
                 <div class="container">
                     <div class="one-lector br-12 w-100 d-flex flex-column-reverse flex-xl-row mb-3">
                         <div class="txts me-0 me-xl-4">
@@ -281,21 +283,32 @@
 
                     <div class="many-lector">
                         <h3 class="fs-32 f-700 lh-40 color-23 mb-4">Лекторы</h3>
-                        <div class="lector-cards d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-center">
+                        <div
+                            class="lector-cards d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-center">
                             <div class="card1 me-2">
                                 <div class="card br-12 mb-3" style="max-width: 522px;">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <img src="/dist/image/lector-card-img1.png" class="img-fluid rounded-start" alt="...">
+                                            <img src="/dist/image/lector-card-img1.png" class="img-fluid rounded-start"
+                                                 alt="...">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title f-700 fs-20 lh-24">Дахер Рами Насер</h5>
-                                                <p class="card-text text-muted f-500 fs-14 lh-20 mb-4">Врач-стоматолог общей практики</p>
-                                                <div class="card-text d-flex align-items-center"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.70186 0.237038C7.88954 0.143196 8.11046 0.143196 8.29814 0.237038L14.9648 3.57037C15.1907 3.6833 15.3333 3.91414 15.3333 4.16666C15.3333 4.41917 15.1907 4.65001 14.9648 4.76294L8.29814 8.09627C8.11046 8.19012 7.88954 8.19012 7.70186 8.09627L1.03519 4.76294C0.809333 4.65001 0.666665 4.41917 0.666665 4.16666C0.666665 3.91414 0.809333 3.6833 1.03519 3.57037L7.70186 0.237038ZM2.82404 4.16666L8 6.75463L13.176 4.16666L8 1.57868L2.82404 4.16666Z" fill="#232323"/>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.737047 10.5352C0.901707 10.2059 1.30216 10.0724 1.63147 10.237L8 13.4213L14.3685 10.237C14.6978 10.0724 15.0983 10.2059 15.2629 10.5352C15.4276 10.8645 15.2941 11.2649 14.9648 11.4296L8.29814 14.7629C8.11046 14.8568 7.88954 14.8568 7.70186 14.7629L1.03519 11.4296C0.70587 11.2649 0.572388 10.8645 0.737047 10.5352Z" fill="#232323"/>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.737047 7.20185C0.901707 6.87253 1.30216 6.73905 1.63147 6.9037L8 10.088L14.3685 6.9037C14.6978 6.73905 15.0983 6.87253 15.2629 7.20185C15.4276 7.53117 15.2941 7.93161 14.9648 8.09627L8.29814 11.4296C8.11046 11.5234 7.88954 11.5234 7.70186 11.4296L1.03519 8.09627C0.70587 7.93161 0.572388 7.53117 0.737047 7.20185Z" fill="#232323"/>
+                                                <p class="card-text text-muted f-500 fs-14 lh-20 mb-4">Врач-стоматолог
+                                                    общей практики</p>
+                                                <div class="card-text d-flex align-items-center">
+                                                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M7.70186 0.237038C7.88954 0.143196 8.11046 0.143196 8.29814 0.237038L14.9648 3.57037C15.1907 3.6833 15.3333 3.91414 15.3333 4.16666C15.3333 4.41917 15.1907 4.65001 14.9648 4.76294L8.29814 8.09627C8.11046 8.19012 7.88954 8.19012 7.70186 8.09627L1.03519 4.76294C0.809333 4.65001 0.666665 4.41917 0.666665 4.16666C0.666665 3.91414 0.809333 3.6833 1.03519 3.57037L7.70186 0.237038ZM2.82404 4.16666L8 6.75463L13.176 4.16666L8 1.57868L2.82404 4.16666Z"
+                                                              fill="#232323"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M0.737047 10.5352C0.901707 10.2059 1.30216 10.0724 1.63147 10.237L8 13.4213L14.3685 10.237C14.6978 10.0724 15.0983 10.2059 15.2629 10.5352C15.4276 10.8645 15.2941 11.2649 14.9648 11.4296L8.29814 14.7629C8.11046 14.8568 7.88954 14.8568 7.70186 14.7629L1.03519 11.4296C0.70587 11.2649 0.572388 10.8645 0.737047 10.5352Z"
+                                                              fill="#232323"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M0.737047 7.20185C0.901707 6.87253 1.30216 6.73905 1.63147 6.9037L8 10.088L14.3685 6.9037C14.6978 6.73905 15.0983 6.87253 15.2629 7.20185C15.4276 7.53117 15.2941 7.93161 14.9648 8.09627L8.29814 11.4296C8.11046 11.5234 7.88954 11.5234 7.70186 11.4296L1.03519 8.09627C0.70587 7.93161 0.572388 7.53117 0.737047 7.20185Z"
+                                                              fill="#232323"/>
                                                     </svg>
                                                     <span class="ms-2">23 лекции</span></div>
                                             </div>
@@ -307,16 +320,26 @@
                                 <div class="card br-12 mb-3" style="max-width: 522px;">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <img src="/dist/image/lector-card-img1.png" class="img-fluid rounded-start" alt="...">
+                                            <img src="/dist/image/lector-card-img1.png" class="img-fluid rounded-start"
+                                                 alt="...">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title f-700 fs-20 lh-24">Дахер Рами Насер</h5>
-                                                <p class="card-text text-muted f-500 fs-14 lh-20 mb-4">Врач-стоматолог общей практики</p>
-                                                <div class="card-text d-flex align-items-center"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.70186 0.237038C7.88954 0.143196 8.11046 0.143196 8.29814 0.237038L14.9648 3.57037C15.1907 3.6833 15.3333 3.91414 15.3333 4.16666C15.3333 4.41917 15.1907 4.65001 14.9648 4.76294L8.29814 8.09627C8.11046 8.19012 7.88954 8.19012 7.70186 8.09627L1.03519 4.76294C0.809333 4.65001 0.666665 4.41917 0.666665 4.16666C0.666665 3.91414 0.809333 3.6833 1.03519 3.57037L7.70186 0.237038ZM2.82404 4.16666L8 6.75463L13.176 4.16666L8 1.57868L2.82404 4.16666Z" fill="#232323"/>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.737047 10.5352C0.901707 10.2059 1.30216 10.0724 1.63147 10.237L8 13.4213L14.3685 10.237C14.6978 10.0724 15.0983 10.2059 15.2629 10.5352C15.4276 10.8645 15.2941 11.2649 14.9648 11.4296L8.29814 14.7629C8.11046 14.8568 7.88954 14.8568 7.70186 14.7629L1.03519 11.4296C0.70587 11.2649 0.572388 10.8645 0.737047 10.5352Z" fill="#232323"/>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.737047 7.20185C0.901707 6.87253 1.30216 6.73905 1.63147 6.9037L8 10.088L14.3685 6.9037C14.6978 6.73905 15.0983 6.87253 15.2629 7.20185C15.4276 7.53117 15.2941 7.93161 14.9648 8.09627L8.29814 11.4296C8.11046 11.5234 7.88954 11.5234 7.70186 11.4296L1.03519 8.09627C0.70587 7.93161 0.572388 7.53117 0.737047 7.20185Z" fill="#232323"/>
+                                                <p class="card-text text-muted f-500 fs-14 lh-20 mb-4">Врач-стоматолог
+                                                    общей практики</p>
+                                                <div class="card-text d-flex align-items-center">
+                                                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M7.70186 0.237038C7.88954 0.143196 8.11046 0.143196 8.29814 0.237038L14.9648 3.57037C15.1907 3.6833 15.3333 3.91414 15.3333 4.16666C15.3333 4.41917 15.1907 4.65001 14.9648 4.76294L8.29814 8.09627C8.11046 8.19012 7.88954 8.19012 7.70186 8.09627L1.03519 4.76294C0.809333 4.65001 0.666665 4.41917 0.666665 4.16666C0.666665 3.91414 0.809333 3.6833 1.03519 3.57037L7.70186 0.237038ZM2.82404 4.16666L8 6.75463L13.176 4.16666L8 1.57868L2.82404 4.16666Z"
+                                                              fill="#232323"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M0.737047 10.5352C0.901707 10.2059 1.30216 10.0724 1.63147 10.237L8 13.4213L14.3685 10.237C14.6978 10.0724 15.0983 10.2059 15.2629 10.5352C15.4276 10.8645 15.2941 11.2649 14.9648 11.4296L8.29814 14.7629C8.11046 14.8568 7.88954 14.8568 7.70186 14.7629L1.03519 11.4296C0.70587 11.2649 0.572388 10.8645 0.737047 10.5352Z"
+                                                              fill="#232323"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M0.737047 7.20185C0.901707 6.87253 1.30216 6.73905 1.63147 6.9037L8 10.088L14.3685 6.9037C14.6978 6.73905 15.0983 6.87253 15.2629 7.20185C15.4276 7.53117 15.2941 7.93161 14.9648 8.09627L8.29814 11.4296C8.11046 11.5234 7.88954 11.5234 7.70186 11.4296L1.03519 8.09627C0.70587 7.93161 0.572388 7.53117 0.737047 7.20185Z"
+                                                              fill="#232323"/>
                                                     </svg>
                                                     <span class="ms-2">23 лекции</span></div>
                                             </div>
@@ -328,16 +351,26 @@
                                 <div class="card br-12 mb-3" style="max-width: 522px;">
                                     <div class="row g-0">
                                         <div class="col-md-4">
-                                            <img src="/dist/image/lector-card-img1.png" class="img-fluid rounded-start" alt="...">
+                                            <img src="/dist/image/lector-card-img1.png" class="img-fluid rounded-start"
+                                                 alt="...">
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
                                                 <h5 class="card-title f-700 fs-20 lh-24">Дахер Рами Насер</h5>
-                                                <p class="card-text text-muted f-500 fs-14 lh-20 mb-4">Врач-стоматолог общей практики</p>
-                                                <div class="card-text d-flex align-items-center"><svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.70186 0.237038C7.88954 0.143196 8.11046 0.143196 8.29814 0.237038L14.9648 3.57037C15.1907 3.6833 15.3333 3.91414 15.3333 4.16666C15.3333 4.41917 15.1907 4.65001 14.9648 4.76294L8.29814 8.09627C8.11046 8.19012 7.88954 8.19012 7.70186 8.09627L1.03519 4.76294C0.809333 4.65001 0.666665 4.41917 0.666665 4.16666C0.666665 3.91414 0.809333 3.6833 1.03519 3.57037L7.70186 0.237038ZM2.82404 4.16666L8 6.75463L13.176 4.16666L8 1.57868L2.82404 4.16666Z" fill="#232323"/>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.737047 10.5352C0.901707 10.2059 1.30216 10.0724 1.63147 10.237L8 13.4213L14.3685 10.237C14.6978 10.0724 15.0983 10.2059 15.2629 10.5352C15.4276 10.8645 15.2941 11.2649 14.9648 11.4296L8.29814 14.7629C8.11046 14.8568 7.88954 14.8568 7.70186 14.7629L1.03519 11.4296C0.70587 11.2649 0.572388 10.8645 0.737047 10.5352Z" fill="#232323"/>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0.737047 7.20185C0.901707 6.87253 1.30216 6.73905 1.63147 6.9037L8 10.088L14.3685 6.9037C14.6978 6.73905 15.0983 6.87253 15.2629 7.20185C15.4276 7.53117 15.2941 7.93161 14.9648 8.09627L8.29814 11.4296C8.11046 11.5234 7.88954 11.5234 7.70186 11.4296L1.03519 8.09627C0.70587 7.93161 0.572388 7.53117 0.737047 7.20185Z" fill="#232323"/>
+                                                <p class="card-text text-muted f-500 fs-14 lh-20 mb-4">Врач-стоматолог
+                                                    общей практики</p>
+                                                <div class="card-text d-flex align-items-center">
+                                                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M7.70186 0.237038C7.88954 0.143196 8.11046 0.143196 8.29814 0.237038L14.9648 3.57037C15.1907 3.6833 15.3333 3.91414 15.3333 4.16666C15.3333 4.41917 15.1907 4.65001 14.9648 4.76294L8.29814 8.09627C8.11046 8.19012 7.88954 8.19012 7.70186 8.09627L1.03519 4.76294C0.809333 4.65001 0.666665 4.41917 0.666665 4.16666C0.666665 3.91414 0.809333 3.6833 1.03519 3.57037L7.70186 0.237038ZM2.82404 4.16666L8 6.75463L13.176 4.16666L8 1.57868L2.82404 4.16666Z"
+                                                              fill="#232323"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M0.737047 10.5352C0.901707 10.2059 1.30216 10.0724 1.63147 10.237L8 13.4213L14.3685 10.237C14.6978 10.0724 15.0983 10.2059 15.2629 10.5352C15.4276 10.8645 15.2941 11.2649 14.9648 11.4296L8.29814 14.7629C8.11046 14.8568 7.88954 14.8568 7.70186 14.7629L1.03519 11.4296C0.70587 11.2649 0.572388 10.8645 0.737047 10.5352Z"
+                                                              fill="#232323"/>
+                                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                                              d="M0.737047 7.20185C0.901707 6.87253 1.30216 6.73905 1.63147 6.9037L8 10.088L14.3685 6.9037C14.6978 6.73905 15.0983 6.87253 15.2629 7.20185C15.4276 7.53117 15.2941 7.93161 14.9648 8.09627L8.29814 11.4296C8.11046 11.5234 7.88954 11.5234 7.70186 11.4296L1.03519 8.09627C0.70587 7.93161 0.572388 7.53117 0.737047 7.20185Z"
+                                                              fill="#232323"/>
                                                     </svg>
                                                     <span class="ms-2">23 лекции</span></div>
                                             </div>
@@ -350,12 +383,42 @@
                 </div>
             </div>
 
-            <div class="main5" style="background-color: #191F70; height: 100px">
-
+            <div class="main5" style="background-color: #191F70;">
+                <div class="container">
+                    <div class="d-flex">
+                        <div class="main5-1 me-4">
+                            <h3 class="text-white fw-bold mb-4" style="max-width: 370px;">Окклюзия. Концепции Р. Славичека</h3>
+                            <p class="color-ad fs-14 f-500 lh-17 mb-13">Стоимость участия в онлайн-курсе 1 лекции:</p>
+                            <p class="color-ad fs-14 f-500 lh-17 mb-13">При оплате до старта мероприятия</p>
+                            <p class="fw-bold fs-43 lh-43 text-white">
+                                40 EUR
+                                <sup class="fs-23 lh-23 fw-normal align-middle strikethrough">80 EUR</sup>
+                            </p>
+                            <ul class="text-white ps-2 mb-4">
+                                <li class="fw-normal fs-14 lh-23">Запись лекций</li>
+                                <li class="fw-normal fs-14 lh-23">Cертификат</li>
+                                <li class="fw-normal fs-14 lh-23">Ответы на вопросы</li>
+                            </ul>
+                            <p class="text-white fw-normal fs-14 lh-23 mb-0" style="max-width: 307px;">Также мы поддерживаем молодых специалистов и предоставляем скидку:</p>
+                            <ul  class="text-white ps-2">
+                                <li class="fw-normal fs-14 lh-23">25% для студентов, интернов и ординаторов</li>
+                            </ul>
+                        </div>
+                        <div class="main5-2">
+                            <h3 class="text-white f-700 fs-32 lh-32">Регистрация на онлайн-курс</h3>
+                            <label class="text-white fs-14 lh-14 fw-normal">Ваше имя</label>
+                            <input type="text" class="form-control mb-3 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Имя Фамилия">
+                            <label class="text-white fs-14 lh-14 fw-normal">Ваш e-mail</label>
+                            <input type="text" class="form-control mb-3 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="mail@example.com">
+                            <label class="text-white fs-14 lh-14 fw-normal">Ваш номер телефона</label>
+                            <input type="text" class="form-control mb-3 " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Ваш номер телефона">
+                            <button class="btn btn-outline-primary w-100 fs-18 f-600 br-12 mb-3 lh-23 text-white py-3 mt-3" style="background-color: #5CB0FF;">Зарегистрироваться</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
-
 
 
     </div>
