@@ -20,11 +20,7 @@
     .big {
         width: 100%;
     }
-    .are_any_questions_div{
-        input{
-            max-width: 350px;
-        }
-    }
+
 }
 
 @media (max-width: 991px) {
@@ -54,6 +50,28 @@
             .eng-doctors-txt {
                 background: linear-gradient(180deg, #FFFFFF 42%, #F9F9F9 40%);
             }
+        }
+    }
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 992px){
+    .courses-show-div{
+        .main8{
+            .main8-2{
+                .contacts{
+                   .contact3{
+                       margin-top: 0 !important;
+                   }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1483px){
+    .are_any_questions_div{
+        input{
+            max-width: 350px;
         }
     }
 }
