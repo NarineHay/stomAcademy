@@ -18,9 +18,10 @@ class CourseSeeder extends Seeder
         $lgs = Language::all();
         $direction = Direction::all();
         $images = RandomImagesApi::getImages("webinar",10,"webinar");
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 150; $i++) {
             $course = Course::factory(1)->make(['image' => $images[rand(0,9)]])->first();
             $course->price_id = $price->random(1)->first()->id;
+            $course->online = fake()->boolean();
             $course->direction_id = $direction->random(1)->first()->id;
             $course->save();
             foreach ($lgs as $lg) {
