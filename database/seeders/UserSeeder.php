@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             ['email' => 'lector@gmail.com','role' => User::ROLE_LECTOR],
         ))->create();
 
-        User::factory(10)->create();
+//        User::factory(10)->create();
     }
 }
 
