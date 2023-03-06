@@ -80,3 +80,21 @@ Livewire.on('image_uploaded',function (){
     image_update_input.parentNode.parentNode.querySelector("button").click();
 })
 
+
+document.querySelectorAll(".video_block").forEach((video_block)=>{
+        let iframe = video_block.querySelector("iframe");
+        let src = iframe.getAttribute("src");
+        let video_play = video_block.querySelector(".video_play");
+        video_play.addEventListener("click",function (){
+            iframe.setAttribute("src",src  + "?autoplay=1");
+            iframe.classList.remove("d-none");
+        });
+});
+
+
+//     .addEventListener("click",function (){
+//     let iframe = video_block.getElementById("iframe");
+//     let src = iframe.getAttribute("src");
+//     iframe.setAttribute("src",src  + "?autoplay=1");
+//     iframe.classList.remove("d-none");
+// });

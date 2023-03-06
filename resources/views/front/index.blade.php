@@ -129,8 +129,11 @@
             <div class="swiper-wrapper">
                 @foreach($conferences as $conference)
                     <div class="swiper-slide">
-                        <div style="background-image: url({{\Illuminate\Support\Facades\Storage::url($conference->image)}})" class="watched-bg br-12 mb-3 mb-lg-0">
-                            <div class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
+                        <div
+                            style="background-image: url({{\Illuminate\Support\Facades\Storage::url($conference->image)}})"
+                            class="watched-bg br-12 mb-3 mb-lg-0">
+                            <div
+                                class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
                                 <div>
                                     <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
                                     <h5 class="f-700">{{$conference->info->title}}</h5>
@@ -138,12 +141,16 @@
                                 <div class="d-flex align-items-center">
                                     <div>
                                         @foreach($conference->getLectors()->take(3) as $k => $lector)
-                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" width="50px" height="50px" class="@if ($k>0) m-25 @endif rounded-circle" alt="personPic">
+                                            <img
+                                                src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}"
+                                                width="50px" height="50px" class="@if ($k>0) m-25 @endif rounded-circle"
+                                                alt="personPic">
                                         @endforeach
                                     </div>
                                     <div>
                                         @if($conference->getLectors()->count() > 3)
-                                            <span class="fs-20 f-600 ms-2">{{ $conference->getLectors()->count()-3}}+</span>
+                                            <span
+                                                class="fs-20 f-600 ms-2">{{ $conference->getLectors()->count()-3}}+</span>
                                         @endif
                                     </div>
                                 </div>
@@ -207,26 +214,43 @@
         <div class="container">
             <div class="row images py-6">
                 <div class="col-12 col-lg-6">
-                    <div class="position-relative">
-                        <img src="{{\Illuminate\Support\Facades\Storage::url($videos[1]->image)}}" alt="videoPic" class="big">
-                        <div class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
+                    <div class="position-relative video_block">
+                        <iframe style="z-index: 1;" class="d-none position-absolute" width="100%" height="100%"
+                                src="{{ $videos[0]->url }}" title="Walter Devoto about Stom Academy." frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                        <img src="{{\Illuminate\Support\Facades\Storage::url($videos[1]->image)}}" alt="videoPic"
+                             class="big">
+                        <div
+                            class="video_play cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
                             <i class="fas fa-play"></i>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-4 col-6">
+                {{--                <div class="row">--}}
+{{--                <div class="col-lg-4 col-6">--}}
+                    <div class="d-flex flex-wrap">
                         @foreach($videos as $video)
-                            <div class="position-relative">
-                                <img src="{{\Illuminate\Support\Facades\Storage::url($video->image)}}" alt="videoPic">
-                                <div class="cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
-                                    <i class="fas fa-play"></i>
+                            <div class="col-lg-3 col-6">
+                                <div class="position-relative video_block h-100 me-4 mb-2">
+                                    <iframe style="z-index: 1;" class="d-none position-absolute" width="100%"
+                                            height="100%" src="{{ $video->url }}"
+                                            title="Walter Devoto about Stom Academy." frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                    <img src="{{\Illuminate\Support\Facades\Storage::url($video->image)}}"
+                                         alt="videoPic" class="h-100 pb-1">
+                                    <div
+                                        class="video_play cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
+                                        <i class="fas fa-play"></i>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
+
                     </div>
-                </div>
+                {{--                </div>--}}
 
 
             </div>
