@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        User::factory(4)->state(new Sequence(
+        User::factory(1)->state(new Sequence(
             ['email' => 'admin@gmail.com','role' => User::ROLE_ADMIN],
             //['email' => 'moder@gmail.com','role' => User::ROLE_MODER],
             //['email' => 'user@gmail.com','role' => User::ROLE_USER],
