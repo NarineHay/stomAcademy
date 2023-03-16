@@ -61,6 +61,12 @@
                             <div class="tab-content" id="custom-tabs-four-tabContent">
                                 @foreach(\App\Models\Language::all() as $k => $lg)
                                     <div class="tab-pane fade @if($k == 0) show active @endif" id="lg_tab_{{ $lg->id }}" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+                                        <div class="form-check">
+                                            <label >
+                                                <input type="checkbox" value="true" name="enabled[{{$lg->id}}]" class="form-check-input">
+                                                <span>СТАТУС</span>
+                                            </label>
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">НАЗВАНИЕ*</label>
                                             <input type="text" value="{{ old('title')[$lg->id] ?? "" }}" name="title[{{$lg->id}}]" class="form-control">

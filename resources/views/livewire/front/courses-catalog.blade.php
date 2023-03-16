@@ -45,24 +45,24 @@
 
         <div class="row mt-4">
             @foreach($courses as $course)
-                <div class="col-xxl-55 col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
-                    <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" style="width: 250px; height: 150px; object-fit: cover" alt="addPic">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
+                    <a class="bg-white br-12 d-block" style="color: inherit" href="{{ route("course.show",$course->id) }}">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" style="width: 100%; height: 175px; object-fit: cover" alt="addPic">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
-                            <span><a href="{{route('course.show',$course->id)}}" class="text-black f-700 fs-16">{{$course->info->title}}</a></span>
+                            <span><p style="min-height: 50px;" href="{{route('course.show',$course->id)}}" class="text-black f-700 fs-16">{{$course->info->title}}</p></span>
 
                             <div class="mt-2 d-flex justify-content-between">
-                                <div>
-                                    <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
-                                    <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
+                                <div class="d-flex justify-content-between w-100">
+                                    <span><i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">{{$course->getDuration()}}</span></span>
+                                    <span><i class="fa-solid fa-video"></i> <span class="ms-1 fs-14 f-500">{{$course->webinars_count}} </span></span>
                                 </div>
                             </div>
                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
                                 <div class="mb-3 mb-md-0">
                                     <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
                                 </div>
-                                <form method="POST" action="{{route('addToCart')}}">
+                                <form method="POST" class="dublicat_form" action="{{ route('addToCart') }}">
                                     @csrf
                                     <input type="hidden" value="{{ $course->id }}" name="id">
                                     <input type="hidden" value="course" name="type">
@@ -72,7 +72,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>

@@ -46,20 +46,21 @@
 
         <div class="row mt-4">
             @foreach($courses as $course)
-                <div class="col-xxl-55 col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
+                <a href="{{ route("conference.show",$course->id) }}" style="color: inherit" class="col-xxl-55 col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
                     <div class="bg-white br-12">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" class="w-100"
                              alt="addPic" style="width: 250px; height: 150px; object-fit: cover">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
-                            <p class="f-700 fs-16">{{$course->info->title}}</p>
+                            <p class="f-700 fs-16" style="min-height: 50px">{{$course->info->title}}</p>
                             <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
                                 <div class="d-flex align-items-center">
                                     <div class="d-flex align-items-center">
                                         <div>
                                             @foreach($course->getLectors()->take(3) as $k => $lector)
-                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" width="48px" height="48px" class="@if ($k>0) m-25 @endif rounded-circle" alt="personPic">
+                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" style="width: 48px;height: 48px;object-fit: cover" class="@if ($k>0) m-25 @endif rounded-circle" alt="personPic">
                                             @endforeach
+
                                         </div>
                                         <div>
                                             @if($course->getLectors()->count() > 3)
@@ -82,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
 

@@ -55,10 +55,10 @@
                         <input type="text" value="{{ $user->email }}" name="email" class="form-control">
                     </div>
 
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">EMAIL YOUTUBE.COM</label>
-                        <input type="text" value="{{ $user->userinfo->youtube_email }}" name="youtube_email" class="form-control">
-                    </div>
+{{--                    <div class="form-group">--}}
+{{--                        <label for="exampleInputEmail1">EMAIL YOUTUBE.COM</label>--}}
+{{--                        <input type="text" value="{{ $user->userinfo->youtube_email }}" name="youtube_email" class="form-control">--}}
+{{--                    </div>--}}
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ТЕЛЕФОН</label>

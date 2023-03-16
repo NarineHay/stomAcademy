@@ -109,6 +109,12 @@
                             <div class="tab-content" id="custom-tabs-four-tabContent">
                                 @foreach($user->lector->infos as $k => $info)
                                     <div class="tab-pane fade @if($k == 0) show active @endif" id="lg_tab_{{ $info->lg_id }}" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+                                        <div class="form-check">
+                                            <label>
+                                                <input type="checkbox" @checked($info->enabled) value="true" name="enabled[{{ $info->lg_id }}]" class="form-check-input">
+                                                <span>СТАТУС</span>
+                                            </label>
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Биография*</label>
                                             <div class="row">

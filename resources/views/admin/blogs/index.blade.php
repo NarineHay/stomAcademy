@@ -14,7 +14,6 @@
                     <a class="btn btn-primary" href="{{route('admin.blogs.create')}}" role="button">Добавить</a>
                 </div>
             </div>
-
         </div>
     </div>
 

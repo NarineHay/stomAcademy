@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">URL</label>
-                        <input type="text" value="{{old('url')}}" name="url" class="form-control">
+                        <input type="text" value="{{ old('url') }}" name="url" class="form-control">
                     </div>
 
                     <div class="card card-primary card-outline card-outline-tabs">
@@ -54,6 +54,13 @@
                             <div class="tab-content" id="custom-tabs-four-tabContent">
                                 @foreach(\App\Models\Language::all() as $k => $lg)
                                     <div class="tab-pane fade @if($k == 0) show active @endif" id="lg_tab_{{ $lg->id }}" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+
+                                        <div class="form-check">
+                                            <label >
+                                                <input type="checkbox" value="true" name="enabled[{{$lg->id}}]" class="form-check-input">
+                                                <span>СТАТУС</span>
+                                            </label>
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Meta title*</label>
                                             <input type="text" name="meta_title[{{$lg->id}}]" class="form-control" value="{{old('meta_title') ?? ""}}">

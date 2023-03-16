@@ -951,3 +951,7 @@ a:hover {
 .color-47{
     color: #474747 !important;
 }
+
+.dublicat_form + .dublicat_form{
+    display: none;
+}

@@ -18,11 +18,17 @@ class DatabaseSeeder extends Seeder
 
         $this->call(LanguagesSeeder::class);
         $this->call(CountrySeeder::class);
+
+        // dev
 //        $this->call(PricesSeeder::class);
 //        $this->call(PromoSeeder::class);
+        // end dev
+
         $this->call(CurrencySeeder::class);
         $this->call(UserSeeder::class);
         $this->call(DirectionSeeder::class);
+
+        // dev
 //        $this->call(LectorSeeder::class);
 //        $this->call(UserInfoSeeder::class);
 //        $this->call(UserDirectionSeeder::class);
@@ -34,6 +40,8 @@ class DatabaseSeeder extends Seeder
 //        $this->call(BlogSeeder::class);
 //        $this->call(ChatSeeder::class);
 //        $this->call(ChatMessageSeeder::class);
+        // end dev
+
         $this->call(VideosSeeder::class);
     }
 }

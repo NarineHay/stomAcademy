@@ -84,14 +84,14 @@
         <div class="row lecturers pb-6">
             @foreach($lectors as $lector)
                 <div class="col-6 col-lg-3">
-                    <div class="bg-white br-12">
-                        <img src="{{\Illuminate\Support\Facades\Storage::url($lector->userinfo->image)}}" style="width: 385px; height: 318px; object-fit: cover" alt="lecturerPic">
+                    <a href="{{ route("lectors.show",$lector->id) }}" class="bg-white br-12 d-block" style="color: inherit">
+                        <img src="{{\Illuminate\Support\Facades\Storage::url($lector->userinfo->image)}}" style="width: 100%; height: 300px; object-fit: cover" alt="lecturerPic">
                         <div class="text-black p-3">
                             <p class="fs-20 f-700">{{$lector->name}}</p>
                             <p class="text-secondary fs-14 f-500">{{$lector->lector->directions->title}}</p>
                             <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>

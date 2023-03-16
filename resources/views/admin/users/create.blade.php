@@ -54,10 +54,10 @@
                         <input value="{{ old("email") }}" type="email" name="email" class="form-control" placeholder="Введите электронную почту...">
                     </div>
 
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">EMAIL YOUTUBE.COM</label>
-                        <input value="{{ old("youtube_email") }}" type="email" name="youtube_email" class="form-control" placeholder="Введите Email для youtube.com...">
-                    </div>
+{{--                    <div class="form-group">--}}
+{{--                        <label for="exampleInputEmail1">EMAIL YOUTUBE.COM</label>--}}
+{{--                        <input value="{{ old("youtube_email") }}" type="email" name="youtube_email" class="form-control" placeholder="Введите Email для youtube.com...">--}}
+{{--                    </div>--}}
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">ТЕЛЕФОН</label>

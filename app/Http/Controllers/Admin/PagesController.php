@@ -34,6 +34,7 @@ class PagesController extends Controller
         foreach (Language::all() as $lg){
             $page->infos()->create(
                 [
+                    'enabled' => boolval($enables[$lg->id] ?? false),
                     'lg_id' => $lg->id,
                     'meta_title' => $meta_titles[$lg->id],
                     'meta_description' => $meta_descriptions[$lg->id],
@@ -52,12 +53,12 @@ class PagesController extends Controller
 
     public function update(Request $request, Page $page)
     {
-        $request->validate([
-            'meta_title.*' => 'required',
-            'meta_description.*' => 'required',
-            'heading.*' => 'required',
-            'url' => 'required'
-        ]);
+//        $request->validate([
+//            'meta_title.*' => 'required',
+//            'meta_description.*' => 'required',
+//            'heading.*' => 'required',
+//            'url' => 'required'
+//        ]);
 
         $page = Page::find($page->id);
 
@@ -71,6 +72,12 @@ class PagesController extends Controller
         }
         foreach ($request->get("heading",[]) as $lg_id => $heading){
             $page->infos()->where("lg_id",$lg_id)->update(['heading' => $heading]);
+        }
+
+        $page->infos()->update(['enabled' => false]);
+
+        foreach ($request->get("enabled",[]) as $lg_id => $enabled){
+            $page->infos()->where("lg_id",$lg_id)->update(['enabled' => true]);
         }
 
         $page->save();

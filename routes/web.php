@@ -18,6 +18,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::prefix("webinars")->group(function (){
     Route::get("/",[\App\Http\Controllers\WebinarsController::class,'index'])->name("webinar.index");
+    Route::get("{id}",[\App\Http\Controllers\WebinarsController::class,'show'])->name("webinar.show");
 });
 
 Route::prefix("courses")->group(function (){
@@ -27,6 +28,7 @@ Route::prefix("courses")->group(function (){
 
 Route::prefix("conferences")->group(function (){
     Route::get("/",[\App\Http\Controllers\OnlineCoursesController::class,'index'])->name("conference");
+    Route::get("{id}",[\App\Http\Controllers\OnlineCoursesController::class,'show'])->name("conference.show");
 });
 
 Route::get('about',[\App\Http\Controllers\AboutController::class,'index'])->name("about");

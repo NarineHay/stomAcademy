@@ -34,9 +34,9 @@
         <div class="swiper videoPopularSwiper br-12">
             <div class="swiper-wrapper">
                 @foreach($courses as $course)
-                    <div class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12">
+                    <a href="{{ route("course.show",$course->id) }}" class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12" style="color: inherit">
                         <img src='{{\Illuminate\Support\Facades\Storage::url($course->image)}}' alt="videoPic"
-                             style="width: 348px; height: 192px; object-fit: cover">
+                             style="width: 100%; height: 192px; object-fit: cover">
                         <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
                             <p class="text-primary text-uppercase f-700 fs-10">{{$course->directions->title}}</p>
                             <h5 class="f-700">{{$course->info->title}}</h5>
@@ -50,7 +50,7 @@
                             {{--                                <p class="m-0 f-500 fs-16">Камиль Хабиев</p>--}}
                             {{--                            </div>--}}
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -77,7 +77,7 @@
             <div class="swiper-wrapper">
                 @foreach($courses as $course)
                     <div class="swiper-slide">
-                        <div class="bg-white br-12">
+                        <a href="{{ route("course.show",$course->id) }}" style="color: inherit" class="d-block bg-white br-12">
                             <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}" alt="addPic"
                                  style="width: 386px; height: 214px; object-fit: cover">
                             <div class="p-3">
@@ -87,7 +87,7 @@
                                     <div>
                                         <i class="far fa-clock me-1"></i> <span
                                             class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
-                                        <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
+{{--                                        <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>--}}
                                     </div>
                                     <div>
                                         <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
@@ -101,7 +101,7 @@
                                     </button>
                                 </form>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -129,9 +129,9 @@
             <div class="swiper-wrapper">
                 @foreach($conferences as $conference)
                     <div class="swiper-slide">
-                        <div
-                            style="background-image: url({{\Illuminate\Support\Facades\Storage::url($conference->image)}})"
-                            class="watched-bg br-12 mb-3 mb-lg-0">
+                        <a href="{{ route("conference.show",$conference->id) }}"
+                            style="background-image: url({{\Illuminate\Support\Facades\Storage::url($conference->image)}});color: inherit"
+                            class="watched-bg br-12 mb-3 mb-lg-0 d-block">
                             <div
                                 class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
                                 <div>
@@ -143,7 +143,7 @@
                                         @foreach($conference->getLectors()->take(3) as $k => $lector)
                                             <img
                                                 src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}"
-                                                width="50px" height="50px" class="@if ($k>0) m-25 @endif rounded-circle"
+                                                style="height: 50px;width: 50px;object-fit: cover" class="@if ($k>0) m-25 @endif rounded-circle"
                                                 alt="personPic">
                                         @endforeach
                                     </div>
@@ -155,7 +155,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>
@@ -175,17 +175,17 @@
         </div>
         <div class="row flex-nowrap flex-md-wrap">
             @foreach($webinars as $webinar)
-                <div class="col-10 col-md-4 col-xxl-2 mt-3">
+                <a class="col-10 col-md-4 col-xxl-2 mt-3 d-block" style="color: inherit" href="{{ route("webinar.show",$webinar->id) }}">
                     <div class="bg-white br-12">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}"
-                             style="width: 250px; height: 150px; object-fit: cover" alt="notePic">
+                             style="width: 100%; height: 150px; object-fit: cover" alt="notePic">
                         <div class="d-flex flex-column p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->title}}</p>
                             <p class="f-700 mt-1 fs-16">{{$webinar->info->title}}</p>
                             <div class="d-flex align-items-center mt-2">
                                 <img
                                     src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}"
-                                    class="me-2 rounded-circle" alt="customerPic" width="30" height="30">
+                                    class="me-2 rounded-circle" alt="customerPic" style="width: 30px;height: 30px;object-fit: cover">
                                 <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
                             </div>
                             <div
@@ -204,7 +204,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
     </div>
@@ -322,7 +322,9 @@
         <div>
             <div class="mt-4 d-flex useful_article_row">
                 @foreach($blogs as $blog)
-                    <div
+                    <a
+                        href="{{route('blog.show',$blog->id)}}"
+                        style="color: inherit"
                         class="d-flex flex-column useful_article_item @if($blog->id%2!=0)flex-lg-column-reverse @endif">
                         <div>
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}"
@@ -333,15 +335,15 @@
                                 {{$blog->directions->title}}
                             </p>
                             <h5 class="f-700 mt-2 m-0">
-                                <a href="{{route('blog.show',$blog->id)}}" class="text-black">
+                                <span href="{{route('blog.show',$blog->id)}}" class="text-black">
                                     {{$blog->info->title}}
-                                </a>
+                                </span>
                             </h5>
                             <p class="mt-2 mt-lg-6 fs-14 f-500 m-0 mt-3">
                                 <i class="far fa-calendar me-2"></i>{{date('d-m-Y', strtotime($blog->created_at))}}
                             </p>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -360,7 +362,7 @@
         </div>
         <div class="row">
             @foreach($lectors as $lector)
-                <div class="col-6 col-sm-4 col-lg-2 mt-3 mt-lg-4">
+                <a href="{{ route("lectors.show",$lector->id) }}" class="d-block col-6 col-sm-4 col-lg-2 mt-3 mt-lg-4" style="color:inherit">
                     <div class="bg-white br-12">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}"
                              style="width: 251px; height: 203px; object-fit: cover" alt="lecturerPic">
@@ -370,7 +372,7 @@
                             <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
     </div>

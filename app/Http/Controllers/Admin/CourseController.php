@@ -64,6 +64,7 @@ class CourseController extends Controller
         foreach (Language::all() as $lg){
             $course->infos()->create(
                 [
+                    'enabled' => boolval($enables[$lg->id] ?? false),
                     'lg_id' => $lg->id,
                     'title' => $titles[$lg->id],
                     'description' => $descriptions[$lg->id],
@@ -86,10 +87,8 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
         $request->validate([
-            'title.*' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'description.*' => 'required',
         ]);
 
         $course = Course::find($course->id);
@@ -122,6 +121,11 @@ class CourseController extends Controller
 
         foreach ($request->get("title",[]) as $lg_id => $title){
             $course->infos()->where("lg_id",$lg_id)->update(['title' => $title]);
+        }
+
+        $course->infos()->update(['enabled' => false]);
+        foreach ($request->get("enabled",[]) as $lg_id => $enabled){
+            $course->infos()->where("lg_id",$lg_id)->update(['enabled' => true]);
         }
 
         $course->save();

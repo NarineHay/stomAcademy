@@ -26,11 +26,11 @@ class VideoController extends Controller
             'image' => 'required',
         ]);
         $video = new Video();
-        $video->url = $request->get("url");
+        $video->url = str_replace("watch?v=","embed/",$request->get("url"));
         $video->image = $request->file('image')->store('public/videoImages');
 
         $video->save();
-        return redirect()->back();
+        return response()->redirectToRoute("admin.videos.index");
     }
 
     public function edit(Video $video)
@@ -41,7 +41,7 @@ class VideoController extends Controller
     public function update(Request $request, Video $video)
     {
         $video = Video::find($video->id);
-        $video->url = $request->get("url");
+        $video->url = str_replace("watch?v=","embed/",$request->get("url"));
         if($request->hasFile('image')){
             $request->validate([
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',

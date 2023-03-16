@@ -92,7 +92,7 @@ class LectorController extends Controller
     public function update(Request $request, Lector $lector)
     {
         $request->validate([
-            'biography.*' => 'required',
+//            'biography.*' => 'required',
             'per_of_sales' => 'required',
         ]);
 
@@ -127,6 +127,12 @@ class LectorController extends Controller
         }
 
         $lector->save();
+
+        $lector->infos()->update(['enabled' => false]);
+        foreach ($request->get("enabled",[]) as $lg_id => $enabled){
+            $lector->infos()->where("lg_id",$lg_id)->update(['enabled' => true]);
+        }
+
         return redirect()->back()->with('success','Lector has been updated successfully');
     }
 

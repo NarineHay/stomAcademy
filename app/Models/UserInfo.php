@@ -39,4 +39,8 @@ class UserInfo extends Model
     function country(){
         return $this->hasOne(Country::class,"id","country_id");
     }
+
+    function GetFullNameAttribute(){
+        return $this->fname . " " . $this->lname;
+    }
 }

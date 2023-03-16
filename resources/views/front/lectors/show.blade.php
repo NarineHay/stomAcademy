@@ -6,15 +6,15 @@
             <div class="d-flex mt-4">
                 <a href="{{route('home')}}" class="text-dark"><p class="fs-12 f-500 text-secondary">Главная</p></a>
                 <a href="{{route('lectors.index')}}" class="text-dark"><p class="fs-12 f-500 text-secondary ms-3 d-none d-lg-block main">Лектора</p></a>
-                <a><p class="fs-12 f-500 ms-3 main">{{$lector->name}}</p></a>
+                <a><p class="fs-12 f-500 ms-3 main">{{$lector->userInfo->fullName}}</p></a>
             </div>
             <div class="row mt-3 mt-lg-5">
                 <div class="col-12 col-lg-4 me-0 me-lg-6">
-                    <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}" class="br-12 w-100" alt="pic">
+                    <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}" class="br-12 w-100" alt="pic">
                 </div>
                 <div class="col-12 col-lg-6 ms-0 ms-lg-6">
                     <div>
-                        <h3 class="f-700 m-0 mt-3 mt-lg-0">{{ $lector->name }}</h3>
+                        <h3 class="f-700 m-0 mt-3 mt-lg-0">{{ $lector->userInfo->fullName }}</h3>
                         <p class="fs-16 f-500 mt-3 m-0">{!!$lector->lector->info->biography ?? ""!!}</p>
                     </div>
                     <div class="mt-4 mb-3">

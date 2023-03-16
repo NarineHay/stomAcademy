@@ -36,6 +36,7 @@ class OnlineCoursesCatalog extends Component
 
     public function render()
     {
+
         $courses_q = Course::query()->where('online',1);
         if(count($this->selectedDirections) > 0){
             $courses_q = $courses_q->whereIn("direction_id",$this->selectedDirections);

@@ -50,22 +50,22 @@
 
         <div class="row mt-4">
             @foreach($webinars as $webinar)
-                <div class="col-xxl-55 col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
+                <a href="{{ route("webinar.show",$webinar->id) }}" style="color: inherit" class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
                     <div class="bg-white br-12">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" class="w-100" alt="addPic" style="width: 250px; height: 150px; object-fit: cover">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->title}}</p>
-                            <p class="f-700 fs-16">{{$webinar->info->title}} {{$webinar->id}}</p>
+                            <p class="f-700 fs-16" style="min-height: 50px">{{$webinar->info->title}} {{$webinar->id}}</p>
                             <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
                                 <div class="d-flex align-items-center">
-                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" style="height: 40px; width: 40px">
+                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" style="height: 40px; width: 40px;object-fit: cover">
                                     <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
                                 </div>
                                 <div class="mt-3 mt-xl-0">
                                     <span class="f-700 text-primary fs-16 white-space">{{$webinar->price->rub}} ₽</span>
                                 </div>
                             </div>
-                            <form method="POST" action="{{route('addToCart')}}">
+                            <form class="dublicat_form" method="POST" action="{{route('addToCart')}}">
                                 @csrf
                                 <input type="hidden" value="{{ $webinar->id }}" name="id">
                                 <input type="hidden" value="webinar" name="type">
@@ -73,7 +73,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
 

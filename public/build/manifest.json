@@ -4,7 +4,7 @@
     "src": "public/dist/image/play.svg"
   },
   "resources/js/script.js": {
-    "file": "assets/script.93f9b708.js",
+    "file": "assets/script.5adb0ca5.js",
     "src": "resources/js/script.js",
     "isEntry": true
   },
@@ -14,7 +14,7 @@
     "isEntry": true
   },
   "resources/sass/lib.scss": {
-    "file": "assets/lib.9e131957.css",
+    "file": "assets/lib.5e17b582.css",
     "src": "resources/sass/lib.scss",
     "isEntry": true
   }

@@ -59,7 +59,7 @@
                                 @foreach($lectors as $user)
                                     <tr>
                                         <td>
-                                            <a><img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image) }}" height="70" alt=""/></a>
+                                            <a><img src="{{\Illuminate\Support\Facades\Storage::url($user->lector->photo) }}" height="70" alt=""/></a>
                                         </td>
                                         <td>
                                             <a>{{$user->userinfo->fname}} {{$user->userinfo->lname}}</a>

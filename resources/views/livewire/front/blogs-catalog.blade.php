@@ -2,7 +2,7 @@
     <div class="col-lg-10 col-12  mb-5 mb-lg-6 pb-lg-4">
         <div class="row mt-4">
             <div class="col-12 d-row d-xl-flex mb-4 mb-lg-6">
-                <div>
+                <a href="{{route('blog.show',$blog_top->id)}}" style="color: inherit" class="d-block">
                     <div class="bg-white br-12">
                         <div>
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($blog_top->info->image) }}" class="blogs_top_img" alt="blogPic">
@@ -15,30 +15,30 @@
                             </p>
                         </div>
                     </div>
-                </div>
+                </a>
                 <div class="ms-0 ms-xl-5 mt-4 mt-xl-0">
                     @foreach($blogs_top as $blog)
-                        <div class="br-12 d-flex flex-row align-items-center mb-4">
+                        <a href="{{route('blog.show',$blog->id)}}" style="color: inherit" class="d-block br-12 d-flex flex-row align-items-center mb-4">
                             <div>
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}"
-                                     alt="blogPic" width="150" height="100" class="br-12">
+                                     alt="blogPic" style="width: 150px;height: 100px;object-fit: cover" class="br-12">
                             </div>
                             <div class="d-flex flex-column ms-4">
                                 <p class="text-primary text-uppercase f-700 fs-10 mt-0">{{$blog->directions->title}}</p>
                                 <h5 class="f-700 fs-16 m-0">
-                                    <span><a href="{{route('blog.show',$blog->id)}}" class="text-black">{{$blog->info->title}}</a></span>
+                                    <span class="text-black">{{$blog->info->title}}</span>
                                 </h5>
                                 <p class="fs-14 f-500 m-0 mt-4 mt-xl-3"><i class="far fa-calendar me-2"></i>
                                     {{date('d-m-Y', strtotime($blog->created_at))}}
                                 </p>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             </div>
 
             @foreach($blogs as $blog)
-                <div class="col-12 col-md-6 col-lg-3 mt-4 mt-xl-5">
+                <a href="{{route('blog.show',$blog->id)}}" style="color: inherit" class="d-block col-12 col-md-6 col-lg-3 mt-4 mt-xl-5" >
                     <div class="bg-white br-12 blog_prev">
                         <div>
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}" class="blog_prev_img"
@@ -46,16 +46,14 @@
                         </div>
                         <div class="d-flex flex-column p-3 p-lg-4">
                             <h5 class="f-700 fs-16 m-0">
-                            <span>
-                                <a href="{{route('blog.show',$blog->id)}}" class="text-black">{{$blog->info->title}}</a>
-                            </span>
+                            <span class="text-black">{{$blog->info->title}}</span>
                             </h5>
                             <p class="fs-14 f-500 m-0 mt-4"><i class="far fa-calendar me-2"></i>
                                 {{date('d-m-Y', strtotime($blog->created_at))}}
                             </p>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
         <button wire:click="loadNext"

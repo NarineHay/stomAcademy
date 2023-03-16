@@ -68,16 +68,18 @@ class WebinarController extends Controller
         $video_invitations = $request->get("video_invitation");
         $videos = $request->get("video");
 
+
         foreach (Language::all() as $lg){
             $webinar->infos()->create(
                 [
+                    'enabled' => boolval($enables[$lg->id] ?? false),
                     'webinar_id' => $webinar->id,
                     'lg_id' => $lg->id,
                     'title' => $titles[$lg->id],
-                    'description' => $descriptions[$lg->id],
-                    'program' => $programs[$lg->id],
-                    'video_invitation' => $video_invitations[$lg->id],
-                    'video' => $videos[$lg->id],
+                    'description' => $descriptions[$lg->id] ?? "",
+                    'program' => $programs[$lg->id] ?? "",
+                    'video_invitation' => $video_invitations[$lg->id] ?? "",
+                    'video' => $videos[$lg->id] ?? "",
                 ]
             );
         }
@@ -97,11 +99,8 @@ class WebinarController extends Controller
     public function update(Request $request, Webinar $webinar)
     {
         $request->validate([
-            'title.*' => 'required',
             'start_date' => 'required',
             'duration' => 'required',
-            'description.*' => 'required',
-            'program.*' => 'required',
         ]);
 
         $webinar = Webinar::find($webinar->id);
@@ -137,8 +136,13 @@ class WebinarController extends Controller
         foreach ($request->get("video",[]) as $lg_id => $video){
             $webinar->infos()->where("lg_id",$lg_id)->update(['video' => $video]);
         }
-
         $webinar->save();
+
+        $webinar->infos()->update(['enabled' => false]);
+        foreach ($request->get("enabled",[]) as $lg_id => $enabled){
+            $webinar->infos()->where("lg_id",$lg_id)->update(['enabled' => true]);
+        }
+
         return redirect()->back()->with('success','Webinar has been updated successfully');
     }
 

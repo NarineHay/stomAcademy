@@ -10,16 +10,16 @@
         <div class="row mt-4">
             @foreach($lectors as $lector)
                 <div class="col-xxl-55 col-lg-3 col-md-4 col-6 mb-3">
-                    <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}" class="lector_card_photo w-100" alt="lecturerPic">
+                    <a href="{{route('lectors.show',$lector->id)}}" class="bg-white br-12 d-block">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}" class="lector_card_photo w-100" alt="lecturerPic">
                         <div class="p-3">
-                            <p class="fs-20 f-700">
-                                <a href="{{route('lectors.show',$lector->id)}}" class="text-black">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</a>
+                            <p class="fs-20 f-700 text-black">
+                                {{ $lector->userinfo->fullName }}
                             </p>
-                            <p class="fs-14 f-500 text-secondary">{{$lector->lector->directions->title}}</p>
-                            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
+                            <p class="fs-14 f-500 text-secondary text-black">{{$lector->lector->directions->title}}</p>
+                            <i class="fal fa-layer-group text-black"></i><span class="ms-2 fs-14 f-500 text-black">{{ $lector->webinars_count }} лекции</span>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
         </div>

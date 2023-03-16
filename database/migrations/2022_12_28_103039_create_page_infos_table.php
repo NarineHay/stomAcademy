@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('page_infos', function (Blueprint $table) {
             $table->id();
+            $table->boolean("enabled")->default(false);
             $table->string('meta_title')->nullable();
             $table->longText('meta_description')->nullable();
             $table->string('heading')->nullable();

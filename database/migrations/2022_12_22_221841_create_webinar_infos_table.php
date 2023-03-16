@@ -10,12 +10,13 @@ return new class extends Migration
     {
         Schema::create('webinar_infos', function (Blueprint $table) {
             $table->id();
+            $table->boolean("enabled")->default(false);
             $table->unsignedBigInteger("webinar_id")->index();
             $table->foreign('webinar_id')->references('id')->on('webinars')->onDelete("cascade");
             $table->unsignedBigInteger("lg_id")->index();
-            $table->string('title');
-            $table->longText('description');
-            $table->longText('program');
+            $table->string('title')->nullable();
+            $table->longText('description')->nullable();
+            $table->longText('program')->nullable();
             $table->string('video_invitation')->nullable();
             $table->string('video')->nullable();
         });

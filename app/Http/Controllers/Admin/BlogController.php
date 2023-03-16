@@ -25,13 +25,14 @@ class BlogController extends Controller
         return view('admin.blogs.create',compact('data'));
     }
 
-    public function store(AdminBlogStoreRequest $request)
+    public function store(Request $request)
     {
-        $request->validate([
-            'title.*' => 'required',
-            'text.*' => 'required',
-            'image.*' => 'required',
-        ]);
+//        $request->validate([
+//            'title.*' => 'required',
+//            'text.*' => 'required',
+//            'image.*' => 'required',
+//        ]);
+
 
         $blog = new Blog();
         $blog->category_id = $request->get('category_id');
@@ -39,15 +40,17 @@ class BlogController extends Controller
 
         $titles = $request->get("title");
         $texts = $request->get("text");
-        $images = $request->file("image");
+        $images = $request->file("image",[]);
+        $enables = $request->get("enabled",[]);
 
         foreach (Language::all() as $lg){
             $blog->infos()->create(
                 [
+                    'enabled' => boolval($enables[$lg->id] ?? false),
                     'lg_id' => $lg->id,
                     'title' => $titles[$lg->id],
                     'text' => $texts[$lg->id],
-                    'image' => $images[$lg->id]->store('public/blog'),
+                    'image' => isset($images[$lg->id]) ? $images[$lg->id]->store('public/blog') : "",
                 ]
             );
         }
@@ -64,11 +67,6 @@ class BlogController extends Controller
 
     public function update(Request $request, Blog $blog)
     {
-        $request->validate([
-            'title.*' => 'required',
-            'text.*' => 'required',
-            'image.*' => 'required',
-        ]);
 
         $blog = Blog::find($blog->id);
 
@@ -79,6 +77,12 @@ class BlogController extends Controller
 
         foreach ($request->get("text",[]) as $lg_id => $text){
             $blog->infos()->where("lg_id",$lg_id)->update(['text' => $text]);
+        }
+
+        $blog->infos()->update(['enabled' => false]);
+
+        foreach ($request->get("enabled",[]) as $lg_id => $enabled){
+            $blog->infos()->where("lg_id",$lg_id)->update(['enabled' => true]);
         }
 
         foreach ($request->file("image",[]) as $lg_id => $image){
