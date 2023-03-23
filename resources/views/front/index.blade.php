@@ -45,10 +45,19 @@
                                     class="me-2 f-500 f-14">{{$course->getDuration()}}</span>
                                 <i class="fas fa-tasks me-1"></i> <span class="f-500 f-14">{{$course->webinars_count}} видео</span>
                             </div>
-                            {{--                            <div class="d-flex align-items-center mt-3">--}}
-                            {{--                                <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">--}}
-                            {{--                                <p class="m-0 f-500 fs-16">Камиль Хабиев</p>--}}
-                            {{--                            </div>--}}
+
+                                                        <div class="d-flex align-items-center mt-3">
+                                                            @if($course->getLectors()->count() == 1)
+                                                                <img class="rounded-circle border-white me-3 img_r_42" src="{{ \Illuminate\Support\Facades\Storage::url($course->getLectors()->first()->lector->photo) }}" alt="videoPic">
+                                                                <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>
+                                                            @else
+                                                                @foreach($course->getLectors() as $k => $user)
+                                                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($user->lector->photo ?? $user->userInfo->image) }}" class="@if ($k>0) m-25 @endif me-1 rounded-circle img_r_42" alt="videoPic">
+                                                                @endforeach
+                                                            @endif
+
+                                                        </div>
+
                         </div>
                     </a>
                 @endforeach
@@ -87,11 +96,23 @@
                                     <div>
                                         <i class="far fa-clock me-1"></i> <span
                                             class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
-{{--                                        <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>--}}
+                                        <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
                                     </div>
-                                    <div>
-                                        <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
-                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-2 mb-1 align-items-center">
+                                    @if($course->getLectors()->count() == 1)
+                                        <div class="d-flex align-items-center">
+                                            <img class="rounded-circle border-white me-3 img_r_42" src="{{ \Illuminate\Support\Facades\Storage::url($course->getLectors()->first()->lector->photo) }}" alt="videoPic">
+                                            <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>
+                                        </div>
+                                    @else
+                                        <div>
+                                        @foreach($course->getLectors() as $k => $user)
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($user->lector->photo ?? $user->userInfo->image) }}" class="@if ($k>0) m-25 @endif me-1 rounded-circle img_r_42" alt="videoPic">
+                                        @endforeach
+                                        </div>
+                                    @endif
+                                    <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
                                 </div>
                                 <form method="POST" action="{{route('addToCart')}}">
                                     @csrf
