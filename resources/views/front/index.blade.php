@@ -219,7 +219,7 @@
                                 src="{{ $videos[0]->url }}" title="Walter Devoto about Stom Academy." frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen></iframe>
-                        <img src="{{\Illuminate\Support\Facades\Storage::url($videos[1]->image)}}" alt="videoPic"
+                        <img src="{{\Illuminate\Support\Facades\Storage::url($videos[0]->image)}}" alt="videoPic"
                              class="big">
                         <div
                             class="video_play cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">
@@ -231,7 +231,8 @@
                 {{--                <div class="row">--}}
 {{--                <div class="col-lg-4 col-6">--}}
                     <div class="d-flex flex-wrap">
-                        @foreach($videos as $video)
+                        @foreach($videos as $k => $video)
+                            @continue($k == 0)
                             <div class="col-lg-3 col-6">
                                 <div class="position-relative video_block h-100 me-4 mb-2">
                                     <iframe style="z-index: 1;" class="d-none position-absolute" width="100%"
