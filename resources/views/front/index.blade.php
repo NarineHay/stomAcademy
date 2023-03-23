@@ -369,7 +369,7 @@
                              style="width: 251px; height: 203px; object-fit: cover" alt="lecturerPic">
                         <div class="text-black p-3">
                             <p class="fs-20 f-700">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</p>
-                            <p class="text-secondary fs-14 f-500">{{$lector->directions->title}}</p>
+                            <p class="text-secondary fs-14 f-500">{{$lector->directions->first()->title}}</p>
                             <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
                         </div>
                     </div>
