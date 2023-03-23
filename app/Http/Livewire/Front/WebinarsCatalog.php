@@ -7,6 +7,7 @@ use App\Models\Lector;
 use App\Models\Prices;
 use App\Models\User;
 use App\Models\Webinar;
+use App\Models\WebinarDirection;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -37,7 +38,11 @@ class WebinarsCatalog extends Component
         $webinars_q = Webinar::query();
 
         if(count($this->selectedDirections) > 0){
-            $webinars_q = $webinars_q->whereIn("direction_id", $this->selectedDirections);
+            $webinar_ids = WebinarDirection::query()->whereIn("direction_id",$this->selectedDirections)->get()
+                ->map(function ($wd){
+                    return $wd->webinar_id;
+                });
+            $webinars_q = $webinars_q->whereIn("id", $webinar_ids);
         }
         if(count($this->selectedLectors) > 0){
             $webinars_q = $webinars_q->whereIn("user_id", $this->selectedLectors);

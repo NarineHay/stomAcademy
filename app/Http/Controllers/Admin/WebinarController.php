@@ -10,6 +10,7 @@ use App\Models\Lector;
 use App\Models\Prices;
 use App\Models\User;
 use App\Models\Webinar;
+use App\Models\WebinarDirection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -57,10 +58,16 @@ class WebinarController extends Controller
         $webinar->start_date = $request->get('start_date');
         $webinar->duration = $request->get('duration');
         $webinar->price_id = $request->get('price_id');
-        $webinar->direction_id = $request->get('direction_id');
+        //$webinar->direction_id = $request->get('direction_id');
         $webinar->image = $request->file('image')->store('public/webinar');
         $webinar->save();
 
+        foreach ($request->get("direction_ids",[]) as $direction_id){
+            $wb = new WebinarDirection();
+            $wb->webinar_id = $webinar->id;
+            $wb->direction_id = $direction_id;
+            $wb->save();
+        }
 
         $titles = $request->get("title");
         $descriptions = $request->get("description");
@@ -115,7 +122,15 @@ class WebinarController extends Controller
         $webinar->duration = $request->duration;
         $webinar->price_id = $request->price_id;
         $webinar->status = $request->status;
-        $webinar->direction_id = $request->get('direction_id');
+        //$webinar->direction_id = $request->get('direction_id');
+
+        WebinarDirection::query()->where("webinar_id",$webinar->id)->delete();
+        foreach ($request->get("direction_ids",[]) as $direction_id){
+            $wb = new WebinarDirection();
+            $wb->webinar_id = $webinar->id;
+            $wb->direction_id = $direction_id;
+            $wb->save();
+        }
 
         foreach ($request->get("title",[]) as $lg_id => $title){
             $webinar->infos()->where("lg_id",$lg_id)->update(['title' => $title]);

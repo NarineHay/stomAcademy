@@ -72,7 +72,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">СТРАНА</label>
-                        <select class="form-control form-control" id="type" name="country_id">
+                        <select class="form-control select2" id="type" name="country_id">
                             @foreach($data['countries'] as $country)
                                 <option value="{{ $country->id }}" {{ $country->id == $user->userinfo->country_id ? 'selected' : '' }}>
                                     {{ $country->title }}

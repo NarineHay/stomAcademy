@@ -49,7 +49,7 @@
                     <a class="bg-white br-12 d-block" style="color: inherit" href="{{ route("course.show",$course->id) }}">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" style="width: 100%; height: 175px; object-fit: cover" alt="addPic">
                         <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
+                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
                             <span><p style="min-height: 50px;" href="{{route('course.show',$course->id)}}" class="text-black f-700 fs-16">{{$course->info->title}}</p></span>
 
                             <div class="mt-2 d-flex justify-content-between">

@@ -480,7 +480,7 @@
                                         <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
                                         <div class="mt-3">
                                             <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                            <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                         </div>
                                         <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
                                             <div class="d-flex align-items-center">
@@ -503,7 +503,7 @@
                                         <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
                                         <div class="mt-3">
                                             <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                            <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                         </div>
                                         <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
                                             <div class="d-flex align-items-center">
@@ -526,7 +526,7 @@
                                         <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
                                         <div class="mt-3">
                                             <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                            <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                         </div>
                                         <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
                                             <div class="d-flex align-items-center">
@@ -549,7 +549,7 @@
                                         <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
                                         <div class="mt-3">
                                             <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                            <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                         </div>
                                         <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
                                             <div class="d-flex align-items-center">
@@ -572,7 +572,7 @@
                                         <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
                                         <div class="mt-3">
                                             <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                            <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                         </div>
                                         <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
                                             <div class="d-flex align-items-center">
@@ -595,7 +595,7 @@
                                         <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
                                         <div class="mt-3">
                                             <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                            <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                         </div>
                                         <div class="d-flex flex-column flex-xl-row mt-3 mt-lg-4 justify-content-between align-items-xl-center">
                                             <div class="d-flex align-items-center">
@@ -618,7 +618,7 @@
                                         <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
                                         <div class="mt-3">
                                             <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                            <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                         </div>
                                         <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
                                             <div class="d-flex align-items-center">
@@ -641,7 +641,7 @@
                                         <p class="f-700 fs-16 mt-2">Экспертный курс по имплантации</p>
                                         <div class="mt-3">
                                             <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
-                                            <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                            <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                         </div>
                                         <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
                                             <div class="d-flex align-items-center">

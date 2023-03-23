@@ -85,18 +85,30 @@ class LectorController extends Controller
         }
         $data['countries'] = Country::all();
         $data['directions'] =  Direction::all();
+        $data['lector_directions'] = $lector->directions->map(function ($dir){
+            return $dir->direction_id;
+        });
         $data['user'] = $lector;
         return view('admin.lectors.edit',$data);
     }
 
     public function update(Request $request, Lector $lector)
     {
+
         $request->validate([
 //            'biography.*' => 'required',
             'per_of_sales' => 'required',
         ]);
 
         $lector = Lector::find($lector->id);
+
+        $lector->user->directions()->delete();
+        foreach ($request->get("direction_ids",[]) as $id){
+            $lector->user->directions()->create([
+                "direction_id" => $id
+            ]);
+        }
+
         if($request->hasFile('image')){
             $request->validate([
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -111,7 +123,7 @@ class LectorController extends Controller
         }
 
         $lector->per_of_sales = $request->per_of_sales;
-        $lector->direction_id = $request->direction_id;
+//        $lector->direction_id = $request->direction_id;
 //        $lector->user->update([
 //            "name" => $request->name,
 //        ]);

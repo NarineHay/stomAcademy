@@ -104,7 +104,7 @@
                                                 <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
                                             </div>
                                             <div class="mt-2 mt-sm-0">
-                                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                                <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column mt-4">
@@ -131,7 +131,7 @@
                                                 <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
                                             </div>
                                             <div class="mt-2 mt-sm-0">
-                                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                                <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column mt-4">
@@ -158,7 +158,7 @@
                                                 <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
                                             </div>
                                             <div class="mt-2 mt-sm-0">
-                                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                                <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column mt-4">
@@ -185,7 +185,7 @@
                                                 <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
                                             </div>
                                             <div class="mt-2 mt-sm-0">
-                                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                                <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column mt-4">
@@ -212,7 +212,7 @@
                                                 <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
                                             </div>
                                             <div class="mt-2 mt-sm-0">
-                                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                                <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column mt-4">
@@ -239,7 +239,7 @@
                                                 <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
                                             </div>
                                             <div class="mt-2 mt-sm-0">
-                                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                                <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column mt-4">
@@ -266,7 +266,7 @@
                                                 <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
                                             </div>
                                             <div class="mt-2 mt-sm-0">
-                                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                                <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column mt-4">
@@ -293,7 +293,7 @@
                                                 <i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">42 мин</span>
                                             </div>
                                             <div class="mt-2 mt-sm-0">
-                                                <i class="far fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
+                                                <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">3 видео</span>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column mt-4">

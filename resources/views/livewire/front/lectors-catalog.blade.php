@@ -16,7 +16,7 @@
                             <p class="fs-20 f-700 text-black">
                                 {{ $lector->userinfo->fullName }}
                             </p>
-                            <p class="fs-14 f-500 text-secondary text-black">{{$lector->lector->directions->title}}</p>
+                            <p class="fs-14 f-500 text-secondary text-black">{{$lector->directions->first()->direction->title}}</p>
                             <i class="fal fa-layer-group text-black"></i><span class="ms-2 fs-14 f-500 text-black">{{ $lector->webinars_count }} лекции</span>
                         </div>
                     </a>

@@ -29,7 +29,7 @@
                                     <p class="m-0 ms-1 ms-md-2 f-500">{{$item->webinar->duration}} мин</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
-                                    <i class="far fa-tasks"></i>
+                                    <i class="fas fa-tasks"></i>
                                     <p class="m-0 ms-1 ms-md-2 f-500">1 лекция</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
@@ -60,7 +60,7 @@
                                         мин</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
-                                    <i class="far fa-tasks"></i>
+                                    <i class="fas fa-tasks"></i>
                                     <p class="m-0 ms-1 ms-md-2 f-500">{{$item->course->webinars_count}} лекции</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">

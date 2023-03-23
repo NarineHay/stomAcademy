@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminCourseStoreRequest;
 use App\Models\Course;
+use App\Models\CourseDirection;
 use App\Models\Direction;
 use App\Models\Language;
 use App\Models\Lector;
@@ -44,12 +45,19 @@ class CourseController extends Controller
         $course->end_date = $request->get('end_date');
         $course->video = $request->get('video');
         $course->price_id = $request->get('price_id');
-        $course->direction_id = $request->get('direction_id');
+        //$course->direction_id = $request->get('direction_id');
         $course->url_to_page = $request->get('url_to_page');
         $course->image = $request->file('image')->store('public/course');
         $course->online = $request->boolean('online');
 
         $course->save();
+
+        foreach ($request->get("direction_ids",[]) as $direction_id){
+            $wb = new CourseDirection();
+            $wb->course_id = $course->id;
+            $wb->direction_id = $direction_id;
+            $wb->save();
+        }
 
         $titles = $request->get("title");
         $descriptions = $request->get("description");
@@ -112,8 +120,16 @@ class CourseController extends Controller
         $course->video = $request->video;
         $course->url_to_page = $request->url_to_page;
         $course->price_id = $request->price_id;
-        $course->direction_id = $request->direction_id;
+//        $course->direction_id = $request->direction_id;
         $course->online = $request->boolean('online');
+
+        CourseDirection::query()->where("course_id",$course->id)->delete();
+        foreach ($request->get("direction_ids",[]) as $direction_id){
+            $wb = new CourseDirection();
+            $wb->course_id = $course->id;
+            $wb->direction_id = $direction_id;
+            $wb->save();
+        }
 
         foreach ($request->get("description",[]) as $lg_id => $desc){
             $course->infos()->where("lg_id",$lg_id)->update(['description' => $desc]);

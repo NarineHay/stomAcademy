@@ -70,7 +70,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">КАТЕГОРИЯ</label><br>
-                        <select class="form-control" name="direction_id">
+                        <select class="form-control select2" multiple name="direction_ids[]">
                             @foreach($directions as $direction)
                                 <option value="{{ $direction->id }}">
                                     {{ $direction->title }}

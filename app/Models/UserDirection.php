@@ -15,4 +15,12 @@ class UserDirection extends Model
         'user_id',
         'direction_id',
     ];
+
+    function direction(){
+        return $this->belongsTo(Direction::class,"direction_id","id");
+    }
+
+    function user(){
+        return $this->belongsTo(User::class,"user_id",'id');
+    }
 }

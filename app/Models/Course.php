@@ -30,10 +30,6 @@ class Course extends Model
         return $this->hasOne(Prices::class,"id","price_id");
     }
 
-    function directions(){
-        return $this->hasOne(Direction::class,"id","direction_id");
-    }
-
     function webinars()
     {
         return $this->hasMany(CourseWebinar::class, "course_id", "id");
@@ -83,6 +79,18 @@ class Course extends Model
         return collect($webinars)->map(function ($webinar){
             return $webinar->user;
         })->unique("id")->values();
+    }
+
+    function directions(){
+        return $this->hasManyThrough(
+            Direction::class,
+            CourseDirection::class,
+            'course_id', // Foreign key on users table...
+            'id', // Foreign key on posts table...
+            'id', // Local key on countries table...
+            'direction_id' // Local key on users table...
+        );
+//        return $this->hasManyThrough(WebinarDirection::class,Direction::class);
     }
 
 }

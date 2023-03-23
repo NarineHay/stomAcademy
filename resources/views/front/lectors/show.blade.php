@@ -20,7 +20,7 @@
                     <div class="mt-4 mb-3">
                         <h3 class="f-700 m-0">Лекции</h3>
                         @foreach($lector->lector->webinars as $k => $webinar)
-                            <div class="bg-white br-12 d-flex justify-content-between mt-4">
+                            <a href="{{ route("webinar.show",$webinar->id) }}" class="text-dark bg-white br-12 d-flex justify-content-between mt-4">
                                 <div class="d-flex justify-content-between align-items-center py-2 px-3 fs-14">
                                     <p class="m-0 f-500 text-black-gray">{{ $k + 1 }}</p>
                                     <p class="ms-4 m-0 f-700">{{$webinar->info->title}}</p>
@@ -30,7 +30,7 @@
                                     <p class="m-0 ms-2 f-500 me-2 text-black-gray">{{$webinar->duration}} мин</p>
                                     <i class="fal fa-angle-right ms-5 ms-lg-6 me-4 text-secondary"></i>
                                 </div>
-                            </div>
+                            </a>
                         @endforeach
                     </div>
                 </div>

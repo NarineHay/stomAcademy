@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front;
 
 use App\Models\Course;
+use App\Models\CourseDirection;
 use App\Models\CourseWebinar;
 use App\Models\Direction;
 use App\Models\User;
@@ -36,19 +37,32 @@ class OnlineCoursesCatalog extends Component
 
     public function render()
     {
-
+        $course_ids = null;
         $courses_q = Course::query()->where('online',1);
         if(count($this->selectedDirections) > 0){
-            $courses_q = $courses_q->whereIn("direction_id",$this->selectedDirections);
+            $course_ids = CourseDirection::query()->whereIn("direction_id",$this->selectedDirections)
+                ->get()->map(function ($course){
+                    return $course->course_id;
+                });
         }
         if(count($this->selectedLectors) > 0){
             $webinars_ids = Webinar::query()->whereIn("user_id",$this->selectedLectors)->get()->map(function ($webinar){
                 return $webinar->id;
             });
-            $courses_ids = CourseWebinar::query()->whereIn("webinar_id",$webinars_ids)->get()->map(function ($cw){
+            $courses_ids__ = CourseWebinar::query()->whereIn("webinar_id",$webinars_ids)->get()->map(function ($cw){
                 return $cw->course_id;
             });
-            $courses_q = $courses_q->whereIn("id",$courses_ids);
+            if($course_ids){
+                $course_ids = $course_ids->filter(function ($cid) use ($courses_ids__){
+                    return $courses_ids__->contains($cid);
+                });
+            }else{
+                $course_ids = $courses_ids__;
+            }
+        }
+
+        if($course_ids){
+            $courses_q = $courses_q->whereIn("id",$course_ids);
         }
 
         $data['courses'] = $courses_q->withSum('webinars_object','duration')

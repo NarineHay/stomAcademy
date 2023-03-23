@@ -38,12 +38,12 @@
                         <img src='{{\Illuminate\Support\Facades\Storage::url($course->image)}}' alt="videoPic"
                              style="width: 100%; height: 192px; object-fit: cover">
                         <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
-                            <p class="text-primary text-uppercase f-700 fs-10">{{$course->directions->title}}</p>
+                            <p class="text-primary text-uppercase f-700 fs-10">{{$course->directions->first()->title}}</p>
                             <h5 class="f-700">{{$course->info->title}}</h5>
                             <div class="mt-2">
                                 <i class="far fa-clock me-1"></i> <span
                                     class="me-2 f-500 f-14">{{$course->getDuration()}}</span>
-                                <i class="far fa-tasks me-1"></i> <span class="f-500 f-14">{{$course->webinars_count}} видео</span>
+                                <i class="fas fa-tasks me-1"></i> <span class="f-500 f-14">{{$course->webinars_count}} видео</span>
                             </div>
                             {{--                            <div class="d-flex align-items-center mt-3">--}}
                             {{--                                <img src="/dist/image/kamil.png" class="me-3" alt="videoPic">--}}
@@ -81,7 +81,7 @@
                             <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}" alt="addPic"
                                  style="width: 386px; height: 214px; object-fit: cover">
                             <div class="p-3">
-                                <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
+                                <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
                                 <p class="f-700 fs-16">{{$course->info->title}}</p>
                                 <div class="mt-2 d-flex justify-content-between">
                                     <div>
@@ -180,7 +180,7 @@
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}"
                              style="width: 100%; height: 150px; object-fit: cover" alt="notePic">
                         <div class="d-flex flex-column p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->title}}</p>
+                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->first()->title}}</p>
                             <p class="f-700 mt-1 fs-16">{{$webinar->info->title}}</p>
                             <div class="d-flex align-items-center mt-2">
                                 <img

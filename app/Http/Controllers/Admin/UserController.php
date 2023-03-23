@@ -48,18 +48,16 @@ class UserController extends Controller
                 "direction_id" => $direction_id
             ]);
         }
-        $user->userinfo()->saveMany([
-            new UserInfo([
-                "fname" => $request->get('fname'),
-                "lname" => $request->get('lname'),
-                "youtube_email" => $request->get('youtube_email'),
-                "phone" => $request->get('phone'),
-                "birth_date" => $request->get('birth_date'),
-                "country_id" => $request->get('country_id'),
-                "city" => $request->get('city'),
-                "status" => $request->boolean('status'),
-                "image" => $request->hasFile("image") ? $request->file('image')->store('public/userimages') : "",
-            ],),
+        $user->userinfo()->update([
+            "fname" => $request->get('fname'),
+            "lname" => $request->get('lname'),
+            "youtube_email" => $request->get('youtube_email'),
+            "phone" => $request->get('phone'),
+            "birth_date" => $request->get('birth_date'),
+            "country_id" => $request->get('country_id'),
+            "city" => $request->get('city'),
+            "status" => $request->boolean('status'),
+            "image" => $request->hasFile("image") ? $request->file('image')->store('public/userimages') : "",
         ]);
 
         return redirect()->route('admin.users.index')

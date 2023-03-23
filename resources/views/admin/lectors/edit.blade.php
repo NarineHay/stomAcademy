@@ -47,10 +47,9 @@
 
                     <div class="form-group mt-3">
                         <label for="exampleInputEmail1">Специализация</label>
-                        <select class="form-control select2" name="direction_id">
-                            <option >---</option>
+                        <select class="form-control select2" multiple name="direction_ids[]">
                             @foreach($directions as $direction)
-                                <option value="{{ $direction->id }}" {{ $direction->id == $user->lector->direction_id ? 'selected' : '' }}>
+                                <option value="{{ $direction->id }}" {{ $lector_directions->contains($direction->id) ? 'selected' : '' }}>
                                     {{ $direction->title }}
                                 </option>
                             @endforeach

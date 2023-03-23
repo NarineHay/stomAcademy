@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Front;
 use App\Models\Direction;
 use App\Models\Lector;
 use App\Models\User;
+use App\Models\UserDirection;
 use App\Models\Webinar;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -28,7 +29,10 @@ class LectorsCatalog extends Component
     {
         $lectors_q = Lector::query();
         if(count($this->selectedDirections) > 0){
-            $lectors_q = $lectors_q->whereIn("direction_id",$this->selectedDirections);
+            $user_ids = UserDirection::query()->whereIn("direction_id",$this->selectedDirections)->get()->map(function ($d){
+                return $d->user->lector->id;
+            });
+            $lectors_q = $lectors_q->whereIn("id",$user_ids);
         }
         $lectors_ids = $lectors_q->get()->map(function ($lector){
             return $lector->user_id;

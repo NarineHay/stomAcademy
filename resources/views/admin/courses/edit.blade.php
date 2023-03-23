@@ -37,9 +37,9 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">КАТЕГОРИЯ</label><br>
-                        <select class="form-control" name="direction_id">
+                        <select class="form-control select2" multiple name="direction_ids[]">
                             @foreach($data['directions'] as $direction)
-                                <option value="{{ $direction->id }}" {{ $direction->id == $course->direction_id ? 'selected' : '' }}>
+                                <option value="{{ $direction->id }}" {{ $course->directions->contains($direction) ? 'selected' : '' }}>
                                     {{ $direction->title }}
                                 </option>
                             @endforeach

@@ -51,7 +51,7 @@
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" class="w-100"
                              alt="addPic" style="width: 250px; height: 150px; object-fit: cover">
                         <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->title}}</p>
+                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
                             <p class="f-700 fs-16" style="min-height: 50px">{{$course->info->title}}</p>
                             <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
                                 <div class="d-flex align-items-center">

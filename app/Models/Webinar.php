@@ -32,7 +32,15 @@ class Webinar extends Model
     }
 
     function directions(){
-        return $this->hasOne(Direction::class,"id","direction_id");
+        return $this->hasManyThrough(
+            Direction::class,
+            WebinarDirection::class,
+            'webinar_id', // Foreign key on users table...
+            'id', // Foreign key on posts table...
+            'id', // Local key on countries table...
+            'direction_id' // Local key on users table...
+        );
+//        return $this->hasManyThrough(WebinarDirection::class,Direction::class);
     }
 
     function infos(){
