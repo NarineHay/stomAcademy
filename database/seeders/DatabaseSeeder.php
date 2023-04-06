@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
 
         // dev
 
-        $this->call(PricesSeeder::class);
-        $this->call(PromoSeeder::class);
+//        $this->call(PricesSeeder::class);
+//        $this->call(PromoSeeder::class);
 
         // end dev
 
@@ -32,17 +32,17 @@ class DatabaseSeeder extends Seeder
 
         // dev
 
-        $this->call(LectorSeeder::class);
-        $this->call(UserInfoSeeder::class);
-        $this->call(UserDirectionSeeder::class);
-        $this->call(WebinarSeeder::class);
-        $this->call(CourseSeeder::class);
-        $this->call(CourseWebinarSeeder::class);
-        $this->call(AccessSeeder::class);
-        $this->call(PageSeeder::class);
-        $this->call(BlogSeeder::class);
-        $this->call(ChatSeeder::class);
-        $this->call(ChatMessageSeeder::class);
+//        $this->call(LectorSeeder::class);
+//        $this->call(UserInfoSeeder::class);
+//        $this->call(UserDirectionSeeder::class);
+//        $this->call(WebinarSeeder::class);
+//        $this->call(CourseSeeder::class);
+//        $this->call(CourseWebinarSeeder::class);
+//        $this->call(AccessSeeder::class);
+//        $this->call(PageSeeder::class);
+//        $this->call(BlogSeeder::class);
+//        $this->call(ChatSeeder::class);
+//        $this->call(ChatMessageSeeder::class);
 
         // end dev
 
