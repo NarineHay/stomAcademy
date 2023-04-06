@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Helpers\LG;
+use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class Webinar extends Model
@@ -23,12 +25,20 @@ class Webinar extends Model
         'url_to_page',
     ];
 
+    function getDuration(){
+        return CarbonInterval::minutes($this->duration)->cascade()->forHumans();
+    }
+
     function user(){
         return $this->hasOne(User::class,"id","user_id");
     }
 
     function price(){
         return $this->hasOne(Prices::class,"id","price_id");
+    }
+
+    function sale(){
+        return $this->hasOne(Prices::class,"id","price_2_id");
     }
 
     function directions(){
@@ -51,5 +61,10 @@ class Webinar extends Model
         $lg_id = LG::get();
         return $this->hasOne(WebinarInfo::class,"webinar_id",'id')
             ->where("lg_id",$lg_id);
+    }
+
+    function getLectors(){
+        $lector = $this->user;
+        return collect([$lector]);
     }
 }

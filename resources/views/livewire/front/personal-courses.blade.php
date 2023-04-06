@@ -1,26 +1,27 @@
 <div class="col-lg-9 pt-6">
     <div class="py-lg-6">
         <div class="d-flex justify-content-between">
-            <h3 class="f-700 m-0">Мои курсы</h3>
+            <h3 class="f-700 m-0">{{ __("profile.courses.page_title") }}</h3>
             <div class="position-relative d-none d-lg-block">
-                <input wire:model="search" class="form-control br-12" placeholder="Поиск">
+                <input wire:model="search" class="form-control br-12" placeholder="{{ __("profile.certificates.search") }}">
                 <i class="fal fa-search position-absolute top-0 end-0 mt-2 me-2"></i>
             </div>
         </div>
         <div class="d-flex justify-content-between align-items-center mt-2">
             <div class="d-flex">
-                <a href="{{route('personal.conferences')}}" class="fs-14 f-500 m-0 py-2 py-lg-3 text-black">Онлайн-конференции</a>
+                <a href="{{route('personal.conferences')}}" class="fs-14 f-500 m-0 py-2 py-lg-3 text-black">{{ __("profile.courses.page_menu.online") }}</a>
                 <a href="{{route('personal.courses')}}" class="fs-14 f-700 m-0 ms-3 ms-lg-5 py-2 py-lg-3 purchaseActive text-black"
-                   style="padding-bottom: 20px">Онлайн курсы</a>
+                   style="padding-bottom: 20px">{{ __("profile.courses.page_menu.course") }}</a>
             </div>
             <div class="py-2 py-lg-3">
                 <div class="d-flex align-items-center d-none d-lg-block">
                     <div class="dropdown">
                         <button class="btn dropdown-toggle text-primary fs-14 f-600 border-0"
                                 type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">Направление
+                                data-bs-toggle="dropdown" aria-expanded="false">{{ __("profile.courses.directions") }}
                         </button>
                         <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">
+
                             @foreach($directions as $direction)
                                 <div class="form-check">
                                     <input type="checkbox" wire:model="selectedDirections" value="{{ $direction->id }}"
@@ -43,7 +44,7 @@
                         <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}"
                              class="w-100" alt="pic">
                         <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 fs-10 m-0">{{$course->directions->title}}</p>
+                            <p class="text-primary text-uppercase f-700 fs-10 m-0">{{ $course->directions->first()->title }}</p>
                             <p class="f-700 fs-16 m-0 mt-2">{{$course->info->title}}</p>
                             <div
                                 class="d-flex flex-column flex-xl-row mt-2 justify-content-between align-items-xl-center">
@@ -61,7 +62,7 @@
                     </div>
                 </div>
             @endforeach
-            <button wire:click="loadNext" class="w-100 fs-14 f-500 mt-3 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">Показать еще</button>
+            <button wire:click="loadNext" class="w-100 fs-14 f-500 mt-3 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">{{ __("profile.courses.show_more") }}</button>
 
             <div class="mt-4 d-flex justify-content-center d-lg-block">
                 <nav>{{ $courses->links() }}</nav>

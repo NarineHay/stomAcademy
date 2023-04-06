@@ -4,7 +4,7 @@
     <div class="container mt-4 mt-lg-5">
         <div class="d-flex justify-content-center flex-wrap gap-2">
             <a href="{{route('course.index')}}" class="btn btn-outline-primary rounded-5 fs-15 f-600 py-2 px-3">
-                Все направления
+                {{ __("index.all_directions") }}
             </a>
             @foreach($directions as $direction)
                 <a href="{{ route("course.index",['direction_id' => $direction->id]) }}"
@@ -23,7 +23,7 @@
                 </div>
                 <div class="ms-lg-4 mt-2 mt-lg-0">
                     <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p
-                            class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                            class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
             <div class="slider_navigation videoPopularSwiper_nav mb-4 d-none d-md-block">
@@ -70,11 +70,11 @@
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
                 <div>
-                    <h3 class="f-700 m-0">Новые курсы</h3>
+                    <h3 class="f-700 m-0">{{ __("index.new_courses") }}</h3>
                 </div>
                 <div class="ms-lg-4 mt-2 mt-lg-0">
                     <a href="{{route('course.index')}}" class="text-info text-decoration-underline"><p
-                            class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                            class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
             <div class="slider_navigation AdditionsSwiper_nav mb-4 d-none d-md-block">
@@ -112,14 +112,21 @@
                                         @endforeach
                                         </div>
                                     @endif
-                                    <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
+                                    <span class="price_box">
+
+                                        @if($course->sale)
+                                            <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>
+                                            <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>
+                                        @else
+                                            <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>
+                                        @endif
+                                    </span>
                                 </div>
                                 <form method="POST" action="{{route('addToCart')}}">
                                     @csrf
                                     <input type="hidden" value="{{ $course->id }}" name="id">
                                     <input type="hidden" value="course" name="type">
-                                    <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию
-                                    </button>
+                                    <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __("index.buy_webinar") }}</button>
                                 </form>
                             </div>
                         </a>
@@ -134,11 +141,11 @@
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
                 <div>
-                    <h3 class="f-700 m-0">Онлайн-конференции</h3>
+                    <h3 class="f-700 m-0">{{ __("index.online") }}</h3>
                 </div>
                 <div class="ms-lg-4 mt-2 mt-lg-0">
                     <a href="{{route('conference')}}" class="text-info text-decoration-underline">
-                        <p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                        <p class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
             <div class="slider_navigation WatchedSwiper_nav mb-4 d-none d-md-block">
@@ -156,7 +163,7 @@
                             <div
                                 class="br-12 watched-bg2 p-3 p-lg-4 text-white d-flex justify-content-between flex-column">
                                 <div>
-                                    <p class="f-700 text-uppercase fs-10 watched-text">Онлан-конгресс</p>
+                                    <p class="f-700 text-uppercase fs-10 watched-text">{{ __("index.congress") }}</p>
                                     <h5 class="f-700">{{$conference->info->title}}</h5>
                                 </div>
                                 <div class="d-flex align-items-center">
@@ -187,11 +194,11 @@
     <div class="container mt-4 mt-lg-6 useful_articles overflow-auto">
         <div class="d-flex align-items-lg-center flex-column flex-lg-row">
             <div>
-                <h3 class="f-700 m-0">Онлайн-лекции</h3>
+                <h3 class="f-700 m-0">{{ __("index.lectia") }}</h3>
             </div>
             <div class="ms-lg-4">
                 <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p
-                        class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                        class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p></a>
             </div>
         </div>
         <div class="row flex-nowrap flex-md-wrap">
@@ -212,15 +219,18 @@
                             <div
                                 class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
                                 <div class="mb-3 mb-md-0">
-                                    <span class="f-700 text-primary fs-16">{{$webinar->price->rub}} ₽</span>
+                                    @if($course->sale)
+                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>
+                                        <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>
+                                    @else
+                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>
+                                    @endif
                                 </div>
                                 <form method="POST" action="{{ route('addToCart') }}">
                                     @csrf
                                     <input type="hidden" value="{{ $webinar->id }}" name="id">
                                     <input type="hidden" value="webinar" name="type">
-                                    <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
-                                        Купить
-                                    </button>
+                                    <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">{{ __("index.buy") }}</button>
                                 </form>
                             </div>
                         </div>
@@ -283,11 +293,10 @@
     <div class="container mt-4 mt-lg-6">
         <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
             <div>
-                <h3 class="f-700 m-0">Наши партнеры</h3>
+                <h3 class="f-700 m-0">{{ __("index.partners") }}</h3>
             </div>
             <div class="ms-lg-4 mt-2 mt-lg-0">
-                <a href="{{route('about')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">
-                        Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                <a href="{{route('about')}}" class="text-info text-decoration-underline"><p class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p></a>
             </div>
         </div>
         <div class="row">
@@ -333,11 +342,11 @@
     <div class="container mt-4 mt-lg-6 useful_articles">
         <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
             <div>
-                <h3 class="f-700 m-0">Полезные статьи</h3>
+                <h3 class="f-700 m-0">{{ __("index.blogs") }}</h3>
             </div>
             <div class="ms-lg-4 mt-2 mt-lg-0">
                 <a href="{{route('blog.index')}}" class="text-info text-decoration-underline">
-                    <p class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p>
+                    <p class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p>
                 </a>
             </div>
         </div>
@@ -375,11 +384,11 @@
     <div class="container mt-5">
         <div class="d-flex align-items-lg-center flex-column flex-lg-row">
             <div>
-                <h3 class="f-700 m-0">Наши Лектора</h3>
+                <h3 class="f-700 m-0">{{ __("index.lectors") }}</h3>
             </div>
             <div class="ms-lg-4 mt-2 mt-lg-0">
                 <a href="{{route('lectors.index')}}" class="text-info text-decoration-underline"><p
-                        class="m-0 f-700 fs-16">Посмотреть все<i class="far fa-angle-right ms-2"></i></p></a>
+                        class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p></a>
             </div>
         </div>
         <div class="row">
@@ -411,10 +420,10 @@
                         </div>
                     </div>
                     <div class="ms-4 mt-2">
-                        <h4 class="f-700">Хочешь стать лектором?</h4>
-                        <p class="fs-16 mb-4">Отправьте заявку и мы свяжимся с вами в ближайшее время</p>
+                        <h4 class="f-700">{{ __("index.to_by_lector.title") }}</h4>
+                        <p class="fs-16 mb-4">{{ __("index.to_by_lector.text") }}</p>
                         <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12 white-space" data-bs-toggle="modal"
-                                data-bs-target="#lectorModal">Отправить заявку
+                                data-bs-target="#lectorModal">{{ __("index.to_by_lector.button") }}
                         </button>
                     </div>
                 </div>
@@ -429,10 +438,10 @@
                         </div>
                     </div>
                     <div class="ms-4 mt-2">
-                        <h4 class="f-700">Оповестить о новых лекциях?</h4>
-                        <p class="fs-16 mb-4">Никакого спама, все только по делу!</p>
+                        <h4 class="f-700">{{ __("index.subscribe.title") }}</h4>
+                        <p class="fs-16 mb-4">{{ __("index.subscribe.text") }}</p>
                         <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12" data-bs-toggle="modal"
-                                data-bs-target="#lectorFollowModal">Подписаться
+                                data-bs-target="#lectorFollowModal">{{ __("index.subscribe.button") }}
                         </button>
                     </div>
                 </div>

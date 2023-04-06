@@ -20,9 +20,13 @@ class CourseSeeder extends Seeder
         $lgs = Language::all();
         $direction = Direction::all();
         $images = RandomImagesApi::getImages("webinar",10,"webinar");
+        $bg_images = RandomImagesApi::getImages("webinar",10,"webinar",1920);
         for ($i = 0; $i < 150; $i++) {
-            $course = Course::factory(1)->make(['image' => $images[rand(0,9)]])->first();
+            $course = Course::factory(1)->make(['image' => $images[rand(0,9)],'bg_image' => $bg_images[rand(0,9)]])->first();
             $course->price_id = $price->random(1)->first()->id;
+            if(fake()->boolean()){
+                $course->price_2_id = $price->random(1)->first()->id;
+            }
             $course->online = fake()->boolean();
 //            $course->direction_id = $direction->random(1)->first()->id;
             $course->save();

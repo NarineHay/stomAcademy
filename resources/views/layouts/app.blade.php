@@ -33,23 +33,19 @@
                         <div class="mt-6 d-flex justify-content-between align-items-center w-100 p-2 p-md-0">
                             <div class="d-flex flex-column">
                                 <div>
-                                    <h1 class="mt-3 f-600 m-0 header_text">Stom academy<br>
-                                        dental education</h1>
-                                    <p class="fs-18 f-500 m-0 pt-3 pb-4">stom-academy — это сервис обучения
-                                        врачей-стоматологов, который <br class="d-none d-lg-block">проводит
-                                        вебинары, семинары,
-                                        практические курсы конгрессы.</p>
+                                    <h1 class="mt-3 f-600 m-0 header_text">{!! __("header.h1") !!}</h1>
+                                    <p class="fs-18 f-500 m-0 pt-3 pb-4">{!! __("header.under_title") !!}</p>
                                 </div>
-                                <div class="d-flex justify-content-between">
-                                    <button
-                                        class="btn d-flex d-lg-none text-white border-white  br-12 bg-transparent fs-14 f-500"
-                                        style="padding: 10px 50px">Войти
-                                    </button>
-                                    <button
-                                        class="btn btn-primary d-flex d-lg-none text-white border-white br-12 border-0 fs-14 f-500"
-                                        style="padding: 10px 27px">Регистрация
-                                    </button>
-                                </div>
+{{--                                <div class="d-flex justify-content-between">--}}
+{{--                                    <button--}}
+{{--                                        class="btn d-flex d-lg-none text-white border-white  br-12 bg-transparent fs-14 f-500"--}}
+{{--                                        style="padding: 10px 50px">Войти--}}
+{{--                                    </button>--}}
+{{--                                    <button--}}
+{{--                                        class="btn btn-primary d-flex d-lg-none text-white border-white br-12 border-0 fs-14 f-500"--}}
+{{--                                        style="padding: 10px 27px">Регистрация--}}
+{{--                                    </button>--}}
+{{--                                </div>--}}
                             </div>
                             <livewire:front.home-login/>
                         </div>
@@ -72,16 +68,12 @@
                     <div class="container d-flex justify-content-between align-items-center text-white">
                         <div class="mt-6 w-100">
                             <div class="d-flex mt-3 mt-lg-4">
-                                <a><span class="fs-12 f-500 text-white">Главная</span></a>
-                                <a><span class="fs-12 f-500 ms-3 text-white main">О нас</span></a>
+                                <a><span class="fs-12 f-500 text-white">{{ __("header.menu.home") }}</span></a>
+                                <a><span class="fs-12 f-500 ms-3 text-white main">{{ __("header.menu.about") }}</span></a>
                             </div>
                             <div class="py-md-5 py-lg-6">
-                                <h1 class="mt-3 f-600 m-0">STOM-ACADEMY - Cервис <br class="d-none d-sm-block">обучения
-                                    врачей-стоматологов.</h1>
-                                <p class="fs-20 f-500 mt-2 m-0">Никаких ограничений по опыту и специальности.
-                                    Огромный<br class="d-none d-sm-block">
-                                    выбор лекторов и тем. Online-обучение, практический курс,<br
-                                        class="d-none d-sm-block"> семинары или конгрессы – выбор за вами.</p>
+                                <h1 class="mt-3 f-600 m-0">{!! __("about.header.h1") !!}</h1>
+                                <p class="fs-20 f-500 mt-2 m-0">{!! __("about.header.under_title") !!}</p>
                             </div>
                         </div>
                     </div>
@@ -118,19 +110,12 @@
                                 от<br>10.04.20219г.
                                 №193237965</p>
                         </div>
-                        <div class="col-12 col-lg-2 mt-lg-6 mb-2 mb-md-4 fs-20 f-600">
-                            <a href="{{route('course.index')}}"><p>Наши курсы</p></a>
-                            <a href="{{route('lectors.index')}}"><p>Лектора</p></a>
-                            <a href="{{route('about')}}"><p>О нас</p></a>
-                            <a href="{{route('blog.index')}}"><p>Статьи</p></a>
-                            <a href="{{route('contacts')}}"><p>Контакты</p></a>
-                        </div>
-                        <div class="col-12 col-lg-2 mt-2 mt-lg-6 mb-4 fs-20 f-600 d-none d-lg-block">
-                            <a href="education.html"><p>Наши курсы</p></a>
-                            <a href="lecturers.html"><p>Лектора</p></a>
-                            <a href="about.html"><p>О нас</p></a>
-                            <a href="state.html"><p>Статьи</p></a>
-                            <a href="contact.html"><p>Контакты</p></a>
+                        <div class="col-12 col-lg-4 mt-lg-6 mb-2 mb-md-4 fs-20 f-600">
+                            <a href="{{route('course.index')}}"><p>{{ __("header.menu.home") }}</p></a>
+                            <a href="{{route('lectors.index')}}"><p>{{ __("header.menu.lectors") }}</p></a>
+                            <a href="{{route('about')}}"><p>{{ __("header.menu.about") }}</p></a>
+                            <a href="{{route('blog.index')}}"><p>{{ __("header.menu.blog") }}</p></a>
+                            <a href="{{route('contacts')}}"><p>{{ __("header.menu.contact") }}</p></a>
                         </div>
                         <div class="col-12 col-lg-5 mt-2 mt-lg-6 mb-4">
                             <div class="d-flex flex-wrap flex-md-nowrap">

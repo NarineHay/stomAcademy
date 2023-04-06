@@ -14,12 +14,14 @@ return new class extends Migration
             $table->dateTime('end_date');
             $table->string('video')->nullable();
             $table->unsignedBigInteger('price_id');
+            $table->unsignedBigInteger('price_2_id')->nullable();
             $table->foreign('price_id')->references('id')->on('prices')->onDelete("cascade");
             $table->string('url_to_page')->nullable();
             $table->string('image');
 //            $table->unsignedBigInteger('direction_id');
 //            $table->foreign('direction_id')->references('id')->on('directions')->onDelete("cascade");
             $table->boolean('online')->default(0);
+            $table->string("bg_image")->nullable();
         });
     }
 

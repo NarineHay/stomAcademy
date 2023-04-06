@@ -30,6 +30,10 @@ class Course extends Model
         return $this->hasOne(Prices::class,"id","price_id");
     }
 
+    function sale(){
+        return $this->hasOne(Prices::class,"id","price_2_id");
+    }
+
     function webinars()
     {
         return $this->hasMany(CourseWebinar::class, "course_id", "id");

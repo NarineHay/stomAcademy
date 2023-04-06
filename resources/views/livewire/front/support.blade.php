@@ -8,10 +8,10 @@
     <div class="col-lg-3 bg-white border-start bg-white message_content">
         <div class="container">
             <div class="row py-3 px-2 py-lg-6 mt-5 mt-lg-4">
-                <p class="m-0 f-700" style="font-size: 24px !important;">Сообщения</p>
+                <p class="m-0 f-700" style="font-size: 24px !important;">{{ __("profile.chat.messages") }}</p>
                 <div class="position-relative mt-3">
                     <input wire:model="search" class="form-control br-12 fs-14 f-500 text-primary bg-transparent"
-                           placeholder="Поиск">
+                           placeholder="{{ __("profile.chat.search") }}">
                     <i class="fal fa-search position-absolute top-0 end-0 mt-2 me-3"></i>
                 </div>
                 <div class="mt-3 mt-lg-5 mb-6 mb-lg-0">
@@ -45,7 +45,7 @@
                     @endforeach
 
                     @if(\Illuminate\Support\Facades\Auth::user()->role != \App\Models\User::ROLE_ADMIN)
-                        <button class="btn btn-primary" wire:click="new_chat">New Dialog</button>
+                        <button class="btn btn-primary" wire:click="new_chat">{{ __("profile.chat.new_dialog") }}</button>
                     @endif
                 </div>
             </div>

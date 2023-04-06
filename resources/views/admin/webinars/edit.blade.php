@@ -57,10 +57,22 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ЦЕНЫ</label>
+                        <label for="exampleInputEmail1">ЦЕНА</label>
                         <select class="form-control form-control select2" name="price_id">
                             @foreach($data['prices'] as $price)
                                 <option value="{{ $price->id }}" {{ $price->id == $webinar->price_id ? 'selected' : '' }}>
+                                    {{ $price->name }} - ${{$price->usd}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ЦЕНА 2</label>
+                        <select class="form-control form-control select2" name="price_2_id">
+                            <option value="0">---</option>
+                            @foreach($data['prices'] as $price)
+                                <option value="{{ $price->id }}" {{ $price->id == $webinar->price_2_id ? 'selected' : '' }}>
                                     {{ $price->name }} - ${{$price->usd}}
                                 </option>
                             @endforeach

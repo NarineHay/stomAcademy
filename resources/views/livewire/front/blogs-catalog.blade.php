@@ -57,8 +57,7 @@
             @endforeach
         </div>
         <button wire:click="loadNext"
-                class="w-100 fs-14 f-500 mt-4 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">Показать еще
-        </button>
+                class="w-100 fs-14 f-500 mt-4 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">{{ __("index.show_more") }}</button>
 
         <div class="mt-4 d-flex justify-content-center d-lg-block">
             <nav>
@@ -70,7 +69,7 @@
         <div class="aside d-none d-lg-block">
             <div class="position-fixed">
                 <div class="mt-4 ms-3 pt-5">
-                    <h5 class="f-600 m-0">Рубрики</h5>
+                    <h5 class="f-600 m-0">{{ __("blog.category_title") }}</h5>
                     <div class="mt-4">
                         @foreach($directions as $direction)
                             <label wire:click="setDirectionId({{ $direction->id }})" class="f-500 fs-16 d-flex align-items-center fg-label cursor mt-1"

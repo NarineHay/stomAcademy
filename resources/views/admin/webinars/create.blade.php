@@ -58,8 +58,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ЦЕНЫ</label>
+                        <label for="exampleInputEmail1">ЦЕНA</label>
                         <select class="form-control form-control select2" name="price_id">
+                            @foreach($prices as $price)
+                                <option value="{{ $price->id }}">
+                                    {{ $price->name }} - ${{$price->usd}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ЦЕНA 2</label>
+                        <select class="form-control form-control select2" name="price_2_id">
+                            <option value="0">---</option>
                             @foreach($prices as $price)
                                 <option value="{{ $price->id }}">
                                     {{ $price->name }} - ${{$price->usd}}

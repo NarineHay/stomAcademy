@@ -18,22 +18,24 @@ class AccessSeeder extends Seeder
         $webinars = Webinar::all();
         $courses = Course::all();
         foreach ($users as $k => $user){
-            if($k % 2 == 0){
-                $course_id = $courses->random(1)->first()->id;
-                $webinar_id = null;
-            }else{
-                $course_id = null;
-                $webinar_id = $webinars->random(1)->first()->id;
+            for($i=0;$i<rand(10,20);$i++){
+                if(fake()->boolean()){
+                    $course_id = $courses->random(1)->first()->id;
+                    $webinar_id = null;
+                }else{
+                    $course_id = null;
+                    $webinar_id = $webinars->random(1)->first()->id;
+                }
+                $access_time = rand(0,10) % 2;
+                Access::create([
+                    "user_id" => $user->id,
+                    "course_id" => $course_id,
+                    "webinar_id" => $webinar_id,
+                    "manager_id" => $managers->random(1)->first()->id,
+                    "access_time" => $access_time,
+                    "duration" => $access_time ? intval(rand(10,30)) : null,
+                ]);
             }
-            $access_time = rand(0,10) % 2;
-            Access::create([
-                "user_id" => $user->id,
-                "course_id" => $course_id,
-                "webinar_id" => $webinar_id,
-                "manager_id" => $managers->random(1)->first()->id,
-                "access_time" => $access_time,
-                "duration" => $access_time ? intval(rand(10,30)) : null,
-            ]);
         }
     }
 }

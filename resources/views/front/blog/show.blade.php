@@ -4,8 +4,9 @@
     <div class="container mb-4 mb-lg-6">
     <div class="py-5 py-lg-6">
         <div class="d-flex mt-4">
-            <a href="{{route('home')}}"><span class="fs-12 f-500 text-secondary">Главная</span></a>
-            <a><span class="fs-12 f-500 ms-3 main">Состояние</span></a>
+            <a href="{{route('home')}}"><span class="fs-12 f-500 text-secondary">{{ __("header.menu.home") }}</span></a>
+            <a href="{{ route("blog.index") }}"><span class="fs-12 f-500 ms-3 main text-secondary">{{ __("header.menu.blog") }}</span></a>
+            <a><span class="fs-12 f-500 ms-3 main">{{$blog->info->title}}</span></a>
         </div>
         <div class="row">
             <div class="col-lg-6 offset-lg-3 col-12 offset-0">
@@ -22,7 +23,7 @@
                         <p class="fs-20 m-0">{!! $blog->info->text !!}</p>
                     </div>
                     <div class="mt-3 mt-lg-4 d-flex flex-column justify-content-center align-items-center align-items-md-start">
-                        <h2 class="f-700 m-0">Еще статьи</h2>
+                        <h2 class="f-700 m-0">{{ __("blog.more_blogs") }}</h2>
                         <div class="d-flex flex-column flex-md-row mt-4">
                             <div class="row">
                                 <div class="col-lg-6 col-12">

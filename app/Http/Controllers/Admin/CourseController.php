@@ -45,6 +45,7 @@ class CourseController extends Controller
         $course->end_date = $request->get('end_date');
         $course->video = $request->get('video');
         $course->price_id = $request->get('price_id');
+        $course->price_2_id = $request->get('price_2_id');
         //$course->direction_id = $request->get('direction_id');
         $course->url_to_page = $request->get('url_to_page');
         $course->image = $request->file('image')->store('public/course');
@@ -120,6 +121,7 @@ class CourseController extends Controller
         $course->video = $request->video;
         $course->url_to_page = $request->url_to_page;
         $course->price_id = $request->price_id;
+        $course->price_2_id = $request->get('price_2_id',null);
 //        $course->direction_id = $request->direction_id;
         $course->online = $request->boolean('online');
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Course;
+use App\Models\Webinar;
 
 class WebinarsController extends Controller
 {
@@ -11,7 +12,8 @@ class WebinarsController extends Controller
         return view("front.webinar.index");
     }
     function show($id){
-        $data['course'] = Course::find($id);
+        $data['course'] = Webinar::find($id);
+        $data['courses'] = Course::query()->get()->random(10);
         return view("front.course.show",$data);
     }
 }

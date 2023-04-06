@@ -58,6 +58,7 @@ class WebinarController extends Controller
         $webinar->start_date = $request->get('start_date');
         $webinar->duration = $request->get('duration');
         $webinar->price_id = $request->get('price_id');
+        $webinar->price_2_id = $request->get('price_2_id',null);
         //$webinar->direction_id = $request->get('direction_id');
         $webinar->image = $request->file('image')->store('public/webinar');
         $webinar->save();
@@ -121,6 +122,7 @@ class WebinarController extends Controller
         $webinar->start_date = $request->start_date;
         $webinar->duration = $request->duration;
         $webinar->price_id = $request->price_id;
+        $webinar->price_2_id = $request->get('price_2_id',null);
         $webinar->status = $request->status;
         //$webinar->direction_id = $request->get('direction_id');
 

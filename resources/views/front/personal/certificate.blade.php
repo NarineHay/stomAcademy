@@ -12,9 +12,9 @@
                 <div class="col-lg-9">
                     <div class="mt-4 mt-lg-6 mb-3 mb-lg-5 py-5 py-lg-6">
                         <div class="d-flex justify-content-between align-items-center mb-3 mb-lg-5">
-                            <h3 class="f-700 m-0">Сертификаты</h3>
+                            <h3 class="f-700 m-0">{{ __("profile.certificates.title") }}</h3>
                             <div class="position-relative d-none d-lg-block">
-                                <input class="form-control br-12" placeholder="Поиск">
+                                <input class="form-control br-12" placeholder="{{ __("profile.certificates.search") }}">
                                 <i class="fal fa-search position-absolute top-0 end-0 mt-2 me-2"></i>
                             </div>
                         </div>
@@ -31,11 +31,11 @@
                                             </p>
                                             <div class="d-flex flex-column flex-xl-row">
                                                 <div class="d-flex justify-content-center justify-content-lg-start">
-                                                    <p class="fs-14 f-500 m-0 text-secondary">Номер сертификата</p>
-                                                    <p class="fs-14 f-600 m-0 ms-1 ms-md-2">Reg. № {{$certificate->id}}</p>
+                                                    <p class="fs-14 f-500 m-0 text-secondary">{{ __("profile.certificates.number") }}</p>
+                                                    <p class="fs-14 f-600 m-0 ms-1 ms-md-2">{{ __("profile.certificates.reg_num") }}{{$certificate->id}}</p>
                                                 </div>
                                                 <div class="d-flex ms-0 ms-xl-5 justify-content-center justify-content-lg-start">
-                                                    <p class="fs-14 f-500 m-0 text-secondary">Количество часов</p>
+                                                    <p class="fs-14 f-500 m-0 text-secondary">{{ __("profile.certificates.hourse") }}</p>
                                                     <p class="fs-14 f-600 m-0 ms-1 ms-md-2">{{$certificate->hours_number}}</p>
                                                 </div>
                                             </div>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div>
                                         <a href="{{ route('download',$certificate->id) }}" class="btn btn-outline-primary py-2 px-3 px-xxl-4 br-12 fs-14 f-600 mt-3 mt-mb-0 w-100">
-                                            <i class="fal fa-arrow-to-bottom me-2"></i>Скачать
+                                            <i class="fal fa-arrow-to-bottom me-2"></i>{{ __("profile.certificates.download") }}
                                         </a>
                                     </div>
                                 </div>

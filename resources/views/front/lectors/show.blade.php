@@ -4,8 +4,8 @@
     <div class="container mb-5 mb-lg-6">
         <div class="py-5 py-lg-6">
             <div class="d-flex mt-4">
-                <a href="{{route('home')}}" class="text-dark"><p class="fs-12 f-500 text-secondary">Главная</p></a>
-                <a href="{{route('lectors.index')}}" class="text-dark"><p class="fs-12 f-500 text-secondary ms-3 d-none d-lg-block main">Лектора</p></a>
+                <a href="{{route('home')}}" class="text-dark"><p class="fs-12 f-500 text-secondary">{{ __("header.menu.home") }}</p></a>
+                <a href="{{route('lectors.index')}}" class="text-dark"><p class="fs-12 f-500 text-secondary ms-3 d-none d-lg-block main">{{ __("header.menu.lectors") }}</p></a>
                 <a><p class="fs-12 f-500 ms-3 main">{{$lector->userInfo->fullName}}</p></a>
             </div>
             <div class="row mt-3 mt-lg-5">
@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-3 fs-14">
                                     <i class="far fa-clock"></i>
-                                    <p class="m-0 ms-2 f-500 me-2 text-black-gray">{{$webinar->duration}} мин</p>
+                                    <p class="m-0 ms-2 f-500 me-2 text-black-gray">{{$webinar->duration}} {{ __("lectors.min") }}</p>
                                     <i class="fal fa-angle-right ms-5 ms-lg-6 me-4 text-secondary"></i>
                                 </div>
                             </a>

@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\Storage;
 
 class RandomImagesApi
 {
-    static function getImages($type,$count,$path){
+    static function getImages($type,$count,$path,$w = null){
         $images = [];
         $client = new Client();
-        $response = $client->get('https://pixabay.com/api/?key=29073457-a05a39b854900b7729083083c&q='.$type.'&per_page='.$count.'&page=1');
+        if($w){
+            $w = "&w=".$w;
+        }
+        $response = $client->get('https://pixabay.com/api/?key=29073457-a05a39b854900b7729083083c&q='.$type.'&per_page='.$count.'&page=1'.$w);
         if($response->getHeader("X-RateLimit-Remaining")[0] == 1){
             echo "sleep 10 second\n";
             sleep(10);

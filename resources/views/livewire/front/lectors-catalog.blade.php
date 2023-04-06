@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-lg-10 col-12 mb-5 mb-lg-6">
         <div class="d-flex mt-6 py-2">
-            <a href="{{route('home')}}" class="text-dark"><span class="fs-12 f-500 text-secondary">Главная</span></a>
-            <a><span class="fs-12 f-500 ms-4 main">Лектора</span></a>
+            <a href="{{route('home')}}" class="text-dark"><span class="fs-12 f-500 text-secondary">{{ __("header.menu.home") }}</span></a>
+            <a><span class="fs-12 f-500 ms-4 main">{{ __("header.menu.lectors") }}</span></a>
         </div>
         <div class="mt-3">
-            <h2 class="f-600 m-0">Лектора</h2>
+            <h2 class="f-600 m-0">{{ __("lectors.h1") }}</h2>
         </div>
         <div class="row mt-4">
             @foreach($lectors as $lector)
@@ -17,14 +17,15 @@
                                 {{ $lector->userinfo->fullName }}
                             </p>
                             <p class="fs-14 f-500 text-secondary text-black">{{$lector->directions->first()->direction->title}}</p>
-                            <i class="fal fa-layer-group text-black"></i><span class="ms-2 fs-14 f-500 text-black">{{ $lector->webinars_count }} лекции</span>
+                            <i class="fal fa-layer-group text-black"></i><span class="ms-2 fs-14 f-500 text-black">{{ $lector->webinars_count }} {{ __("lectors.webinar_count") }}</span>
                         </div>
                     </a>
                 </div>
             @endforeach
         </div>
 
-        <button wire:click="loadNext" class="w-100 fs-14 f-500 mt-3 mt-lg-6 py-3 br-12 d-lg-none show_more_btn text-black bg-transparent">Показать еще</button>
+        <button wire:click="loadNext" class="w-100 fs-14 f-500 mt-3 mt-lg-6 py-3 br-12 d-lg-none show_more_btn text-black bg-transparent">
+            {{ __("index.show_more") }}</button>
 
         <div class="mt-4 d-flex justify-content-center d-lg-block">
             <nav>
@@ -37,7 +38,7 @@
             <div class="position-fixed">
                 <div class="mt-4 ms-3 pt-5">
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
-                           data-bs-toggle="collapse" data-bs-target="#fg-1"><span>Направление</span><i class="fal fa-angle-right"></i></label>
+                           data-bs-toggle="collapse" data-bs-target="#fg-1"><span>{{ __("lectors.filter") }}</span><i class="fal fa-angle-right"></i></label>
                     <div class="mt-2 collapse show" id="fg-1">
                         <ul class="list-unstyled m-0 p-0">
                             @foreach($directions as $direction)

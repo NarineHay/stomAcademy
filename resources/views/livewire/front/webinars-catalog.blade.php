@@ -62,7 +62,12 @@
                                     <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
                                 </div>
                                 <div class="mt-3 mt-xl-0">
-                                    <span class="f-700 text-primary fs-16 white-space">{{$webinar->price->rub}} ₽</span>
+                                    @if($webinar->sale)
+                                        <span class="f-700 text-primary fs-16 me-1">{{ $webinar->sale->rub }} ₽</span>
+                                        <del class="f-700 text-secondary fs-16">{{$webinar->price->rub}} ₽</del>
+                                    @else
+                                        <span class="f-700 text-primary fs-16 me-1">{{ $webinar->price->rub }} ₽</span>
+                                    @endif
                                 </div>
                             </div>
                             <form class="dublicat_form" method="POST" action="{{route('addToCart')}}">

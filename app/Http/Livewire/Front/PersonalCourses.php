@@ -3,9 +3,12 @@
 namespace App\Http\Livewire\Front;
 
 use App\Helpers\LG;
+use App\Models\Access;
 use App\Models\Course;
+use App\Models\CourseDirection;
 use App\Models\CourseInfo;
 use App\Models\Direction;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -34,21 +37,28 @@ class PersonalCourses extends Component
     function loadNext(){
         $this->perPage += 9;
     }
+
     public function render()
     {
-        $courses_q = Course::query()->where('online',0);
-        if(count($this->selectedDirections) > 0){
-            $courses_q = $courses_q->whereIn("direction_id",$this->selectedDirections);
-        }
-        if(!empty($this->search)){
-            $lg_id = LG::get();
-            $ids = CourseInfo::query()->where("lg_id",$lg_id)->where("title","LIKE",$this->search."%")
-                ->get()->map(function ($ci){ return $ci->course_id; });
-            $courses_q = $courses_q->whereIn("id",$ids);
+        $ids = Access::query()->whereNotNull("course_id")->where("user_id",Auth::user()->id)->get()->map(function ($c){
+            return $c->course_id;
+        });
+
+        if (count($this->selectedDirections) > 0) {
+            $ids = $ids->intersect(CourseDirection::query()->whereIn("direction_id",$this->selectedDirections)->get()
+                ->map(function ($d){
+                    return $d->course_id;
+                }));
         }
 
+        if(!empty($this->search)){
+            $lg_id = LG::get();
+            $ids = $ids->intersect(CourseInfo::query()->where("lg_id",$lg_id)->where("title","LIKE",$this->search."%")
+                ->get()->map(function ($ci){ return $ci->course_id; }));
+        }
+        $courses_q = Course::query()->whereIn("id",$ids)->where('online', 0);
         $data['courses'] = $courses_q->paginate($this->perPage);
         $data['directions'] = Direction::all();
-        return view('livewire.front.personal-courses',$data);
+        return view('livewire.front.personal-courses', $data);
     }
 }

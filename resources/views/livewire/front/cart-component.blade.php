@@ -1,12 +1,12 @@
 <div class="container mb-4 mb-md-6 pt-6">
     <div class="d-flex mt-lg-3">
-        <a href="{{route('home')}}"><p class="fs-12 text-secondary">Главная</p></a>
-        <a><p class="fs-12 ms-3 main">Онлайн обучение</p></a>
-        <a><p class="fs-12 f-500 ms-3 text-primary d-none d-lg-block main">Корзина</p></a>
+        <a href="{{route('home')}}"><p class="fs-12 text-secondary">{{ __("header.menu.home") }}</p></a>
+        <a><p class="fs-12 ms-3 main">{{ __("header.menu.courses") }}</p></a>
+        <a><p class="fs-12 f-500 ms-3 text-primary d-none d-lg-block main">{{ __("header.menu.cart") }}</p></a>
     </div>
     <div class="d-flex align-items-center mt-3 mt-lg-5">
-        <h2 class="f-600 m-0">В корзине</h2>
-        <h2 class="text-primary f-600 ms-3 m-0">{{count($items)}} курсов</h2>
+        <h2 class="f-600 m-0">{{ __("profile.cart.page_title_left") }}</h2>
+        <h2 class="text-primary f-600 ms-3 m-0">{{count($items)}} {{ __("profile.cart.page_title_right") }}</h2>
         <a href="{{ route("removeAllFromCart") }}">
             <span><i class="fal fa-times text-secondary ms-2"></i></span>
         </a>
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
                                     <i class="fas fa-tasks"></i>
-                                    <p class="m-0 ms-1 ms-md-2 f-500">1 лекция</p>
+                                    <p class="m-0 ms-1 ms-md-2 f-500">1 {{ __("profile.cart.lection") }}</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
                                     <p class="m-0 ms-1 ms-md-2 f-700 me-2 text-primary fs-14">{{$item->webinar->price->rub}}
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
                                     <i class="fas fa-tasks"></i>
-                                    <p class="m-0 ms-1 ms-md-2 f-500">{{$item->course->webinars_count}} лекции</p>
+                                    <p class="m-0 ms-1 ms-md-2 f-500">{{$item->course->webinars_count}} {{ __("profile.cart.lection") }}</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
                                     <p class="m-0 ms-1 ms-md-2 f-700 me-2 text-primary fs-14">{{$item->course->price->rub}}
@@ -95,22 +95,22 @@
                         </div>
                         @if($promo)
                             <div class="d-flex justify-content-between mt-2 mt-md-3">
-                                <p class="m-0 f-500">Скидка</p>
+                                <p class="m-0 f-500">{{ __("profile.cart.sale") }}</p>
                                 <p class="text-danger m-0 f-600">-{{ $prc }}%</p>
                             </div>
                             <div class="d-flex justify-content-between mt-2">
-                                <p class="m-0 f-500">Цена</p>
+                                <p class="m-0 f-500">{{ __("profile.cart.price") }}</p>
                                 <p class="text-primary m-0 f-600">{{ $sub_total }} ₽</p>
                             </div>
                         @endif
                     </div>
                     <div>
                         <div class="d-flex justify-content-between mt-2 mt-md-5 mb-3 align-items-center">
-                            <p class="f-700 fs-16 m-0">К оплате</p>
+                            <p class="f-700 fs-16 m-0">{{ __("profile.cart.to_pay") }}</p>
                             <p class="f-700 fs-24 text-primary m-0">{{ $total }} ₽</p>
                         </div>
                         <div>
-                            <button class="btn btn-primary br-12 w-100 fs-16 f-600 py-2">Оплатить</button>
+                            <button class="btn btn-primary br-12 w-100 fs-16 f-600 py-2">{{ __("profile.cart.button") }}</button>
                         </div>
                     </div>
                 </div>

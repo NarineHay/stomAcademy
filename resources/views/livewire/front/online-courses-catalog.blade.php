@@ -72,7 +72,12 @@
                             </div>
                             <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
                                 <div class="mb-3 mb-md-0">
-                                    <span class="f-700 text-primary fs-16">{{$course->price->rub}} ₽</span>
+                                    @if($course->sale)
+                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>
+                                        <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>
+                                    @else
+                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>
+                                    @endif
                                 </div>
                                 <form method="POST" action="{{route('addToCart')}}">
                                     @csrf
