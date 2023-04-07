@@ -13,7 +13,7 @@ class WebinarsController extends Controller
     }
     function show($id){
         $data['course'] = Webinar::find($id);
-        $data['courses'] = Course::query()->get()->random(10);
+        $data['courses'] = Course::query()->get()->take(10);
         return view("front.course.show",$data);
     }
 }
