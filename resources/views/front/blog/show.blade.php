@@ -22,10 +22,12 @@
                     <div class="mt-4">
                         <p class="fs-20 m-0">{!! $blog->info->text !!}</p>
                     </div>
-                    <div class="mt-3 mt-lg-4 d-flex flex-column justify-content-center align-items-center align-items-md-start">
+                    @if($blogs->count() > 0)
+                        <div class="mt-3 mt-lg-4 d-flex flex-column justify-content-center align-items-center align-items-md-start">
                         <h2 class="f-700 m-0">{{ __("blog.more_blogs") }}</h2>
                         <div class="d-flex flex-column flex-md-row mt-4">
                             <div class="row">
+                                @if($blogs->count() > 0)
                                 <div class="col-lg-6 col-12">
                                     <div class="d-flex">
                                         <div class="bg-white br-12">
@@ -41,6 +43,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
+                                @if($blogs->count() > 1)
                                 <div class="col-lg-6 col-12">
                                     <div class="d-flex ms-0 ms-md-3 mt-2 mt-md-0">
                                         <div class="bg-white br-12">
@@ -56,11 +60,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
-
-
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

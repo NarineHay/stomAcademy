@@ -61,7 +61,7 @@
                                 <div class="about-course-txt d-xl-block d-none">
                                     <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
                                     <p class="fs-16 lh-27 f-500 mb-0">
-                                        {{ $course->info->description }}
+                                        {!! $course->info->description !!}
                                     </p>
                                 </div>
                             </div>
@@ -291,7 +291,6 @@
                                     })->join(", ") }}
                                 </p>
                                 {!! $lector->lector->info->biography !!}
-                                {{ $lector->id }}
                             </div>
                             <div class="image mt-2">
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}" class="br-12" alt="doctor">

@@ -15,7 +15,7 @@ class BlogController extends Controller
 
     function show($id){
         $data['blog'] = Blog::findOrFail($id);
-        $data['blogs'] = Blog::query()->orderBy('id','desc')->take(2)->get();
+        $data['blogs'] = Blog::query()->whereNot("id",$id)->orderBy('id','desc')->take(2)->get();
         return view("front.blog.show",$data);
     }
 }
