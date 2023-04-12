@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\LG;
 use App\Models\Blog;
 use App\Models\Course;
 use App\Models\Direction;
@@ -21,5 +22,10 @@ class HomeController extends Controller
         $data['directions'] = Direction::all();
         $data['videos'] = Video::all();
         return view("front.index", $data);
+    }
+
+    function change_lg($lg_id){
+        LG::set($lg_id);
+        return back();
     }
 }

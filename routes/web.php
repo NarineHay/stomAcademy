@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get("/lg/{lg_id}",[\App\Http\Controllers\HomeController::class,"change_lg"])->name('change_lg');
 
 Route::prefix("webinars")->group(function (){
     Route::get("/",[\App\Http\Controllers\WebinarsController::class,'index'])->name("webinar.index");

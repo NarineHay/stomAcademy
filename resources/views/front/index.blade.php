@@ -370,7 +370,7 @@
                                     {{$blog->info->title}}
                                 </span>
                             </h5>
-                            <p class="mt-2 mt-lg-6 fs-14 f-500 m-0 mt-3">
+                            <p class="fs-14 f-500 m-0">
                                 <i class="far fa-calendar me-2"></i>{{date('d-m-Y', strtotime($blog->created_at))}}
                             </p>
                         </div>
@@ -399,7 +399,9 @@
                              style="width: 251px; height: 203px; object-fit: cover" alt="lecturerPic">
                         <div class="text-black p-3">
                             <p class="fs-20 f-700">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</p>
+                            @if($lector->directions->first())
                             <p class="text-secondary fs-14 f-500">{{$lector->directions->first()->title}}</p>
+                            @endif
                             <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
                         </div>
                     </div>

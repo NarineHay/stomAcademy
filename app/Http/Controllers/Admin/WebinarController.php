@@ -120,6 +120,7 @@ class WebinarController extends Controller
         }
 
         $webinar->start_date = $request->start_date;
+        $webinar->user_id = $request->user_id;
         $webinar->duration = $request->duration;
         $webinar->price_id = $request->price_id;
         $webinar->price_2_id = $request->get('price_2_id',null);

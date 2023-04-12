@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-2 position-relative d-none d-lg-block" style="z-index: 1;">
+    <div class="col-lg-2 position-relative d-none d-lg-block first_block" style="z-index: 1;">
         <div class="account_left_aside_bg profile_left"></div>
         @if(\Illuminate\Support\Facades\Auth::user()->role != \App\Models\User::ROLE_ADMIN)
             <x-profile></x-profile>

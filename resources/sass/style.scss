@@ -560,11 +560,19 @@ a:hover {
             border-radius: 10px;
         }
         .eng-doctors-txt{
+            .course_card_static{
+                position: absolute;
+                right: 0;
+                width: 460px;
+            }
+            .course_left{
+                padding-right: 475px;
+            }
             //background: #FFFFFF;
             background: linear-gradient(180deg, #FFFFFF 56%, #F9F9F9 50%);
             padding-top: 21px;
             padding-bottom: 51px;
-            //position: relative;
+            position: relative;
             &:after{
                 content: "";
                 position: absolute;
