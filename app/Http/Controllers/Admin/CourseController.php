@@ -43,6 +43,8 @@ class CourseController extends Controller
         $course = new Course();
         $course->start_date = $request->get('start_date');
         $course->end_date = $request->get('end_date');
+        $video = $request->get('video');
+        //////
         $course->video = $request->get('video');
         $course->price_id = $request->get('price_id');
         $course->price_2_id = $request->get('price_2_id');
@@ -118,7 +120,11 @@ class CourseController extends Controller
 
         $course->start_date = $request->start_date;
         $course->end_date = $request->end_date;
-        $course->video = $request->video;
+
+        $video = $request->video;
+        $e = explode("&",$video);
+        $course->video = str_replace("watch?v=","embed/",$e[0]);
+
         $course->url_to_page = $request->url_to_page;
         $course->price_id = $request->price_id;
         $course->price_2_id = $request->get('price_2_id',null);

@@ -19,8 +19,21 @@
                     <div class="course_card_static card-div">
                         <div class="card">
                             <div class="card-body">
-                                <div class="img_video">
-                                    <img src="/dist/image/video1.png" alt="img_video">
+                                <div class="img_video video_block position-relative">
+                                    @php
+                                        $x = explode("/",$course->video);
+                                        $preview = 'https://img.youtube.com/vi/'.array_pop($x).'/hqdefault.jpg';
+                                    @endphp
+                                    <img class="img_preview" src="{{ $preview }}">
+                                    <iframe style="z-index: 1;" class="position-absolute d-none" width="100%"
+                                            height="100%" src="{{ $course->video }}"
+                                            title="Walter Devoto about Stom Academy." frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                    <div
+                                        class="video_play cursor position-absolute ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3" style="left: 50%;top: 50%;transform: translate(-50%,-50%)">
+                                        <i class="fas fa-play"></i>
+                                    </div>
                                 </div>
                                 <div class="card-txts">
                                     <p class="fs-32 card-title-txt fw-bolder">{{ $course->info->title }}</p>
