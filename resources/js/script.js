@@ -102,3 +102,17 @@ document.querySelectorAll(".video_block").forEach((video_block)=>{
 //     iframe.setAttribute("src",src  + "?autoplay=1");
 //     iframe.classList.remove("d-none");
 // });
+
+
+let header_menu = document.querySelector(".header_menu");
+if (header_menu){
+    let btn_for_menu = header_menu.querySelector(".btn_for_menu");
+    let btn_close_for_menu = header_menu.querySelector(".btn_close_for_menu");
+    let nav = header_menu.querySelector(".navbar");
+    btn_for_menu.addEventListener("click", ()=>{
+       nav.classList.add("show");
+    });
+    btn_close_for_menu.addEventListener("click", ()=>{
+       nav.classList.remove("show");
+    });
+}

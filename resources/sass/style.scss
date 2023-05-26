@@ -4,15 +4,87 @@ body, html {
     background-color: #F9F9F9;
 }
 
+a{
+    cursor: pointer;
+}
+.cp {
+    cursor: pointer;
+
+}
+.header_menu{
+    .btn_for_menu{
+        display: none;
+    }
+    .btn_close_for_menu{
+        display: none;
+    }
+}
+.header-login{
+    min-width: 320px;
+    .form-group{
+        width: 100%;
+    }
+}
+
+#header_login_modal{
+    .btn-close{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+}
+.min-h-96{
+    min-height: 96px;
+}
+.min-h-60{
+    min-height: 60px;
+}
+.min-h-90{
+    min-height: 90px;
+}
 #lectorFollowModal{
     input{
-        border-top: none;
-        border-right: none;
-        border-left: none;
-        border-bottom: 1px solid #000000;
-        border-radius: 0;
-        padding-left: 0;
+        //border-top: none;
+        //border-right: none;
+        //border-left: none;
+        //border-bottom: 1px solid #000000;
+        //border-radius: 0;
+        //padding-left: 0;
 
+        padding-left: 10px;
+        border-radius: 4px;
+
+        &::placeholder{
+            font-style: normal;
+            padding-left: 0;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 17px;
+            color: rgba(85, 85, 85, 0.5);
+        }
+
+
+
+    }
+    .modal-header{
+        border: 0;
+    }
+    .modal-footer{
+        border: 0;
+        justify-content: center;
+    }
+}
+#lectorModal{
+    input{
+        //border-top: none;
+        //border-right: none;
+        //border-left: none;
+        ////border-bottom: 1px solid #000000;
+        //border-bottom: none;
+        //border-radius: 0;
+        //padding-left: 0;
+        padding-left: 10px;
+        border-radius: 4px;
         &::placeholder{
             font-style: normal;
             padding-left: 0;
@@ -22,25 +94,12 @@ body, html {
             color: rgba(85, 85, 85, 0.5);
         }
     }
-
-}
-#lectorModal{
-    input{
-        border-top: none;
-        border-right: none;
-        border-left: none;
-        border-bottom: 1px solid #000000;
-        border-radius: 0;
-        padding-left: 0;
-
-        &::placeholder{
-            font-style: normal;
-            padding-left: 0;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 17px;
-            color: rgba(85, 85, 85, 0.5);
-        }
+    .modal-header{
+        border: 0;
+    }
+    .modal-footer{
+        border: 0;
+        justify-content: center;
     }
 
 }
@@ -563,7 +622,8 @@ a:hover {
             .course_card_static{
                 position: absolute;
                 right: 0;
-                width: 460px;
+                //width: 460px;
+                width:360px;
             }
             .course_left{
                 padding-right: 475px;
@@ -682,7 +742,8 @@ a:hover {
                 }
                 .card-txts{
                     .card-title-txt{
-                        line-height: 40px;
+                        //line-height: 40px;
+                        line-height: 29px;
                         margin-bottom: 20px;
                     }
                     .card-price-txt{
@@ -977,4 +1038,34 @@ a:hover {
     width: 42px;
     object-fit: cover;
     border: 1px solid #fff;
+}
+
+.header_flag{
+    img{
+        height: 16px;
+    }
+}
+
+.dropdown{
+    cursor: pointer;
+}
+
+.videoPopularSwiper_nav {
+    .swiper-button-prev,.swiper-button-next{
+        &:after{
+            font-size: 10px;
+            color: #000;
+        }
+        border-radius: 100%;
+        border: 1px solid #C4C4C4;
+        margin-left: 10px;
+        width: 43px;
+        height: 43px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: auto;
+        right: auto;
+    }
 }

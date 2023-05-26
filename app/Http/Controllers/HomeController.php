@@ -28,4 +28,8 @@ class HomeController extends Controller
         LG::set($lg_id);
         return back();
     }
+
+    function change_cur($cur_id){
+        return back()->withCookie("currency_id",$cur_id);
+    }
 }

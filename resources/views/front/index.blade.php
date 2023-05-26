@@ -15,9 +15,9 @@
         </div>
     </div>
     <!--Популярные курсы-->
-    <div class="container mt-4 mt-lg-6">
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
+    <div class="container mt-4 mt-lg-6 ">
+        <div class="d-flex justify-content-between position-relative">
+            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row">
                 <div>
                     <h3 class="f-700 m-0">{{ __("index.popular_courses") }}</h3>
                 </div>
@@ -26,9 +26,9 @@
                             class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
-            <div class="slider_navigation videoPopularSwiper_nav mb-4 d-none d-md-block">
-                <div class="swiper-button-next"></div>
+            <div class="slider_navigation videoPopularSwiper_nav mb-4 d-none d-md-flex">
                 <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
         </div>
         <div class="swiper videoPopularSwiper br-12">
@@ -68,7 +68,7 @@
     <!--Новые курсы-->
     <div class="container mt-4 mt-lg-6">
         <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
+            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row">
                 <div>
                     <h3 class="f-700 m-0">{{ __("index.new_courses") }}</h3>
                 </div>
@@ -77,7 +77,7 @@
                             class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
-            <div class="slider_navigation AdditionsSwiper_nav mb-4 d-none d-md-block">
+            <div class="slider_navigation videoPopularSwiper_nav AdditionsSwiper_nav mb-4 d-none d-md-flex flex-row-reverse">
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
@@ -91,7 +91,7 @@
                                  style="width: 386px; height: 214px; object-fit: cover">
                             <div class="p-3">
                                 <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
-                                <p class="f-700 fs-16">{{$course->info->title}}</p>
+                                <p class="f-700 fs-16 min-h-96">{{$course->info->title}}</p>
                                 <div class="mt-2 d-flex justify-content-between">
                                     <div>
                                         <i class="far fa-clock me-1"></i> <span
@@ -103,7 +103,7 @@
                                     @if($course->getLectors()->count() == 1)
                                         <div class="d-flex align-items-center">
                                             <img class="rounded-circle border-white me-3 img_r_42" src="{{ \Illuminate\Support\Facades\Storage::url($course->getLectors()->first()->lector->photo) }}" alt="videoPic">
-                                            <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>
+{{--                                            <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>--}}
                                         </div>
                                     @else
                                         <div>
@@ -139,7 +139,7 @@
     <!--Онлайн-конференции-->
     <div class="container mt-4 mt-lg-6">
         <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
+            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row">
                 <div>
                     <h3 class="f-700 m-0">{{ __("index.online") }}</h3>
                 </div>
@@ -148,7 +148,7 @@
                         <p class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p></a>
                 </div>
             </div>
-            <div class="slider_navigation WatchedSwiper_nav mb-4 d-none d-md-block">
+            <div class="slider_navigation videoPopularSwiper_nav WatchedSwiper_nav mb-4 d-none d-md-flex flex-row-reverse">
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
@@ -171,7 +171,7 @@
                                         @foreach($conference->getLectors()->take(3) as $k => $lector)
                                             <img
                                                 src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}"
-                                                style="height: 50px;width: 50px;object-fit: cover" class="@if ($k>0) m-25 @endif rounded-circle"
+                                                style="height: 50px;width: 50px;object-fit: cover;border: 2.4px solid #FFFFFF;" class="@if ($k>0) m-25 @endif rounded-circle"
                                                 alt="personPic">
                                         @endforeach
                                     </div>
@@ -192,7 +192,7 @@
 
     <!--Webinars-->
     <div class="container mt-4 mt-lg-6 useful_articles overflow-auto">
-        <div class="d-flex align-items-lg-center flex-column flex-lg-row">
+        <div class="d-flex align-items-lg-end flex-column flex-lg-row">
             <div>
                 <h3 class="f-700 m-0">{{ __("index.lectia") }}</h3>
             </div>
@@ -209,7 +209,7 @@
                              style="width: 100%; height: 150px; object-fit: cover" alt="notePic">
                         <div class="d-flex flex-column p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->first()->title}}</p>
-                            <p class="f-700 mt-1 fs-16">{{$webinar->info->title}}</p>
+                            <p class="f-700 mt-1 fs-16 min-h-120">{{$webinar->info->title}}</p>
                             <div class="d-flex align-items-center mt-2">
                                 <img
                                     src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}"
@@ -291,7 +291,7 @@
 
     <!--partners-->
     <div class="container mt-4 mt-lg-6">
-        <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
+        <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row">
             <div>
                 <h3 class="f-700 m-0">{{ __("index.partners") }}</h3>
             </div>
@@ -340,7 +340,7 @@
 
     <!--Blog-->
     <div class="container mt-4 mt-lg-6 useful_articles">
-        <div class="d-flex align-items-lg-center mb-4 flex-column flex-lg-row">
+        <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row">
             <div>
                 <h3 class="f-700 m-0">{{ __("index.blogs") }}</h3>
             </div>
@@ -382,7 +382,7 @@
 
     <!--lectors-->
     <div class="container mt-5">
-        <div class="d-flex align-items-lg-center flex-column flex-lg-row">
+        <div class="d-flex align-items-lg-end flex-column flex-lg-row">
             <div>
                 <h3 class="f-700 m-0">{{ __("index.lectors") }}</h3>
             </div>
@@ -398,7 +398,7 @@
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}"
                              style="width: 251px; height: 203px; object-fit: cover" alt="lecturerPic">
                         <div class="text-black p-3">
-                            <p class="fs-20 f-700">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</p>
+                            <p class="fs-20 f-700 min-h-90">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</p>
                             @if($lector->directions->first())
                             <p class="text-secondary fs-14 f-500">{{$lector->directions->first()->title}}</p>
                             @endif

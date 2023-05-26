@@ -24,12 +24,66 @@
 }
 
 @media (max-width: 991px) {
+
+    .header_menu{
+        .btn_for_menu{
+            display: block;
+        }
+        .btn_close_for_menu{
+            display: block;
+            font-size: 30px;
+            text-align: end;
+            width: 100%;
+            margin-top: 20px;
+            margin-right: 30px;
+        }
+        nav {
+            position: absolute;
+            top: 0;
+            left: -1200px;
+            z-index: 11;
+            transition: 0.6s;
+
+            &.show {
+                left: 0;
+                transition: 0.6s;
+                background-color: #ffffff;
+
+            }
+            ul {
+            flex-direction: column;
+            //background-color: #ffffff;
+            width: 100vw;
+            //width: 100%;
+            height: 100vh;
+            li {
+                margin-bottom: 10px !important;
+
+                a {
+                    color: $primary !important;
+                    font-size: 24px !important;
+                    &:first-child{
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
+        }
+
+
+    }
+
+
+
     .courses-show-div {
         .main4 {
             .one-lector {
                 padding: 27px 35px;
             }
         }
+    }
+    .header_text_block{
+        flex: 0 0 100%;
     }
 }
 
@@ -51,6 +105,12 @@
                 background: linear-gradient(180deg, #FFFFFF 42%, #F9F9F9 40%);
             }
         }
+    }
+    .min-h-120{
+        min-height: 120px;
+    }
+    .min-h-96{
+        min-height: 96px;
     }
 }
 
@@ -321,7 +381,7 @@
 
     .section_top {
         width: 100%;
-        height: 400px;
+        height: 420px;
     }
     .card_course {
         height: 595px;

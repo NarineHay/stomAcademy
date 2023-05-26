@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <div class="card-txts">
-                                    <p class="fs-32 card-title-txt fw-bolder">{{ $course->info->title }}</p>
+                                    <p class="fs-25 card-title-txt fw-bolder">{{ $course->info->title }}</p>
                                     <p class="m-0 text-secondary fs-14 f-500 card-price-txt">{{ __("courses.price_all") }}</p>
                                     <h3 class="f-700 mt-0 text-primary">
                                         @if($course->sale)
@@ -221,7 +221,8 @@
                 <div id="course-program" class="main3">
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-7 col-12">
+{{--                            <div class="col-xl-7 col-12">--}}
+                            <div class="col-12">
                                 <div class="mt-4 mt-lg-0">
                                     <h3 class="f-700 m-0 lh-40 pb-2">{{ __("courses.menu.program") }}</h3>
                                     <div class="mt-2">
@@ -418,6 +419,7 @@
                     <h3 class="f-700 mb-4 color-23">{{ __("courses.faq.title") }}</h3>
                     <div class="row">
                         <div class="col-12 col-lg-6">
+{{--                        <div class="col-12">--}}
                             <div class="mb-1 courses-show-accordion-item">
                                 <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse"
                                      data-bs-target="#five">
@@ -447,7 +449,7 @@
                 <div id="other-courses" class="main7">
                     <div class="d-flex justify-content-between">
                         <h3 class="f-700 mb-4">{{ __("courses.courses") }}</h3>
-                        <div class="slider_navigatioin AdditionsSwiper_nav mb-4 d-none d-md-block">
+                        <div class="slider_navigation videoPopularSwiper_nav  AdditionsSwiper_nav mb-4 d-none d-md-flex flex-row-reverse">
                         </div>
                     </div>
                     <div class="swiper AdditionsSwiper">
@@ -461,7 +463,7 @@
                                              style="width: 386px; height: 214px; object-fit: cover">
                                         <div class="p-3">
                                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
-                                            <p class="f-700 fs-16">{{$course->info->title}}</p>
+                                            <p class="f-700 fs-16 min-h-96">{{$course->info->title}}</p>
                                             <div class="mt-2 d-flex justify-content-between">
                                                 <div>
                                                     <i class="far fa-clock me-1"></i> <span
@@ -475,7 +477,7 @@
                                                         <img class="rounded-circle border-white me-3 img_r_42"
                                                              src="{{ \Illuminate\Support\Facades\Storage::url($course->getLectors()->first()->lector->photo) }}"
                                                              alt="videoPic">
-                                                        <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>
+{{--                                                        <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>--}}
                                                     </div>
                                                 @else
                                                     <div>
