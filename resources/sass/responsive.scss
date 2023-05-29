@@ -144,6 +144,9 @@
 }
 
 @media (max-width: 1200px) {
+    .watched-bg2 {
+        height: 230px;
+    }
     h1 {
         font-size: 48px;
     }
@@ -247,6 +250,19 @@
 }
 
 @media (max-width: 992px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25% 25%;
+        gap: 20px;
+        grid-template-rows: 100%;
+
+    }
+    .grid-big-div{
+        overflow-x: scroll;
+    }
+    .grid-item-1{
+        grid-row: 1 ;
+    }
     .useful_articles {
         .useful_article_row {
             border-radius: 0;
@@ -262,6 +278,10 @@
 
             & > div {
                 height: 160px;
+            }
+
+            h5{
+                font-size: 15px !important;
             }
         }
     }

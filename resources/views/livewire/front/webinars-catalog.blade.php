@@ -9,6 +9,9 @@
         </div>
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 align-items-lg-center">
             <div class="d-flex education_tags mb-3 mb-lg-0">
+                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
+                    <a href="#" class="text-black">{{ __("courses.tabs.all") }}</a>
+                </button>
                 <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text">
                     <a href="{{route('course.index')}}" class="text-black">Онлайн-курсы</a>
                 </button>
@@ -55,8 +58,8 @@
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" class="w-100" alt="addPic" style="width: 250px; height: 150px; object-fit: cover">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->first()->title}}</p>
-                            <p class="f-700 fs-16" style="min-height: 50px">{{$webinar->info->title}} {{$webinar->id}}</p>
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
+                            <p class="f-700 fs-16" style="min-height: 72px">{{$webinar->info->title}} {{$webinar->id}}</p>
+                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center" style="min-height: 63px;">
                                 <div class="d-flex align-items-center">
                                     <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" style="height: 40px; width: 40px;object-fit: cover">
                                     <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>

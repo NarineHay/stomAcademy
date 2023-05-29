@@ -9,6 +9,9 @@
         </div>
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 align-items-lg-center">
             <div class="d-flex education_tags mb-3 mb-lg-0">
+                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
+                    <a href="#" class="text-black">{{ __("courses.tabs.all") }}</a>
+                </button>
                 <button class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
                     <a href="{{route('course.index')}}" class="text-black">{{ __("courses.tabs.courses") }}</a>
                 </button>
@@ -50,7 +53,7 @@
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" style="width: 100%; height: 175px; object-fit: cover" alt="addPic">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
-                            <span><p style="min-height: 50px;" href="{{route('course.show',$course->id)}}" class="text-black f-700 fs-16">{{$course->info->title}}</p></span>
+                            <span><p style="min-height: 96px;" href="{{route('course.show',$course->id)}}" class="text-black f-700 fs-16">{{$course->info->title}}</p></span>
 
                             <div class="mt-2 d-flex justify-content-between">
                                 <div class="d-flex justify-content-between w-100">

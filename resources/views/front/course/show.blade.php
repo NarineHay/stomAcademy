@@ -538,7 +538,7 @@
                                     </div>
                                     <button
                                         class="btn btn-primary d-flex mx-auto justify-content-center align-content-center w-100 fs-18 f-600 br-12 mb-5 py-3 lh-22 mt-5"
-                                        style="max-width: 737px;">{{ __("courses.contacts.form.button") }}
+                                        style="max-width: 737px;">{{ __("courses.contacts.form.button_question") }}
                                     </button>
 
                                 </form>

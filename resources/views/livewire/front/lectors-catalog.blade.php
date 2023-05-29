@@ -13,7 +13,7 @@
                     <a href="{{route('lectors.show',$lector->id)}}" class="bg-white br-12 d-block">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}" class="lector_card_photo w-100" alt="lecturerPic">
                         <div class="p-3">
-                            <p class="fs-20 f-700 text-black">
+                            <p class="fs-20 f-700 text-black" style="min-height: 60px">
                                 {{ $lector->userinfo->fullName }}
                             </p>
                             <p class="fs-14 f-500 text-secondary text-black">{{$lector->directions->first()->direction->title}}</p>
