@@ -27,7 +27,11 @@ class BlogsCatalog extends Component
 
     public function render()
     {
-        $data['blogs_top'] = Blog::query()->take(4)->orderBy('id','desc')->get();
+        $bt_query = Blog::query()->take(4)->orderBy('id','desc');
+        if($this->direction_id){
+            $bt_query = $bt_query->where("category_id",$this->direction_id);
+        }
+        $data['blogs_top'] = $bt_query->get();
         $ids = $data['blogs_top']->map(function ($blog){
             return $blog->id;
         });
@@ -39,7 +43,7 @@ class BlogsCatalog extends Component
             $blog_query = $blog_query->where("category_id",$this->direction_id);
         }
         $data['blogs'] = $blog_query->orderBy('id','desc')->paginate($this->perPage);
-
+        $data['hasMore'] = $blog_query->orderBy('id','desc')->count() - $data['blogs']->count() > 0;
         return view('livewire.front.blogs-catalog',$data);
     }
 }

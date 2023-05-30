@@ -2,6 +2,7 @@
     <div class="col-lg-10 col-12  mb-5 mb-lg-6 pb-lg-4">
         <div class="row mt-4">
             <div class="col-12 d-row d-xl-flex mb-4 mb-lg-6">
+                @if($blog_top)
                 <a href="{{route('blog.show',$blog_top->id)}}" style="color: inherit" class="d-block">
                     <div class="bg-white br-12">
                         <div>
@@ -16,6 +17,7 @@
                         </div>
                     </div>
                 </a>
+                @endif
                 <div class="ms-0 ms-xl-5 mt-4 mt-xl-0">
                     @foreach($blogs_top as $blog)
                         <a href="{{route('blog.show',$blog->id)}}" style="color: inherit" class="d-block br-12 d-flex flex-row align-items-center mb-4">
@@ -56,6 +58,7 @@
                 </a>
             @endforeach
         </div>
+        @if($hasMore)
         <button wire:click="loadNext"
                 class="w-100 fs-14 f-500 mt-4 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">{{ __("index.show_more") }}</button>
 
@@ -64,6 +67,7 @@
                 {{ $blogs->links() }}
             </nav>
         </div>
+        @endif
     </div>
     <div class="col-lg-2 col-12 position-relative" style="z-index: 100;top: -200px">
         <div class="aside d-none d-lg-block">
