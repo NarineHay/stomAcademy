@@ -58,27 +58,39 @@
                             <div class="mt-2 d-flex justify-content-between">
                                 <div class="d-flex justify-content-between w-100">
                                     <span><i class="far fa-clock me-1"></i> <span class="me-2 fs-14 f-500">{{$course->getDuration()}}</span></span>
-                                    <span><i class="fa-solid fa-video"></i> <span class="ms-1 fs-14 f-500">{{$course->webinars_count}} </span></span>
+{{--                                    <span><i class="fa-solid fa-video"></i> <span class="ms-1 fs-14 f-500">{{$course->webinars_count}} </span></span>--}}
                                 </div>
-                            </div>
-                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                                <div class="mb-3 mb-md-0">
-                                    @if($course->sale)
-                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>
-                                        <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>
-                                    @else
-                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>
-                                    @endif
+                                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
+                                    <div class="mb-3 mb-md-0">
+                                        @if($course->sale)
+                                            <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>
+                                            <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>
+                                        @else
+                                            <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>
+                                        @endif
+                                    </div>
                                 </div>
-                                <form method="POST" class="dublicat_form" action="{{ route('addToCart') }}">
-                                    @csrf
-                                    <input type="hidden" value="{{ $course->id }}" name="id">
-                                    <input type="hidden" value="course" name="type">
-                                    <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">
-                                        {{ __("index.buy") }}
-                                    </button>
-                                </form>
+
                             </div>
+{{--                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">--}}
+{{--                                <div class="mb-3 mb-md-0">--}}
+{{--                                    @if($course->sale)--}}
+{{--                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>--}}
+{{--                                        <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>--}}
+{{--                                    @else--}}
+{{--                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+                            <form method="POST" class="dublicat_form" action="{{ route('addToCart') }}">
+                                @csrf
+                                <input type="hidden" value="{{ $course->id }}" name="id">
+                                <input type="hidden" value="course" name="type">
+                                <button class="btn btn-outline-primary w-100 br-12 px-3 py-2 fs-14 f-600">
+                                    {{ __("index.buy") }}
+                                </button>
+                            </form>
+
                         </div>
                     </a>
                 </div>
@@ -95,7 +107,7 @@
     </div>
     <div wire:ignore class="col-lg-2 col-12 position-relative" style="z-index: 100;">
         <div class="aside d-none d-lg-block">
-            <div class="position-fixed">
+            <div >
                 <div class="mt-4 ms-3 pt-5">
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
                            data-bs-toggle="collapse" data-bs-target="#fg-1"><span>{{ __("courses.filters.directions") }}</span><i class="fal fa-angle-right"></i></label>

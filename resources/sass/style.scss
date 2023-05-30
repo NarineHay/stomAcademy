@@ -425,7 +425,7 @@ font-size: 20px;
 }
 
 .aside {
-    position: absolute;
+    //position: absolute;
     width: 1000px;
     min-height: 100vh;
     height: 100%;
@@ -433,6 +433,7 @@ font-size: 20px;
     top: 0;
     background-color: #fff;
     padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 .col-55 {

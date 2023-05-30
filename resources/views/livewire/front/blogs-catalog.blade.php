@@ -71,7 +71,7 @@
     </div>
     <div class="col-lg-2 col-12 position-relative" style="z-index: 100;top: -200px">
         <div class="aside d-none d-lg-block">
-            <div class="position-fixed">
+            <div >
                 <div class="mt-4 ms-3 pt-5">
                     <h5 class="f-600 m-0">{{ __("blog.category_title") }}</h5>
                     <div class="mt-4">

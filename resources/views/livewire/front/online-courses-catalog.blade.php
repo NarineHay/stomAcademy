@@ -57,38 +57,47 @@
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
                             <p class="f-700 fs-16" style="min-height: 120px">{{$course->info->title}}</p>
                             <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    <div class="d-flex align-items-center">
-                                        <div>
-                                            @foreach($course->getLectors()->take(3) as $k => $lector)
-                                                <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" style="width: 48px;height: 48px;object-fit: cover" class="@if ($k>0) m-25 @endif rounded-circle" alt="personPic">
-                                            @endforeach
+                                <div class="d-flex align-items-center me-2">
+                                    <div>
+                                        @foreach($course->getLectors()->take(3) as $k => $lector)
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" style="width: 48px;height: 48px;object-fit: cover" class="@if ($k>0) m-25 @endif rounded-circle" alt="personPic">
+                                        @endforeach
 
-                                        </div>
-                                        <div>
-                                            @if($course->getLectors()->count() > 3)
-                                                <span class="fs-20 f-600 ms-2">{{ $course->getLectors()->count() - 3 }}+</span>
-                                            @endif
-                                        </div>
+                                    </div>
+                                    <div>
+                                        @if($course->getLectors()->count() > 3)
+                                            <span class="fs-20 f-600 ms-2">{{ $course->getLectors()->count() - 3 }}+</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
+                                    <div class="mb-3 mb-md-0">
+                                        @if($course->sale)
+                                            <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>
+                                            <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>
+                                        @else
+                                            <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                                <div class="mb-3 mb-md-0">
-                                    @if($course->sale)
-                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>
-                                        <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>
-                                    @else
-                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>
-                                    @endif
-                                </div>
-                                <form method="POST" action="{{route('addToCart')}}">
+{{--                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">--}}
+{{--                                <div class="mb-3 mb-md-0">--}}
+{{--                                    @if($course->sale)--}}
+{{--                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>--}}
+{{--                                        <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>--}}
+{{--                                    @else--}}
+{{--                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+                            <form method="POST" action="{{route('addToCart')}}">
                                     @csrf
                                     <input type="hidden" value="{{ $course->id }}" name="id">
                                     <input type="hidden" value="course" name="type">
-                                    <button class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">Купить</button>
+                                    <button class="btn btn-outline-primary w-100 br-12 px-3 py-2 fs-14 f-600">Купить</button>
                                 </form>
-                            </div>
+
                         </div>
                     </div>
                 </a>
@@ -107,7 +116,7 @@
     </div>
     <div wire:ignore class="col-lg-2 col-12 position-relative" style="z-index: 100;">
         <div class="aside d-none d-lg-block">
-            <div class="position-fixed">
+            <div >
                 <div class="mt-4 ms-3 pt-5">
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
                            data-bs-toggle="collapse" data-bs-target="#fg-1"><span>Области</span><i
