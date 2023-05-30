@@ -36,6 +36,9 @@ a{
 .min-h-96{
     min-height: 96px;
 }
+.min-h-75{
+    min-height: 75px;
+}
 .min-h-60{
     min-height: 60px;
 }
@@ -1101,4 +1104,25 @@ font-size: 20px;
         height: 100%;
         object-fit: cover;
     }
+}
+
+.personal-cart-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.videoTxt-index{
+    min-height: 50px;
+}
+
+.courseTxt-index {
+    max-height: 75px;
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

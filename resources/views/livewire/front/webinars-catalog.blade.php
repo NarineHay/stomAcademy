@@ -12,7 +12,7 @@
                 <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
                     <a href="#" class="text-black">{{ __("courses.tabs.all") }}</a>
                 </button>
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text">
+                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray ms-2 text-black btn_text">
                     <a href="{{route('course.index')}}" class="text-black">Онлайн-курсы</a>
                 </button>
                 <button class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">

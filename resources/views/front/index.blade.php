@@ -38,11 +38,11 @@
                     <a href="{{ route("course.show",$course->id) }}"
                        class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12" style="color: inherit">
                         <img src='{{\Illuminate\Support\Facades\Storage::url($course->image)}}' alt="videoPic"
-                             style="width: 100%; height: 192px; object-fit: cover">
+                             class="videoPic-index" style="width: 100%; height: 192px; object-fit: cover;   border-radius: 12px;">
                         <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
                             <p class="text-primary text-uppercase f-700 fs-10">{{$course->directions->first()->title}}</p>
-                            <h5 class="f-700">{{$course->info->title}}</h5>
-                            <div class="mt-2">
+                            <h5 class="f-700 fs-21 videoTxt-index">{{$course->info->title}}</h5>
+                            <div class="mt-2 min-h-48">
                                 <i class="far fa-clock me-1"></i> <span
                                     class="me-2 f-500 f-14">{{$course->getDuration()}}</span>
                                 <i class="fas fa-tasks me-1"></i> <span class="f-500 f-14">{{$course->webinars_count}} видео</span>
@@ -99,7 +99,7 @@
                                  style="width: 386px; height: 214px; object-fit: cover">
                             <div class="p-3">
                                 <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
-                                <p class="f-700 fs-16 min-h-96">{{$course->info->title}}</p>
+                                <p class="f-700 fs-16 min-h-75 courseTxt-index">{{$course->info->title}}</p>
                                 <div class="mt-2 d-flex justify-content-between">
                                     <div>
                                         <i class="far fa-clock me-1"></i> <span
@@ -222,15 +222,15 @@
         </div>
         <div class="row flex-nowrap flex-md-wrap">
             @foreach($webinars as $webinar)
-                <a class="col-10 col-md-4 col-xxl-2 mt-3 d-block" style="color: inherit"
+                <a class="col-10 col-md-3 col-xxl-2 mt-3 d-block" style="color: inherit"
                    href="{{ route("webinar.show",$webinar->id) }}">
                     <div class="bg-white br-12">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}"
                              style="width: 100%; height: 150px; object-fit: cover" alt="notePic">
                         <div class="d-flex flex-column p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->first()->title}}</p>
-                            <p class="f-700 mt-1 fs-16 min-h-120">{{$webinar->info->title}}</p>
-                            <div class="d-flex align-items-center mt-2">
+                            <p class="f-700 mt-1 fs-16 min-h-120 min-h-72-1200 min-h-72-992">{{$webinar->info->title}}</p>
+                            <div class="d-flex align-items-center mt-2 min-h-42">
                                 <img
                                     src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}"
                                     class="me-2 rounded-circle" alt="customerPic"
@@ -239,7 +239,7 @@
                             </div>
                             <div
                                 class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                                <div class="mb-3 mb-md-0">
+                                <div class="mb-3 mb-md-0 min-h-50">
                                     @if($webinar->sale)
                                         <span class="f-700 text-primary fs-16 me-1">{{ $webinar->sale->rub }} ₽</span>
                                         <del class="f-700 text-secondary fs-16">{{$webinar->price->rub}} ₽</del>
@@ -349,7 +349,8 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="grid-item"></div>
+
+
 
                 </div>
                 </div>

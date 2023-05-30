@@ -15,9 +15,9 @@
             <div class="text-white d-none d-lg-block">
                 <p class="fs-12 f-700 d-flex rounded-circle justify-content-center noticeCount">{{$count ?? '0'}}</p>
             </div>
-            <div class="ms-3 d-lg-none">
-                <i class="fas fa-bars text-white fs-20 mt-1"></i>
-            </div>
+{{--            <div class="ms-3 d-lg-none">--}}
+{{--                <i class="fas fa-bars text-white fs-20 mt-1"></i>--}}
+{{--            </div>--}}
         </div>
     </div>
 @endauth

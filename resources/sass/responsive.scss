@@ -13,6 +13,9 @@
 }
 
 @media (min-width: 992px) {
+    .min-h-72-992{
+        min-height: 72px;
+    }
     .col-lg-55 {
         flex: 0 0 auto;
         width: 20%;
@@ -20,7 +23,10 @@
     .big {
         width: 100%;
     }
-
+    .cart-p-m-w{
+        max-width: 119px;
+        width: 100%;
+    }
 }
 
 @media (max-width: 991px) {
@@ -88,13 +94,36 @@
 }
 
 @media (min-width: 1200px) {
+    .min-h-72-1200{
+        min-height: 72px;
+    }
     .col-xl-55 {
         flex: 0 0 auto;
         width: 20%;
     }
+    .cart-p-m-w{
+        max-width: 210px;
+        width: 100%;
+    }
 }
 
 @media (min-width: 1400px) {
+    .videoPic-index{
+        max-width: 348px;
+    }
+    .min-h-48{
+        min-height: 48px;
+    }
+    .videoTxt-index{
+        white-space: nowrap;
+        width: 222px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .cart-p-m-w{
+        max-width: 251px;
+        width: 100%;
+    }
     .col-xxl-55 {
         flex: 0 0 auto;
         width: 20%;
@@ -109,12 +138,27 @@
     .min-h-120{
         min-height: 120px;
     }
+    .min-h-42{
+        min-height: 42px;
+    }
+    .min-h-50{
+        min-height: 50px;
+    }
+    .min-h-75{
+        min-height: 75px;
+    }
     .min-h-96{
         min-height: 96px;
     }
 }
 
 @media only screen and (max-width: 1199px) and (min-width: 992px){
+    .min-h-42{
+        min-height: 42px;
+    }
+    .min-h-50{
+        min-height: 50px;
+    }
     .courses-show-div{
         .main8{
             .main8-2{
@@ -144,6 +188,7 @@
 }
 
 @media (max-width: 1200px) {
+
     .watched-bg2 {
         height: 230px;
     }
@@ -250,18 +295,25 @@
 }
 
 @media (max-width: 992px) {
+    //.grid-container {
+    //    display: grid;
+    //    grid-template-columns: 25% 25% 25% 25% 25%;
+    //    gap: 20px;
+    //    grid-template-rows: 100%;
+    //
+    //}
     .grid-container {
         display: grid;
-        grid-template-columns: 25% 25% 25% 25% 25%;
+        grid-template-columns: calc(50% - 20px);
         gap: 20px;
-        grid-template-rows: 100%;
-
+        grid-template-rows: auto auto;
     }
     .grid-big-div{
         overflow-x: scroll;
     }
     .grid-item-1{
         grid-row: 1 ;
+        grid-column: 1/span 2;
     }
     .useful_articles {
         .useful_article_row {
@@ -429,6 +481,15 @@
 
 
 @media (max-width: 767px){
+    .videoTxt-index{
+        max-height: 75.56px;
+        display: -webkit-box;
+        max-width: 400px;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     .courses-show-div{
         .accordion-button::after {
             //flex-shrink: 0;

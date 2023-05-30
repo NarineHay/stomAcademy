@@ -21,8 +21,10 @@
             <div>
                 <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
             </div>
-            @include('front.components.header_menu')
-            <x-header-user></x-header-user>
+            <div class="d-flex align-items-center justify-content-between">
+                @include('front.components.header_menu')
+                <x-header-user></x-header-user>
+            </div>
         </div>
     </header>
 
@@ -71,8 +73,10 @@
                         <div>
                             <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
                         </div>
-                        @include('front.components.header_menu')
-                        <x-header-user></x-header-user>
+                        <div class="d-flex align-items-center justify-content-between">
+                            @include('front.components.header_menu')
+                            <x-header-user></x-header-user>
+                        </div>
                     </div>
                 </header>
                 <section class="section_top"
@@ -96,8 +100,11 @@
                         <div>
                             <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
                         </div>
-                        @include('front.components.header_menu')
-                        <x-header-user></x-header-user>
+                        <div class="d-flex align-items-center justify-content-between">
+                            @include('front.components.header_menu')
+                            <x-header-user></x-header-user>
+                        </div>
+
                     </div>
                 </header>
             @endif

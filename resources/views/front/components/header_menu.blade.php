@@ -2,6 +2,7 @@
     <i class="fal fa-bars text-white cp btn_for_menu" ></i>
     <nav class="navbar p-0">
         <i class="fas fa-times text-primary btn_close_for_menu"></i>
+
         <ul class="text-decoration-none list-unstyled d-flex mb-0">
             <li><a href="{{ route("course.index") }}" class="text-decoration-none me-2 me-xl-3 text-white fs-16 f-600">{{ __("header.menu.courses") }}</a></li>
             <li><a href="{{ route("lectors.index") }}" class="text-decoration-none ms-3 me-2 me-xl-3 ms-xl-4 text-white fs-16 f-600">{{ __("header.menu.lectors") }}</a></li>

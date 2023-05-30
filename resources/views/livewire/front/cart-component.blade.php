@@ -13,15 +13,15 @@
     </div>
 
     <div class="row">
-        <div class="col-7 me-6">
+        <div class="col-lg-7 col-12 me-6">
             @foreach($items as $item)
                 @if($item->type == 'webinar')
                     <div class="col-12  mt-4 me-6">
                         <div class="bg-white br-12 d-flex justify-content-between flex-column flex-lg-row">
                             <div class="d-flex align-items-center py-2 px-2 fs-14">
-                                <img src="{{\Illuminate\Support\Facades\Storage::url($item->webinar->image)}}"
+                                <img class="personal-cart-img" src="{{\Illuminate\Support\Facades\Storage::url($item->webinar->image)}}"
                                      alt="basketPic">
-                                <p class="ms-2 m-0 f-500 fs-14">{{$item->webinar->info->title}}</p>
+                                <p class="ms-2 m-0 f-500 fs-14 cart-p-m-w">{{$item->webinar->info->title}}</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
@@ -49,9 +49,9 @@
                     <div class="col-12  mt-4 me-6">
                         <div class="bg-white br-12 d-flex justify-content-between flex-column flex-lg-row">
                             <div class="d-flex align-items-center py-2 px-2 fs-14">
-                                <img src="{{ Illuminate\Support\Facades\Storage::url($item->course->image) }}"
+                                <img class="personal-cart-img" src="{{ Illuminate\Support\Facades\Storage::url($item->course->image) }}"
                                      alt="basketPic">
-                                <p class="ms-2 m-0 f-500 fs-14">{{$item->course->info->title}}</p>
+                                <p class="ms-2 m-0 f-500 fs-14 cart-p-m-w">{{$item->course->info->title}}</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
@@ -80,7 +80,7 @@
             @endforeach
         </div>
 
-        <div class="col-4">
+        <div class="col-lg-4 col-12">
             <div class="col-12 mt-4">
                 <div class="bg-white br-12 p-4">
                     <div class="fs-14">
