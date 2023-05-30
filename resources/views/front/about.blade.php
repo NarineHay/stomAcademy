@@ -77,8 +77,10 @@
                         <img src="{{\Illuminate\Support\Facades\Storage::url($lector->userinfo->image)}}" style="width: 100%; height: 300px; object-fit: cover" alt="lecturerPic">
                         <div class="text-black p-3">
                             <p class="fs-20 f-700">{{$lector->name}}</p>
+                            @if($lector->lector->directions)
                             <p class="text-secondary fs-14 f-500">{{$lector->lector->directions->title}}</p>
-                            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
+                            @endif
+                                <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
                         </div>
                     </a>
                 </div>
