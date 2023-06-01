@@ -53,23 +53,23 @@
 
         <div class="row mt-4">
             @foreach($webinars as $webinar)
-                <a href="{{ route("webinar.show",$webinar->id) }}" style="color: inherit" class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
+                <a href="{{ route("webinar.show",$webinar->id) }}" style="color: inherit" class="col-xxl-3 col-lg-4 col-sm-6 col-12 mb-3 md-sm-0">
                     <div class="bg-white br-12">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" class="w-100" alt="addPic" style="width: 250px; height: 150px; object-fit: cover">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->first()->title}}</p>
-                            <p class="f-700 fs-16" style="min-height: 72px">{{$webinar->info->title}} {{$webinar->id}}</p>
+                            <p class="f-700 fs-16 courseTxt-index">{{$webinar->info->title}}</p>
                             <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center" style="min-height: 63px;">
                                 <div class="d-flex align-items-center">
                                     <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" style="height: 40px; width: 40px;object-fit: cover">
                                     <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
                                 </div>
-                                <div class="mt-3 mt-xl-0">
+                                <div class="mt-3 mt-xl-0 d-flex flex-column">
                                     @if($webinar->sale)
-                                        <span class="f-700 text-primary fs-16 me-1">{{ $webinar->sale->rub }} ₽</span>
-                                        <del class="f-700 text-secondary fs-16">{{$webinar->price->rub}} ₽</del>
+                                        <span class="f-700 text-primary fs-16 me-1 text-nowrap">{{ $webinar->sale->rub }} ₽</span>
+                                        <del class="f-700 text-secondary fs-16 text-nowrap">{{$webinar->price->rub}} ₽</del>
                                     @else
-                                        <span class="f-700 text-primary fs-16 me-1">{{ $webinar->price->rub }} ₽</span>
+                                        <span class="f-700 text-primary fs-16 me-1 text-nowrap">{{ $webinar->price->rub }} ₽</span>
                                     @endif
                                 </div>
                             </div>

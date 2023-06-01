@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="container mt-4 mt-lg-5">
-        <div class="d-flex justify-content-center flex-wrap gap-2">
+        <div class="d-flex justify-content-center flex-wrap gap-2 directions_index">
             <a href="{{route('course.index')}}" class="btn btn-outline-primary rounded-5 fs-15 f-600 py-2 px-3">
                 {{ __("index.all_directions") }}
             </a>
@@ -12,6 +12,7 @@
                     {{$direction->title}}
                 </a>
             @endforeach
+            <span class="show_more btn btn-outline-primary rounded-5 fs-15 f-600 py-2 px-3">Показать еще</span>
         </div>
     </div>
     <!--Популярные курсы-->
@@ -475,7 +476,7 @@
                        style="color:inherit">
                         <div class="bg-white br-12">
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}"
-                                 style="width: 251px; height: 203px; object-fit: cover" alt="lecturerPic">
+                                 style="width: 100%; height: 203px; object-fit: cover" alt="lecturerPic">
                             <div class="text-black p-3">
                                 <p class="fs-20 f-700 min-h-90">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</p>
                                 @if($lector->directions->first())

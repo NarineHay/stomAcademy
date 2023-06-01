@@ -764,13 +764,13 @@ font-size: 20px;
                 }
                 .course-card-form{
                     button{
-                        padding: 18px 12px;
+                        padding: 10px 12px;
                     }
                 }
                 .div-icons{
                     gap: 20px;
                     div{
-                        width: 196px;
+                        width: auto;
                     }
                 }
             }
@@ -1119,11 +1119,26 @@ font-size: 20px;
 }
 
 .courseTxt-index {
-    max-height: 75px;
+    height: 75px;
     display: -webkit-box;
     max-width: 100%;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+
+.password_container{
+    .fa-eye{
+        display: none;
+    }
+    &.show{
+        .fa-eye-slash{
+            display: none;
+        }
+        .fa-eye{
+            display: inline-block;
+        }
+    }
 }

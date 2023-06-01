@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <div class="card-txts">
-                                    <p class="fs-25 card-title-txt fw-bolder">{{ $course->info->title }}</p>
+{{--                                    <p class="fs-25 card-title-txt fw-bolder">{{ $course->info->title }}</p>--}}
                                     <p class="m-0 text-secondary fs-14 f-500 card-price-txt">{{ __("courses.price_all") }}</p>
                                     <h3 class="f-700 mt-0 text-primary">
                                         @if($course->sale)
@@ -61,13 +61,13 @@
                                         <div
                                             class="course-card-form-div d-flex justify-content-between flex-column flex-lg-row mb-3">
                                             <div class="form-check">
-                                                <input type="checkbox" class="mr-1 form-check-input">
-                                                <label class="form-check-label">1 {{ __("courses.free") }}</label>
+                                                <input type="checkbox" class="mr-1 form-check-input ">
+                                                <label class="form-check-label fs-14">1 {{ __("courses.free") }}</label>
                                             </div>
                                             <div class="form-check">
                                                 <input type="checkbox" checked=""
                                                        class="mr-1 form-check-input">
-                                                <label class="form-check-label">{{ __("courses.all_course") }}
+                                                <label class="form-check-label  fs-14">{{ __("courses.all_course") }}
                                                     ({{ $course->sale->rub ?? $course->price->rub }}
                                                     )</label>
                                             </div>
@@ -92,7 +92,7 @@
                                                   fill="#191F70"/>
                                         </svg>
                                         <span
-                                            class="ms-2 f-500 fs-16 lh-20">{{ $course->getLectors()->first()->userInfo->fullName }}</span>
+                                            class="ms-2 f-500 fs-14 lh-20">{{ $course->getLectors()->first()->userInfo->fullName }}</span>
                                     </div>
                                     <div>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -105,7 +105,7 @@
                                                   fill="#191F70"/>
                                         </svg>
                                         <span
-                                            class="ms-2 f-500 fs-16 lh-20">{{ $course->getDuration() }}</span>
+                                            class="ms-2 f-500 fs-14 lh-20">{{ $course->getDuration() }}</span>
                                     </div>
                                     <div>
                                         <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
@@ -120,7 +120,7 @@
                                                   d="M4.66667 12.5C4.66667 12.0398 5.03976 11.6667 5.5 11.6667H10.5C10.9602 11.6667 11.3333 12.0398 11.3333 12.5C11.3333 12.9603 10.9602 13.3334 10.5 13.3334H5.5C5.03976 13.3334 4.66667 12.9603 4.66667 12.5Z"
                                                   fill="#191F70"/>
                                         </svg>
-                                        <span class="ms-2 f-500 fs-16 lh-20">{{ __("courses.certificate") }}</span>
+                                        <span class="ms-2 f-500 fs-14 lh-20">{{ __("courses.certificate") }}</span>
                                     </div>
                                     <div>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -129,7 +129,7 @@
                                                   d="M2.49992 10C2.49992 5.8579 5.85778 2.50004 9.99992 2.50004C14.1421 2.50004 17.4999 5.8579 17.4999 10C17.4999 14.1422 14.1421 17.5 9.99992 17.5C5.85778 17.5 2.49992 14.1422 2.49992 10ZM9.99992 0.833374C4.93731 0.833374 0.833252 4.93743 0.833252 10C0.833252 15.0626 4.93731 19.1667 9.99992 19.1667C15.0625 19.1667 19.1666 15.0626 19.1666 10C19.1666 4.93743 15.0625 0.833374 9.99992 0.833374ZM8.7955 5.97333C8.53979 5.80286 8.211 5.78696 7.94004 5.93198C7.66907 6.07699 7.49992 6.35938 7.49992 6.66671V13.3334C7.49992 13.6407 7.66907 13.9231 7.94004 14.0681C8.211 14.2131 8.53979 14.1972 8.7955 14.0267L13.7955 10.6934C14.0273 10.5389 14.1666 10.2787 14.1666 10C14.1666 9.72141 14.0273 9.46122 13.7955 9.30667L8.7955 5.97333ZM11.8309 10L9.16658 11.7763V8.22381L11.8309 10Z"
                                                   fill="#191F70"/>
                                         </svg>
-                                        <span class="ms-2 f-500 fs-16 lh-20">15 минут</span>
+                                        <span class="ms-2 f-500 fs-14 lh-20">15 минут</span>
                                     </div>
 
 
@@ -141,7 +141,7 @@
                     </div>
                     <div class="course_left">
                         <div class="about-course1">
-                            <h1 class="text-primary fw-bolder">{{ $course->info->title }}</h1>
+                            <h1 class="text-primary fw-bolder fs-30 lh-40">{{ $course->info->title }}</h1>
                             @if($course->webinars)
                                 <p>{{ $course->webinars->count() }} {{ __("courses.under_title") }}</p>
                             @endif
@@ -306,9 +306,9 @@
                         <div class="many-lector">
                             <h3 class="fs-32 f-700 lh-40 color-23 mb-4">{{ __("courses.menu.lectors") }}</h3>
                             <div
-                                class="lector-cards d-flex flex-wrap flex-lg-nowrap justify-content-lg-start justify-content-center align-items-center">
+                                class="lector-cards row">
                                 @foreach($course->getLectors() as $lector)
-                                    <div class="card1 me-2">
+                                    <div class="card1 col-12 col-lg-4">
                                         <a href="{{ route("lectors.show",$lector->id) }}"
                                            class="card br-12 mb-3 text-dark" style="max-width: 522px;">
                                             <div class="row g-0">
@@ -342,7 +342,7 @@
                                                                       fill="#232323"/>
                                                             </svg>
                                                             <span
-                                                                class="ms-2">{{ $lector->webinars->count() }} {{ __("courses.menu.lections") }}</span>
+                                                                class="ms-2">{{ $lector->webinars->count() }} {{ __("courses.lections") }}</span>
                                                         </div>
                                                     </div>
 

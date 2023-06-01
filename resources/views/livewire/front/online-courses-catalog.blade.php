@@ -9,18 +9,18 @@
         </div>
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 align-items-lg-center">
             <div class="d-flex education_tags mb-3 mb-lg-0">
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
-                    <a href="#" class="text-black">{{ __("courses.tabs.all") }}</a>
-                </button>
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text ms-2">
-                    <a href="{{route('course.index')}}" class="text-black">Онлайн-курсы</a>
-                </button>
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text ms-2">
-                    <a href="{{route('webinar.index')}}" class="text-black">Вебинары</a>
-                </button>
-                <button class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
-                    <a href="{{route('conference')}}" class="text-black">Онлайн-конференции</a>
-                </button>
+                <a class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
+                    {{ __("courses.tabs.all") }}
+                </a>
+                <a href="{{route('course.index')}}" class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text ms-2">
+                    Онлайн-курсы
+                </a>
+                <a href="{{route('webinar.index')}}" class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text ms-2">
+                    Вебинары
+                </a>
+                <a href="{{route('conference')}}" class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
+                    Онлайн-конференции
+                </a>
             </div>
 
             <div class="col-12 d-flex d-lg-none justify-content-between mt-2 filter_buttons_mobile mb-2">
@@ -49,20 +49,21 @@
 
         <div class="row mt-4">
             @foreach($courses as $course)
-                <a href="{{ route("conference.show",$course->id) }}" style="color: inherit" class="col-xxl-55 col-lg-3 col-md-4 col-sm-6 col-12 mb-3 md-sm-0">
+                <a href="{{ route("conference.show",$course->id) }}" style="color: inherit" class="col-xxl-3 col-lg-4 col-sm-6 col-12 mb-3 md-sm-0">
                     <div class="bg-white br-12">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" class="w-100"
-                             alt="addPic" style="width: 250px; height: 150px; object-fit: cover">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" class="w-100" alt="addPic" style="width: 250px; height: 150px; object-fit: cover">
                         <div class="p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
-                            <p class="f-700 fs-16" style="min-height: 120px">{{$course->info->title}}</p>
-                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center">
+                            <p class="f-700 fs-16 courseTxt-index">{{$course->info->title}}</p>
+                            <div class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center" style="min-height: 63px;">
                                 <div class="d-flex align-items-center me-2">
-                                    <div>
+                                    <div class="d-flex align-items-center">
                                         @foreach($course->getLectors()->take(3) as $k => $lector)
-                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" style="width: 48px;height: 48px;object-fit: cover" class="@if ($k>0) m-25 @endif rounded-circle" alt="personPic">
+                                            <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}" style="width: 48px;height: 48px;object-fit: cover" class="@if ($k>0) m-25 @endif rounded-circle border" alt="personPic">
                                         @endforeach
-
+                                            @if($course->getLectors()->count() == 1)
+                                                <p class="m-0 ms-2 fs-14 f-500">{{$course->getLectors()[0]->userinfo->fname}} {{$course->getLectors()[0]->userinfo->lname}}</p>
+                                            @endif
                                     </div>
                                     <div>
                                         @if($course->getLectors()->count() > 3)
@@ -70,34 +71,21 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                                    <div class="mb-3 mb-md-0">
-                                        @if($course->sale)
-                                            <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>
-                                            <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>
-                                        @else
-                                            <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>
-                                        @endif
-                                    </div>
+                                <div class="mt-3 mt-xl-0 d-flex flex-column">
+                                    @if($course->sale)
+                                        <span class="f-700 text-primary fs-16 me-1 text-nowrap">{{ $course->sale->rub }} ₽</span>
+                                        <del class="f-700 text-secondary fs-16  text-nowrap">{{$course->price->rub}} ₽</del>
+                                    @else
+                                        <span class="f-700 text-primary fs-16 me-1  text-nowrap">{{ $course->price->rub }} ₽</span>
+                                    @endif
                                 </div>
                             </div>
-{{--                            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">--}}
-{{--                                <div class="mb-3 mb-md-0">--}}
-{{--                                    @if($course->sale)--}}
-{{--                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>--}}
-{{--                                        <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>--}}
-{{--                                    @else--}}
-{{--                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>--}}
-{{--                                    @endif--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                            <form method="POST" action="{{route('addToCart')}}">
-                                    @csrf
-                                    <input type="hidden" value="{{ $course->id }}" name="id">
-                                    <input type="hidden" value="course" name="type">
-                                    <button class="btn btn-outline-primary w-100 br-12 px-3 py-2 fs-14 f-600">Купить</button>
-                                </form>
-
+                            <form class="dublicat_form" method="POST" action="{{route('addToCart')}}">
+                                @csrf
+                                <input type="hidden" value="{{ $course->id }}" name="id">
+                                <input type="hidden" value="webinar" name="type">
+                                <button class="btn btn-outline-primary w-100 f-600 br-12 mt-3 py-2 fs-14">Купить лекцию</button>
+                            </form>
                         </div>
                     </div>
                 </a>

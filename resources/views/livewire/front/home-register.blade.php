@@ -10,9 +10,10 @@
             <label for="exampleInputPassword1"
                    class="mb-1 text-secondary f-500 fs-12 m-0">{{ __("header.form.password") }}</label>
         </div>
-        <div class="position-relative">
+        <div class="position-relative password_container">
             <input wire:model="password" type="password" class="form-control br-12" id="exampleInputPassword1">
             <i class="fal fa-eye text-secondary position-absolute top-0 end-0 mt-2 me-2 cursor"></i>
+            <i class="fal eye fa-eye-slash text-secondary position-absolute top-0 end-0 mt-2 me-2 cursor"></i>
         </div>
     </div>
     <div class="form-group mt-3 mb-2">
@@ -21,9 +22,10 @@
                    class="mb-1 text-secondary f-500 fs-12 m-0">{{ __("header.form.password_re") }}</label>
             {{--                    <span class="text-primary fs-12 f-500 m-0">{{ __("header.form.password_forget") }}</span>--}}
         </div>
-        <div class="position-relative">
+        <div class="position-relative password_container">
             <input wire:model="password_re" type="password" class="form-control br-12" id="exampleInputPassword2">
             <i class="fal fa-eye text-secondary position-absolute top-0 end-0 mt-2 me-2 cursor"></i>
+            <i class="fal eye fa-eye-slash text-secondary position-absolute top-0 end-0 mt-2 me-2 cursor"></i>
         </div>
     </div>
     @if($error) <p class="p-0 mb-1 text-danger f-500 fs-12 m-0">{{ $error }}</p> @endif

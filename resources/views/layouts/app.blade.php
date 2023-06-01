@@ -21,7 +21,7 @@
             <div>
                 <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
             </div>
-            <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between flex-row-reverse flex-lg-row">
                 @include('front.components.header_menu')
                 <x-header-user></x-header-user>
             </div>
@@ -39,9 +39,11 @@
                                     <p class="fs-18 f-500 m-0 pt-3 pb-4">{!! __("header.under_title") !!}</p>
                                 </div>
                                 <div class="d-block d-lg-none">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#header_login_modal">
-                                        {{ __("header.form.title") }}
-                                    </button>
+                                    @if(!\Illuminate\Support\Facades\Auth::check())
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#header_login_modal">
+                                            {{ __("header.form.title") }}
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
                             <div class="header-login">
@@ -73,7 +75,7 @@
                         <div>
                             <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center justify-content-between  flex-row-reverse flex-lg-row">
                             @include('front.components.header_menu')
                             <x-header-user></x-header-user>
                         </div>
