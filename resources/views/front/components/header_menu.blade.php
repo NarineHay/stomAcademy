@@ -24,7 +24,7 @@
             <li>
                 <div class="dropdown header_flag">
                     <a class="text-decoration-none ms-3 me-2 me-xl-3 ms-xl-4 text-white fs-16 f-600 text-uppercase dropdown-toggle" data-bs-toggle="dropdown" >
-                        <img src="/dist/image/{{ \Illuminate\Support\Facades\App::getLocale() }}.svg">
+                        <img src="/dist/image/{{ \Illuminate\Support\Str::lower(\Illuminate\Support\Facades\App::getLocale()) }}.svg">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                         @foreach(\App\Models\Language::all() as $lg)
