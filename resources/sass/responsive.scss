@@ -82,14 +82,28 @@
 
 
     .courses-show-div {
+        .div-menu-2{
+            height: auto!important;
+        }
         .main4 {
             .one-lector {
                 padding: 27px 35px;
+                .image{
+                    height: 500px!important;
+                }
             }
         }
     }
     .header_text_block{
         flex: 0 0 100%;
+    }
+    .course-card-form{
+        button{
+            width: calc(50% - 20px)!important;
+            &.btn-primary{
+                margin-left: 30px;
+            }
+        }
     }
 }
 
@@ -188,7 +202,6 @@
 }
 
 @media (max-width: 1200px) {
-
     .watched-bg2 {
         height: 230px;
     }
@@ -212,6 +225,10 @@
 }
 
 @media (max-width: 1199px){
+
+}
+
+@media (max-width: 992px) {
     .courses-show-div {
         .main2 {
             .card-div {
@@ -292,9 +309,9 @@
 
 
     }
-}
-
-@media (max-width: 992px) {
+    .course_card_static{
+        margin-top: 0!important;
+    }
     //.grid-container {
     //    display: grid;
     //    grid-template-columns: 25% 25% 25% 25% 25%;
@@ -511,7 +528,9 @@
         }
         .many-lector{
             .card{
-                max-width: 158px !important;
+                .image{
+                    height: 350px!important;
+                }
             }
         }
     }
@@ -519,6 +538,26 @@
 
 
 @media (max-width: 576px) {
+    .course-card-form{
+        button{
+            width: 100%!important;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            &.btn-primary{
+                margin-left: 0;
+            }
+        }
+    }
+    .courses-show-div {
+        .main4 {
+            .one-lector {
+                padding: 27px 15px!important;
+                .image{
+                    height: 300px!important;
+                }
+            }
+        }
+    }
     .fs-36 {
         font-size: 24px;
     }

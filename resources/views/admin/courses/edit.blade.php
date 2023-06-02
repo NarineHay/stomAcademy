@@ -108,8 +108,19 @@
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" height="100" alt=""/>
                         </div>
                         <div class="custom-file">
-                            <input type="file" name="image" class="form-control" id="customFile">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            <input type="file" name="image" class="form-control" id="customFile1">
+                            <label class="custom-file-label" for="customFile1">Choose file</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ФОН</label>
+                        <div class="form-group">
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($course->bg_image) }}" height="100" alt=""/>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" name="bg_image" class="form-control" id="customFile2">
+                            <label class="custom-file-label" for="customFile2">Choose file</label>
                         </div>
                     </div>
                 </div>

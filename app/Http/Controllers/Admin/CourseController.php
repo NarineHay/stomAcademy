@@ -50,8 +50,14 @@ class CourseController extends Controller
         $course->price_2_id = $request->get('price_2_id');
         //$course->direction_id = $request->get('direction_id');
         $course->url_to_page = $request->get('url_to_page');
-        $course->image = $request->file('image')->store('public/course');
+        if($request->has('image')){
+            $course->image = $request->file('image')->store('public/course');
+        }
+        if($request->has('bg_image')){
+            $course->bg_image = $request->file('bg_image')->store('public/course');
+        }
         $course->online = $request->boolean('online');
+
 
         $course->save();
 
@@ -108,6 +114,12 @@ class CourseController extends Controller
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
             $course->image = $request->file('image')->store('public/course');
+        }
+        if($request->hasFile('bg_image')){
+            $request->validate([
+                'bg_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+            $course->bg_image = $request->file('bg_image')->store('public/course');
         }
 
         $webinars = $request->get('webinar',[]);

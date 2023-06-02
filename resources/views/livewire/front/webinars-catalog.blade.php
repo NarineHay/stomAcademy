@@ -64,9 +64,9 @@
                                     <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}" class="me-2 rounded-circle" alt="customerPic" style="height: 40px; width: 40px;object-fit: cover">
                                     <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
                                 </div>
-                                <div class="mt-3 mt-xl-0 d-flex flex-column">
+                                <div class="mt-3 mt-xl-0 d-flex flex-row flex-xl-column">
                                     @if($webinar->sale)
-                                        <span class="f-700 text-primary fs-16 me-1 text-nowrap">{{ $webinar->sale->rub }} ₽</span>
+                                        <span class="f-700 text-primary fs-16 me-2 text-nowrap">{{ $webinar->sale->rub }} ₽</span>
                                         <del class="f-700 text-secondary fs-16 text-nowrap">{{$webinar->price->rub}} ₽</del>
                                     @else
                                         <span class="f-700 text-primary fs-16 me-1 text-nowrap">{{ $webinar->price->rub }} ₽</span>

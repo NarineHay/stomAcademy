@@ -126,11 +126,11 @@
                                             @endforeach
                                         </div>
                                     @endif
-                                    <span class="price_box">
+                                    <span class="price_box d-flex flex-row flex-xl-column">
 
                                         @if($course->sale)
                                             <span
-                                                class="f-700 text-primary fs-16 me-1">{{ $course->sale->rub }} ₽</span>
+                                                class="f-700 text-primary fs-16 me-2">{{ $course->sale->rub }} ₽</span>
                                             <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>
                                         @else
                                             <span

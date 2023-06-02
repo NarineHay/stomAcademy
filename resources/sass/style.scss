@@ -628,10 +628,7 @@ font-size: 20px;
         }
         .eng-doctors-txt{
             .course_card_static{
-                position: absolute;
-                right: 0;
-                //width: 460px;
-                width:360px;
+                margin-top: -150px;
             }
             .course_left{
                 padding-right: 475px;
@@ -662,21 +659,7 @@ font-size: 20px;
                 line-height: 24px;
                 margin-bottom: 38px;
             }
-            .images{
-                margin-right: 42px;
-                img{
-                    width: 74px;
-                    height: 74px;
-                    border-radius: 50%;
-                    &:last-child{
-                        margin-top: 0;
-                    }
-                    &:first-child{
-                        margin-left: 0;
-                    }
-                    margin-left: -40px;
-                }
-            }
+
             .txts1{
                 margin-right: 45px;
                 .txts-1-title{
@@ -776,6 +759,24 @@ font-size: 20px;
             }
         }
     }
+    .about-course1{
+        .images{
+            margin-right: 42px;
+            img{
+                width: 74px;
+                height: 74px;
+                border-radius: 50%;
+                border: 2px solid #fff;
+                &:last-child{
+                    margin-top: 0;
+                }
+                &:first-child{
+                    margin-left: 0;
+                }
+                margin-left: -40px;
+            }
+        }
+    }
 
     .main3 {
         .accordion-item{
@@ -824,7 +825,8 @@ font-size: 20px;
                     width: 100%;
                     object-fit: cover;
                 }
-
+                background-position: top center;
+                background-size: cover;
             }
         }
         .many-lector{
@@ -834,7 +836,10 @@ font-size: 20px;
                 object-fit: cover;
                 width: 100%;
             }
-
+            .image{
+                background-position: top center;
+                background-size: cover;
+            }
         }
     }
 
