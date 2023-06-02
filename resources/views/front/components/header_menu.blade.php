@@ -28,7 +28,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                         @foreach(\App\Models\Language::all() as $lg)
-                            <li><a class="dropdown-item" href="{{ route("change_lg",$lg->id) }}"><img class="me-2" src="/dist/image/{{ $lg->code }}.svg">{{ $lg->name }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route("change_lg",$lg->id) }}"><img class="me-2" src="/dist/image/{{ \Illuminate\Support\Str::lower($lg->code) }}.svg">{{ $lg->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
