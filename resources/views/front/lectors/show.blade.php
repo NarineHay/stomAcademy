@@ -27,8 +27,8 @@
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-3 fs-14">
                                     <i class="far fa-clock"></i>
-                                    <p class="m-0 ms-2 f-500 me-2 text-black-gray">{{$webinar->duration}} {{ __("lectors.min") }}</p>
-                                    <i class="fal fa-angle-right ms-5 ms-lg-6 me-4 text-secondary"></i>
+                                    <p class="m-0 ms-2 f-500 me-2 text-black-gray text-nowrap">{{$webinar->duration}} {{ __("lectors.min") }}</p>
+                                    <i class="fal fa-angle-right me-4 text-secondary"></i>
                                 </div>
                             </a>
                         @endforeach

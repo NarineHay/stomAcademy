@@ -419,8 +419,7 @@
                             @if($course->sale)
                                 <p class="fw-bold fs-43 lh-43 text-white">
                                     <span>{{ $course->sale->rub }}</span>
-                                    <sup
-                                        class="fs-23 lh-23 fw-normal align-middle strikethrough">{{ $course->price->rub }}</sup>
+                                    <sup class="fs-23 lh-23 fw-normal align-middle strikethrough">{{ $course->price->rub }}</sup>
                                 </p>
                             @else
                                 <p class="fw-bold fs-43 lh-43 text-white">
