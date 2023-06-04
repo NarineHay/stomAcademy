@@ -40,7 +40,7 @@
         <div class="row">
             @foreach($courses as $course)
                 <div class="col-12 col-md-6 col-lg-4 mt-3">
-                    <div class="bg-white br-12">
+                    <a class="bg-white br-12 d-block" href="{{ route("personal.courses.show",$course->id) }}">
                         <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}"
                              class="w-100" alt="pic">
                         <div class="p-3">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             @endforeach
             <button wire:click="loadNext" class="w-100 fs-14 f-500 mt-3 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">{{ __("profile.courses.show_more") }}</button>

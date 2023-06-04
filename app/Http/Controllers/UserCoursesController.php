@@ -13,7 +13,8 @@ class UserCoursesController extends Controller
     }
 
     public function show($id){
-        $data['course'] = Course::findOrFail($id);
+        $course = Course::findOrFail($id);
+        $data['webinar'] = $course->webinars_object->first();
         return view('front.personal.course',$data);
     }
 }

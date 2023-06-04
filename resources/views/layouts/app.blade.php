@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
     <link rel="icon" href="/dist/image/aboutLogo.png">
+    <link rel="stylesheet" href="/dist/icon-moon.css">
     @vite(['resources/sass/lib.scss', 'resources/js/script.js'])
     @livewireStyles
 </head>

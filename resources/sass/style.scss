@@ -465,7 +465,7 @@ font-size: 20px;
     border-style: none;
 }
 
-.education_tags button.active {
+.education_tags a.active {
     border: 3px solid #5CB1FF;
 }
 
@@ -1144,6 +1144,26 @@ font-size: 20px;
         }
         .fa-eye{
             display: inline-block;
+        }
+    }
+}
+
+.cur-dropdown{
+    min-width: auto;
+}
+
+#webinarSelectModal{
+    .modal-body{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .course_item{
+        cursor: pointer;
+        padding-left: 20px;
+        padding-right: 20px;
+        min-height: 70px;
+        &:hover{
+            background-color: #ccc;
         }
     }
 }

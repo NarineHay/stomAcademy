@@ -47,7 +47,7 @@ class Course extends Model
     function getDuration(){
         $sql = 'SELECT sum(webinars.duration) as duration FROM course_webinars JOIN webinars on webinars.id = course_webinars.webinar_id WHERE course_id = '.$this->id;
         $minute = collect(DB::select(DB::raw($sql)))->first()->duration;
-        return CarbonInterval::minutes($minute)->cascade()->forHumans();
+        return CarbonInterval::minutes($minute)->cascade()->forHumans(null,true);
     }
 
     function infos(){

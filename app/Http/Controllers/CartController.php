@@ -14,6 +14,17 @@ class CartController extends Controller
         return view('front.personal.cart');
     }
 
+    function addMany(Request $request){
+        foreach ($request->get("item_id",[]) as $item_id){
+            $cart = new Cart();
+            $cart->user_id = Auth::user()->id;
+            $cart->item_id = $item_id;
+            $cart->type = "webinar";
+            $cart->save();
+        }
+        return response()->redirectToRoute("personal.cart");
+    }
+
     public function add(Request $request)
     {
         $cart = new Cart();

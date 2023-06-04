@@ -23,6 +23,8 @@ Route::prefix("webinars")->group(function (){
     Route::get("{id}",[\App\Http\Controllers\WebinarsController::class,'show'])->name("webinar.show");
 });
 
+Route::get("catalog",[\App\Http\Controllers\CourseController::class,"all"])->name("catalog");
+
 Route::prefix("courses")->group(function (){
     Route::get("/",[\App\Http\Controllers\CourseController::class,'index'])->name("course.index");
     Route::get("{id}",[\App\Http\Controllers\CourseController::class,'show'])->name("course.show");
@@ -54,7 +56,7 @@ Route::group(['prefix' => "personal",'middleware' => 'auth','as' => 'personal.']
     Route::get("/help",[\App\Http\Controllers\HelpController::class,'index'])->name("help");
     Route::get("/courses",[\App\Http\Controllers\UserCoursesController::class,'index'])->name("courses");
     Route::get("/conferences",[\App\Http\Controllers\UserConferencesController::class,'index'])->name("conferences");
-    Route::get("/course",[\App\Http\Controllers\SettingsController::class,'index'])->name("course");
+    Route::get("/courses/{id}",[\App\Http\Controllers\UserCoursesController::class,'show'])->name("courses.show");
     Route::get("/settings",[\App\Http\Controllers\SettingsController::class,'index'])->name("settings");
     Route::get("/cart",[\App\Http\Controllers\CartController::class,'index'])->name("cart");
     Route::get("/deleteAccount/{id}", [\App\Http\Controllers\InformationController::class,'deleteAccount'])->name('deleteAccount');
@@ -64,6 +66,7 @@ Route::get('certificate-download/{image}', [\App\Http\Controllers\CertificateCon
 
 Route::middleware("auth")->group(function (){
     Route::post('addToCart', [\App\Http\Controllers\CartController::class, 'add'])->name('addToCart');
+    Route::post('addManyToCart', [\App\Http\Controllers\CartController::class, 'addMany'])->name('addManyToCart');
     Route::get('removeFromCart/{cart}', [\App\Http\Controllers\CartController::class, 'remove'])->name('removeFromCart');
     Route::get('removeAllFromCart', [\App\Http\Livewire\Front\CartComponent::class, 'removeAllFromCart'])->name('removeAllFromCart');
 });

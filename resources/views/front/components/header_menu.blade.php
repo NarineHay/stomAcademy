@@ -12,11 +12,11 @@
             <li>
                 <div class="dropdown">
                     <a class="text-decoration-none ms-3 me-2 me-xl-3 ms-xl-4 text-white fs-16 f-600 text-uppercase dropdown-toggle" data-bs-toggle="dropdown" >
-                        {{ \App\Models\Currency::find(\Illuminate\Support\Facades\Cookie::get("currency_id"))->currency_name }}
+                        <i class="icon-{{ \Illuminate\Support\Str::lower(\App\Models\Currency::find(\Illuminate\Support\Facades\Cookie::get("currency_id"))->currency_name) }}"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                    <ul class="dropdown-menu dropdown-menu-end cur-dropdown" aria-labelledby="dropdownMenuLink">
                         @foreach(\App\Models\Currency::all() as $cur)
-                            <li><a class="dropdown-item" href="{{ route("change_cur",$cur->id) }}">{{ $cur->currency_name }}</a></li>
+                            <li><a class="dropdown-item" href="{{ route("change_cur",$cur->id) }}"><i class="icon-{{ \Illuminate\Support\Str::lower($cur->currency_name) }}"></i></a></li>
                         @endforeach
                     </ul>
                 </div>

@@ -18,4 +18,8 @@ class CourseController extends Controller
         $data['courses'] = Course::query()->get()->take(10);
         return view("front.course.show",$data);
     }
+
+    function all(){
+        return view("front.catalog");
+    }
 }

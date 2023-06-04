@@ -179,27 +179,14 @@
 
     <!--Do you have any questions?-->
     <div class="container">
-        <div class="row mb-6">
-            <div class="col-12 mt-0 mt-lg-6">
-                <div class="d-flex justify-content-center flex-column text-center">
-                    <h2 class="m-0 f-700">Остались вопросы?</h2>
-                    <p class="m-0 fs-14 text-secondary f-500 mt-2 mt-4">Связавшись с нашими специалистами, вы получите подробную<br>
-                        консультацию и ответы на все вопросы.</p>
-                    <a href="tel:+375(29)5948888"><h3 class="f-500 mt-4 m-0 text-black">+375 (29) 594-88-88</h3></a>
-                    <div class="mt-3 d-flex justify-content-center">
-                        <div class="rounded-circle d-flex align-items-center justify-content-center icon-style2">
-                            <a href="https://www.youtube.com/"><i class="fab fa-telegram-plane text-primary"></i></a>
-                        </div>
-                        <div class="rounded-circle d-flex align-items-center justify-content-center ms-2 icon-style2">
-                            <a href="https://web.telegram.org/k/"><i class="fab fa-twitter text-primary"></i></a>
-                        </div>
-                        <div class="rounded-circle d-flex align-items-center justify-content-center ms-2 icon-style2">
-                            <a href="https://twitter.com/"><i class="fab fa-facebook-f text-primary"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-contact-form></x-contact-form>
     </div>
-
+<style>
+    #contacts{
+        background-color: inherit!important;
+    }
+    #contacts input{
+        background-color: inherit!important;
+    }
+</style>
 @endsection

@@ -61,6 +61,7 @@
                                             src="{{ \Illuminate\Support\Facades\Storage::url($user->lector->photo ?? $user->userInfo->image) }}"
                                             class="@if ($k>0) m-25 @endif me-1 rounded-circle img_r_42" alt="videoPic">
                                     @endforeach
+                                        <p class="m-0 ms-2 f-500 fs-16">{{ \App\Helpers\TEXT::lectorCount($course->getLectors()->count()) }}</p>
                                 @endif
 
                             </div>
@@ -102,10 +103,15 @@
                                 <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
                                 <p class="f-700 fs-16 min-h-75 courseTxt-index">{{$course->info->title}}</p>
                                 <div class="mt-2 d-flex justify-content-between">
-                                    <div>
-                                        <i class="far fa-clock me-1"></i> <span
-                                            class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
-                                        <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
+                                    <div class="d-flex justify-content-between w-100">
+                                        <span>
+                                            <i class="far fa-clock me-1"></i>
+                                        <span class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
+                                        </span>
+                                        <span>
+                                            <i class="fas fa-tasks me-1"></i>
+                                        <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
+                                        </span>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between mt-2 mb-1 align-items-center">
@@ -114,7 +120,7 @@
                                             <img class="rounded-circle border-white me-3 img_r_42"
                                                  src="{{ \Illuminate\Support\Facades\Storage::url($course->getLectors()->first()->lector->photo) }}"
                                                  alt="videoPic">
-                                            {{--                                            <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>--}}
+                                            <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>
                                         </div>
                                     @else
                                         <div>
@@ -124,17 +130,18 @@
                                                     class="@if ($k>0) m-25 @endif me-1 rounded-circle img_r_42"
                                                     alt="videoPic">
                                             @endforeach
+
                                         </div>
                                     @endif
-                                    <span class="price_box d-flex flex-row flex-xl-column">
+                                    <span class="price_box d-flex flex-row flex-xl-column" style="min-height: 50px">
 
                                         @if($course->sale)
                                             <span
-                                                class="f-700 text-primary fs-16 me-2">{{ $course->sale->rub }} ₽</span>
-                                            <del class="f-700 text-secondary fs-16">{{$course->price->rub}} ₽</del>
+                                                class="f-700 text-primary fs-16 me-2 me-xl-0">{{ $course->sale->html() }}</span>
+                                            <del class="f-700 text-secondary fs-16">{{$course->price->html()}}</del>
                                         @else
                                             <span
-                                                class="f-700 text-primary fs-16 me-1">{{ $course->price->rub }} ₽</span>
+                                                class="f-700 text-primary fs-16 me-1">{{ $course->price->html() }}</span>
                                         @endif
                                     </span>
                                 </div>
@@ -185,7 +192,7 @@
                                     <h5 class="f-700">{{$conference->info->title}}</h5>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div>
+                                    <div class="d-flex align-items-center">
                                         @foreach($conference->getLectors()->take(3) as $k => $lector)
                                             <img
                                                 src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}"
@@ -193,11 +200,11 @@
                                                 class="@if ($k>0) m-25 @endif rounded-circle"
                                                 alt="personPic">
                                         @endforeach
-                                    </div>
-                                    <div>
-                                        @if($conference->getLectors()->count() > 3)
-                                            <span
-                                                class="fs-20 f-600 ms-2">{{ $conference->getLectors()->count()-3}}+</span>
+
+                                        @if($conference->getLectors()->count() == 1)
+                                                <p class="m-0 ms-2 f-500 fs-16">{{ $conference->getLectors()->first()->userInfo->fullName }}</p>
+                                        @else
+                                                <p class="m-0 ms-2 f-500 fs-16">{{ \App\Helpers\TEXT::lectorCount($conference->getLectors()->count()) }}</p>
                                         @endif
                                     </div>
                                 </div>
@@ -242,10 +249,10 @@
                                 class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
                                 <div class="mb-3 mb-md-0 min-h-50">
                                     @if($webinar->sale)
-                                        <span class="f-700 text-primary fs-16 me-1">{{ $webinar->sale->rub }} ₽</span>
-                                        <del class="f-700 text-secondary fs-16">{{$webinar->price->rub}} ₽</del>
+                                        <span class="f-700 text-primary fs-16 me-1">{{ $webinar->sale->html() }}</span>
+                                        <del class="f-700 text-secondary fs-16">{{$webinar->price->html()}}</del>
                                     @else
-                                        <span class="f-700 text-primary fs-16 me-1">{{ $webinar->price->rub }} ₽</span>
+                                        <span class="f-700 text-primary fs-16 me-1">{{ $webinar->price->html() }}</span>
                                     @endif
                                 </div>
                                 <form method="POST" action="{{ route('addToCart') }}">
@@ -262,56 +269,6 @@
             @endforeach
         </div>
     </div>
-
-    <!--Videos-->
-{{--    <div class="w-100 text-white pb-5 pb-lg-6 bg-gray video_blog mt-4 mt-lg-6">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row images py-6">--}}
-{{--                <div class="col-12 col-lg-6">--}}
-{{--                    <div class="position-relative video_block">--}}
-{{--                        <iframe style="z-index: 1;" class="d-none position-absolute" width="100%" height="100%"--}}
-{{--                                src="{{ $videos[0]->url }}" title="Walter Devoto about Stom Academy." frameborder="0"--}}
-{{--                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"--}}
-{{--                                allowfullscreen></iframe>--}}
-{{--                        <img src="{{\Illuminate\Support\Facades\Storage::url($videos[0]->image)}}" alt="videoPic"--}}
-{{--                             class="big">--}}
-{{--                        <div--}}
-{{--                            class="video_play cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">--}}
-{{--                            <i class="fas fa-play"></i>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="row">--}}
-{{--                    <div class="col-lg-4 col-6">--}}
-{{--                        <div class="d-flex flex-wrap">--}}
-{{--                            @foreach($videos as $k => $video)--}}
-{{--                                @continue($k == 0)--}}
-{{--                                <div class="col-lg-3 col-6">--}}
-{{--                                    <div class="position-relative video_block h-100 me-4 mb-2">--}}
-{{--                                        <iframe style="z-index: 1;" class="d-none position-absolute" width="100%"--}}
-{{--                                                height="100%" src="{{ $video->url }}"--}}
-{{--                                                title="Walter Devoto about Stom Academy." frameborder="0"--}}
-{{--                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"--}}
-{{--                                                allowfullscreen></iframe>--}}
-{{--                                        <img src="{{\Illuminate\Support\Facades\Storage::url($video->image)}}"--}}
-{{--                                             alt="videoPic" class="h-100 pb-1">--}}
-{{--                                        <div--}}
-{{--                                            class="video_play cursor position-absolute bottom-0 start-0 ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3">--}}
-{{--                                            <i class="fas fa-play"></i>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-
-{{--                        </div>--}}
-{{--                    </div>--}}
-
-
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
 
     {{--    NEW VIDEOS GRID--}}
         <div class="w-100 text-white pb-5 pb-lg-6 bg-gray video_blog mt-4 mt-lg-6">
@@ -440,7 +397,7 @@
                                 <p class="text-primary text-uppercase f-700 fs-10 m-0">
                                     {{$blog->directions->title}}
                                 </p>
-                                <h5 class="f-700 mt-2 m-0 text-black">
+                                <h5 class="f-700 mt-2 m-0 text-black fs-16">
                                     {{--                                <span href="{{route('blog.show',$blog->id)}}" class="text-black">--}}
                                     {{--                                <span class="text-black">--}}
                                     {{$blog->info->title}}
@@ -482,7 +439,7 @@
                                 @if($lector->directions->first())
                                     <p class="text-secondary fs-14 f-500">{{$lector->directions->first()->title}}</p>
                                 @endif
-                                <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
+                                <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ \App\Helpers\TEXT::lectionCount($lector->webinars_count) }}</span>
                             </div>
                         </div>
                     </a>

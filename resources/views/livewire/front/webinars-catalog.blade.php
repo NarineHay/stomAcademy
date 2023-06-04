@@ -9,18 +9,18 @@
         </div>
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 align-items-lg-center">
             <div class="d-flex education_tags mb-3 mb-lg-0">
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
-                    <a href="#" class="text-black">{{ __("courses.tabs.all") }}</a>
-                </button>
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray ms-2 text-black btn_text">
-                    <a href="{{route('course.index')}}" class="text-black">Онлайн-курсы</a>
-                </button>
-                <button class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
-                    <a href="{{route('webinar.index')}}" class="text-black">Вебинары</a>
-                </button>
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text ms-2">
-                    <a href="{{route('conference')}}" class="text-black">Онлайн-конференции</a>
-                </button>
+                <a class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
+                    {{ __("courses.tabs.all") }}
+                </a>
+                <a href="{{route('course.index')}}" class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray ms-2 text-black btn_text">
+                    Онлайн-курсы
+                </a>
+                <a href="{{route('webinar.index')}}" class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
+                    Вебинары
+                </a>
+                <a href="{{route('conference')}}" class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text ms-2">
+                    Онлайн-конференции
+                </a>
             </div>
 
             <div class="col-12 d-flex d-lg-none justify-content-between mt-2 filter_buttons_mobile mb-2">
@@ -34,19 +34,19 @@
                     <button class="btn dropdown-toggle text-primary fs-14 f-600 border-0" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">Релевантности
                     </button>
-                    <select name="sortBy" class="chosen dropdown-menu p-3 border-0" wire:model="sortBy">
-                        <option value="price">Цена</option>
-                        <option value="title">Названия</option>
-                        <option value="popularity">По популярность</option>
-                    </select>
-{{--                    <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">--}}
-{{--                        <input type="radio" id="vehicle111" name="vehicle" class="mt-2 cursor">--}}
-{{--                        <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">Цена</label><br>--}}
-{{--                        <input type="radio" id="vehicle1112" name="vehicle" class="mt-2 cursor">--}}
-{{--                        <label for="vehicle1112" class="f-500 fs-14 ms-2 cursor">Названия</label><br>--}}
-{{--                        <input type="radio" id="vehicle3333" name="vehicle" class="mt-2 cursor">--}}
-{{--                        <label for="vehicle3333" class="f-500 fs-14 ms-2 cursor">По популярность</label><br>--}}
-{{--                    </div>--}}
+{{--                    <select name="sortBy" class="chosen dropdown-menu p-3 border-0" wire:model="sortBy">--}}
+{{--                        <option value="price">Цена</option>--}}
+{{--                        <option value="title">Названия</option>--}}
+{{--                        <option value="popularity">По популярность</option>--}}
+{{--                    </select>--}}
+                    <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">
+                        <input wire:model="sortBy" value="price" type="radio" id="vehicle111" name="sort" class="mt-2 cursor">
+                        <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">Цена</label><br>
+                        <input wire:model="sortBy" value="title" type="radio" id="vehicle1112" name="sort" class="mt-2 cursor">
+                        <label for="vehicle1112" class="f-500 fs-14 ms-2 cursor">Названия</label><br>
+                        <input wire:model="sortBy" value="popularity" type="radio" id="vehicle3333" name="sort" class="mt-2 cursor">
+                        <label for="vehicle3333" class="f-500 fs-14 ms-2 cursor">По популярность</label><br>
+                    </div>
                 </div>
             </div>
         </div>
@@ -66,10 +66,10 @@
                                 </div>
                                 <div class="mt-3 mt-xl-0 d-flex flex-row flex-xl-column">
                                     @if($webinar->sale)
-                                        <span class="f-700 text-primary fs-16 me-2 text-nowrap">{{ $webinar->sale->rub }} ₽</span>
-                                        <del class="f-700 text-secondary fs-16 text-nowrap">{{$webinar->price->rub}} ₽</del>
+                                        <span class="f-700 text-primary fs-16 me-2 text-nowrap">{{ $webinar->sale->html() }}</span>
+                                        <del class="f-700 text-secondary fs-16 text-nowrap">{{$webinar->price->html()}}</del>
                                     @else
-                                        <span class="f-700 text-primary fs-16 me-1 text-nowrap">{{ $webinar->price->rub }} ₽</span>
+                                        <span class="f-700 text-primary fs-16 me-1 text-nowrap">{{ $webinar->price->html() }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                         <div class="mt-2">
                             @foreach($lectors as $user)
                                 <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}" value="{{ $user->id }}" class="mt-2 cursor">
-                                <label for="lec-{{ $user->id }}" class="f-500 fs-14 cursor">{{$user->name}}</label><br>
+                                <label for="lec-{{ $user->id }}" class="f-500 fs-14 cursor">{{ $user->userInfo->fullName }}</label><br>
                             @endforeach
                         </div>
                     </div>

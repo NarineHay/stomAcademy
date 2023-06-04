@@ -152,3 +152,47 @@ document.querySelectorAll(".password_container").forEach(function (r){
         });
     })
 })
+
+
+
+let webinarsCalc = {
+    count:0,
+    price:0,
+    init:function (){
+        document.querySelectorAll("#webinarSelectModal .course_item").forEach((item) => {
+            let input = item.querySelector("input");
+            item.addEventListener("click",(e) => {
+                if(e.target != input){
+                    input.click();
+                }
+                this.update();
+            })
+        })
+        document.querySelector("#webinarSelectModal .buyButton").addEventListener("click",function (){
+            document.querySelector("#webinarSelectModal form").submit();
+        })
+    },
+    update:function (){
+        this.count = 0;
+        this.price = 0;
+        let footer = document.querySelector("#webinarSelectModal .modal-footer");
+        document.querySelectorAll("#webinarSelectModal .course_item").forEach((item) => {
+            let input = item.querySelector("input");
+            if(input.checked){
+                this.count++;
+                this.price+=parseInt(input.dataset.price);
+            }
+        })
+        console.log(footer);
+        footer.querySelector(".co").textContent = this.count;
+        footer.querySelector(".total").textContent = this.price;
+        if(this.count > 0){
+            footer.classList.remove("d-none");
+        }else{
+            footer.classList.add("d-none");
+        }
+    }
+}
+
+webinarsCalc.init();
+

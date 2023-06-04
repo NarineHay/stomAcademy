@@ -63,10 +63,9 @@ class WebinarsCatalog extends Component
         else {
             $webinars_q = $webinars_q->paginate($this->perPage);
         }
-
         $data['webinars'] = $webinars_q;
         $data['directions'] = Direction::all();
-        $data['lectors'] = User::query()->get();
+        $data['lectors'] = User::query()->where("role",User::ROLE_LECTOR)->get();
         return view('livewire.front.webinars-catalog',$data);
     }
 }

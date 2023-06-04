@@ -10,18 +10,18 @@
         </div>
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 align-items-lg-center">
             <div class="d-flex education_tags mb-3 mb-lg-0">
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
-                    <a href="#" class="text-black">{{ __("courses.tabs.all") }}</a>
-                </button>
-                <button class="fs-14 py-2 px-2 f-600 br-12 active bg-white text-black ms-2 btn_text">
-                    <a href="{{route('course.index')}}" class="text-black">{{ __("courses.tabs.courses") }}</a>
-                </button>
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
-                    <a href="{{route('webinar.index')}}" class="text-black">{{ __("courses.tabs.webinars") }}</a>
-                </button>
-                <button class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
-                    <a href="{{route('conference')}}" class="text-black">{{ __("courses.tabs.online") }}</a>
-                </button>
+                <a class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
+                    {{ __("courses.tabs.all") }}
+                </a>
+                <a href="{{route('course.index')}}" class="px-2 px-md-3 py-2 fs-14 f-600 bg-white active br-12 bg-light-gray ms-2 text-black btn_text">
+                    Онлайн-курсы
+                </a>
+                <a href="{{route('webinar.index')}}" class="fs-14 py-2 px-2 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
+                    Вебинары
+                </a>
+                <a href="{{route('conference')}}" class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black btn_text ms-2">
+                    Онлайн-конференции
+                </a>
             </div>
 
             <div class="col-12 d-flex d-lg-none justify-content-between mt-2 filter_buttons_mobile mb-2">
@@ -76,23 +76,21 @@
                                                 class="@if ($k>0) m-25 @endif rounded-circle border" alt="personPic">
                                         @endforeach
                                         @if($course->getLectors()->count() == 1)
-                                                <p class="m-0 ms-2   fs-14 f-500">{{$course->getLectors()[0]->userinfo->fname}} {{$course->getLectors()[0]->userinfo->lname}}</p>
+                                                <p class="m-0 ms-2 fs-14 f-500">{{$course->getLectors()[0]->userinfo->fname}} {{$course->getLectors()[0]->userinfo->lname}}</p>
                                         @endif
                                     </div>
                                     <div>
-                                        @if($course->getLectors()->count() > 3)
-                                            <span
-                                                class="fs-20 f-600 ms-2">{{ $course->getLectors()->count() - 3 }}+</span>
+                                        @if($course->getLectors()->count() > 1)
+                                            <span class="fs-14 f-500 ms-2 ">{{ \App\Helpers\TEXT::lectorCount($course->getLectors()->count()) }}</span>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="mt-3 mt-xl-0 d-flex flex-row flex-xl-column">
                                     @if($course->sale)
-                                        <span class="f-700 text-primary fs-16 me-2 text-nowrap">{{ $course->sale->rub }} ₽</span>
-                                        <del class="f-700 text-secondary fs-16  text-nowrap">{{$course->price->rub}}₽
-                                        </del>
+                                        <span class="f-700 text-primary fs-16 me-2 text-nowrap">{{ $course->sale->html() }}</span>
+                                        <del class="f-700 text-secondary fs-16  text-nowrap">{{$course->price->html()}}</del>
                                     @else
-                                        <span class="f-700 text-primary fs-16 me-1  text-nowrap">{{ $course->price->rub }} ₽</span>
+                                        <span class="f-700 text-primary fs-16 me-1  text-nowrap">{{ $course->price->html() }}</span>
                                     @endif
                                 </div>
                             </div>

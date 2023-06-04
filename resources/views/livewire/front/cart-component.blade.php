@@ -33,8 +33,7 @@
                                     <p class="m-0 ms-1 ms-md-2 f-500">1 {{ __("profile.cart.lection") }}</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
-                                    <p class="m-0 ms-1 ms-md-2 f-700 me-2 text-primary fs-14">{{$item->webinar->price->rub}}
-                                        ₽</p>
+                                    <p class="m-0 ms-1 ms-md-2 f-700 me-2 text-primary fs-14"> {{$item->webinar->price->html()}} </p>
                                 </div>
                                 <div
                                     class="d-flex justify-content-between align-items-center py-2 px-3 fs-14 d-none d-lg-block">
