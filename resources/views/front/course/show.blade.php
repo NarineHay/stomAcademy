@@ -114,7 +114,7 @@
                                             $preview = 'https://img.youtube.com/vi/'.array_pop($x).'/hqdefault.jpg';
                                         @endphp
                                         <img class="img_preview" src="{{ $preview }}">
-                                        <iframe style="z-index: 1;" class="position-absolute d-none" width="100%"
+                                        <iframe style="z-index: 1;left: 0" class="position-absolute d-none" width="100%"
                                                 height="100%" src="{{ $course->video }}"
                                                 title="Walter Devoto about Stom Academy." frameborder="0"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -132,7 +132,7 @@
                                                 <span>{{ $course->sale->html() }}</span>
                                                 <span>/</span>
                                                 <span
-                                                    class="text-decoration-line-through">{{ $course->price->html() }}</span>
+                                                    class="del">{{ $course->price->html() }}</span>
                                             @else
                                                 <span>{{ $course->price->html() }}</span>
                                             @endif
@@ -160,7 +160,7 @@
                                                         ({{ $course->sale->rub ?? $course->price->html() }})</label>
                                                 </div>
                                             </div>
-                                            <button data-bs-toggle="modal" data-bs-target="#webinarSelectModal"
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#webinarSelectModal"
                                                 class="btn btn-outline-primary w-100 fs-16 f-600 br-12 mb-3 lh-20">
                                                 {{ __("courses.select_webinar") }}
                                             </button>
@@ -567,7 +567,7 @@
 
                                         @if($course->sale)
                                                         <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->html() }}</span>
-                                                        <del class="f-700 text-secondary fs-16">{{$course->price->html()}}</del>
+                                                        <span class="f-700 del text-secondary fs-16">{{$course->price->html()}}</span>
                                                     @else
                                                         <span class="f-700 text-primary fs-16 me-1">{{ $course->price->html() }}</span>
                                                     @endif

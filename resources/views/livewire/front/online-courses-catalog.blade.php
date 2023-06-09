@@ -74,7 +74,7 @@
                                 <div class="mt-3 mt-xl-0 d-flex flex-row flex-xl-column">
                                     @if($course->sale)
                                         <span class="f-700 text-primary fs-16 me-2 text-nowrap">{{ $course->sale->html() }}</span>
-                                        <del class="f-700 text-secondary fs-16  text-nowrap">{{$course->price->html()}}</del>
+                                        <span class="f-700 del text-secondary fs-16  text-nowrap">{{$course->price->html()}}</span>
                                     @else
                                         <span class="f-700 text-primary fs-16 me-1  text-nowrap">{{ $course->price->html() }}</span>
                                     @endif

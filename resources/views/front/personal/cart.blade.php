@@ -1,6 +1,6 @@
-@extends("layouts.app")
+@extends("layouts.prodile")
 
 
-@section("content")
+@section("profile-content")
     <livewire:front.cart-component/>
 @endsection

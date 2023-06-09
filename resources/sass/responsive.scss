@@ -13,6 +13,17 @@
 }
 
 @media (min-width: 992px) {
+    .video_container{
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        position: relative;
+        iframe{
+            height: 600px;
+            position: relative;
+            margin-top: -100px;
+        }
+    }
     .min-h-72-992{
         min-height: 72px;
     }
@@ -122,8 +133,20 @@
 }
 
 @media (min-width: 1400px) {
+    .video_container{
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+        position: relative;
+        iframe{
+            height: 700px;
+            position: relative;
+            margin-top: -100px;
+        }
+    }
     .videoPic-index{
         max-width: 348px;
+        height: auto!important;
     }
     .min-h-48{
         min-height: 48px;
@@ -229,6 +252,17 @@
 }
 
 @media (max-width: 992px) {
+    .video_container{
+        width: 100%;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+        iframe{
+            height: 450px;
+            position: relative;
+            margin-top: -75px;
+        }
+    }
     .courses-show-div {
         .main2 {
             .card-div {
@@ -495,7 +529,6 @@
         }
     }
 }
-
 
 @media (max-width: 767px){
     .videoTxt-index{

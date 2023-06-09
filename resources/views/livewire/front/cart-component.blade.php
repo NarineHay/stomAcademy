@@ -13,7 +13,7 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-7 col-12 me-6">
+        <div class="col-xxl-8 col-lg-12 col-12">
             @foreach($items as $item)
                 @if($item->type == 'webinar')
                     <div class="col-12  mt-4 me-6">
@@ -79,7 +79,7 @@
             @endforeach
         </div>
 
-        <div class="col-lg-4 col-12">
+        <div class="col-lg-4 offset-0 offset-lg-8 offset-xxl-0 col-12">
             <div class="col-12 mt-4">
                 <div class="bg-white br-12 p-4">
                     <div class="fs-14">

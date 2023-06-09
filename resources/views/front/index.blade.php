@@ -93,7 +93,7 @@
         </div>
         <div class="swiper AdditionsSwiper">
             <div class="swiper-wrapper">
-                @foreach($courses as $course)
+                @foreach($courses_new as $course)
                     <div class="swiper-slide">
                         <a href="{{ route("course.show",$course->id) }}" style="color: inherit"
                            class="d-block bg-white br-12">
@@ -138,7 +138,7 @@
                                         @if($course->sale)
                                             <span
                                                 class="f-700 text-primary fs-16 me-2 me-xl-0">{{ $course->sale->html() }}</span>
-                                            <del class="f-700 text-secondary fs-16">{{$course->price->html()}}</del>
+                                            <span class="f-700 text-secondary del fs-16">{{$course->price->html()}}</span>
                                         @else
                                             <span
                                                 class="f-700 text-primary fs-16 me-1">{{ $course->price->html() }}</span>
@@ -250,7 +250,7 @@
                                 <div class="mb-3 mb-md-0 min-h-50">
                                     @if($webinar->sale)
                                         <span class="f-700 text-primary fs-16 me-1">{{ $webinar->sale->html() }}</span>
-                                        <del class="f-700 text-secondary fs-16">{{$webinar->price->html()}}</del>
+                                        <span class="f-700 text-secondary del fs-16">{{$webinar->price->html()}}</span>
                                     @else
                                         <span class="f-700 text-primary fs-16 me-1">{{ $webinar->price->html() }}</span>
                                     @endif

@@ -3,6 +3,7 @@
         <div class="d-flex justify-content-between">
             <h3 class="f-700 m-0">{{ __("profile.profile.page_title") }}</h3>
         </div>
+
         <div class="mt-3 bg-white br-12 p-4" wire:ignore>
             <label class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#profile-1">
                 <p class="m-0 f-600 fs-20">{{ __("profile.profile.main_info") }}</p>
@@ -25,12 +26,11 @@
                         </div>
                     </div>
                     <div class="mt-4">
-                        <button wire:click="savePersonalData" class="btn btn-primary py-2 px-4 br-12">{{ __("profile.profile.save") }}</button>
+                        <button wire:click="savePersonalData" class="btn btn-primary py-2 px-4 br-12">{{ __("profile.save") }}</button>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="mt-3 bg-white br-12 p-4" wire:ignore>
             <label class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#profile-4">
                 <p class="m-0 f-600 fs-20">{{ __("profile.profile.directions") }}</p>
@@ -48,12 +48,11 @@
                         @endforeach
                     </div>
                     <div class="mt-3">
-                        <button wire:click="directions" class="btn btn-primary py-2 px-4 br-12">{{ __("profile.profile.save") }}</button>
+                        <button wire:click="directions" class="btn btn-primary py-2 px-4 br-12">{{ __("profile.save") }}</button>
                     </div>
                 </div>
             </div>
         </div>
-
         @if($success)
             <div data-mdb-delay="5000" data-mdb-autohide="true" class="alert alert-success alert-dismissible fade show mt-3 profile_alert" role="alert">
                 <strong>{{ $success }}</strong>

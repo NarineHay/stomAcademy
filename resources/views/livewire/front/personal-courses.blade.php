@@ -38,30 +38,41 @@
             </div>
         </div>
         <div class="row">
-            @foreach($courses as $course)
-                <div class="col-12 col-md-6 col-lg-4 mt-3">
-                    <a class="bg-white br-12 d-block" href="{{ route("personal.courses.show",$course->id) }}">
-                        <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}"
-                             class="w-100" alt="pic">
-                        <div class="p-3">
-                            <p class="text-primary text-uppercase f-700 fs-10 m-0">{{ $course->directions->first()->title }}</p>
-                            <p class="f-700 fs-16 m-0 mt-2">{{$course->info->title}}</p>
-                            <div
-                                class="d-flex flex-column flex-xl-row mt-2 justify-content-between align-items-xl-center">
-                                <div class="d-flex align-items-center">
-                                    @foreach($course->getLectors()->take(1) as $k => $lector)
-                                        <img
-                                            src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}"
-                                            width="42px" height="42px" class="me-2 rounded-circle"
-                                            alt="personPic">
-                                        <p class="m-0 fs-14 f-500">{{$lector->userinfo->fname}} {{$lector->userinfo->lname}}</p>
-                                    @endforeach
+                @foreach($courses as $course)
+                    <a href="{{ route("personal.courses.show",$course->id) }}" style="color: inherit"
+                       class="col-xxl-3 col-lg-4 col-sm-6 col-12 my-3 md-sm-0">
+                        <div class="bg-white br-12">
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($course->image) }}" class="w-100"
+                                 alt="addPic" style="width: 250px; height: 150px; object-fit: cover">
+                            <div class="p-3">
+                                <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
+                                <p class="f-700 fs-16 courseTxt-index">{{$course->info->title}}</p>
+                                <div
+                                    class="d-flex flex-column flex-xl-row mt-4 justify-content-between align-items-xl-center"
+                                    style="min-height: 63px;">
+                                    <div class="d-flex align-items-center me-2">
+                                        <div class="d-flex align-items-center">
+                                            @foreach($course->getLectors()->take(3) as $k => $lector)
+                                                <img
+                                                    src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}"
+                                                    style="width: 48px;height: 48px;object-fit: cover"
+                                                    class="@if ($k>0) m-25 @endif rounded-circle border" alt="personPic">
+                                            @endforeach
+                                            @if($course->getLectors()->count() == 1)
+                                                <p class="m-0 ms-2 fs-14 f-500">{{$course->getLectors()[0]->userinfo->fname}} {{$course->getLectors()[0]->userinfo->lname}}</p>
+                                            @endif
+                                        </div>
+                                        <div>
+                                            @if($course->getLectors()->count() > 1)
+                                                <span class="fs-14 f-500 ms-2 ">{{ \App\Helpers\TEXT::lectorCount($course->getLectors()->count()) }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </a>
-                </div>
-            @endforeach
+                @endforeach
             <button wire:click="loadNext" class="w-100 fs-14 f-500 mt-3 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">{{ __("profile.courses.show_more") }}</button>
 
             <div class="mt-4 d-flex justify-content-center d-lg-block">

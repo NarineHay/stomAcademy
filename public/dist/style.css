@@ -1,18 +1,17 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('font/icomoon.eot?7jmg1l');
-  src:  url('font/icomoon.eot?7jmg1l#iefix') format('embedded-opentype'),
-    url('font/icomoon.ttf?7jmg1l') format('truetype'),
-    url('font/icomoon.woff?7jmg1l') format('woff'),
-    url('font/icomoon.svg?7jmg1l#icomoon') format('svg');
+  src:  url('font/icomoon.eot?rufrcy');
+  src:  url('font/icomoon.eot?rufrcy#iefix') format('embedded-opentype'),
+    url('font/icomoon.ttf?rufrcy') format('truetype'),
+    url('font/icomoon.woff?rufrcy') format('woff'),
+    url('font/icomoon.svg?rufrcy#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-    font-size: 0.8em;
-    /*margin-left: 5px;*/
+  /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: never;
   font-style: normal;
@@ -27,17 +26,17 @@
 }
 
 .icon-rub:before {
-    content: "\e900";
+  content: "\e900";
 }
 .icon-byn:before {
-    content: "\e901";
+  content: "\e901";
 }
 .icon-eur:before {
-    content: "\e902";
+  content: "\e902";
 }
 .icon-usd:before {
-    content: "\e903";
+  content: "\e903";
 }
 .icon-uah:before {
-    content: "\e904";
+  content: "\e904";
 }

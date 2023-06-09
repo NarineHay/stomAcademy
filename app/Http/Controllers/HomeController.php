@@ -6,6 +6,7 @@ use App\Helpers\LG;
 use App\Models\Blog;
 use App\Models\Course;
 use App\Models\Direction;
+use App\Models\IndexContent;
 use App\Models\User;
 use App\Models\Video;
 use App\Models\Webinar;
@@ -14,11 +15,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data['courses'] = Course::query()->where('online',0)->withSum('webinars_object','duration')->withCount('webinars')->limit(10)->orderBy('id','desc')->get();
-        $data['conferences'] = Course::query()->where('online',1)->withCount('webinars')->limit(9)->orderBy('id','desc')->get();
-        $data['blogs'] = Blog::query()->limit(4)->orderBy('id','desc')->get();
-        $data['lectors'] = User::query()->withCount('webinars')->where("role",User::ROLE_LECTOR)->with("lector")->limit(6)->get();
-        $data['webinars'] = Webinar::query()->limit(6)->orderBy('id','desc')->get();
+        $content = IndexContent::find(1);
+        $data['courses'] = Course::query()->where('online',0)->whereIn("id",$content['popular'])->withSum('webinars_object','duration')->withCount('webinars')->get();
+        $data['courses_new'] = Course::query()->where('online',0)->whereIn("id",$content['new'])->withSum('webinars_object','duration')->withCount('webinars')->get();
+        $data['conferences'] = Course::query()->where('online',1)->whereIn("id",$content['online_co'])->withCount('webinars')->get();
+        $data['blogs'] = Blog::query()->whereIn("id",$content['articles'])->limit(4)->get();
+        $data['lectors'] = User::query()->whereIn("id",$content['lectors'])->withCount('webinars')->where("role",User::ROLE_LECTOR)->with("lector")->limit(6)->get();
+        $data['webinars'] = Webinar::query()->whereIn("id",$content['online_le'])->limit(6)->get();
         $data['directions'] = Direction::all();
         $data['videos'] = Video::all();
         return view("front.index", $data);

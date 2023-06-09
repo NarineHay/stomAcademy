@@ -41,7 +41,11 @@
                                 <option value="0">---</option>
                                 @foreach($users as $user)
                                     <option @if($user->id == $search_user) selected @endif value="{{ $user->id }}">
-                                        {{ $user->userinfo->fname }} {{$user->userinfo->lname}}
+                                        @if(!$user->userinfo->fname && !$user->userinfo->lname)
+                                            {{ $user->email }}
+                                        @else
+                                            {{ $user->userinfo->fname }} {{$user->userinfo->lname}}
+                                        @endif
                                     </option>
                                 @endforeach
                             </select>

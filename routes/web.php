@@ -73,6 +73,7 @@ Route::middleware("auth")->group(function (){
 
 
 Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],function () {
+    Route::resource("index",\App\Http\Controllers\Admin\IndexController::class);
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('lectors', \App\Http\Controllers\Admin\LectorController::class);
     Route::resource('prices', \App\Http\Controllers\Admin\PriceController::class);
@@ -91,7 +92,7 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
 Route::group(['prefix' => "lector",'middleware' => 'isLector','as' => 'lector.'],function () {
     Route::get("/personal",[\App\Http\Controllers\Lector\PersonalController::class,'index'])->name("personal");
     Route::get("/profile",[\App\Http\Controllers\Lector\ProfileController::class,'index'])->name("profile");
-    Route::get("/webinars",[\App\Http\Controllers\Lector\WebinarsController::class,'index'])->name("webinars");
+//    Route::get("/webinars",[\App\Http\Controllers\Lector\WebinarsController::class,'index'])->name("webinars");
     Route::get("/courses",[\App\Http\Controllers\Lector\CoursesController::class,'index'])->name("courses");
     Route::get("/chats",[\App\Http\Controllers\Lector\ChatsController::class,'index'])->name("chats");
 });
