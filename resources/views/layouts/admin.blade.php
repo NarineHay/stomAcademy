@@ -154,6 +154,9 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column">
                     <li class="nav-item">
+                        <a href="{{ route('admin.index.index') }}" class="nav-link @if(request()->is('admin/index*')) active @endif">Главная </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.users.index') }}" class="nav-link @if(request()->is('admin/users*')) active @endif">Пользователи</a>
                     </li>
 
