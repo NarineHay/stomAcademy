@@ -13,7 +13,7 @@
                     <div>
                         <input type="email" class="form-control mb-2"
                                aria-describedby="inputGroup-sizing-default"
-                               placeholder="{{ __("courses.contacts.form.name") }}">
+                               placeholder="{{ __("courses.contacts.form.email") }}">
                     </div>
                     <div>
                         <input type="text" class="form-control mb-2"

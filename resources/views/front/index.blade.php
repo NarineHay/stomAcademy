@@ -145,12 +145,11 @@
                                         @endif
                                     </span>
                                 </div>
-                                <form method="POST" action="{{route('addToCart')}}">
+                                <form method="POST" action="{{ route('addToCart') }}" class="buy_form">
                                     @csrf
                                     <input type="hidden" value="{{ $course->id }}" name="id">
                                     <input type="hidden" value="course" name="type">
-                                    <button
-                                        class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __("index.buy_webinar") }}</button>
+                                    <button class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __("index.buy_webinar") }}</button>
                                 </form>
                             </div>
                         </a>

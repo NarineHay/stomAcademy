@@ -242,7 +242,6 @@
                         $('.summernote').summernote()
                     })
                 }
-
             </script>
 
             @livewireScripts
