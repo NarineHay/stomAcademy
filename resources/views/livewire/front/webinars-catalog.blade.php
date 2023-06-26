@@ -24,7 +24,7 @@
             </div>
 
             <div class="col-12 d-flex d-lg-none justify-content-between mt-2 filter_buttons_mobile mb-2">
-                <button class="fs-12 f-600 py-2 w-50 bg-transparent"><a href="filter.html" class="text-black">Фильтр</a></button>
+                <button class="fs-12 f-600 py-2 w-50 bg-transparent "><a href="filter.html" class="text-black">Фильтр</a></button>
                 <button class="fs-12 f-600 py-2 w-50 bg-transparent text-black"><a href="sorting.html" class="text-black">Сортировка</a></button>
             </div>
 

@@ -98,7 +98,7 @@
                     </div>
                 </section>
             @else
-                <header class="position-fixed bg-primary w-100" style="z-index: 111">
+                <!-- <header class="position-fixed bg-primary w-100" style="z-index: 111">
                     <div class="container d-flex justify-content-between p-3 align-items-center">
                         <div>
                             <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
@@ -109,7 +109,19 @@
                         </div>
 
                     </div>
+                </header> -->
+                <header class="position-relative bg-primary ">
+                    <div class="container d-flex justify-content-between p-3 align-items-center">
+                        <div>
+                            <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between  flex-row-reverse flex-lg-row">
+                            @include('front.components.header_menu')
+                            <x-header-user></x-header-user>
+                        </div>
+                    </div>
                 </header>
+                
             @endif
 
 
@@ -157,27 +169,27 @@
                             </div>
                             <div class="mt-4 mt-lg-5 d-flex mb-0 mb-lg-4">
                                 <div
-                                    class="rounded-circle d-flex align-items-center justify-content-center bg-gray icon-style">
-                                    <a href="https://www.youtube.com/"><i
+                                    class="rounded-circle d-flex align-items-center justify-content-center bg-gray icon-style ">
+                                    <a href="https://www.youtube.com/STOMACADEMY" target="_blank"><i
                                             class="fab fa-youtube text-white fs-16"></i></a>
                                 </div>
                                 <div
                                     class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
-                                    <a href="https://web.telegram.org/k/"><i
+                                    <a href="https://t.me/stomacademy" target="_blank"><i
                                             class="fab fa-telegram-plane text-white fs-16"></i></a>
                                 </div>
                                 <div
                                     class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
-                                    <a href="https://twitter.com/"><i class="fab fa-twitter text-white fs-16"></i></a>
+                                    <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter text-white fs-16"></i></a>
                                 </div>
                                 <div
                                     class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
-                                    <a href="https://www.facebook.com/"><i
+                                    <a href="https://www.facebook.com/stomacademy" target="_blank"><i
                                             class="fab fa-facebook-f text-white fs-16"></i></a>
                                 </div>
                                 <div
                                     class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
-                                    <a href="https://www.instagram.com/"><i
+                                    <a href="https://www.instagram.com/stom.academy/" target="_blank"><i
                                             class="fab fa-instagram text-white fs-16"></i></a>
                                 </div>
                             </div>

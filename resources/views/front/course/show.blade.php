@@ -471,12 +471,12 @@
                                        placeholder="{{ __("courses.reg.form.placeholder.name") }}">
                                 <label
                                     class="text-white fs-14 lh-14 fw-normal">{{ __("courses.reg.form.label.email") }}</label>
-                                <input type="text" class="form-control mb-3 " aria-label="Sizing example input"
+                                <input type="email" class="form-control mb-3 " aria-label="Sizing example input"
                                        aria-describedby="inputGroup-sizing-default"
                                        placeholder="{{ __("courses.reg.form.placeholder.email") }}">
                                 <label
                                     class="text-white fs-14 lh-14 fw-normal">{{ __("courses.reg.form.label.phone") }}</label>
-                                <input type="text" class="form-control mb-3 " aria-label="Sizing example input"
+                                <input type="tel"  class="form-control input_tel_registr mb-3 " aria-label="Sizing example input"
                                        aria-describedby="inputGroup-sizing-default"
                                        placeholder="{{ __("courses.reg.form.placeholder.phone") }}Ваш номер телефона">
                                 <button

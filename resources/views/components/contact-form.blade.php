@@ -169,8 +169,8 @@
                     </div>
                 </div>
                 <h3 class="color-23 f-700 lh-40 mb-4 mt-3">{{ __("courses.contacts.info.soc") }}</h3>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/" class="facebook me-2">
+                <div class="social-icons pb-3">
+                    <a href="https://www.facebook.com/stomacademy/" class="facebook me-2" target="_blank">
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <g id="Facebook">
@@ -183,7 +183,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a href="https://www.instagram.com/" class="instagram me-2">
+                    <a href="https://www.instagram.com/stom.academy/" class="instagram me-2" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                              viewBox="0 0 333333 333333" shape-rendering="geometricPrecision"
                              text-rendering="geometricPrecision" image-rendering="optimizeQuality"
@@ -203,7 +203,7 @@
                                 fill="url(#a)"/>
                         </svg>
                     </a>
-                    <a href="https://web.telegram.org/z/" class="telegram me-2">
+                    <a href="https://t.me/stomacademy" class="telegram me-2" target="_blank">
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <rect width="30" height="30" rx="15" fill="#179EE0"/>
@@ -212,7 +212,7 @@
                                   fill="white"/>
                         </svg>
                     </a>
-                    <a href="https://vk.com/" class="wk me-2">
+                    <a href="https://vk.com/stomacademy" class="wk me-2" target="_blank">
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <rect width="30" height="30" rx="15" fill="#1976D2"/>
@@ -221,7 +221,7 @@
                                   fill="white"/>
                         </svg>
                     </a>
-                    <a href="https://www.youtube.com/" class="youtube me-2">
+                    <a href="https://www.youtube.com/c/STOMACADEMY" class="youtube me-2" target="_blank">
                         <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <rect width="30" height="30" rx="15" fill="#FF0100"/>

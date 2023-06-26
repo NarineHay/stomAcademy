@@ -8,7 +8,7 @@
             <h2 class="f-600 m-0">Онлайн обучение</h2>
         </div>
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 align-items-lg-center">
-            <div class="d-flex education_tags mb-3 mb-lg-0">
+            <div class="d-flex education_tags mb-3 mb-lg-0 e-learning-menu flex-wrap-wrap sdad">
                 <a href="{{ route("catalog") }}" class="px-2 px-md-3 py-2 fs-14 f-600 br-12 @if($type == "catalog") active bg-white @else bg-light-gray @endif text-black ms-2 btn_text">
                     {{ __("courses.tabs.all") }}
                 </a>
@@ -24,9 +24,66 @@
             </div>
 
             <div class="col-12 d-flex d-lg-none justify-content-between mt-2 filter_buttons_mobile mb-2">
-                <button class="fs-12 f-600 py-2 w-50 bg-transparent"><a href="filter.html" class="text-black">Фильтр</a></button>
-                <button class="fs-12 f-600 py-2 w-50 bg-transparent text-black"><a href="sorting.html" class="text-black">Сортировка</a></button>
+
+
+                <button class="fs-12 f-600 py-2 w-50 bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><a href="filter.html" class="text-black">Фильтр</a></button>
+                        
+                <button class="fs-12 f-600 py-2 w-50 bg-transparent text-black dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><a href="sorting.html" class="text-black">Сортировка</a></button>
+                <ul class="dropdown-menu p-3">
+                <input wire:model="sortBy" value="price" type="radio" id="vehicle111" name="sort" class="mt-2 cursor">
+                        <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">Цена</label><br>
+                        <input wire:model="sortBy" value="title" type="radio" id="vehicle1112" name="sort" class="mt-2 cursor">
+                        <label for="vehicle1112" class="f-500 fs-14 ms-2 cursor">Названия</label><br>
+                        <input wire:model="sortBy" value="popularity" type="radio" id="vehicle3333" name="sort" class="mt-2 cursor">
+                        <label for="vehicle3333" class="f-500 fs-14 ms-2 cursor">По популярность</label><br>
+  </ul>
             </div>
+            <div class="collapse" id="collapseExample" >
+                
+                            <div >
+                                                <div class="mt-4 ms-3 ">
+                                                    <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
+                                                        data-bs-toggle="collapse" data-bs-target="#fg-1"><span>Области</span><i class="fal fa-angle-right"></i></label>
+                                                    <div class="collapse " id="fg-1">
+                                                        <div class="mt-2">
+                                                            <ul class="list-unstyled m-0 p-0">
+                                                                @foreach($directions as $direction)
+                                                                    <li>
+                                                                        <input wire:model="selectedDirections" type="checkbox" id="dir-{{ $direction->id }}" value="{{ $direction->id }}" class="mt-2">
+                                                                        <label for="dir-{{ $direction->id }}" class="f-500 fs-14">{{ $direction->title }}</label><br>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-4 ms-3">
+                                                    <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor" data-bs-toggle="collapse" data-bs-target="#fg-3"><span>Оплата</span><i class="fal fa-angle-right"></i></label>
+                                                    <div class="collapse" id="fg-3">
+                                                        <div class="mt-2">
+                                                            <input type="checkbox" id="vehicle13" name="vehicle1" class="mt-2 cursor">
+                                                            <label for="vehicle13" class="f-500 fs-14 cursor">Оплаченный</label><br>
+                                                            <input type="checkbox" id="vehicle14" name="vehicle2" class="mt-2 cursor">
+                                                            <label for="vehicle14" class="f-500 fs-14 cursor">Бесплатно</label><br>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="mt-4 ms-3">
+                                                    <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor" data-bs-toggle="collapse" data-bs-target="#fg-2"><span>Преподаватели</span><i class="fal fa-angle-right"></i></label>
+                                                    <div class="collapse" id="fg-2">
+                                                        <div class="mt-2">
+                                                            @foreach($lectors as $user)
+                                                                <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}" value="{{ $user->id }}" class="mt-2 cursor">
+                                                                <label for="lec-{{ $user->id }}" class="f-500 fs-14 cursor">{{ $user->userInfo->fullName }}</label><br>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                            </div>
+            
+
 
             <div class="d-flex align-items-center d-none d-lg-block">
                 <div class="dropdown">

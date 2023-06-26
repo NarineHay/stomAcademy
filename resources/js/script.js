@@ -74,7 +74,7 @@ new Swiper(".WatchedSwiper", {
 });
 
 
-if(document.querySelector(".aside") && document.querySelector(".col-lg-8")){
+if (document.querySelector(".aside") && document.querySelector(".col-lg-8")) {
     let w = document.querySelector("body").clientWidth;
     let wc = document.querySelector(".col-lg-8").clientWidth;
     let wl = (w - wc) / 2 - 20;
@@ -83,20 +83,20 @@ if(document.querySelector(".aside") && document.querySelector(".col-lg-8")){
 }
 
 
-Livewire.on('image_uploaded',function (){
+Livewire.on('image_uploaded', function () {
     let image_update_input = document.querySelector(".image_update_input");
     image_update_input.parentNode.parentNode.querySelector("button").click();
 })
 
 
-document.querySelectorAll(".video_block").forEach((video_block)=>{
-        let iframe = video_block.querySelector("iframe");
-        let src = iframe.getAttribute("src");
-        let video_play = video_block.querySelector(".video_play");
-        video_play.addEventListener("click",function (){
-            iframe.setAttribute("src",src  + "?autoplay=1");
-            iframe.classList.remove("d-none");
-        });
+document.querySelectorAll(".video_block").forEach((video_block) => {
+    let iframe = video_block.querySelector("iframe");
+    let src = iframe.getAttribute("src");
+    let video_play = video_block.querySelector(".video_play");
+    video_play.addEventListener("click", function () {
+        iframe.setAttribute("src", src + "?autoplay=1");
+        iframe.classList.remove("d-none");
+    });
 });
 
 
@@ -109,15 +109,15 @@ document.querySelectorAll(".video_block").forEach((video_block)=>{
 
 
 let header_menu = document.querySelector(".header_menu");
-if (header_menu){
+if (header_menu) {
     let btn_for_menu = header_menu.querySelector(".btn_for_menu");
     let btn_close_for_menu = header_menu.querySelector(".btn_close_for_menu");
     let nav = header_menu.querySelector(".navbar");
-    btn_for_menu.addEventListener("click", ()=>{
-       nav.classList.add("show");
+    btn_for_menu.addEventListener("click", () => {
+        nav.classList.add("show");
     });
-    btn_close_for_menu.addEventListener("click", ()=>{
-       nav.classList.remove("show");
+    btn_close_for_menu.addEventListener("click", () => {
+        nav.classList.remove("show");
     });
 }
 
@@ -126,28 +126,28 @@ document.addEventListener("DOMContentLoaded", () => {
     let show_more = directions_index.querySelector(".show_more");
     let max_h = directions_index.querySelector("a").offsetHeight * 3;
     let a_s = directions_index.querySelectorAll("a");
-    show_more.addEventListener("click",function (){
-        a_s.forEach(function (item){
+    show_more.addEventListener("click", function () {
+        a_s.forEach(function (item) {
             item.style.display = "inline";
         })
     });
     let index = a_s.length;
-    while(directions_index.offsetHeight > max_h){
+    while (directions_index.offsetHeight > max_h) {
         index--;
         a_s[index].style.display = "none";
     }
 });
 
-document.querySelectorAll(".password_container").forEach(function (r){
+document.querySelectorAll(".password_container").forEach(function (r) {
     console.log(r);
-    r.querySelectorAll(".eye").forEach(function (e){
+    r.querySelectorAll(".eye").forEach(function (e) {
         let input = r.querySelector("input");
-        e.addEventListener("click",function (){
+        e.addEventListener("click", function () {
             r.classList.toggle("show");
-            if(input.getAttribute("type") == "password"){
-                input.setAttribute("type","text");
-            }else{
-                input.setAttribute("type","password");
+            if (input.getAttribute("type") == "password") {
+                input.setAttribute("type", "text");
+            } else {
+                input.setAttribute("type", "password");
             }
         });
     })
@@ -156,39 +156,39 @@ document.querySelectorAll(".password_container").forEach(function (r){
 
 
 let webinarsCalc = {
-    count:0,
-    price:0,
-    init:function (){
+    count: 0,
+    price: 0,
+    init: function () {
         document.querySelectorAll("#webinarSelectModal .course_item").forEach((item) => {
             let input = item.querySelector("input");
-            item.addEventListener("click",(e) => {
-                if(e.target != input){
+            item.addEventListener("click", (e) => {
+                if (e.target != input) {
                     input.click();
                 }
                 this.update();
             })
         })
-        document.querySelector("#webinarSelectModal .buyButton").addEventListener("click",function (){
+        document.querySelector("#webinarSelectModal .buyButton").addEventListener("click", function () {
             document.querySelector("#webinarSelectModal form").submit();
         })
     },
-    update:function (){
+    update: function () {
         this.count = 0;
         this.price = 0;
         let footer = document.querySelector("#webinarSelectModal .modal-footer");
         document.querySelectorAll("#webinarSelectModal .course_item").forEach((item) => {
             let input = item.querySelector("input");
-            if(input.checked){
+            if (input.checked) {
                 this.count++;
-                this.price+=parseInt(input.dataset.price);
+                this.price += parseInt(input.dataset.price);
             }
         })
         console.log(footer);
         footer.querySelector(".co").textContent = this.count;
         footer.querySelector(".total").textContent = this.price;
-        if(this.count > 0){
+        if (this.count > 0) {
             footer.classList.remove("d-none");
-        }else{
+        } else {
             footer.classList.add("d-none");
         }
     }
@@ -196,3 +196,21 @@ let webinarsCalc = {
 
 webinarsCalc.init();
 
+
+
+let input_tel_registr = document.querySelector(".input_tel_registr");
+// let reg = /[A-Za-zA-Яа - яЁё]/g;
+let reg = /[0-9]/g;
+
+
+input_tel_registr.addEventListener("input", function (e) {
+    var checkingRegExp = new RegExp(/^([+\d].*)?\d$/g);
+    // var checkingRegExp = new RegExp\^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$
+    
+
+    if(input_tel_registr.value.match(checkingRegExp) == null){
+        input_tel_registr.value = input_tel_registr.value.substr(0,input_tel_registr.length - 1)
+    }
+    // console.log(e.data);
+    // this.value = this.value.replace(reg, '');
+})

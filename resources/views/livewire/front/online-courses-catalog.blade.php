@@ -8,7 +8,7 @@
             <h2 class="f-600 m-0">Онлайн обучение</h2>
         </div>
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 align-items-lg-center">
-            <div class="d-flex education_tags mb-3 mb-lg-0">
+            <div class="d-flex education_tags mb-3 mb-lg-0 ">
                 <a class="px-2 px-md-3 py-2 fs-14 f-600 br-12 bg-light-gray text-black ms-2 btn_text">
                     {{ __("courses.tabs.all") }}
                 </a>
@@ -24,7 +24,7 @@
             </div>
 
             <div class="col-12 d-flex d-lg-none justify-content-between mt-2 filter_buttons_mobile mb-2">
-                <button class="fs-12 f-600 py-2 w-50 bg-transparent"><a href="filter.html" class="text-black">Фильтр</a></button>
+                <button class="fs-12 f-600 py-2 w-50 bg-transparent weqe"><a href="filter.html" class="text-black">Фильтр</a></button>
                 <button class="fs-12 f-600 py-2 w-50 bg-transparent text-black"><a href="sorting.html" class="text-black">Сортировка</a></button>
             </div>
 

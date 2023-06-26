@@ -98,7 +98,7 @@
                     <button class="btn btn-primary py-2 px-4 px-lg-5 br-12 fs-16 f-600 mt-3 mt-lg-5" data-bs-toggle="modal" data-bs-target="#lectorModal">{{ __("about.specialists.button") }}</button>
                 </div>
             </div>
-            <div class="col-lg-6 offset-2 mt-4 mt-lg-0 col-12">
+            <div class="col-lg-6 offset-2 mt-4 mt-lg-0 col-12 looking-img">
                 <img src="dist/image/about5.png" class="w-100" alt="pic">
             </div>
         </div>
