@@ -4,34 +4,11 @@
             <div class="main8-1 are_any_questions_div">
                 <h3 class="f-700 mb-3 lh-40 color-23">{{ __("courses.contacts.form.title") }}</h3>
                 <p class="f-500 lh-20 color-23">{{ __("courses.contacts.form.under_title") }}</p>
-                <form action="#" class="pe-lg-5 pe-0">
-                    <div>
-                        <input type="text" class="form-control mb-2"
-                               aria-describedby="inputGroup-sizing-default"
-                               placeholder="{{ __("courses.contacts.form.name") }}">
-                    </div>
-                    <div>
-                        <input type="email" class="form-control mb-2"
-                               aria-describedby="inputGroup-sizing-default"
-                               placeholder="{{ __("courses.contacts.form.email") }}">
-                    </div>
-                    <div>
-                        <input type="text" class="form-control mb-2"
-                               aria-describedby="inputGroup-sizing-default"
-                               placeholder="{{ __("courses.contacts.form.phone") }}">
-                    </div>
-                    <div>
-                        <input type="text" class="form-control mb-2"
-                               aria-describedby="inputGroup-sizing-default"
-                               placeholder="{{ __("courses.contacts.form.q") }}">
-                    </div>
 
-                    <button
-                        class="btn btn-primary d-flex mx-auto justify-content-center align-content-center w-100 fs-18 f-600 br-12 mb-5 py-3 lh-22 mt-5"
-                        style="max-width: 737px;">{{ __("courses.contacts.form.button_question") }}
-                    </button>
 
-                </form>
+                <livewire:front.are-any-question-form />
+
+
             </div>
         </div>
         <div class="col-lg-6 col-12">
@@ -241,7 +218,5 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
