@@ -113,16 +113,26 @@
                                             $x = explode("/",$course->video);
                                             $preview = 'https://img.youtube.com/vi/'.array_pop($x).'/hqdefault.jpg';
                                         @endphp
-                                        <img class="img_preview" src="{{ $preview }}">
-                                        <iframe style="z-index: 1;left: 0" class="position-absolute d-none" width="100%"
-                                                height="100%" src="{{ $course->video }}"
-                                                title="Walter Devoto about Stom Academy." frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                allowfullscreen></iframe>
-                                        <div
-                                            class="video_play cursor position-absolute ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3" style="left: 50%;top: 50%;transform: translate(-50%,-50%)">
-                                            <i class="fas fa-play"></i>
+{{--                                        <img class="img_preview" src="{{ $preview }}">--}}
+
+
+
+
+                                        <div id="player" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
+                                            <iframe style="z-index: 1;left: 0" class="position-absolute d-none" width="100%"
+                                                    height="100%" src="{{ $course->video }}"
+                                                    title="Walter Devoto about Stom Academy." frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    allowfullscreen></iframe>
                                         </div>
+
+{{--                                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls"></div>--}}
+
+
+{{--                                        <div--}}
+{{--                                            class="video_play cursor position-absolute ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3" style="left: 50%;top: 50%;transform: translate(-50%,-50%)">--}}
+{{--                                            <i class="fas fa-play"></i>--}}
+{{--                                        </div>--}}
                                     </div>
                                     <div class="card-txts">
                                         {{--                                    <p class="fs-25 card-title-txt fw-bolder">{{ $course->info->title }}</p>--}}

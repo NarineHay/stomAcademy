@@ -110,3 +110,8 @@ Route::group(['prefix' => "lector",'middleware' => 'isLector','as' => 'lector.']
 //Route::post('/create', [\App\Http\Controllers\CertificateController::class, 'imageFileUpload'])->name('image.create');
 
 //Route::post('logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+//
+//Route::get('/test_for_video', function (){
+//    return view('front.test_for_video');
+//});

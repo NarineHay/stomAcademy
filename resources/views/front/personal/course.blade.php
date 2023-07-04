@@ -7,7 +7,10 @@
         <div class="mt-4">
             <div class="bg d-flex justify-content-center align-items-center position-relative br-12">
                 <div class="video_container">
+                    <div id="player" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
+
                     <iframe style="width: 100%" allowfullscreen src="{{ explode("&",\Illuminate\Support\Str::replace("watch?v=","embed/",$webinar->info->video))[0] }}?autoplay=0&showinfo=0&controls=0"></iframe>
+                    </div>
                 </div>
             </div>
         </div>

@@ -18,7 +18,8 @@ return [
     "form" => [
         "title" => "Авторизоваться",
         "email" => "Электронная почта",
-        "password" => "пароль",
+        "password" => "Пароль",
+        "password_re" => "Повторите пароль",
         "password_forget" => "Забыли пароль?",
         "login" => "Войти",
         "first_time" => "Впервые с нами?",
