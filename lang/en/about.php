@@ -2,60 +2,58 @@
 
 return [
     "header" => [
-        "h1" => 'STOM-ACADEMY - Cервис <br class="d-none d-sm-block">обучения врачей-стоматологов.',
-        "under_title" => 'Никаких ограничений по опыту и специальности.
-                                    Огромный<br class="d-none d-sm-block">
-                                    выбор лекторов и тем. Online-обучение, практический курс,<br
-                                        class="d-none d-sm-block"> семинары или конгрессы – выбор за вами.',
+        "h1" => 'STOM-ACADEMY - Dental <br class="d-none d-sm-block">Training Service.',
+        "under_title" => 'No restrictions on experience and specialty.
+                                    A huge choice <br class="d-none d-sm-block">
+                                    of lecturers and topics. Online-training, practical course,<br
+                                        class="d-none d-sm-block"> seminars or congresses – the choice is yours.',
 
     ],
     "block_1" => [
-        "h2" => "О ПРОЕКТЕ<br> STOM-ACADEMY",
-        "under_title" => 'Никаких ограничений по опыту и специальности. Огромный
-                    выбор лекторов и тем. Online-обучение, практический курс,
-                    семинары или конгрессы – выбор за вами.',
+        "h2" => "ABOUT THE <br> STOM-ACADEMY",
+        "under_title" => 'No restrictions on experience and specialty. Huge
+                    вselection of lecturers and topics. Online learning, practical course,
+                    seminars or congresses - the choice is yours.',
     ],
     "text_block" => [
         [
-            "title" => "Участников",
-            "text" => 'Наши лекции и семинары
-                            помогли людям выйти на
-                            профессиональный уровень',
+            "title" => "Participants",
+            "text" => 'Our lectures and seminars have helped people to reach a professional level',
         ],
         [
-            "title" => 'Лекторов',
-            "text" => "Обучения проводят профессионалы своего дела",
+            "title" => 'Lecturers',
+            "text" => "Training is provided by professionals in the field",
         ],
         [
-            "title" => "Года успешной работы",
-            "text" => "Успешно развиваемся и не стоим на месте.",
+            "title" => "Years of successful work",
+            "text" => "We are developing successfully and are not standing still.",
         ],
     ],
-    "slogn" => "“Наша миссия - обеспечить любого врача-стоматолога необходимыми знаниями, передавая опыт от лучших специалистов в каждом из направлений”",
-    "lectors_title" => "Вас будут обучать лучшие специалисты в области стоматологии",
+    "slogn" => "“Our mission - is to provide any dentist with the necessary knowledge, transferring experience from the best specialists in each of the areas”",
+    "lectors_title" => "You will be trained by the best specialists in the field of dentistry",
     "specialists" => [
-        "title" => "ИЩЕМ ХОРОШИХ СПЕЦИАЛИСТОВ",
-        "text" => "Мы всегда готовы познакомиться с отличными специалистами. Пришлите нам ваше резюме для рассмотрения.",
-        "button" => "Хочу стать лектором",
+        "title" => "WE ARE LOOKING FOR GOOD SPECIALISTS",
+        "text" => "We are always ready to meet great professionals. Send us your CV for consideration.",
+        "button" => "I want to be a lecturer",
     ],
     "say_about" => [
-        "title" => "Что о нас говорят лектора",
+        "title" => "What the lecturers say about us",
         "lectors" => [
             [
                 "name" => "Antonio Cerutti",
-                "text" => "Профессор реставрационной стоматологии в стоматологической школе и школе стоматологической гигиены университета г. Брешии (Италия)",
+                "text" => "Professor of restorative dentistry at the School of Dentistry and Dental Hygiene of the University of Brescia (Italy)",
             ],
             [
                 "name" => "Walter Devoto",
-                "text" => "Основатель Итальянской Академии эстетической стоматологии и всемирно известного клуба реставраторов StyleItaliano",
+                "text" => "Founder of the Italian Academy of Aesthetic Dentistry and the world-renowned restorative club StyleItaliano",
             ],
             [
                 "name" => "Rui Falacho",
-                "text" => "Президент Португальского общества цифровой стоматологической медицины",
+                "text" => "President of the Portuguese Society of Digital Dental Medicine",
             ],
             [
                 "name" => "Claudio Farnararo",
-                "text" => "Основатель учебного центра «Dental Art» во Флоренции",
+                "text" => "Founder of the Dental Art Training Center in Florence",
             ],
         ],
     ],

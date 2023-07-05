@@ -39,4 +39,12 @@ class TEXT
         $cur_name = Str::lower($cur->currency_name);
         return $cur_name;
     }
+
+    static function curSymbol(): string
+    {
+        $id = intval(Cookie::get("currency_id",1));
+        $cur = Currency::find($id);
+        $cur_name = Str::lower($cur->currency_name) ;
+        return $cur_name;
+    }
 }

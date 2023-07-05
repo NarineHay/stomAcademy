@@ -63,8 +63,7 @@
                                     <p class="m-0 ms-1 ms-md-2 f-500">{{$item->course->webinars_count}} {{ __("profile.cart.lection") }}</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
-                                    <p class="m-0 ms-1 ms-md-2 f-700 me-2 text-primary fs-14">{{$item->course->price->rub}}
-                                        ₽</p>
+                                    <p class="m-0 ms-1 ms-md-2 f-700 me-2 text-primary fs-14">{{$item->course->price->html()}} </p>
                                 </div>
                                 <div
                                     class="d-flex justify-content-between align-items-center py-2 px-3 fs-14 d-none d-lg-block">
@@ -106,11 +105,15 @@
                     <div>
                         <div class="d-flex justify-content-between mt-2 mt-md-5 mb-3 align-items-center">
                             <p class="f-700 fs-16 m-0">{{ __("profile.cart.to_pay") }}</p>
-                            <p class="f-700 fs-24 text-primary m-0">{{ $total }} ₽</p>
+                            <p class="f-700 fs-24 text-primary m-0">{{ $total }} <i class="icon-{{ \App\Helpers\TEXT::curSymbol() }}"></i></p>
+{{--                            {{$item->webinar->price->html()}}--}}
                         </div>
-                        <div>
-                            <button class="btn btn-primary br-12 w-100 fs-16 f-600 py-2">{{ __("profile.cart.button") }}</button>
-                        </div>
+                        <form action="{{ route("personal.cart.order") }}" method="POST">
+                            @csrf
+                            <input name="promo" wire:model="code" type="text" class="d-none form-control py-2 px-3 br-12 inputStyle promo-input"
+                                   placeholder="Введите промокод">
+                            <button type="submit" id="checkout-button" class="btn btn-primary br-12 w-100 fs-16 f-600 py-2">{{ __("profile.cart.button") }}</button>
+                        </form>
                     </div>
                 </div>
             </div>

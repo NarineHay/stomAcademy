@@ -1,6 +1,6 @@
 <?php
 
 return [
-    "category_title" => "Рубрики",
-    "more_blogs" => "Еще статьи"
+    "category_title" => "Rúbricas",
+    "more_blogs" => "Más artículos"
 ];

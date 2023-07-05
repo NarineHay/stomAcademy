@@ -1,17 +1,17 @@
 <?php
 
 return [
-    "name" => "Имя",
-    "email" => "Почта",
-    "phone" => "Телефон",
+    "name" => "Name",
+    "email" => "Email",
+    "phone" => "Phone",
     'to_by_lector' => [
-        'h1' => "Хочешь стать лектором?",
-        "success" => "Электронное письмо было успешно отправлено",
-        "button" => "Отправить заявку"
+        'h1' => "Do you want to become a lecturer?",
+        "success" => "The email was successfully sent",
+        "button" => "Send a request"
     ],
     "follow" => [
-        "h1" => "Оповестить о новых лекциях?",
-        "success" => "Вы подписаны на эту страницу",
-        "button" => "Подписаться",
+        "h1" => "Should we notify you about new lectures?",
+        "success" => "You are subscribed ",
+        "button" => "Subscribe",
     ]
 ];

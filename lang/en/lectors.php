@@ -1,8 +1,8 @@
 <?php
 
 return [
-    "h1" => "Лектора",
-    "webinar_count" => "лекции",
-    "filter" => "Направление",
-    "min" => "мин",
+    "h1" => "Lecturer",
+    "webinar_count" => "Lectures",
+    "filter" => "Section",
+    "min" => "min",
 ];

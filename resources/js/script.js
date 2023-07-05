@@ -93,10 +93,13 @@ document.querySelectorAll(".video_block").forEach((video_block) => {
     let iframe = video_block.querySelector("iframe");
     let src = iframe.getAttribute("src");
     let video_play = video_block.querySelector(".video_play");
-    video_play.addEventListener("click", function () {
-        iframe.setAttribute("src", src + "?autoplay=1");
-        iframe.classList.remove("d-none");
-    });
+    if (video_play){
+        video_play.addEventListener("click", function () {
+            iframe.setAttribute("src", src + "?autoplay=1");
+            iframe.classList.remove("d-none");
+        });
+    }
+
 });
 
 
@@ -206,7 +209,7 @@ let reg = /[0-9]/g;
 input_tel_registr.addEventListener("input", function (e) {
     var checkingRegExp = new RegExp(/^([+\d].*)?\d$/g);
     // var checkingRegExp = new RegExp\^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$
-    
+
 
     if(input_tel_registr.value.match(checkingRegExp) == null){
         input_tel_registr.value = input_tel_registr.value.substr(0,input_tel_registr.length - 1)

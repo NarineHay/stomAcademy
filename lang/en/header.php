@@ -2,27 +2,24 @@
 
 return [
     "menu" => [
-        "home" => "Главная",
-        "courses" => "Наши курсы",
-        "lectors" => "Лектора",
-        "about" => "О нас",
-        "blog" => "Статьи",
-        "contact" => "Контакты",
-        "cart" => "Корзина"
+        "home" => "Home",
+        "courses" => "Our Courses",
+        "lectors" => "Lecturers",
+        "about" => "About Us",
+        "blog" => "Articles",
+        "contact" => "Contact",
+        "cart" => "Cart"
     ],
     "h1" => "Stom academy<br>dental education",
-    "under_title" => 'stom-academy — это сервис обучения
-                                        врачей-стоматологов, который <br class="d-none d-lg-block">проводит
-                                        вебинары, семинары,
-                                        практические курсы конгрессы.',
+    "under_title" => 'stom-academy — is a training service for dentists that runs webinars, seminars, practical courses and congresses.',
     "form" => [
-        "title" => "Авторизоваться",
-        "email" => "Электронная почта",
-        "password" => "Пароль",
-        "password_re" => "Повторите пароль",
-        "password_forget" => "Забыли пароль?",
-        "login" => "Войти",
-        "first_time" => "Впервые с нами?",
-        "register" => "Зарегистрироваться",
+        "title" => "Log in",
+        "email" => "Email",
+        "password" => "Password",
+        "password_re" => "Repeat password",
+        "password_forget" => "Forgot Password?",
+        "login" => "Log in",
+        "first_time" => "New to us?",
+        "register" => "Register",
     ],
 ];

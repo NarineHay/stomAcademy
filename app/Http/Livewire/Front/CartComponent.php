@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Livewire\Component;
 
+
 class CartComponent extends Component
 {
     public $promo = null;
@@ -24,10 +25,10 @@ class CartComponent extends Component
             if($item->type == "course"){
                 $item['course'] = Course::query()->withCount("webinars")->withSum('webinars_object','duration')
                     ->where("id",$item->item_id)->with("info")->first();
-                $total += $item['course']->price->rub;
+                $total += $item['course']->price->pure();
             }elseif($item->type == "webinar"){
                 $item['webinar'] = Webinar::query()->where("id",$item->item_id)->with("info")->first();
-                $total += $item['webinar']->price->rub;
+                $total += $item['webinar']->price->pure();
             }
             return $item;
         });
@@ -41,6 +42,7 @@ class CartComponent extends Component
         }else{
             $data['total'] = $total;
         }
+
         return view('livewire.front.cart-component',$data);
     }
 

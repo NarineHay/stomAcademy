@@ -1,23 +1,23 @@
 <?php
 
 return [
-    "h1" => "Онлайн обучение",
+    "h1" => "Online training",
     "tabs" => [
-        "courses" => "Онлайн-курсы",
-        "webinars" => "Вебинары",
-        "online" => "Онлайн-конференции",
-        "all" => "Все",
+        "courses" => "Online courses",
+        "webinars" => "Webinars",
+        "online" => "Online conferences",
+        "all" => "All",
     ],
     "sort" => [
-        "title" => "Сортировать по:",
-        "price" => "Цена",
-        "name" => "Названия",
-        "pop" => "По популярность",
+        "title" => "Sort by:",
+        "price" => "Price",
+        "name" => "Names",
+        "pop" => "By popularity	",
     ],
     "filters" => [
-        "directions" => "Области",
-        "price" => "Оплата",
-        "lector" => "Преподаватели",
+        "directions" => "Categories",
+        "price" => "Payment",
+        "lector" => "Lecturers",
     ],
     "under_title" => "занятий с домашними заданиями.",
     "start" => "Старт",
