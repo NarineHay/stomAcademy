@@ -6,6 +6,7 @@ use App\Helpers\LG;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 class SetLocale
 {
@@ -18,7 +19,7 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next)
     {
-        App::setLocale(LG::getCode());
+        App::setLocale(Str::lower(LG::getCode()));
         return $next($request);
     }
 }
