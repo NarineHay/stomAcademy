@@ -1,6 +1,6 @@
 {
   "resources/js/script.js": {
-    "file": "assets/script.5846e460.js",
+    "file": "assets/script.91d101aa.js",
     "src": "resources/js/script.js",
     "isEntry": true
   },
@@ -10,7 +10,7 @@
     "isEntry": true
   },
   "resources/sass/lib.scss": {
-    "file": "assets/lib.170e8af6.css",
+    "file": "assets/lib.8d66b1af.css",
     "src": "resources/sass/lib.scss",
     "isEntry": true
   }
