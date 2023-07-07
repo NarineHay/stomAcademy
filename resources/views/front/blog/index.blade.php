@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-12">
-                    <div class="d-flex mt-2 mt-md-6 pt-6 pt-md-2">
+                    <div class="d-flex mt-2 mt-md-3 py-2 ">
                         <a href="{{route('home')}}"><span class="fs-12 f-500 text-secondary">{{ __("header.menu.home") }}</span></a>
                         <a><span class="fs-12 f-500 ms-3 main">{{ __("header.menu.blog") }}</span></a>
                     </div>

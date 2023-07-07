@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-10 col-12 mb-5 mb-lg-6">
-        <div class="d-flex mt-6 py-2">
+        <div class="d-flex mt-2 mt-md-3 py-2">
             <a href="{{route('home')}}" class="text-dark"><span class="fs-12 f-500 text-secondary">{{ __("header.menu.home") }}</span></a>
             <a><span class="fs-12 f-500 ms-4 main">{{ __("header.menu.lectors") }}</span></a>
         </div>

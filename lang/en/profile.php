@@ -15,6 +15,7 @@ return [
         "page_menu" => [
             "online" => "Online-conferences",
             "course" => "Online-courses",
+            "all" => "Все",
         ],
         "directions" => "Specialization",
         "show_more" => "Show more",

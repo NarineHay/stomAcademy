@@ -26,6 +26,8 @@ class Catalog extends Component
 
     public $sortBy;
 
+    public $count;
+
     protected $paginationTheme = 'bootstrap';
 
     public function mount()
@@ -153,13 +155,15 @@ class Catalog extends Component
             $courses_q = $courses_q->whereIn("id",$course_ids);
         }
 
-        return $courses_q->withSum('webinars_object','duration')
-            ->withCount('webinars')->paginate($this->perPage);
+        $courses_q = $courses_q->withSum('webinars_object','duration')
+            ->withCount('webinars');
+        $this->count = $courses_q->count();
+        return $courses_q->paginate($this->perPage);
     }
 
     function getAll(){
         $course_ids = null;
-        $courses_q = Course::query()->where('online',1);
+        $courses_q = Course::query();
         if(count($this->selectedDirections) > 0){
             $course_ids = CourseDirection::query()->whereIn("direction_id",$this->selectedDirections)
                 ->get()->map(function ($course){
@@ -186,7 +190,9 @@ class Catalog extends Component
             $courses_q = $courses_q->whereIn("id",$course_ids);
         }
 
-        return $courses_q->withSum('webinars_object','duration')
-            ->withCount('webinars')->paginate($this->perPage);
+        $courses_q = $courses_q->withSum('webinars_object','duration')
+            ->withCount('webinars');
+        $this->count = $courses_q->count();
+        return $courses_q->paginate($this->perPage);
     }
 }

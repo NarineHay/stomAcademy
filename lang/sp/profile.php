@@ -15,6 +15,7 @@ return [
         "page_menu" => [
             "online" => "Conferencias en línea",
             "course" => "Cursos en línea",
+            "all" => "Все",
         ],
         "directions" => "Especialización ",
         "show_more" => "Mostrar más",

@@ -7,7 +7,7 @@
     </div>
     <div class="col-lg-3 bg-white border-start bg-white message_content">
         <div class="container">
-            <div class="row py-3 px-2 py-lg-6 mt-5 mt-lg-4">
+            <div class="row pb-3 px-2 pb-lg-6 mt-5 mt-lg-4">
                 <p class="m-0 f-700" style="font-size: 24px !important;">{{ __("profile.chat.messages") }}</p>
                 <div class="position-relative mt-3">
                     <input wire:model="search" class="form-control br-12 fs-14 f-500 text-primary bg-transparent"
@@ -29,7 +29,8 @@
                                         <a class="text-black">
                                             <p class="m-0 fs-14 f-700">{{ \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE_USER ? ($chat->moder->name ?? "Moderator" ) : $chat->user->name }}</p>
                                         </a>
-                                        <p class="m-0 fs-13">{{ $chat->messages->last() ? \Illuminate\Support\Str::of($chat->messages->last()->message)->substr(0,35) : ""}}...</p>
+                                        <p class="m-0 fs-13">{{ $chat->messages->last() ? \Illuminate\Support\Str::of($chat->messages->last()->message)->substr(0,35) : ""}}
+                                            ...</p>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between">
@@ -45,7 +46,8 @@
                     @endforeach
 
                     @if(\Illuminate\Support\Facades\Auth::user()->role != \App\Models\User::ROLE_ADMIN)
-                        <button class="btn btn-primary" wire:click="new_chat">{{ __("profile.chat.new_dialog") }}</button>
+                        <button class="btn btn-primary"
+                                wire:click="new_chat">{{ __("profile.chat.new_dialog") }}</button>
                     @endif
                 </div>
             </div>
@@ -59,39 +61,47 @@
                             class="message_text2">{{$chat->created_at}}</span>
                     </p>
                 </div>
-                <div class="mt-4 d-flex flex-column justify-content-between h-100">
-                    @foreach($this->active_chat->messages as $message)
-                        <div>
-                            @if($message->user_id == \Illuminate\Support\Facades\Auth::user()->id)
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <div class="p-2 my-1"
-                                         style="background-color: #E9F2FA; border-radius: 12px 12px 0 12px">
-                                        <p class="m-0 fs-14 f-500">{{ $message->message }}</p>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="d-flex align-items-center justify-content-start mt-2">
-                                    <div class="me-2">
-                                        <img class="chat_avatar" alt="pic"
-                                             src="{{\Illuminate\Support\Facades\Storage::url($message->user->userinfo->image)}}">
-                                    </div>
-                                    <div class="p-2 bg-white" style="border-radius: 12px 12px 12px 0">
-                                        <p class="m-0 fs-14 f-500 text-end">{{ $message->message }}</p>
-                                    </div>
+                <div class="mt-4 d-flex flex-column position-relative justify-content-start h-100">
+                    <div class="support-chat-div">
 
-                                </div>
-                            @endif
-                        </div>
-                    @endforeach
-                    <div class="position-relative mb-2">
-                        <input wire:keydown.enter="send_message" wire:model="message"
-                               class="w-100 py-3 px-3 br-12 border-0 position-relative"
-                               placeholder="Добавить комментарий">
-                        <div wire:click="send_message" class="icon-style bg-primary br-12 d-flex justify-content-center align-items-center
+
+                        @foreach($this->active_chat->messages as $message)
+                            <div>
+                                @if($message->user_id == \Illuminate\Support\Facades\Auth::user()->id)
+                                    <div class="d-flex align-items-center justify-content-end">
+                                        <div class="p-2 my-1"
+                                             style="background-color: #E9F2FA; border-radius: 12px 12px 0 12px">
+                                            <p class="m-0 fs-14 f-500">{{ $message->message }}</p>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="d-flex align-items-center justify-content-start mt-2">
+                                        <div class="me-2">
+                                            <img class="chat_avatar" alt="pic"
+                                                 src="{{\Illuminate\Support\Facades\Storage::url($message->user->userinfo->image)}}">
+                                        </div>
+                                        <div class="p-2 bg-white" style="border-radius: 12px 12px 12px 0">
+                                            <p class="m-0 fs-14 f-500 text-end">{{ $message->message }}</p>
+                                        </div>
+
+                                    </div>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="position-absolute bottom-0 w-100">
+                        <div class="position-relative mb-2">
+                            <input wire:keydown.enter="send_message" wire:model="message"
+                                   class="w-100 py-3 px-3 br-12 border-0 position-relative"
+                                   placeholder="Добавить комментарий">
+                            <div wire:click="send_message" class="icon-style bg-primary br-12 d-flex justify-content-center align-items-center
                                                     position-absolute top-0 bottom-0 end-0 me-2 mt-2">
-                            <i class="far fa-paper-plane text-white"></i>
+                                <i class="far fa-paper-plane text-white"></i>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         @endif

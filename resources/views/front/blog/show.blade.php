@@ -2,8 +2,8 @@
 
 @section("content")
     <div class="container mb-4 mb-lg-6">
-    <div class="py-5 py-lg-6">
-        <div class="d-flex mt-4">
+    <div>
+        <div class="d-flex mt-2 mt-md-3 pt-2">
             <a href="{{route('home')}}"><span class="fs-12 f-500 text-secondary">{{ __("header.menu.home") }}</span></a>
             <a href="{{ route("blog.index") }}"><span class="fs-12 f-500 ms-3 main text-secondary">{{ __("header.menu.blog") }}</span></a>
             <a><span class="fs-12 f-500 ms-3 main">{{$blog->info->title}}</span></a>

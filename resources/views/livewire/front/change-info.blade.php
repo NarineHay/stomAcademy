@@ -55,7 +55,7 @@
             <p class="m-0 f-600 fs-20">{{ __("profile.profile.main_info") }}</p>
             <i class="fal fa-angle-down fs-24"></i>
         </label>
-        <div class="collapse" id="profile-1">
+        <div class="collapse show" id="profile-1">
             <div>
                 <div class="mt-4 d-flex flex-column flex-md-row">
                     <div class="d-flex flex-column w-100">
@@ -82,7 +82,7 @@
             <p class="m-0 f-600 fs-20">{{ __("profile.profile.directions") }}</p>
             <i class="fal fa-angle-down fs-24"></i>
         </label>
-        <div class="collapse" id="profile-4">
+        <div class="collapse show" id="profile-4">
             <div class="mt-4 d-flex flex-column justify-content-between">
                 <div class="direction-list">
                     @foreach($directions as $direction)
@@ -105,7 +105,7 @@
             <p class="m-0 f-600 fs-20">{{ __("profile.info.change_phone") }}</p>
             <i class="fal fa-angle-down fs-24"></i>
         </label>
-        <div class="collapse" id="profile-2">
+        <div class="collapse show" id="profile-2">
             <div class="mt-3">
                 <input wire:model="phone" name="phone" type="text" class="br-12 inputStyle px-3 py-2 fs-14 f-600"
                        id="phone" aria-describedby="numberHelp">
@@ -121,7 +121,7 @@
             <p class="m-0 f-600 fs-20">{{ __("profile.info.change_email") }}</p>
             <i class="fal fa-angle-down fs-24"></i>
         </label>
-        <div class="collapse" id="profile-3">
+        <div class="collapse show" id="profile-3">
             <div class="mt-3">
                 <input wire:model="email" name="email" type="email" class="br-12 inputStyle px-3 py-2 fs-14 f-600"
                        id="email" aria-describedby="emailHelp">
@@ -137,7 +137,7 @@
             <p class="m-0 f-600 fs-20">{{ __("profile.info.change_password") }}</p>
             <i class="fal fa-angle-down fs-24"></i>
         </label>
-        <div class="collapse" id="profile-4">
+        <div class="collapse show" id="profile-4">
             <div class="mt-3">
                 <input wire:model="password" name="password" type="password"
                        class="br-12 inputStyle px-3 py-2 fs-14 f-600" id="password" aria-describedby="passwordHelp">
@@ -153,7 +153,7 @@
             <p class="m-0 f-600 fs-20">{{ __("profile.info.delete_account") }}</p>
             <i class="fal fa-angle-down fs-24"></i>
         </label>
-        <div class="collapse" id="profile-5">
+        <div class="collapse show" id="profile-5">
             <div class="mt-3">
                 <h4>{{ __("profile.info.delete_account_text") }}</h4>
             </div>

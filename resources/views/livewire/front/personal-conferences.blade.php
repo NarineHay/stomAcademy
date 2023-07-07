@@ -1,5 +1,5 @@
 <div class="col-lg-9 pt-6">
-    <div class="py-lg-6">
+    <div class="pb-lg-6">
         <div class="d-flex justify-content-between">
             <h3 class="f-700 m-0">{{ __("profile.courses.page_title") }}</h3>
             <div class="position-relative d-none d-lg-block">
@@ -9,6 +9,7 @@
         </div>
         <div class="d-flex justify-content-between align-items-center mt-2">
             <div class="d-flex">
+                <a href="#" class="fs-14 f-500 m-0 me-3 me-lg-5 py-2 py-lg-3  text-black">{{ __("profile.courses.page_menu.all") }}</a>
                 <a href="{{route('personal.conferences')}}" class="fs-14 f-700 m-0 py-2 py-lg-3 text-black purchaseActive">{{ __("profile.courses.page_menu.online") }}</a>
                 <a href="{{route('personal.courses')}}" class="fs-14 f-500 m-0 ms-3 ms-lg-5 py-2 py-lg-3  text-black"
                    style="padding-bottom: 20px">{{ __("profile.courses.page_menu.course") }}</a>

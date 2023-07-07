@@ -2,8 +2,8 @@
 
 @section("content")
     <div class="container mb-5 mb-lg-6">
-        <div class="py-5 py-lg-6">
-            <div class="d-flex mt-4">
+        <div>
+            <div class="d-flex mt-2 mt-md-3 py-2">
                 <a href="{{route('home')}}"><p class="fs-12 f-500 text-secondary m-0">Главная</p></a>
                 <a href="{{route('contacts')}}"><p class="fs-12 f-500 text-black ms-3 m-0 main">Контакты</p></a>
             </div>

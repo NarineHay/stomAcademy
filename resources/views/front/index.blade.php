@@ -432,7 +432,7 @@
                        style="color:inherit">
                         <div class="bg-white br-12">
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->userinfo->image) }}"
-                                 style="width: 100%; height: 203px; object-fit: cover" alt="lecturerPic">
+                                 style="width: 100%; height: 203px; object-fit: cover; object-position: top center;" alt="lecturerPic">
                             <div class="text-black p-3">
                                 <p class="fs-20 f-700 min-h-90">{{ $lector->userinfo->fname }} {{ $lector->userinfo->lname }}</p>
                                 @if($lector->directions->first())

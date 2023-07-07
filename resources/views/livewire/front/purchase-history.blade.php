@@ -1,4 +1,4 @@
-<div class="py-4 py-lg-6 mt-5 mt-lg-6">
+<div class="py-4 py-lg-6 mt-0">
     <div class="d-flex justify-content-between align-items-center mb-3 mb-lg-5">
         <h3 class="f-700 m-0">История покупок</h3>
         <div class="position-relative d-none d-lg-block">

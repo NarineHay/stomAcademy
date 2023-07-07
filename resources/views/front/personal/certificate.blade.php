@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-9">
-                    <div class="mt-4 mt-lg-6 mb-3 mb-lg-5 py-5 py-lg-6">
+                    <div class="mt-0 mb-3 mb-lg-5 py-5 py-lg-6">
                         <div class="d-flex justify-content-between align-items-center mb-3 mb-lg-5">
                             <h3 class="f-700 m-0">{{ __("profile.certificates.title") }}</h3>
                             <div class="position-relative d-none d-lg-block">

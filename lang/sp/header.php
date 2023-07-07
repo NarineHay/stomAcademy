@@ -21,5 +21,7 @@ return [
         "login" => "Iniciar sesión",
         "first_time" => "¿Eres nuevo?",
         "register" => "Regístrese",
+        "any_time" => "Уже есть аккаунт?",
+
     ],
 ];
