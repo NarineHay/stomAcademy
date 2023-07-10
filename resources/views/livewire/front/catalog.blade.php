@@ -10,19 +10,19 @@
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 align-items-lg-center">
             <div class="d-flex education_tags mb-3 mb-lg-0 e-learning-menu flex-wrap-wrap sdad">
                 <a href="{{ route("catalog") }}"
-                   class="px-2 px-md-3 py-2 fs-14 f-600 br-12 @if($type == "catalog") active bg-white @else bg-light-gray @endif text-black ms-2 btn_text">
+                   class="d-flex justify-content-center align-items-center px-2 px-md-3 py-2 fs-14 f-600 br-12 @if($type == "catalog") active bg-white @else bg-light-gray @endif text-black ms-2 btn_text">
                     {{ __("courses.tabs.all") }}
                 </a>
                 <a href="{{route('course.index')}}"
-                   class="px-2 px-md-3 py-2 fs-14 f-600 br-12 @if($type == "courses") active bg-white @else bg-light-gray @endif ms-2 text-black btn_text">
+                   class=" d-flex justify-content-center align-items-center px-2 px-md-3 py-2 fs-14 f-600 br-12 @if($type == "courses") active bg-white @else bg-light-gray @endif ms-2 text-black btn_text">
                     Онлайн-курсы
                 </a>
                 <a href="{{route('webinar.index')}}"
-                   class="fs-14 py-2 px-2 f-600 br-12 @if($type == "webinars") active bg-white @else bg-light-gray @endif text-black ms-2 btn_text">
+                   class="d-flex justify-content-center align-items-center fs-14 py-2 px-2 f-600 br-12 @if($type == "webinars") active bg-white @else bg-light-gray @endif text-black ms-2 btn_text">
                     Вебинары
                 </a>
                 <a href="{{route('conference')}}"
-                   class="px-2 px-md-3 py-2 fs-14 f-600 br-12 @if($type == "conferences") active bg-white @else bg-light-gray @endif text-black btn_text ms-2">
+                   class="d-flex justify-content-center align-items-center px-2 px-md-3 py-2 fs-14 f-600 br-12 @if($type == "conferences") active bg-white @else bg-light-gray @endif text-black btn_text ms-2">
                     Онлайн-конференции
                 </a>
             </div>

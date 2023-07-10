@@ -42,13 +42,13 @@
                                     </div>
                                     <div class="txts1 d-xl-block d-none">
                                         <p class="txts-1-title">{{ __("courses.start") }}</p>
-                                        <p>{{ \Illuminate\Support\Carbon::make($course->start_date)->toFormattedDateString() }}</p>
+                                        <p>{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="txts1 d-xl-none d-flex flex-row mt-3 align-items-center mb-2 text-white pb-3">
                                 <p class="txts-1-title me-1 mb-0 fs-14 lh-17 f-500 text-white">{{ __("courses.start") }}</p>
-                                <p class="mb-0 fs-14 lh-17 f-700 text-white">{{ \Illuminate\Support\Carbon::make($course->start_date)->toFormattedDateString() }}</p>
+                                <p class="mb-0 fs-14 lh-17 f-700 text-white">{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
                             </div>
                         </div>
                     </div>
@@ -89,21 +89,110 @@
                                         </div>
                                         <div class="txts1 d-xl-block d-none">
                                             <p class="txts-1-title">{{ __("courses.start") }}</p>
-                                            <p>{{ \Illuminate\Support\Carbon::make($course->start_date)->toFormattedDateString() }}</p>
+                                            <p>{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="txts1 d-xl-none d-flex flex-row mt-3 align-items-center">
                                     <p class="txts-1-title me-1 mb-0 fs-14 lh-17 f-500">{{ __("courses.start") }}</p>
-                                    <p class="mb-0 fs-14 lh-17 f-700">{{ \Illuminate\Support\Carbon::make($course->start_date)->toFormattedDateString() }}</p>
+                                    <p class="mb-0 fs-14 lh-17 f-700">{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
                                 </div>
                             </div>
+
+
+
+
+
+
                             <div class="about-course-txt d-lg-block d-none">
                                 <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
                                 <p class="fs-16 lh-27 f-500 mb-0">
                                     {!! $course->info->description !!}
                                 </p>
                             </div>
+
+
+
+
+                <!-- <div id="course-program" class="main3">
+                    <div class="container">
+                        <div class="row">
+{{--                            <div class="col-xl-7 col-12">--}}
+                            <div class="col-12">
+                                <div class="mt-4 mt-lg-0">
+                                    <h3 class="f-700 m-0 lh-40 pb-2">{{ __("courses.menu.program") }}</h3>
+                                    <div class="mt-2">
+                                        @foreach($course->webinars_object as $k => $webinar)
+                                            <div class="accordion accordion-flush">
+                                                <div class="accordion-item br-12">
+                                                    <h2 class="accordion-header">
+                                                        <button class="accordion-button collapsed" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#flush-collapseOne-{{ $webinar->id }}"
+                                                                aria-expanded="false"
+                                                                aria-controls="flush-collapseOne">
+                                                            <div class="d-flex align-items-md-center flex-column flex-md-row w-100">
+                                                                <div class="d-flex" style="flex:0 0 30%">
+                                                                    <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
+                                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>
+                                                                </div>
+                                                                <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">
+                                                                    <img
+                                                                        src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"
+                                                                        class="me-2 videoPic img_r_42 rounded-5"
+                                                                        alt="videoPic">
+                                                                    <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>
+                                                                </div>
+                                                                <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">
+                                                                    <i class="far fa-clock me-1"></i>
+                                                                    <span
+                                                                        class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
+                                                                </div>
+                                                                <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between" style="flex:0 0 10%">
+                                                                    <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>
+                                                                    <div
+                                                                        class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
+                                                                        {{ __("courses.by") }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </button>
+                                                    </h2>
+                                                    <div id="flush-collapseOne-{{ $webinar->id }}"
+                                                         class="accordion-collapse collapse @if($k == 0) show @endif"
+                                                         aria-labelledby="flush-headingOne"
+                                                         data-bs-parent="#accordionFlushExample">
+                                                        <div class="accordion-body">
+                                                            <div class="p-2 py-lg-3 px-lg-5">
+                                                                {!! $webinar->info->description !!}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                         <div class="col-12 col-lg-4">
                             <div class="card course_card_static">
@@ -171,12 +260,12 @@
                                                 </div>
                                             </div>
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#webinarSelectModal"
-                                                class="btn btn-outline-primary w-100 fs-16 f-600 br-12 mb-3 lh-20">
+                                                class="btn btn-outline-primary w-40 fs-16 f-600 br-12 mb-3 lh-20">
                                                 {{ __("courses.select_webinar") }}
                                             </button>
                                         @endif
 
-                                        <button class="btn btn-primary w-100 fs-16 f-600 br-12 mb-3 lh-20">
+                                        <button class="btn btn-primary w-40 fs-16 f-600 br-12 mb-3 lh-20">
                                             {{ __("courses.by_course") }}
                                         </button>
                                     </form>
@@ -297,7 +386,17 @@
                     </div>
                 </div>
 
-                <div id="course-program" class="main3">
+
+
+    <!-- <div class="container">
+                  <div class="about-course-txt d-lg-block d-none">
+                                <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
+                                <p class="fs-16 lh-27 f-500 mb-0">
+                                    {!! $course->info->description !!}
+                                </p>
+                            </div> 
+                            </div> -->
+                 <div id="course-program" class="main3">
                     <div class="container">
                         <div class="row">
 {{--                            <div class="col-xl-7 col-12">--}}
@@ -360,7 +459,7 @@
                         </div>
                     </div>
                 </div>
-            @endif
+            @endif 
             <div id="lectors" class="main4">
                 <div class="container">
                     @if($course->getLectors()->count() == 1)

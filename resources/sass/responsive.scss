@@ -592,6 +592,17 @@
 
 
 @media (max-width: 576px) {
+
+
+    .directions_index-media{
+        a{
+            font-size: 11px !important;
+        }
+        span{
+            font-size: 11px !important;
+
+        }
+    }
     .course-card-form{
         button{
             width: 100%!important;
@@ -612,6 +623,8 @@
             }
         }
     }
+
+    
     .fs-36 {
         font-size: 24px;
     }

@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 class SetLocale
 {
@@ -20,6 +21,7 @@ class SetLocale
     public function handle(Request $request, Closure $next)
     {
         App::setLocale(Str::lower(LG::getCode()));
+        Carbon::setLocale(App::getLocale());
         return $next($request);
     }
 }

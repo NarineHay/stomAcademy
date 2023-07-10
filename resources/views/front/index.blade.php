@@ -2,7 +2,7 @@
 
 @section("content")
     <div class="container mt-4 mt-lg-5">
-        <div class="d-flex justify-content-center flex-wrap gap-2 directions_index">
+        <div class="d-flex justify-content-center flex-wrap gap-2 directions_index directions_index-media">
             <a href="{{route('course.index')}}" class="btn btn-outline-primary rounded-5 fs-15 f-600 py-2 px-3">
                 {{ __("index.all_directions") }}
             </a>
