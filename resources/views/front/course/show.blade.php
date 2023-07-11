@@ -56,7 +56,8 @@
             </div>
 
             <div class="main2">
-                <div class="container eng-doctors-txt">
+                <div class="backgraund-wite" style="width: 100%; background: white; height: 318px; position: absolute;"></div>
+                <div class="container eng-doctors-txt sss">
                     <div class="row">
                         <div class="d-none d-lg-block col-12 col-lg-8">
                             <div class="about-course1">
