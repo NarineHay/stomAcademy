@@ -45,7 +45,7 @@
                     <div id="player" style="width: 100%; height: 100%"
                          class=" plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
 
-                        <iframe width="1400" height="630" src="{{$video->url}}" title="YouTube video player"
+                        <iframe width="1400" height="630" src="{{$video->url}}&vq=hd1080" title="YouTube video player"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen></iframe>
@@ -53,6 +53,17 @@
                         {{--                         style="background: rgba(255, 255, 255, 0.3);">--}}
                         {{--                        <i class="fas fa-play text-white fs-22"></i>--}}
                         {{--                    </div>--}}
+
+{{--                        <div class="plyr__video-embed" id="player">--}}
+{{--                            <iframe--}}
+{{--                                src="https://player.vimeo.com/video/76979871?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"--}}
+{{--                                allowfullscreen--}}
+{{--                                allowtransparency--}}
+{{--                                allow="autoplay"--}}
+{{--                            ></iframe>--}}
+{{--                        </div>--}}
+
+
                     </div>
                 </div>
             </div>
@@ -131,7 +142,7 @@
                 <div>
                     <div id="player1" style="width: 100%; height: 100%" class=" plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
 
-                        <iframe class="w-100" height="235" src="https://www.youtube.com/embed/5Ok9oDQgzxs"
+                        <iframe class="w-100" height="235" src="https://www.youtube.com/embed/5Ok9oDQgzxs&vq=hd1080"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen></iframe>
@@ -154,7 +165,7 @@
                 <div>
                     <div id="player2" style="width: 100%; height: 100%" class=" plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
 
-                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/X-kpSmXVuJw"
+                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/X-kpSmXVuJw&vq=hd1080"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe>
@@ -177,7 +188,7 @@
                 <div>
                     <div id="player3" style="width: 100%; height: 100%" class=" plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
 
-                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/tW0k--u0URc"
+                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/tW0k--u0URc&vq=hd1080"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe>
@@ -199,7 +210,7 @@
                 <div>
                     <div id="player4" style="width: 100%; height: 100%" class=" plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
 
-                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/QPXue2tybcs"
+                    <iframe class="w-100" height="235" src="https://www.youtube.com/embed/QPXue2tybcs&vq=hd1080"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe>

@@ -24,4 +24,10 @@ return [
         "text" => "Nada de spam, ¡sólo negocios!",
         "button" => "Suscríbase",
     ],
+    "full-address" => '<br><br>
+                               AMAD Technology Inc<br>
+                                <br>
+                               7901 4TH ST N STE 300
+                                <br><br>
+                                St. Petersburg FL 33702<br>',
 ];

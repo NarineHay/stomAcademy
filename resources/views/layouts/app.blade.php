@@ -135,15 +135,9 @@
                     <div class="row footer-border-bottom">
                         <div class="col-12 col-lg-3 mt-5 mt-lg-6 mb-2 mb-md-3 fs-12">
                             <a href="/"><img src="/dist/image/logo.png" alt="footerLogoPic"></a>
-                            <p class="mt-3 fs-12">Республика Беларусь:
-                                <br><br>
-                                ООО «Стоматологическое образование»<br>
-                                УНП 193237965<br>
-                                220002, Республика Беларусь, г. Минск, ул.<br>В.Хоружей, 31А, каб. 313
-                                <br><br>
-                                Управление регистрации и лицензирования главного<br>управления юстиции Мингорисполкома
-                                от<br>10.04.20219г.
-                                №193237965</p>
+                            <p class="mt-3 fs-12">
+                                {!! __("index.full-address") !!}
+                            </p>
                         </div>
                         <div class="col-12 col-lg-4 mt-lg-6 mb-2 mb-md-4 fs-20 f-600">
                             <a href="{{route('course.index')}}"><p>{{ __("header.menu.home") }}</p></a>
@@ -258,7 +252,12 @@
             </script>
 <script src="/dist_plyr/plyr.js"></script>
 <script>
-    const player = new Plyr('#player');
+    const player = new Plyr('#player'
+    //     , {
+    //     settings: ['captions', 'quality', 'speed', 'loop'],
+    //     quality: { default: 576, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240] },
+    // }
+    );
     const player1 = new Plyr('#player1');
     const player2 = new Plyr('#player2');
     const player3 = new Plyr('#player3');

@@ -178,7 +178,7 @@
                         </div>
                     </div>
                 </div> -->
-            
+
 
 
 
@@ -210,7 +210,7 @@
 
                                         <div id="player" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
                                             <iframe style="z-index: 1;left: 0" class="position-absolute d-none" width="100%"
-                                                    height="100%" src="{{ $course->video }}"
+                                                    height="100%" src="{{ $course->video }}&vq=hd1080"
                                                     title="Walter Devoto about Stom Academy." frameborder="0"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                     allowfullscreen></iframe>
@@ -395,7 +395,7 @@
                                 <p class="fs-16 lh-27 f-500 mb-0">
                                     {!! $course->info->description !!}
                                 </p>
-                            </div> 
+                            </div>
                             </div> -->
                  <div id="course-program" class="main3">
                     <div class="container">
@@ -460,7 +460,7 @@
                         </div>
                     </div>
                 </div>
-            @endif 
+            @endif
             <div id="lectors" class="main4">
                 <div class="container">
                     @if($course->getLectors()->count() == 1)
