@@ -582,25 +582,96 @@
                 <div id="faq" class="main6">
                     <h3 class="f-700 mb-4 color-23">{{ __("courses.faq.title") }}</h3>
                     <div class="row">
+{{--                        <div class="col-12 col-lg-6">--}}
+{{--                            <div class="mb-1 courses-show-accordion-item">--}}
+{{--                                <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse"--}}
+{{--                                     data-bs-target="#five">--}}
+{{--                                    <div class="d-flex align-items-center">--}}
+{{--                                        <i class="fal fa-minus d-none minus_icon"></i>--}}
+{{--                                        <i class="far fa-plus plus_icon"></i>--}}
+
+{{--                                        <p class="fs-16 m-0 f-700 ms-4 main_text">Как не ошибиться в выборе варианта--}}
+{{--                                            подписки?</p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="collapse show accordion-show" id="five">--}}
+{{--                                        <div class="p-3">--}}
+{{--                                        <span class="m-0">Самый простой способ - связаться с нашим--}}
+{{--                                            менеджером и рассказать о--}}
+{{--                                                <br class="d-none d-xxl-block">--}}
+{{--                                            своих сомнениях. Менеджер поможет выбрать лучший тариф--}}
+{{--                                            исходя из ваших пожеланий</span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <div class="col-12 col-lg-6">
-{{--                        <div class="col-12">--}}
                             <div class="mb-1 courses-show-accordion-item">
-                                <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse"
-                                     data-bs-target="#five">
+                                <div class="bg-white br-12 p-3 collapse_text_color collapsed" data-bs-toggle="collapse"
+                                     data-bs-target="#faq1">
                                     <div class="d-flex align-items-center">
                                         <i class="fal fa-minus d-none minus_icon"></i>
                                         <i class="far fa-plus plus_icon"></i>
 
-                                        <p class="fs-16 m-0 f-700 ms-4 main_text">Как не ошибиться в выборе варианта
-                                            подписки?</p>
+                                        <p class="fs-16 m-0 f-700 ms-4 main_text">{{ __("courses.faq.faq1_question") }}</p>
                                     </div>
-                                    <div class="collapse show accordion-show" id="five">
+                                    <div class="collapse  accordion-show" id="faq1">
                                         <div class="p-3">
-                                        <span class="m-0">Самый простой способ - связаться с нашим
-                                            менеджером и рассказать о
-                                                <br class="d-none d-xxl-block">
-                                            своих сомнениях. Менеджер поможет выбрать лучший тариф
-                                            исходя из ваших пожеланий</span>
+                                        <span class="m-0">{!! __("courses.faq.faq1_answer") !!}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="mb-1 courses-show-accordion-item">
+                                <div class="bg-white br-12 p-3 collapse_text_color collapsed" data-bs-toggle="collapse"
+                                     data-bs-target="#faq2">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fal fa-minus d-none minus_icon"></i>
+                                        <i class="far fa-plus plus_icon"></i>
+
+                                        <p class="fs-16 m-0 f-700 ms-4 main_text">{{ __("courses.faq.faq2_question") }}</p>
+                                    </div>
+                                    <div class="collapse accordion-show" id="faq2">
+                                        <div class="p-3">
+                                        <span class="m-0">{!! __("courses.faq.faq2_answer") !!}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="mb-1 courses-show-accordion-item">
+                                <div class="bg-white br-12 p-3 collapse_text_color collapsed" data-bs-toggle="collapse"
+                                     data-bs-target="#faq3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fal fa-minus d-none minus_icon"></i>
+                                        <i class="far fa-plus plus_icon"></i>
+
+                                        <p class="fs-16 m-0 f-700 ms-4 main_text">{{ __("courses.faq.faq3_question") }}</p>
+                                    </div>
+                                    <div class="collapse  accordion-show" id="faq3">
+                                        <div class="p-3">
+                                        <span class="m-0">{!! __("courses.faq.faq3_answer") !!}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="mb-1 courses-show-accordion-item">
+                                <div class="bg-white br-12 p-3 collapse_text_color collapsed" data-bs-toggle="collapse"
+                                     data-bs-target="#faq4">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fal fa-minus d-none minus_icon"></i>
+                                        <i class="far fa-plus plus_icon"></i>
+
+                                        <p class="fs-16 m-0 f-700 ms-4 main_text">{{ __("courses.faq.faq4_question") }}</p>
+                                    </div>
+                                    <div class="collapse  accordion-show" id="faq4">
+                                        <div class="p-3">
+                                        <span class="m-0">{!! __("courses.faq.faq4_answer") !!}}</span>
                                         </div>
                                     </div>
                                 </div>
