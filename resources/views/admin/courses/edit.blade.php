@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ЦЕНA 2</label>
+                        <label for="exampleInputEmail1">ЦЕНA</label>
                         <select class="form-control form-control" name="price_id">
                             @foreach($data['prices'] as $price)
                                 <option value="{{ $price->id }}" {{ $price->id == $course->price_id ? 'selected' : '' }}>
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ЦЕНA 2</label>
+                        <label for="exampleInputEmail1">НОВАЯ ЦЕНA</label>
                         <select class="form-control form-control" name="price_2_id">
                             <option value="0">---</option>
                             @foreach($data['prices'] as $price)
