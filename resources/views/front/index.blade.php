@@ -236,8 +236,8 @@
                              style="width: 100%; height: 150px; object-fit: cover" alt="notePic">
                         <div class="d-flex flex-column p-3">
                             <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->first()->title}}</p>
-                            <p class="f-700 mt-1 fs-16 min-h-120 min-h-72-1200 min-h-72-992">{{$webinar->info->title}}</p>
-                            <div class="d-flex align-items-center mt-2 min-h-42">
+                            <p class="f-700 mt-1 mb-0 fs-16 min-h-120 min-h-72-1200 min-h-72-992">{{$webinar->info->title}}</p>
+                            <div class="d-flex align-items-center  min-h-42">
                                 <img
                                     src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}"
                                     class="me-2 rounded-circle" alt="customerPic"
