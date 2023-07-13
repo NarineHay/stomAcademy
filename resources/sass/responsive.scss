@@ -571,9 +571,15 @@
 
     .AdditionsSwiper {
         .swiper-slide {
-            width: 80% !important;
+            width: 60% !important;
+        }
+        .img-swip{
+            width: 310px !important;
+            height: 180px !important;
         }
     }
+
+   
 
     .fs-36 {
         font-size: 30px;
@@ -758,3 +764,23 @@
         display: none;
     }
 }
+
+
+@media (min-width: 992px) and (max-width: 1920px) {
+   .user-svg-1{
+
+   }
+   .user-svg-2{
+display: none !important;
+   }
+}
+
+
+@media (min-width: 360px) and (max-width: 991px) {
+    .user-svg-1{
+        display: none !important;
+    }
+    .user-svg-2{
+ 
+    }
+ }

@@ -2,7 +2,7 @@
 
 @section("profile-content")
 
-    <div class="py-5 px-5 mt-4 mt-lg-5">
+    <div class="py-5 px-4 mt-4 mt-lg-5 ">
         <p class="m-0 f-500 fs-14 cursor"><a class="text-black" href="{{ route("personal.courses") }}"><i class="fal fa-arrow-left me-3"></i>{{ __("profile.courses.back") }}</a></p>
         <div class="mt-4">
             <div class="bg d-flex justify-content-center align-items-center position-relative br-12">

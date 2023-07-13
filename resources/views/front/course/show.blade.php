@@ -237,18 +237,22 @@
                                                 <span>{{ $course->price->html() }}</span>
                                             @endif
                                         </h3>
-                                        <p class="f-500 fs-14 lh-17 mb-2">
+                                        <!-- <p class="f-500 fs-14 lh-17 mb-2">
                                             @if($course->webinars)
                                                 {{ $course->webinars->count() }} {{ __("courses.under_title") }}
                                                 <span class="text-primary">1 {{ __("courses.free") }}</span></p>
                                         <p class="f-500 fs-14 lh-17 mb-3">{{ __("courses.dop") }}</p>
-                                        @endif
+                                        @endif -->
+                                        <p class="f-500 fs-14 lh-17 mb-2">
+                                        7-дневная гарантия замены или возврата дене
+                                        </p>
+
                                     </div>
 
                                     <form action="#" class="course-card-form">
                                         @if($course->webinars)
                                             <div
-                                                class="course-card-form-div d-flex justify-content-between flex-column flex-lg-row mb-3">
+                                                class="course-card-form-div d-flex justify-content-between flex-column flex-lg-row mb-3 ff">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="mr-1 form-check-input ">
                                                     <label class="form-check-label fs-14">1 {{ __("courses.free") }}</label>
@@ -261,12 +265,12 @@
                                                 </div>
                                             </div>
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#webinarSelectModal"
-                                                class="btn btn-outline-primary w-40 fs-16 f-600 br-12 mb-3 lh-20">
+                                                class="btn btn-outline-primary w-100 fs-16 f-600 br-12 mb-3 lh-20">
                                                 {{ __("courses.select_webinar") }}
                                             </button>
                                         @endif
 
-                                        <button class="btn btn-primary w-40 fs-16 f-600 br-12 mb-3 lh-20">
+                                        <button class="btn btn-primary w-100 fs-16 f-600 br-12 mb-3 lh-20">
                                             {{ __("courses.by_course") }}
                                         </button>
                                     </form>
@@ -285,6 +289,7 @@
                                             <span
                                                 class="ms-2 f-500 fs-14 lh-20">{{ $course->getDuration() }}</span>
                                         </div>
+                                      
                                         <div class="mb-2">
                                             <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -300,7 +305,10 @@
                                             </svg>
                                             <span class="ms-2 f-500 fs-14 lh-20">{{ __("courses.certificate") }}</span>
                                         </div>
-
+                                        <div class="d-flex">
+                                        <i class="fal fa-infinity" style="color: #191F70; font-size:20px;"></i>
+                                        <p class="ms-2 f-500 fs-14 lh-20">Неограниченный просмотр</p>
+                                        </div>
                                     </div>
 
                                 </div>

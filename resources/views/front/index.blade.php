@@ -18,7 +18,7 @@
     <!--Популярные курсы-->
     <div class="container mt-4 mt-lg-5 ">
         <div class="d-flex justify-content-between position-relative">
-            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row">
+            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row ">
                 <div>
                     <h3 class="f-700 m-0">{{ __("index.popular_courses") }}</h3>
                 </div>
@@ -76,7 +76,7 @@
     <!--Новые курсы-->
     <div class="container mt-4 mt-lg-6">
         <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row">
+            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row ff">
                 <div>
                     <h3 class="f-700 m-0">{{ __("index.new_courses") }}</h3>
                 </div>
@@ -98,7 +98,7 @@
                         <a href="{{ route("course.show",$course->id) }}" style="color: inherit"
                            class="d-block bg-white br-12">
                             <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}" alt="addPic"
-                                 style="width: 386px; height: 214px; object-fit: cover">
+                                 style="width: 386px; height: 214px; object-fit: cover " class="img-swip">
                             <div class="p-3">
                                 <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
                                 <p class="f-700 fs-16 min-h-75 courseTxt-index">{{$course->info->title}}</p>
@@ -162,7 +162,7 @@
     <!--Онлайн-конференции-->
     <div class="container mt-4 mt-lg-6">
         <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row">
+            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row ">
                 <div>
                     <h3 class="f-700 m-0">{{ __("index.online") }}</h3>
                 </div>
@@ -217,17 +217,17 @@
 
     <!--Webinars-->
     <div class="container mt-4 mt-lg-6 useful_articles overflow-auto">
-        <div class="d-flex align-items-lg-end flex-column flex-lg-row">
+        <div class="d-flex align-items-lg-end flex-column flex-lg-row position-absolute">
             <div>
                 <h3 class="f-700 m-0">{{ __("index.lectia") }}</h3>
             </div>
-            <div class="ms-lg-4">
+            <div class="ms-lg-4 mb-4">
                 <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p
                         class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i></p>
                 </a>
             </div>
         </div>
-        <div class="row flex-nowrap flex-md-wrap">
+        <div class="row flex-nowrap flex-md-wrap mt-5">
             @foreach($webinars as $webinar)
                 <a class="col-10 col-md-3 col-xxl-2 mt-3 d-block" style="color: inherit"
                    href="{{ route("webinar.show",$webinar->id) }}">
@@ -319,7 +319,7 @@
 
     <!--partners-->
         <div class="container mt-4 mt-lg-6">
-            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row">
+            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row ">
                 <div>
                     <h3 class="f-700 m-0">{{ __("index.partners") }}</h3>
                 </div>
@@ -371,7 +371,7 @@
 
         <!--Blog-->
         <div class="container mt-4 mt-lg-6 useful_articles">
-            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row">
+            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row ">
                 <div>
                     <h3 class="f-700 m-0">{{ __("index.blogs") }}</h3>
                 </div>

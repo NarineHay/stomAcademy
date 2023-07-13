@@ -16,7 +16,7 @@
     </div>
     <div>
         <div class="d-flex mb-4 mt-4">
-            <i class="fal fa-play-circle me-2"></i>
+            <i class="fal fa-play-circle me-2 "></i>
             <a href="{{route('personal.courses')}}" class="text-decoration-none text-black fs-14 f-500">Мои курсы</a>
         </div>
         <div class="d-flex mb-4 mt-4">
