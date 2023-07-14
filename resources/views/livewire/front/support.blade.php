@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-7 d-none d-lg-block">
+    <div class="col-lg-7 d-block">
         @if($this->active_chat)
             <div class="py-4 px-5 mt-5 mt-lg-4 py-lg-6 h-100">
                 <div class="d-flex justify-content-center message_text">

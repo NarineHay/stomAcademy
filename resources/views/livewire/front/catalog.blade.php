@@ -10,7 +10,7 @@
         <div class="d-flex justify-content-between flex-column flex-lg-row mt-4 mb-4 align-items-lg-center">
             <div class="d-flex education_tags mb-3 mb-lg-0 e-learning-menu flex-wrap-wrap sdad">
                 <a href="{{ route("catalog") }}"
-                   class="d-flex justify-content-center align-items-center px-2 px-md-3 py-2 fs-14 f-600 br-12 @if($type == "catalog") active bg-white @else bg-light-gray @endif text-black ms-2 btn_text">
+                   class="d-flex justify-content-center align-items-center px-2 px-md-3 py-2 fs-14 f-600 br-12 @if($type == "catalog") active bg-white @else bg-light-gray @endif text-black ms-0 btn_text">
                     {{ __("courses.tabs.all") }}
                 </a>
                 <a href="{{route('course.index')}}"
@@ -130,15 +130,15 @@
         <!-- <input type="text" class="input"> -->
         <div class=" div-input-online position-relative">
         <input type="text" class="form-control input-online bg-light-gray" id="usr" style="padding-left: 50px;">
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 15px; left: 15px;">
-<path d="M20.2291 18.4888L25.5001 23.7586L23.7587 25.5L18.4889 20.229C16.5282 21.8008 14.0893 22.6558 11.5762 22.6522C5.46222 22.6522 0.500122 17.6901 0.500122 11.5761C0.500122 5.46209 5.46222 0.5 11.5762 0.5C17.6902 0.5 22.6523 5.46209 22.6523 11.5761C22.6559 14.0891 21.801 16.528 20.2291 18.4888ZM17.7604 17.5757C19.3223 15.9695 20.1945 13.8165 20.191 11.5761C20.191 6.81584 16.3353 2.96136 11.5762 2.96136C6.81596 2.96136 2.96148 6.81584 2.96148 11.5761C2.96148 16.3351 6.81596 20.1908 11.5762 20.1908C13.8166 20.1944 15.9696 19.3221 17.5758 17.7603L17.7604 17.5757Z" fill="#6C7A89"/>
-</svg>
-<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 10px; right: 10px;">
-<path d="M30 10L10 30" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M10 10L30 30" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
+        <svg class="s" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.2291 18.4888L25.5001 23.7586L23.7587 25.5L18.4889 20.229C16.5282 21.8008 14.0893 22.6558 11.5762 22.6522C5.46222 22.6522 0.500122 17.6901 0.500122 11.5761C0.500122 5.46209 5.46222 0.5 11.5762 0.5C17.6902 0.5 22.6523 5.46209 22.6523 11.5761C22.6559 14.0891 21.801 16.528 20.2291 18.4888ZM17.7604 17.5757C19.3223 15.9695 20.1945 13.8165 20.191 11.5761C20.191 6.81584 16.3353 2.96136 11.5762 2.96136C6.81596 2.96136 2.96148 6.81584 2.96148 11.5761C2.96148 16.3351 6.81596 20.1908 11.5762 20.1908C13.8166 20.1944 15.9696 19.3221 17.5758 17.7603L17.7604 17.5757Z" fill="#6C7A89"/>
+        </svg>
+        <svg class="x" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" >
+        <path d="M30 10L10 30" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 10L30 30" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
        </div>
-       
+
 
         <div class="row mt-4">
             @foreach($courses as $course)

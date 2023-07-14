@@ -14,6 +14,8 @@ a {
 
 }
 
+
+
 .header_menu {
     .btn_for_menu {
         display: none;
@@ -49,8 +51,22 @@ a {
 
 
 .input-online{
-    height:65px ;
+    //height:65px ;
+}
 
+.div-input-online{
+    svg.s{
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        height: 15px;
+    }
+    svg.x{
+        position: absolute;
+        top: 9px;
+        right: 1px;
+        height: 21px;
+    }
 }
 
 .min-h-96 {
@@ -535,9 +551,11 @@ a:hover {
 }
 
 .noticeCount {
-    width: 18px;
-    height: 18px;
-    background: #0094FF;
+    p{
+        width: 18px;
+        height: 18px;
+        background: #0094FF;
+    }
 }
 
 .main {

@@ -60,7 +60,7 @@
             <i class="fal fa-file-certificate me-2"></i>
             <a href="{{route('personal.history')}}" class="text-decoration-none text-black fs-14 f-500">История покупок</a>
         </div>
-       
+
         <div class="d-flex mb-4 mt-4 d-none">
             <i class="fal fa-cart-arrow-down me-2"></i>
             <a href="{{route('personal.cart')}}" class="text-decoration-none text-black fs-14 f-500">Корзина</a>
@@ -84,8 +84,8 @@
             <a href="{{route('personal.cart')}}">
                 <i class="fal fa-shopping-bag text-white mx-3 me-lg-0 ms-lg-4 fs-20"></i>
             </a>
-            <div class="text-white d-none d-lg-block">
-                <p class="fs-12 f-700 d-flex rounded-circle justify-content-center noticeCount">{{$count ?? '0'}}</p>
+            <div class="text-white d-block noticeCount">
+                <p class="fs-12 f-700 d-flex rounded-circle justify-content-center">{{$count ?? '0'}}</p>
             </div>
 {{--            <div class="ms-3 d-lg-none">--}}
 {{--                <i class="fas fa-bars text-white fs-20 mt-1"></i>--}}

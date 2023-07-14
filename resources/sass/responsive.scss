@@ -48,7 +48,10 @@
 }
 
 @media (max-width: 991px) {
-
+    .noticeCount{
+        position: relative;
+        left: -25px;
+    }
     .header_menu {
         .btn_for_menu {
             display: block;
@@ -579,7 +582,7 @@
         }
     }
 
-   
+
 
     .fs-36 {
         font-size: 30px;
@@ -781,6 +784,6 @@ display: none !important;
         display: none !important;
     }
     .user-svg-2{
- 
+
     }
  }

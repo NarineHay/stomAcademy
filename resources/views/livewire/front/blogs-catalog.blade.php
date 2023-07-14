@@ -20,6 +20,7 @@
                 @endif
                 <div class="ms-0 ms-xl-5 mt-4 mt-xl-0">
                     @foreach($blogs_top as $blog)
+                        @if($blog->info->enabled)
                         <a href="{{route('blog.show',$blog->id)}}" style="color: inherit" class="d-block br-12 d-flex flex-row align-items-center mb-4">
                             <div>
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}"
@@ -28,13 +29,14 @@
                             <div class="d-flex flex-column ms-4">
                                 <p class="text-primary text-uppercase f-700 fs-10 mt-0">{{$blog->directions->title}}</p>
                                 <h5 class="f-700 fs-16 m-0">
-                                    <span class="text-black">{{$blog->info->title}}</span>
+                                    <span class="text-black">{{$blog->info->title}} </span>
                                 </h5>
                                 <p class="fs-14 f-500 m-0 mt-4 mt-xl-3"><i class="far fa-calendar me-2"></i>
                                     {{date('d-m-Y', strtotime($blog->created_at))}}
                                 </p>
                             </div>
                         </a>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -49,6 +51,7 @@
                         <div class="d-flex flex-column p-3 p-lg-4">
                             <h5 class="f-700 fs-16 m-0">
                             <span class="text-black">{{$blog->info->title}}</span>
+
                             </h5>
                             <p class="fs-14 f-500 m-0 mt-4"><i class="far fa-calendar me-2"></i>
                                 {{date('d-m-Y', strtotime($blog->created_at))}}

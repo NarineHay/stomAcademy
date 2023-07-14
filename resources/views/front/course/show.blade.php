@@ -63,7 +63,9 @@
                             <div class="about-course1">
                                 <h1 class="text-primary fw-bolder fs-30 lh-40">{{ $course->info->title }}</h1>
                                 @if($course->webinars)
-                                    <p>{{ $course->webinars->count() }} {{ __("courses.under_title") }}</p>
+                                    <p>{{ __("courses.under_title",['count' => $course->webinars->count()]) }}</p>
+                                @else
+                                    <p>{{ __("courses.under_title_web") }}</p>
                                 @endif
                                 <div class="d-flex flex-row">
                                     <div class="images">
@@ -90,13 +92,22 @@
                                         </div>
                                         <div class="txts1 d-xl-block d-none">
                                             <p class="txts-1-title">{{ __("courses.start") }}</p>
-                                            <p>{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
+                                            @if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp())
+                                                <p>Доступно к просмотру после покупки</p>
+                                            @else
+                                                <p>{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="txts1 d-xl-none d-flex flex-row mt-3 align-items-center">
                                     <p class="txts-1-title me-1 mb-0 fs-14 lh-17 f-500">{{ __("courses.start") }}</p>
-                                    <p class="mb-0 fs-14 lh-17 f-700">{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
+                                    @if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp())
+                                        <p class="mb-0 fs-14 lh-17 f-700">Доступно к просмотру после покупки</p>
+                                    @else
+                                        <p class="mb-0 fs-14 lh-17 f-700">{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
+                                    @endif
                                 </div>
                             </div>
 
@@ -289,7 +300,7 @@
                                             <span
                                                 class="ms-2 f-500 fs-14 lh-20">{{ $course->getDuration() }}</span>
                                         </div>
-                                      
+
                                         <div class="mb-2">
                                             <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
                                                  xmlns="http://www.w3.org/2000/svg">
@@ -425,7 +436,7 @@
                                                             <div class="d-flex align-items-md-center flex-column flex-md-row w-100">
                                                                 <div class="d-flex" style="flex:0 0 30%">
                                                                     <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
-                                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>
+                                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{{ $webinar->info->title }}</p>
                                                                 </div>
                                                                 <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">
                                                                     <img
@@ -455,7 +466,7 @@
                                                          data-bs-parent="#accordionFlushExample">
                                                         <div class="accordion-body">
                                                             <div class="p-2 py-lg-3 px-lg-5">
-                                                                {!! $webinar->info->description !!}
+                                                                {!! $webinar->info->program !!}
                                                             </div>
                                                         </div>
                                                     </div>

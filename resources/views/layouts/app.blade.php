@@ -31,7 +31,7 @@
     </header>
 
             <section class="section_top"
-                     style="background-image: url('/dist/image/headerBackground1.jpg'); background-size: cover;@auth() height:360px; @endauth">
+                     style="background-image: url('/dist/image/headerBackground1.jpg'); background-size: cover;">
                 <div class="bg">
                     <div class="container d-flex justify-content-between align-items-center text-white">
                         <div class="mt-6 d-flex justify-content-between align-items-center w-100 p-2 p-md-0">
@@ -48,7 +48,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="header-login">
+                            <div class="header-login" >
                                 @if(!\Illuminate\Support\Facades\Auth::check())
                                     <div class="d-none d-lg-block  mt-6">
                                         <livewire:front.home-login/>
