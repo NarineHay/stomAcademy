@@ -1,6 +1,7 @@
 @extends("layouts.app")
 
 @section("content")
+{{--    {{ dd( $lector->lector->info->enabled) }}--}}
     <div class="container mb-5 mb-lg-6">
         <div>
             <div class="d-flex mt-2 mt-md-3 py-2">

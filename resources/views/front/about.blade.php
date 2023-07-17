@@ -90,6 +90,7 @@
         </div>
         <div class="row lecturers pb-6">
             @foreach($lectors as $lector)
+                @if($lector->lector->info->enabled)
                 <div class="col-6 col-lg-3">
                     <a href="{{ route("lectors.show",$lector->id) }}" class="bg-white br-12 d-block"
                        style="color: inherit">
@@ -106,6 +107,7 @@
                         </div>
                     </a>
                 </div>
+                @endif
             @endforeach
         </div>
     </div>

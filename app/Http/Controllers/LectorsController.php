@@ -16,6 +16,10 @@ class LectorsController extends Controller
 
     function show($id){
         $data['lector'] = User::findOrFail($id);
+//        dd(  $data['lector']->lector->info->enabled) ;
+        if ($data['lector']->lector->info->enabled === false){
+            abort(404);
+        }
         $data['webinars'] = Webinar::all();
         return view("front.lectors.show",$data);
     }

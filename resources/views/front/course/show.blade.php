@@ -709,6 +709,7 @@
                     <div class="swiper AdditionsSwiper">
                         <div class="swiper-wrapper">
                             @foreach($courses as $course)
+                                @if($course->info->enabled)
                                 <div class="swiper-slide">
                                     <a href="{{ route("course.show",$course->id) }}" style="color: inherit"
                                        class="d-block bg-white br-12">
@@ -764,6 +765,7 @@
                                         </div>
                                     </a>
                                 </div>
+                                @endif
                             @endforeach
                         </div>
                     </div>

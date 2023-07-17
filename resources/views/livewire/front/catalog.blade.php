@@ -142,6 +142,7 @@
 
         <div class="row mt-4">
             @foreach($courses as $course)
+                @if($course->info->enabled)
                 <a href="{{ route("course.show",$course->id) }}" style="color: inherit"
                    class="col-xxl-3 col-lg-4 col-sm-6 col-12 mb-3 md-sm-0">
                     <div class="bg-white br-12">
@@ -194,6 +195,7 @@
                         </div>
                     </div>
                 </a>
+                @endif
             @endforeach
         </div>
 

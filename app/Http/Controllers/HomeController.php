@@ -18,6 +18,7 @@ class HomeController extends Controller
         $content = IndexContent::find(1);
         $data['courses'] = Course::query()->where('online',0)->whereIn("id",$content['popular'])->withSum('webinars_object','duration')->withCount('webinars')->get();
         $data['courses_new'] = Course::query()->where('online',0)->whereIn("id",$content['new'])->withSum('webinars_object','duration')->withCount('webinars')->get();
+//        dd($data['courses_new']->count());
         $data['conferences'] = Course::query()->where('online',1)->whereIn("id",$content['online_co'])->withCount('webinars')->get();
         $data['blogs'] = Blog::query()->whereIn("id",$content['articles'])->limit(4)->get();
         $data['lectors'] = User::query()->whereIn("id",$content['lectors'])->withCount('webinars')->where("role",User::ROLE_LECTOR)->with("lector")->limit(6)->get();

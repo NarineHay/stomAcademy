@@ -9,6 +9,8 @@
         </div>
         <div class="row mt-4">
             @foreach($lectors as $lector)
+
+                @if($lector->lector->info->enabled)
                 <div class="col-xxl-55 col-lg-3 col-md-4 col-6 mb-3">
                     <a href="{{route('lectors.show',$lector->id)}}" class="bg-white br-12 d-block">
                         <img src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}" class="lector_card_photo w-100" alt="lecturerPic">
@@ -21,6 +23,7 @@
                         </div>
                     </a>
                 </div>
+                @endif
             @endforeach
         </div>
 
