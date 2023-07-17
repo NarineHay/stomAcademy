@@ -76,16 +76,12 @@ class Catalog extends Component
         }
 
         if ($this->sortBy == 'price') {
-            $webinars_q = $webinars_q->select('webinars.*')
-                ->join('prices', 'prices.id', '=', 'webinars.price_id')
-                ->orderBy('prices.name')->paginate($this->perPage);
+//            dd("price");
         }
         else if ($this->sortBy == 'title') {
-            $webinars_q = $webinars_q->select('webinars.*')
-                ->join('webinar_infos', 'webinar_infos.webinar_id', '=', 'webinars.id')
-                ->orderBy('webinar_infos.title')->paginate($this->perPage);
-//        } else if ($this->sortBy == 'popularity') {
-//            $webinars_q = Webinar::orderBy('popularity', 'asc')->paginate($this->perPage);
+//            dd("title");
+        } else if ($this->sortBy == 'popularity') {
+//            dd("popularity");
         }
         else {
             $webinars_q = $webinars_q->paginate($this->perPage);
