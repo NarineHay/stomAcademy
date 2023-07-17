@@ -14,7 +14,13 @@ a {
 
 }
 
-
+.ft-menu-a-div{
+    a{
+        &:hover{
+          opacity: 0.5;
+        }
+    }
+}
 
 .header_menu {
     .btn_for_menu {

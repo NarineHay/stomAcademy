@@ -96,6 +96,15 @@ return [
             "email_required_email" => "Адрес электронной почты должен содержать символ @.",
             "required_inputs" => "Поле не может быть пустым",
         ],
+        "info_for_footer" => [
+            "soc" => [
+                "insta_link" => "https://www.instagram.com/dental.academy.io/",
+                "fb_link" => "https://www.facebook.com/people/Dental-Education-App/100054284480308/",
+                "yt_link" => "https://www.youtube.com/@STOMACADEMY",
+                "tw_icon" => "",
+                "tg_icon" => "",
+            ],
+        ],
         "info" => [
             "title" => "Контакты",
             "under_title" => "Свяжитесь с нашими специалистами, чтобы получить подробную консультацию и ответы на все вопросы.",

@@ -21,7 +21,7 @@
 <body>
 @if(\Illuminate\Support\Facades\Route::currentRouteName() == "home")
     <header class="position-relative headerBorder">
-        <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-2 align-items-center">
+        <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-3 align-items-center">
             <div>
                 <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
             </div>
@@ -80,7 +80,7 @@
 
 @elseif(\Illuminate\Support\Facades\Route::currentRouteName() == "about")
     <header class="position-relative bg-primary ">
-        <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-2 align-items-center">
+        <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-3 align-items-center">
             <div>
                 <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
             </div>
@@ -119,7 +119,7 @@
 </div>
 </header> -->
     <header class="position-relative bg-primary ">
-        <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-2 align-items-center">
+        <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-3 align-items-center">
             <div>
                 <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
             </div>
@@ -146,7 +146,7 @@
                     {!! __("index.full-address") !!}
                 </p>
             </div>
-            <div class="col-12 col-lg-4 mt-lg-6 mb-2 mb-md-4 fs-20 f-600">
+            <div class="col-12 col-lg-4 mt-lg-6 mb-2 mb-md-4 fs-20 f-600 ft-menu-a-div">
                 <a href="{{route('course.index')}}"><p>{{ __("header.menu.home") }}</p></a>
                 <a href="{{route('lectors.index')}}"><p>{{ __("header.menu.lectors") }}</p></a>
                 <a href="{{route('about')}}"><p>{{ __("header.menu.about") }}</p></a>
@@ -156,45 +156,50 @@
             <div class="col-12 col-lg-5 mt-2 mt-lg-6 mb-4">
                 <div class="d-flex flex-wrap flex-md-nowrap">
                     <div class="me-3 text-white">
-                        <p class="opacity-50 fs-14 f-500">Россия</p>
-                        <a href="tel:+7(499)113-19-28"><p class="fs-16 f-600">+7(499)113-19-28</p></a>
-                        <p class="opacity-50 mt-4 fs-14 f-500">Украина</p>
-                        <a href="tel:+7(499)113-19-28"><p class="fs-16 f-600">+7(499)113-19-28</p></a>
+                        <p class="opacity-50 fs-14 f-500">{{ __("courses.contacts.info.country.ru") }}</p>
+                        <a href="tel:{{ __("courses.contacts.info.phone.ru") }}"><p class="fs-16 f-600">{{ __("courses.contacts.info.phone.ru") }}</p></a>
+                        <p class="opacity-50 mt-4 fs-14 f-500">{{ __("courses.contacts.info.country.ua") }}</p>
+                        <a href="tel:{{ __("courses.contacts.info.phone.ua") }}"><p class="fs-16 f-600">{{ __("courses.contacts.info.phone.ua") }}</p></a>
                     </div>
                     <div class="ms-md-6 text-white">
-                        <p class="opacity-50 fs-14 f-500">Литва</p>
-                        <a href="tel:+7(499)113-19-28"><p class="fs-16 f-600">+7(499)113-19-28</p></a>
-                        <p class="opacity-50 mt-4 fs-14 f-500">Беларусь</p>
-                        <a href="tel:+375(44)775-54-20"><p class="fs-16 f-600">+375 (44) 775-54-20 <br
-                                    class="d-block d-md-none">(Viber/WatsApp/Telegram)</p></a>
+                        <p class="opacity-50 fs-14 f-500">{{ __("courses.contacts.info.country.le") }}</p>
+                        <a href="tel:{{ __("courses.contacts.info.phone.le") }}"><p class="fs-16 f-600">{{ __("courses.contacts.info.phone.le") }}</p></a>
+                        <p class="opacity-50 mt-4 fs-14 f-500">{{ __("courses.contacts.info.country.be") }}</p>
+                        <a href="tel:{{ __("courses.contacts.info.phone.be") }}"><p class="fs-16 f-600">{{ __("courses.contacts.info.phone.be") }}
+{{--                                <br class="d-block d-md-none">(Viber/WatsApp/Telegram)</p>--}}
+                        </a>
                     </div>
                 </div>
                 <div class="mt-4 mt-lg-5 d-flex mb-0 mb-lg-4">
                     <div
                         class="rounded-circle d-flex align-items-center justify-content-center bg-gray icon-style ">
-                        <a href="https://www.youtube.com/STOMACADEMY" target="_blank"><i
+                        <a href="{{ __("courses.contacts.info_for_footer.soc.yt_link") }}" target="_blank"><i
                                 class="fab fa-youtube text-white fs-16"></i></a>
                     </div>
+{{--                    <div--}}
+{{--                        class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">--}}
+{{--                        <a href="https://t.me/stomacademy" target="_blank"><i--}}
+{{--                                class="fab fa-telegram-plane text-white fs-16"></i></a>--}}
+{{--                    </div>--}}
+                    {!! __("courses.contacts.info_for_footer.soc.tg_icon") !!}
+                    {!! __("courses.contacts.info_for_footer.soc.tw_icon") !!}
+{{--                    <div--}}
+{{--                        class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">--}}
+{{--                        <a href="https://twitter.com/" target="_blank"><i--}}
+{{--                                class="fab fa-twitter text-white fs-16"></i></a>--}}
+{{--                    </div>--}}
                     <div
                         class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
-                        <a href="https://t.me/stomacademy" target="_blank"><i
-                                class="fab fa-telegram-plane text-white fs-16"></i></a>
-                    </div>
-                    <div
-                        class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
-                        <a href="https://twitter.com/" target="_blank"><i
-                                class="fab fa-twitter text-white fs-16"></i></a>
-                    </div>
-                    <div
-                        class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
-                        <a href="https://www.facebook.com/stomacademy" target="_blank"><i
+                        <a href="{{ __("courses.contacts.info_for_footer.soc.fb_link") }}" target="_blank"><i
                                 class="fab fa-facebook-f text-white fs-16"></i></a>
                     </div>
+
                     <div
                         class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
-                        <a href="https://www.instagram.com/stom.academy/" target="_blank"><i
+                        <a href="{{ __("courses.contacts.info_for_footer.soc.insta_link") }}" target="_blank"><i
                                 class="fab fa-instagram text-white fs-16"></i></a>
                     </div>
+
                 </div>
             </div>
         </div>

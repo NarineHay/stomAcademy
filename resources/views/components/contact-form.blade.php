@@ -22,28 +22,28 @@
                             <div class="col-lg-6 col-12">
                                 <div class="contact1 me-4">
                                     <p class="fs-14 f-500 lh-17 color-47 mb-2">{{ __("courses.contacts.info.country.ru") }}</p>
-                                    <a href="tel:+79584088828"
+                                    <a href="tel:{{ __("courses.contacts.info.phone.ru") }}"
                                        class="color-23 f-600 fs-16 lh-20">{{ __("courses.contacts.info.phone.ru") }}</a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-12">
                                 <div class="contact2 me-4">
                                     <p class="fs-14 f-500 lh-17 color-47 mb-2">{{ __("courses.contacts.info.country.ua") }}</p>
-                                    <a href="tel:+380443793165"
+                                    <a href="tel:{{ __("courses.contacts.info.phone.ua") }}"
                                        class="color-23 f-600 fs-16 lh-20">{{ __("courses.contacts.info.phone.ua") }}</a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-12">
                                 <div class="contact4 me-4 mb-3 mt-2">
                                     <p class="fs-14 f-500 lh-17 color-47 mb-2">{{ __("courses.contacts.info.country.le") }}</p>
-                                    <a href="tel:+37052080969"
+                                    <a href="tel:{{ __("courses.contacts.info.phone.le") }}"
                                        class="color-23 f-600 fs-16 lh-20">{{ __("courses.contacts.info.phone.le") }}</a>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-12">
                                 <div class="contact3 mt-2">
                                     <p class="fs-14 f-500 lh-17 color-47 mb-2">{{ __("courses.contacts.info.country.be") }}</p>
-                                    <a href="tel:+375447755420" class="color-23 f-600 fs-16 lh-20 me-2">
+                                    <a href="tel:{{ __("courses.contacts.info.phone.be") }}" class="color-23 f-600 fs-16 lh-20 me-2">
                                         <p class="m-0" style="max-width: 210px; width: 100%">{{ __("courses.contacts.info.phone.be") }}</p>
                                     </a>
                                 </div>

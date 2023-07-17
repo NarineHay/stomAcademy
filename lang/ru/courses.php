@@ -96,6 +96,23 @@ return [
             "email_required_email" => "Адрес электронной почты должен содержать символ @.",
             "required_inputs" => "Поле не может быть пустым",
         ],
+        "info_for_footer" => [
+          "soc" => [
+            "insta_link" => "https://www.instagram.com/stom.academy/",
+            "fb_link" => "https://www.facebook.com/stomacademy",
+              "yt_link" => "https://www.youtube.com/STOMACADEMY",
+              "tw_icon" => '  <div
+                        class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
+                        <a href="https://twitter.com/" target="_blank"><i
+                                class="fab fa-twitter text-white fs-16"></i></a>
+                    </div>',
+              "tg_icon" => '  <div
+                        class="rounded-circle d-flex align-items-center justify-content-center bg-gray ms-2 icon-style">
+                        <a href="https://t.me/stomacademy" target="_blank"><i
+                                class="fab fa-telegram-plane text-white fs-16"></i></a>
+                    </div>',
+          ],
+        ],
         "info" => [
             "title" => "Контакты",
             "under_title" => "Свяжитесь с нашими специалистами, чтобы получить подробную консультацию и ответы на все вопросы.",
