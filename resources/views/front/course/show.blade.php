@@ -7,9 +7,11 @@
                  style="background-image: url({{ \Illuminate\Support\Facades\Storage::url($course->bg_image) }});">
                 <div class="container position-relative">
                     <div class="menu">
-                        <a href="#">{{ __("header.menu.home") }}</a>
+                        <a href="{{route('home')}}">{{ __("header.menu.home") }}</a>
                         <span>|</span>
-                        <a href="#">{{ __("header.menu.courses") }}</a>
+                        <a href="{{route('course.index')}}">{{ __("header.menu.courses") }}</a>
+                        <span>|</span>
+                        <a><span class="fs-12 f-500 m-0">{{ $course->info->title}}</span></a>
                     </div>
                     <div class="d-block d-lg-none pt-4">
                         <div class="about-course1">
@@ -56,7 +58,8 @@
             </div>
 
             <div class="main2">
-                <div class="backgraund-wite" style="width: 100%; background: white; height: 318px; position: absolute;"></div>
+                <div class="backgraund-wite"
+                     style="width: 100%; background: white; height: 318px; position: absolute;"></div>
                 <div class="container eng-doctors-txt sss">
                     <div class="row">
                         <div class="d-none d-lg-block col-12 col-lg-8">
@@ -112,10 +115,6 @@
                             </div>
 
 
-
-
-
-
                             <div class="about-course-txt d-lg-block d-none">
                                 <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
                                 <p class="fs-16 lh-27 f-500 mb-0">
@@ -124,9 +123,7 @@
                             </div>
 
 
-
-
-                <!-- <div id="course-program" class="main3">
+                        <!-- <div id="course-program" class="main3">
                     <div class="container">
                         <div class="row">
 {{--                            <div class="col-xl-7 col-12">--}}
@@ -134,75 +131,61 @@
                                 <div class="mt-4 mt-lg-0">
                                     <h3 class="f-700 m-0 lh-40 pb-2">{{ __("courses.menu.program") }}</h3>
                                     <div class="mt-2">
-                                        @foreach($course->webinars_object as $k => $webinar)
-                                            <div class="accordion accordion-flush">
-                                                <div class="accordion-item br-12">
-                                                    <h2 class="accordion-header">
-                                                        <button class="accordion-button collapsed" type="button"
-                                                                data-bs-toggle="collapse"
-                                                                data-bs-target="#flush-collapseOne-{{ $webinar->id }}"
-                                                                aria-expanded="false"
-                                                                aria-controls="flush-collapseOne">
-                                                            <div class="d-flex align-items-md-center flex-column flex-md-row w-100">
-                                                                <div class="d-flex" style="flex:0 0 30%">
-                                                                    <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
-                                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>
-                                                                </div>
-                                                                <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">
-                                                                    <img
-                                                                        src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"
-                                                                        class="me-2 videoPic img_r_42 rounded-5"
-                                                                        alt="videoPic">
-                                                                    <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>
-                                                                </div>
-                                                                <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">
-                                                                    <i class="far fa-clock me-1"></i>
-                                                                    <span
-                                                                        class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
-                                                                </div>
-                                                                <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between" style="flex:0 0 10%">
-                                                                    <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>
-                                                                    <div
-                                                                        class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
-                                                                        {{ __("courses.by") }}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </button>
-                                                    </h2>
-                                                    <div id="flush-collapseOne-{{ $webinar->id }}"
-                                                         class="accordion-collapse collapse @if($k == 0) show @endif"
-                                                         aria-labelledby="flush-headingOne"
-                                                         data-bs-parent="#accordionFlushExample">
-                                                        <div class="accordion-body">
-                                                            <div class="p-2 py-lg-3 px-lg-5">
-                                                                {!! $webinar->info->description !!}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
+{{--                                        @foreach($course->webinars_object as $k => $webinar)--}}
+{{--                            <div class="accordion accordion-flush">--}}
+{{--                                <div class="accordion-item br-12">--}}
+{{--                                    <h2 class="accordion-header">--}}
+{{--                                        <button class="accordion-button collapsed" type="button"--}}
+{{--                                                data-bs-toggle="collapse"--}}
+{{--                                                data-bs-target="#flush-collapseOne-{{ $webinar->id }}"--}}
+{{--                                                                aria-expanded="false"--}}
+{{--                                                                aria-controls="flush-collapseOne">--}}
+{{--                                                            <div class="d-flex align-items-md-center flex-column flex-md-row w-100">--}}
+{{--                                                                <div class="d-flex" style="flex:0 0 30%">--}}
+{{--                                                                    <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>--}}
+{{--                                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>--}}
+{{--                                                                </div>--}}
+{{--                                                                <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">--}}
+{{--                                                                    <img--}}
+{{--                                                                        src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"--}}
+{{--                                                                        class="me-2 videoPic img_r_42 rounded-5"--}}
+{{--                                                                        alt="videoPic">--}}
+{{--                                                                    <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>--}}
+{{--                                                                </div>--}}
+{{--                                                                <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">--}}
+{{--                                                                    <i class="far fa-clock me-1"></i>--}}
+{{--                                                                    <span--}}
+{{--                                                                        class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>--}}
+{{--                                                                </div>--}}
+{{--                                                                <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between" style="flex:0 0 10%">--}}
+{{--                                                                    <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>--}}
+{{--                                                                    <div--}}
+{{--                                                                        class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">--}}
+{{--                                                                        {{ __("courses.by") }}--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </button>--}}
+{{--                </h2>--}}
+{{--                <div id="flush-collapseOne-{{ $webinar->id }}"--}}
+{{--                                                         class="accordion-collapse collapse @if($k == 0) show @endif"--}}
+{{--                                                         aria-labelledby="flush-headingOne"--}}
+{{--                                                         data-bs-parent="#accordionFlushExample">--}}
+{{--                                                        <div class="accordion-body">--}}
+{{--                                                            <div class="p-2 py-lg-3 px-lg-5">--}}
+{{--                                                                {!! $webinar->info->description !!}--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--@endforeach--}}
                             </div>
                         </div>
                     </div>
-                </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                </div>
+            </div>
+        </div> -->
 
 
                         </div>
@@ -214,26 +197,26 @@
                                             $x = explode("/",$course->video);
                                             $preview = 'https://img.youtube.com/vi/'.array_pop($x).'/hqdefault.jpg';
                                         @endphp
-{{--                                        <img class="img_preview" src="{{ $preview }}">--}}
+                                        {{--                                        <img class="img_preview" src="{{ $preview }}">--}}
 
 
-
-
-                                        <div id="player" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
-                                            <iframe style="z-index: 1;left: 0" class="position-absolute d-none" width="100%"
+                                        <div id="player"
+                                             class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
+                                            <iframe style="z-index: 1;left: 0" class="position-absolute d-none"
+                                                    width="100%"
                                                     height="100%" src="{{ $course->video }}&vq=hd1080"
                                                     title="Walter Devoto about Stom Academy." frameborder="0"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                     allowfullscreen></iframe>
                                         </div>
 
-{{--                                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls"></div>--}}
+                                        {{--                                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls"></div>--}}
 
 
-{{--                                        <div--}}
-{{--                                            class="video_play cursor position-absolute ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3" style="left: 50%;top: 50%;transform: translate(-50%,-50%)">--}}
-{{--                                            <i class="fas fa-play"></i>--}}
-{{--                                        </div>--}}
+                                        {{--                                        <div--}}
+                                        {{--                                            class="video_play cursor position-absolute ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3" style="left: 50%;top: 50%;transform: translate(-50%,-50%)">--}}
+                                        {{--                                            <i class="fas fa-play"></i>--}}
+                                        {{--                                        </div>--}}
                                     </div>
                                     <div class="card-txts">
                                         {{--                                    <p class="fs-25 card-title-txt fw-bolder">{{ $course->info->title }}</p>--}}
@@ -248,14 +231,14 @@
                                                 <span>{{ $course->price->html() }}</span>
                                             @endif
                                         </h3>
-                                        <!-- <p class="f-500 fs-14 lh-17 mb-2">
+                                    <!-- <p class="f-500 fs-14 lh-17 mb-2">
                                             @if($course->webinars)
-                                                {{ $course->webinars->count() }} {{ __("courses.under_title") }}
-                                                <span class="text-primary">1 {{ __("courses.free") }}</span></p>
+                                        {{ $course->webinars->count() }} {{ __("courses.under_title") }}
+                                            <span class="text-primary">1 {{ __("courses.free") }}</span></p>
                                         <p class="f-500 fs-14 lh-17 mb-3">{{ __("courses.dop") }}</p>
                                         @endif -->
                                         <p class="f-500 fs-14 lh-17 mb-2">
-                                        7-дневная гарантия замены или возврата дене
+                                            7-дневная гарантия замены или возврата дене
                                         </p>
 
                                     </div>
@@ -266,17 +249,20 @@
                                                 class="course-card-form-div d-flex justify-content-between flex-column flex-lg-row mb-3 ff">
                                                 <div class="form-check">
                                                     <input type="checkbox" class="mr-1 form-check-input ">
-                                                    <label class="form-check-label fs-14">1 {{ __("courses.free") }}</label>
+                                                    <label
+                                                        class="form-check-label fs-14">1 {{ __("courses.free") }}</label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input type="checkbox" checked=""
                                                            class="mr-1 form-check-input">
-                                                    <label class="form-check-label  fs-14">{{ __("courses.all_course") }}
+                                                    <label
+                                                        class="form-check-label  fs-14">{{ __("courses.all_course") }}
                                                         ({{ $course->sale->rub ?? $course->price->html() }})</label>
                                                 </div>
                                             </div>
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#webinarSelectModal"
-                                                class="btn btn-outline-primary w-100 fs-16 f-600 br-12 mb-3 lh-20">
+                                            <button type="button" data-bs-toggle="modal"
+                                                    data-bs-target="#webinarSelectModal"
+                                                    class="btn btn-outline-primary w-100 fs-16 f-600 br-12 mb-3 lh-20">
                                                 {{ __("courses.select_webinar") }}
                                             </button>
                                         @endif
@@ -317,8 +303,8 @@
                                             <span class="ms-2 f-500 fs-14 lh-20">{{ __("courses.certificate") }}</span>
                                         </div>
                                         <div class="d-flex">
-                                        <i class="fal fa-infinity" style="color: #191F70; font-size:20px;"></i>
-                                        <p class="ms-2 f-500 fs-14 lh-20">Неограниченный просмотр</p>
+                                            <i class="fal fa-infinity" style="color: #191F70; font-size:20px;"></i>
+                                            <p class="ms-2 f-500 fs-14 lh-20">Неограниченный просмотр</p>
                                         </div>
                                     </div>
 
@@ -340,7 +326,8 @@
                                     <li><a href="#registration"
                                            class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.register") }}</a>
                                     </li>
-                                    <li><a href="#faq" class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.faq") }}</a>
+                                    <li><a href="#faq"
+                                           class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.faq") }}</a>
                                     </li>
                                     <li><a href="#other-courses"
                                            class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.other") }}</a>
@@ -362,45 +349,52 @@
             </div>
             @if($course->webinars)
 
-                <div class="modal fade" id="webinarSelectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="webinarSelectModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Выбрать уроки</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form action="{{ route('addManyToCart') }}" method="POST">
                                     @csrf
-                                @foreach($course->webinars_object as $k => $webinar)
-                                    <div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row w-100 py-2 course_item" >
-                                        <div class="d-flex" style="flex:0 0 30%">
-                                            <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
-                                            <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>
+                                    @foreach($course->webinars_object as $k => $webinar)
+                                        <div
+                                            class="d-flex justify-content-between align-items-md-center flex-column flex-md-row w-100 py-2 course_item">
+                                            <div class="d-flex" style="flex:0 0 30%">
+                                                <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
+                                                <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>
+                                            </div>
+                                            <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">
+                                                <img
+                                                    src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"
+                                                    class="me-2 videoPic img_r_42 rounded-5"
+                                                    alt="videoPic">
+                                                <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>
+                                            </div>
+                                            <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">
+                                                <i class="far fa-clock me-1"></i>
+                                                <span
+                                                    class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
+                                            </div>
+                                            <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between"
+                                                 style="flex:0 0 10%">
+                                                <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>
+                                                <input name="item_id[]" value="{{ $webinar->id }}" type="checkbox"
+                                                       data-price="{{ $webinar->price->pure() }}">
+                                            </div>
                                         </div>
-                                        <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">
-                                            <img
-                                                src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"
-                                                class="me-2 videoPic img_r_42 rounded-5"
-                                                alt="videoPic">
-                                            <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>
-                                        </div>
-                                        <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">
-                                            <i class="far fa-clock me-1"></i>
-                                            <span
-                                                class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
-                                        </div>
-                                        <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between" style="flex:0 0 10%">
-                                            <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>
-                                            <input name="item_id[]" value="{{ $webinar->id }}" type="checkbox" data-price="{{ $webinar->price->pure() }}">
-                                        </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
                                 </form>
                             </div>
                             <div class="modal-footer d-none">
-                                <h5><span class="me-2">Итого (<span class="co">0</span>)</span><span class="total"></span> <i class="icon-{{ \App\Helpers\TEXT::curHtml() }}"></i></h5>
-                                <button class="btn btn-primary buyButton" >{{ __("index.buy_webinar") }}</button>
+                                <h5><span class="me-2">Итого (<span class="co">0</span>)</span><span
+                                        class="total"></span> <i class="icon-{{ \App\Helpers\TEXT::curHtml() }}"></i>
+                                </h5>
+                                <button class="btn btn-primary buyButton">{{ __("index.buy_webinar") }}</button>
                             </div>
                         </div>
                     </div>
@@ -408,71 +402,79 @@
 
 
 
-    <!-- <div class="container">
+            <!-- <div class="container">
                   <div class="about-course-txt d-lg-block d-none">
                                 <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
                                 <p class="fs-16 lh-27 f-500 mb-0">
                                     {!! $course->info->description !!}
-                                </p>
-                            </div>
-                            </div> -->
-                 <div id="course-program" class="main3">
+                </p>
+            </div>
+            </div> -->
+                <div id="course-program" class="main3">
                     <div class="container">
                         <div class="row">
-{{--                            <div class="col-xl-7 col-12">--}}
+                            {{--                            <div class="col-xl-7 col-12">--}}
                             <div class="col-12">
                                 <div class="mt-4 mt-lg-0">
                                     <h3 class="f-700 m-0 lh-40 pb-2">{{ __("courses.menu.program") }}</h3>
                                     <div class="mt-2">
-                                        @foreach($course->webinars_object as $k => $webinar)
-                                            <div class="accordion accordion-flush">
-                                                <div class="accordion-item br-12">
-                                                    <h2 class="accordion-header">
-                                                        <button class="accordion-button collapsed" type="button"
-                                                                data-bs-toggle="collapse"
-                                                                data-bs-target="#flush-collapseOne-{{ $webinar->id }}"
-                                                                aria-expanded="false"
-                                                                aria-controls="flush-collapseOne">
-                                                            <div class="d-flex align-items-md-center flex-column flex-md-row w-100">
-                                                                <div class="d-flex" style="flex:0 0 30%">
-                                                                    <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
-                                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{{ $webinar->info->title }}</p>
-                                                                </div>
-                                                                <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">
-                                                                    <img
-                                                                        src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"
-                                                                        class="me-2 videoPic img_r_42 rounded-5"
-                                                                        alt="videoPic">
-                                                                    <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>
-                                                                </div>
-                                                                <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">
-                                                                    <i class="far fa-clock me-1"></i>
-                                                                    <span
-                                                                        class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
-                                                                </div>
-                                                                <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between" style="flex:0 0 10%">
-                                                                    <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>
+
+                                        @if($course->webinars_object)
+                                            @foreach($course->webinars_object as $k => $webinar)
+                                                <div class="accordion accordion-flush">
+                                                    <div class="accordion-item br-12">
+                                                        <h2 class="accordion-header">
+                                                            <button class="accordion-button collapsed" type="button"
+                                                                    data-bs-toggle="collapse"
+                                                                    data-bs-target="#flush-collapseOne-{{ $webinar->id }}"
+                                                                    aria-expanded="false"
+                                                                    aria-controls="flush-collapseOne">
+                                                                <div
+                                                                    class="d-flex align-items-md-center flex-column flex-md-row w-100">
+                                                                    <div class="d-flex" style="flex:0 0 30%">
+                                                                        <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
+                                                                        <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{{ $webinar->info->title }}</p>
+                                                                    </div>
+                                                                    <div class="d-flex align-items-center mt-3 mt-md-0"
+                                                                         style="flex:0 0 30%">
+                                                                        <img
+                                                                            src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"
+                                                                            class="me-2 videoPic img_r_42 rounded-5"
+                                                                            alt="videoPic">
+                                                                        <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>
+                                                                    </div>
+                                                                    <div class="d-flex d-none d-lg-block"
+                                                                         style="flex:0 0 20%">
+                                                                        <i class="far fa-clock me-1"></i>
+                                                                        <span
+                                                                            class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
+                                                                    </div>
                                                                     <div
-                                                                        class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
-                                                                        {{ __("courses.by") }}
+                                                                        class="d-flex align-items-center mt-4 mt-md-0 justify-content-between"
+                                                                        style="flex:0 0 10%">
+                                                                        <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>
+                                                                        <div
+                                                                            class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
+                                                                            {{ __("courses.by") }}
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </button>
-                                                    </h2>
-                                                    <div id="flush-collapseOne-{{ $webinar->id }}"
-                                                         class="accordion-collapse collapse @if($k == 0) show @endif"
-                                                         aria-labelledby="flush-headingOne"
-                                                         data-bs-parent="#accordionFlushExample">
-                                                        <div class="accordion-body">
-                                                            <div class="p-2 py-lg-3 px-lg-5">
-                                                                {!! $webinar->info->program !!}
+                                                            </button>
+                                                        </h2>
+                                                        <div id="flush-collapseOne-{{ $webinar->id }}"
+                                                             class="accordion-collapse collapse @if($k == 0) show @endif"
+                                                             aria-labelledby="flush-headingOne"
+                                                             data-bs-parent="#accordionFlushExample">
+                                                            <div class="accordion-body">
+                                                                <div class="p-2 py-lg-3 px-lg-5">
+                                                                    {!! $webinar->info->program !!}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -497,7 +499,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-12 order-0 order-lg-1">
-                                    <div class="image mt-2 br-12 w-100 h-100" style="background-image: url({{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }})">
+                                    <div class="image mt-2 br-12 w-100 h-100"
+                                         style="background-image: url({{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }})">
                                     </div>
                                 </div>
                             </div>
@@ -512,12 +515,13 @@
                                 @foreach($course->getLectors() as $lector)
                                     <div class="card1 col-12 col-lg-4">
                                         <a href="{{ route("lectors.show",$lector->id) }}"
-                                           class="card br-12 mb-3 text-dark" >
+                                           class="card br-12 mb-3 text-dark">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
 
-                                                        <div class="image w-100" style="height: 200px;background-image: url({{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }})">
-                                                        </div>
+                                                    <div class="image w-100"
+                                                         style="height: 200px;background-image: url({{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }})">
+                                                    </div>
 
                                                 </div>
                                                 <div class="col-md-8">
@@ -532,7 +536,8 @@
                                                                 </p>
                                                             </div>
                                                             <div class="card-text d-flex align-items-center">
-                                                                <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                                                <svg width="16" height="15" viewBox="0 0 16 15"
+                                                                     fill="none"
                                                                      xmlns="http://www.w3.org/2000/svg">
                                                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                                                           d="M7.70186 0.237038C7.88954 0.143196 8.11046 0.143196 8.29814 0.237038L14.9648 3.57037C15.1907 3.6833 15.3333 3.91414 15.3333 4.16666C15.3333 4.41917 15.1907 4.65001 14.9648 4.76294L8.29814 8.09627C8.11046 8.19012 7.88954 8.19012 7.70186 8.09627L1.03519 4.76294C0.809333 4.65001 0.666665 4.41917 0.666665 4.16666C0.666665 3.91414 0.809333 3.6833 1.03519 3.57037L7.70186 0.237038ZM2.82404 4.16666L8 6.75463L13.176 4.16666L8 1.57868L2.82404 4.16666Z"
@@ -572,7 +577,8 @@
                             @if($course->sale)
                                 <p class="fw-bold fs-43 lh-43 text-white">
                                     <span>{{ $course->sale->html() }}<i class="icon-usd"></i> </span>
-                                    <sup class="fs-23 lh-23 fw-normal align-middle strikethrough">{{ $course->price->html() }}</sup>
+                                    <sup
+                                        class="fs-23 lh-23 fw-normal align-middle strikethrough">{{ $course->price->html() }}</sup>
                                 </p>
                             @else
                                 <p class="fw-bold fs-43 lh-43 text-white">
@@ -592,7 +598,7 @@
                         </div>
                         <div class="main5-2">
                             <h3 class="text-white f-700 fs-32 lh-32">{{ __("courses.reg.form.title") }}</h3>
-                            <livewire:front.reg-online-course-form />
+                            <livewire:front.reg-online-course-form/>
                         </div>
                     </div>
 
@@ -601,29 +607,29 @@
                 <div id="faq" class="main6">
                     <h3 class="f-700 mb-4 color-23">{{ __("courses.faq.title") }}</h3>
                     <div class="row">
-{{--                        <div class="col-12 col-lg-6">--}}
-{{--                            <div class="mb-1 courses-show-accordion-item">--}}
-{{--                                <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse"--}}
-{{--                                     data-bs-target="#five">--}}
-{{--                                    <div class="d-flex align-items-center">--}}
-{{--                                        <i class="fal fa-minus d-none minus_icon"></i>--}}
-{{--                                        <i class="far fa-plus plus_icon"></i>--}}
+                        {{--                        <div class="col-12 col-lg-6">--}}
+                        {{--                            <div class="mb-1 courses-show-accordion-item">--}}
+                        {{--                                <div class="bg-white br-12 p-3 collapse_text_color" data-bs-toggle="collapse"--}}
+                        {{--                                     data-bs-target="#five">--}}
+                        {{--                                    <div class="d-flex align-items-center">--}}
+                        {{--                                        <i class="fal fa-minus d-none minus_icon"></i>--}}
+                        {{--                                        <i class="far fa-plus plus_icon"></i>--}}
 
-{{--                                        <p class="fs-16 m-0 f-700 ms-4 main_text">Как не ошибиться в выборе варианта--}}
-{{--                                            подписки?</p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="collapse show accordion-show" id="five">--}}
-{{--                                        <div class="p-3">--}}
-{{--                                        <span class="m-0">Самый простой способ - связаться с нашим--}}
-{{--                                            менеджером и рассказать о--}}
-{{--                                                <br class="d-none d-xxl-block">--}}
-{{--                                            своих сомнениях. Менеджер поможет выбрать лучший тариф--}}
-{{--                                            исходя из ваших пожеланий</span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        {{--                                        <p class="fs-16 m-0 f-700 ms-4 main_text">Как не ошибиться в выборе варианта--}}
+                        {{--                                            подписки?</p>--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <div class="collapse show accordion-show" id="five">--}}
+                        {{--                                        <div class="p-3">--}}
+                        {{--                                        <span class="m-0">Самый простой способ - связаться с нашим--}}
+                        {{--                                            менеджером и рассказать о--}}
+                        {{--                                                <br class="d-none d-xxl-block">--}}
+                        {{--                                            своих сомнениях. Менеджер поможет выбрать лучший тариф--}}
+                        {{--                                            исходя из ваших пожеланий</span>--}}
+                        {{--                                        </div>--}}
+                        {{--                                    </div>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
                         <div class="col-12 col-lg-6">
                             <div class="mb-1 courses-show-accordion-item">
                                 <div class="bg-white br-12 p-3 collapse_text_color collapsed" data-bs-toggle="collapse"
@@ -636,7 +642,7 @@
                                     </div>
                                     <div class="collapse  accordion-show" id="faq1">
                                         <div class="p-3">
-                                        <span class="m-0">{!! __("courses.faq.faq1_answer") !!}}</span>
+                                            <span class="m-0">{!! __("courses.faq.faq1_answer") !!}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -654,7 +660,7 @@
                                     </div>
                                     <div class="collapse accordion-show" id="faq2">
                                         <div class="p-3">
-                                        <span class="m-0">{!! __("courses.faq.faq2_answer") !!}}</span>
+                                            <span class="m-0">{!! __("courses.faq.faq2_answer") !!}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -672,7 +678,7 @@
                                     </div>
                                     <div class="collapse  accordion-show" id="faq3">
                                         <div class="p-3">
-                                        <span class="m-0">{!! __("courses.faq.faq3_answer") !!}}</span>
+                                            <span class="m-0">{!! __("courses.faq.faq3_answer") !!}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -690,7 +696,7 @@
                                     </div>
                                     <div class="collapse  accordion-show" id="faq4">
                                         <div class="p-3">
-                                        <span class="m-0">{!! __("courses.faq.faq4_answer") !!}}</span>
+                                            <span class="m-0">{!! __("courses.faq.faq4_answer") !!}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -703,68 +709,73 @@
                 <div id="other-courses" class="main7">
                     <div class="d-flex justify-content-between">
                         <h3 class="f-700 mb-4">{{ __("courses.courses") }}</h3>
-                        <div class="slider_navigation videoPopularSwiper_nav  AdditionsSwiper_nav mb-4 d-none d-md-flex flex-row-reverse">
+                        <div
+                            class="slider_navigation videoPopularSwiper_nav  AdditionsSwiper_nav mb-4 d-none d-md-flex flex-row-reverse">
                         </div>
                     </div>
                     <div class="swiper AdditionsSwiper">
                         <div class="swiper-wrapper">
                             @foreach($courses as $course)
                                 @if($course->info->enabled)
-                                <div class="swiper-slide">
-                                    <a href="{{ route("course.show",$course->id) }}" style="color: inherit"
-                                       class="d-block bg-white br-12">
-                                        <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}"
-                                             alt="addPic"
-                                             style="width: 386px; height: 214px; object-fit: cover">
-                                        <div class="p-3">
-                                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
-                                            <p class="f-700 fs-16 min-h-96">{{$course->info->title}}</p>
-                                            <div class="mt-2 d-flex justify-content-between">
-                                                <div>
-                                                    <i class="far fa-clock me-1"></i> <span
-                                                        class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
-                                                    <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-between mt-2 mb-1 align-items-center">
-                                                @if($course->getLectors()->count() == 1)
-                                                    <div class="d-flex align-items-center">
-                                                        <img class="rounded-circle border-white me-3 img_r_42"
-                                                             src="{{ \Illuminate\Support\Facades\Storage::url($course->getLectors()->first()->lector->photo) }}"
-                                                             alt="videoPic">
-{{--                                                        <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>--}}
-                                                    </div>
-                                                @else
+                                    <div class="swiper-slide">
+                                        <a href="{{ route("course.show",$course->id) }}" style="color: inherit"
+                                           class="d-block bg-white br-12">
+                                            <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}"
+                                                 alt="addPic"
+                                                 style="width: 386px; height: 214px; object-fit: cover">
+                                            <div class="p-3">
+                                                <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
+                                                <p class="f-700 fs-16 min-h-96">{{$course->info->title}}</p>
+                                                <div class="mt-2 d-flex justify-content-between">
                                                     <div>
-                                                        @foreach($course->getLectors() as $k => $user)
-                                                            <img
-                                                                src="{{ \Illuminate\Support\Facades\Storage::url($user->lector->photo ?? $user->userInfo->image) }}"
-                                                                class="@if ($k>0) m-25 @endif me-1 rounded-circle img_r_42"
-                                                                alt="videoPic">
-                                                        @endforeach
+                                                        <i class="far fa-clock me-1"></i> <span
+                                                            class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
+                                                        <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
                                                     </div>
-                                                @endif
-                                                <span class="price_box">
+                                                </div>
+                                                <div
+                                                    class="d-flex justify-content-between mt-2 mb-1 align-items-center">
+                                                    @if($course->getLectors()->count() == 1)
+                                                        <div class="d-flex align-items-center">
+                                                            <img class="rounded-circle border-white me-3 img_r_42"
+                                                                 src="{{ \Illuminate\Support\Facades\Storage::url($course->getLectors()->first()->lector->photo) }}"
+                                                                 alt="videoPic">
+                                                            {{--                                                        <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>--}}
+                                                        </div>
+                                                    @else
+                                                        <div>
+                                                            @foreach($course->getLectors() as $k => $user)
+                                                                <img
+                                                                    src="{{ \Illuminate\Support\Facades\Storage::url($user->lector->photo ?? $user->userInfo->image) }}"
+                                                                    class="@if ($k>0) m-25 @endif me-1 rounded-circle img_r_42"
+                                                                    alt="videoPic">
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
+                                                    <span class="price_box">
 
                                         @if($course->sale)
-                                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->sale->html() }}</span>
-                                                        <span class="f-700 del text-secondary fs-16">{{$course->price->html()}}</span>
-                                                    @else
-                                                        <span class="f-700 text-primary fs-16 me-1">{{ $course->price->html() }}</span>
-                                                    @endif
+                                                            <span
+                                                                class="f-700 text-primary fs-16 me-1">{{ $course->sale->html() }}</span>
+                                                            <span
+                                                                class="f-700 del text-secondary fs-16">{{$course->price->html()}}</span>
+                                                        @else
+                                                            <span
+                                                                class="f-700 text-primary fs-16 me-1">{{ $course->price->html() }}</span>
+                                                        @endif
                                     </span>
+                                                </div>
+                                                <form method="POST" action="{{route('addToCart')}}">
+                                                    @csrf
+                                                    <input type="hidden" value="{{ $course->id }}" name="id">
+                                                    <input type="hidden" value="course" name="type">
+                                                    <button
+                                                        class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __("courses.by_course") }}
+                                                    </button>
+                                                </form>
                                             </div>
-                                            <form method="POST" action="{{route('addToCart')}}">
-                                                @csrf
-                                                <input type="hidden" value="{{ $course->id }}" name="id">
-                                                <input type="hidden" value="course" name="type">
-                                                <button
-                                                    class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __("courses.by_course") }}
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </a>
-                                </div>
+                                        </a>
+                                    </div>
                                 @endif
                             @endforeach
                         </div>

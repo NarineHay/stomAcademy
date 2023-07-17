@@ -162,6 +162,9 @@ let webinarsCalc = {
     count: 0,
     price: 0,
     init: function () {
+        if(!document.querySelector("#webinarSelectModal")){
+            return false;
+        }
         document.querySelectorAll("#webinarSelectModal .course_item").forEach((item) => {
             let input = item.querySelector("input");
             item.addEventListener("click", (e) => {
@@ -205,15 +208,17 @@ let input_tel_registr = document.querySelector(".input_tel_registr");
 // let reg = /[A-Za-zA-Яа - яЁё]/g;
 let reg = /[0-9]/g;
 
+if (input_tel_registr){
+    input_tel_registr.addEventListener("input", function (e) {
+        var checkingRegExp = new RegExp(/^([+\d].*)?\d$/g);
+        // var checkingRegExp = new RegExp\^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$
 
-input_tel_registr.addEventListener("input", function (e) {
-    var checkingRegExp = new RegExp(/^([+\d].*)?\d$/g);
-    // var checkingRegExp = new RegExp\^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$
 
+        if(input_tel_registr.value.match(checkingRegExp) == null){
+            input_tel_registr.value = input_tel_registr.value.substr(0,input_tel_registr.length - 1)
+        }
+        // console.log(e.data);
+        // this.value = this.value.replace(reg, '');
+    })
+}
 
-    if(input_tel_registr.value.match(checkingRegExp) == null){
-        input_tel_registr.value = input_tel_registr.value.substr(0,input_tel_registr.length - 1)
-    }
-    // console.log(e.data);
-    // this.value = this.value.replace(reg, '');
-})

@@ -1,0 +1,1 @@
+<?php /**PATH C:\OpenServer\domains\StomAcademy\resources\views\front\personal\conference.blade.php ENDPATH**/ ?>
