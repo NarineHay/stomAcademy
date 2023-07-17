@@ -90,7 +90,7 @@
                         @endforeach
                     </div>
 
-                    <div class="position-absolute bottom-0 w-100">
+                    <div class="position-absolute bottom-0 w-100 sms">
                         <div class="position-relative mb-2">
                             <input wire:keydown.enter="send_message" wire:model="message"
                                    class="w-100 py-3 px-3 br-12 border-0 position-relative"

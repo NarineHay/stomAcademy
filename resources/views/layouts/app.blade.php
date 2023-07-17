@@ -35,7 +35,7 @@
                 <div class="bg">
                     <div class="container d-flex justify-content-between align-items-center text-white">
                         <div class="mt-6 d-flex justify-content-between align-items-center w-100 p-2 p-md-0">
-                            <div class="d-flex flex-column header_text_block">
+                            <div class="d-flex flex-column header_text_block" style="padding-top: 183px ;padding-bottom: 163px;">
                                 <div>
                                     <h1 class="mt-3 f-600 m-0 header_text">{!! __("header.h1") !!}</h1>
                                     <p class="fs-18 f-500 m-0 pt-3 pb-4">{!! __("header.under_title") !!}</p>
@@ -50,7 +50,7 @@
                             </div>
                             <div class="header-login" >
                                 @if(!\Illuminate\Support\Facades\Auth::check())
-                                    <div class="d-none d-lg-block  mt-6">
+                                    <div class="d-none d-lg-block  mt-4">
                                         <livewire:front.home-login/>
                                     </div>
 
