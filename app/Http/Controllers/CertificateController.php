@@ -19,6 +19,7 @@ class CertificateController extends Controller
     public function download($id)
     {
         $certificate = UserCertificate::find($id);
+//        dd($certificate);
         $imagePath = Storage::url($certificate->image);
 
         return response()->download(public_path($imagePath));

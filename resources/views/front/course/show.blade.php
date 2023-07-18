@@ -42,13 +42,13 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="txts1 d-xl-block d-none">
+                                    <div class="txts1 d-xxl-block d-none">
                                         <p class="txts-1-title">{{ __("courses.start") }}</p>
                                         <p>{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="txts1 d-xl-none d-flex flex-row mt-3 align-items-center mb-2 text-white pb-3">
+                            <div class="txts1 d-xxl-none d-flex flex-row mt-3 align-items-center mb-2 text-white pb-3">
                                 <p class="txts-1-title me-1 mb-0 fs-14 lh-17 f-500 text-white">{{ __("courses.start") }}</p>
                                 <p class="mb-0 fs-14 lh-17 f-700 text-white">{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
                             </div>
@@ -93,7 +93,7 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="txts1 d-xl-block d-none">
+                                        <div class="txts1 d-xxl-block d-none">
                                             <p class="txts-1-title">{{ __("courses.start") }}</p>
                                             @if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp())
                                                 <p>Доступно к просмотру после покупки</p>
@@ -104,7 +104,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="txts1 d-xl-none d-flex flex-row mt-3 align-items-center">
+                                <div class="txts1 d-xxl-none d-flex flex-row mt-3 align-items-center">
                                     <p class="txts-1-title me-1 mb-0 fs-14 lh-17 f-500">{{ __("courses.start") }}</p>
                                     @if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp())
                                         <p class="mb-0 fs-14 lh-17 f-700">Доступно к просмотру после покупки</p>
@@ -211,8 +211,12 @@
                                             </div>
                                         @else
 {{--                                            <img class="img_preview" src="{{ $preview }}">--}}
-                                            <img class="img_preview" src="{{ \Illuminate\Support\Facades\Storage::url($course->bg_image) }}">
-
+                                            @if($course->bg_image)
+                                                <img class="img_preview" src="{{ \Illuminate\Support\Facades\Storage::url($course->bg_image) }}">
+                                            @else
+{{--                                                <img class="img_preview" src="#">--}}
+                                                <div class="img_preview_gray_bg w-100 " style="height: 233px; background-color: rgba(0,0,0,0.4)"></div>
+                                            @endif
                                         @endif
                                         {{--                                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls"></div>--}}
 

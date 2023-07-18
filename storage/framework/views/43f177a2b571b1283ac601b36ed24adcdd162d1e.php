@@ -112,15 +112,15 @@
                                         <p class="text-primary text-uppercase f-700 mt-2 fs-10"><?php echo e($course->directions->first()->title); ?></p>
                                         <p class="f-700 fs-16 min-h-75 courseTxt-index"><?php echo e($course->info->title); ?></p>
                                         <div class="mt-2 d-flex justify-content-between">
-                                            <div class="d-flex justify-content-between w-100">
-                                        <span>
-                                            <i class="far fa-clock me-1"></i>
-                                        <span class="me-2 fs-14 f-500"><?php echo e($course->getDuration()); ?></span>
-                                        </span>
+                                            <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
                                                 <span>
-                                            <i class="fas fa-tasks me-1"></i>
-                                        <span class="fs-14 f-500"><?php echo e($course->webinars_count); ?> видео</span>
-                                        </span>
+                                                    <i class="far fa-clock me-1"></i>
+                                                    <span class="me-2 fs-14 f-500"><?php echo e($course->getDuration()); ?></span>
+                                                </span>
+                                                <span>
+                                                    <i class="fas fa-tasks me-1"></i>
+                                                    <span class="fs-14 f-500"><?php echo e($course->webinars_count); ?> видео</span>
+                                                 </span>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-between mt-2 mb-1 align-items-center">
@@ -129,7 +129,7 @@
                                                     <img class="rounded-circle border-white me-3 img_r_42"
                                                          src="<?php echo e(\Illuminate\Support\Facades\Storage::url($course->getLectors()->first()->lector->photo)); ?>"
                                                          alt="videoPic">
-                                                    <p class="m-0 f-500 fs-16"><?php echo e($course->getLectors()->first()->userInfo->fullName); ?></p>
+                                                    <p class="m-0 f-500 fs-15 d-none d-sm-block"><?php echo e($course->getLectors()->first()->userInfo->fullName); ?></p>
                                                 </div>
                                             <?php else: ?>
                                                 <div>
@@ -142,7 +142,7 @@
 
                                                 </div>
                                             <?php endif; ?>
-                                            <span class="price_box d-flex flex-row flex-xl-column"
+                                            <span class="price_box d-flex flex-column"
                                                   style="min-height: 50px">
 
                                         <?php if($course->sale): ?>

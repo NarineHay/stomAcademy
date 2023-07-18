@@ -93,7 +93,7 @@ document.querySelectorAll(".video_block").forEach((video_block) => {
     let iframe = video_block.querySelector("iframe");
     let src = iframe.getAttribute("src");
     let video_play = video_block.querySelector(".video_play");
-    if (video_play){
+    if (video_play) {
         video_play.addEventListener("click", function () {
             iframe.setAttribute("src", src + "?autoplay=1");
             iframe.classList.remove("d-none");
@@ -126,18 +126,22 @@ if (header_menu) {
 
 document.addEventListener("DOMContentLoaded", () => {
     let directions_index = document.querySelector(".directions_index");
-    let show_more = directions_index.querySelector(".show_more");
-    let max_h = directions_index.querySelector("a").offsetHeight * 3;
-    let a_s = directions_index.querySelectorAll("a");
-    show_more.addEventListener("click", function () {
-        a_s.forEach(function (item) {
-            item.style.display = "inline";
-        })
-    });
-    let index = a_s.length;
-    while (directions_index.offsetHeight > max_h) {
-        index--;
-        a_s[index].style.display = "none";
+    if (directions_index) {
+        let show_more = directions_index.querySelector(".show_more");
+        let max_h = directions_index.querySelector("a").offsetHeight * 3;
+        let a_s = directions_index.querySelectorAll("a");
+        if (show_more) {
+            show_more.addEventListener("click", function () {
+                a_s.forEach(function (item) {
+                    item.style.display = "inline";
+                })
+            });
+        }
+        let index = a_s.length;
+        while (directions_index.offsetHeight > max_h) {
+            index--;
+            a_s[index].style.display = "none";
+        }
     }
 });
 
@@ -157,12 +161,11 @@ document.querySelectorAll(".password_container").forEach(function (r) {
 })
 
 
-
 let webinarsCalc = {
     count: 0,
     price: 0,
     init: function () {
-        if(!document.querySelector("#webinarSelectModal")){
+        if (!document.querySelector("#webinarSelectModal")) {
             return false;
         }
         document.querySelectorAll("#webinarSelectModal .course_item").forEach((item) => {
@@ -203,19 +206,18 @@ let webinarsCalc = {
 webinarsCalc.init();
 
 
-
 let input_tel_registr = document.querySelector(".input_tel_registr");
 // let reg = /[A-Za-zA-Яа - яЁё]/g;
 let reg = /[0-9]/g;
 
-if (input_tel_registr){
+if (input_tel_registr) {
     input_tel_registr.addEventListener("input", function (e) {
         var checkingRegExp = new RegExp(/^([+\d].*)?\d$/g);
         // var checkingRegExp = new RegExp\^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$
 
 
-        if(input_tel_registr.value.match(checkingRegExp) == null){
-            input_tel_registr.value = input_tel_registr.value.substr(0,input_tel_registr.length - 1)
+        if (input_tel_registr.value.match(checkingRegExp) == null) {
+            input_tel_registr.value = input_tel_registr.value.substr(0, input_tel_registr.length - 1)
         }
         // console.log(e.data);
         // this.value = this.value.replace(reg, '');

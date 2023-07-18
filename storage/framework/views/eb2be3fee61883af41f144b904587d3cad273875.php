@@ -40,13 +40,13 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="txts1 d-xl-block d-none">
+                                    <div class="txts1 d-xxl-block d-none">
                                         <p class="txts-1-title"><?php echo e(__("courses.start")); ?></p>
                                         <p><?php echo e(\Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y")); ?></p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="txts1 d-xl-none d-flex flex-row mt-3 align-items-center mb-2 text-white pb-3">
+                            <div class="txts1 d-xxl-none d-flex flex-row mt-3 align-items-center mb-2 text-white pb-3">
                                 <p class="txts-1-title me-1 mb-0 fs-14 lh-17 f-500 text-white"><?php echo e(__("courses.start")); ?></p>
                                 <p class="mb-0 fs-14 lh-17 f-700 text-white"><?php echo e(\Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y")); ?></p>
                             </div>
@@ -91,7 +91,7 @@
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="txts1 d-xl-block d-none">
+                                        <div class="txts1 d-xxl-block d-none">
                                             <p class="txts-1-title"><?php echo e(__("courses.start")); ?></p>
                                             <?php if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp()): ?>
                                                 <p>Доступно к просмотру после покупки</p>
@@ -102,7 +102,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="txts1 d-xl-none d-flex flex-row mt-3 align-items-center">
+                                <div class="txts1 d-xxl-none d-flex flex-row mt-3 align-items-center">
                                     <p class="txts-1-title me-1 mb-0 fs-14 lh-17 f-500"><?php echo e(__("courses.start")); ?></p>
                                     <?php if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp()): ?>
                                         <p class="mb-0 fs-14 lh-17 f-700">Доступно к просмотру после покупки</p>
@@ -210,8 +210,12 @@
                                             </div>
                                         <?php else: ?>
 
-                                            <img class="img_preview" src="<?php echo e(\Illuminate\Support\Facades\Storage::url($course->bg_image)); ?>">
+                                            <?php if($course->bg_image): ?>
+                                                <img class="img_preview" src="<?php echo e(\Illuminate\Support\Facades\Storage::url($course->bg_image)); ?>">
+                                            <?php else: ?>
 
+                                                <div class="img_preview_gray_bg w-100 " style="height: 233px; background-color: rgba(0,0,0,0.4)"></div>
+                                            <?php endif; ?>
                                         <?php endif; ?>
                                         
 
@@ -615,15 +619,15 @@
                             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('front.reg-online-course-form', [])->html();
-} elseif ($_instance->childHasBeenRendered('KR52yQ3')) {
-    $componentId = $_instance->getRenderedChildComponentId('KR52yQ3');
-    $componentTag = $_instance->getRenderedChildComponentTagName('KR52yQ3');
+} elseif ($_instance->childHasBeenRendered('BzqvRDB')) {
+    $componentId = $_instance->getRenderedChildComponentId('BzqvRDB');
+    $componentTag = $_instance->getRenderedChildComponentTagName('BzqvRDB');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('KR52yQ3');
+    $_instance->preserveRenderedChild('BzqvRDB');
 } else {
     $response = \Livewire\Livewire::mount('front.reg-online-course-form', []);
     $html = $response->html();
-    $_instance->logRenderedChild('KR52yQ3', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('BzqvRDB', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
