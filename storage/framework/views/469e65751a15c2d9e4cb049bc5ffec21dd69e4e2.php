@@ -1,1 +1,0 @@
-<?php /**PATH C:\OpenServer\domains\StomAcademy\resources\views\front\lector\webinars.blade.php ENDPATH**/ ?>

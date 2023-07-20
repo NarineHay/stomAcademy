@@ -1,1 +1,0 @@
-<?php /**PATH C:\OpenServer\domains\StomAcademy\resources\views\admin\blogCategory\edit.blade.php ENDPATH**/ ?>

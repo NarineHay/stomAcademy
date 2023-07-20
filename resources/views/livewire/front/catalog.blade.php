@@ -110,7 +110,10 @@
                     <span class="text-secondary fs-14 f-500">Сортировать по:</span>
                     <button class="btn dropdown-toggle text-primary fs-14 f-600 border-0" type="button"
                             id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">Релевантности
+                            data-bs-toggle="dropdown" aria-expanded="false">@if($sortBy) @switch($sortBy) @case("default") Релевантности @break
+                        @case("price") Цена @break
+                        @case("title") Названия @break
+                        @case("popularity") По популярность @break @endswitch @else Релевантности @endif
                     </button>
                     <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">
                         <input wire:model="sortBy" value="price" type="radio" id="vehicle111" name="sort"
@@ -129,7 +132,7 @@
 
         <!-- <input type="text" class="input"> -->
         <div class=" div-input-online position-relative">
-        <input type="text" class="form-control input-online bg-light-gray" id="usr" style="padding-left: 50px;">
+        <input type="text" wire:model="search" class="form-control input-online bg-light-gray" id="usr" style="padding-left: 50px;">
         <svg class="s" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M20.2291 18.4888L25.5001 23.7586L23.7587 25.5L18.4889 20.229C16.5282 21.8008 14.0893 22.6558 11.5762 22.6522C5.46222 22.6522 0.500122 17.6901 0.500122 11.5761C0.500122 5.46209 5.46222 0.5 11.5762 0.5C17.6902 0.5 22.6523 5.46209 22.6523 11.5761C22.6559 14.0891 21.801 16.528 20.2291 18.4888ZM17.7604 17.5757C19.3223 15.9695 20.1945 13.8165 20.191 11.5761C20.191 6.81584 16.3353 2.96136 11.5762 2.96136C6.81596 2.96136 2.96148 6.81584 2.96148 11.5761C2.96148 16.3351 6.81596 20.1908 11.5762 20.1908C13.8166 20.1944 15.9696 19.3221 17.5758 17.7603L17.7604 17.5757Z" fill="#6C7A89"/>
         </svg>
