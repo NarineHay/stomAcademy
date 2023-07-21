@@ -58,7 +58,7 @@
                                             <img class="rounded-circle border-white me-3 img_r_42"
                                                  src="{{ \Illuminate\Support\Facades\Storage::url($course->getLectors()->first()->lector->photo) }}"
                                                  alt="videoPic">
-                                            <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>
+                                            <p class="m-0 f-500 fs-14">{{ $course->getLectors()->first()->userInfo->fullName }}</p>
                                         @else
                                             @foreach($course->getLectors() as $k => $user)
                                                 <img
@@ -66,7 +66,7 @@
                                                     class="@if ($k>0) m-25 @endif me-1 rounded-circle img_r_42"
                                                     alt="videoPic">
                                             @endforeach
-                                            <p class="m-0 ms-2 f-500 fs-16">{{ \App\Helpers\TEXT::lectorCount($course->getLectors()->count()) }}</p>
+                                            <p class="m-0 ms-2 f-500 fs-14">{{ \App\Helpers\TEXT::lectorCount($course->getLectors()->count()) }}</p>
                                         @endif
 
                                     </div>
@@ -241,7 +241,7 @@
                 <div>
                     <h3 class="f-700 m-0">{{ __("index.lectia") }}</h3>
                 </div>
-                <div class="ms-lg-4 mb-4">
+                <div class="ms-lg-4 mt-2 mt-lg-0">
                     <a href="{{route('webinar.index')}}" class="text-info text-decoration-underline"><p
                             class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i>
                         </p>
