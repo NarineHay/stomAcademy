@@ -41,6 +41,7 @@ class UserInfo extends Model
     }
 
     function GetFullNameAttribute(){
+        if(!$this->fname && !$this->lname) return null;
         return $this->fname . " " . $this->lname;
     }
 }

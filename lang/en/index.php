@@ -7,6 +7,7 @@ return [
     "show_more" => "View more",
     "new_courses" => "New courses",
     "online" => "Online -conferences",
+    "online_chat" => "Online -chat",
     "congress" => "Online -congress",
     "lectia" => "Online-lectures",
     "buy_webinar" => "Add to cart",

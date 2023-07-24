@@ -332,8 +332,18 @@
 }
 
 @media (max-width: 992px) {
-
-
+    .webinar_messages_parent_div{
+        height: calc(100vh - 450px)  !important;
+    }
+    .bottom-330px {
+        bottom: 330px;
+    }
+    .webinar_messages_livewire_div{
+        width: calc(100% - 60px) !important;
+    }
+    .profile_webinar_chat_center {
+        height: calc(100vh - 265px) !important;
+    }
     .sms{
         margin-bottom: 70px !important;
         padding-top: 20px;
@@ -702,8 +712,18 @@
 
 
 @media (max-width: 576px) {
+    .webinar_messages_livewire_div {
+        width: calc(100% - 40px) !important;
+    }
+    .webinar_message_input::placeholder{
+        font-size: 14px !important;
+    }
 
+    .message_icon{
 
+            width: 35px !important;
+            height: 35px !important;
+    }
     .directions_index-media {
         a {
             font-size: 11px !important;

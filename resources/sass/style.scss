@@ -5,6 +5,50 @@ html {
     background-color: #F9F9F9;
 }
 
+body{
+    overflow-x: hidden;
+}
+
+.webinar_message_txt_div:not(:last-child){
+    margin-bottom: 40px;
+}
+
+.profile_webinar_chat_right{
+    background-color: #fff;
+    //height: 100%;
+    height: calc(100vh - 74px);
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    width: 100vw;
+}
+.profile_webinar_chat_center{
+    background-color: #fff;
+    //height: 100%;
+    height: calc(100vh - 74px);
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    //width: 100vw;
+    width: 100%;
+}
+.outline-box-shadow-none{
+    outline: none !important;
+    box-shadow: none !important;
+}
+.webinar_messages_parent_div{
+    //height: 450px;
+    height: calc(100vh - 320px);
+    overflow-y: auto;
+}
+.bottom-210px{
+    bottom: 210px;
+}
+.webinar_message_input{
+    outline: none !important;
+    box-shadow: none !important;
+    //border-top: 1px solid #E6E6E6;
+}
 a {
     cursor: pointer;
 }
@@ -13,9 +57,21 @@ a {
     cursor: pointer;
 
 }
-
+.ms-13{
+    margin-left: 13px;
+}
+.mb-40{
+    margin-bottom: 40px;
+}
+.cp{
+    cursor: pointer;
+}
 .max-w-800{
     max-width: 800px;
+    width: 100%;
+}
+.max-w-300{
+    max-width: 300px;
     width: 100%;
 }
 

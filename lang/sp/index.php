@@ -7,6 +7,7 @@ return [
     "show_more" => "Ver más",
     "new_courses" => "Nuevos cursos",
     "online" => "Conferencias en línea",
+    "online_chat" => "Онлайн чат",
     "congress" => "Congreso-online",
     "lectia" => "Lecturas en línea",
     "buy_webinar" => "Añadir a la cesta",

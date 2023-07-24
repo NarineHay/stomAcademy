@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front;
 
+use App\Models\UserInfo;
 use App\Models\Webinar;
 use App\Models\WebinarChatMessage;
 use App\Models\WebinarDirection;
@@ -22,7 +23,10 @@ class PersonalCoursesChat extends Component
 
     public function render()
     {
-        $this->messages = WebinarChatMessage::query()->where("webinar_id",$this->webinar_id)->get();
+        $this->messages = WebinarChatMessage::query()
+            ->with("userInfo")->with("user")
+            ->where("webinar_id",$this->webinar_id)->get();
+//        dd($this->messages[0]->userInfo->fullName);
         return view('livewire.front.personal-courses-chat');
     }
 
