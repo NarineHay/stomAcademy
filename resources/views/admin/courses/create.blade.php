@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ЦЕНA 2</label>
+                        <label for="exampleInputEmail1">НОВАЯ ЦЕНA</label>
                         <select class="form-control form-control select2" name="price_2_id">
                             <option value="0">---</option>
                             @foreach($prices as $price)
@@ -106,6 +106,16 @@
                         <div class="custom-file">
                             <input type="file" name="image" class="form-control" id="customFile">
                             <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">ФОН</label>
+                        <div class="custom-file">
+                            <input type="file" name="bg_image" class="form-control" id="customFile2">
+                            <label class="custom-file-label" for="customFile2">Choose file</label>
                         </div>
                     </div>
 

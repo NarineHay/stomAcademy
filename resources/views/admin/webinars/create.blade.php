@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ЦЕНA 2</label>
+                        <label for="exampleInputEmail1">НОВАЯ ЦЕНA</label>
                         <select class="form-control form-control select2" name="price_2_id">
                             <option value="0">---</option>
                             @foreach($prices as $price)

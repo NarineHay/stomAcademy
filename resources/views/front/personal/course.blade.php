@@ -5,7 +5,7 @@
         <div class="py-5 py-lg-6 px-4 mt-0 ">
             <p class="m-0 f-500 fs-14 cursor"><a class="text-black" href="{{ route("personal.courses") }}"><i
                         class="fal fa-arrow-left me-3"></i>{{ __("profile.courses.back") }}</a></p>
-            <div class="mt-4">
+            <div class="mt-lg-4 mt-2">
                 <div class="bg d-flex justify-content-center align-items-center position-relative br-12">
                     <div class="video_container">
                         <div id="player"
@@ -28,7 +28,7 @@
 
 
             </div>
-            <div class="mt-4">
+            <div class="mt-lg-4 mt-6 pt-6 pt-lg-0">
                 <div>
                     <p class="m-0 text-primary fs-10 f-700">{{ $webinar->directions->map(function ($item){ return $item->title; })->join(", ") }}</p>
                     <p class="m-0 fs-24 f-700 mt-2">{{ $webinar->info->title }}</p>
