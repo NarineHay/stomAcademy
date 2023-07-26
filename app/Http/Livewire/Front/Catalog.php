@@ -67,9 +67,6 @@ class Catalog extends Component
     }
 
     function getWebinars(){
-// start
-        $course_ids = null;
-// end
 
         $webinars_q = Webinar::query();
 
@@ -82,29 +79,8 @@ class Catalog extends Component
         }
         if(count($this->selectedLectors) > 0){
             $webinars_q = $webinars_q->whereIn("user_id", $this->selectedLectors);
-
-//      start
-            $webinars_ids = Webinar::query()->whereIn("user_id",$this->selectedLectors)->get()->map(function ($webinar){
-                return $webinar->id;
-            });
-            $courses_ids__ = CourseWebinar::query()->whereIn("webinar_id",$webinars_ids)->get()->map(function ($cw){
-                return $cw->course_id;
-            });
-            if($course_ids){
-                $course_ids = $course_ids->filter(function ($cid) use ($courses_ids__){
-                    return $courses_ids__->contains($cid);
-                });
-            }else{
-                $course_ids = $courses_ids__;
-            }
-//      end
         }
 
-//        start
-        if($course_ids){
-            $webinars_q = $webinars_q->whereIn("id",$course_ids);
-        }
-//      end
 
         $cur = Currency::find(Cookie::get("currency_id",1))->currency_name;
         $webinars_q = $webinars_q
@@ -118,7 +94,8 @@ class Catalog extends Component
                   END
                  ) as price_")
             ->join("webinar_infos","webinar_infos.webinar_id","webinars.id")
-            ->where("webinar_infos.lg_id",LG::get());
+            ->where("webinar_infos.lg_id",LG::get())
+            ->where("webinar_infos.enabled",true);
 
 
         if($this->sortBy == "price"){
@@ -182,6 +159,7 @@ class Catalog extends Component
                  ) as price_")
             ->join("course_infos","course_infos.course_id","courses.id")
             ->where("course_infos.lg_id",LG::get())
+            ->where("course_infos.enabled",true)
             ->withSum('webinars_object','duration')
             ->withCount('webinars');
 
@@ -247,6 +225,7 @@ class Catalog extends Component
                  ) as price_")
             ->join("course_infos","course_infos.course_id","courses.id")
             ->where("course_infos.lg_id",LG::get())
+            ->where("course_infos.enabled",true)
             ->withSum('webinars_object','duration')
             ->withCount('webinars');
 
@@ -312,6 +291,7 @@ class Catalog extends Component
                  ) as price_")
             ->join("course_infos","course_infos.course_id","courses.id")
             ->where("course_infos.lg_id",LG::get())
+            ->where("course_infos.enabled",true)
             ->withSum('webinars_object','duration')
             ->withCount('webinars');
 
