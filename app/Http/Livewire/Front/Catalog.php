@@ -67,6 +67,10 @@ class Catalog extends Component
     }
 
     function getWebinars(){
+// start
+        $course_ids = null;
+// end
+
         $webinars_q = Webinar::query();
 
         if(count($this->selectedDirections) > 0){
@@ -78,7 +82,29 @@ class Catalog extends Component
         }
         if(count($this->selectedLectors) > 0){
             $webinars_q = $webinars_q->whereIn("user_id", $this->selectedLectors);
+
+//      start
+            $webinars_ids = Webinar::query()->whereIn("user_id",$this->selectedLectors)->get()->map(function ($webinar){
+                return $webinar->id;
+            });
+            $courses_ids__ = CourseWebinar::query()->whereIn("webinar_id",$webinars_ids)->get()->map(function ($cw){
+                return $cw->course_id;
+            });
+            if($course_ids){
+                $course_ids = $course_ids->filter(function ($cid) use ($courses_ids__){
+                    return $courses_ids__->contains($cid);
+                });
+            }else{
+                $course_ids = $courses_ids__;
+            }
+//      end
         }
+
+//        start
+        if($course_ids){
+            $webinars_q = $webinars_q->whereIn("id",$course_ids);
+        }
+//      end
 
         $cur = Currency::find(Cookie::get("currency_id",1))->currency_name;
         $webinars_q = $webinars_q
