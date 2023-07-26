@@ -248,6 +248,17 @@
     }
 }
 
+@media only screen and (max-width: 1199px) and (min-width: 992px){
+    .course-show-buy-btn-mobile{
+        margin-right: 55px !important;
+        //margin-top: 24px !important;
+    }
+}
+@media only screen and (max-width: 991px) and (min-width: 768px){
+    .course-show-buy-btn-mobile{
+        margin-top: 28px !important;
+    }
+}
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
     .min-h-42 {
         min-height: 42px;
@@ -539,7 +550,9 @@
     .header_text_block{
         padding-top: 20px !important;
     }
-
+    .webinar-name-p-mobile{
+        margin-right: 20px !important;
+    }
     .courses-show-div {
         .main5 {
             padding: 11px;
@@ -620,7 +633,7 @@
     }
 
     .fs-16 {
-        font-size: 14px;
+        font-size: 14px ;
     }
 
     .course_btn {
@@ -669,6 +682,11 @@
 }
 
 @media (max-width: 767px) {
+    .course-show-buy-btn-mobile{
+        bottom: 16px !important;
+        top: auto;
+        right: 16px !important;
+    }
     .videoTxt-index {
         max-height: 75.56px;
         display: -webkit-box;

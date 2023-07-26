@@ -210,12 +210,14 @@
                                                         allowfullscreen></iframe>
                                             </div>
                                         @else
-{{--                                            <img class="img_preview" src="{{ $preview }}">--}}
+                                            {{--                                            <img class="img_preview" src="{{ $preview }}">--}}
                                             @if($course->bg_image)
-                                                <img class="img_preview" src="{{ \Illuminate\Support\Facades\Storage::url($course->bg_image) }}">
+                                                <img class="img_preview"
+                                                     src="{{ \Illuminate\Support\Facades\Storage::url($course->bg_image) }}">
                                             @else
-{{--                                                <img class="img_preview" src="#">--}}
-                                                <div class="img_preview_gray_bg w-100 " style="height: 233px; background-color: rgba(0,0,0,0.4)"></div>
+                                                {{--                                                <img class="img_preview" src="#">--}}
+                                                <div class="img_preview_gray_bg w-100 "
+                                                     style="height: 233px; background-color: rgba(0,0,0,0.4)"></div>
                                             @endif
                                         @endif
                                         {{--                                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls"></div>--}}
@@ -251,7 +253,10 @@
 
                                     </div>
 
-                                    <form action="#" class="course-card-form">
+                                    <form method="POST" action="{{route('addToCart')}}" class="course-card-form">
+                                        @csrf
+                                        <input type="hidden" value="{{ $course->id }}" name="id">
+                                        <input type="hidden" value="webinar" name="type">
                                         @if($course->webinars)
                                             <div
                                                 class="course-card-form-div d-flex justify-content-between flex-column flex-lg-row mb-3 ff">
@@ -278,6 +283,7 @@
                                         <button class="btn btn-primary w-100 fs-16 f-600 br-12 mb-3 lh-20">
                                             {{ __("courses.by_course") }}
                                         </button>
+
                                     </form>
 
                                     <div class="d-flex flex-row flex-wrap justify-content-between div-icons">
@@ -431,7 +437,7 @@
                                             @foreach($course->webinars_object as $k => $webinar)
                                                 <div class="accordion accordion-flush">
                                                     <div class="accordion-item br-12">
-                                                        <h2 class="accordion-header">
+                                                        <h2 class="accordion-header position-relative">
                                                             <button class="accordion-button collapsed" type="button"
                                                                     data-bs-toggle="collapse"
                                                                     data-bs-target="#flush-collapseOne-{{ $webinar->id }}"
@@ -441,7 +447,7 @@
                                                                     class="d-flex align-items-md-center flex-column flex-md-row w-100">
                                                                     <div class="d-flex" style="flex:0 0 30%">
                                                                         <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
-                                                                        <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{{ $webinar->info->title }}</p>
+                                                                        <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap webinar-name-p-mobile">{{ $webinar->info->title }}</p>
                                                                     </div>
                                                                     <div class="d-flex align-items-center mt-3 mt-md-0"
                                                                          style="flex:0 0 30%">
@@ -461,10 +467,29 @@
                                                                         class="d-flex align-items-center mt-4 mt-md-0 justify-content-between"
                                                                         style="flex:0 0 10%">
                                                                         <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>
-                                                                        <div
-                                                                            class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
-                                                                            {{ __("courses.by") }}
-                                                                        </div>
+
+
+
+                                                                        <form class="dublicat_form" id="test123" method="POST"
+                                                                              action="{{route('addToCart')}}">
+                                                                            @csrf
+                                                                            <input type="hidden"
+                                                                                   value="{{ $webinar->id }}" name="id">
+                                                                            <input type="hidden" value="webinar"
+                                                                                   name="type">
+
+                                                                                <a onclick="parentNode.submit()" style="z-index: 999" class="course-show-buy-btn-mobile position-absolute  mt-3  end-0 btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
+                                                                                      {{ __("courses.by") }}
+                                                                                </a>
+
+                                                                        </form>
+
+{{--                                                                        <div--}}
+{{--                                                                            class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">--}}
+{{--                                                                            {{ __("courses.by") }}--}}
+{{--                                                                        </div>--}}
+
+
                                                                     </div>
                                                                 </div>
                                                             </button>
