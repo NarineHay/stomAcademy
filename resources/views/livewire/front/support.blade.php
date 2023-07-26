@@ -61,7 +61,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-7 d-block">
+    <div class="col-lg-7 d-none d-lg-block">
         @if($this->active_chat)
             <div class="py-4 px-5 mt-5 mt-lg-4 py-lg-6 h-100">
                 <div class="d-flex justify-content-center message_text">
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                 @else
-                                    <div class="d-flex align-items-center justify-content-start mt-3">
+                                    <div class="d-flex align-items-center justify-content-start mt-2" >
                                         <div class="me-2">
 {{--                                            <img class="chat_avatar" alt="pic"--}}
 {{--                                                 src="{{\Illuminate\Support\Facades\Storage::url($message->user->userinfo->image)}}">--}}
