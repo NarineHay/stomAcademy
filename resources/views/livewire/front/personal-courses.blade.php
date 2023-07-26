@@ -22,7 +22,7 @@
                                 type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">{{ __("profile.courses.directions") }}
                         </button>
-                        <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">
+                        <div class="dropdown-menu p-3 pe-4 border-0" aria-labelledby="dropdownMenuButton1">
 
                             @foreach($directions as $direction)
                                 <div class="form-check">
