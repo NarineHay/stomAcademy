@@ -59,7 +59,7 @@
 
             <div class="main2">
                 <div class="backgraund-wite"
-                     style="width: 100%; background: white; height: 318px; position: absolute;"></div>
+                     style="width: 100%; background: white; height: 311px; position: absolute;"></div>
                 <div class="container eng-doctors-txt sss">
                     <div class="row">
                         <div class="d-none d-lg-block col-12 col-lg-8">
@@ -193,22 +193,23 @@
                             <div class="card course_card_static">
                                 <div class="card-body">
                                     <div class="img_video video_block position-relative">
-                                        @php
-                                            $x = explode("/",$course->video);
-                                            $preview = 'https://img.youtube.com/vi/'.array_pop($x).'/hqdefault.jpg';
-                                        @endphp
+                                        {{--                                        @php--}}
+                                        {{--                                            $x = explode("/",$course->video);--}}
+                                        {{--                                            $preview = 'https://img.youtube.com/vi/'.array_pop($x).'/hqdefault.jpg';--}}
+                                        {{--                                        @endphp--}}
 
 
-                                        @if($course->video)
+                                        @if($course->info->video_invitation || $course->video)
                                             <div id="player"
                                                  class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
                                                 <iframe style="z-index: 1;left: 0" class="position-absolute d-none"
                                                         width="100%"
-                                                        height="100%" src="{{ $course->video }}&vq=hd1080"
+                                                        height="100%" src="{{ $course->info->video_invitation ?? $course->video}}"
                                                         title="Walter Devoto about Stom Academy." frameborder="0"
                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                         allowfullscreen></iframe>
                                             </div>
+
                                         @else
                                             {{--                                            <img class="img_preview" src="{{ $preview }}">--}}
                                             @if($course->bg_image)
@@ -469,8 +470,8 @@
                                                                         <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>
 
 
-
-                                                                        <form class="dublicat_form" id="test123" method="POST"
+                                                                        <form class="dublicat_form" id="test123"
+                                                                              method="POST"
                                                                               action="{{route('addToCart')}}">
                                                                             @csrf
                                                                             <input type="hidden"
@@ -478,16 +479,18 @@
                                                                             <input type="hidden" value="webinar"
                                                                                    name="type">
 
-                                                                                <a onclick="parentNode.submit()" style="z-index: 999" class="course-show-buy-btn-mobile position-absolute  mt-3  end-0 btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
-                                                                                      {{ __("courses.by") }}
-                                                                                </a>
+                                                                            <a onclick="parentNode.submit()"
+                                                                               style="z-index: 999"
+                                                                               class="course-show-buy-btn-mobile position-absolute  mt-3  end-0 btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
+                                                                                {{ __("courses.by") }}
+                                                                            </a>
 
                                                                         </form>
 
-{{--                                                                        <div--}}
-{{--                                                                            class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">--}}
-{{--                                                                            {{ __("courses.by") }}--}}
-{{--                                                                        </div>--}}
+                                                                        {{--                                                                        <div--}}
+                                                                        {{--                                                                            class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">--}}
+                                                                        {{--                                                                            {{ __("courses.by") }}--}}
+                                                                        {{--                                                                        </div>--}}
 
 
                                                                     </div>

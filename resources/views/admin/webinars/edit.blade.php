@@ -102,6 +102,17 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="exampleInputEmail1">ФОН</label>
+                        <div class="form-group">
+                            <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->bg_image) }}" height="100" alt=""/>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" name="bg_image" class="form-control" id="customFile2">
+                            <label class="custom-file-label" for="customFile2">Choose file</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="exampleInputEmail1">СТАТУС</label>
                         <select class="form-control select2" id="type" name="status">
                             <option value="1" {{$webinar->status == 1 ? " selected" : ""}}>Активен</option>

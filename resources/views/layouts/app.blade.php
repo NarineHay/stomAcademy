@@ -266,10 +266,10 @@
 <script src="/dist_plyr/plyr.js"></script>
 <script>
     const player = new Plyr('#player'
-        //     , {
-        //     settings: ['captions', 'quality', 'speed', 'loop'],
-        //     quality: { default: 576, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240] },
-        // }
+            , {
+            settings: ['quality','speed'],
+            quality: { default: 240, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240] },
+        }
     );
     const player1 = new Plyr('#player1');
     const player2 = new Plyr('#player2');

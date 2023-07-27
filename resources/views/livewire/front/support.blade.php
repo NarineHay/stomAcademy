@@ -20,7 +20,7 @@
                             <div class="d-flex justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <div>
-                                        <div class="me-2">
+                                        <div class="mr-2">
 {{--                                            <img class="chat_avatar"--}}
 {{--                                                 src="{{ \Illuminate\Support\Facades\Storage::url(\Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE_USER ? ($chat->moder->userInfo->image ?? "userinfo/unknown.png") : ($chat->user->userInfo->image ?? "")) }}">--}}
                                           @if($chat->user->userinfo->image)
@@ -33,7 +33,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <div>
+                                    <div >
                                         <a class="text-black">
                                             <p class="m-0 fs-14 f-700">{{ \Illuminate\Support\Facades\Auth::user()->role == \App\Models\User::ROLE_USER ? ($chat->moder->name ?? "Moderator" ) : $chat->user->name }}</p>
                                         </a>
@@ -84,7 +84,7 @@
                                     </div>
                                 @else
                                     <div class="d-flex align-items-center justify-content-start mt-2" >
-                                        <div class="me-2">
+                                        <div class="mr-2">
 {{--                                            <img class="chat_avatar" alt="pic"--}}
 {{--                                                 src="{{\Illuminate\Support\Facades\Storage::url($message->user->userinfo->image)}}">--}}
                                             @if($message->user->userinfo->image)

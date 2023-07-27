@@ -19,8 +19,8 @@ class WebinarController extends Controller
 {
     public function index(Request $request)
     {
-        $order = $request->get("order","id");
-        $sort = $request->get("sort","asc");
+        $order = $request->get("order", "id");
+        $sort = $request->get("sort", "asc");
 
         $search_webinar = $request->integer("search_webinar", 0);
         $search_user = $request->integer("search_user", 0);
@@ -38,9 +38,9 @@ class WebinarController extends Controller
             }
         }
         $all_webinars = Webinar::all();
-        $users = User::query()->where("role",User::ROLE_LECTOR)->get();
-        $webinars = $webinar_query->with('user')->orderBY($order,$sort)->paginate(10);
-        return view('admin.webinars.index', compact('webinars','search_webinar','search_user','all_webinars','users'));
+        $users = User::query()->where("role", User::ROLE_LECTOR)->get();
+        $webinars = $webinar_query->with('user')->orderBY($order, $sort)->paginate(10);
+        return view('admin.webinars.index', compact('webinars', 'search_webinar', 'search_user', 'all_webinars', 'users'));
     }
 
     public function create()
@@ -58,12 +58,15 @@ class WebinarController extends Controller
         $webinar->start_date = $request->get('start_date');
         $webinar->duration = $request->get('duration');
         $webinar->price_id = $request->get('price_id');
-        $webinar->price_2_id = $request->get('price_2_id',null);
+        $webinar->price_2_id = $request->get('price_2_id', null);
         //$webinar->direction_id = $request->get('direction_id');
         $webinar->image = $request->file('image')->store('public/webinar');
+        if ($request->file('bg_image')) {
+            $webinar->bg_image = $request->file('bg_image')->store('public/webinar');
+        }
         $webinar->save();
 
-        foreach ($request->get("direction_ids",[]) as $direction_id){
+        foreach ($request->get("direction_ids", []) as $direction_id) {
             $wb = new WebinarDirection();
             $wb->webinar_id = $webinar->id;
             $wb->direction_id = $direction_id;
@@ -74,10 +77,18 @@ class WebinarController extends Controller
         $descriptions = $request->get("description");
         $programs = $request->get("program");
         $video_invitations = $request->get("video_invitation");
+
+
+
         $videos = $request->get("video");
 
-
-        foreach (Language::all() as $lg){
+        foreach (Language::all() as $lg) {
+            if (!str_contains($video_invitations[$lg->id], "player")) {
+                $video_invitations[$lg->id] = str_replace("vimeo.com", "player.vimeo.com/video", $video_invitations[$lg->id]);
+            }
+            if (!str_contains($videos[$lg->id], "player")) {
+                $videos[$lg->id] = str_replace("vimeo.com", "player.vimeo.com/video", $videos[$lg->id]);
+            }
             $webinar->infos()->create(
                 [
                     'enabled' => boolval($enables[$lg->id] ?? false),
@@ -100,8 +111,8 @@ class WebinarController extends Controller
     {
         $data['prices'] = Prices::all();
         $data['directions'] = Direction::all();
-        $data['users'] =  User::query()->where("role",User::ROLE_LECTOR)->get();
-        return view('admin.webinars.edit',compact('webinar','data'));
+        $data['users'] = User::query()->where("role", User::ROLE_LECTOR)->get();
+        return view('admin.webinars.edit', compact('webinar', 'data'));
     }
 
     public function update(Request $request, Webinar $webinar)
@@ -112,61 +123,73 @@ class WebinarController extends Controller
         ]);
 
         $webinar = Webinar::find($webinar->id);
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             $request->validate([
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
             $webinar->image = $request->file('image')->store('public/webinar');
         }
-
+        if ($request->hasFile('bg_image')) {
+            $request->validate([
+                'bg_image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+            $webinar->bg_image = $request->file('bg_image')->store('public/webinar');
+        }
         $webinar->start_date = $request->start_date;
         $webinar->user_id = $request->user_id;
         $webinar->duration = $request->duration;
         $webinar->price_id = $request->price_id;
-        $webinar->price_2_id = $request->get('price_2_id',null);
+        $webinar->price_2_id = $request->get('price_2_id', null);
         $webinar->status = $request->status;
         //$webinar->direction_id = $request->get('direction_id');
 
-        WebinarDirection::query()->where("webinar_id",$webinar->id)->delete();
-        foreach ($request->get("direction_ids",[]) as $direction_id){
+        WebinarDirection::query()->where("webinar_id", $webinar->id)->delete();
+        foreach ($request->get("direction_ids", []) as $direction_id) {
             $wb = new WebinarDirection();
             $wb->webinar_id = $webinar->id;
             $wb->direction_id = $direction_id;
             $wb->save();
         }
 
-        foreach ($request->get("title",[]) as $lg_id => $title){
-            $webinar->infos()->where("lg_id",$lg_id)->update(['title' => $title]);
+        foreach ($request->get("title", []) as $lg_id => $title) {
+            $webinar->infos()->where("lg_id", $lg_id)->update(['title' => $title]);
         }
 
-        foreach ($request->get("description",[]) as $lg_id => $desc){
-            $webinar->infos()->where("lg_id",$lg_id)->update(['description' => $desc]);
+        foreach ($request->get("description", []) as $lg_id => $desc) {
+            $webinar->infos()->where("lg_id", $lg_id)->update(['description' => $desc]);
         }
 
-        foreach ($request->get("program",[]) as $lg_id => $program){
-            $webinar->infos()->where("lg_id",$lg_id)->update(['program' => $program]);
+        foreach ($request->get("program", []) as $lg_id => $program) {
+            $webinar->infos()->where("lg_id", $lg_id)->update(['program' => $program]);
         }
 
-        foreach ($request->get("video_invitation",[]) as $lg_id => $video_inv){
-            $webinar->infos()->where("lg_id",$lg_id)->update(['video_invitation' => $video_inv]);
+        foreach ($request->get("video_invitation", []) as $lg_id => $video_inv) {
+            if (!str_contains($video_inv, "player")) {
+                $video_inv = str_replace("vimeo.com", "player.vimeo.com/video", $video_inv);
+            }
+            $webinar->infos()->where("lg_id", $lg_id)->update(['video_invitation' => $video_inv]);
         }
 
-        foreach ($request->get("video",[]) as $lg_id => $video){
-            $webinar->infos()->where("lg_id",$lg_id)->update(['video' => $video]);
+        foreach ($request->get("video", []) as $lg_id => $video) {
+            if (!str_contains($video, "player")) {
+                $video = str_replace("vimeo.com", "player.vimeo.com/video", $video);
+            }
+            $webinar->infos()->where("lg_id", $lg_id)->update(['video' => $video]);
         }
         $webinar->save();
 
         $webinar->infos()->update(['enabled' => false]);
-        foreach ($request->get("enabled",[]) as $lg_id => $enabled){
-            $webinar->infos()->where("lg_id",$lg_id)->update(['enabled' => true]);
+        foreach ($request->get("enabled", []) as $lg_id => $enabled) {
+            $webinar->infos()->where("lg_id", $lg_id)->update(['enabled' => true]);
         }
 
-        return redirect()->back()->with('success','Webinar has been updated successfully');
+        return redirect()->back()->with('success', 'Webinar has been updated successfully');
     }
 
-    public function destroy(Webinar $webinar){
+    public function destroy(Webinar $webinar)
+    {
         $webinar->delete();
         return redirect()->route('admin.webinar.index')
-            ->with('success','Webinar has been deleted successfully');
+            ->with('success', 'Webinar has been deleted successfully');
     }
 }

@@ -69,6 +69,7 @@ class CourseController extends Controller
         }
 
         $titles = $request->get("title");
+
         $descriptions = $request->get("description");
 
         $webinars = $request->get('webinar',[]);
@@ -77,8 +78,14 @@ class CourseController extends Controller
                 "webinar_id" => $webinar_id
             ]);
         }
-
+        if (!str_contains($video, "player")) {
+            $video = str_replace("vimeo.com", "player.vimeo.com/video", $video);
+        }
+        $course->video = $video;
         foreach (Language::all() as $lg){
+//            if (!str_contains($video[$lg->id], "player")) {
+//                $video[$lg->id] = str_replace("vimeo.com", "player.vimeo.com/video", $video[$lg->id]);
+//            }
             $course->infos()->create(
                 [
                     'enabled' => boolval($enables[$lg->id] ?? false),
@@ -134,8 +141,11 @@ class CourseController extends Controller
         $course->end_date = $request->end_date;
 
         $video = $request->video;
-        $e = explode("&",$video);
-        $course->video = str_replace("watch?v=","embed/",$e[0]);
+
+        if (!str_contains($video, "player")) {
+            $video = str_replace("vimeo.com", "player.vimeo.com/video", $video);
+        }
+        $course->video = $video;
 
         $course->url_to_page = $request->url_to_page;
         $course->price_id = $request->price_id;

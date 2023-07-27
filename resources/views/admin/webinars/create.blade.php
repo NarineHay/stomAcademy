@@ -100,6 +100,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="exampleInputEmail1">ФОН</label>
+                        <div class="custom-file">
+                            <input type="file" name="bg_image" class="form-control" id="customFile2">
+                            <label class="custom-file-label" for="customFile2">Choose file</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
                         <label for="exampleInputEmail1">ССЫЛКА НА СТРАНИЦУ</label>
                         <input type="text" value="{{ old('url_to_page') ?? "" }}" name="url_to_page" class="form-control">
                     </div>
