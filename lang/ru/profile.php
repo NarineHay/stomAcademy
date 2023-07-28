@@ -32,7 +32,8 @@ return [
     "chat" => [
         "messages" => "Сообщения",
         "search" => "Поиск",
-        "new_dialog" => "новый диалог"
+        "new_dialog" => "новый диалог",
+        "chat_support" => "Служба поддержки",
     ],
     "info" => [
         "page_title" => "Изменить личные данные",

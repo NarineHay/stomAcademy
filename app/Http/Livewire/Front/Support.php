@@ -15,6 +15,11 @@ class Support extends Component
     public $active_chat = null;
     public $message = null;
     public $search = "";
+
+    function closeChat(){
+        $this->active_chat = null;
+    }
+
     public function render()
     {
         $ids = [];

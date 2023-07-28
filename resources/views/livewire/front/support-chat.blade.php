@@ -1,4 +1,5 @@
 <div class="col-lg-7 d-none d-lg-block">
+
     @if($chat)
         {{ $chat->user->id }}
         <div class="py-4 px-5 mt-5 mt-lg-4 py-lg-6 h-100">

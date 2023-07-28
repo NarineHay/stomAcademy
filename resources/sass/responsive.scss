@@ -343,6 +343,20 @@
 }
 
 @media (max-width: 992px) {
+    .personal-help-chat-mobile-div{
+        background-color: #F9F9F9;
+        position: absolute;
+        top: 135px;
+        width: calc(100% - 271px);
+        height: 100%;
+
+    }
+    .help_section_mobile{
+        overflow: unset !important;
+    }
+    .help_section_first_container{
+        height: calc(100vh + 100px);
+    }
     .webinar_messages_parent_div{
         height: calc(100vh - 450px)  !important;
     }
@@ -682,6 +696,9 @@
 }
 
 @media (max-width: 767px) {
+    .personal-help-chat-mobile-div{
+        width: calc(100% - 227px);
+    }
     .course-show-buy-btn-mobile{
         bottom: 16px !important;
         top: auto;
@@ -730,6 +747,12 @@
 
 
 @media (max-width: 576px) {
+    //.h-100-mobile{
+    //    height: calc(100% - 246px) !important;
+    //}
+    .personal-help-chat-mobile-div{
+        width: calc(100% - 20px);
+    }
     .webinar_messages_livewire_div {
         width: calc(100% - 40px) !important;
     }
