@@ -182,6 +182,7 @@
                         <h3 class="f-700 m-0">{{ __("index.online") }}</h3>
                     </div>
                     <div class="ms-lg-4 mt-2 mt-lg-0">
+
                         <a href="{{route('conference')}}" class="text-info text-decoration-underline">
                             <p class="m-0 f-700 fs-16">{{ __("index.show_all") }}<i class="far fa-angle-right ms-2"></i>
                             </p>
@@ -198,7 +199,7 @@
                     @foreach($conferences as $conference)
                         @if(  $conference->info->enabled)
                             <div class="swiper-slide">
-                                <a href="{{ route("conference.show",$conference->id) }}"
+                                <a href="{{ route("course.show",$conference->id) }}"
                                    style="background-image: url({{\Illuminate\Support\Facades\Storage::url($conference->image)}});color: inherit"
                                    class="watched-bg br-12 mb-3 mb-lg-0 d-block">
                                     <div
