@@ -28,7 +28,9 @@ class VideoController extends Controller
         $video = new Video();
         $video->url = str_replace("watch?v=","embed/",$request->get("url"));
         $video->image = $request->file('image')->store('public/videoImages');
-
+        if (!str_contains($video->url, "player")) {
+            $video->url = str_replace("vimeo.com", "player.vimeo.com/video", $video->url);
+        }
         $video->save();
         return response()->redirectToRoute("admin.videos.index");
     }
@@ -47,6 +49,9 @@ class VideoController extends Controller
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
             $video->image = $request->file('image')->store('public/videoImages');
+        }
+        if (!str_contains($video->url, "player")) {
+            $video->url = str_replace("vimeo.com", "player.vimeo.com/video", $video->url);
         }
         $video->save();
         return redirect()->back()->with('success','Video has been updated successfully');
