@@ -225,10 +225,18 @@
                             <ul class="list-unstyled m-0 p-0">
                                 @foreach($directions as $direction)
                                     <li>
+{{--                                        @if($direction->id != null)--}}
                                         <input wire:model="selectedDirections" type="checkbox"
                                                id="dir-{{ $direction->id }}" value="{{ $direction->id }}" class="mt-2">
                                         <label for="dir-{{ $direction->id }}"
                                                class="f-500 fs-14">{{ $direction->title }}</label><br>
+{{--                                        @endif--}}
+
+{{--                                        <label --}}
+{{--                                               class="f-500 fs-14">--}}
+{{--                                            <input wire:model="selectedDirections" type="checkbox"--}}
+{{--                                                    value="{{ $direction->id }}" class="mt-2">--}}
+{{--                                            {{ $direction->title }}</label><br>--}}
                                     </li>
                                 @endforeach
                             </ul>

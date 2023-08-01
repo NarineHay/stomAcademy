@@ -440,7 +440,7 @@
                                                 <div class="accordion accordion-flush">
                                                     <div class="accordion-item br-12">
                                                         <h2 class="accordion-header position-relative">
-                                                            <button class="accordion-button collapsed" type="button"
+                                                            <div class="accordion-button collapsed" type="button"
                                                                     data-bs-toggle="collapse"
                                                                     data-bs-target="#flush-collapseOne-{{ $webinar->id }}"
                                                                     aria-expanded="false"
@@ -462,8 +462,7 @@
                                                                     <div class="d-flex d-none d-lg-block"
                                                                          style="flex:0 0 20%">
                                                                         <i class="far fa-clock me-1"></i>
-                                                                        <span
-                                                                            class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
+                                                                        <span class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
                                                                     </div>
                                                                     <div
                                                                         class="d-flex align-items-center mt-4 mt-md-0 justify-content-between"
@@ -480,23 +479,16 @@
                                                                             <input type="hidden" value="webinar"
                                                                                    name="type">
 
-                                                                            <a onclick="parentNode.submit()"
+                                                                            <button type="submit"
                                                                                style="z-index: 999"
                                                                                class="course-show-buy-btn-mobile position-absolute  mt-3  end-0 btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
                                                                                 {{ __("courses.by") }}
-                                                                            </a>
+                                                                            </button>
 
                                                                         </form>
-
-                                                                        {{--                                                                        <div--}}
-                                                                        {{--                                                                            class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">--}}
-                                                                        {{--                                                                            {{ __("courses.by") }}--}}
-                                                                        {{--                                                                        </div>--}}
-
-
                                                                     </div>
                                                                 </div>
-                                                            </button>
+                                                            </div>
                                                         </h2>
                                                         <div id="flush-collapseOne-{{ $webinar->id }}"
                                                              class="accordion-collapse collapse @if($k == 0) show @endif"

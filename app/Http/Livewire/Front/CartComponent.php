@@ -52,8 +52,8 @@ class CartComponent extends Component
 
     public function removeAllFromCart()
     {
-        $user_id = Auth::user();
-        Cart::query()->whereIn('user_id', $user_id)->delete();
+        $user_id = Auth::user()->id;
+        Cart::query()->where('user_id', $user_id)->delete();
         return redirect()->back();
     }
 }
