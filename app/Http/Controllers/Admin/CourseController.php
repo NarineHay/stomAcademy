@@ -82,6 +82,7 @@ class CourseController extends Controller
             $video = str_replace("vimeo.com", "player.vimeo.com/video", $video);
         }
         $course->video = $video;
+//        $course->video = $video ."&vq=hd1080";
         foreach (Language::all() as $lg){
 //            if (!str_contains($video[$lg->id], "player")) {
 //                $video[$lg->id] = str_replace("vimeo.com", "player.vimeo.com/video", $video[$lg->id]);
@@ -146,6 +147,7 @@ class CourseController extends Controller
             $video = str_replace("vimeo.com", "player.vimeo.com/video", $video);
         }
         $course->video = $video;
+//        $course->video = $video ."&vq=hd1080";
 
         $course->url_to_page = $request->url_to_page;
         $course->price_id = $request->price_id;

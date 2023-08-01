@@ -226,32 +226,11 @@ if (input_tel_registr) {
 
 
 
-// Youtube video link
+// Youtube video link disabled
 
-
-// let style_for_iframe = document.createElement("style");
-// style_for_iframe.innerHTML = ".ytp-show-cards-title{ display: none !important; }"
-// setTimeout(function (){
-//     console.log( frames[0]);
-//     frames[0].document.head.appendChild(style_for_iframe);
-// },5000);
-
-
-// let players = document.querySelectorAll(".plyr");
-// players.forEach((player) => {
-//     // console.log(player)
-//     // console.log(player.querySelector("iframe"))
-//     let iframe = player.querySelector("iframe");
-//     console.log(iframe['video_frame'])
-//
-// })
-
-
-// setTimeout(function (){
-//     let ytp_title_links = document.querySelectorAll(".ytp-title-link");
-//     console.log(ytp_title_links)
-//     ytp_title_links.forEach((ytp_title_link)=>{
-//         console.log(ytp_title_link.href);
-//     })
-// },2000)
+let players = document.querySelectorAll(".plyr");
+players.forEach((player) => {
+    player.classList.remove("plyr--youtube");
+    // console.log(player)
+})
 

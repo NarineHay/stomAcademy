@@ -201,10 +201,11 @@
 
                                         @if($course->info->video_invitation || $course->video)
                                             <div id="player"
-                                                 class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
+                                                 class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
                                                 <iframe style="z-index: 1;left: 0" class="position-absolute d-none"
                                                         width="100%"
-                                                        height="100%" src="{{ $course->info->video_invitation ?? $course->video}}&vq=hd1080"
+                                                        height="100%" src="{{ $course->info->video_invitation ?? $course->video}}"
+{{--                                                        &vq=hd1080--}}
                                                         title="Walter Devoto about Stom Academy." frameborder="0"
                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                         allowfullscreen></iframe>
