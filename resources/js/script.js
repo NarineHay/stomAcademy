@@ -225,7 +225,6 @@ if (input_tel_registr) {
 }
 
 
-
 // Youtube video link disabled
 
 let players = document.querySelectorAll(".plyr");
@@ -233,4 +232,41 @@ players.forEach((player) => {
     player.classList.remove("plyr--youtube");
     // console.log(player)
 })
+
+
+//Course webinar videos modal
+
+let webinar_video_modal = document.getElementById("courseTrailersModal");
+if (webinar_video_modal) {
+    let main_video_div = webinar_video_modal.querySelector(".main_video_div");
+    let player_absolute_divs = webinar_video_modal.querySelectorAll(".js-player-absolute-div");
+    let webinar_video_players = webinar_video_modal.querySelectorAll(".webinar_video_player");
+    let player_titles = webinar_video_modal.querySelectorAll(".webinar_video_player p");
+    let player_iframes = webinar_video_modal.querySelectorAll(".webinar_video_player .plyr iframe");
+
+    let main_video_title = main_video_div.querySelector("p").textContent;
+    let main_player_iframe = main_video_div.querySelector(" .plyr iframe");
+
+    player_absolute_divs.forEach(function (item) {
+        item.addEventListener("click",function (){
+            // player_iframes.forEach(function (v_iframe){
+            //     player_titles.forEach(function (v_title){
+            //         main_video_title = v_title.textContent;
+            //         main_player_iframe.src = v_iframe.src;
+            //         // console.log(v_title.textContent)
+            //         // console.log(v_iframe.src)
+            //         // console.log(item)
+            //     })
+            // })
+
+            webinar_video_players.forEach(function (webinar_video_player){
+                main_video_div.innerHTML = webinar_video_player.cloneNode(true) ;
+            })
+        })
+
+
+    })
+
+
+}
 

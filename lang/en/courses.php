@@ -2,6 +2,7 @@
 
 return [
     "h1" => "Online training",
+    "webinar_trailer" => "Трейлеры вебинара",
     "tabs" => [
         "courses" => "Online courses",
         "webinars" => "Webinars",

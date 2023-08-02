@@ -18,7 +18,8 @@
     @vite(['resources/sass/lib.scss', 'resources/js/script.js'])
     @livewireStyles
 </head>
-<body>
+<body >
+{{--oncontextmenu="return false;"--}}
 @if(\Illuminate\Support\Facades\Route::currentRouteName() == "home")
     <header class="position-relative headerBorder">
         <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-3 align-items-center">
@@ -265,6 +266,7 @@
 </script>
 <script src="/dist_plyr/plyr.js"></script>
 <script>
+    const players = Plyr.setup('.js-player');
     const player = new Plyr('#player'
             , {
             settings: ['quality','speed'],

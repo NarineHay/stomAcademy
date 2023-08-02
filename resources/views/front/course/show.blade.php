@@ -114,16 +114,17 @@
                                 </div>
                             </div>
 
+                            @if($course->info->description != null && $course->info->description != '<p><br></p>')
+                                <div class="about-course-txt d-lg-block d-none">
+                                    <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
+                                    <p class="fs-16 lh-27 f-500 mb-0">
+                                        {!! $course->info->description !!}
+                                    </p>
+                                </div>
 
-                            <div class="about-course-txt d-lg-block d-none">
-                                <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
-                                <p class="fs-16 lh-27 f-500 mb-0">
-                                    {!! $course->info->description !!}
-                                </p>
-                            </div>
+                            @endif
 
-
-                        <!-- <div id="course-program" class="main3">
+                            <!-- <div id="course-program" class="main3">
                     <div class="container">
                         <div class="row">
 {{--                            <div class="col-xl-7 col-12">--}}
@@ -132,54 +133,54 @@
                                     <h3 class="f-700 m-0 lh-40 pb-2">{{ __("courses.menu.program") }}</h3>
                                     <div class="mt-2">
 {{--                                        @foreach($course->webinars_object as $k => $webinar)--}}
-                        {{--                            <div class="accordion accordion-flush">--}}
-                        {{--                                <div class="accordion-item br-12">--}}
-                        {{--                                    <h2 class="accordion-header">--}}
-                        {{--                                        <button class="accordion-button collapsed" type="button"--}}
-                        {{--                                                data-bs-toggle="collapse"--}}
-                        {{--                                                data-bs-target="#flush-collapseOne-{{ $webinar->id }}"--}}
-                        {{--                                                                aria-expanded="false"--}}
-                        {{--                                                                aria-controls="flush-collapseOne">--}}
-                        {{--                                                            <div class="d-flex align-items-md-center flex-column flex-md-row w-100">--}}
-                        {{--                                                                <div class="d-flex" style="flex:0 0 30%">--}}
-                        {{--                                                                    <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>--}}
-                        {{--                                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>--}}
-                        {{--                                                                </div>--}}
-                        {{--                                                                <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">--}}
-                        {{--                                                                    <img--}}
-                        {{--                                                                        src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"--}}
-                        {{--                                                                        class="me-2 videoPic img_r_42 rounded-5"--}}
-                        {{--                                                                        alt="videoPic">--}}
-                        {{--                                                                    <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>--}}
-                        {{--                                                                </div>--}}
-                        {{--                                                                <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">--}}
-                        {{--                                                                    <i class="far fa-clock me-1"></i>--}}
-                        {{--                                                                    <span--}}
-                        {{--                                                                        class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>--}}
-                        {{--                                                                </div>--}}
-                        {{--                                                                <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between" style="flex:0 0 10%">--}}
-                        {{--                                                                    <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>--}}
-                        {{--                                                                    <div--}}
-                        {{--                                                                        class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">--}}
-                        {{--                                                                        {{ __("courses.by") }}--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
-                        {{--                    </button>--}}
-                        {{--                </h2>--}}
-                        {{--                <div id="flush-collapseOne-{{ $webinar->id }}"--}}
-                        {{--                                                         class="accordion-collapse collapse @if($k == 0) show @endif"--}}
-                        {{--                                                         aria-labelledby="flush-headingOne"--}}
-                        {{--                                                         data-bs-parent="#accordionFlushExample">--}}
-                        {{--                                                        <div class="accordion-body">--}}
-                        {{--                                                            <div class="p-2 py-lg-3 px-lg-5">--}}
-                        {{--                                                                {!! $webinar->info->description !!}--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
-                        {{--                </div>--}}
-                        {{--@endforeach--}}
+                            {{--                            <div class="accordion accordion-flush">--}}
+                            {{--                                <div class="accordion-item br-12">--}}
+                            {{--                                    <h2 class="accordion-header">--}}
+                            {{--                                        <button class="accordion-button collapsed" type="button"--}}
+                            {{--                                                data-bs-toggle="collapse"--}}
+                            {{--                                                data-bs-target="#flush-collapseOne-{{ $webinar->id }}"--}}
+                            {{--                                                                aria-expanded="false"--}}
+                            {{--                                                                aria-controls="flush-collapseOne">--}}
+                            {{--                                                            <div class="d-flex align-items-md-center flex-column flex-md-row w-100">--}}
+                            {{--                                                                <div class="d-flex" style="flex:0 0 30%">--}}
+                            {{--                                                                    <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>--}}
+                            {{--                                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>--}}
+                            {{--                                                                </div>--}}
+                            {{--                                                                <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">--}}
+                            {{--                                                                    <img--}}
+                            {{--                                                                        src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"--}}
+                            {{--                                                                        class="me-2 videoPic img_r_42 rounded-5"--}}
+                            {{--                                                                        alt="videoPic">--}}
+                            {{--                                                                    <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>--}}
+                            {{--                                                                </div>--}}
+                            {{--                                                                <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">--}}
+                            {{--                                                                    <i class="far fa-clock me-1"></i>--}}
+                            {{--                                                                    <span--}}
+                            {{--                                                                        class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>--}}
+                            {{--                                                                </div>--}}
+                            {{--                                                                <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between" style="flex:0 0 10%">--}}
+                            {{--                                                                    <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>--}}
+                            {{--                                                                    <div--}}
+                            {{--                                                                        class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">--}}
+                            {{--                                                                        {{ __("courses.by") }}--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+                            {{--                        </div>--}}
+                            {{--                    </button>--}}
+                            {{--                </h2>--}}
+                            {{--                <div id="flush-collapseOne-{{ $webinar->id }}"--}}
+                            {{--                                                         class="accordion-collapse collapse @if($k == 0) show @endif"--}}
+                            {{--                                                         aria-labelledby="flush-headingOne"--}}
+                            {{--                                                         data-bs-parent="#accordionFlushExample">--}}
+                            {{--                                                        <div class="accordion-body">--}}
+                            {{--                                                            <div class="p-2 py-lg-3 px-lg-5">--}}
+                            {{--                                                                {!! $webinar->info->description !!}--}}
+                            {{--                                </div>--}}
+                            {{--                            </div>--}}
+                            {{--                        </div>--}}
+                            {{--                    </div>--}}
+                            {{--                </div>--}}
+                            {{--@endforeach--}}
                             </div>
                         </div>
                     </div>
@@ -199,25 +200,29 @@
                                         {{--                                        @endphp--}}
 
 
+
+
                                         @if($course->info->video_invitation || $course->video)
                                             <div id="player"
                                                  class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
                                                 <iframe style="z-index: 1;left: 0" class="position-absolute d-none"
                                                         width="100%"
-                                                        height="100%" src="{{ $course->info->video_invitation ?? $course->video}}"
-{{--                                                        &vq=hd1080--}}
+                                                        height="100%"
+                                                        src="{{ $course->info->video_invitation ?? $course->video}}"
+                                                        {{--                                                        &vq=hd1080--}}
                                                         title="Walter Devoto about Stom Academy." frameborder="0"
                                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                         allowfullscreen></iframe>
                                             </div>
-
+                                            @if($course->webinars)
+                                                <div class="video_modal_button cp top-0 w-100 h-100 position-absolute"
+                                                     data-bs-toggle="modal" data-bs-target="#courseTrailersModal"></div>
+                                            @endif
                                         @else
-                                            {{--                                            <img class="img_preview" src="{{ $preview }}">--}}
                                             @if($course->bg_image)
                                                 <img class="img_preview"
                                                      src="{{ \Illuminate\Support\Facades\Storage::url($course->bg_image) }}">
                                             @else
-                                                {{--                                                <img class="img_preview" src="#">--}}
                                                 <div class="img_preview_gray_bg w-100 "
                                                      style="height: 233px; background-color: rgba(0,0,0,0.4)"></div>
                                             @endif
@@ -243,11 +248,16 @@
                                                 <span>{{ $course->price->html() }}</span>
                                             @endif
                                         </h3>
-                                    <!-- <p class="f-500 fs-14 lh-17 mb-2">
+                                        <!-- <p class="f-500 fs-14 lh-17 mb-2">
                                             @if($course->webinars)
-                                        {{ $course->webinars->count() }} {{ __("courses.under_title") }}
+                                            {{ $course->webinars->count() }} {{ __("courses.under_title") }}
                                             <span class="text-primary">1 {{ __("courses.free") }}</span></p>
                                         <p class="f-500 fs-14 lh-17 mb-3">{{ __("courses.dop") }}</p>
+
+
+
+
+
                                         @endif -->
                                         <p class="f-500 fs-14 lh-17 mb-2">
                                             7-дневная гарантия замены или возврата дене
@@ -416,9 +426,7 @@
                     </div>
                 </div>
 
-
-
-            <!-- <div class="container">
+                <!-- <div class="container">
                   <div class="about-course-txt d-lg-block d-none">
                                 <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
                                 <p class="fs-16 lh-27 f-500 mb-0">
@@ -437,14 +445,23 @@
 
                                         @if($course->webinars_object)
                                             @foreach($course->webinars_object as $k => $webinar)
+                                                {{--                                                {{ dd($webinar->info) }}--}}
+                                                {{--                                                <div--}}
+                                                {{--                                                     class="js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">--}}
+                                                {{--                                                    <iframe width="100%"--}}
+                                                {{--                                                            height="100%" src="{{ $webinar->info->video_invitation }}"--}}
+                                                {{--                                                            frameborder="0"--}}
+                                                {{--                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"--}}
+                                                {{--                                                            allowfullscreen></iframe>--}}
+                                                {{--                                                </div>--}}
                                                 <div class="accordion accordion-flush">
                                                     <div class="accordion-item br-12">
                                                         <h2 class="accordion-header position-relative">
                                                             <div class="accordion-button collapsed" type="button"
-                                                                    data-bs-toggle="collapse"
-                                                                    data-bs-target="#flush-collapseOne-{{ $webinar->id }}"
-                                                                    aria-expanded="false"
-                                                                    aria-controls="flush-collapseOne">
+                                                                 data-bs-toggle="collapse"
+                                                                 data-bs-target="#flush-collapseOne-{{ $webinar->id }}"
+                                                                 aria-expanded="false"
+                                                                 aria-controls="flush-collapseOne">
                                                                 <div
                                                                     class="d-flex align-items-md-center flex-column flex-md-row w-100">
                                                                     <div class="d-flex" style="flex:0 0 30%">
@@ -462,7 +479,8 @@
                                                                     <div class="d-flex d-none d-lg-block"
                                                                          style="flex:0 0 20%">
                                                                         <i class="far fa-clock me-1"></i>
-                                                                        <span class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
+                                                                        <span
+                                                                            class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
                                                                     </div>
                                                                     <div
                                                                         class="d-flex align-items-center mt-4 mt-md-0 justify-content-between"
@@ -480,8 +498,8 @@
                                                                                    name="type">
 
                                                                             <button type="submit"
-                                                                               style="z-index: 999"
-                                                                               class="course-show-buy-btn-mobile position-absolute  mt-3  end-0 btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
+                                                                                    style="z-index: 999"
+                                                                                    class="course-show-buy-btn-mobile position-absolute  mt-3  end-0 btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">
                                                                                 {{ __("courses.by") }}
                                                                             </button>
 
@@ -605,7 +623,7 @@
                             <p class="color-ad fs-14 f-500 lh-17 mb-13">{{ __("courses.reg.title_2") }}</p>
                             @if($course->sale)
                                 <p class="fw-bold fs-43 lh-43 text-white">
-                                    <span>{{ $course->sale->html() }}<i class="icon-usd"></i> </span>
+                                    <span>{{ $course->sale->html() }} </span>
                                     <sup
                                         class="fs-23 lh-23 fw-normal align-middle strikethrough">{{ $course->price->html() }}</sup>
                                 </p>
@@ -818,4 +836,68 @@
 
 
     </div>
+
+    <!-- Modal -->
+    @if($course->webinars)
+        <div class="modal fade" id="courseTrailersModal" tabindex="-1" aria-labelledby="courseTrailersModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __("courses.webinar_trailer") }}</h1>
+                        <button type="button" class="btn-close outline-box-shadow-none" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        @if($course->webinars_object)
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-8 col-12 main_div">
+                                        <div class="main_video_div d-flex flex-column mb-2">
+                                            <div
+                                                class="js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
+                                                <iframe width="100%"
+                                                        height="100%"
+                                                        src="{{ $course->webinars_object[0]->info->video_invitation }}"
+                                                        frameborder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        allowfullscreen></iframe>
+                                            </div>
+                                            <p class="mt-2 mb-4 fw-bold fs-16">{{ $course->webinars_object[0]->info->title }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-12">
+                                        @foreach($course->webinars_object as $k => $webinar)
+                                            @if($webinar->info->enabled)
+                                                <div
+                                                    class="d-flex flex-row mb-2 position-relative webinar_video_player">
+
+                                                        <div
+                                                            class=" js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
+                                                            <iframe width="100%"
+                                                                    height="100%"
+                                                                    src="{{ $webinar->info->video_invitation }}"
+                                                                    frameborder="0"
+                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                    allowfullscreen></iframe>
+                                                        </div>
+                                                        <p class="ms-2 fs-14">{{ $webinar->info->title }}</p>
+
+                                                    <div
+                                                        class="cp top-0 bg-danger w-100 h-100 position-absolute js-player-absolute-div"
+                                                        style="opacity: 0.6"></div>
+                                                </div>
+
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
