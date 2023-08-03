@@ -234,13 +234,21 @@ players.forEach((player) => {
 })
 
 
+let big_players = [];
+document.querySelectorAll(".main_video_div .js-player").forEach(function (p){
+    big_players.push(new Plyr(p));
+})
+document.querySelectorAll(".small_video .js-player").forEach(function (p){
+    new Plyr(p);
+})
+
 //Course webinar videos modal
 
 let webinar_video_modal = document.getElementById("courseTrailersModal");
 if (webinar_video_modal) {
     let main_video_div = webinar_video_modal.querySelector(".main_video_div");
     let player_absolute_divs = webinar_video_modal.querySelectorAll(".js-player-absolute-div");
-    let webinar_video_players = webinar_video_modal.querySelectorAll(".webinar_video_player");
+    // let webinar_video_players = webinar_video_modal.querySelectorAll(".webinar_video_player");
     let player_titles = webinar_video_modal.querySelectorAll(".webinar_video_player p");
     let player_iframes = webinar_video_modal.querySelectorAll(".webinar_video_player .plyr iframe");
 
@@ -249,24 +257,24 @@ if (webinar_video_modal) {
 
     player_absolute_divs.forEach(function (item) {
         item.addEventListener("click",function (){
-            // player_iframes.forEach(function (v_iframe){
-            //     player_titles.forEach(function (v_title){
-            //         main_video_title = v_title.textContent;
-            //         main_player_iframe.src = v_iframe.src;
-            //         // console.log(v_title.textContent)
-            //         // console.log(v_iframe.src)
-            //         // console.log(item)
-            //     })
-            // })
-
-            webinar_video_players.forEach(function (webinar_video_player){
-                main_video_div.innerHTML = webinar_video_player.cloneNode(true) ;
-            })
+           let id = item.dataset.id;
+           document.querySelectorAll(".big_video").forEach(function (bv){
+               for(let p of big_players){
+                   p.pause();
+               }
+               if(bv.dataset.id == id){
+                   bv.classList.remove('hide');
+               }else{
+                   bv.classList.add('hide');
+               }
+           })
         })
-
-
     })
-
+    webinar_video_modal.addEventListener('hidden.bs.modal', event => {
+        for(let p of big_players){
+            p.pause();
+        }
+    })
 
 }
 

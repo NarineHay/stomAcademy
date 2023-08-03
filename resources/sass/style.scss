@@ -13,7 +13,13 @@ body{
     margin-bottom: 40px;
 }
 
-
+.main_video_div {
+    .big_video{
+        &.hide{
+            display: none;
+        }
+    }
+}
 
 .profile_webinar_chat_right{
     background-color: #fff;

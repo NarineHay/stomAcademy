@@ -266,7 +266,8 @@
 </script>
 <script src="/dist_plyr/plyr.js"></script>
 <script>
-    const players = Plyr.setup('.js-player');
+
+    // const players = Plyr.setup('.js-player');
     const player = new Plyr('#player'
             , {
             settings: ['quality','speed'],

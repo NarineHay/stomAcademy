@@ -854,36 +854,45 @@
                                 <div class="row">
                                     <div class="col-xl-8 col-12 main_div">
                                         <div class="main_video_div d-flex flex-column mb-2">
-                                            <div
-                                                class="js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
-                                                <iframe width="100%"
-                                                        height="100%"
-                                                        src="{{ $course->webinars_object[0]->info->video_invitation }}"
-                                                        frameborder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                        allowfullscreen></iframe>
+                                            @foreach($course->webinars_object as $k => $webinar)
+                                                @if($webinar->info->enabled)
+                                            <div class="big_video @if($k > 0) hide @endif" data-id="{{ $webinar->id }}">
+                                                <div
+                                                    class="js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
+                                                    <iframe width="100%"
+                                                            height="100%"
+                                                            src="{{ $webinar->info->video_invitation }}"
+                                                            frameborder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                            allowfullscreen></iframe>
+                                                </div>
+                                                <p class="mt-2 mb-4 fw-bold fs-16">{{ $webinar->info->title }}</p>
                                             </div>
-                                            <p class="mt-2 mb-4 fw-bold fs-16">{{ $course->webinars_object[0]->info->title }}</p>
+
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 col-12">
+                                    <div class="col-xl-4 col-12 small_video">
                                         @foreach($course->webinars_object as $k => $webinar)
                                             @if($webinar->info->enabled)
                                                 <div
-                                                    class="d-flex flex-row mb-2 position-relative webinar_video_player">
+                                                    class="d-flex flex-row mb-2 position-relative">
 
-                                                        <div
-                                                            class=" js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
-                                                            <iframe width="100%"
-                                                                    height="100%"
-                                                                    src="{{ $webinar->info->video_invitation }}"
-                                                                    frameborder="0"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowfullscreen></iframe>
+                                                        <div class="d-flex flex-row webinar_video_player">
+                                                            <div
+                                                                class=" js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
+                                                                <iframe width="100%"
+                                                                        height="100%"
+                                                                        src="{{ $webinar->info->video_invitation }}"
+                                                                        frameborder="0"
+                                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                        allowfullscreen></iframe>
+                                                            </div>
+                                                            <p class="ms-2 fs-14">{{ $webinar->info->title }}</p>
                                                         </div>
-                                                        <p class="ms-2 fs-14">{{ $webinar->info->title }}</p>
 
-                                                    <div
+                                                    <div data-id="{{ $webinar->id }}"
                                                         class="cp top-0 bg-danger w-100 h-100 position-absolute js-player-absolute-div"
                                                         style="opacity: 0.6"></div>
                                                 </div>
