@@ -240,7 +240,13 @@
     }
 
     .min-h-75 {
-        min-height: 75px;
+        //min-height: 75px;
+        height: 75px;
+        overflow: hidden;
+        white-space: pre-wrap;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
     }
 
     .min-h-96 {
