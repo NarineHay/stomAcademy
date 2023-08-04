@@ -74,11 +74,12 @@ class Catalog extends Component
             $webinar_ids = WebinarDirection::query()->whereIn("direction_id",$this->selectedDirections)->get()
                 ->map(function ($wd){
                     return $wd->webinar_id;
-                });
-            $webinars_q = $webinars_q->whereIn("id", $webinar_ids);
+                })->toArray();
+            $webinars_q = $webinars_q->whereIn("webinars.id", $webinar_ids);
         }
+
         if(count($this->selectedLectors) > 0){
-            $webinars_q = $webinars_q->whereIn("user_id", $this->selectedLectors);
+            $webinars_q = $webinars_q->whereIn("webinars.user_id", $this->selectedLectors);
         }
 
 
@@ -120,7 +121,7 @@ class Catalog extends Component
 
     function getCourses(){
         $course_ids = null;
-        $courses_q = Course::query()->where('online',0);
+        $courses_q = Course::query()->where('courses.online',0);
         if(count($this->selectedDirections) > 0){
             $course_ids = CourseDirection::query()->whereIn("direction_id",$this->selectedDirections)
                 ->get()->map(function ($course){
@@ -143,7 +144,7 @@ class Catalog extends Component
             }
         }
         if($course_ids){
-            $courses_q = $courses_q->whereIn("id",$course_ids);
+            $courses_q = $courses_q->whereIn("courses.id",$course_ids);
         }
 
         $cur = Currency::find(Cookie::get("currency_id",1))->currency_name;
@@ -185,7 +186,7 @@ class Catalog extends Component
 
     function getOnline(){
         $course_ids = null;
-        $courses_q = Course::query()->where('online',1);
+        $courses_q = Course::query()->where('courses.online',1);
         if(count($this->selectedDirections) > 0){
             $course_ids = CourseDirection::query()->whereIn("direction_id",$this->selectedDirections)
                 ->get()->map(function ($course){
@@ -209,7 +210,7 @@ class Catalog extends Component
         }
 
         if($course_ids){
-            $courses_q = $courses_q->whereIn("id",$course_ids);
+            $courses_q = $courses_q->whereIn("courses.id",$course_ids);
         }
 
         $cur = Currency::find(Cookie::get("currency_id",1))->currency_name;
@@ -275,7 +276,7 @@ class Catalog extends Component
         }
 
         if($course_ids){
-            $courses_q = $courses_q->whereIn("id",$course_ids);
+            $courses_q = $courses_q->whereIn("courses.id",$course_ids);
         }
 
         $cur = Currency::find(Cookie::get("currency_id",1))->currency_name;
