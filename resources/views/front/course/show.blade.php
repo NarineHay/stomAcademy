@@ -893,7 +893,7 @@
                                                         </div>
 
                                                     <div data-id="{{ $webinar->id }}"
-                                                        class="cp top-0 bg-danger w-100 h-100 position-absolute js-player-absolute-div"
+                                                        class="cp top-0  w-100 h-100 position-absolute js-player-absolute-div"
                                                         style="opacity: 0.6"></div>
                                                 </div>
 

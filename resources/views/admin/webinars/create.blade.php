@@ -140,7 +140,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">ОПИСАНИЕ ВЕБИНАРА*</label>
+                                            <label for="exampleInputEmail1">ОПИСАНИЕ ВЕБИНАРА</label>
+{{--                                            ОПИСАНИЕ ВЕБИНАРА*--}}
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <textarea class="summernote" name="description[{{ $lg->id }}]"></textarea>
