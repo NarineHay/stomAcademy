@@ -20,7 +20,7 @@
                     <option value="0">---</option>
                     @foreach($all_courses as $course)
                         <option @if($course->id == $search_course) selected @endif value="{{ $course->id }}">
-                            {{ $course->info->title }}
+                            {{ $course->info ? $course->info->title : $course->id }}
                         </option>
                     @endforeach
                 </select>
@@ -89,7 +89,7 @@
                                             <a><img src="{{\Illuminate\Support\Facades\Storage::url($course->image) }}" height="70" alt=""/></a>
                                         </td>
                                         <td>
-                                            <a>{{$course->info->title}}</a>
+                                            <a>{{ $course->info ? $course->info->title : ""}}</a>
                                         </td>
                                         <td>
                                             <a>{{$course->start_date}}</a>
