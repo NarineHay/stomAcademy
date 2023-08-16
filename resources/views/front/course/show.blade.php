@@ -855,7 +855,7 @@
                                     <div class="col-xl-8 col-12 main_div">
                                         <div class="main_video_div d-flex flex-column mb-2">
                                             @foreach($course->webinars_object as $k => $webinar)
-                                                @if($webinar->info->enabled)
+                                                @if($webinar->info->enabled && ($webinar->info->video_invitation != "" || $webinar->info->video_invitation != null))
                                             <div class="big_video @if($k > 0) hide @endif" data-id="{{ $webinar->id }}">
                                                 <div
                                                     class="js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
@@ -875,7 +875,7 @@
                                     </div>
                                     <div class="col-xl-4 col-12 small_video">
                                         @foreach($course->webinars_object as $k => $webinar)
-                                            @if($webinar->info->enabled)
+                                            @if($webinar->info->enabled && ($webinar->info->video_invitation != "" || $webinar->info->video_invitation != null) )
                                                 <div
                                                     class="d-flex flex-row mb-2 position-relative">
 
