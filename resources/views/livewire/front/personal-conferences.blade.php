@@ -18,15 +18,16 @@
                 <div class="d-flex align-items-center d-none d-lg-block">
                     <div class="dropdown">
                         <button class="btn dropdown-toggle text-primary fs-14 f-600 border-0"
-                                type="button" id="dropdownMenuButton1"
+                                type="button" id="dropdownMenuButton1" data-bs-auto-close="outside"
                                 data-bs-toggle="dropdown" aria-expanded="false">{{ __("profile.courses.directions") }}
                         </button>
                         <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">
                             @foreach($directions as $direction)
                                 <div class="form-check">
-                                    <input type="checkbox" wire:model="selectedDirections" value="{{ $direction->id }}"
-                                           class="mr-1 form-check-input">
-                                    <label class="form-check-label">{{$direction->title}}</label>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" wire:model="selectedDirections" value="{{ $direction->id }}"
+                                               class="mr-1 form-check-input">
+                                        {{$direction->title}}</label>
                                 </div>
                             @endforeach
                         </div>

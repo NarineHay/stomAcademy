@@ -1,10 +1,10 @@
 <div>
     <div class="mb-6 my-4 my-lg-6" style="z-index: 1">
         <img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image ?? "userinfo/unknown.png") }}" alt="profilePic" class="rounded-circle" width="73px" height="73px">
-        <h5 class="f-700 mt-3 m-0">{{$user->userinfo->fname}}
-            <span class="fs-15">
+        <h5 class="f-700 fs-16 mt-3 m-0">{{$user->userinfo->fname}}
+{{--            <span class="fs-15">--}}
                    {{$user->userinfo->lname}}
-            </span>
+{{--            </span>--}}
 
         </h5>
         <div class="d-flex mt-3">

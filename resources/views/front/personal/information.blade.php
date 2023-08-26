@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-9">
-                    <div class="py-4 py-lg-6 mt-5 mt-lg-6">
+                    <div class="py-4 py-lg-6 mt-0">
                         <div class="d-flex justify-content-between">
                             <h3 class="f-700 m-0">Настройки профиля</h3>
                         </div>
