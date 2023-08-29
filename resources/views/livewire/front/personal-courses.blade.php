@@ -26,9 +26,10 @@
 
                             @foreach($directions as $direction)
                                 <div class="form-check">
-                                    <input type="checkbox" wire:model="selectedDirections" value="{{ $direction->id }}"
-                                           class="mr-1 form-check-input">
-                                    <label class="form-check-label">{{$direction->title}}</label>
+                                    <label class="form-check-label">
+                                        <input type="checkbox" wire:model="selectedDirections" value="{{ $direction->id }}"
+                                               class="mr-1 form-check-input">
+                                        {{$direction->title}}</label>
                                 </div>
                             @endforeach
                         </div>
