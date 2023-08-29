@@ -269,7 +269,7 @@
                                     </div>
                                     <div
                                         class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                                        <div class="mb-3 mb-md-0 min-h-50">
+                                        <div class="d-flex flex-row flex-md-column mb-3 mb-md-0 min-h-50">
                                             @if($webinar->sale)
                                                 <span
                                                     class="f-700 text-primary fs-16 me-1">{{ $webinar->sale->html() }}</span>

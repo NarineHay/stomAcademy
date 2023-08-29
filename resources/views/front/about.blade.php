@@ -24,7 +24,7 @@
                         <p class="m-0 fs-16 f-500 pt-2">{{ __("about.text_block.1.text") }}</p>
                     </div>
                     <div class="col-6 border-bottom py-3">
-                        <h4 class="text-primary f-700 m-0" style="font-size:64px">3.5</h4>
+                        <h4 class="text-primary f-700 m-0" style="font-size:64px">9</h4>
                         <h5 class="text-primary f-700 m-0 mt-2 mt-sm-0">{{ __("about.text_block.2.title") }}</h5>
                     </div>
                     <div class="col-6 border-bottom py-3">
