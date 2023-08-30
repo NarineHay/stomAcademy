@@ -260,7 +260,7 @@
 
                                         @endif -->
                                         <p class="f-500 fs-14 lh-17 mb-2">
-                                            7-дневная гарантия замены или возврата дене
+                                            7-дневная гарантия замены или возврата денег
                                         </p>
 
                                     </div>
@@ -272,11 +272,11 @@
                                         @if($course->webinars)
                                             <div
                                                 class="course-card-form-div d-flex justify-content-between flex-column flex-lg-row mb-3 ff">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="mr-1 form-check-input ">
-                                                    <label
-                                                        class="form-check-label fs-14">1 {{ __("courses.free") }}</label>
-                                                </div>
+{{--                                                <div class="form-check">--}}
+{{--                                                    <input type="checkbox" class="mr-1 form-check-input ">--}}
+{{--                                                    <label--}}
+{{--                                                        class="form-check-label fs-14">1 {{ __("courses.free") }}</label>--}}
+{{--                                                </div>--}}
                                                 <div class="form-check">
                                                     <input type="checkbox" checked=""
                                                            class="mr-1 form-check-input">
@@ -287,14 +287,18 @@
                                             </div>
                                             <button type="button" data-bs-toggle="modal"
                                                     data-bs-target="#webinarSelectModal"
-                                                    class="btn btn-outline-primary w-100 fs-16 f-600 br-12 mb-3 lh-20">
+                                                    class="btn btn-outline-primary w-100 py-2 fs-16 f-600 br-12 mb-3 lh-20">
                                                 {{ __("courses.select_webinar") }}
+                                            </button>
+                                            <button class="btn btn-primary py-2 w-100 fs-16 f-600 br-12 mb-3 lh-20">
+                                                {{ __("courses.by_course") }}
+                                            </button>
+                                        @else
+                                            <button class="btn btn-primary py-2 w-100 fs-16 f-600 br-12 mb-3 lh-20">
+                                                {{ __("courses.by_lecture") }}
                                             </button>
                                         @endif
 
-                                        <button class="btn btn-primary w-100 fs-16 f-600 br-12 mb-3 lh-20">
-                                            {{ __("courses.by_course") }}
-                                        </button>
 
                                     </form>
 

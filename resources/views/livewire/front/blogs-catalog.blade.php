@@ -78,12 +78,32 @@
                 <div class="mt-4 ms-3 pt-5">
                     <h5 class="f-600 m-0">{{ __("blog.category_title") }}</h5>
                     <div class="mt-4">
-                        @foreach($directions as $direction)
-                            <label wire:click="setDirectionId({{ $direction->id }})" class="f-500 fs-16 d-flex align-items-center fg-label cursor mt-1"
-                                   data-bs-toggle="collapse" data-bs-target="#fg-1">
-                                <span>{{$direction->title}}</span>
-                            </label>
-                        @endforeach
+                        <ul class="list-unstyled m-0 p-0">
+                            @foreach($directions as $direction)
+    {{--                            <label wire:click="setDirectionId({{ $direction->id }})" class="f-500 fs-16 d-flex align-items-center fg-label cursor mt-1"--}}
+    {{--                                   data-bs-toggle="collapse" data-bs-target="#fg-1">--}}
+    {{--                                <span>{{$direction->title}}</span>--}}
+    {{--                            </label>--}}
+
+    {{--                            <div class="form-check">--}}
+    {{--                                <label wire:click="setDirectionId({{ $direction->id }})"--}}
+    {{--                                       class="form-check-label f-500 fs-16  fg-label cursor mt-2">--}}
+    {{--                                    <input type="checkbox"--}}
+    {{--                                           id="dir-{{ $direction->id }}" value="{{ $direction->id }}"--}}
+    {{--                                           class="me-1 form-check-input">--}}
+    {{--                                    {{$direction->title}}</label>--}}
+    {{--                            </div>--}}
+
+                                <li>
+                                    <input wire:click="setDirectionId({{ $direction->id }})"
+                                           type="checkbox"
+                                           id="dir-{{ $direction->id }}"
+                                           value="{{ $direction->id }}"
+                                           class="cursor mt-2">
+                                    <label for="dir-{{ $direction->id }}" class="f-500 cursor fs-16">{{ $direction->title }}</label><br>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

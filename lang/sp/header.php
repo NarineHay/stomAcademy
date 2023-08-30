@@ -22,6 +22,6 @@ return [
         "first_time" => "¿Eres nuevo?",
         "register" => "Regístrese",
         "any_time" => "Уже есть аккаунт?",
-
+        "check_text" => '  Создавая аккаунт, вы соглашаетесь с нашим<br> <a style="color:#828282;" class="text-decoration-underline" href="#"> Договором  оферты и Политикой конфиденциальности</a>',
     ],
 ];
