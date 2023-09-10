@@ -67,7 +67,7 @@
 
     @if($this->active_chat)
         <div class="col-lg-7 ">
-            <div class="personal-help-chat-mobile-div">
+            <div class="ml-3 personal-help-chat-mobile-div">
                 <p class="m-0 f-700 d-block d-lg-none color-23" wire:click="closeChat"
                    style="font-size: 24px !important;">
                 <span>
