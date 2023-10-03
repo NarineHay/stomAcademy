@@ -570,7 +570,7 @@
                 <div class="container">
                     @if($course->getLectors()->count() == 1)
                         <div class="one-lector br-12 w-100 d-flex mb-3">
-                            <div class="row">
+                            <div class="row w-100">
                                 <div class="col-lg-7 col-12 order-1 order-lg-0">
                                     <div class="txts me-0 me-xl-4">
                                         <h4 class="f-700 fs-32 lh-40 color-23 mt-4 mt-xl-0">{{ $course->getLectors()->first()->userInfo->fullName }}</h4>
