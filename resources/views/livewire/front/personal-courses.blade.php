@@ -82,21 +82,6 @@
             <div class="mt-4 d-flex justify-content-center d-lg-block">
                 <nav>{{ $webinars->links() }}</nav>
             </div>
-{{--                            <div class="col-12 col-md-6 col-lg-4 mt-2 mt-lg-3">--}}
-{{--                                <div class="bg-white br-12">--}}
-{{--                                    <img src="/dist/image/purchase.png" class="w-100" alt="pic">--}}
-{{--                                    <div class="p-3">--}}
-{{--                                        <p class="text-primary text-uppercase f-700 fs-10 m-0">Терапия</p>--}}
-{{--                                        <p class="f-700 fs-16 m-0 mt-2">Экспертный курс по имплантации</p>--}}
-{{--                                        <div class="d-flex flex-column flex-xl-row mt-2 justify-content-between align-items-xl-center">--}}
-{{--                                            <div class="d-flex align-items-center">--}}
-{{--                                                <img src="/dist/image/kamil.png" class="me-2" alt="customerPic">--}}
-{{--                                                <p class="m-0 fs-14 f-500">Камиль Хабиев</p>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
         </div>
     </div>
 </div>

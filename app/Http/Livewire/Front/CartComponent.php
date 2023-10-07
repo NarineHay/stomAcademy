@@ -25,10 +25,10 @@ class CartComponent extends Component
             if($item->type == "course"){
                 $item['course'] = Course::query()->withCount("webinars")->withSum('webinars_object','duration')
                     ->where("id",$item->item_id)->with("info")->first();
-                $total += $item['course']->price->pure();
+                $total += $item['course']->sale ? $item['course']->sale->pure() : $item['course']->price->pure();
             }elseif($item->type == "webinar"){
                 $item['webinar'] = Webinar::query()->where("id",$item->item_id)->with("info")->first();
-                $total += $item['webinar']->price->pure();
+                $total += $item['webinar']->sale ? $item['webinar']->sale->pure() : $item['webinar']->price->pure();
             }
             return $item;
         });
