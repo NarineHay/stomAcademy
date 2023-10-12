@@ -12,6 +12,8 @@ class CertificateImage extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'image'
+        'image',
+        'lg_id',
+        'certificate_id',
     ];
 }

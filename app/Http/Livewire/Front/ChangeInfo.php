@@ -29,6 +29,9 @@ class ChangeInfo extends Component
 
     public function mount(){
         $user = Auth::user();
+        $this->name = $user->name;
+        $this->birth_date = $user->userinfo->birth_date;
+
         $this->image = $user->userinfo->image;
         $this->fname = $user->userinfo->fname;
         $this->lname = $user->userinfo->lname;

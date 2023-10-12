@@ -18,9 +18,9 @@ class CertificateController extends Controller
 
     public function download($id)
     {
-        $certificate = UserCertificate::find($id);
-//        dd($certificate);
-        $imagePath = Storage::url($certificate->image);
+        $user_certificate = UserCertificate::find($id);
+        $certificate = Certificate::find($user_certificate->certificate_id);
+        $imagePath = Storage::url($certificate->images->where('lg_id',\App\Helpers\LG::get())->first()->image);
 
         return response()->download(public_path($imagePath));
     }

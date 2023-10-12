@@ -30,6 +30,15 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="exampleInputEmail1">Ползователь</label>
+                <select class="form-control" id="type" name="type" wire:model="user_id">
+                    @foreach(\App\Models\User::all() as $user)
+                        <option value="{{ $user->id }}" {{ $user_id == $user->id ? " selected" : ""}}>{{ $user->email }} - {{ $user->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="card-footer mt-3">
                 <button type="submit" wire:click="submit" class="btn btn-primary">Изменить</button>
             </div>
@@ -51,18 +60,18 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>Название курса</h4>
+                                <h4>ФИО</h4>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label class="small">X</label>
-                                    <input wire:model="name.x" type="number" value="{{$certificate->name['x'] ?? ""}}" class="form-control">
+                                    <input wire:model="name.x" type="text" value="{{$certificate->name['x'] ?? ""}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="form-group">
+                                <div class="form-group mb-0">
                                     <label class="small">Y</label>
-                                    <input wire:model="name.y" type="number" value="{{$certificate->name['y'] ?? ""}}" class="form-control">
+                                    <input wire:model="name.y" type="text" value="{{$certificate->name['y'] ?? ""}}" class="form-control">
                                 </div>
                             </div>
                             <div class="col-3">
@@ -82,7 +91,7 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>ID</h4>
+                                <h4>Дата</h4>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">

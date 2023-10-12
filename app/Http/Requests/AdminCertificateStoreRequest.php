@@ -16,7 +16,6 @@ class AdminCertificateStoreRequest extends FormRequest
         return [
             'type' => 'required',
             'date' => 'required',
-            'image' => 'required',
         ];
     }
 }

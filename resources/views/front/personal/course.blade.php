@@ -57,7 +57,7 @@
                 <h4 class="mb-4">{{ __("index.online_chat") }}</h4>
                 <livewire:front.personal-courses-chat :webinar_id="$webinar->id"/>
             </div>
-            <div class="row" style="margin-top: 360px;">
+            <div class="row other_webinars">
                 @foreach($other_webinars as $webinar)
                     <a href="{{ route("personal.courses.show",$webinar->id) }}" style="color: inherit"
                        class="col-12 my-3 md-sm-0">

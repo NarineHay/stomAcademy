@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Certificate;
+use App\Models\CertificateImage;
 use App\Models\Course;
 use App\Models\Language;
 use Illuminate\Http\Request;
@@ -23,15 +24,22 @@ class CertificateController extends Controller
         return view('admin.certificates.create', $data);
     }
 
-    public function store(AdminCertificateStoreRequest $request)
+    public function store(Request $request)
     {
         $certificate = new Certificate();
         $certificate->course_id = $request->get('course_id');
         $certificate->type = $request->get('type');
         $certificate->hours_number = $request->get('hours_number');
         $certificate->date = $request->get('date');
-        $certificate->image = $request->file('image')->store('public/certificates');
+//        $certificate->image = $request->file('image')->store('public/certificates');
         $certificate->save();
+        foreach ($request->file("image") as $lg_id => $image){
+            CertificateImage::create([
+                "certificate_id"  => $certificate->id,
+                "lg_id" => $lg_id,
+                "image" => $image->store('public/certificates')
+            ]);
+        }
         return redirect()->route('admin.certificates.edit',$certificate->id)
             ->with('success', 'Certificate has been created successfully.');
     }

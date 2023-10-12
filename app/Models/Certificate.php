@@ -24,8 +24,17 @@ class Certificate extends Model
         'type',
         'hours_number',
         'date',
-        'image'
     ];
+
+    function images()
+    {
+        return $this->hasMany(CertificateImage::class);
+    }
+
+    function image()
+    {
+        return $this->hasOne(CertificateImage::class)->where("lg_id",1);
+    }
 
     function course(){
         return $this->hasOne(Course::class,"id","course_id");

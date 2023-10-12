@@ -62,13 +62,15 @@
                         <label for="exampleInputEmail1">ДАТА КУРСА*</label>
                         <input type="date" value="{{ old('date') ?? "" }}" name="date" class="form-control">
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ*</label>
-                        <div class="custom-file">
-                            <input type="file" name="image" class="form-control" id="customFile">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                    @foreach(\App\Models\Language::all() as $lg)
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">ИЗОБРАЖЕНИЕ* {{ $lg->name }}</label>
+                            <div class="custom-file">
+                                <input type="file" name="image[{{ $lg->id }}]" class="form-control" id="customFile_{{ $lg->id }}">
+                                <label class="custom-file-label" for="customFile_{{ $lg->id }}">Choose file</label>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
 
 {{--                    <div class="card card-primary card-outline card-outline-tabs">--}}
 {{--                        <div class="card-header p-0 border-bottom-0">--}}

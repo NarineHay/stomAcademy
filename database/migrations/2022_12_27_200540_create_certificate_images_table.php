@@ -10,6 +10,8 @@ return new class extends Migration
     {
         Schema::create('certificate_images', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("certificate_id")->index();
+            $table->unsignedBigInteger("lg_id")->index();
             $table->string('image');
         });
     }

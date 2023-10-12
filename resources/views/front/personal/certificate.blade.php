@@ -23,7 +23,7 @@
                                 <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center bg-white br-12 p-3 mb-3">
                                     <div class="d-flex align-items-center flex-column flex-lg-row">
                                         <div>
-                                            <img src="{{\Illuminate\Support\Facades\Storage::url($certificate->image)}}" alt="pic" width="162" height="114">
+                                            <img src="{{\Illuminate\Support\Facades\Storage::url( $certificate->images->where('lg_id',\App\Helpers\LG::get())->first()->image )}}" alt="pic" width="162" height="114">
                                         </div>
                                         <div class="ms-lg-4">
                                             <p class="m-0 fs-20 f-700 mb-2 mt-2 mt-lg-0 text-center text-lg-start">

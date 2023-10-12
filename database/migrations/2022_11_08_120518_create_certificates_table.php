@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('id_x')->nullable();
             $table->integer('id_y')->nullable();
             $table->string('type');
-            $table->string("image");
             $table->integer('hours_number')->nullable();
             $table->date('date');
         });
