@@ -90,8 +90,8 @@ class Coordinates extends Component
         $data['courses'] = Course::all();
         $this->image = $this->image ?? $this->certificate->image;
         $data['fonts'] = [];
-        $path = public_path("fonts\\");
-        dd(scandir(public_path("fonts")));
+        $path = public_path("fonts/");
+
         foreach (scandir(public_path("fonts")) as $file){
             $file = $path.$file;
             if(is_file($file)){
@@ -103,6 +103,7 @@ class Coordinates extends Component
                 ];
             }
         }
+
         if(!$this->name_['font']){
             $this->name_['font'] = $data['fonts'][0]['path'];
         }
@@ -125,19 +126,19 @@ class Coordinates extends Component
         $this->certificate->name_y = $this->name_['y'];
         $this->certificate->name_color = $this->name_['color'];
         $this->certificate->name_size = $this->name_['size'];
-        $this->certificate->name_font = explode("public\\",$this->name_['font'])[1];
+        $this->certificate->name_font = explode("public/",$this->name_['font'])[1];
 
         $this->certificate->hour_x = $this->hour_['x'];
         $this->certificate->hour_y = $this->hour_['y'];
         $this->certificate->hour_color = $this->hour_['color'];
         $this->certificate->hour_size = $this->hour_['size'];
-        $this->certificate->hour_font = explode("public\\",$this->hour_['font'])[1];
+        $this->certificate->hour_font = explode("public/",$this->hour_['font'])[1];
 
         $this->certificate->date_x = $this->date_['x'];
         $this->certificate->date_y = $this->date_['y'];
         $this->certificate->date_color = $this->date_['color'];
         $this->certificate->date_size = $this->date_['size'];
-        $this->certificate->date_font = explode("public\\",$this->hour_['font'])[1];
+        $this->certificate->date_font = explode("public/",$this->hour_['font'])[1];
 
 
         $this->certificate->save();
@@ -153,7 +154,7 @@ class Coordinates extends Component
         if($this->tmp){
             $disc->delete($this->tmp);
         }else{
-            $this->tmp = "certificates\\".Str::random(16).".jpg";
+            $this->tmp = "certificates/".Str::random(16).".jpg";
         }
         $disc->copy(str_replace("public/","",$this->certificate->image->image),$this->tmp);
 
