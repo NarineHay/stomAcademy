@@ -91,7 +91,7 @@ class Coordinates extends Component
         $this->image = $this->image ?? $this->certificate->image;
         $data['fonts'] = [];
         $path = public_path("fonts\\");
-        dd(scandir(public_path("fonts"));
+        dd(scandir(public_path("fonts")));
         foreach (scandir(public_path("fonts")) as $file){
             $file = $path.$file;
             if(is_file($file)){
