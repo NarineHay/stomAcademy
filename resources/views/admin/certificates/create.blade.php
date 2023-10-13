@@ -46,20 +46,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ТИП</label>
-                        <select class="form-control" name="type">
-                            <option value="1">Вебинар</option>
-                            <option value="0">Семинар</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">КОЛИЧЕСТВО ЧАСОВ(ТОЛЬКО ДЛЯ СЕМИНАРОВ)</label>
+                        <label for="exampleInputEmail1">КОЛИЧЕСТВО ЧАСОВ</label>
                         <input type="number" value="{{ old('number') ?? "" }}"name="hours_number" class="form-control">
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1">ДАТА КУРСА*</label>
+                        <label for="exampleInputEmail1">ДАТА КУРСА</label>
                         <input type="date" value="{{ old('date') ?? "" }}" name="date" class="form-control">
                     </div>
                     @foreach(\App\Models\Language::all() as $lg)

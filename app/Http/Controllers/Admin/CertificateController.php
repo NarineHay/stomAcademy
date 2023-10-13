@@ -28,7 +28,6 @@ class CertificateController extends Controller
     {
         $certificate = new Certificate();
         $certificate->course_id = $request->get('course_id');
-        $certificate->type = $request->get('type');
         $certificate->hours_number = $request->get('hours_number');
         $certificate->date = $request->get('date');
 //        $certificate->image = $request->file('image')->store('public/certificates');

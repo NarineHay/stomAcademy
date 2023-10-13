@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Helpers\TTFInfo;
 use App\Models\CertificateImage;
 use App\Models\Course;
 use App\Models\User;
@@ -22,28 +23,30 @@ class Coordinates extends Component
     public $tmp;
     public $hours_number = '';
     public $course_id = '';
-    public $type = '';
     public $date = '';
 
     public $images = [];
 
-    public $name = [
+    public $name_ = [
         'x' => 0,
         'y' => 0,
         'color' => '#000000',
-        'size' => 32
+        'size' => 32,
+        'font' => null,
     ];
-    public $hour = [
+    public $hour_ = [
         'x' => 0,
         'y' => 0,
         'color' => '#000000',
-        'size' => 32
+        'size' => 32,
+        'font' => null,
     ];
-    public $cert_id = [
+    public $date_ = [
         'x' => 0,
         'y' => 0,
         'color' => '#000000',
-        'size' => 32
+        'size' => 32,
+        'font' => null,
     ];
     public $original = '';
 
@@ -52,11 +55,28 @@ class Coordinates extends Component
         $this->image = $this->certificate->image->image;
         $this->original = $this->certificate->image;
         $this->hours_number = $this->certificate->hours_number;
-        $this->type = $this->certificate->type;
         $this->course_id = $this->certificate->course_id;
         $this->certificate->images->map(function ($image){
             $this->images[$image->lg_id] = $image->image;
         });
+
+        $this->name_['x'] = $this->certificate->name_x;
+        $this->name_['y'] = $this->certificate->name_y;
+        $this->name_['color'] = $this->certificate->name_color;
+        $this->name_['size'] = $this->certificate->name_size;
+        $this->name_['font'] = public_path($this->certificate->name_font);
+
+        $this->hour_['x'] = $this->certificate->hour_x;
+        $this->hour_['y'] = $this->certificate->hour_y;
+        $this->hour_['color'] = $this->certificate->hour_color;
+        $this->hour_['size'] = $this->certificate->hour_size;
+        $this->hour_['font'] = public_path($this->certificate->hour_font);
+
+        $this->date_['x'] = $this->certificate->date_x;
+        $this->date_['y'] = $this->certificate->date_y;
+        $this->date_['color'] = $this->certificate->date_color;
+        $this->date_['size'] = $this->certificate->date_size;
+        $this->date_['font'] = public_path($this->certificate->date_font);
     }
 
 
@@ -69,62 +89,64 @@ class Coordinates extends Component
     {
         $data['courses'] = Course::all();
         $this->image = $this->image ?? $this->certificate->image;
+        $data['fonts'] = [];
+        $path = public_path("fonts\\");
+        foreach (scandir(public_path("fonts")) as $file){
+            $file = $path.$file;
+            if(is_file($file)){
+                $ttfInfo = (new TTFInfo())->setFontFile($file);
+                $fontInfo = $ttfInfo->getFontInfo();
+                $data['fonts'][] = [
+                    "name" => $fontInfo[1]." - ".$fontInfo[2],
+                    "path" => $file,
+                ];
+            }
+        }
+        if(!$this->name_['font']){
+            $this->name_['font'] = $data['fonts'][0]['path'];
+        }
+        if(!$this->date_['font']){
+            $this->date_['font'] = $data['fonts'][0]['path'];
+        }
+        if(!$this->hour_['font']){
+            $this->hour_['font'] = $data['fonts'][0]['path'];
+        }
+        $this->preview();
         return view('livewire.admin.coordinates',$data);
     }
 
     public function submit(){
         $this->certificate->course_id = $this->course_id;
         $this->certificate->hours_number = $this->hours_number;
-        $this->certificate->type = $this->type;
         $this->certificate->date = $this->date;
+
+        $this->certificate->name_x = $this->name_['x'];
+        $this->certificate->name_y = $this->name_['y'];
+        $this->certificate->name_color = $this->name_['color'];
+        $this->certificate->name_size = $this->name_['size'];
+        $this->certificate->name_font = explode("public\\",$this->name_['font'])[1];
+
+        $this->certificate->hour_x = $this->hour_['x'];
+        $this->certificate->hour_y = $this->hour_['y'];
+        $this->certificate->hour_color = $this->hour_['color'];
+        $this->certificate->hour_size = $this->hour_['size'];
+        $this->certificate->hour_font = explode("public\\",$this->hour_['font'])[1];
+
+        $this->certificate->date_x = $this->date_['x'];
+        $this->certificate->date_y = $this->date_['y'];
+        $this->certificate->date_color = $this->date_['color'];
+        $this->certificate->date_size = $this->date_['size'];
+        $this->certificate->date_font = explode("public\\",$this->hour_['font'])[1];
+
+
         $this->certificate->save();
 
-        $user = User::find($this->user_id);
-
-        $disc = Storage::disk("public");
-
-        CertificateImage::query()->where("certificate_id",$this->certificate->id)->delete();
-
-        foreach ($this->images as $lg_id => $img){
-            $image = Image::make($disc->get(str_replace("public/","",$img)));
-
-            $image->text($this->certificate->hours_number, $this->hour['x'], $this->hour['y'], function($font) {
-                $font->file(public_path('verdana.ttf'));
-                $font->size($this->hour['size']);
-                $font->color($this->hour['color']);
-            });
-
-            $image->text($user->name, $this->name['x'], $this->name['y'], function($font) {
-                $font->file(public_path('verdana.ttf'));
-                $font->size($this->name['size']);
-                $font->color($this->name['color']);
-            });
-
-            $image->text($this->date, $this->cert_id['x'], $this->cert_id['y'], function($font) {
-                $font->file(public_path('verdana.ttf'));
-                $font->size($this->cert_id['size']);
-                $font->color($this->cert_id['color']);
-            });
-            $temp = "certificates\\".Str::random(16).".jpg";
-            $disc->put($temp,$image->encode());
-            CertificateImage::create([
-                "certificate_id" => $this->certificate->id,
-                "image" => "public/".$temp,
-                "lg_id" => $lg_id
-            ]);
-        }
-
-        UserCertificate::create([
-            "user_id" => $user->id,
-            "certificate_id" => $this->certificate->id
-        ]);
 
         return redirect()->route('admin.certificates.index')
             ->with('success','Certificate has been updated successfully');
     }
 
     public function preview(){
-        $user = User::find($this->user_id);
 
         $disc = Storage::disk("public");
         if($this->tmp){
@@ -136,23 +158,30 @@ class Coordinates extends Component
 
         $image = Image::make($disc->get($this->tmp));
 
-        $image->text($this->certificate->hours_number, $this->hour['x'], $this->hour['y'], function($font) {
-            $font->file(public_path('verdana.ttf'));
-            $font->size($this->hour['size']);
-            $font->color($this->hour['color']);
-        });
+        if($this->hour_['x'] > 0 && $this->hour_['y'] > 0) {
+            $image->text($this->certificate->hours_number, $this->hour_['x'], $this->hour_['y'], function ($font) {
+                $font->file($this->hour_['font']);
+                $font->size($this->hour_['size']);
+                $font->color($this->hour_['color']);
+            });
+        }
 
-        $image->text($user->name, $this->name['x'], $this->name['y'], function($font) {
-            $font->file(public_path('verdana.ttf'));
-            $font->size($this->name['size']);
-            $font->color($this->name['color']);
-        });
+        if($this->name_['x'] > 0 && $this->name_['y'] > 0) {
+            $image->text("Фамилия Имя Отчество", $this->name_['x'], $this->name_['y'], function ($font) {
+                $font->file($this->name_['font']);
+                $font->size($this->name_['size']);
+                $font->color($this->name_['color']);
+            });
+        }
 
-        $image->text($this->date, $this->cert_id['x'], $this->cert_id['y'], function($font) {
-            $font->file(public_path('verdana.ttf'));
-            $font->size($this->cert_id['size']);
-            $font->color($this->cert_id['color']);
-        });
+        if($this->date_['x'] > 0 && $this->date_['y'] > 0) {
+            $image->text($this->date, $this->date_['x'], $this->date_['y'], function ($font) {
+                $font->file($this->date_['font']);
+                $font->size($this->date_['size']);
+                $font->color($this->date_['color']);
+            });
+        }
+
         $disc->put($this->tmp,$image->encode());
         $this->image = "public/".$this->tmp;
 
