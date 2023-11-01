@@ -4,11 +4,7 @@
             <div class="main8-1 are_any_questions_div">
                 <h3 class="f-700 mb-3 lh-40 color-23">{{ __("courses.contacts.form.title") }}</h3>
                 <p class="f-500 lh-20 color-23">{{ __("courses.contacts.form.under_title") }}</p>
-
-
                 <livewire:front.are-any-question-form />
-
-
             </div>
         </div>
         <div class="col-lg-6 col-12">

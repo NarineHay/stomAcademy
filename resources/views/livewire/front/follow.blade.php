@@ -6,13 +6,13 @@
         </div>
         <div class="modal-body">
             <input wire:model="name" type="text" class="form-control py-3 mb-4 @if(strlen($name) > 0) focus @endif" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default" placeholder="Имя">
+                   aria-describedby="inputGroup-sizing-default" placeholder="{{ __("modals.name") }}">
             @error('name')
                 <span class="text-danger error">{{ $message }}</span>
             @enderror
 
             <input wire:model="email" type="email" class="form-control py-3 mb-0 @if(strlen($email) > 0) focus @endif" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default" placeholder="Почта">
+                   aria-describedby="inputGroup-sizing-default" placeholder="{{ __("modals.email") }}">
             @error('email')
                 <span class="text-danger error">{{ $message }}</span>
             @enderror

@@ -13,5 +13,6 @@ return [
         "h1" => "Should we notify you about new lectures?",
         "success" => "You are subscribed ",
         "button" => "Subscribe",
-    ]
+    ],
+    "text_1" => "Отправьте заявку и мы свяжемся с вами по поводу сотрудничествa."
 ];

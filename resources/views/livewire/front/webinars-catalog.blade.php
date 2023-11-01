@@ -30,7 +30,7 @@
 
             <div class="d-flex align-items-center d-none d-lg-block">
                 <div class="dropdown">
-                    <span class="text-secondary fs-14 f-500">Сортировать по:</span>
+                    <span class="text-secondary fs-14 f-500">{{ __("courses.sort.title") }}:</span>
                     <button class="btn dropdown-toggle text-primary fs-14 f-600 border-0" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">Релевантности
                     </button>

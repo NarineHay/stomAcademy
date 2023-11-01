@@ -12,9 +12,51 @@
                 <div class="col-lg-9">
                     <div class="py-4 py-lg-6 mt-5 mt-lg-6">
                         <div class="d-flex justify-content-between">
-                            <h3 class="f-700 m-0">Настройки профиля</h3>
+                            <h3 class="f-700 m-0">Курсы / Вебинары</h3>
                         </div>
-                        <livewire:front.change-info/>
+                        <div class="card mt-5">
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Название курса/вебинара</th>
+                                        <th>Кол-во продаж</th>
+                                        <th>Процент</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                    @foreach($user->lector->getCourses() as $course)
+                                        <tr>
+                                            <td>
+                                                <a class="text-primary" href="{{ route("course.show",$course) }}">{{$course->info->title}}</a>
+                                            </td>
+                                            <td>
+                                                <a>0</a>
+                                            </td>
+                                            <td>
+                                                <a >{{$user->lector->per_of_sales ?? ""}}</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach($user->lector->webinars as $webinar)
+                                        <tr>
+                                            <td>
+                                                <a class="text-primary"  href="{{ route("webinar.show",$webinar) }}">{{$webinar->info->title}}</a>
+                                            </td>
+                                            <td>
+                                                <a>0</a>
+                                            </td>
+                                            <td>
+                                                <a>{{$user->lector->per_of_sales ?? ""}}</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

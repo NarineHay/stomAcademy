@@ -14,6 +14,7 @@ return [
         "price" => "Price",
         "name" => "Names",
         "pop" => "By popularity	",
+        "default" => "Релевантности",
     ],
     "filters" => [
         "directions" => "Categories",

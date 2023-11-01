@@ -28,6 +28,7 @@ return [
         "price" => "Price",
         "to_pay" => "To pay",
         "button" => "Pay",
+        "promocode" => "Введите промокод"
     ],
     "chat" => [
         "messages" => "Messages",
@@ -56,4 +57,8 @@ return [
         "directions" => "Add interests",
     ],
     "save" => "Save",
+    "history" => [
+        "search" => "Поиск",
+        "title" => "История покупок"
+    ]
 ];

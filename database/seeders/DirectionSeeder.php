@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Direction;
+use App\Models\DirectionTitle;
+use App\Models\Language;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -11,26 +13,105 @@ class DirectionSeeder extends Seeder
     public function run()
     {
         $direction = [
-            ['title' => 'Терапия', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Ортопедия', 'description'=>'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.'],
-            ['title' => 'Ортодонтия', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Хирургия', 'description'=>'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.'],
-            ['title' => 'Детская стоматология', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Общая стоматология', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Эндодонтия', 'description'=>'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.'],
-            ['title' => 'Эстетика и реставрация', 'description'=>'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.'],
-            ['title' => 'Пародонтология', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Функциональная стоматология', 'description'=>'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.'],
-            ['title' => 'Имплантология', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Протезирование на имплантах', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Виниры', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Остеопатия', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Зубной техник', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Цифровая стоматология', 'description'=>'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet'],
-            ['title' => 'Прочее', 'description'=>'All the repeat predefined chunks as necessary, making this the first true generator on the Internet'],
+            [
+                "RU" => 'Терапия',
+                "EN" => 'Терапия',
+                "SP" => 'Терапия',
+            ],
+            [
+                "RU" => 'Ортопедия',
+                "EN" => 'Ортопедия',
+                "SP" => 'Ортопедия',
+            ],
+            [
+                "RU" => 'Ортодонтия',
+                "EN" => 'Ортодонтия',
+                "SP" => 'Ортодонтия',
+            ],
+            [
+                "RU" => 'Хирургия',
+                "EN" => 'Хирургия',
+                "SP" => 'Хирургия',
+            ],
+            [
+                "RU" => 'Детская стоматология',
+                "EN" => 'Детская стоматология',
+                "SP" => 'Детская стоматология',
+            ],
+            [
+                "RU" => 'Общая стоматология',
+                "EN" => 'Общая стоматология',
+                "SP" => 'Общая стоматология',
+            ],
+            [
+                "RU" => 'Эндодонтия',
+                "EN" => 'Эндодонтия',
+                "SP" => 'Эндодонтия',
+            ],
+            [
+                "RU" => 'Эстетика и реставрация',
+                "EN" => 'Эстетика и реставрация',
+                "SP" => 'Эстетика и реставрация',
+            ],
+            [
+                "RU" => 'Пародонтология',
+                "EN" => 'Пародонтология',
+                "SP" => 'Пародонтология',
+            ],
+            [
+                "RU" => 'Функциональная стоматология',
+                "EN" => 'Функциональная стоматология',
+                "SP" => 'Функциональная стоматология',
+            ],
+            [
+                "RU" => 'Имплантология',
+                "EN" => 'Имплантология',
+                "SP" => 'Имплантология',
+            ],
+            [
+                "RU" => 'Протезирование на имплантах',
+                "EN" => 'Протезирование на имплантах',
+                "SP" => 'Протезирование на имплантах',
+            ],
+            [
+                "RU" => 'Виниры',
+                "EN" => 'Виниры',
+                "SP" => 'Виниры',
+            ],
+            [
+                "RU" => 'Остеопатия',
+                "EN" => 'Остеопатия',
+                "SP" => 'Остеопатия',
+            ],
+            [
+                "RU" => 'Зубной техник',
+                "EN" => 'Зубной техник',
+                "SP" => 'Зубной техник',
+            ],
+            [
+                "RU" => 'Цифровая стоматология',
+                "EN" => 'Цифровая стоматология',
+                "SP" => 'Цифровая стоматология',
+            ],
+            [
+                "RU" => 'Прочее',
+                "EN" => 'Прочее',
+                "SP" => 'Прочее',
+            ]
         ];
         foreach ($direction as $dir){
-            Direction::create($dir);
+
+        }
+
+        foreach ($direction as $dir){
+            $d = Direction::create();
+            foreach (Language::all() as $lg){
+                DirectionTitle::create([
+                    "direction_id" => $d->id,
+                    "lg_id" => $lg->id,
+                    "title" => $dir[$lg->code]
+                ]);
+            }
         }
     }
 }

@@ -13,5 +13,6 @@ return [
         "h1" => "¿Notificarme nuevas conferencias?",
         "success" => "Está suscrito",
         "button" => "Suscribirse",
-    ]
+    ],
+    "text_1" => "Отправьте заявку и мы свяжемся с вами по поводу сотрудничествa."
 ];

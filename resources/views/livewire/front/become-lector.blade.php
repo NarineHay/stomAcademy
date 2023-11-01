@@ -6,7 +6,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <p class="fs-16 mb-3" style="margin-top: -30px;">Отправьте заявку и мы свяжемся с вами по поводу сотрудничествa.</p>
+            <p class="fs-16 mb-3" style="margin-top: -30px;">{{ __("modals.text_1") }}</p>
             <input type="text" wire:model="name" class="form-control py-3 mb-4 @if(strlen($name) > 0) focus @endif"
                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
                    placeholder="{{ __("modals.name") }}">

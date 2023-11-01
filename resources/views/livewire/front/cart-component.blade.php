@@ -85,7 +85,7 @@
                         <div class="input-group">
                             <form wire:submit.prevent="submit" class="form-cart">
                                 <input wire:model="code" type="text" class="form-control py-2 px-3 br-12 inputStyle promo-input"
-                                       placeholder="Введите промокод">
+                                       placeholder="{{ __("profile.cart.promocode") }}">
                                 <button type="submit" class="input-group-text bg-transparent promo-btn">
                                     <i class="fal fa-arrow-right cursor p-2 text-secondary"></i>
                                 </button>
@@ -111,7 +111,7 @@
                         <form action="{{ route("personal.cart.order") }}" method="POST">
                             @csrf
                             <input name="promo" wire:model="code" type="text" class="d-none form-control py-2 px-3 br-12 inputStyle promo-input"
-                                   placeholder="Введите промокод">
+                                   placeholder="{{ __("profile.cart.promocode") }}">
                             <button type="submit" id="checkout-button" class="btn btn-primary br-12 w-100 fs-16 f-600 py-2">{{ __("profile.cart.button") }}</button>
                         </form>
                     </div>
