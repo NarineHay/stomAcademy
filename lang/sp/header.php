@@ -21,7 +21,7 @@ return [
         "login" => "Iniciar sesión",
         "first_time" => "¿Eres nuevo?",
         "register" => "Regístrese",
-        "any_time" => "Уже есть аккаунт?",
-        "check_text" => '  Создавая аккаунт, вы соглашаетесь с нашим<br> <a style="color:#828282;" class="text-decoration-underline" href="#"> Договором  оферты и Политикой конфиденциальности</a>',
+        "any_time" => "¿Ya tiene una cuenta?",
+        "check_text" => 'Al crear una cuenta, acepta nuestra<br> <a style="color:#828282;" class="text-decoration-underline" href="#"> Acuerdo de oferta y política de privacidad</a>',
     ],
 ];

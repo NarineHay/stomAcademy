@@ -15,7 +15,7 @@ return [
         "page_menu" => [
             "online" => "Conferencias en línea",
             "course" => "Cursos en línea",
-            "all" => "Все",
+            "all" => "Todos ellos",
         ],
         "directions" => "Especialización ",
         "show_more" => "Mostrar más",
@@ -28,13 +28,13 @@ return [
         "price" => "Precio",
         "to_pay" => "Pago",
         "button" => "Pagar",
-        "promocode" => "Введите промокод"
+        "promocode" => "Introduzca el código promocional"
     ],
     "chat" => [
         "messages" => "Mensajes",
         "search" => "Nuevo diálogo",
         "new_dialog" => "Nuevo diálogo",
-        "chat_support" => "Служба поддержки",
+        "chat_support" => "Servicio de asistencia",
     ],
     "info" => [
         "page_title" => "Cambiar datos personales",
@@ -46,7 +46,7 @@ return [
         "change_phone" => "Cambiar número de teléfono",
         "change_email" => "Cambiar correo Email",
         "change_password" => "Cambiar contraseña",
-        "delete_account" => "Удалить учетную запись",
+        "delete_account" => "Eliminar cuenta",
         "delete_account_text" => "¿Estás seguro de que quieres eliminar tu cuenta?",
     ],
     "profile" => [
@@ -58,7 +58,7 @@ return [
     ],
     "save" => "Guardar",
     "history" => [
-        "search" => "Поиск",
-        "title" => "История покупок"
+        "search" => "Buscar en",
+        "title" => "Historial de compras"
     ]
 ];

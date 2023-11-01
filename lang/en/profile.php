@@ -15,7 +15,7 @@ return [
         "page_menu" => [
             "online" => "Online-conferences",
             "course" => "Online-courses",
-            "all" => "Все",
+            "all" => "All",
         ],
         "directions" => "Specialization",
         "show_more" => "Show more",
@@ -28,13 +28,13 @@ return [
         "price" => "Price",
         "to_pay" => "To pay",
         "button" => "Pay",
-        "promocode" => "Введите промокод"
+        "promocode" => "Enter promo code"
     ],
     "chat" => [
         "messages" => "Messages",
         "search" => "New dialogue",
         "new_dialog" => "New dialogue",
-        "chat_support" => "Служба поддержки",
+        "chat_support" => "Support Service",
     ],
     "info" => [
         "page_title" => "Change personal details",
@@ -44,7 +44,7 @@ return [
         "l_name" => "Surname",
         "save" => "Save",
         "change_phone" => "Change phone number",
-        "change_email" => "Изменить email",
+        "change_email" => "Change email",
         "change_password" => "Change email",
         "delete_account" => "Change password",
         "delete_account_text" => "Are you sure you want to delete your account?",
@@ -58,7 +58,7 @@ return [
     ],
     "save" => "Save",
     "history" => [
-        "search" => "Поиск",
-        "title" => "История покупок"
+        "search" => "Search",
+        "title" => "Purchase History"
     ]
 ];

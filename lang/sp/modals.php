@@ -14,5 +14,5 @@ return [
         "success" => "Está suscrito",
         "button" => "Suscribirse",
     ],
-    "text_1" => "Отправьте заявку и мы свяжемся с вами по поводу сотрудничествa."
+    "text_1" => "Envíe una solicitud y nos pondremos en contacto con usted sobre la cooperación."
 ];
