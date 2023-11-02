@@ -129,6 +129,7 @@ class Coordinates extends Component
         $this->certificate->name_y = $this->name_['y'];
         $this->certificate->name_color = $this->name_['color'];
         $this->certificate->name_size = $this->name_['size'];
+        dd($this->name_['font']);
         $this->certificate->name_font = explode("public/",$this->name_['font'] ?? $this->default_font)[1];
 
         $this->certificate->hour_x = $this->hour_['x'];
