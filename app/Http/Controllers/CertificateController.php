@@ -64,7 +64,7 @@ class CertificateController extends Controller
 
         $image->save();
 
-        dd(explode("storage/",$temp));
+        dd(explode("storage\\",$temp));
 
         $temp = Storage::url(explode("storage/",$temp)[1]);
 
