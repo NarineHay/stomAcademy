@@ -64,7 +64,7 @@ class CertificateController extends Controller
 
         $image->save();
 
-        $temp = explode("public/",$temp)[1];
+        $temp = str_replace(array("/", "\\", ":", "*", "?", "«", "<", ">", "|"), "-", $temp);
 
         return response()->download($temp);
     }
