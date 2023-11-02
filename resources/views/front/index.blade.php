@@ -45,7 +45,9 @@
                                      class="videoPic-index"
                                      style="width: 100%; height: 192px; object-fit: cover;   border-radius: 12px;">
                                 <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
+                                    @if($course->directions->first())
                                     <p class="text-primary text-uppercase f-700 fs-10">{{$course->directions->first()->title}}</p>
+                                    @endif
                                     <h5 class="f-700 fs-21 videoTxt-index">{{$course->info->title}}</h5>
                                     <div class="mt-2 min-h-48">
                                         <i class="far fa-clock me-1"></i> <span
@@ -109,8 +111,10 @@
                                     <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}" alt="addPic"
                                          style="width: 386px; height: 214px; object-fit: cover " class="img-swip">
                                     <div class="p-3">
+                                        @if($course->directions->first())
                                         <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
-                                        <p class="f-700 fs-16 min-h-75 courseTxt-index">{{$course->info->title}}</p>
+                                        @endif
+                                            <p class="f-700 fs-16 min-h-75 courseTxt-index">{{$course->info->title}}</p>
                                         <div class="mt-2 d-flex justify-content-between">
                                             <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
                                                 <span>
@@ -258,7 +262,9 @@
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}"
                                      style="width: 100%; height: 150px; object-fit: cover" alt="notePic">
                                 <div class="d-flex flex-column p-3">
+                                    @if($course->directions)
                                     <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->first()->title}}</p>
+                                    @endif
                                     <p class="f-700 mt-1 mb-0 fs-16 min-h-120 min-h-72-1200 min-h-72-992">{{$webinar->info->title}}</p>
                                     <div class="d-flex align-items-center  min-h-42">
                                         <img
