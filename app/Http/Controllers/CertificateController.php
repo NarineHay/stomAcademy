@@ -64,6 +64,8 @@ class CertificateController extends Controller
 
         $image->save();
 
+        dd($temp);
+
         return response()->download($temp);
     }
 }
