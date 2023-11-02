@@ -66,6 +66,8 @@ class CertificateController extends Controller
 
         $temp = str_replace(array("/", "\\", ":", "*", "?", "«", "<", ">", "|"), "-", $temp);
 
+        $temp = explode("-public-",$temp)[1];
+
         return response()->download($temp);
     }
 }
