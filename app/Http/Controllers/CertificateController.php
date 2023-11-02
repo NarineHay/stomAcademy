@@ -64,7 +64,7 @@ class CertificateController extends Controller
 
         $image->save();
 
-        dd($temp);
+        $temp = explode("public/",$temp)[1];
 
         return response()->download($temp);
     }
