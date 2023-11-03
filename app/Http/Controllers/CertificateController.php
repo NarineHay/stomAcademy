@@ -64,7 +64,7 @@ class CertificateController extends Controller
 
         $image->save();
 
-        $temp = Storage::url(explode("storage\\",$temp)[1]);
+        $temp = Storage::url(explode("storage/",$temp)[1]);
 
         return response()->download(public_path($temp));
     }
