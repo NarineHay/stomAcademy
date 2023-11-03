@@ -63,10 +63,11 @@ class CertificateController extends Controller
         }
 
         $image->save();
-        
 
-        $temp = Storage::url(explode("storage\\",$temp)[1]);
+        $p = explode("\\",$temp);
 
-        return response()->download(public_path($temp));
+        $img = array_pop($p);
+
+        return response()->download($img);
     }
 }
