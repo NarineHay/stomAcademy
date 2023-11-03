@@ -68,6 +68,6 @@ class CertificateController extends Controller
 
         $img = array_pop($p);
 
-        return response()->download($img);
+        return response()->download(public_path($img));
     }
 }
