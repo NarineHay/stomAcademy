@@ -34,7 +34,7 @@ class CertificateController extends Controller
             $certificate = Certificate::find($id);
         }
         $imagePath = Storage::url($certificate->images->where('lg_id',\App\Helpers\LG::get())->first()->image);
-        $temp = public_path("storage\\certificates\\".Str::random(16).".jpg");
+        $temp = public_path("\\storage\\certificates\\".Str::random(16).".jpg");
         copy(public_path($imagePath),$temp);
         $image = Image::make($temp);
 
@@ -64,10 +64,10 @@ class CertificateController extends Controller
 
         $image->save();
 
-        $p = explode("\\",$temp);
+        dd(explode("storage\\",$temp));
 
-        $img = array_pop($p);
+        $temp = Storage::url(explode("storage\\",$temp)[1]);
 
-        return response()->download(public_path($img));
+        return response()->download(public_path($temp));
     }
 }
