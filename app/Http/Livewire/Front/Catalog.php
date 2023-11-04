@@ -11,6 +11,7 @@ use App\Models\Direction;
 use App\Models\User;
 use App\Models\Webinar;
 use App\Models\WebinarDirection;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -62,7 +63,20 @@ class Catalog extends Component
         }
 
         $data['directions'] = Direction::all();
-        $data['lectors'] = User::query()->where("role",User::ROLE_LECTOR)->get();
+
+        $ids = User::query()->where("role",User::ROLE_LECTOR)
+            ->join("lector_infos",function (JoinClause $join){
+                $join->on("lector_infos.user_id","users.id")
+                    ->where("lector_infos.lg_id",LG::get());
+            })
+            ->where("enabled",1)
+            ->pluck("user_id")
+            ->values();
+
+        $data['lectors'] = User::query()->whereIn("id",$ids)
+            ->get();
+
+
         return view('livewire.front.catalog',$data);
     }
 

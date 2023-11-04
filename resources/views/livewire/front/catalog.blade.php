@@ -162,7 +162,7 @@
                                         @foreach($course->getLectors()->take(3) as $k => $lector)
                                             <img
                                                 src="{{ \Illuminate\Support\Facades\Storage::url($lector->userInfo->image) }}"
-                                                style="width: 48px;height: 48px;object-fit: cover"
+                                                style="width: 48px;min-width: 48px;height: 48px;object-fit: cover"
                                                 class="@if ($k>0) m-25 @endif rounded-circle border" alt="personPic">
                                         @endforeach
                                         @if($course->getLectors()->count() == 1)
@@ -263,11 +263,11 @@
                             class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-2">
                         <div class="mt-2">
-                            @foreach($lectors as $user)
-                                <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}"
-                                       value="{{ $user->id }}" class="mt-2 cursor">
-                                <label for="lec-{{ $user->id }}"
-                                       class="f-500 fs-14 cursor">{{ $user->userInfo->fullName }}</label><br>
+                            @foreach($lectors->unique() as $user)
+                                    <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}"
+                                           value="{{ $user->id }}" class="mt-2 cursor">
+                                    <label for="lec-{{ $user->id }}"
+                                           class="f-500 fs-14 cursor">{{ $user->userInfo->fullName }}</label><br>
                             @endforeach
                         </div>
                     </div>

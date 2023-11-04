@@ -113,7 +113,6 @@
                                     @endif
                                 </div>
                             </div>
-
                             @if($course->info->description != null && $course->info->description != '<p><br></p>')
                                 <div class="about-course-txt d-lg-block d-none">
                                     <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
@@ -121,7 +120,8 @@
                                         {!! $course->info->description !!}
                                     </p>
                                 </div>
-                            @else
+                            @endif
+                            @if(!$course->webinars)
                                 <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">
                                     <div class="duration mt-2 d-flex flex-row">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
@@ -181,6 +181,7 @@
                                         <p class="fs-18 ms-2">Безлимитный просмотр</p>
                                     </div>
                                 </div>
+
                             @endif
 
                             <!-- <div id="course-program" class="main3">
@@ -615,6 +616,21 @@
                         </div>
                     </div>
                 </div>
+            @else
+                <div id="course-program" class="main3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mt-1 mt-lg-0">
+                                    <h3 class="f-700 m-0 lh-40 pb-2">{{ __("courses.menu.program") }}</h3>
+                                    <div class="mt-2">
+                                        {!! $course->info->program !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endif
             <div id="lectors" class="main4">
                 <div class="container">
@@ -633,8 +649,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-12 order-0 order-lg-1">
-                                    <div class="image mt-2 br-12 w-100 h-100"
-                                         style="background-image: url({{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }})">
+                                    <div class="image mt-2 br-12 w-100 h-100">
+                                        <img style="height: auto!important;" src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}">
                                     </div>
                                 </div>
                             </div>

@@ -248,6 +248,7 @@ let webinar_video_modal = document.getElementById("courseTrailersModal");
 if (webinar_video_modal) {
     let main_video_div = webinar_video_modal.querySelector(".main_video_div");
     let player_absolute_divs = webinar_video_modal.querySelectorAll(".js-player-absolute-div");
+
     // let webinar_video_players = webinar_video_modal.querySelectorAll(".webinar_video_player");
     let player_titles = webinar_video_modal.querySelectorAll(".webinar_video_player p");
     let player_iframes = webinar_video_modal.querySelectorAll(".webinar_video_player .plyr iframe");

@@ -1,4 +1,4 @@
-<div class="position-absolute webinar_messages_livewire_div w-100 sms" style="height: 100vh;">
+<div class="webinar_messages_livewire_div w-100 sms">
     <div class="webinar_messages_parent_div">
         @foreach($messages as $message)
             <div class="webinar_message_txt_div d-flex flex-row align-items-center ">
@@ -31,7 +31,7 @@
         @endforeach
     </div>
 
-    <div class="position-absolute bottom-330px bottom-210px w-100">
+    <div class=" bottom-330px bottom-210px w-100">
         <hr class="m-0">
         <div class="position-relative  mb-2">
             <input wire:model="message" wire:keydown.enter="new_message"
