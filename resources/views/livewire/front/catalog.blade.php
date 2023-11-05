@@ -218,7 +218,7 @@
             <div>
                 <div class="mt-4 ms-3 pt-5">
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
-                           data-bs-toggle="collapse" data-bs-target="#fg-1"><span>Области</span><i
+                           data-bs-toggle="collapse" data-bs-target="#fg-1"><span>{{ __("courses.filters.directions") }}</span><i
                             class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-1">
                         <div class="mt-2">
@@ -245,21 +245,21 @@
                 </div>
                 <div class="mt-4 ms-3">
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
-                           data-bs-toggle="collapse" data-bs-target="#fg-3"><span>Оплата</span><i
+                           data-bs-toggle="collapse" data-bs-target="#fg-3"><span>{{ __("courses.filters.price") }}</span><i
                             class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-3">
                         <div class="mt-2">
                             <input type="checkbox" id="vehicle13" name="vehicle1" class="mt-2 cursor">
-                            <label for="vehicle13" class="f-500 fs-14 cursor">Оплаченный</label><br>
+                            <label for="vehicle13" class="f-500 fs-14 cursor">{{ __("courses.filters.paid") }}</label><br>
                             <input type="checkbox" id="vehicle14" name="vehicle2" class="mt-2 cursor">
-                            <label for="vehicle14" class="f-500 fs-14 cursor">Бесплатно</label><br>
+                            <label for="vehicle14" class="f-500 fs-14 cursor">{{ __("courses.filters.free") }}</label><br>
                         </div>
 
                     </div>
                 </div>
                 <div class="mt-4 ms-3">
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
-                           data-bs-toggle="collapse" data-bs-target="#fg-2"><span>Преподаватели</span><i
+                           data-bs-toggle="collapse" data-bs-target="#fg-2"><span>{{ __("courses.filters.lector") }}</span><i
                             class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-2">
                         <div class="mt-2">

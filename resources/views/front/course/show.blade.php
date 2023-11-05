@@ -446,7 +446,7 @@
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Выбрать уроки</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">{{ __("courses.select_webinar") }}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                             </div>
@@ -495,7 +495,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer d-none">
-                                <h5><span class="me-2">Итого (<span class="co">0</span>)</span><span
+                                <h5><span class="me-2">{{ __("courses.total") }} (<span class="co">0</span>)</span><span
                                         class="total"></span> <i class="icon-{{ \App\Helpers\TEXT::curHtml() }}"></i>
                                 </h5>
                                 <button class="btn btn-primary buyButton">{{ __("index.buy_webinar") }}</button>
@@ -865,36 +865,36 @@
                     </div>
                     <div class="swiper AdditionsSwiper">
                         <div class="swiper-wrapper">
-                            @foreach($courses as $course)
-                                @if($course->info->enabled)
+                            @foreach($courses as $course_)
+                                @if($course_->info->enabled)
                                     <div class="swiper-slide">
-                                        <a href="{{ route("course.show",$course->id) }}" style="color: inherit"
+                                        <a href="{{ route("course.show",$course_->id) }}" style="color: inherit"
                                            class="d-block bg-white br-12">
-                                            <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}"
+                                            <img src="{{\Illuminate\Support\Facades\Storage::url($course_->image)}}"
                                                  alt="addPic"
                                                  style="width: 386px; height: 214px; object-fit: cover">
                                             <div class="p-3">
-                                                <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
-                                                <p class="f-700 fs-16 min-h-96">{{$course->info->title}}</p>
+                                                <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course_->directions->first()->title}}</p>
+                                                <p class="f-700 fs-16 min-h-96">{{$course_->info->title}}</p>
                                                 <div class="mt-2 d-flex justify-content-between">
                                                     <div>
                                                         <i class="far fa-clock me-1"></i> <span
-                                                            class="me-2 fs-14 f-500">{{$course->getDuration()}}</span>
-                                                        <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
+                                                            class="me-2 fs-14 f-500">{{$course_->getDuration()}}</span>
+                                                        <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course_->webinars_count}} видео</span>
                                                     </div>
                                                 </div>
                                                 <div
                                                     class="d-flex justify-content-between mt-2 mb-1 align-items-center">
-                                                    @if($course->getLectors()->count() == 1)
+                                                    @if($course_->getLectors()->count() == 1)
                                                         <div class="d-flex align-items-center">
                                                             <img class="rounded-circle border-white me-3 img_r_42"
-                                                                 src="{{ \Illuminate\Support\Facades\Storage::url($course->getLectors()->first()->lector->photo) }}"
+                                                                 src="{{ \Illuminate\Support\Facades\Storage::url($course_->getLectors()->first()->lector->photo) }}"
                                                                  alt="videoPic">
                                                             {{--                                                        <p class="m-0 f-500 fs-16">{{ $course->getLectors()->first()->userInfo->fullName }}</p>--}}
                                                         </div>
                                                     @else
                                                         <div>
-                                                            @foreach($course->getLectors() as $k => $user)
+                                                            @foreach($course_->getLectors() as $k => $user)
                                                                 <img
                                                                     src="{{ \Illuminate\Support\Facades\Storage::url($user->lector->photo ?? $user->userInfo->image) }}"
                                                                     class="@if ($k>0) m-25 @endif me-1 rounded-circle img_r_42"
@@ -904,20 +904,20 @@
                                                     @endif
                                                     <span class="price_box">
 
-                                        @if($course->sale)
+                                        @if($course_->sale)
                                                             <span
-                                                                class="f-700 text-primary fs-16 me-1">{{ $course->sale->html() }}</span>
+                                                                class="f-700 text-primary fs-16 me-1">{{ $course_->sale->html() }}</span>
                                                             <span
-                                                                class="f-700 del text-secondary fs-16">{{$course->price->html()}}</span>
+                                                                class="f-700 del text-secondary fs-16">{{$course_->price->html()}}</span>
                                                         @else
                                                             <span
-                                                                class="f-700 text-primary fs-16 me-1">{{ $course->price->html() }}</span>
+                                                                class="f-700 text-primary fs-16 me-1">{{ $course_->price->html() }}</span>
                                                         @endif
                                     </span>
                                                 </div>
                                                 <form method="POST" action="{{route('addToCart')}}">
                                                     @csrf
-                                                    <input type="hidden" value="{{ $course->id }}" name="id">
+                                                    <input type="hidden" value="{{ $course_->id }}" name="id">
                                                     <input type="hidden" value="course" name="type">
                                                     <button
                                                         class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __("courses.by_course") }}

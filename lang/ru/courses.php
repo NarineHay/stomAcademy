@@ -20,7 +20,10 @@ return [
         "directions" => "Области",
         "price" => "Оплата",
         "lector" => "Преподаватели",
+        "paid" => "Оплаченный",
+        "free" => "Бесплатно"
     ],
+    "total" => "Итого",
     "under_title" => "Курс из :COUNT лекций",
     "under_title_web" => "Онлайн лекция",
     "start" => "Старт",

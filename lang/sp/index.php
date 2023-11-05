@@ -1,6 +1,7 @@
 <?php
 
 return [
+    "cp" => "© Servicio de formación dental Stom-Academy - sitio web para dentistas, 2016 – 2023",
     "all_directions" => "Todas las especializaciones",
     "popular_courses" => "Cursos populares	",
     "show_all" => "Ver todos",

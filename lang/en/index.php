@@ -1,6 +1,7 @@
 <?php
 
 return [
+    "cp" => "© Dental training service Stom-Academy - website for dentists, 2016 – 2023",
     "all_directions" => "All specializations",
     "popular_courses" => "Popular Courses",
     "show_all" => "View All",

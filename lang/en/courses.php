@@ -20,7 +20,10 @@ return [
         "directions" => "Categories",
         "price" => "Payment",
         "lector" => "Lecturers",
+        "paid" => "Paid",
+        "free" => "Free"
     ],
+    "total" => "Total",
     "under_title" => "Course of: COUNT lectures",
     "under_title_web" => "Online lecture",
     "start" => "Beginning",

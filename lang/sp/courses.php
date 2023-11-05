@@ -20,7 +20,10 @@ return [
         "directions" => "Áreas de estudio",
         "price" => "Pago",
         "lector" => "Profesores",
+        "paid" => "Pagado",
+        "free" => "Gratis"
     ],
+    "total" => "Total",
     "under_title" => "Un curso de: COUNT de lecturas",
     "under_title_web" => "conferencia en línea",
     "start" => "Inicio",
