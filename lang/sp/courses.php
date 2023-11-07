@@ -27,6 +27,7 @@ return [
     "under_title" => "Un curso de: COUNT de lecturas",
     "under_title_web" => "conferencia en línea",
     "start" => "Inicio",
+    "start_text" => "Disponible para ver después de la compra",
     "desc_title" => "Breve información sobre el curso en línea",
     "price_all" => "Precio del curso completo",
     "free" => "conferencia ( gratuita )",
@@ -36,7 +37,9 @@ return [
     "by_course" => "Comprar el curso",
     "by_lecture" => "Comprar una conferencia",
     "certificate" => "Certificado",
+    "infinity" => "Unlimited viewing",
     "by" => "Compre",
+    "money_back" => "Garantía de reemplazo o devolución de dinero de 7 días",
     "lections" => "Lecturas",
     "menu" => [
         "about" => "Sobre el curso",

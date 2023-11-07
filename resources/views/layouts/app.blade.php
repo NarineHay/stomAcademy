@@ -210,9 +210,7 @@
             class="row d-flex flex-column-reverse flex-lg-row justify-content-between align-items-lg-center py-3">
             <div class="col-md-7">
                 <div>
-                    <p class="fs-12 f-500 m-0">© Сервис обучения врачей<br class="d-block d-lg-none">стоматологов
-                        Stom-Academy - сайт<br class="d-block d-lg-none"> для стоматологов,
-                        2016 – 2023</p>
+                    <p class="fs-12 f-500 m-0">{{ __("index.cp") }}</p>
                 </div>
             </div>
             <div

@@ -27,6 +27,7 @@ return [
     "under_title" => "Course of: COUNT lectures",
     "under_title_web" => "Online lecture",
     "start" => "Beginning",
+    "start_text" => "Available to view after purchase",
     "desc_title" => "Summary of the online course",
     "price_all" => "Price for the full course",
     "free" => "lecture ( free )",
@@ -36,7 +37,9 @@ return [
     "by_course" => "Buy course",
     "by_lecture" => "Buy lecture",
     "certificate" => "Certificate",
+    "infinity" => "Visualización ilimitada",
     "by" => "Buy",
+    "money_back" => "7-Day Replacement or Money Back Guarantee",
     "lections" => "lectures",
     "menu" => [
         "about" => "About course",
