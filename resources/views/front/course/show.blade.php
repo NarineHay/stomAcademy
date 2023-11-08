@@ -17,7 +17,7 @@
                         <div class="about-course1">
                             <h1 class="text-white fw-bolder fs-24 lh-30">{{ $course->info->title }}</h1>
                             @if($course->webinars)
-                                <p class="text-white fs-13">{{ $course->webinars->count() }} {{ __("courses.under_title") }}</p>
+                                <p class="text-white fs-13"> {{ __("courses.under_title",['count' => $course->webinars->count()]) }}</p>
                             @endif
                             <div class="d-flex flex-row">
                                 <div class="images">
@@ -50,7 +50,11 @@
                             </div>
                             <div class="txts1 d-xxl-none d-flex flex-row mt-3 align-items-center mb-2 text-white pb-3">
                                 <p class="txts-1-title me-1 mb-0 fs-14 lh-17 f-500 text-white">{{ __("courses.start") }}</p>
-                                <p class="mb-0 fs-14 lh-17 f-700 text-white">{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
+                                @if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp())
+                                    <p class="mb-0 fs-14 lh-17 f-700 text-white">{{ __("courses.start_text") }}</p>
+                                @else
+                                    <p class="mb-0 fs-14 lh-17 f-700 text-white">{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -59,60 +63,228 @@
 
             <div class="main2">
                 <div class="backgraund-wite"
-                     style="width: 100%; background: white; height: 311px; position: absolute;"></div>
+                     style="width: 100%; background: white;">
+                    <div class="container eng-doctors-txt sss" style="background: white">
+                        <div class="row  bg-white">
+                            <div class="d-none d-lg-block col-12 col-lg-8">
+                                <div class="about-course1">
+                                    <h1 class="text-primary fw-bolder fs-30 lh-40">{{ $course->info->title }}</h1>
+                                    @if($course->webinars)
+                                        <p>{{ __("courses.under_title",['count' => $course->webinars->count()]) }}</p>
+                                    @else
+                                        <p>{{ __("courses.under_title_web") }}</p>
+                                    @endif
+                                    <div class="d-flex flex-row">
+                                        <div class="images">
+                                            @foreach($course->getLectors() as $lector)
+                                                <img
+                                                    src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}"
+                                                    alt="avatar3.png">
+                                            @endforeach
+                                        </div>
+                                        <div class="txts d-flex flex-row">
+                                            <div class="txts1">
+                                                <p class="txts-1-title">{{ __("courses.filters.lector") }}</p>
+                                                <a href="#lectors">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <p class="p-name">{{ $course->getLectors()->first()->userInfo->fullName }}</p>
+                                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                  d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
+                                                                  fill="#232323"/>
+                                                        </svg>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="txts1 d-xxl-block d-none">
+                                                <p class="txts-1-title">{{ __("courses.start") }}</p>
+                                                @if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp())
+                                                    <p>{{ __("courses.start_text") }}</p>
+                                                @else
+                                                    <p>{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
+                                                @endif
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="txts1 d-xxl-none d-flex flex-row mt-3 align-items-center">
+                                        <p class="txts-1-title me-1 mb-0 fs-14 lh-17 f-500">{{ __("courses.start") }}</p>
+                                        @if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp())
+                                            <p class="mb-0 fs-14 lh-17 f-700">{{ __("courses.start_text") }}</p>
+                                        @else
+                                            <p class="mb-0 fs-14 lh-17 f-700">{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4 position-relative">
+                                <div class="card course_card_static">
+                                    <div class="card-body">
+                                        <div class="img_video video_block position-relative">
+                                            {{--                                        @php--}}
+                                            {{--                                            $x = explode("/",$course->video);--}}
+                                            {{--                                            $preview = 'https://img.youtube.com/vi/'.array_pop($x).'/hqdefault.jpg';--}}
+                                            {{--                                        @endphp--}}
+
+
+
+
+                                            @if($course->info->video_invitation || $course->video)
+                                                <div id="player"
+                                                     class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
+                                                    <iframe style="z-index: 1;left: 0" class="position-absolute d-none"
+                                                            width="100%"
+                                                            height="100%"
+                                                            src="{{ $course->info->video_invitation ?? $course->video}}"
+                                                            {{--                                                        &vq=hd1080--}}
+                                                            title="Walter Devoto about Stom Academy." frameborder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                            allowfullscreen></iframe>
+                                                </div>
+                                                @if($course->webinars)
+                                                    <div
+                                                        class="video_modal_button cp top-0 w-100 h-100 position-absolute"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#courseTrailersModal"></div>
+                                                @endif
+                                            @else
+                                                @if($course->bg_image)
+                                                    <img class="img_preview"
+                                                         src="{{ \Illuminate\Support\Facades\Storage::url($course->bg_image) }}">
+                                                @else
+                                                    <div class="img_preview_gray_bg w-100 "
+                                                         style="height: 233px; background-color: rgba(0,0,0,0.4)"></div>
+                                                @endif
+                                            @endif
+                                            {{--                                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls"></div>--}}
+
+
+                                            {{--                                        <div--}}
+                                            {{--                                            class="video_play cursor position-absolute ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3" style="left: 50%;top: 50%;transform: translate(-50%,-50%)">--}}
+                                            {{--                                            <i class="fas fa-play"></i>--}}
+                                            {{--                                        </div>--}}
+                                        </div>
+                                        <div class="card-txts">
+                                            {{--                                    <p class="fs-25 card-title-txt fw-bolder">{{ $course->info->title }}</p>--}}
+                                            <p class="m-0 text-secondary fs-14 f-500 card-price-txt">{{ __("courses.price_all") }}</p>
+                                            <h3 class="f-700 mt-0 text-primary">
+                                                @if($course->sale)
+                                                    <span>{{ $course->sale->html() }}</span>
+                                                    <span>/</span>
+                                                    <span
+                                                        class="del">{{ $course->price->html() }}</span>
+                                                @else
+                                                    <span>{{ $course->price->html() }}</span>
+                                                @endif
+                                            </h3>
+                                            <!-- <p class="f-500 fs-14 lh-17 mb-2">
+                                            @if($course->webinars)
+                                                {{ $course->webinars->count() }} {{ __("courses.under_title") }}
+                                                <span class="text-primary">1 {{ __("courses.free") }}</span></p>
+                                        <p class="f-500 fs-14 lh-17 mb-3">{{ __("courses.dop") }}</p>
+
+
+
+
+
+
+
+
+
+
+
+                                            @endif -->
+                                            <p class="f-500 fs-14 lh-17 mb-2">{{ __("courses.money_back") }}</p>
+
+                                        </div>
+
+                                        <form method="POST" action="{{route('addToCart')}}" class="course-card-form">
+                                            @csrf
+                                            <input type="hidden" value="{{ $course->id }}" name="id">
+                                            <input type="hidden" value="webinar" name="type">
+                                            @if($course->webinars)
+                                                <div
+                                                    class="course-card-form-div d-flex justify-content-between flex-column flex-lg-row mb-3 ff">
+                                                    {{--                                                <div class="form-check">--}}
+                                                    {{--                                                    <input type="checkbox" class="mr-1 form-check-input ">--}}
+                                                    {{--                                                    <label--}}
+                                                    {{--                                                        class="form-check-label fs-14">1 {{ __("courses.free") }}</label>--}}
+                                                    {{--                                                </div>--}}
+                                                    <div class="form-check">
+                                                        <input type="checkbox" checked=""
+                                                               class="mr-1 form-check-input">
+                                                        <label
+                                                            class="form-check-label  fs-14">{{ __("courses.all_course") }}
+                                                            ({{ $course->sale->rub ?? $course->price->html() }})</label>
+                                                    </div>
+                                                </div>
+                                                <button type="button" data-bs-toggle="modal"
+                                                        data-bs-target="#webinarSelectModal"
+                                                        class="btn btn-outline-primary w-100 py-2 fs-16 f-600 br-12 mb-3 lh-20">
+                                                    {{ __("courses.select_webinar") }}
+                                                </button>
+                                                <button class="btn btn-primary py-2 w-100 fs-16 f-600 br-12 mb-3 lh-20">
+                                                    {{ __("courses.by_course") }}
+                                                </button>
+                                            @else
+                                                <button class="btn btn-primary py-2 w-100 fs-16 f-600 br-12 mb-3 lh-20">
+                                                    {{ __("courses.by_lecture") }}
+                                                </button>
+                                            @endif
+
+
+                                        </form>
+
+                                        <div class="d-flex flex-row flex-wrap justify-content-between div-icons">
+                                            <div class="mb-2">
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M9.99992 2.50004C5.85778 2.50004 2.49992 5.8579 2.49992 10C2.49992 14.1422 5.85778 17.5 9.99992 17.5C14.1421 17.5 17.4999 14.1422 17.4999 10C17.4999 5.8579 14.1421 2.50004 9.99992 2.50004ZM0.833252 10C0.833252 4.93743 4.93731 0.833374 9.99992 0.833374C15.0625 0.833374 19.1666 4.93743 19.1666 10C19.1666 15.0626 15.0625 19.1667 9.99992 19.1667C4.93731 19.1667 0.833252 15.0626 0.833252 10Z"
+                                                          fill="#191F70"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M9.99992 4.16671C10.4602 4.16671 10.8333 4.5398 10.8333 5.00004V9.48501L13.7059 10.9214C14.1176 11.1272 14.2844 11.6277 14.0786 12.0394C13.8728 12.451 13.3722 12.6179 12.9606 12.4121L9.62724 10.7454C9.34492 10.6042 9.16658 10.3157 9.16658 10V5.00004C9.16658 4.5398 9.53968 4.16671 9.99992 4.16671Z"
+                                                          fill="#191F70"/>
+                                                </svg>
+                                                <span
+                                                    class="ms-2 f-500 fs-14 lh-20">{{ $course->getDuration() }}</span>
+                                            </div>
+
+                                            <div class="mb-2">
+                                                <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M1.23223 1.56561C1.70107 1.09677 2.33696 0.833374 3 0.833374H9.66667C9.88768 0.833374 10.0996 0.921171 10.2559 1.07745L15.2559 6.07745C15.4122 6.23373 15.5 6.44569 15.5 6.66671V16.6667C15.5 17.3297 15.2366 17.9656 14.7678 18.4345C14.2989 18.9033 13.663 19.1667 13 19.1667H3C2.33696 19.1667 1.70107 18.9033 1.23223 18.4345C0.763392 17.9656 0.5 17.3297 0.5 16.6667V3.33337C0.5 2.67033 0.763392 2.03445 1.23223 1.56561ZM3 2.50004C2.77899 2.50004 2.56702 2.58784 2.41074 2.74412C2.25446 2.9004 2.16667 3.11236 2.16667 3.33337V16.6667C2.16667 16.8877 2.25446 17.0997 2.41074 17.256C2.56702 17.4122 2.77899 17.5 3 17.5H13C13.221 17.5 13.433 17.4122 13.5893 17.256C13.7455 17.0997 13.8333 16.8877 13.8333 16.6667V7.01188L9.32149 2.50004H3Z"
+                                                          fill="#191F70"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M9.66667 0.833374C10.1269 0.833374 10.5 1.20647 10.5 1.66671V5.83337H14.6667C15.1269 5.83337 15.5 6.20647 15.5 6.66671C15.5 7.12694 15.1269 7.50004 14.6667 7.50004H9.66667C9.20643 7.50004 8.83333 7.12694 8.83333 6.66671V1.66671C8.83333 1.20647 9.20643 0.833374 9.66667 0.833374Z"
+                                                          fill="#191F70"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M4.66667 12.5C4.66667 12.0398 5.03976 11.6667 5.5 11.6667H10.5C10.9602 11.6667 11.3333 12.0398 11.3333 12.5C11.3333 12.9603 10.9602 13.3334 10.5 13.3334H5.5C5.03976 13.3334 4.66667 12.9603 4.66667 12.5Z"
+                                                          fill="#191F70"/>
+                                                </svg>
+                                                <span
+                                                    class="ms-2 f-500 fs-14 lh-20">{{ __("courses.certificate") }}</span>
+                                            </div>
+                                            <div class="d-flex">
+                                                <i class="fal fa-infinity" style="color: #191F70; font-size:20px;"></i>
+                                                <p class="ms-2 f-500 fs-14 lh-20">{{ __("courses.infinity") }}</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="container eng-doctors-txt sss">
                     <div class="row">
                         <div class="d-none d-lg-block col-12 col-lg-8">
-                            <div class="about-course1">
-                                <h1 class="text-primary fw-bolder fs-30 lh-40">{{ $course->info->title }}</h1>
-                                @if($course->webinars)
-                                    <p>{{ __("courses.under_title",['count' => $course->webinars->count()]) }}</p>
-                                @else
-                                    <p>{{ __("courses.under_title_web") }}</p>
-                                @endif
-                                <div class="d-flex flex-row">
-                                    <div class="images">
-                                        @foreach($course->getLectors() as $lector)
-                                            <img
-                                                src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}"
-                                                alt="avatar3.png">
-                                        @endforeach
-                                    </div>
-                                    <div class="txts d-flex flex-row">
-                                        <div class="txts1">
-                                            <p class="txts-1-title">{{ __("courses.filters.lector") }}</p>
-                                            <a href="#lectors">
-                                                <div class="d-flex flex-row align-items-center">
-                                                    <p class="p-name">{{ $course->getLectors()->first()->userInfo->fullName }}</p>
-                                                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                                              d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"
-                                                              fill="#232323"/>
-                                                    </svg>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="txts1 d-xxl-block d-none">
-                                            <p class="txts-1-title">{{ __("courses.start") }}</p>
-                                            @if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp())
-                                                <p>{{ __("courses.start_text") }}</p>
-                                            @else
-                                                <p>{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
-                                            @endif
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="txts1 d-xxl-none d-flex flex-row mt-3 align-items-center">
-                                    <p class="txts-1-title me-1 mb-0 fs-14 lh-17 f-500">{{ __("courses.start") }}</p>
-                                    @if(\Illuminate\Support\Carbon::make($course->start_date)->getTimestamp() < \Illuminate\Support\Carbon::now()->getTimestamp())
-                                        <p class="mb-0 fs-14 lh-17 f-700">{{ __("courses.start_text") }}</p>
-                                    @else
-                                        <p class="mb-0 fs-14 lh-17 f-700">{{ \Illuminate\Support\Carbon::make($course->start_date)->translatedFormat("M d, Y") }}</p>
-                                    @endif
-                                </div>
-                            </div>
                             @if($course->info->description != null && $course->info->description != '<p><br></p>')
                                 <div class="about-course-txt d-lg-block d-none">
                                     <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
@@ -122,7 +294,7 @@
                                 </div>
                             @endif
                             @if(!$course->webinars)
-                                <div class="d-flex flex-row flex-wrap align-items-center justify-content-between">
+                                <div class="d-flex flex-row flex-wrap align-items-center course-icons">
                                     <div class="duration mt-2 d-flex flex-row">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
                                              viewBox="0 0 40 40" fill="none">
@@ -153,18 +325,18 @@
                                         </svg>
                                         <p class="fs-18 ms-2">{{ __("courses.certificate") }}</p>
                                     </div>
-                                    <div class="pocket mt-2 d-flex flex-row">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="40"
-                                             viewBox="0 0 38 40" fill="none">
-                                            <path
-                                                d="M36.9544 20.5217C36.7567 20.3216 36.5157 20.1696 36.25 20.0773V7.77604C36.25 6.56979 35.2687 5.58854 34.0625 5.58854H29.945L26.9556 0.316665C26.9142 0.243214 26.8583 0.178946 26.7912 0.127764C26.7242 0.0765807 26.6475 0.0395497 26.5657 0.0189177C26.484 -0.00171434 26.3989 -0.00551706 26.3156 0.00774028C26.2323 0.0209976 26.1526 0.0510386 26.0812 0.09604L17.3056 5.58854H5.3125C3.89562 5.58854 2.56313 6.14166 1.55813 7.14604C0.553125 8.15041 0 9.48479 0 10.901V35.5885C0 38.0004 1.96312 39.9635 4.375 39.9635H31.875C34.2869 39.9635 36.25 38.0004 36.25 35.5885V29.8485C36.6145 29.7201 36.9303 29.4819 37.1542 29.1668C37.378 28.8517 37.4988 28.475 37.5 28.0885V21.8385C37.5021 21.5937 37.4548 21.3509 37.3611 21.1246C37.2673 20.8984 37.129 20.6933 36.9544 20.5217ZM33.4888 11.8385L32.4256 9.96354H34.0625C34.3894 9.96354 34.7081 9.88166 35 9.74354V12.0579C34.708 11.9151 34.3875 11.8401 34.0625 11.8385H33.4888ZM34.0625 6.83854C34.248 6.83868 34.4293 6.89379 34.5836 6.99691C34.7378 7.10004 34.858 7.24654 34.929 7.41794C35.0001 7.58933 35.0187 7.77793 34.9826 7.95991C34.9465 8.14189 34.8573 8.3091 34.7262 8.44042C34.5496 8.61526 34.3111 8.7134 34.0625 8.71354H31.7169L30.6538 6.83854H34.0625ZM26.1906 1.50166L27.9456 4.59667C27.2269 5.11667 26.2806 5.21979 25.0612 4.90167C24.9138 4.86253 24.7698 4.81153 24.6306 4.74917C24.5555 4.71609 24.4746 4.69813 24.3926 4.69631C24.3106 4.69449 24.229 4.70885 24.1525 4.73856C23.998 4.79857 23.8737 4.91749 23.8069 5.06917C23.7401 5.22084 23.7363 5.39283 23.7963 5.54731C23.8563 5.7018 23.9752 5.82611 24.1269 5.89292C24.3375 5.98542 24.5537 6.06229 24.7494 6.11229C25.3169 6.25979 25.85 6.33354 26.3469 6.33354C27.1931 6.33354 27.935 6.11854 28.5681 5.69292L32.0537 11.8398H30.0625L27.84 8.24229C27.7616 8.11517 27.6403 8.02032 27.498 7.97492C27.3557 7.92952 27.2019 7.93657 27.0644 7.99479C25.175 8.79729 23.1231 8.34042 22.2969 6.93479C22.2541 6.86233 22.1972 6.7992 22.1296 6.74916C22.0619 6.69913 21.9849 6.66321 21.9031 6.64354C21.8214 6.62366 21.7364 6.62067 21.6534 6.63475C21.5705 6.64882 21.4913 6.67968 21.4206 6.72541L13.4419 11.8385H9.67688L26.1906 1.50166ZM28.5919 11.8385H15.7581L21.5931 8.09791C22.7887 9.51291 24.9625 10.0148 27.045 9.33479L28.5919 11.8385ZM5.3125 11.8385C5.06437 11.8385 4.8225 11.7392 4.64813 11.5648C4.51725 11.4334 4.42822 11.2662 4.39227 11.0843C4.35632 10.9023 4.37507 10.7138 4.44614 10.5425C4.51721 10.3712 4.63742 10.2248 4.79161 10.1218C4.9458 10.0187 5.12705 9.96368 5.3125 9.96354H10.3162L7.32063 11.8385H5.3125ZM2.44187 8.03042C2.81783 7.65192 3.26513 7.35174 3.75787 7.14726C4.25061 6.94279 4.77902 6.83807 5.3125 6.83917H15.3088L12.3131 8.71416H5.3125C4.88007 8.71483 4.45752 8.8435 4.09811 9.08395C3.7387 9.3244 3.45852 9.66587 3.29289 10.0653C3.12726 10.4648 3.08358 10.9043 3.16738 11.3285C3.25117 11.7528 3.45868 12.1427 3.76375 12.4492C4.17543 12.8583 4.73206 13.0884 5.3125 13.0892H34.0625C34.248 13.0893 34.4293 13.1444 34.5836 13.2475C34.7378 13.3507 34.858 13.4972 34.929 13.6686C35.0001 13.84 35.0187 14.0286 34.9826 14.2105C34.9465 14.3925 34.8573 14.5597 34.7262 14.691C34.5496 14.8659 34.3111 14.964 34.0625 14.9642H5.3125C4.23546 14.9628 3.20292 14.5344 2.44134 13.7728C1.67976 13.0112 1.25132 11.9787 1.25 10.9017C1.24907 10.3681 1.35393 9.83956 1.55851 9.34673C1.76309 8.85389 2.06333 8.4065 2.44187 8.03042ZM1.25 35.5885V14.3173C1.7475 14.911 2.36906 15.3884 3.07093 15.716C3.7728 16.0436 4.53793 16.2134 5.3125 16.2135H5.625L5.63688 38.7135H4.375C2.65188 38.7135 1.25 37.3117 1.25 35.5885ZM31.875 38.7135H6.88688L6.875 16.2135H34.0625C34.3894 16.2135 34.7081 16.1317 35 15.9935V19.9635H28.75C27.4137 19.9635 26.1587 20.4835 25.2144 21.4279C24.27 22.3723 23.75 23.6279 23.75 24.9635C23.75 27.7204 25.9931 29.9635 28.75 29.9635H35V35.5885C35 37.3117 33.5981 38.7135 31.875 38.7135ZM36.25 28.0885C36.25 28.2543 36.1842 28.4133 36.0669 28.5305C35.9497 28.6477 35.7908 28.7135 35.625 28.7135H28.75C26.6819 28.7135 25 27.0317 25 24.9635C25 23.961 25.39 23.0198 26.0981 22.3117C26.8063 21.6035 27.7475 21.2135 28.75 21.2135H35.625C35.7919 21.2135 35.9463 21.2779 36.0713 21.406C36.1286 21.4624 36.174 21.5297 36.2047 21.6041C36.2354 21.6784 36.2508 21.7581 36.25 21.8385V28.0885Z"
-                                                fill="black"/>
-                                            <path
-                                                d="M28.75 22.4635C27.3712 22.4635 26.25 23.5848 26.25 24.9635C26.25 26.3423 27.3712 27.4635 28.75 27.4635C30.1288 27.4635 31.25 26.3423 31.25 24.9635C31.25 23.5848 30.1288 22.4635 28.75 22.4635ZM28.75 26.2135C28.0606 26.2135 27.5 25.6529 27.5 24.9635C27.5 24.2742 28.0606 23.7135 28.75 23.7135C29.4394 23.7135 30 24.2742 30 24.9635C30 25.6529 29.4394 26.2135 28.75 26.2135ZM33.125 33.0885C32.9592 33.0885 32.8003 33.1544 32.6831 33.2716C32.5658 33.3888 32.5 33.5478 32.5 33.7135V34.9635C32.5 35.296 32.37 35.6092 32.1331 35.846C31.8962 36.0829 31.5825 36.2135 31.25 36.2135H25C24.8342 36.2135 24.6753 36.2794 24.5581 36.3966C24.4408 36.5138 24.375 36.6728 24.375 36.8385C24.375 37.0043 24.4408 37.1633 24.5581 37.2805C24.6753 37.3977 24.8342 37.4635 25 37.4635H31.25C31.9162 37.4635 32.5437 37.2029 33.0169 36.7298C33.25 36.4986 33.4348 36.2234 33.5607 35.9202C33.6865 35.617 33.7509 35.2918 33.75 34.9635V33.7135C33.75 33.5478 33.6842 33.3888 33.5669 33.2716C33.4497 33.1544 33.2908 33.0885 33.125 33.0885ZM22.5 36.2135H21.25C21.0842 36.2135 20.9253 36.2794 20.8081 36.3966C20.6908 36.5138 20.625 36.6728 20.625 36.8385C20.625 37.0043 20.6908 37.1633 20.8081 37.2805C20.9253 37.3977 21.0842 37.4635 21.25 37.4635H22.5C22.6658 37.4635 22.8247 37.3977 22.9419 37.2805C23.0592 37.1633 23.125 37.0043 23.125 36.8385C23.125 36.6728 23.0592 36.5138 22.9419 36.3966C22.8247 36.2794 22.6658 36.2135 22.5 36.2135ZM13.75 17.4635H8.75C8.58424 17.4635 8.42527 17.5294 8.30806 17.6466C8.19085 17.7638 8.125 17.9228 8.125 18.0885V21.2135C8.125 21.3793 8.19085 21.5383 8.30806 21.6555C8.42527 21.7727 8.58424 21.8385 8.75 21.8385C8.91576 21.8385 9.07473 21.7727 9.19194 21.6555C9.30915 21.5383 9.375 21.3793 9.375 21.2135V18.7135H13.75C13.9158 18.7135 14.0747 18.6477 14.1919 18.5305C14.3092 18.4133 14.375 18.2543 14.375 18.0885C14.375 17.9228 14.3092 17.7638 14.1919 17.6466C14.0747 17.5294 13.9158 17.4635 13.75 17.4635ZM18.125 17.4635H16.25C16.0842 17.4635 15.9253 17.5294 15.8081 17.6466C15.6908 17.7638 15.625 17.9228 15.625 18.0885C15.625 18.2543 15.6908 18.4133 15.8081 18.5305C15.9253 18.6477 16.0842 18.7135 16.25 18.7135H18.125C18.2908 18.7135 18.4497 18.6477 18.5669 18.5305C18.6842 18.4133 18.75 18.2543 18.75 18.0885C18.75 17.9228 18.6842 17.7638 18.5669 17.6466C18.4497 17.5294 18.2908 17.4635 18.125 17.4635Z"
-                                                fill="black"/>
-                                        </svg>
-                                        <p class="fs-18 ms-2">{{ __("courses.money_back") }}</p>
-                                    </div>
+                                    {{--                                    <div class="pocket mt-2 d-flex flex-row">--}}
+                                    {{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="40"--}}
+                                    {{--                                             viewBox="0 0 38 40" fill="none">--}}
+                                    {{--                                            <path--}}
+                                    {{--                                                d="M36.9544 20.5217C36.7567 20.3216 36.5157 20.1696 36.25 20.0773V7.77604C36.25 6.56979 35.2687 5.58854 34.0625 5.58854H29.945L26.9556 0.316665C26.9142 0.243214 26.8583 0.178946 26.7912 0.127764C26.7242 0.0765807 26.6475 0.0395497 26.5657 0.0189177C26.484 -0.00171434 26.3989 -0.00551706 26.3156 0.00774028C26.2323 0.0209976 26.1526 0.0510386 26.0812 0.09604L17.3056 5.58854H5.3125C3.89562 5.58854 2.56313 6.14166 1.55813 7.14604C0.553125 8.15041 0 9.48479 0 10.901V35.5885C0 38.0004 1.96312 39.9635 4.375 39.9635H31.875C34.2869 39.9635 36.25 38.0004 36.25 35.5885V29.8485C36.6145 29.7201 36.9303 29.4819 37.1542 29.1668C37.378 28.8517 37.4988 28.475 37.5 28.0885V21.8385C37.5021 21.5937 37.4548 21.3509 37.3611 21.1246C37.2673 20.8984 37.129 20.6933 36.9544 20.5217ZM33.4888 11.8385L32.4256 9.96354H34.0625C34.3894 9.96354 34.7081 9.88166 35 9.74354V12.0579C34.708 11.9151 34.3875 11.8401 34.0625 11.8385H33.4888ZM34.0625 6.83854C34.248 6.83868 34.4293 6.89379 34.5836 6.99691C34.7378 7.10004 34.858 7.24654 34.929 7.41794C35.0001 7.58933 35.0187 7.77793 34.9826 7.95991C34.9465 8.14189 34.8573 8.3091 34.7262 8.44042C34.5496 8.61526 34.3111 8.7134 34.0625 8.71354H31.7169L30.6538 6.83854H34.0625ZM26.1906 1.50166L27.9456 4.59667C27.2269 5.11667 26.2806 5.21979 25.0612 4.90167C24.9138 4.86253 24.7698 4.81153 24.6306 4.74917C24.5555 4.71609 24.4746 4.69813 24.3926 4.69631C24.3106 4.69449 24.229 4.70885 24.1525 4.73856C23.998 4.79857 23.8737 4.91749 23.8069 5.06917C23.7401 5.22084 23.7363 5.39283 23.7963 5.54731C23.8563 5.7018 23.9752 5.82611 24.1269 5.89292C24.3375 5.98542 24.5537 6.06229 24.7494 6.11229C25.3169 6.25979 25.85 6.33354 26.3469 6.33354C27.1931 6.33354 27.935 6.11854 28.5681 5.69292L32.0537 11.8398H30.0625L27.84 8.24229C27.7616 8.11517 27.6403 8.02032 27.498 7.97492C27.3557 7.92952 27.2019 7.93657 27.0644 7.99479C25.175 8.79729 23.1231 8.34042 22.2969 6.93479C22.2541 6.86233 22.1972 6.7992 22.1296 6.74916C22.0619 6.69913 21.9849 6.66321 21.9031 6.64354C21.8214 6.62366 21.7364 6.62067 21.6534 6.63475C21.5705 6.64882 21.4913 6.67968 21.4206 6.72541L13.4419 11.8385H9.67688L26.1906 1.50166ZM28.5919 11.8385H15.7581L21.5931 8.09791C22.7887 9.51291 24.9625 10.0148 27.045 9.33479L28.5919 11.8385ZM5.3125 11.8385C5.06437 11.8385 4.8225 11.7392 4.64813 11.5648C4.51725 11.4334 4.42822 11.2662 4.39227 11.0843C4.35632 10.9023 4.37507 10.7138 4.44614 10.5425C4.51721 10.3712 4.63742 10.2248 4.79161 10.1218C4.9458 10.0187 5.12705 9.96368 5.3125 9.96354H10.3162L7.32063 11.8385H5.3125ZM2.44187 8.03042C2.81783 7.65192 3.26513 7.35174 3.75787 7.14726C4.25061 6.94279 4.77902 6.83807 5.3125 6.83917H15.3088L12.3131 8.71416H5.3125C4.88007 8.71483 4.45752 8.8435 4.09811 9.08395C3.7387 9.3244 3.45852 9.66587 3.29289 10.0653C3.12726 10.4648 3.08358 10.9043 3.16738 11.3285C3.25117 11.7528 3.45868 12.1427 3.76375 12.4492C4.17543 12.8583 4.73206 13.0884 5.3125 13.0892H34.0625C34.248 13.0893 34.4293 13.1444 34.5836 13.2475C34.7378 13.3507 34.858 13.4972 34.929 13.6686C35.0001 13.84 35.0187 14.0286 34.9826 14.2105C34.9465 14.3925 34.8573 14.5597 34.7262 14.691C34.5496 14.8659 34.3111 14.964 34.0625 14.9642H5.3125C4.23546 14.9628 3.20292 14.5344 2.44134 13.7728C1.67976 13.0112 1.25132 11.9787 1.25 10.9017C1.24907 10.3681 1.35393 9.83956 1.55851 9.34673C1.76309 8.85389 2.06333 8.4065 2.44187 8.03042ZM1.25 35.5885V14.3173C1.7475 14.911 2.36906 15.3884 3.07093 15.716C3.7728 16.0436 4.53793 16.2134 5.3125 16.2135H5.625L5.63688 38.7135H4.375C2.65188 38.7135 1.25 37.3117 1.25 35.5885ZM31.875 38.7135H6.88688L6.875 16.2135H34.0625C34.3894 16.2135 34.7081 16.1317 35 15.9935V19.9635H28.75C27.4137 19.9635 26.1587 20.4835 25.2144 21.4279C24.27 22.3723 23.75 23.6279 23.75 24.9635C23.75 27.7204 25.9931 29.9635 28.75 29.9635H35V35.5885C35 37.3117 33.5981 38.7135 31.875 38.7135ZM36.25 28.0885C36.25 28.2543 36.1842 28.4133 36.0669 28.5305C35.9497 28.6477 35.7908 28.7135 35.625 28.7135H28.75C26.6819 28.7135 25 27.0317 25 24.9635C25 23.961 25.39 23.0198 26.0981 22.3117C26.8063 21.6035 27.7475 21.2135 28.75 21.2135H35.625C35.7919 21.2135 35.9463 21.2779 36.0713 21.406C36.1286 21.4624 36.174 21.5297 36.2047 21.6041C36.2354 21.6784 36.2508 21.7581 36.25 21.8385V28.0885Z"--}}
+                                    {{--                                                fill="black"/>--}}
+                                    {{--                                            <path--}}
+                                    {{--                                                d="M28.75 22.4635C27.3712 22.4635 26.25 23.5848 26.25 24.9635C26.25 26.3423 27.3712 27.4635 28.75 27.4635C30.1288 27.4635 31.25 26.3423 31.25 24.9635C31.25 23.5848 30.1288 22.4635 28.75 22.4635ZM28.75 26.2135C28.0606 26.2135 27.5 25.6529 27.5 24.9635C27.5 24.2742 28.0606 23.7135 28.75 23.7135C29.4394 23.7135 30 24.2742 30 24.9635C30 25.6529 29.4394 26.2135 28.75 26.2135ZM33.125 33.0885C32.9592 33.0885 32.8003 33.1544 32.6831 33.2716C32.5658 33.3888 32.5 33.5478 32.5 33.7135V34.9635C32.5 35.296 32.37 35.6092 32.1331 35.846C31.8962 36.0829 31.5825 36.2135 31.25 36.2135H25C24.8342 36.2135 24.6753 36.2794 24.5581 36.3966C24.4408 36.5138 24.375 36.6728 24.375 36.8385C24.375 37.0043 24.4408 37.1633 24.5581 37.2805C24.6753 37.3977 24.8342 37.4635 25 37.4635H31.25C31.9162 37.4635 32.5437 37.2029 33.0169 36.7298C33.25 36.4986 33.4348 36.2234 33.5607 35.9202C33.6865 35.617 33.7509 35.2918 33.75 34.9635V33.7135C33.75 33.5478 33.6842 33.3888 33.5669 33.2716C33.4497 33.1544 33.2908 33.0885 33.125 33.0885ZM22.5 36.2135H21.25C21.0842 36.2135 20.9253 36.2794 20.8081 36.3966C20.6908 36.5138 20.625 36.6728 20.625 36.8385C20.625 37.0043 20.6908 37.1633 20.8081 37.2805C20.9253 37.3977 21.0842 37.4635 21.25 37.4635H22.5C22.6658 37.4635 22.8247 37.3977 22.9419 37.2805C23.0592 37.1633 23.125 37.0043 23.125 36.8385C23.125 36.6728 23.0592 36.5138 22.9419 36.3966C22.8247 36.2794 22.6658 36.2135 22.5 36.2135ZM13.75 17.4635H8.75C8.58424 17.4635 8.42527 17.5294 8.30806 17.6466C8.19085 17.7638 8.125 17.9228 8.125 18.0885V21.2135C8.125 21.3793 8.19085 21.5383 8.30806 21.6555C8.42527 21.7727 8.58424 21.8385 8.75 21.8385C8.91576 21.8385 9.07473 21.7727 9.19194 21.6555C9.30915 21.5383 9.375 21.3793 9.375 21.2135V18.7135H13.75C13.9158 18.7135 14.0747 18.6477 14.1919 18.5305C14.3092 18.4133 14.375 18.2543 14.375 18.0885C14.375 17.9228 14.3092 17.7638 14.1919 17.6466C14.0747 17.5294 13.9158 17.4635 13.75 17.4635ZM18.125 17.4635H16.25C16.0842 17.4635 15.9253 17.5294 15.8081 17.6466C15.6908 17.7638 15.625 17.9228 15.625 18.0885C15.625 18.2543 15.6908 18.4133 15.8081 18.5305C15.9253 18.6477 16.0842 18.7135 16.25 18.7135H18.125C18.2908 18.7135 18.4497 18.6477 18.5669 18.5305C18.6842 18.4133 18.75 18.2543 18.75 18.0885C18.75 17.9228 18.6842 17.7638 18.5669 17.6466C18.4497 17.5294 18.2908 17.4635 18.125 17.4635Z"--}}
+                                    {{--                                                fill="black"/>--}}
+                                    {{--                                        </svg>--}}
+                                    {{--                                        <p class="fs-18 ms-2">{{ __("courses.money_back") }}</p>--}}
+                                    {{--                                    </div>--}}
                                     <div class="video mt-2 d-flex flex-row">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="37"
                                              viewBox="0 0 40 37" fill="none">
@@ -184,224 +356,8 @@
 
                             @endif
 
-                            <!-- <div id="course-program" class="main3">
-                    <div class="container">
-                        <div class="row">
-{{--                            <div class="col-xl-7 col-12">--}}
-                            <div class="col-12">
-                                <div class="mt-4 mt-lg-0">
-                                    <h3 class="f-700 m-0 lh-40 pb-2">{{ __("courses.menu.program") }}</h3>
-                                    <div class="mt-2">
-{{--                                        @foreach($course->webinars_object as $k => $webinar)--}}
-                            {{--                            <div class="accordion accordion-flush">--}}
-                            {{--                                <div class="accordion-item br-12">--}}
-                            {{--                                    <h2 class="accordion-header">--}}
-                            {{--                                        <button class="accordion-button collapsed" type="button"--}}
-                            {{--                                                data-bs-toggle="collapse"--}}
-                            {{--                                                data-bs-target="#flush-collapseOne-{{ $webinar->id }}"--}}
-                            {{--                                                                aria-expanded="false"--}}
-                            {{--                                                                aria-controls="flush-collapseOne">--}}
-                            {{--                                                            <div class="d-flex align-items-md-center flex-column flex-md-row w-100">--}}
-                            {{--                                                                <div class="d-flex" style="flex:0 0 30%">--}}
-                            {{--                                                                    <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>--}}
-                            {{--                                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>--}}
-                            {{--                                                                </div>--}}
-                            {{--                                                                <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">--}}
-                            {{--                                                                    <img--}}
-                            {{--                                                                        src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"--}}
-                            {{--                                                                        class="me-2 videoPic img_r_42 rounded-5"--}}
-                            {{--                                                                        alt="videoPic">--}}
-                            {{--                                                                    <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>--}}
-                            {{--                                                                </div>--}}
-                            {{--                                                                <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">--}}
-                            {{--                                                                    <i class="far fa-clock me-1"></i>--}}
-                            {{--                                                                    <span--}}
-                            {{--                                                                        class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>--}}
-                            {{--                                                                </div>--}}
-                            {{--                                                                <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between" style="flex:0 0 10%">--}}
-                            {{--                                                                    <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>--}}
-                            {{--                                                                    <div--}}
-                            {{--                                                                        class="btn btn-outline-primary py-2 px-3 br-12 fs-14 f-600 me-3 btn-buy">--}}
-                            {{--                                                                        {{ __("courses.by") }}--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-                            {{--                        </div>--}}
-                            {{--                    </button>--}}
-                            {{--                </h2>--}}
-                            {{--                <div id="flush-collapseOne-{{ $webinar->id }}"--}}
-                            {{--                                                         class="accordion-collapse collapse @if($k == 0) show @endif"--}}
-                            {{--                                                         aria-labelledby="flush-headingOne"--}}
-                            {{--                                                         data-bs-parent="#accordionFlushExample">--}}
-                            {{--                                                        <div class="accordion-body">--}}
-                            {{--                                                            <div class="p-2 py-lg-3 px-lg-5">--}}
-                            {{--                                                                {!! $webinar->info->description !!}--}}
-                            {{--                                </div>--}}
-                            {{--                            </div>--}}
-                            {{--                        </div>--}}
-                            {{--                    </div>--}}
-                            {{--                </div>--}}
-                            {{--@endforeach--}}
-                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
-
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <div class="card course_card_static">
-                                <div class="card-body">
-                                    <div class="img_video video_block position-relative">
-                                        {{--                                        @php--}}
-                                        {{--                                            $x = explode("/",$course->video);--}}
-                                        {{--                                            $preview = 'https://img.youtube.com/vi/'.array_pop($x).'/hqdefault.jpg';--}}
-                                        {{--                                        @endphp--}}
-
-
-
-
-                                        @if($course->info->video_invitation || $course->video)
-                                            <div id="player"
-                                                 class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
-                                                <iframe style="z-index: 1;left: 0" class="position-absolute d-none"
-                                                        width="100%"
-                                                        height="100%"
-                                                        src="{{ $course->info->video_invitation ?? $course->video}}"
-                                                        {{--                                                        &vq=hd1080--}}
-                                                        title="Walter Devoto about Stom Academy." frameborder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                        allowfullscreen></iframe>
-                                            </div>
-                                            @if($course->webinars)
-                                                <div class="video_modal_button cp top-0 w-100 h-100 position-absolute"
-                                                     data-bs-toggle="modal" data-bs-target="#courseTrailersModal"></div>
-                                            @endif
-                                        @else
-                                            @if($course->bg_image)
-                                                <img class="img_preview"
-                                                     src="{{ \Illuminate\Support\Facades\Storage::url($course->bg_image) }}">
-                                            @else
-                                                <div class="img_preview_gray_bg w-100 "
-                                                     style="height: 233px; background-color: rgba(0,0,0,0.4)"></div>
-                                            @endif
-                                        @endif
-                                        {{--                                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY" class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls"></div>--}}
-
-
-                                        {{--                                        <div--}}
-                                        {{--                                            class="video_play cursor position-absolute ms-2 mb-2 rounded-circle d-flex align-items-center justify-content-center icon-style3" style="left: 50%;top: 50%;transform: translate(-50%,-50%)">--}}
-                                        {{--                                            <i class="fas fa-play"></i>--}}
-                                        {{--                                        </div>--}}
-                                    </div>
-                                    <div class="card-txts">
-                                        {{--                                    <p class="fs-25 card-title-txt fw-bolder">{{ $course->info->title }}</p>--}}
-                                        <p class="m-0 text-secondary fs-14 f-500 card-price-txt">{{ __("courses.price_all") }}</p>
-                                        <h3 class="f-700 mt-0 text-primary">
-                                            @if($course->sale)
-                                                <span>{{ $course->sale->html() }}</span>
-                                                <span>/</span>
-                                                <span
-                                                    class="del">{{ $course->price->html() }}</span>
-                                            @else
-                                                <span>{{ $course->price->html() }}</span>
-                                            @endif
-                                        </h3>
-                                        <!-- <p class="f-500 fs-14 lh-17 mb-2">
-                                            @if($course->webinars)
-                                            {{ $course->webinars->count() }} {{ __("courses.under_title") }}
-                                            <span class="text-primary">1 {{ __("courses.free") }}</span></p>
-                                        <p class="f-500 fs-14 lh-17 mb-3">{{ __("courses.dop") }}</p>
-
-
-
-
-
-
-
-                                        @endif -->
-                                        <p class="f-500 fs-14 lh-17 mb-2">{{ __("courses.money_back") }}</p>
-
-                                    </div>
-
-                                    <form method="POST" action="{{route('addToCart')}}" class="course-card-form">
-                                        @csrf
-                                        <input type="hidden" value="{{ $course->id }}" name="id">
-                                        <input type="hidden" value="webinar" name="type">
-                                        @if($course->webinars)
-                                            <div
-                                                class="course-card-form-div d-flex justify-content-between flex-column flex-lg-row mb-3 ff">
-                                                {{--                                                <div class="form-check">--}}
-                                                {{--                                                    <input type="checkbox" class="mr-1 form-check-input ">--}}
-                                                {{--                                                    <label--}}
-                                                {{--                                                        class="form-check-label fs-14">1 {{ __("courses.free") }}</label>--}}
-                                                {{--                                                </div>--}}
-                                                <div class="form-check">
-                                                    <input type="checkbox" checked=""
-                                                           class="mr-1 form-check-input">
-                                                    <label
-                                                        class="form-check-label  fs-14">{{ __("courses.all_course") }}
-                                                        ({{ $course->sale->rub ?? $course->price->html() }})</label>
-                                                </div>
-                                            </div>
-                                            <button type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#webinarSelectModal"
-                                                    class="btn btn-outline-primary w-100 py-2 fs-16 f-600 br-12 mb-3 lh-20">
-                                                {{ __("courses.select_webinar") }}
-                                            </button>
-                                            <button class="btn btn-primary py-2 w-100 fs-16 f-600 br-12 mb-3 lh-20">
-                                                {{ __("courses.by_course") }}
-                                            </button>
-                                        @else
-                                            <button class="btn btn-primary py-2 w-100 fs-16 f-600 br-12 mb-3 lh-20">
-                                                {{ __("courses.by_lecture") }}
-                                            </button>
-                                        @endif
-
-
-                                    </form>
-
-                                    <div class="d-flex flex-row flex-wrap justify-content-between div-icons">
-                                        <div class="mb-2">
-                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                      d="M9.99992 2.50004C5.85778 2.50004 2.49992 5.8579 2.49992 10C2.49992 14.1422 5.85778 17.5 9.99992 17.5C14.1421 17.5 17.4999 14.1422 17.4999 10C17.4999 5.8579 14.1421 2.50004 9.99992 2.50004ZM0.833252 10C0.833252 4.93743 4.93731 0.833374 9.99992 0.833374C15.0625 0.833374 19.1666 4.93743 19.1666 10C19.1666 15.0626 15.0625 19.1667 9.99992 19.1667C4.93731 19.1667 0.833252 15.0626 0.833252 10Z"
-                                                      fill="#191F70"/>
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                      d="M9.99992 4.16671C10.4602 4.16671 10.8333 4.5398 10.8333 5.00004V9.48501L13.7059 10.9214C14.1176 11.1272 14.2844 11.6277 14.0786 12.0394C13.8728 12.451 13.3722 12.6179 12.9606 12.4121L9.62724 10.7454C9.34492 10.6042 9.16658 10.3157 9.16658 10V5.00004C9.16658 4.5398 9.53968 4.16671 9.99992 4.16671Z"
-                                                      fill="#191F70"/>
-                                            </svg>
-                                            <span
-                                                class="ms-2 f-500 fs-14 lh-20">{{ $course->getDuration() }}</span>
-                                        </div>
-
-                                        <div class="mb-2">
-                                            <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                      d="M1.23223 1.56561C1.70107 1.09677 2.33696 0.833374 3 0.833374H9.66667C9.88768 0.833374 10.0996 0.921171 10.2559 1.07745L15.2559 6.07745C15.4122 6.23373 15.5 6.44569 15.5 6.66671V16.6667C15.5 17.3297 15.2366 17.9656 14.7678 18.4345C14.2989 18.9033 13.663 19.1667 13 19.1667H3C2.33696 19.1667 1.70107 18.9033 1.23223 18.4345C0.763392 17.9656 0.5 17.3297 0.5 16.6667V3.33337C0.5 2.67033 0.763392 2.03445 1.23223 1.56561ZM3 2.50004C2.77899 2.50004 2.56702 2.58784 2.41074 2.74412C2.25446 2.9004 2.16667 3.11236 2.16667 3.33337V16.6667C2.16667 16.8877 2.25446 17.0997 2.41074 17.256C2.56702 17.4122 2.77899 17.5 3 17.5H13C13.221 17.5 13.433 17.4122 13.5893 17.256C13.7455 17.0997 13.8333 16.8877 13.8333 16.6667V7.01188L9.32149 2.50004H3Z"
-                                                      fill="#191F70"/>
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                      d="M9.66667 0.833374C10.1269 0.833374 10.5 1.20647 10.5 1.66671V5.83337H14.6667C15.1269 5.83337 15.5 6.20647 15.5 6.66671C15.5 7.12694 15.1269 7.50004 14.6667 7.50004H9.66667C9.20643 7.50004 8.83333 7.12694 8.83333 6.66671V1.66671C8.83333 1.20647 9.20643 0.833374 9.66667 0.833374Z"
-                                                      fill="#191F70"/>
-                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                      d="M4.66667 12.5C4.66667 12.0398 5.03976 11.6667 5.5 11.6667H10.5C10.9602 11.6667 11.3333 12.0398 11.3333 12.5C11.3333 12.9603 10.9602 13.3334 10.5 13.3334H5.5C5.03976 13.3334 4.66667 12.9603 4.66667 12.5Z"
-                                                      fill="#191F70"/>
-                                            </svg>
-                                            <span class="ms-2 f-500 fs-14 lh-20">{{ __("courses.certificate") }}</span>
-                                        </div>
-                                        <div class="d-flex">
-                                            <i class="fal fa-infinity" style="color: #191F70; font-size:20px;"></i>
-                                            <p class="ms-2 f-500 fs-14 lh-20">{{ __("courses.infinity") }}</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
                         <div class="col-12 d-block d-lg-none">
                             <div class="section-menu d-block d-lg-none mt-4">
                                 <ul class="pb-3">
@@ -473,16 +429,19 @@
                                             <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between"
                                                  style="flex:0 0 10%">
                                                 @if($webinar->sale)
-                                                    <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center" style="gap: 5px">
+                                                    <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
+                                                       style="gap: 5px">
                                                         <span>{{ $webinar->sale->html() }} </span>
-                                                        <del class="fs-16 f-700 align-middle strikethrough">{{ $webinar->price->html() }}</del>
+                                                        <del
+                                                            class="fs-16 f-700 align-middle strikethrough">{{ $webinar->price->html() }}</del>
                                                     </p>
                                                 @else
-                                                    <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center" style="gap: 5px">
+                                                    <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
+                                                       style="gap: 5px">
                                                         <span>{{ $webinar->price->html() }}</span>
                                                     </p>
                                                 @endif
-{{--                                                <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>--}}
+                                                {{--                                                <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>--}}
 
 
                                                 <input name="item_id[]" value="{{ $webinar->id }}" type="checkbox"
@@ -501,15 +460,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- <div class="container">
-                  <div class="about-course-txt d-lg-block d-none">
-                                <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
-                                <p class="fs-16 lh-27 f-500 mb-0">
-                                    {!! $course->info->description !!}
-                </p>
-            </div>
-            </div> -->
                 <div id="course-program" class="main3">
                     <div class="container">
                         <div class="row">
@@ -530,6 +480,8 @@
                                                 {{--                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"--}}
                                                 {{--                                                            allowfullscreen></iframe>--}}
                                                 {{--                                                </div>--}}
+
+
                                                 <div class="accordion accordion-flush">
                                                     <div class="accordion-item br-12">
                                                         <h2 class="accordion-header position-relative">
@@ -562,12 +514,15 @@
                                                                         class="d-flex align-items-center mt-4 mt-md-0 justify-content-between"
                                                                         style="flex:0 0 10%">
                                                                         @if($webinar->sale)
-                                                                            <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center" style="gap: 5px">
+                                                                            <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
+                                                                               style="gap: 5px">
                                                                                 <span>{{ $webinar->sale->html() }} </span>
-                                                                                <del class="fs-16 f-700 align-middle strikethrough">{{ $webinar->price->html() }}</del>
+                                                                                <del
+                                                                                    class="fs-16 f-700 align-middle strikethrough">{{ $webinar->price->html() }}</del>
                                                                             </p>
                                                                         @else
-                                                                            <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center" style="gap: 5px">
+                                                                            <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
+                                                                               style="gap: 5px">
                                                                                 <span>{{ $webinar->price->html() }}</span>
                                                                             </p>
                                                                         @endif
@@ -616,14 +571,64 @@
                 </div>
             @else
                 <div id="course-program" class="main3">
-                    <div class="container">
+                    <div class="container bg-white br-12">
                         <div class="row">
                             <div class="col-12">
                                 <div class="mt-1 mt-lg-0">
-                                    <h3 class="f-700 m-0 lh-40 pb-2">{{ __("courses.menu.program") }}</h3>
-                                    <div class="mt-2">
-                                        {!! $course->info->program !!}
+                                    <h2 class="accordion-header position-relative"
+                                        style="border-bottom: 1px solid #E6E6E6; padding: 16px">
+                                        <div class="accordion-button collapsed" type="button"
+                                             data-bs-toggle="collapse"
+                                             data-bs-target="#flush-collapseOne-{{ $course->id }}"
+                                             aria-expanded="false"
+                                             aria-controls="flush-collapseOne">
+                                            <div
+                                                class="d-flex align-items-md-center flex-column flex-md-row w-100 justify-content-between">
+                                                <div class="d-flex" style="flex:0 0 35%">
+                                                    <p class="fs-16 f-500 m-0 color-23">#</p>
+                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap webinar-name-p-mobile">{{ $course->info->title }}</p>
+                                                </div>
+                                                <div class="d-flex align-items-center mt-3 mt-md-0"
+                                                     style="flex:0 0 25%">
+                                                    <img
+                                                        src="{{ \Illuminate\Support\Facades\Storage::url($course->user->lector->photo) }}"
+                                                        class="me-2 videoPic img_r_42 rounded-5"
+                                                        alt="videoPic">
+                                                    <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $course->user->userInfo->fullName }}</p>
+                                                </div>
+                                                <div class="d-flex d-none d-lg-block"
+                                                     style="flex:0 0 20%">
+                                                    <i class="far fa-clock me-1"></i>
+                                                    <span
+                                                        class="me-2 f-500 f-14">{{ $course->getDuration() }}</span>
+                                                </div>
+                                                <div
+                                                    class="d-flex align-items-center mt-4 mt-md-0 justify-content-between"
+                                                    style="flex:0 0 10%">
+                                                    @if($course->sale)
+                                                        <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
+                                                           style="gap: 5px">
+                                                            <span>{{ $course->sale->html() }} </span>
+                                                            <del
+                                                                class="fs-16 f-700 align-middle strikethrough">{{ $course->price->html() }}</del>
+                                                        </p>
+                                                    @else
+                                                        <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
+                                                           style="gap: 5px">
+                                                            <span>{{ $course->price->html() }}</span>
+                                                        </p>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </h2>
+                                    <div class="p-2 py-lg-3 px-lg-5">
+                                        <h3 class="f-700 m-0 lh-40 pb-2">{{ __("courses.menu.program") }}</h3>
+                                        <div class="mt-2">
+                                            {!! $course->info->program !!}
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -648,7 +653,8 @@
                                 </div>
                                 <div class="col-lg-5 col-12 order-0 order-lg-1">
                                     <div class="image mt-2 br-12 w-100 h-100">
-                                        <img style="height: auto!important;" src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}">
+                                        <img style="height: auto!important;"
+                                             src="{{ \Illuminate\Support\Facades\Storage::url($lector->lector->photo) }}">
                                     </div>
                                 </div>
                             </div>

@@ -46,7 +46,7 @@
                                      style="width: 100%; height: 192px; object-fit: cover;   border-radius: 12px;">
                                 <div class="d-flex flex-column ms-0 ms-xxl-4 mt-3 mt-xxl-0">
                                     @if($course->directions->first())
-                                    <p class="text-primary text-uppercase f-700 fs-10">{{$course->directions->first()->title}}</p>
+                                        <p class="text-primary text-uppercase f-700 fs-10">{{$course->directions->first()->title}}</p>
                                     @endif
                                     <h5 class="f-700 fs-21 videoTxt-index">{{$course->info->title}}</h5>
                                     <div class="mt-2 min-h-48">
@@ -112,9 +112,9 @@
                                          style="width: 386px; height: 214px; object-fit: cover " class="img-swip">
                                     <div class="p-3">
                                         @if($course->directions->first())
-                                        <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
+                                            <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$course->directions->first()->title}}</p>
                                         @endif
-                                            <p class="f-700 fs-16 min-h-75 courseTxt-index">{{$course->info->title}}</p>
+                                        <p class="f-700 fs-16 min-h-75 courseTxt-index">{{$course->info->title}}</p>
                                         <div class="mt-2 d-flex justify-content-between">
                                             <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
                                                 <span>
@@ -256,47 +256,106 @@
             <div class="row flex-nowrap flex-md-wrap mt-5">
                 @foreach($webinars as $webinar)
                     @if($webinar->info->enabled)
-                        <a class="col-10 col-md-3 col-xxl-2 mt-3 d-block" style="color: inherit"
-                           href="{{ route("webinar.show",$webinar->id) }}">
-                            <div class="bg-white br-12">
-                                <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}"
-                                     style="width: 100%; height: 150px; object-fit: cover" alt="notePic">
-                                <div class="d-flex flex-column p-3">
-                                    @if($course->directions)
-                                    <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->first()->title}}</p>
+                        {{--                        <a class="col-10 col-md-3 col-xxl-2 mt-3 d-block" style="color: inherit"--}}
+                        {{--                           href="{{ route("webinar.show",$webinar->id) }}">--}}
+                        {{--                            <div class="bg-white br-12">--}}
+                        {{--                                <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}"--}}
+                        {{--                                     style="width: 100%; height: 150px; object-fit: cover" alt="notePic">--}}
+                        {{--                                <div class="d-flex flex-column p-3">--}}
+                        {{--                                    @if($course->directions)--}}
+                        {{--                                    <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->first()->title}}</p>--}}
+                        {{--                                    @endif--}}
+                        {{--                                    <p class="f-700 mt-1 mb-0 fs-16 min-h-120 min-h-72-1200 min-h-72-992">{{$webinar->info->title}}</p>--}}
+                        {{--                                    <div class="d-flex align-items-center  min-h-42">--}}
+                        {{--                                        <img--}}
+                        {{--                                            src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}"--}}
+                        {{--                                            class="me-2 rounded-circle" alt="customerPic"--}}
+                        {{--                                            style="width: 30px;height: 30px;object-fit: cover">--}}
+                        {{--                                        <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>--}}
+                        {{--                                    </div>--}}
+                        {{--                                    <div--}}
+                        {{--                                        class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">--}}
+                        {{--                                        <div class="d-flex flex-row flex-md-column mb-3 mb-md-0 min-h-50">--}}
+                        {{--                                            @if($webinar->sale)--}}
+                        {{--                                                <span--}}
+                        {{--                                                    class="f-700 text-primary fs-16 me-1">{{ $webinar->sale->html() }}</span>--}}
+                        {{--                                                <span--}}
+                        {{--                                                    class="f-700 text-secondary del fs-16">{{$webinar->price->html()}}</span>--}}
+                        {{--                                            @else--}}
+                        {{--                                                <span--}}
+                        {{--                                                    class="f-700 text-primary fs-16 me-1">{{ $webinar->price->html() }}</span>--}}
+                        {{--                                            @endif--}}
+                        {{--                                        </div>--}}
+                        {{--                                        <form method="POST" action="{{ route('addToCart') }}">--}}
+                        {{--                                            @csrf--}}
+                        {{--                                            <input type="hidden" value="{{ $webinar->id }}" name="id">--}}
+                        {{--                                            <input type="hidden" value="webinar" name="type">--}}
+                        {{--                                            <button--}}
+                        {{--                                                class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">{{ __("index.buy") }}</button>--}}
+                        {{--                                        </form>--}}
+                        {{--                                    </div>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </a>--}}
+
+                        <div class=" col-10 col-md-4 col-xxl-3 mt-3 ">
+                            <a href="{{ route("webinar.show",$webinar->id) }}" style="color: inherit"
+                               class="br-12 d-block  bg-white">
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" alt="addPic"
+                                     style="width: 100%; height: 214px; object-fit: cover " class="img-swip">
+                                <div class="p-3">
+                                    @if($webinar->directions->first())
+                                        <p class="text-primary text-uppercase f-700 mt-2 fs-10">{{$webinar->directions->first()->title}}</p>
                                     @endif
-                                    <p class="f-700 mt-1 mb-0 fs-16 min-h-120 min-h-72-1200 min-h-72-992">{{$webinar->info->title}}</p>
-                                    <div class="d-flex align-items-center  min-h-42">
-                                        <img
-                                            src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}"
-                                            class="me-2 rounded-circle" alt="customerPic"
-                                            style="width: 30px;height: 30px;object-fit: cover">
-                                        <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
-                                    </div>
-                                    <div
-                                        class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mt-3">
-                                        <div class="d-flex flex-row flex-md-column mb-3 mb-md-0 min-h-50">
-                                            @if($webinar->sale)
-                                                <span
-                                                    class="f-700 text-primary fs-16 me-1">{{ $webinar->sale->html() }}</span>
-                                                <span
-                                                    class="f-700 text-secondary del fs-16">{{$webinar->price->html()}}</span>
-                                            @else
-                                                <span
-                                                    class="f-700 text-primary fs-16 me-1">{{ $webinar->price->html() }}</span>
-                                            @endif
+                                    <p class="f-700 fs-16 min-h-75 courseTxt-index">{{$webinar->info->title}}</p>
+                                    <div class="mt-2 d-flex justify-content-between">
+                                        <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
+                                                <span>
+                                                    <i class="far fa-clock me-1"></i>
+                                                    <span class="me-2 fs-14 f-500">{{$webinar->getDuration()}}</span>
+                                                </span>
+                                            <span>
+                                                    <i class="fas fa-tasks me-1"></i>
+                                                    <span class="fs-14 f-500">{{$webinar->webinars_count}} видео</span>
+                                                 </span>
                                         </div>
-                                        <form method="POST" action="{{ route('addToCart') }}">
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-2 mb-1 align-items-center">
+                                        <div class="d-flex align-items-center  min-h-42">
+                                            <img
+                                                src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->userinfo->image) }}"
+                                                class="me-2 rounded-circle" alt="customerPic"
+                                                style="width: 30px;height: 30px;object-fit: cover">
+                                            <p class="m-0 fs-14 f-500">{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</p>
+                                        </div>
+                                        <div>
+                                    <span class="price_box d-flex flex-column"
+                                          style="min-height: 50px">
+
+                                        @if($webinar->sale)
+                                            <span
+                                                class="f-700 text-primary fs-16 me-2 me-xl-0">{{ $webinar->sale->html() }}</span>
+                                            <span
+                                                class="f-700 text-secondary del fs-16">{{$webinar->price->html()}}</span>
+                                        @else
+                                            <span
+                                                class="f-700 text-primary fs-16 me-1">{{ $webinar->price->html() }}</span>
+                                        @endif
+                                    </span>
+                                        </div>
+
+                                    </div>
+                                        <form method="POST" action="{{ route('addToCart') }}" class="buy_form">
                                             @csrf
                                             <input type="hidden" value="{{ $webinar->id }}" name="id">
                                             <input type="hidden" value="webinar" name="type">
                                             <button
-                                                class="btn btn-outline-primary br-12 px-3 py-2 fs-14 f-600">{{ __("index.buy") }}</button>
+                                                class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __("index.buy") }}</button>
                                         </form>
-                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
+
                     @endif
                 @endforeach
             </div>

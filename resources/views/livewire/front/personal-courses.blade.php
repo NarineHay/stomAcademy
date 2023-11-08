@@ -1,4 +1,4 @@
-<div class="col-lg-9 pt-6">
+<div class="col-lg-9 pt-6 mobile-padding">
     <div class="pb-lg-6">
         <div class="d-flex justify-content-between">
             <h3 class="f-700 m-0">{{ __("profile.courses.page_title") }}</h3>
@@ -38,7 +38,11 @@
 {{--            </div>--}}
 
             <div class="d-block d-lg-none">
-                <i class="fal fa-search"></i>
+                <div class="position-relative">
+                    <input wire:model="search" class="form-control br-12" placeholder="{{ __("profile.certificates.search") }}">
+                    <i class="fal fa-search position-absolute top-0 end-0 mt-2 me-2"></i>
+                </div>
+
             </div>
         </div>
         <div class="row">

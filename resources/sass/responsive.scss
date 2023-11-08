@@ -221,7 +221,7 @@
     .courses-show-div {
         .main2 {
             .eng-doctors-txt {
-                background: linear-gradient(180deg, #FFFFFF 42%, #F9F9F9 40%);
+                //background: linear-gradient(180deg, #FFFFFF 42%, #F9F9F9 40%);
             }
         }
     }
@@ -343,7 +343,24 @@
 @media (max-width: 991px )  {
     .backgraund-wite {
         // height: 468px !important;
-        display: none !important;
+        //display: none !important;
+        background: inherit !important;
+    }
+    .courses-show-div{
+        .main2{
+            .course_card_static {
+                position: static;
+            }
+            .eng-doctors-txt{
+                background: inherit !important;
+                .row{
+                    background: inherit !important;
+                }
+            }
+        }
+    }
+    .mobile-padding{
+        padding-top: 50px !important;
     }
 }
 
