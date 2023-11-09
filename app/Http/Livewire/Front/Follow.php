@@ -16,6 +16,13 @@ class Follow extends Component
         'email' => 'required|email',
     ];
 
+    protected $messages = [
+        'email.required' => 'Поля обязательные для заполнения.',
+        'email.email' => 'Формат адреса электронной почты недействителен.',
+        'validation.required' => 'Поля обязательные для заполнения.',
+        'name.required' => 'Поля обязательные для заполнения.',
+    ];
+
     public function render()
     {
         return view('livewire.front.follow');

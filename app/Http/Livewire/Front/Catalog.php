@@ -47,6 +47,9 @@ class Catalog extends Component
 
     public function render()
     {
+        if(request()->has("direction_id")){
+            $this->selectedDirections[] = request()->get("direction_id");
+        }
         switch ($this->type){
             case "courses":
                 $data['courses'] = $this->getCourses();
@@ -75,7 +78,6 @@ class Catalog extends Component
 
         $data['lectors'] = User::query()->whereIn("id",$ids)
             ->get();
-
 
         return view('livewire.front.catalog',$data);
     }

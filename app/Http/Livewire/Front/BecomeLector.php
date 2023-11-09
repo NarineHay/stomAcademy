@@ -19,6 +19,13 @@ class BecomeLector extends Component
         'phone' => 'nullable',
     ];
 
+    protected $messages = [
+        'email.required' => 'Поля обязательные для заполнения.',
+        'email.email' => 'Формат адреса электронной почты недействителен.',
+        'validation.required' => 'Поля обязательные для заполнения.',
+        'name.required' => 'Поля обязательные для заполнения.',
+    ];
+
     function __construct($id = null)
     {
         parent::__construct($id);

@@ -87,14 +87,14 @@
                        style="color: inherit">
                         <img src="{{\Illuminate\Support\Facades\Storage::url($lector->userinfo->image)}}"
                              style="width: 100%; height: 300px; object-fit: cover;    object-position: top center;" alt="lecturerPic">
-                        <div class="text-black p-3">
+                        <div class="text-black p-3" style="height: 177px;    display: flex;flex-direction: column;justify-content: space-around;">
                             <p class="fs-20 f-700 text-black"> {{ $lector->userinfo->fullName }}</p>
                             {{--                            @if($lector->lector->directions)--}}
-                            <p class="text-secondary fs-14 f-500">{{$lector->directions->first()->direction->title}}</p>
+                            <p class="text-secondary fs-14 f-500">{{$lector->directions->first()->direction->title}} <i class="fal fa-layer-group"></i></p>
                             {{--                            @endif--}}
 
 
-                            <i class="fal fa-layer-group"></i><span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
+                            <span class="ms-2 fs-14 f-500">{{ $lector->webinars_count }} лекции</span>
                         </div>
                     </a>
                 </div>

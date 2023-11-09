@@ -279,3 +279,11 @@ if (webinar_video_modal) {
 
 }
 
+let send_mail  = document.querySelector('.send_mail')
+send_mail.addEventListener('click',function () {
+    setTimeout(function () {
+        document.querySelector('.success_h5').classList = 'd-none'
+    },5000)
+
+})
+
