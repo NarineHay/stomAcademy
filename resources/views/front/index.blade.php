@@ -12,7 +12,7 @@
                     {{$direction->title}}
                 </a>
             @endforeach
-            <span class="show_more btn btn-outline-primary rounded-5 fs-15 f-600 py-2 px-3">Показать еще</span>
+            <span class="show_more btn btn-outline-primary rounded-5 fs-15 f-600 py-2 px-3">{{__('index.show_more')}}</span>
         </div>
     </div>
     <!--Популярные курсы-->

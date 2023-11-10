@@ -24,6 +24,7 @@ Route::prefix("webinars")->group(function (){
 });
 
 Route::get("catalog",[\App\Http\Controllers\CourseController::class,"all"])->name("catalog");
+Route::get("conf",[\App\Http\Controllers\HomeController::class,"conf"])->name("catalog");
 
 Route::prefix("courses")->group(function (){
     Route::get("/",[\App\Http\Controllers\CourseController::class,'index'])->name("course.index");

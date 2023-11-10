@@ -796,18 +796,21 @@ a:hover {
         .card {
             border-radius: 10px;
         }
+
         .course_card_static {
             margin-top: -150px;
             position: absolute;
             width: 100%;
         }
+
         .eng-doctors-txt {
 
-.course-icons{
-    div{
-        margin: 0 15px;
-    }
-}
+            .course-icons {
+                div {
+                    margin: 0 15px;
+                }
+            }
+
             .course_left {
                 padding-right: 475px;
             }
@@ -1417,6 +1420,38 @@ a:hover {
     }
 }
 
-.other_webinars{
+.other_webinars {
     margin-top: 60vh;
+}
+
+.conf {
+    h2 {
+        margin: 30px 0 ;
+        font-size: 35px;
+        span {
+            color: #FF0000;
+        }
+
+        a {
+            color: #1E72C7;
+        }
+    }
+    p{
+        span.red{
+            color:red;
+        }
+        span{
+            font-weight: 600;
+        }
+        a{
+            color: #1E72C7;
+        }
+        .header_span{
+            text-align: center;
+            display: block;
+        }
+    }
+    .text-align-center{
+         text-align: center;
+     }
 }

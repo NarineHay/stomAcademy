@@ -10,6 +10,7 @@ use App\Models\IndexContent;
 use App\Models\User;
 use App\Models\Video;
 use App\Models\Webinar;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -35,5 +36,18 @@ class HomeController extends Controller
 
     function change_cur($cur_id){
         return back()->withCookie("currency_id",$cur_id);
+    }
+    function conf(){
+        $locale = App::currentLocale();
+
+        if (App::isLocale('ru')) {
+            return view('front.conf-ru');
+        }
+        else if (App::isLocale('en')){
+            return view('front.conf-en');
+        }else if (App::isLocale('sp')){
+            return view('front.conf-sp');
+        }
+
     }
 }

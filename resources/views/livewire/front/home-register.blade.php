@@ -33,7 +33,7 @@
         <label class="form-check-label fs-10 f-500 lh-14" style="color:#828282;">
             <input type="checkbox" value=""
                    class="me-1 mt-1 form-check-input" checked>
-            {!! __("header.form.check_text") !!}
+            {!! __("header.form.check_text", ['href'=>route('conf')]) !!}
 
         </label>
     </div>

@@ -13,11 +13,11 @@ class TEXT
     static function lectorCount($i): string
     {
         if($i % 10 == 1) {
-            return "$i лектор";
+            return "$i ". __('lectors.h2');
         }elseif($i % 10 < 5){
-            return "$i лектора";
+            return "$i ". __('lectors.h1');
         }else{
-            return "$i лекторов";
+            return "$i ". __('lectors.h3');
         }
     }
 
