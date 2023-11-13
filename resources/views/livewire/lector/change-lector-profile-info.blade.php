@@ -1,12 +1,12 @@
 <div class="col-lg-9">
     <div class="py-4 py-lg-6 mt-5 mt-lg-6">
         <div class="d-flex justify-content-between">
-            <h3 class="f-700 m-0">Профиль</h3>
+            <h3 class="f-700 m-0">{{__('profile.profile.page_title')}}</h3>
         </div>
 
         <div class="mt-3 bg-white br-12 p-4" wire:ignore>
             <label class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#profile-1">
-                <p class="m-0 f-600 fs-20">Добавить основную информацию</p>
+                <p class="m-0 f-600 fs-20">{{__('profile.profile.main_info')}}</p>
                 <i class="fal fa-angle-down fs-24"></i>
             </label>
             <div class="collapse" id="profile-1">
@@ -15,19 +15,19 @@
                         <div class="d-flex flex-column w-100">
                             <div class="d-flex flex-column flex-md-row">
                                 <div class="w-100">
-                                    <label for="name">Дата рождения</label>
+                                    <label for="name">{{__('profile.profile.bday')}}</label>
                                     <input wire:model="birth_date" name="birth_date" type="date" id="date"
                                            class="form-control mt-1">
                                 </div>
                             </div>
                             <div class="d-flex flex-column mt-3">
-                                <label for="clinic">Ваша клиника</label>
+                                <label for="clinic">{{__('profile.profile.your_clinic')}}</label>
                                 <input wire:model="hospital" name="hospital" type="text" id="clinic"
                                        class="form-control mt-1">
                             </div>
                             <div class="d-flex flex-column flex-md-row mt-3">
                                 <div class="w-100">
-                                    <label for="per_cent">% От продаж</label>
+                                    <label for="per_cent">% {{__('profile.profile.from_sale')}}</label>
                                     <input wire:model="per_of_sales" name="per_of_sales" type="number" id="per_cent"
                                            class="form-control mt-1">
                                 </div>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <div class="mt-4">
-                        <button wire:click="savePersonalData" class="btn btn-primary py-2 px-4 br-12">Сохранить</button>
+                        <button wire:click="savePersonalData" class="btn btn-primary py-2 px-4 br-12">{{__('profile.profile.save')}}</button>
                     </div>
                 </div>
             </div>
@@ -43,31 +43,31 @@
 
         <div class="mt-3 bg-white br-12 p-4" wire:ignore>
             <label class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#profile-2">
-                <p class="m-0 f-600 fs-20">Добавить рабочий стаж</p>
+                <p class="m-0 f-600 fs-20">{{__('profile.profile.add_work_experience')}}</p>
                 <i class="fal fa-angle-down fs-24"></i>
             </label>
             <div class="collapse" id="profile-2">
                 <div class="mt-4">
-                    <button wire:click="experience" class="btn btn-primary py-2 px-4 br-12">Сохранить</button>
+                    <button wire:click="experience" class="btn btn-primary py-2 px-4 br-12">{{__('profile.profile.save')}}</button>
                 </div>
             </div>
         </div>
 
         <div class="mt-3 bg-white br-12 p-4" wire:ignore>
             <label class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#profile-3">
-                <p class="m-0 f-600 fs-20">Добавить образование</p>
+                <p class="m-0 f-600 fs-20">{{__('profile.profile.add_education')}}</p>
                 <i class="fal fa-angle-down fs-24"></i>
             </label>
             <div class="collapse" id="profile-3">
                 <div class="mt-4">
-                    <button wire:click="education" class="btn btn-primary py-2 px-4 br-12">Сохранить</button>
+                    <button wire:click="education" class="btn btn-primary py-2 px-4 br-12">{{__('profile.profile.save')}}</button>
                 </div>
             </div>
         </div>
 
         <div class="mt-3 bg-white br-12 p-4" wire:ignore>
             <label class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#profile-4">
-                <p class="m-0 f-600 fs-20">Биография</p>
+                <p class="m-0 f-600 fs-20">{{__('profile.profile.biography')}}</p>
                 <i class="fal fa-angle-down fs-24"></i>
             </label>
             <div class="collapse" id="profile-4">
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="mt-4">
-                        <button wire:click="saveBiography" class="btn btn-primary py-2 px-4 br-12">Сохранить</button>
+                        <button wire:click="saveBiography" class="btn btn-primary py-2 px-4 br-12">{{__('profile.profile.save')}}</button>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
 
         <div class="mt-3 bg-white br-12 p-4" wire:ignore>
             <label class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#profile-5">
-                <p class="m-0 f-600 fs-20">Добавить интересы</p>
+                <p class="m-0 f-600 fs-20">{{__('profile.profile.directions')}}</p>
                 <i class="fal fa-angle-down fs-24"></i>
             </label>
             <div class="collapse" id="profile-5">
@@ -106,7 +106,7 @@
                         @endforeach
                     </div>
                     <div class="mt-3">
-                        <button wire:click="directions" class="btn btn-primary py-2 px-4 br-12">Сохранить</button>
+                        <button wire:click="directions" class="btn btn-primary py-2 px-4 br-12">{{__('profile.profile.save')}}</button>
                     </div>
                 </div>
             </div>

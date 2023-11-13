@@ -144,6 +144,7 @@
 
 
         <div class="row mt-4">
+
             @foreach($courses as $course)
                 @if($course->info->enabled)
                 <a href="@if($type == "webinars") {{ route("webinar.show",$course->id) }} @else {{ route("course.show",$course->id) }} @endif" style="color: inherit"
@@ -203,6 +204,7 @@
         </div>
 
         @if($count > $perPage)
+
             <button wire:click="loadNext"
                     class="d-lg-none w-100 fs-14 f-500 mt-3 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">Показать еще
             </button>

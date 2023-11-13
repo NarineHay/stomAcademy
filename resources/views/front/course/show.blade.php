@@ -133,6 +133,8 @@
                                             @if($course->info->video_invitation || $course->video)
                                                 <div id="player"
                                                      class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
+
+
                                                     <iframe style="z-index: 1;left: 0" class="position-absolute d-none"
                                                             width="100%"
                                                             height="100%"
@@ -884,7 +886,7 @@
                                                     <div>
                                                         <i class="far fa-clock me-1"></i> <span
                                                             class="me-2 fs-14 f-500">{{$course_->getDuration()}}</span>
-                                                        <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course_->webinars_count}} видео</span>
+                                                        <i class="fas fa-tasks me-1"></i> <span class="fs-14 f-500">{{$course_->webinars_count}}  {{ __("index.video") }}</span>
                                                     </div>
                                                 </div>
                                                 <div

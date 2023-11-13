@@ -12,6 +12,7 @@
                 </a>
             @endif
             <a href="{{ $href }}" class="d-flex align-items-center mb-0 user-svg user-svg-1">
+
                 @if($user->userInfo->image)
                     <img class="rounded-circle mx-lg-2" style="height: 30px;width: 30px"
                          src="{{ \Illuminate\Support\Facades\Storage::url($user->userInfo->image) }}">

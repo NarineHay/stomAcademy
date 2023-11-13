@@ -34,6 +34,8 @@ class PersonalCourses extends Component
 
     public $perPage = 9;
 
+    public $count;
+
     public $search = "";
 
     protected $paginationTheme = 'bootstrap';
@@ -73,6 +75,7 @@ class PersonalCourses extends Component
                 ->get()->map(function ($ci){ return $ci->webinar_id; }));
         }
         $webinar_q = Webinar::query()->whereIn("id",$webinar_ids);
+        $this->count = $webinar_q->count();
         $data['webinars'] = $webinar_q->paginate($this->perPage);
         $data['directions'] = Direction::all();
         return view('livewire.front.personal-courses', $data);

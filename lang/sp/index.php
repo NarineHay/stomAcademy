@@ -32,4 +32,6 @@ return [
                                7901 4TH ST N STE 300
                                 <br><br>
                                 St. Petersburg FL 33702<br>',
+    'video'=>'video',
+
 ];

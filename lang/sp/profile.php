@@ -53,8 +53,23 @@ return [
         "page_title" => "Perfil",
         "main_info" => "Añadir información básica",
         "fio" => "Nombre completo (para el certificado)",
+        "your_clinic"=>'tu clínica',
+        "from_sale"=>'De ventas',
         "bday" => "Fecha de nacimiento",
+        "save"=>"Ahorrar",
+        "add_work_experience"=>"Agregar experiencia laboral",
+        "add_education"=>"Agregar educación",
+        "biography"=>"Biografía",
         "directions" => "Añadir intereses",
+        'logout'=>"Cerrar sesión",
+        "profile_settings" => "Configuración de perfil",
+        "my_courses" => "Mis cursos",
+        "certificates" => "Certificados",
+        "purchase_history" => "Historial de compras",
+        "cart" => "Cesta",
+        "support" => "Apoyo",
+
+
     ],
     "save" => "Guardar",
     "history" => [

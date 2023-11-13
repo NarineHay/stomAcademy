@@ -30,7 +30,7 @@
             <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <i class="fal fa-sign-out"></i>
-                <a onclick="this.parentNode.submit()" href="#" class="text-decoration-none text-black fs-14 f-500">Выйти</a>
+                <a onclick="this.parentNode.submit()" href="#" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.logout')}}</a>
             </form>
         </div>
     </div>

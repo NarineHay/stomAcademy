@@ -52,7 +52,7 @@
                                     <div class="mt-2 min-h-48">
                                         <i class="far fa-clock me-1"></i> <span
                                             class="me-2 f-500 f-14">{{$course->getDuration()}}</span>
-                                        <i class="fas fa-tasks me-1"></i> <span class="f-500 f-14">{{$course->webinars_count}} видео</span>
+                                        <i class="fas fa-tasks me-1"></i> <span class="f-500 f-14">{{$course->webinars_count}} {{ __("index.video") }}</span>
                                     </div>
 
                                     <div class="d-flex align-items-center mt-3">
@@ -123,7 +123,7 @@
                                                 </span>
                                                 <span>
                                                     <i class="fas fa-tasks me-1"></i>
-                                                    <span class="fs-14 f-500">{{$course->webinars_count}} видео</span>
+                                                    <span class="fs-14 f-500">{{$course->webinars_count}} {{ __("index.video") }}</span>
                                                  </span>
                                             </div>
                                         </div>

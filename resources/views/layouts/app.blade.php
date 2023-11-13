@@ -148,7 +148,7 @@
                 </p>
             </div>
             <div class="col-12 col-lg-4 mt-lg-6 mb-2 mb-md-4 fs-20 f-600 ft-menu-a-div">
-                <a href="{{route('course.index')}}"><p>{{ __("header.menu.home") }}</p></a>
+                <a href="/"><p>{{ __("header.menu.home") }}</p></a>
                 <a href="{{route('lectors.index')}}"><p>{{ __("header.menu.lectors") }}</p></a>
                 <a href="{{route('about')}}"><p>{{ __("header.menu.about") }}</p></a>
                 <a href="{{route('blog.index')}}"><p>{{ __("header.menu.blog") }}</p></a>

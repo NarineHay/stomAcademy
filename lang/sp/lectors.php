@@ -4,7 +4,9 @@ return [
     "h1" => "Conferenciante",
     "h2" => "Conferenciante",
     "h3" => "conferenciantes",
-    "webinar_count" => "Conferencias",
+    "webinar_count1" => "Conferencia",
+    "webinar_count2" => "Conferencias",
+    "webinar_count3" => "Conferencias",
     "filter" => "Especialización",
     "min" => "min",
 ];

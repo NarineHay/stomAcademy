@@ -10,36 +10,36 @@
         <div class="d-flex mt-3">
             <i class="fal fa-pencil"></i>
             <p class="m-0 fs-14 f-500 text-secondary ms-2">
-                <a href="{{route('personal.information')}}" style="color: #7A7A7A">Настройки профиля</a>
+                <a href="{{route('personal.information')}}" style="color: #7A7A7A">{{__('profile.profile.profile_settings')}} </a>
             </p>
         </div>
     </div>
     <div>
         <div class="d-flex mb-4 mt-4">
             <i class="fal fa-play-circle me-2 "></i>
-            <a href="{{route('personal.courses')}}" class="text-decoration-none text-black fs-14 f-500">Мои курсы</a>
+            <a href="{{route('personal.courses')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.my_courses')}} </a>
         </div>
         <div class="d-flex mb-4 mt-4">
             <i class="fal fa-box-alt me-2"></i>
-            <a href="{{route('personal.certificates')}}" class="text-decoration-none text-black fs-14 f-500">Сертификаты</a>
+            <a href="{{route('personal.certificates')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.certificates')}} </a>
         </div>
         <div class="d-flex mb-4 mt-4">
             <i class="fal fa-file-certificate me-2"></i>
-            <a href="{{route('personal.history')}}" class="text-decoration-none text-black fs-14 f-500">История покупок</a>
+            <a href="{{route('personal.history')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.purchase_history')}} </a>
         </div>
         <div class="d-flex mb-4 mt-4">
             <i class="fal fa-cart-arrow-down me-2"></i>
-            <a href="{{route('personal.cart')}}" class="text-decoration-none text-black fs-14 f-500">Корзина</a>
+            <a href="{{route('personal.cart')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.cart')}} </a>
         </div>
         <div class="d-flex mb-4 mt-4">
             <i class="fal fa-comment me-2"></i>
-            <a href="{{route('personal.help')}}" class="text-decoration-none text-black fs-14 f-500">Поддержка</a>
+            <a href="{{route('personal.help')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.support')}} </a>
         </div>
         <div class="d-flex mb-4 mt-4">
             <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <i class="fal fa-sign-out"></i>
-                <a onclick="this.parentNode.submit()" href="#" class="text-decoration-none text-black fs-14 f-500">Выйти</a>
+                <a onclick="this.parentNode.submit()" href="#" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.logout')}}</a>
             </form>
         </div>
     </div>

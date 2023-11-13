@@ -24,11 +24,11 @@ class TEXT
     static function lectionCount($i): string
     {
         if($i % 10 == 1) {
-            return "$i лекция";
+            return "$i ".__('lectors.webinar_count1');
         }elseif($i % 10 < 5){
-            return "$i лекции";
+            return "$i ".__('lectors.webinar_count2');
         }else{
-            return "$i лекций";
+            return "$i ".__('lectors.webinar_count3');
         }
     }
 
