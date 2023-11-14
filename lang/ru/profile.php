@@ -68,6 +68,11 @@ return [
         "purchase_history" => "История покупок",
         "cart" => "Корзина",
         "support" => "Поддержка",
+        'webinars_courses' => 'Курсы / Вебинары',
+        'name_webinars_courses' => 'Название курса/вебинара',
+        'count_sales' => 'Кол-во продаж',
+        'percent' => 'Процент',
+
     ],
     "save" => "Сохранить",
     "history" => [

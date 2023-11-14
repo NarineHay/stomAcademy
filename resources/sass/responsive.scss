@@ -253,6 +253,11 @@
     }
 }
 
+@media(max-width: 1599px){
+    .min-width-class{
+        min-width: 770px;
+    }
+}
 @media only screen and (max-width: 1199px) and (min-width: 992px){
     .course-show-buy-btn-mobile{
         margin-right: 55px !important;
@@ -299,7 +304,9 @@
         border-bottom: 1px solid #E6E6E6;
         padding-bottom: 15px;
     }
-
+    .min-width-class{
+        min-width: 678px;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -327,6 +334,9 @@
 
     .direction-list {
         height: auto !important;
+    }
+    .min-width-class{
+        min-width: 528px;
     }
 }
 
@@ -362,6 +372,9 @@
     }
     .mobile-padding{
         padding-top: 50px !important;
+    }
+    .min-width-class{
+        min-width: 100%;
     }
 }
 

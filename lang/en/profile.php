@@ -68,6 +68,10 @@ return [
         "purchase_history" => "Purchase history",
         "cart" => "Cart",
         "support" => "Support",
+        'webinars_courses' => 'Courses / Webinars',
+        'name_webinars_courses' => 'Name of the course/webinar',
+        'count_sales' => 'Count of sales',
+        'percent' => 'Percent',
 
 
     ],

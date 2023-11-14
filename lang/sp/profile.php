@@ -68,6 +68,10 @@ return [
         "purchase_history" => "Historial de compras",
         "cart" => "Cesta",
         "support" => "Apoyo",
+        'webinars_courses' => 'Cursos / Seminarios web',
+        'name_webinars_courses' => 'Nombre del curso/seminario web',
+        'count_sales' => 'Recuento de ventas',
+        'percent' => 'Por ciento',
 
 
     ],

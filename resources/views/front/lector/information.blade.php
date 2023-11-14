@@ -12,16 +12,16 @@
                 <div class="col-lg-9">
                     <div class="py-4 py-lg-6 mt-5 mt-lg-6">
                         <div class="d-flex justify-content-between">
-                            <h3 class="f-700 m-0">Курсы / Вебинары</h3>
+                            <h3 class="f-700 m-0">{{__('profile.profile.webinars_courses')}}</h3>
                         </div>
                         <div class="card mt-5">
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Название курса/вебинара</th>
-                                        <th>Кол-во продаж</th>
-                                        <th>Процент</th>
+                                        <th>{{__('profile.profile.name_webinars_courses')}}</th>
+                                        <th>{{__('profile.profile.count_sales')}}</th>
+                                        <th>{{__('profile.profile.percent')}}</th>
                                     </tr>
                                     </thead>
 
