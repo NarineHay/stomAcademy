@@ -15,6 +15,7 @@
     <link rel="icon" href="/dist/image/aboutLogo.png">
     <link rel="stylesheet" href="/dist/icon-moon.css">
     <link rel="stylesheet" href="/dist_plyr/plyr.css">
+    <link rel="stylesheet" href="/dist/new.css">
     @vite(['resources/sass/lib.scss', 'resources/js/script.js'])
     @livewireStyles
 </head>
