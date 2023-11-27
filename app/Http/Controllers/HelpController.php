@@ -10,3 +10,4 @@ class HelpController extends Controller
         return view('front.personal.help');
     }
 }
+

@@ -7,6 +7,7 @@ return [
     "webinar_count1" => "Лекция",
     "webinar_count2" => "Лекции",
     "webinar_count3" => "Лекций",
+    "webinar_count4" => "",
     "filter" => "Направление",
     "min" => "мин",
 

@@ -72,7 +72,26 @@ new Swiper(".WatchedSwiper", {
         prevEl: ".WatchedSwiper_nav .swiper-button-prev",
     },
 });
-
+new Swiper(".OnlineSwiper", {
+    breakpoints: {
+        0: {
+            slidesPerView: 'auto',
+            spaceBetween: 20
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 20
+        },
+        1024: {
+            slidesPerView: 4,
+            spaceBetween: 20
+        }
+    },
+    navigation: {
+        nextEl: ".OnlineSwiper_nav .swiper-button-next",
+        prevEl: ".OnlineSwiper_nav .swiper-button-prev"
+    }
+});
 
 if (document.querySelector(".aside") && document.querySelector(".col-lg-8")) {
     let w = document.querySelector("body").clientWidth;
@@ -89,17 +108,19 @@ Livewire.on('image_uploaded', function () {
 })
 
 
+
 document.querySelectorAll(".video_block").forEach((video_block) => {
     let iframe = video_block.querySelector("iframe");
-    let src = iframe.getAttribute("src");
-    let video_play = video_block.querySelector(".video_play");
-    if (video_play) {
-        video_play.addEventListener("click", function () {
-            iframe.setAttribute("src", src + "?autoplay=1");
-            iframe.classList.remove("d-none");
-        });
+    if (iframe){
+        let src = iframe.getAttribute("src");
+        let video_play = video_block.querySelector(".video_play");
+        if (video_play) {
+            video_play.addEventListener("click", function () {
+                iframe.setAttribute("src", src + "?autoplay=1");
+                iframe.classList.remove("d-none");
+            });
+        }
     }
-
 });
 
 
@@ -165,12 +186,14 @@ let webinarsCalc = {
     count: 0,
     price: 0,
     init: function () {
+        console.log("asasasasasa");
         if (!document.querySelector("#webinarSelectModal")) {
             return false;
         }
         document.querySelectorAll("#webinarSelectModal .course_item").forEach((item) => {
             let input = item.querySelector("input");
             item.addEventListener("click", (e) => {
+                console.log(item);
                 if (e.target != input) {
                     input.click();
                 }
@@ -192,7 +215,6 @@ let webinarsCalc = {
                 this.price += parseInt(input.dataset.price);
             }
         })
-        console.log(footer);
         footer.querySelector(".co").textContent = this.count;
         footer.querySelector(".total").textContent = this.price;
         if (this.count > 0) {

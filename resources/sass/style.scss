@@ -801,6 +801,7 @@ a:hover {
             margin-top: -150px;
             position: absolute;
             width: 100%;
+            z-index: 9999;
         }
 
         .eng-doctors-txt {
@@ -1457,4 +1458,7 @@ a:hover {
 }
 .min-width-class{
     min-width: 865px;
+}
+.modal{
+    z-index: 9999;
 }

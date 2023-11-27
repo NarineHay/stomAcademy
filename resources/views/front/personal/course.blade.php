@@ -58,7 +58,9 @@
                 <livewire:front.personal-courses-chat :webinar_id="$webinar->id"/>
             </div>
             <div class="row other_webinars mt-2">
-                <h4 class="mb-0" style="padding-left:30px;padding-right: 30px ">Лекции из курса.</h4>
+                @if(count($other_webinars)>0)
+                    <h4 class="mb-0" style="padding-left:30px;padding-right: 30px ">Лекции из курса.</h4>
+                @endif
                 @foreach($other_webinars as $k => $webinar)
                     <a href="{{ route("personal.courses.show",$webinar->id) }}" style="color: inherit"
                        class="col-12 my-3 md-sm-0">

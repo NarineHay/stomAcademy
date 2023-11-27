@@ -7,6 +7,7 @@ return [
     "webinar_count1" => "Lecture",
     "webinar_count2" => "Lectures",
     "webinar_count3" => "Lectures",
+    "webinar_count4" => "",
     "filter" => "Section",
     "min" => "min",
 ];

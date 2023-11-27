@@ -65,6 +65,7 @@ return [
         "profile_settings" => "Настройки профиля",
         "my_courses" => "Мои курсы",
         "certificates" => "Сертификаты",
+
         "purchase_history" => "История покупок",
         "cart" => "Корзина",
         "support" => "Поддержка",

@@ -19,7 +19,12 @@
                                 {{ $lector->userinfo->fullName }}
                             </p>
                             <p class="fs-14 f-500 text-secondary text-black">{{$lector->directions->first()->direction->title}}</p>
-                            <i class="fal fa-layer-group text-black"></i><span class="ms-2 fs-14 f-500 text-black">{{ $lector->webinars_count }} {{ __("lectors.webinar_count") }}</span>
+                            @if($lector->webinars_count > 0)
+                                <i class="fal fa-layer-group text-black"></i><span class="ms-2 fs-14 f-500 text-black">{{ \App\Helpers\TEXT::lectionCount($lector->webinars_count) }}</span>
+                            @else
+                                <i class=""></i><span class="ms-2 fs-14 f-500 text-black"></span>
+                            @endif
+
                         </div>
                     </a>
                 </div>

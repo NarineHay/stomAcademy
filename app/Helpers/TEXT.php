@@ -25,9 +25,14 @@ class TEXT
     {
         if($i % 10 == 1) {
             return "$i ".__('lectors.webinar_count1');
-        }elseif($i % 10 < 5){
+        }elseif($i === 0 ){
+            return __('lectors.webinar_count4');
+        }
+        elseif($i % 10 < 5 ){
             return "$i ".__('lectors.webinar_count2');
-        }else{
+        }
+
+        else{
             return "$i ".__('lectors.webinar_count3');
         }
     }
