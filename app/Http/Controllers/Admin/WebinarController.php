@@ -14,6 +14,7 @@ use App\Models\WebinarDirection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class WebinarController extends Controller
 {
@@ -152,7 +153,12 @@ class WebinarController extends Controller
         }
 
         foreach ($request->get("title", []) as $lg_id => $title) {
-            $webinar->infos()->where("lg_id", $lg_id)->update(['title' => $title]);
+            $webinar->infos()->where("lg_id", $lg_id)->update(
+                [
+                    'title' => $title,
+                    'slug' => Str::slug($title)
+                ]
+            );
         }
 
         foreach ($request->get("description", []) as $lg_id => $desc) {

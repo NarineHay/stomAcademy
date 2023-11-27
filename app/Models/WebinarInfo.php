@@ -18,6 +18,7 @@ class WebinarInfo extends Model
         'video_invitation',
         'video',
         'webinar_id',
-        'lg_id'
+        'lg_id',
+        'slug'
     ];
 }
