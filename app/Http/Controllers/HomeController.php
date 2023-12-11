@@ -24,9 +24,9 @@ class HomeController extends Controller
         $data['courses_new'] = Course::query()->where('online',0)->whereIn("id",$content['new'])->withSum('webinars_object','duration')->withCount('webinars')->get();
 //        dd($data['courses_new']->count());
         $data['conferences'] = Course::query()->where('online',1)->whereIn("id",$content['online_co'])->withCount('webinars')->get();
-        $data['blogs'] = Blog::query()->whereIn("id",$content['articles'])->limit(4)->get();
-        $data['lectors'] = User::query()->whereIn("id",$content['lectors'])->withCount('webinars')->where("role",User::ROLE_LECTOR)->with("lector")->limit(6)->get();
-        $data['webinars'] = Webinar::query()->whereIn("id",$content['online_le'])->limit(6)->get();
+        $data['blogs'] = Blog::query()->whereIn("id",$content['articles'])->get();
+        $data['lectors'] = User::query()->whereIn("id",$content['lectors'])->withCount('webinars')->where("role",User::ROLE_LECTOR)->with("lector")->get();
+        $data['webinars'] = Webinar::query()->whereIn("id",$content['online_le'])->get();
         $data['directions'] = Direction::all();
         $data['videos'] = Video::all();
         return view("front.index", $data);
