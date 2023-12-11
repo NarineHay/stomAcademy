@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\BlogInfo;
 use App\Models\Direction;
 
 class BlogController extends Controller
@@ -14,6 +15,8 @@ class BlogController extends Controller
     }
 
     function show($id){
+        $slug= $id;
+        $id = BlogInfo::query()->where("slug",$slug)->value('blog_id');
         $data['blog'] = Blog::findOrFail($id);
         $data['blogs'] = Blog::query()->whereNot("id",$id)->orderBy('id','desc')->take(2)->get();
         return view("front.blog.show",$data);

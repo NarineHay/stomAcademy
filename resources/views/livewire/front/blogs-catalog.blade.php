@@ -3,7 +3,7 @@
         <div class="row mt-4">
             <div class="col-12 d-row d-xl-flex mb-4 mb-lg-6">
                 @if($blog_top)
-                <a href="{{route('blog.show',$blog_top->id)}}" style="color: inherit" class="d-block">
+                <a href="{{route('blog.show',$blog_top->info->slug)}}" style="color: inherit" class="d-block">
                     <div class="bg-white br-12">
                         <div>
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($blog_top->info->image) }}" class="blogs_top_img" alt="blogPic">
@@ -21,7 +21,7 @@
                 <div class="ms-0 ms-xl-5 mt-4 mt-xl-0">
                     @foreach($blogs_top as $blog)
                         @if($blog->info->enabled)
-                        <a href="{{route('blog.show',$blog->id)}}" style="color: inherit" class="d-block br-12 d-flex flex-row align-items-center mb-4">
+                        <a href="{{route('blog.show',$blog->info->slug)}}" style="color: inherit" class="d-block br-12 d-flex flex-row align-items-center mb-4">
                             <div>
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($blog->info->image) }}"
                                      alt="blogPic" style="width: 150px;height: 100px;object-fit: cover" class="br-12">

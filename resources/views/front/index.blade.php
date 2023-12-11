@@ -40,7 +40,7 @@
                 <div class="swiper-wrapper">
                     @foreach($courses as $course)
                         @if($course->info->enabled)
-                            <a href="{{ route("course.show",$course->id) }}"
+                            <a href="{{ route("course.show",$course->info->slug) }}"
                                class="p-3 swiper-slide d-flex flex-column flex-xxl-row br-12" style="color: inherit">
                                 <img src='{{\Illuminate\Support\Facades\Storage::url($course->image)}}' alt="videoPic"
                                      class="videoPic-index"
@@ -108,7 +108,7 @@
                     @foreach($courses_new as $course)
                         @if($course->info->enabled)
                             <div class="swiper-slide">
-                                <a href="{{ route("course.show",$course->id) }}" style="color: inherit"
+                                <a href="{{ route("course.show",$course->info->slug) }}" style="color: inherit"
                                    class="d-block bg-white br-12">
                                     <img src="{{\Illuminate\Support\Facades\Storage::url($course->image)}}" alt="addPic"
                                          style="width: 386px; height: 214px; object-fit: cover " class="img-swip">
@@ -206,7 +206,7 @@
                     @foreach($conferences as $conference)
                         @if(  $conference->info->enabled)
                             <div class="swiper-slide">
-                                <a href="{{ route("course.show",$conference->id) }}"
+                                <a href="{{ route("course.show",$conference->info->slug) }}"
                                    style="background-image: url({{\Illuminate\Support\Facades\Storage::url($conference->image)}});color: inherit"
                                    class="watched-bg br-12 mb-3 mb-lg-0 d-block">
                                     <div
@@ -268,9 +268,8 @@
                 <div class="swiper-wrapper">
                 @foreach($webinars as $webinar)
                     @if($webinar->info->enabled)
-
                         <div class="swiper-slide">
-                            <a href="{{ route("webinar.show",$webinar->id) }}" style="color: inherit"
+                            <a href="{{ route("webinar.show",$webinar['info']->slug) }}" style="color: inherit"
                                class="br-12 d-block  bg-white">
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" alt="addPic"
                                      style="width: 100%; height: 214px; object-fit: cover " class="img-swip">
@@ -287,7 +286,7 @@
                                                 </span>
                                             <span>
                                                     <i class="fas fa-tasks me-1"></i>
-                                                    <span class="fs-14 f-500">{{$webinar->webinars_count}} видео</span>
+                                                    <span class="fs-14 f-500">{{$webinar->webinars_count}}  {{ __("index.video") }}</span>
                                                  </span>
                                         </div>
                                     </div>
@@ -321,7 +320,7 @@
                                         <input type="hidden" value="{{ $webinar->id }}" name="id">
                                         <input type="hidden" value="webinar" name="type">
                                         <button
-                                            class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __("index.buy") }}</button>
+                                            class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __("index.buy_webinar") }}</button>
                                     </form>
                                 </div>
                             </a>

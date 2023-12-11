@@ -10,12 +10,15 @@ use App\Models\IndexContent;
 use App\Models\User;
 use App\Models\Video;
 use App\Models\Webinar;
+use App\Models\WebinarInfo;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
     public function index()
     {
+
         $content = IndexContent::find(1);
         $data['courses'] = Course::query()->where('online',0)->whereIn("id",$content['popular'])->withSum('webinars_object','duration')->withCount('webinars')->get();
         $data['courses_new'] = Course::query()->where('online',0)->whereIn("id",$content['new'])->withSum('webinars_object','duration')->withCount('webinars')->get();

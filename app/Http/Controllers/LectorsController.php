@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Direction;
 use App\Models\User;
+use App\Models\UserInfo;
 use App\Models\Webinar;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,8 @@ class LectorsController extends Controller
     }
 
     function show($id){
+        $slug = $id;
+        $id = UserInfo::query()->where('slug',$slug)->value('user_id');
         $data['lector'] = User::findOrFail($id);
 //        dd(  $data['lector']->lector->info->enabled) ;
         if ($data['lector']->lector->info->enabled === false){

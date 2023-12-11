@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\BlogInfo;
 use App\Models\CourseInfo;
 use App\Models\User;
+use App\Models\UserInfo;
 use App\Models\WebinarInfo;
+use App\Observers\BlogInfoObserver;
 use App\Observers\CourseInfoObserver;
+use App\Observers\UserInfoObserver;
 use App\Observers\UserObserver;
 use App\Observers\WebinarInfoObserver;
 use Illuminate\Auth\Events\Registered;
@@ -36,6 +40,8 @@ class EventServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         WebinarInfo::observe(WebinarInfoObserver::class);
         CourseInfo::observe(CourseInfoObserver::class);
+        BlogInfo::observe(BlogInfoObserver::class);
+        UserInfo::observe(UserInfoObserver::class);
     }
 
     /**

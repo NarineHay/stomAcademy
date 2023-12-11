@@ -26,7 +26,7 @@ class Webinar extends Model
     ];
 
     function getDuration(){
-        return CarbonInterval::minutes($this->duration)->cascade()->forHumans();
+        return CarbonInterval::minutes($this->duration)->cascade()->forHumans(null,true);
     }
 
     function user(){
