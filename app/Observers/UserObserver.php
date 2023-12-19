@@ -11,10 +11,14 @@ class UserObserver
     {
         $user->userinfo()->create();
         $lector = $user->lector()->create();
+
         foreach (Language::all() as $lg){
+
             $lector->infos()->create([
                 "lg_id" => $lg->id
             ]);
+
+            dd($lector->infos());
         }
 
         $user->balance()->create();
