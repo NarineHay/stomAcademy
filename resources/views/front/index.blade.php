@@ -449,7 +449,7 @@
                     @foreach($blogs as $blog)
                         @if($blog->info->enabled)
                             <a
-                                href="{{route('blog.show',$blog->id)}}"
+                                href="{{route('blog.show',$blog->info->slug)}}"
                                 style="color: inherit"
                                 class="d-flex flex-column useful_article_item @if($blog->id%2!=0)flex-lg-column-reverse @endif">
                                 <div>
@@ -497,7 +497,7 @@
                 @foreach($lectors as $lector)
 
                     @if($lector->lector->info->enabled)
-                        <a href="{{ route("lectors.show",$lector->id) }}"
+                        <a href="{{ route("lectors.show",$lector->userInfo->slug) }}"
                            class="d-block col-6 col-sm-4 col-lg-2 mt-3 mt-lg-4"
                            style="color:inherit">
                             <div class="bg-white br-12">

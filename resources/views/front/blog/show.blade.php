@@ -34,7 +34,7 @@
                                             <img src="{{\Illuminate\Support\Facades\Storage::url($blogs[0]->info->image)}}" alt="addPic" style="width: 390px; height: 200px; object-fit: cover">
                                             <div class="p-3">
                                                 <p class="f-700 fs-16 m-0">
-                                                    <a href="{{route('blog.show',$blogs[0]->id)}}" class="text-black">{{$blogs[0]->info->title}}</a>
+                                                    <a href="{{route('blog.show',$blogs[0]->info->slug)}}" class="text-black">{{$blogs[0]->info->title}}</a>
                                                 </p>
                                                 <div class="mt-4">
                                                     <p class="fs-14 f-500 m-0"><i class="far fa-calendar me-2"></i>{{$blogs[0]->created_at}}</p>
@@ -51,7 +51,7 @@
                                             <img src="{{\Illuminate\Support\Facades\Storage::url($blogs[1]->info->image)}}" alt="addPic" style="width: 390px; height: 200px; object-fit: cover">
                                             <div class="p-3">
                                                 <p class="f-700 fs-16 m-0">
-                                                    <a href="{{route('blog.show',$blogs[1]->id)}}" class="text-black">{{$blogs[1]->info->title}}
+                                                    <a href="{{route('blog.show',$blogs[1]->info->slug)}}" class="text-black">{{$blogs[1]->info->title}}
                                                 </p>
                                                 <div class="mt-4">
                                                     <p class="fs-14 f-500 m-0"><i class="far fa-calendar me-2"></i>{{$blogs[1]->created_at}}</p>

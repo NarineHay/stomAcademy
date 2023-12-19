@@ -163,27 +163,30 @@ class Coordinates extends Component
 
         $image = Image::make($disc->get($this->tmp));
 
-        if($this->hour_['x'] > 0 && $this->hour_['y'] > 0) {
-            $image->text($this->certificate->hours_number, $this->hour_['x'], $this->hour_['y'], function ($font) {
+        if($this->hour_['y'] > 0) {
+            $image->text($this->certificate->hours_number, ($image->width() / 2) + $this->hour_['x'], $this->hour_['y'], function ($font) {
                 $font->file($this->hour_['font']);
                 $font->size($this->hour_['size']);
                 $font->color($this->hour_['color']);
+                $font->align('center');
             });
         }
 
-        if($this->name_['x'] > 0 && $this->name_['y'] > 0) {
-            $image->text("Фамилия Имя Отчество", $this->name_['x'], $this->name_['y'], function ($font) {
+        if($this->name_['y'] > 0) {
+            $image->text("Фамилия Имя Отчество", ($image->width() / 2) + $this->name_['x'], $this->name_['y'], function ($font) {
                 $font->file($this->name_['font']);
                 $font->size($this->name_['size']);
                 $font->color($this->name_['color']);
+                $font->align('center');
             });
         }
 
-        if($this->date_['x'] > 0 && $this->date_['y'] > 0) {
-            $image->text($this->date, $this->date_['x'], $this->date_['y'], function ($font) {
+        if($this->date_['y'] > 0) {
+            $image->text($this->date, $this->date_['x'],($image->width() / 2) +  $this->date_['y'], function ($font) {
                 $font->file($this->date_['font']);
                 $font->size($this->date_['size']);
                 $font->color($this->date_['color']);
+                $font->align('center');
             });
         }
 

@@ -8,7 +8,10 @@ return [
         "about" => "Quiénes somos",
         "blog" => "Artículos",
         "contact" => "Contacto",
-        "cart" => "Сesta"
+        "cart" => "Сesta",
+        "payment" => "Оплата",
+        "contract_offer" => "Договор оферты",
+        "conf" => "Политика конфедециальности",
     ],
     "h1" => "Stom academy<br>dental education",
     "under_title" => 'stom-academy — es un servicio de formación para dentistas que organiza seminarios web, seminarios, cursos prácticos y congresos.',

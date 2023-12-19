@@ -8,7 +8,10 @@ return [
         "about" => "О нас",
         "blog" => "Статьи",
         "contact" => "Контакты",
-        "cart" => "Корзина"
+        "cart" => "Корзина",
+        "payment" => "Оплата",
+        "contract_offer" => "Договор оферты",
+        "conf" => "Политика конфедециальности",
     ],
     "h1" => "Stom academy<br>dental education",
     "under_title" => 'stom-academy — это сервис обучения

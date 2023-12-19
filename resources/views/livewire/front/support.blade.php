@@ -80,13 +80,13 @@
                     <span> {{ __("profile.chat.chat_support") }}</span>
                 </p>
                 <div class="py-4 px-0 mt-0 mt-lg-4 py-lg-6 h-100 h-100-mobile">
-                    <div class="d-flex justify-content-center message_text">
+                    <div class="d-flex justify-content-center message_text px-lg-5 border-0">
                         <p class="m-0 fs-12 text-secondary message_text"><span
                                 class="message_text2">{{$chat->created_at}}</span>
                         </p>
                     </div>
-                    <div class="mt-4 d-flex flex-column position-relative justify-content-start h-100">
-                        <div class="support-chat-div">
+                    <div class="mt-4 d-flex flex-column position-relative justify-content-start h-100 ps-lg-5">
+                        <div class="support-chat-div pe-lg-3">
 
 
                             @foreach($this->active_chat->messages as $message)
@@ -125,7 +125,7 @@
                             @endforeach
                         </div>
 
-                        <div class="position-absolute bottom-0 w-100 sms">
+                        <div class="position-absolute bottom-0 w-100 sms pe-lg-5">
                             <div class="position-relative mb-2">
                                 <input wire:keydown.enter="send_message" wire:model="message"
                                        class="w-100 py-3 px-3 br-12 border-0 position-relative"

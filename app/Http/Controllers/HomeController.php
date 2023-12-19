@@ -53,4 +53,14 @@ class HomeController extends Controller
         }
 
     }
+
+    function payment()
+    {
+
+    }
+
+    function contract_offer()
+    {
+
+    }
 }

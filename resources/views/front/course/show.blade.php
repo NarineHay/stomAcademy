@@ -670,7 +670,7 @@
                                 class="lector-cards row">
                                 @foreach($course->getLectors() as $lector)
                                     <div class="card1 col-12 col-lg-4">
-                                        <a href="{{ route("lectors.show",$lector->id) }}"
+                                        <a href="{{ route("lectors.show",$lector->userInfo->slug) }}"
                                            class="card br-12 mb-3 text-dark">
                                             <div class="row g-0">
                                                 <div class="col-md-4">
@@ -874,7 +874,7 @@
                             @foreach($courses as $course_)
                                 @if($course_->info->enabled)
                                     <div class="swiper-slide">
-                                        <a href="{{ route("course.show",$course_->id) }}" style="color: inherit"
+                                        <a href="{{ route("course.show",$course_->info->slug) }}" style="color: inherit"
                                            class="d-block bg-white br-12">
                                             <img src="{{\Illuminate\Support\Facades\Storage::url($course_->image)}}"
                                                  alt="addPic"

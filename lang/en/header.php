@@ -8,7 +8,10 @@ return [
         "about" => "About Us",
         "blog" => "Articles",
         "contact" => "Contact",
-        "cart" => "Cart"
+        "cart" => "Cart",
+        "payment" => "Оплата",
+        "contract_offer" => "Договор оферты",
+        "conf" => "Политика конфедециальности",
     ],
     "h1" => "Stom academy<br>dental education",
     "under_title" => 'stom-academy — is a training service for dentists that runs webinars, seminars, practical courses and congresses.',

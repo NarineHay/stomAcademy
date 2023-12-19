@@ -150,10 +150,10 @@
             </div>
             <div class="col-12 col-lg-4 mt-lg-6 mb-2 mb-md-4 fs-20 f-600 ft-menu-a-div">
                 <a href="/"><p>{{ __("header.menu.home") }}</p></a>
-                <a href="{{route('lectors.index')}}"><p>{{ __("header.menu.lectors") }}</p></a>
-                <a href="{{route('about')}}"><p>{{ __("header.menu.about") }}</p></a>
-                <a href="{{route('blog.index')}}"><p>{{ __("header.menu.blog") }}</p></a>
+                <a href="{{route('payment')}}"><p>{{ __("header.menu.payment") }}</p></a>
                 <a href="{{route('contacts')}}"><p>{{ __("header.menu.contact") }}</p></a>
+                <a href="{{route('contract_offer')}}"><p>{{ __("header.menu.contract_offer") }}</p></a>
+                <a href="{{route('conf')}}"><p>{{ __("header.menu.conf") }}</p></a>
             </div>
             <div class="col-12 col-lg-5 mt-2 mt-lg-6 mb-4">
                 <div class="d-flex flex-wrap flex-md-nowrap">
