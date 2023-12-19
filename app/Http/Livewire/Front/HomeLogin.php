@@ -40,23 +40,29 @@ class HomeLogin extends Component
         'email' => 'required|email',
     ];
     public function register(){
+
         $this->validate();
+
         if(User::query()->where("email",$this->email)->exists()){
             $this->error = "Почта ужа используется";
             return;
         }
+
         if($this->password != $this->password_re){
             $this->error = "Пароли не совпадают";
             return;
         }
+
         if(strlen($this->password) < 8){
             $this->error = "Пароль должен содержать не менее 8 символов";
             return;
         }
+
         User::create([
             "email" => $this->email,
             "password" => $this->password
         ]);
+
         return $this->login();
     }
 

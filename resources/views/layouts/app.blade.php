@@ -27,6 +27,7 @@
             <div>
                 <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
             </div>
+
             <div class="d-flex align-items-center justify-content-between flex-row-reverse flex-lg-row">
                 @include('front.components.header_menu')
                 <x-header-user></x-header-user>

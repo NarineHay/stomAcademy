@@ -186,7 +186,6 @@ let webinarsCalc = {
     count: 0,
     price: 0,
     init: function () {
-        console.log("asasasasasa");
         if (!document.querySelector("#webinarSelectModal")) {
             return false;
         }

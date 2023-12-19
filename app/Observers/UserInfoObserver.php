@@ -16,7 +16,7 @@ class UserInfoObserver
     public function created(UserInfo $userInfo)
     {
         $userInfo->slug = Str::slug($userInfo->fname.'-'.$userInfo->lname);
-        $userInfo->save();
+        $userInfo->saveQuietly();
     }
 
     /**
@@ -28,7 +28,7 @@ class UserInfoObserver
     public function updated(UserInfo $userInfo)
     {
         $userInfo->slug = Str::slug($userInfo->fname.'-'.$userInfo->lname);
-        $userInfo->save();
+        $userInfo->saveQuietly();
     }
 
     /**
