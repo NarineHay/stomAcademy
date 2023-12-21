@@ -18,7 +18,6 @@ class UserObserver
                 "lg_id" => $lg->id
             ]);
 
-            dd($lector->infos());
         }
 
         $user->balance()->create();

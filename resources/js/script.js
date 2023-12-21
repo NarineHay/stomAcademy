@@ -1,4 +1,6 @@
 import 'bootstrap/dist/js/bootstrap.bundle';
+import axios from "axios";
+import {Modal} from 'bootstrap';
 
 new Swiper(".videoPopularSwiper", {
     breakpoints: {
@@ -135,8 +137,9 @@ document.querySelectorAll(".video_block").forEach((video_block) => {
 let header_menu = document.querySelector(".header_menu");
 if (header_menu) {
     let btn_for_menu = header_menu.querySelector(".btn_for_menu");
-    let btn_close_for_menu = header_menu.querySelector(".btn_close_for_menu");
-    let nav = header_menu.querySelector(".navbar");
+    let btn_close_for_menu = document.querySelector(".btn_close_for_menu");
+    let nav = document.querySelector(".offcanvas");
+    console.log(btn_close_for_menu);
     btn_for_menu.addEventListener("click", () => {
         nav.classList.add("show");
     });
@@ -200,7 +203,7 @@ let webinarsCalc = {
             })
         })
         document.querySelector("#webinarSelectModal .buyButton").addEventListener("click", function () {
-            document.querySelector("#webinarSelectModal form").submit();
+            document.querySelector("#webinarSelectModal form").dispatchEvent(new Event("submit"));
         })
     },
     update: function () {
@@ -265,40 +268,45 @@ document.querySelectorAll(".small_video .js-player").forEach(function (p){
 
 //Course webinar videos modal
 
-let webinar_video_modal = document.getElementById("courseTrailersModal");
-if (webinar_video_modal) {
-    let main_video_div = webinar_video_modal.querySelector(".main_video_div");
-    let player_absolute_divs = webinar_video_modal.querySelectorAll(".js-player-absolute-div");
-
-    // let webinar_video_players = webinar_video_modal.querySelectorAll(".webinar_video_player");
-    let player_titles = webinar_video_modal.querySelectorAll(".webinar_video_player p");
-    let player_iframes = webinar_video_modal.querySelectorAll(".webinar_video_player .plyr iframe");
-
-    let main_video_title = main_video_div.querySelector("p").textContent;
-    let main_player_iframe = main_video_div.querySelector(" .plyr iframe");
-
-    player_absolute_divs.forEach(function (item) {
-        item.addEventListener("click",function (){
-           let id = item.dataset.id;
-           document.querySelectorAll(".big_video").forEach(function (bv){
-               for(let p of big_players){
-                   p.pause();
-               }
-               if(bv.dataset.id == id){
-                   bv.classList.remove('hide');
-               }else{
-                   bv.classList.add('hide');
-               }
-           })
-        })
-    })
-    webinar_video_modal.addEventListener('hidden.bs.modal', event => {
-        for(let p of big_players){
-            p.pause();
-        }
-    })
-
-}
+// let webinar_video_modal = document.getElementById("courseTrailersModal");
+// if (webinar_video_modal) {
+//     try{
+//         let main_video_div = webinar_video_modal.querySelector(".main_video_div");
+//         let player_absolute_divs = webinar_video_modal.querySelectorAll(".js-player-absolute-div");
+//
+//         // let webinar_video_players = webinar_video_modal.querySelectorAll(".webinar_video_player");
+//         let player_titles = webinar_video_modal.querySelectorAll(".webinar_video_player p");
+//         let player_iframes = webinar_video_modal.querySelectorAll(".webinar_video_player .plyr iframe");
+//
+//         let main_video_title = main_video_div.querySelector("p").textContent;
+//         let main_player_iframe = main_video_div.querySelector(" .plyr iframe");
+//
+//         player_absolute_divs.forEach(function (item) {
+//             item.addEventListener("click",function (){
+//                 let id = item.dataset.id;
+//                 document.querySelectorAll(".big_video").forEach(function (bv){
+//                     for(let p of big_players){
+//                         p.pause();
+//                     }
+//                     if(bv.dataset.id == id){
+//                         bv.classList.remove('hide');
+//                     }else{
+//                         bv.classList.add('hide');
+//                     }
+//                 })
+//             })
+//         })
+//         webinar_video_modal.addEventListener('hidden.bs.modal', event => {
+//             for(let p of big_players){
+//                 p.pause();
+//             }
+//         })
+//     }catch (e) {
+//         console.log(e)
+//     }
+//
+//
+// }
 
 let send_mail  = document.querySelector('.send_mail')
 send_mail.addEventListener('click',function () {
@@ -308,3 +316,22 @@ send_mail.addEventListener('click',function () {
 
 })
 
+let cartSuccessModal = new Modal('#cartSuccessModal');
+document.querySelectorAll("form").forEach(function (form){
+    let action = form.getAttribute("action");
+    if(action && (action.indexOf("addManyToCart") > -1 || action.indexOf("addToCart") > -1)){
+        form.addEventListener("submit",function (e){
+            e.preventDefault();
+            let formData = new FormData(form);
+            axios.post(form.getAttribute("action"), formData)
+                .then(response => {
+                    // console.log(response.data);
+                    cartSuccessModal.show();
+                })
+                .catch(error => {
+                    console.error('Произошла ошибка при отправке формы', error);
+                });
+        })
+    }
+
+})

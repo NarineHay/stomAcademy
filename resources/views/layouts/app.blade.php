@@ -279,6 +279,20 @@
     const player3 = new Plyr('#player3');
     const player4 = new Plyr('#player4');
 </script>
+<div class="modal fade" id="cartSuccessModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Успешно добавлено в корзину</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <a href="{{ route("personal.cart") }}" class="btn btn-primary">Перейти в корзину</a>
+                <a class="btn btn-secondary text-white" data-bs-dismiss="modal">Продолжить покупки</a>
+            </div>
+        </div>
+    </div>
+</div>
 @livewireScripts
 </section>
 </body>

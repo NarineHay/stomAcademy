@@ -44,7 +44,7 @@
                                         @if(!$user->userinfo->fname && !$user->userinfo->lname)
                                             {{ $user->email }}
                                         @else
-                                            {{ $user->userinfo->fname }} {{$user->userinfo->lname}}
+                                            {{ $user->userinfo->fname }} {{ $user->userinfo->lname }}
                                         @endif
                                     </option>
                                 @endforeach
@@ -85,7 +85,7 @@
                                 @foreach($accesses as $access)
                                     <tr>
                                         <td>
-                                            <a>{{$access->course->info->title ?? $access->webinar->info->title}}</a>
+                                            <a>{{$access->course->info->title ?? ($access->webinar->info->title ?? "")}}</a>
                                         </td>
                                         <td>
                                             <a>{{$access->user->userinfo->fname}} {{$access->user->userinfo->lname}}  ({{$access->user->email}})</a>

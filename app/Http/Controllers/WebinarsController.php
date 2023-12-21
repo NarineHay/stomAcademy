@@ -16,6 +16,7 @@ class WebinarsController extends Controller
         $slug = $id;
         $id = WebinarInfo::query()->where('slug',$slug)->value('webinar_id');
         $data['course'] = Webinar::find($id);
+        $data['course']['video'] = $data['course']->info->video_invitation;
         $data['courses'] = Course::query()->get()->take(10);
         return view("front.course.show",$data);
     }

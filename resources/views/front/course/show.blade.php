@@ -129,8 +129,7 @@
 
 
 
-
-                                            @if($course->info->video_invitation || $course->video)
+                                            @if($course->video)
                                                 <div id="player"
                                                      class="plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
 
@@ -138,18 +137,12 @@
                                                     <iframe style="z-index: 1;left: 0" class="position-absolute d-none"
                                                             width="100%"
                                                             height="100%"
-                                                            src="{{ $course->info->video_invitation ?? $course->video}}"
+                                                            src="{{ $course->video}}"
                                                             {{--                                                        &vq=hd1080--}}
                                                             title="Walter Devoto about Stom Academy." frameborder="0"
                                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                                             allowfullscreen></iframe>
                                                 </div>
-                                                @if($course->webinars)
-                                                    <div
-                                                        class="video_modal_button cp top-0 w-100 h-100 position-absolute"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#courseTrailersModal"></div>
-                                                @endif
                                             @else
                                                 @if($course->bg_image)
                                                     <img class="img_preview"
@@ -204,7 +197,11 @@
                                         <form method="POST" action="{{route('addToCart')}}" class="course-card-form">
                                             @csrf
                                             <input type="hidden" value="{{ $course->id }}" name="id">
-                                            <input type="hidden" value="webinar" name="type">
+                                            @if($course->webinars)
+                                                <input type="hidden" value="course" name="type">
+                                            @else
+                                                <input type="hidden" value="webinar" name="type">
+                                            @endif
                                             @if($course->webinars)
                                                 <div
                                                     class="course-card-form-div d-flex justify-content-between flex-column flex-lg-row mb-3 ff">
@@ -947,76 +944,76 @@
     </div>
 
     <!-- Modal -->
-    @if($course->webinars)
-        <div class="modal fade" id="courseTrailersModal" tabindex="-1" aria-labelledby="courseTrailersModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header border-0">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __("courses.webinar_trailer") }}</h1>
-                        <button type="button" class="btn-close outline-box-shadow-none" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        @if($course->webinars_object)
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-xl-8 col-12 main_div">
-                                        <div class="main_video_div d-flex flex-column mb-2">
-                                            @foreach($course->webinars_object as $k => $webinar)
-                                                @if($webinar->info->enabled && ($webinar->info->video_invitation != "" || $webinar->info->video_invitation != null))
-                                                    <div class="big_video @if($k > 0) hide @endif"
-                                                         data-id="{{ $webinar->id }}">
-                                                        <div
-                                                            class="js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
-                                                            <iframe width="100%"
-                                                                    height="100%"
-                                                                    src="{{ $webinar->info->video_invitation }}"
-                                                                    frameborder="0"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowfullscreen></iframe>
-                                                        </div>
-                                                        <p class="mt-2 mb-4 fw-bold fs-16">{{ $webinar->info->title }}</p>
-                                                    </div>
+{{--    @if($course->webinars)--}}
+{{--        <div class="modal fade" id="courseTrailersModal" tabindex="-1" aria-labelledby="courseTrailersModalLabel"--}}
+{{--             aria-hidden="true">--}}
+{{--            <div class="modal-dialog modal-dialog-scrollable modal-xl">--}}
+{{--                <div class="modal-content">--}}
+{{--                    <div class="modal-header border-0">--}}
+{{--                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __("courses.webinar_trailer") }}</h1>--}}
+{{--                        <button type="button" class="btn-close outline-box-shadow-none" data-bs-dismiss="modal"--}}
+{{--                                aria-label="Close"></button>--}}
+{{--                    </div>--}}
+{{--                    <div class="modal-body">--}}
+{{--                        @if($course->webinars_object)--}}
+{{--                            <div class="container">--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-xl-8 col-12 main_div">--}}
+{{--                                        <div class="main_video_div d-flex flex-column mb-2">--}}
+{{--                                            @foreach($course->webinars_object as $k => $webinar)--}}
+{{--                                                @if($webinar->info->enabled && ($webinar->info->video_invitation != "" || $webinar->info->video_invitation != null))--}}
+{{--                                                    <div class="big_video @if($k > 0) hide @endif"--}}
+{{--                                                         data-id="{{ $webinar->id }}">--}}
+{{--                                                        <div--}}
+{{--                                                            class="js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">--}}
+{{--                                                            <iframe width="100%"--}}
+{{--                                                                    height="100%"--}}
+{{--                                                                    src="{{ $webinar->info->video_invitation }}"--}}
+{{--                                                                    frameborder="0"--}}
+{{--                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"--}}
+{{--                                                                    allowfullscreen></iframe>--}}
+{{--                                                        </div>--}}
+{{--                                                        <p class="mt-2 mb-4 fw-bold fs-16">{{ $webinar->info->title }}</p>--}}
+{{--                                                    </div>--}}
 
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-12 small_video">
-                                        @foreach($course->webinars_object as $k => $webinar)
-                                            @if($webinar->info->enabled && ($webinar->info->video_invitation != "" || $webinar->info->video_invitation != null) )
-                                                <div
-                                                    class="d-flex flex-row mb-2 position-relative">
+{{--                                                @endif--}}
+{{--                                            @endforeach--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-xl-4 col-12 small_video">--}}
+{{--                                        @foreach($course->webinars_object as $k => $webinar)--}}
+{{--                                            @if($webinar->info->enabled && ($webinar->info->video_invitation != "" || $webinar->info->video_invitation != null) )--}}
+{{--                                                <div--}}
+{{--                                                    class="d-flex flex-row mb-2 position-relative">--}}
 
-                                                    <div class="d-flex flex-row webinar_video_player">
-                                                        <div
-                                                            class=" js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">
-                                                            <iframe width="100%"
-                                                                    height="100%"
-                                                                    src="{{ $webinar->info->video_invitation }}"
-                                                                    frameborder="0"
-                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                    allowfullscreen></iframe>
-                                                        </div>
-                                                        <p class="ms-2 fs-14">{{ $webinar->info->title }}</p>
-                                                    </div>
+{{--                                                    <div class="d-flex flex-row webinar_video_player">--}}
+{{--                                                        <div--}}
+{{--                                                            class=" js-player plyr__video-embed plyr plyr--full-ui plyr--video plyr--youtube  plyr--fullscreen-enabled plyr__poster-enabled plyr--playing plyr--hide-controls">--}}
+{{--                                                            <iframe width="100%"--}}
+{{--                                                                    height="100%"--}}
+{{--                                                                    src="{{ $webinar->info->video_invitation }}"--}}
+{{--                                                                    frameborder="0"--}}
+{{--                                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"--}}
+{{--                                                                    allowfullscreen></iframe>--}}
+{{--                                                        </div>--}}
+{{--                                                        <p class="ms-2 fs-14">{{ $webinar->info->title }}</p>--}}
+{{--                                                    </div>--}}
 
-                                                    <div data-id="{{ $webinar->id }}"
-                                                         class="cp top-0  w-100 h-100 position-absolute js-player-absolute-div"
-                                                         style="opacity: 0.6"></div>
-                                                </div>
+{{--                                                    <div data-id="{{ $webinar->id }}"--}}
+{{--                                                         class="cp top-0  w-100 h-100 position-absolute js-player-absolute-div"--}}
+{{--                                                         style="opacity: 0.6"></div>--}}
+{{--                                                </div>--}}
 
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
 
-                </div>
-            </div>
-        </div>
-    @endif
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    @endif--}}
 @endsection

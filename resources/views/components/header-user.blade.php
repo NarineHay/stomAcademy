@@ -30,45 +30,97 @@
                 @endif
             </a>
 
-            <button class="btn user-svg-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-                    aria-controls="offcanvasScrolling"><a href="javascript:void(0); "
-                                                          class="d-flex align-items-center mb-0 user-svg ">
-                    @if($user->userInfo->image)
-                        <img class="rounded-circle mx-lg-2" style="height: 30px;width: 30px"
-                             src="{{ \Illuminate\Support\Facades\Storage::url($user->userInfo->image) }}">
-                    @else
-                        {{--                        <img class="rounded-circle mx-lg-2" style="height: 30px;width: 30px"--}}
-                        {{--                             src="{{ \Illuminate\Support\Facades\Storage::url('userinfo/unknown.png') }}">--}}
-                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M18.1714 14.6421C18.885 13.8616 19.2823 12.8433 19.2857 11.7857C19.2857 9.42214 17.3636 7.5 15 7.5C12.6364 7.5 10.7143 9.42214 10.7143 11.7857C10.7177 12.8433 11.115 13.8616 11.8286 14.6421C9.27643 15.84 7.5 18.4275 7.5 21.4286C7.5 21.7127 7.61288 21.9853 7.81381 22.1862C8.01475 22.3871 8.28727 22.5 8.57143 22.5H21.4286C21.7127 22.5 21.9853 22.3871 22.1862 22.1862C22.3871 21.9853 22.5 21.7127 22.5 21.4286C22.5 18.4275 20.7236 15.84 18.1714 14.6421ZM12.8571 11.7857C12.8571 10.6039 13.8182 9.64286 15 9.64286C16.1818 9.64286 17.1429 10.6039 17.1429 11.7857C17.1429 12.9675 16.1818 13.9286 15 13.9286C13.8182 13.9286 12.8571 12.9675 12.8571 11.7857ZM9.75107 20.3571C10.2482 17.9154 12.4136 16.0714 15 16.0714C17.5864 16.0714 19.7518 17.9154 20.2489 20.3571H9.75107Z"
-                                fill="white"/>
-                            <path
-                                d="M15 0C6.72857 0 0 6.72857 0 15C0 23.2714 6.72857 30 15 30C23.2714 30 30 23.2714 30 15C30 6.72857 23.2714 0 15 0ZM15 27.8571C7.91036 27.8571 2.14286 22.0896 2.14286 15C2.14286 7.91036 7.91036 2.14286 15 2.14286C22.0896 2.14286 27.8571 7.91036 27.8571 15C27.8571 22.0896 22.0896 27.8571 15 27.8571Z"
-                                fill="white"/>
-                        </svg>
-                    @endif
-                </a></button>
+{{--            <button class="btn user-svg-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"--}}
+{{--                    aria-controls="offcanvasScrolling"><a href="javascript:void(0); "--}}
+{{--                                                          class="d-flex align-items-center mb-0 user-svg ">--}}
+{{--                    @if($user->userInfo->image)--}}
+{{--                        <img class="rounded-circle mx-lg-2" style="height: 30px;width: 30px"--}}
+{{--                             src="{{ \Illuminate\Support\Facades\Storage::url($user->userInfo->image) }}">--}}
+{{--                    @else--}}
+{{--                        --}}{{--                        <img class="rounded-circle mx-lg-2" style="height: 30px;width: 30px"--}}
+{{--                        --}}{{--                             src="{{ \Illuminate\Support\Facades\Storage::url('userinfo/unknown.png') }}">--}}
+{{--                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                            <path--}}
+{{--                                d="M18.1714 14.6421C18.885 13.8616 19.2823 12.8433 19.2857 11.7857C19.2857 9.42214 17.3636 7.5 15 7.5C12.6364 7.5 10.7143 9.42214 10.7143 11.7857C10.7177 12.8433 11.115 13.8616 11.8286 14.6421C9.27643 15.84 7.5 18.4275 7.5 21.4286C7.5 21.7127 7.61288 21.9853 7.81381 22.1862C8.01475 22.3871 8.28727 22.5 8.57143 22.5H21.4286C21.7127 22.5 21.9853 22.3871 22.1862 22.1862C22.3871 21.9853 22.5 21.7127 22.5 21.4286C22.5 18.4275 20.7236 15.84 18.1714 14.6421ZM12.8571 11.7857C12.8571 10.6039 13.8182 9.64286 15 9.64286C16.1818 9.64286 17.1429 10.6039 17.1429 11.7857C17.1429 12.9675 16.1818 13.9286 15 13.9286C13.8182 13.9286 12.8571 12.9675 12.8571 11.7857ZM9.75107 20.3571C10.2482 17.9154 12.4136 16.0714 15 16.0714C17.5864 16.0714 19.7518 17.9154 20.2489 20.3571H9.75107Z"--}}
+{{--                                fill="white"/>--}}
+{{--                            <path--}}
+{{--                                d="M15 0C6.72857 0 0 6.72857 0 15C0 23.2714 6.72857 30 15 30C23.2714 30 30 23.2714 30 15C30 6.72857 23.2714 0 15 0ZM15 27.8571C7.91036 27.8571 2.14286 22.0896 2.14286 15C2.14286 7.91036 7.91036 2.14286 15 2.14286C22.0896 2.14286 27.8571 7.91036 27.8571 15C27.8571 22.0896 22.0896 27.8571 15 27.8571Z"--}}
+{{--                                fill="white"/>--}}
+{{--                        </svg>--}}
+{{--                    @endif--}}
+{{--                </a></button>--}}
 
             <div class="offcanvas offcanvas-end" style="width: 232px;" data-bs-scroll="true" data-bs-backdrop="false"
                  tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
 
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasScrollingLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn_close_for_menu"></button>
                 </div>
 
 
                 <div class="offcanvas-body">
                     <div>
-                        <div class="mb-6 my-4 my-lg-6" style="z-index: 1">
+                        <ul class="list-unstyled text-primary">
+                            <li class="pb-2"><a href="{{ route("course.index") }}"
+                                   class="text-decoration-none me-2 me-xl-3 fs-18 f-600 text-primary">{{ __("header.menu.courses") }}</a>
+                            </li>
+                            <li class="pb-2"><a href="{{ route("lectors.index") }}"
+                                   class="text-decoration-none me-2 me-xl-3 ms-xl-4 fs-18 f-600 text-primary">{{ __("header.menu.lectors") }}</a>
+                            </li>
+                            <li class="pb-2"><a href="{{ route("about") }}"
+                                   class="text-decoration-none me-2 me-xl-3 ms-xl-4 fs-18 f-600 text-primary">{{ __("header.menu.about") }}</a>
+                            </li>
+                            <li class="pb-2"><a href="{{ route("blog.index") }}"
+                                   class="text-decoration-none me-2 me-xl-3 ms-xl-4 fs-18 f-600 text-primary">{{ __("header.menu.blog") }}</a>
+                            </li>
+                            <li class="pb-2"><a href="{{ route("contacts") }}"
+                                   class="text-decoration-none me-2 me-xl-3 ms-xl-4 fs-18 f-600 text-primary">{{ __("header.menu.contact") }}</a>
+                            </li>
+                            <li class="pb-2">
+                                <div class="dropdown">
+                                    <a class="text-decoration-none me-2 me-xl-3 ms-xl-4 fs-18 f-600 text-uppercase dropdown-toggle text-primary"
+                                       data-bs-toggle="dropdown">
+                                        {{ \App\Models\Currency::find(\Illuminate\Support\Facades\Cookie::get("currency_id"))->currency_name }}
+                                        <i class="icon-{{ \Illuminate\Support\Str::lower(\App\Models\Currency::find(\Illuminate\Support\Facades\Cookie::get("currency_id"))->currency_name) }}"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end cur-dropdown" aria-labelledby="dropdownMenuLink">
+                                        @foreach(\App\Models\Currency::all() as $cur)
+                                            <li><a class="dropdown-item"
+                                                   href="{{ route("change_cur",$cur->id) }}">{{ $cur->currency_name }} <i
+                                                        class="icon-{{ \Illuminate\Support\Str::lower($cur->currency_name) }}"></i></a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="pb-2">
+                                <div class="dropdown header_flag">
+                                    <a class="text-decoration-none me-2 me-xl-3 ms-xl-4 fs-18 f-600 text-uppercase dropdown-toggle text-primary"
+                                       data-bs-toggle="dropdown">
+                                        <img
+                                            src="/dist/image/{{ \Illuminate\Support\Str::lower(\Illuminate\Support\Facades\App::getLocale()) }}.svg">
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                                        @foreach(\App\Models\Language::all() as $lg)
+                                            <li><a class="dropdown-item" href="{{ route("change_lg",$lg->id) }}"><img class="me-2"
+                                                                                                                      src="/dist/image/{{ \Illuminate\Support\Str::lower($lg->code) }}.svg">{{ $lg->name }}
+                                                </a></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mb-2 my-4 my-lg-6 text-center" style="z-index: 1" >
                             <img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image ?? "userinfo/unknown.png") }}"
-                                alt="profilePic" class="rounded-circle" width="73px" height="73px">
-                            <h5 class="f-700 mt-3 m-0">{{$user->userinfo->fname}}
+                                alt="profilePic" class="rounded-circle" width="36px" height="36px">
+                            <h5 class="f-700 mt-3 m-0 collapsed" data-bs-toggle="collapse" data-bs-target="#collapseMenu">{{$user->userinfo->fname}}
                                 <span class="fs-15">
-                                    {{$user->userinfo->lname}}
+                                    {{ $user->userinfo->lname ?? $user->email }} <i class="fa-solid fa-angle-down ms-2" ></i>
                                 </span>
                             </h5>
+                        </div>
+                        <div class="collapse" id="collapseMenu">
                             <div class="d-flex mt-3">
                                 <i class="fal fa-pencil"></i>
                                 <p class="m-0 fs-14 f-500 text-secondary ms-2">
@@ -76,21 +128,6 @@
                                         профиля</a>
                                 </p>
                             </div>
-                        </div>
-                        <div>
-                            {{--                            <div class="d-flex mb-4 mt-4 " style="gap:7px;">--}}
-                            {{--                                <svg width="19" height="18" viewBox="0 0 19 18" fill="none"--}}
-                            {{--                                     xmlns="http://www.w3.org/2000/svg">--}}
-                            {{--                                    <path fill-rule="evenodd" clip-rule="evenodd"--}}
-                            {{--                                          d="M3.84835 11.5984C4.55161 10.8951 5.50544 10.5 6.5 10.5H12.5C13.4946 10.5 14.4484 10.8951 15.1517 11.5984C15.8549 12.3016 16.25 13.2554 16.25 14.25V15.75C16.25 16.1642 15.9142 16.5 15.5 16.5C15.0858 16.5 14.75 16.1642 14.75 15.75V14.25C14.75 13.6533 14.5129 13.081 14.091 12.659C13.669 12.2371 13.0967 12 12.5 12H6.5C5.90326 12 5.33097 12.2371 4.90901 12.659C4.48705 13.081 4.25 13.6533 4.25 14.25V15.75C4.25 16.1642 3.91421 16.5 3.5 16.5C3.08579 16.5 2.75 16.1642 2.75 15.75V14.25C2.75 13.2554 3.14509 12.3016 3.84835 11.5984Z"--}}
-                            {{--                                          fill="black"/>--}}
-                            {{--                                    <path fill-rule="evenodd" clip-rule="evenodd"--}}
-                            {{--                                          d="M9.5 3C8.25736 3 7.25 4.00736 7.25 5.25C7.25 6.49264 8.25736 7.5 9.5 7.5C10.7426 7.5 11.75 6.49264 11.75 5.25C11.75 4.00736 10.7426 3 9.5 3ZM5.75 5.25C5.75 3.17893 7.42893 1.5 9.5 1.5C11.5711 1.5 13.25 3.17893 13.25 5.25C13.25 7.32107 11.5711 9 9.5 9C7.42893 9 5.75 7.32107 5.75 5.25Z"--}}
-                            {{--                                          fill="black"/>--}}
-                            {{--                                </svg>--}}
-                            {{--                                <a href="{{route('personal.courses')}}"--}}
-                            {{--                                   class="text-decoration-none text-black fs-14 f-500">Мои данные</a>--}}
-                            {{--                            </div>--}}
                             <div class="d-flex mb-4 mt-4">
                                 <i class="fal fa-play-circle me-2 "></i>
                                 <a href="{{route('personal.courses')}}"
