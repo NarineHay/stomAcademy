@@ -1,4 +1,4 @@
-import 'bootstrap/dist/js/bootstrap.bundle';
+// import 'bootstrap/dist/js/bootstrap.bundle';
 import axios from "axios";
 import {Modal} from 'bootstrap';
 
@@ -139,13 +139,16 @@ if (header_menu) {
     let btn_for_menu = header_menu.querySelector(".btn_for_menu");
     let btn_close_for_menu = document.querySelector(".btn_close_for_menu");
     let nav = document.querySelector(".offcanvas");
-    console.log(btn_close_for_menu);
+    console.log(nav);
     btn_for_menu.addEventListener("click", () => {
         nav.classList.add("show");
     });
-    btn_close_for_menu.addEventListener("click", () => {
-        nav.classList.remove("show");
-    });
+    if(btn_close_for_menu){
+        btn_close_for_menu.addEventListener("click", () => {
+            nav.classList.remove("show");
+        });
+    }
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {

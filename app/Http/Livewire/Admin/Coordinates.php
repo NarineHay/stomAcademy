@@ -182,7 +182,7 @@ class Coordinates extends Component
         }
 
         if($this->date_['y'] > 0) {
-            $image->text($this->date, $this->date_['x'],($image->width() / 2) +  $this->date_['y'], function ($font) {
+            $image->text($this->date, ($image->width() / 2) +  $this->date_['x'],$this->date_['y'], function ($font) {
                 $font->file($this->date_['font']);
                 $font->size($this->date_['size']);
                 $font->color($this->date_['color']);
