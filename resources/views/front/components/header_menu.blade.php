@@ -3,7 +3,7 @@
 
     <i class="fal fa-bars text-white cp btn_for_menu"></i>
     <nav class="navbar p-0">
-        <i class="fas fa-times text-primary"></i>
+{{--        <i class="fas fa-times text-primary"></i>--}}
 
         <ul class="text-decoration-none list-unstyled d-flex mb-0">
             <li><a href="{{ route("course.index") }}"

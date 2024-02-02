@@ -44,8 +44,7 @@
                                     <th>Курс/Вебинар</th>
                                     <th>Сумма</th>
                                     <th>Валюта</th>
-                                    <th></th>
-                                    <th>Кнопки управления</th>
+                                    <th>Дата</th>
                                 </tr>
                                 </thead>
 
@@ -59,25 +58,21 @@
                                             <a>{{$payment->user->name}}</a>
                                         </td>
                                         <td>
-                                            <a></a>
+                                            <ul>
+                                                @foreach($payment->infos as $info)
+                                                    <li>{{ $info->item->info->title }}</li>
+                                                @endforeach
+                                            </ul>
                                         </td>
                                         <td>
-                                            <a></a>
+                                            <a>{{ $payment->sum }}</a>
                                         </td>
                                         <td>
-                                            <a></a>
+                                            <a>{{ $payment->cur }}</a>
                                         </td>
                                         <td>
-                                            <a></a>
+                                            <a>{{ $payment->updated_at }}</a>
                                         </td>
-{{--                                        <td class="project-actions text-right">--}}
-{{--                                            <form action="{{route('admin.payments.destroy',$user)}}" method="POST" class="d-flex justify-content-around">--}}
-{{--                                                @csrf--}}
-{{--                                                @method('DELETE')--}}
-{{--                                                <a class="btn btn-primary mx-1" href="{{ route('admin.payments.edit',$user) }}">Изменить</a>--}}
-{{--                                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mx-1" id="button">Удалить</button>--}}
-{{--                                            </form>--}}
-{{--                                        </td>--}}
                                     </tr>
                                 @endforeach
                                 </tbody>

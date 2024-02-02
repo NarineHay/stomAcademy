@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front;
 
 use App\Helpers\LG;
+use App\Helpers\YooKassa;
 use App\Models\Access;
 use App\Models\Course;
 use App\Models\CourseDirection;
@@ -12,6 +13,7 @@ use App\Models\Direction;
 use App\Models\Webinar;
 use App\Models\WebinarDirection;
 use App\Models\WebinarInfo;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -46,6 +48,9 @@ class PersonalCourses extends Component
 
     public function render()
     {
+        if(request()->has("status")){
+            Artisan::call('check_payment_status');
+        }
         $course_ids = Access::query()->whereNotNull("course_id")->where("user_id",Auth::user()->id)->get()->map(function ($c){
             return $c->course_id;
         });

@@ -91,7 +91,9 @@
                                             <a>{{$access->user->userinfo->fname}} {{$access->user->userinfo->lname}}  ({{$access->user->email}})</a>
                                         </td>
                                         <td>
-                                            <a>{{$access->manager->userinfo->fname}} {{$access->manager->userinfo->lname}}</a>
+                                            @if($access->manager)
+                                                <a>{{$access->manager->userinfo->fname}} {{$access->manager->userinfo->lname}}</a>
+                                            @endif
                                         </td>
                                         <td>
                                             <a>{{$access->created_at}}</a>

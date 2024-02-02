@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Front;
 
 use App\Models\Cart;
 use App\Models\Course;
+use App\Models\Order;
 use App\Models\Promo;
 use App\Models\Webinar;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,7 @@ class CartComponent extends Component
 
     public function render()
     {
+
         $items = Auth::user()->cart;
         $total = 0;
         $data['items'] = $items->map(function ($item) use (&$total){
@@ -32,6 +34,7 @@ class CartComponent extends Component
             }
             return $item;
         });
+
         if($this->promo){
             $promo = Promo::query()->where('code',$this->promo)->first();
             if($promo){
