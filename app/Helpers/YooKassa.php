@@ -93,7 +93,6 @@ class YooKassa
                 'auth' => [$clientId, $secretKey],
             ]);
             $response = json_decode($response->getBody()->getContents(),true);
-            dd($response);
             if($response['status'] == "succeeded"){
                 $order->success();
             }
