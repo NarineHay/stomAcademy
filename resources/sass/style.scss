@@ -1462,3 +1462,8 @@ a:hover {
 .modal{
     z-index: 9999;
 }
+
+#cartSuccessModal.modal{
+    margin-top: calc(50vh - 160px);
+    margin-bottom: calc(50vh - 160px);
+}

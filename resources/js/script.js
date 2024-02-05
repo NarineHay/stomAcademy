@@ -332,7 +332,10 @@ document.querySelectorAll("form").forEach(function (form){
                     cartSuccessModal.show();
                 })
                 .catch(error => {
-                    console.error('Произошла ошибка при отправке формы', error);
+                    let error_obj = error.toJSON();
+                    if(error_obj.status == 401){
+                        location.href = "/login";
+                    }
                 });
         })
     }

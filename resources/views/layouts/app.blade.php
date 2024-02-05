@@ -282,13 +282,17 @@
 <div class="modal fade" id="cartSuccessModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Успешно добавлено в корзину</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
             <div class="modal-body">
-                <a href="{{ route("personal.cart") }}" class="btn btn-primary">Перейти в корзину</a>
-                <a class="btn btn-secondary text-white" data-bs-dismiss="modal">Продолжить покупки</a>
+                <button type="button" style="right: 20px;top: 20px;position: absolute" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="d-flex justify-content-center flex-column align-items-center mt-2">
+                    <i class="fal fa-shopping-bag fs-75"></i>
+                    <h4 class="mt-3">Успешно добавлено в корзину</h4>
+                    <div class="mt-3 mb-3 d-flex gap-2">
+                        <a href="{{ route("personal.cart") }}" class="btn btn-primary">Перейти в корзину</a>
+                        <a class="btn btn-secondary text-white" data-bs-dismiss="modal">Продолжить покупки</a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
