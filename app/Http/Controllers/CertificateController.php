@@ -38,7 +38,7 @@ class CertificateController extends Controller
         copy(public_path($imagePath),$temp);
         $image = Image::make($temp);
 
-        if($certificate->hour_x > 0 && $certificate->hour_y > 0) {
+        if($certificate->hour_y > 0) {
             $image->text($certificate->hours_number, ($image->width() / 2) + $certificate->hour_x, $certificate->hour_y, function ($font) use($certificate) {
                 $font->file($certificate->hour_font);
                 $font->size($certificate->hour_size);
@@ -46,7 +46,7 @@ class CertificateController extends Controller
             });
         }
 
-        if($certificate->name_x > 0 && $certificate->name_y > 0) {
+        if($certificate->name_y > 0) {
             $image->text(Auth::user()->name, ($image->width() / 2) + $certificate->name_x, $certificate->name_y, function ($font) use ($certificate) {
                 $font->file($certificate->name_font);
                 $font->size($certificate->name_size);
@@ -54,7 +54,7 @@ class CertificateController extends Controller
             });
         }
 
-        if($certificate->date_x > 0 && $certificate->date_y > 0) {
+        if($certificate->date_y > 0) {
             $image->text($certificate->date, ($image->width() / 2) + $certificate->date_x, $certificate->date_y, function ($font) use ($certificate) {
                 $font->file($certificate->date_font);
                 $font->size($certificate->date_size);
