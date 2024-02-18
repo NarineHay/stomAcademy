@@ -96,6 +96,7 @@
                             </li>
                             <li class="pb-2">
                                 <div class="dropdown header_flag">
+                                    <span class="text-decoration-none me-2 me-xl-3 ms-xl-4 fs-18 f-600 text-primary">Язык</span>
                                     <a class="text-decoration-none me-2 me-xl-3 ms-xl-4 fs-18 f-600 text-uppercase dropdown-toggle text-primary"
                                        data-bs-toggle="dropdown">
                                         <img
@@ -112,16 +113,15 @@
                             </li>
                         </ul>
                         @auth()
-                        <div class="mb-2 my-4 my-lg-6 text-center" style="z-index: 1" >
+                        <div class="mb-2 my-4 my-lg-6 text-center d-flex align-items-center justify-content-start" style="z-index: 1" >
                             <img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image ?? "userinfo/unknown.png") }}"
-                                alt="profilePic" class="rounded-circle" width="36px" height="36px">
-                            <h5 class="f-700 mt-3 m-0 collapsed" data-bs-toggle="collapse" data-bs-target="#collapseMenu">{{$user->userinfo->fname}}
+                                alt="profilePic" class="rounded-circle me-2" width="36px" height="36px">
+                            <h5 class="f-700 m-0">{{$user->userinfo->fname}}
                                 <span class="fs-15">
-                                    {{ $user->userinfo->lname ?? $user->email }} <i class="fa-solid fa-angle-down ms-2" ></i>
+                                    {{ $user->userinfo->lname ?? $user->email }}
                                 </span>
                             </h5>
                         </div>
-                        <div class="collapse" id="collapseMenu">
                             <div class="d-flex mt-3">
                                 <i class="fal fa-pencil"></i>
                                 <p class="m-0 fs-14 f-500 text-secondary ms-2">
@@ -129,33 +129,33 @@
                                         профиля</a>
                                 </p>
                             </div>
-                            <div class="d-flex mb-4 mt-4">
+                            <div class="d-flex my-2">
                                 <i class="fal fa-play-circle me-2 "></i>
                                 <a href="{{route('personal.courses')}}"
                                    class="text-decoration-none text-black fs-14 f-500">Мои курсы</a>
                             </div>
-                            <div class="d-flex mb-4 mt-4">
+                            <div class="d-flex my-2">
                                 <i class="fal fa-box-alt me-2"></i>
                                 <a href="{{route('personal.certificates')}}"
                                    class="text-decoration-none text-black fs-14 f-500">Сертификаты</a>
                             </div>
-                            <div class="d-flex mb-4 mt-4">
+                            <div class="d-flex my-2">
                                 <i class="fal fa-file-certificate me-2"></i>
                                 <a href="{{route('personal.history')}}"
                                    class="text-decoration-none text-black fs-14 f-500">История покупок</a>
                             </div>
 
-                            <div class="d-flex mb-4 mt-4 d-none">
+                            <div class="d-flex my-2 d-none">
                                 <i class="fal fa-cart-arrow-down me-2"></i>
                                 <a href="{{route('personal.cart')}}"
                                    class="text-decoration-none text-black fs-14 f-500">Корзина</a>
                             </div>
-                            <div class="d-flex mb-4 mt-4">
+                            <div class="d-flex my-2">
                                 <i class="fal fa-comment me-2"></i>
                                 <a href="{{route('personal.help')}}"
                                    class="text-decoration-none text-black fs-14 f-500">Поддержка</a>
                             </div>
-                            <div class="d-flex mb-4 mt-4">
+                            <div class="d-flex my-2">
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
                                     <i class="fal fa-sign-out"></i>
@@ -163,7 +163,6 @@
                                        class="text-decoration-none text-black fs-14 f-500">Выйти</a>
                                 </form>
                             </div>
-                        </div>
                         @else
                             <a href="{{ route("login") }}"
                                class="text-decoration-none text-primary fs-16 f-600 d-block d-lg-none">
