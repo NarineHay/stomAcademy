@@ -43,6 +43,7 @@ class CertificateController extends Controller
                 $font->file($certificate->hour_font);
                 $font->size($certificate->hour_size);
                 $font->color($certificate->hour_color);
+                $font->align('center');
             });
         }
 
@@ -51,6 +52,7 @@ class CertificateController extends Controller
                 $font->file($certificate->name_font);
                 $font->size($certificate->name_size);
                 $font->color($certificate->name_color);
+                $font->align('center');
             });
         }
 
@@ -59,6 +61,7 @@ class CertificateController extends Controller
                 $font->file($certificate->date_font);
                 $font->size($certificate->date_size);
                 $font->color($certificate->date_color);
+                $font->align('center');
             });
         }
 
