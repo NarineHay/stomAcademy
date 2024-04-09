@@ -12,7 +12,9 @@ return [
     "sort" => [
         "title" => "Sort by:",
         "price" => "Price",
-        "name" => "Names",
+        "price_asc" => "Price ascending",
+        "price_desc" => "Descending price",
+        "name" => "By name",
         "pop" => "By popularity	",
         "default" => "Relevancies",
     ],

@@ -115,8 +115,10 @@ class Catalog extends Component
             ->where("webinar_infos.enabled",true);
 
 
-        if($this->sortBy == "price"){
-            $webinars_q = $webinars_q->orderBy("price_");
+        if($this->sortBy == "price_asc"){
+            $webinars_q = $webinars_q->orderBy("price_", 'asc');
+        }if($this->sortBy == "price_desc"){
+            $webinars_q = $webinars_q->orderBy("price_", 'desc');
         }elseif($this->sortBy == "default") {
             $webinars_q = $webinars_q->orderBy("start_date");
         }elseif($this->sortBy == "title") {
@@ -181,9 +183,12 @@ class Catalog extends Component
             ->withCount('webinars');
 
 
-        if($this->sortBy == "price"){
-            $courses_q = $courses_q->orderBy("price_");
-        }elseif($this->sortBy == "default") {
+        if($this->sortBy == "price_asc"){
+            $courses_q = $courses_q->orderBy("price_", 'asc');
+        }if($this->sortBy == "price_desc"){
+            $courses_q = $courses_q->orderBy("price_", 'desc');
+        }
+        elseif($this->sortBy == "default") {
             $courses_q = $courses_q->orderBy("start_date");
         }elseif($this->sortBy == "title") {
             $courses_q = $courses_q->orderBy("title");
@@ -247,9 +252,12 @@ class Catalog extends Component
             ->withCount('webinars');
 
 
-        if($this->sortBy == "price"){
-            $courses_q = $courses_q->orderBy("price_");
-        }elseif($this->sortBy == "default") {
+        if($this->sortBy == "price_asc"){
+            $courses_q = $courses_q->orderBy("price_", 'asc');
+        }if($this->sortBy == "price_desc"){
+            $courses_q = $courses_q->orderBy("price_", 'desc');
+        }
+        elseif($this->sortBy == "default") {
             $courses_q = $courses_q->orderBy("start_date");
         }elseif($this->sortBy == "title") {
             $courses_q = $courses_q->orderBy("title");
@@ -313,8 +321,10 @@ class Catalog extends Component
             ->withCount('webinars');
 
 
-        if($this->sortBy == "price"){
-            $courses_q = $courses_q->orderBy("price_");
+        if($this->sortBy == "price_asc"){
+            $courses_q = $courses_q->orderBy("price_", 'asc');
+        }if($this->sortBy == "price_desc"){
+            $courses_q = $courses_q->orderBy("price_", 'desc');
         }elseif($this->sortBy == "default") {
             $courses_q = $courses_q->orderBy("start_date");
         }elseif($this->sortBy == "title") {

@@ -22,4 +22,14 @@ class LG
         return Language::find($id)->code;
     }
 
+    static function getId($code){
+        return Language::where('code', $code)->first()->id;
+    }
+
+    static function getAllCode(){
+        $codes =  Language::pluck('code', 'id')->toArray();
+
+        return array_map('strtolower', $codes);
+    }
+
 }

@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="/dist/icon-moon.css">
     <link rel="stylesheet" href="/dist_plyr/plyr.css">
     <link rel="stylesheet" href="/dist/new.css">
+    <script src="https://www.google.com/recaptcha/api.js"
+            async defer></script> 
     @vite(['resources/sass/lib.scss', 'resources/js/script.js'])
     @livewireStyles
 </head>
@@ -255,7 +257,7 @@
 <script src="/admin/plugins/jquery/jquery.js"></script>
 <script src="/admin/plugins/summernote/summernote-bs4.min.js"></script>
 
-
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
     if (document.querySelector('.summernote')) {

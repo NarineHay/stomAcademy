@@ -23,20 +23,34 @@ class RegisterController extends Controller
 
     protected function validator(array $data)
     {
+        
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'regex:/^(\+?\d{1,3}|\(\+?\d{1,3}\))?\s?\d{10}$/'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $name = $data['name'] . ' ' . $data['lname'];
+        $user = User::create([
+            'name' => $name,
             'email' => $data['email'],
             'password' => $data['password'],
         ]);
+
+        $user->userinfo()->update([
+            "fname" => $data['name'],
+            "lname" => $data['lname'],
+            "phone" => $data['phone']
+
+        ]);
+
+        return $user;
+
     }
 
     function redirectPath(){

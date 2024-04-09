@@ -1,5 +1,13 @@
 <?php
 
+
+// $targetFolder = __DIR__.'/../storage/app/public';
+// $linkFolder = __DIR__.'/../public/storage';
+// symlink($targetFolder,$linkFolder);
+// echo 'Symlink process successfully completed';
+
+// exit();
+
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 

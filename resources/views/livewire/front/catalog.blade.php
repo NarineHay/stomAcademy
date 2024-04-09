@@ -38,15 +38,30 @@
                         data-bs-toggle="dropdown" aria-expanded="false"><a href="sorting.html" class="text-black">Сортировка</a>
                 </button>
                 <ul class="dropdown-menu p-3">
-                    <input wire:model="sortBy" value="price" type="radio" id="vehicle111" name="sort"
-                           class="mt-2 cursor">
-                    <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">Цена</label><br>
-                    <input wire:model="sortBy" value="title" type="radio" id="vehicle1112" name="sort"
-                           class="mt-2 cursor">
-                    <label for="vehicle1112" class="f-500 fs-14 ms-2 cursor">Названия</label><br>
+                    <div class="d-flex">
+
                     <input wire:model="sortBy" value="popularity" type="radio" id="vehicle3333" name="sort"
                            class="mt-2 cursor">
                     <label for="vehicle3333" class="f-500 fs-14 ms-2 cursor">По популярность</label><br>
+                    </div>
+                    <div class="d-flex">
+
+                    <input wire:model="sortBy" value="price_desc" type="radio" id="vehicle111" name="sort"
+                        class="mt-2 cursor">
+                    <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">Цена по убыванию</label><br>
+                    </div>
+                    <div class="d-flex">
+
+                    <input wire:model="sortBy" value="price_asc" type="radio" id="vehicle1115" name="sort"
+                           class="mt-2 cursor">
+                    <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">Цена по возрастанию</label><br>
+                    </div>
+                    <div class="d-flex">
+
+                    <input wire:model="sortBy" value="title" type="radio" id="vehicle1112" name="sort"
+                           class="mt-2 cursor">
+                    <label for="vehicle1112" class="f-500 fs-14 ms-2 cursor">Названия</label><br>
+                    </div>
                 </ul>
             </div>
             <div class="collapse" id="collapseExample">
@@ -116,15 +131,29 @@
                         @case("popularity") {{ __("courses.sort.pop") }} @break @endswitch @else {{ __("courses.sort.price") }} @endif
                     </button>
                     <div class="dropdown-menu p-3 border-0" aria-labelledby="dropdownMenuButton1">
-                        <input wire:model="sortBy" value="price" type="radio" id="vehicle111" name="sort"
-                               class="mt-2 cursor">
-                        <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">{{ __("courses.sort.price") }}</label><br>
+                        <div class="d-flex">
+                            <input wire:model="sortBy" value="popularity" type="radio" id="vehicle3333" name="sort"
+                                class="mt-2 cursor">
+                            <label for="vehicle3333" class="f-500 fs-14 ms-2 cursor">{{ __("courses.sort.pop") }}</label><br>
+                        </div>
+                        <div class="d-flex">
+
+                        <input wire:model="sortBy" value="price_desc" type="radio" id="vehicle111" name="sort"
+                        class="mt-2 cursor">
+                        <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">{{ __("courses.sort.price_desc") }}</label><br>
+                        </div>
+                        <div class="d-flex">
+
+                        <input wire:model="sortBy" value="price_asc" type="radio" id="vehicle1115" name="sort"
+                           class="mt-2 cursor">
+                        <label for="vehicle111" class="f-500 fs-14 ms-2 cursor">{{ __("courses.sort.price_asc") }}</label><br>
+                        </div>
+                        <div class="d-flex">
+
                         <input wire:model="sortBy" value="title" type="radio" id="vehicle1112" name="sort"
                                class="mt-2 cursor">
                         <label for="vehicle1112" class="f-500 fs-14 ms-2 cursor">{{ __("courses.sort.name") }}</label><br>
-                        <input wire:model="sortBy" value="popularity" type="radio" id="vehicle3333" name="sort"
-                               class="mt-2 cursor">
-                        <label for="vehicle3333" class="f-500 fs-14 ms-2 cursor">{{ __("courses.sort.pop") }}</label><br>
+                        </div>
                     </div>
                 </div>
             </div>

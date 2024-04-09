@@ -16,6 +16,9 @@ return [
     "h1" => "Stom academy<br>dental education",
     "under_title" => 'stom-academy — is a training service for dentists that runs webinars, seminars, practical courses and congresses.',
     "form" => [
+        "name" => "Name",
+        "lname" => "Surname",
+        "phone" => "Phone",
         "title" => "Log in",
         "email" => "Email",
         "password" => "Password",

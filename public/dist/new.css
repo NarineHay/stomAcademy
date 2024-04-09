@@ -1,0 +1,3 @@
+.container.mt-4.mt-lg-6.useful_articles:not(.overflow-auto) {
+    display: none;
+}

@@ -16,6 +16,9 @@ return [
     "h1" => "Stom academy<br>dental education",
     "under_title" => 'stom-academy — es un servicio de formación para dentistas que organiza seminarios web, seminarios, cursos prácticos y congresos.',
     "form" => [
+        "name" => "Nombre",
+        "lname" => "Apellido",
+        "phone" => "Teléfono",
         "title" => "Conectarse",
         "email" => "Email",
         "password" => "Contraseña",

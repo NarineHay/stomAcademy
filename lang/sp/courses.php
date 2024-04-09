@@ -12,7 +12,9 @@ return [
     "sort" => [
         "title" => "Ordenar por:",
         "price" => "Precio",
-        "name" => "Títulos",
+        "price_asc" => "Precio ascendente",
+        "price_desc" => "Precio descendente",
+        "name" => "Por nombre",
         "pop" => "Por popularidad",
         "default" => "Relevancia",
     ],

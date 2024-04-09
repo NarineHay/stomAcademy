@@ -21,7 +21,7 @@ class CourseSeeder extends Seeder
         $direction = Direction::all();
         $images = RandomImagesApi::getImages("webinar",10,"webinar");
         $bg_images = RandomImagesApi::getImages("webinar",10,"webinar",1920);
-        for ($i = 0; $i < 150; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $course = Course::factory(1)->make(['image' => $images[rand(0,9)],'bg_image' => $bg_images[rand(0,9)]])->first();
             $course->price_id = $price->random(1)->first()->id;
             if(fake()->boolean()){
