@@ -6,4 +6,5 @@
         <livewire:front.home-login/>
     </div>
 </div>
+ 
 @endsection

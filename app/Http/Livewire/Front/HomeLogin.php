@@ -15,12 +15,26 @@ class HomeLogin extends Component
     public $email = null;
     public $password = null;
     public $password_re = null;
+    public $password_confirmation = null;
+    public $captcha = null;
+
     public $error = false;
 
     public $type = "login";
+    // public $showRecaptcha = false;
 
     public function render()
     {
+        $previousUrl = url()->previous();
+
+        // Parse the URL to retrieve the route name
+        $previousRouteName = app('router')->getRoutes()->match(app('request')->create($previousUrl))->getName();
+
+
+        if($previousRouteName == "home" && !request()->routeIs('home')){
+            $this->type = "register";
+        }
+
         if($this->type == "login"){
             return view('livewire.front.home-login');
         }else{
@@ -29,6 +43,14 @@ class HomeLogin extends Component
     }
 
     public function changeType(){
+        // if($this->type == "login"){
+        //     $this->type = "register";
+        //     $this->showRecaptcha = true;
+        // }
+        // else{
+        //     $this->type = "login";
+
+        // }
         $this->type = $this->type == "login" ? "register" : "login";
     }
 
@@ -41,11 +63,13 @@ class HomeLogin extends Component
     }
 
     protected $rules = [
-        'email' => 'required|email',
+        'email' => 'required|email|unique:users',
         'name' => 'required|string|max:255',
         'lname' => 'required|string|max:255',
+        'password' => 'required|min:8|confirmed',
+        // 'captcha' => 'required|captcha',
         // 'g-recaptcha-response' => 'required|recaptcha',
-        // 'phone' => 'required|regex:/^(\+?\d{1,3}|\(\+?\d{1,3}\))?\s?\d{10}$/',
+        'phone' => 'required|regex:/^\+?\d{1,3}(\s?\d{3,4}){2,3}$/',
     ];
 
     // private function getRecaptchaResponse()
@@ -65,24 +89,25 @@ class HomeLogin extends Component
 
         $this->validate();
 
-        if($this->name == null || $this->lname == null){
-            $this->error['message'] = "Пароли не совпадают";
-            return;
-        }
-        if(User::query()->where("email",$this->email)->exists()){
-            $this->error = "Почта ужа используется";
-            return;
-        }
+        // if($this->name == null || $this->lname == null){
+        //      $this->error = "Пароли не совпадают555";
+        //      return;
 
-        if($this->password != $this->password_re){
-            $this->error = "Пароли не совпадают";
-            return;
-        }
+        // }
+        // if(User::query()->where("email",$this->email)->exists()){
+        //     $this->error = "Почта ужа используется";
+        //     return;
+        // }
 
-        if(strlen($this->password) < 8){
-            $this->error = "Пароль должен содержать не менее 8 символов";
-            return;
-        }
+        // if($this->password != $this->password_re){
+        //     $this->error = "Пароли не совпадают";
+        //     return;
+        // }
+
+        // if(strlen($this->password) < 8){
+        //     $this->error = "Пароль должен содержать не менее 8 символов";
+        //     return;
+        // }
 
         $name = $this->name . ' ' . $this->lname;
         $user = User::create([
@@ -111,4 +136,6 @@ class HomeLogin extends Component
         }
         return route('personal.index');
     }
+
+
 }

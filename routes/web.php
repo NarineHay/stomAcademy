@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CaptchaController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Auth::routes();
+Route::get('refresh-captcha', [App\Http\Controllers\CaptchaController::class, 'refresh_captcha'])->name('refresh_captcha');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get("/lg/{lg_id}",[\App\Http\Controllers\HomeController::class,"change_lg"])->name('change_lg');
 Route::get("/cur/{cur_id}",[\App\Http\Controllers\HomeController::class,"change_cur"])->name('change_cur');

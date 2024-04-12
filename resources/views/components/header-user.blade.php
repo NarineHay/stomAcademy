@@ -84,10 +84,10 @@
                                         {{ \App\Models\Currency::find(\Illuminate\Support\Facades\Cookie::get("currency_id"))->currency_name }}
                                         <i class="icon-{{ \Illuminate\Support\Str::lower(\App\Models\Currency::find(\Illuminate\Support\Facades\Cookie::get("currency_id"))->currency_name) }}"></i>
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end cur-dropdown" aria-labelledby="dropdownMenuLink">
+                                    <ul class="dropdown-menu dropdown-menu-end cur-dropdown" aria-labelledby="dropdownMenuLink111">
                                         @foreach(\App\Models\Currency::all() as $cur)
                                             <li><a class="dropdown-item"
-                                                   href="{{ route("change_cur",$cur->id) }}">{{ $cur->currency_name }} <i
+                                                   href="{{ route("change_cur",$cur->id) }}">{{ $cur->currency_name }}<i
                                                         class="icon-{{ \Illuminate\Support\Str::lower($cur->currency_name) }}"></i></a>
                                             </li>
                                         @endforeach

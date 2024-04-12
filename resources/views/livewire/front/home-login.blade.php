@@ -17,10 +17,17 @@
             <i class="fal eye fa-eye text-secondary position-absolute top-0 end-0 mt-2 me-2 cursor"></i>
         </div>
     </div>
+
     @if($error) <p class="p-0 mb-1 text-danger f-500 fs-12 m-0">{{ $error }}</p> @endif
     <button type="submit" wire:click="login" class="btn btn-primary mt-3 w-100 fs-14 f-600 py-2 br-12">{{ __("header.form.login") }}</button>
     <div class="mt-4 text-center">
         <span class="text-secondary me-1 fs-14 f-500 m-0">{{ __("header.form.first_time") }}</span>
-        <a wire:click="changeType" class="text-primary fs-14 f-500 m-0">{{ __("header.form.register") }}</a>
+        @if (request()->routeIs('home'))
+            <a  class="text-primary fs-14 f-500 m-0" href="{{route('login')}}">{{ __("header.form.register") }}</a>
+        @else
+            <a wire:click="changeType" class="text-primary fs-14 f-500 m-0" id="register_id">{{ __("header.form.register") }}</a>
+        @endif
+
     </div>
 </div>
+
