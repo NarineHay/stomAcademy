@@ -72,4 +72,9 @@ class User extends Authenticatable
     function cart(){
         return $this->hasMany(Cart::class,"user_id","id");
     }
+
+    function direction_ids()
+    {
+        return $this->directions->pluck('direction_id')->toArray();
+    }
 }

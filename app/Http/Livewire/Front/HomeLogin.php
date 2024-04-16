@@ -30,8 +30,7 @@ class HomeLogin extends Component
         // Parse the URL to retrieve the route name
         $previousRouteName = app('router')->getRoutes()->match(app('request')->create($previousUrl))->getName();
 
-
-        if($previousRouteName == "home" && !request()->routeIs('home')){
+        if(request()->type == 'register'){
             $this->type = "register";
         }
 

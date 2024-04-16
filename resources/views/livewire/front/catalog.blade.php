@@ -225,7 +225,7 @@
                             <form class="dublicat_form" method="POST" action="{{route('addToCart')}}">
                                 @csrf
                                 <input type="hidden" value="{{ $course->id }}" name="id">
-                                <input type="hidden" value="webinar" name="type">
+                                <input type="hidden" value="course" name="type">
                                 <button
                                     class="btn btn-outline-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __('index.buy_webinar') }}</button>
                             </form>

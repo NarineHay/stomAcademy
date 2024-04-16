@@ -91,6 +91,7 @@
                                 </button>
                             </form>
                         </div>
+                       
                         @if($promo)
                             <div class="d-flex justify-content-between mt-2 mt-md-3">
                                 <p class="m-0 f-500">{{ __("profile.cart.sale") }}</p>
@@ -98,7 +99,7 @@
                             </div>
                             <div class="d-flex justify-content-between mt-2">
                                 <p class="m-0 f-500">{{ __("profile.cart.price") }}</p>
-                                <p class="text-primary m-0 f-600">{{ $sub_total }} ₽</p>
+                                <p class="text-primary m-0 f-600">{{ $sub_total }}  <i class="icon-{{ \App\Helpers\TEXT::curSymbol() }}"></i></p>
                             </div>
                         @endif
                     </div>

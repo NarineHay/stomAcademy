@@ -152,6 +152,7 @@ return [
 
     'attributes' => [
         "name" => "Имя",
+        "fname" => "Имя",
         'lname' => "Фамилия",
         "email" => "Эл. почта",
         "phone" => "Телефон",
