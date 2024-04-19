@@ -46,18 +46,23 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <div>
+                            @if ($access->course_id != null)
                             <label for="course" style="margin-right: 10px">
                                 <input type="radio" id="course" name="type" value="course" {{$access->course_id != null ? 'checked' : ''}}>
                                 Курс</label>
+                            @endif
 
+                            @if ($access->webinar_id != null)
                             <label for="webinar">
                                 <input type="radio" id="webinar" name="type" value="webinar" {{$access->webinar_id != null ? 'checked' : ''}}>
                                 Вебинар</label>
-                        </div>
-                    </div>
+                            @endif
 
+                        </div>
+                    </div> --}}
+                    @if ($access->course_id != null)
                     <div class="form-group @if($access->course_id == null) d-none @endif courseDiv" id="">
                         <label for="exampleInputEmail1">Курс</label>
                         <select class="form-control select2" name="course_id">
@@ -68,7 +73,8 @@
                             @endforeach
                         </select>
                     </div>
-
+@endif
+@if ($access->webinar_id != null)
                     <div class="form-group @if($access->webinar_id == null) d-none @endif webinarDiv">
                         <label for="exampleInputEmail1">Вебинар</label>
                         <select class="form-control select2" name="webinar_id">
@@ -79,6 +85,7 @@
                             @endforeach
                         </select>
                     </div>
+                    @endif
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Статус просмотра</label>

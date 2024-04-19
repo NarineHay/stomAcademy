@@ -304,6 +304,21 @@
                     }
                 }));
         })
+
+        document.querySelectorAll(".certificate_form").forEach(function(form) {
+            form.querySelectorAll('input[type=radio][name="type"]').forEach(radio => radio.addEventListener(
+                'change',
+                function check() {
+                    console.log(11);
+                    if (radio.value == 'webinar') {
+                        form.querySelector('.courseDiv').classList.add("d-none");
+                        form.querySelector('.webinarDiv').classList.remove("d-none");
+                    } else if (radio.value == 'course') {
+                        form.querySelector('.webinarDiv').classList.add("d-none");
+                        form.querySelector('.courseDiv').classList.remove("d-none");
+                    }
+                }));
+        })
     </script>
 
     <script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -321,7 +336,7 @@
     <script src="/admin/dist/js/demo.js"></script>
     <script src="/admin/dist/js/pages/dashboard.js"></script>
 
-    
+
 </body>
 
 </html>

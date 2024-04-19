@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('course_infos', function (Blueprint $table) {
-            $table->string('slug')->nullable();
-            
+        Schema::table('certificates', function (Blueprint $table) {
+            $table->unsignedBigInteger('course_id')->nullable()->change();
+            $table->unsignedBigInteger('webinar_id')->nullable()->after('course_id');
+            $table->foreign('webinar_id')->references('id')->on('webinars')->onDelete("cascade");
         });
     }
 
@@ -26,8 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('course_infos', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('certificate_images');
     }
 };

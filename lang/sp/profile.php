@@ -8,6 +8,9 @@ return [
         "reg_num" => "Reg. № ",
         "hourse" => "Número de horas",
         "download" => "Descargar",
+        "course_certificate" => "Certificado del curso",
+        "webinar_certificate" => "Certificado de seminario web"
+
     ],
     "courses" => [
         "back" => "Volver",

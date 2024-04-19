@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\Language;
 use Illuminate\Http\Request;
 use App\Http\Requests\AdminCertificateStoreRequest;
+use App\Models\Webinar;
 
 class CertificateController extends Controller
 {
@@ -21,15 +22,29 @@ class CertificateController extends Controller
     public function create()
     {
         $data['courses'] = Course::all();
+        $data['webinars'] = Webinar::all();
+
         return view('admin.certificates.create', $data);
     }
 
     public function store(Request $request)
     {
+        $type = $request->get("type");
+
+        if ($type == "course") {
+            $request['webinar_id'] = null;
+        } else {
+            $request['course_id'] = null;
+        }
+
         $certificate = new Certificate();
         $certificate->course_id = $request->get('course_id');
+        $certificate->webinar_id = $request->get('webinar_id');
         $certificate->hours_number = $request->get('hours_number');
         $certificate->date = $request->get('date');
+
+
+
 //        $certificate->image = $request->file('image')->store('public/certificates');
         $certificate->save();
         foreach ($request->file("image") as $lg_id => $image){
@@ -45,6 +60,9 @@ class CertificateController extends Controller
 
     public function edit(Certificate $certificate)
     {
+        $courses = Course::all();
+        $webinars = Webinar::all();
+
         return view('admin.certificates.edit',compact('certificate'));
     }
 
@@ -52,6 +70,7 @@ class CertificateController extends Controller
     {
         $certificate = Certificate::find($certificate->id);
         $certificate->course_id = $request->course_id;
+        $certificate->webinar_id = $request->webinar_id;
         $certificate->name_x = $request->name_x;
         $certificate->name_y = $request->name_y;
         $certificate->hour_x = $request->hour_x;

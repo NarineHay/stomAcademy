@@ -34,7 +34,7 @@
                                 <tr>
                                     <th>Изображение</th>
 
-                                    <th>Название курса</th>
+                                    <th>Название курса / Вебинара</th>
 
                                     <th>Кнопки управления</th>
                                 </tr>
@@ -48,7 +48,9 @@
                                         </td>
 
                                         <td>
-                                            <a>{{$certificate->course->info->title}}</a>
+                                            <label>{{$certificate->course != null ? 'Курс: ' : ($certificate->webinar != null ? "Вебинар: " : '')}}</label>
+
+                                            <a>{{$certificate->course != null ? $certificate->course->info->title : ($certificate->webinar != null ? $certificate->webinar->info->title : '')}}</a>
                                         </td>
 
                                         <td class="project-actions text-right">

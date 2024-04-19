@@ -34,7 +34,7 @@
                 <div class = "card card-primary">
                     <div class="row">
                         <div class="card-body">
-                            <livewire:admin.coordinates :certificate="$certificate"/>
+                            <livewire:admin.coordinates :certificate="$certificate" />
                         </div>
                     </div>
                 </div>

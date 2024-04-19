@@ -68,7 +68,7 @@ Route::group(['prefix' => "personal",'middleware' => 'auth','as' => 'personal.']
     Route::get("/deleteAccount/{id}", [\App\Http\Controllers\InformationController::class,'deleteAccount'])->name('deleteAccount');
 });
 
-Route::get('certificate-download/{image}', [\App\Http\Controllers\CertificateController::class, 'download'])->name('download');
+Route::get('certificate-download/{image}/{type}', [\App\Http\Controllers\CertificateController::class, 'download'])->name('download');
 
 Route::middleware("auth")->group(function (){
     Route::post('addToCart', [\App\Http\Controllers\CartController::class, 'add'])->name('addToCart');

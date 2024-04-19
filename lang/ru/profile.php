@@ -8,6 +8,8 @@ return [
         "reg_num" => "Reg. № ",
         "hourse" => "Количество часов",
         "download" => "Скачать",
+        "course_certificate" => "Сертификат курса",
+        "webinar_certificate" => "Сертификат вебинара"
     ],
     "courses" => [
         "back" => "Назад",

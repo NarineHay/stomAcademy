@@ -40,6 +40,10 @@ class Certificate extends Model
         return $this->hasOne(Course::class,"id","course_id");
     }
 
+    function webinar(){
+        return $this->hasOne(Webinar::class,"id","webinar_id");
+    }
+
     function infos(){
         return $this->hasMany(CertificateImage::class,"","id");
     }

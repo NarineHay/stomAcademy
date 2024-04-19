@@ -31,11 +31,35 @@
         @endif
 
         <div class="card card-primary">
-            <form action="{{ route('admin.certificates.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="certificate_form" action="{{ route('admin.certificates.store',['access_type' => 'select']) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="exampleInputEmail1">КУРС</label>
+
+                        <select class="form-control select2" name="course_id">
+                            @foreach($courses as $course)
+                                <option value="{{ $course->id }}">
+                                    {{ $course->info->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div> --}}
+
+                    <div class="form-group">
+                        <div>
+                            <label style="margin-right: 10px">
+                                <input type="radio" id="course" name="type" value="course" checked>
+                                Курс</label>
+
+                            <label>
+                                <input type="radio" id="webinar" name="type" value="webinar">
+                                Вебинар</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group courseDiv" >
+                        <label for="exampleInputEmail1">Курс</label>
                         <select class="form-control select2" name="course_id">
                             @foreach($courses as $course)
                                 <option value="{{ $course->id }}">
@@ -44,6 +68,18 @@
                             @endforeach
                         </select>
                     </div>
+
+                    <div class="form-group d-none webinarDiv">
+                        <label for="exampleInputEmail1">Вебинар</label>
+                        <select class="form-control select2" name="webinar_id">
+                            @foreach($webinars as $webinar)
+                                <option value="{{ $webinar->id }}">
+                                    {{ $webinar->info->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">КОЛИЧЕСТВО ЧАСОВ</label>

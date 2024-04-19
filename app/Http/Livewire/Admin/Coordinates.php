@@ -7,6 +7,7 @@ use App\Models\CertificateImage;
 use App\Models\Course;
 use App\Models\User;
 use App\Models\UserCertificate;
+use App\Models\Webinar;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
@@ -22,7 +23,7 @@ class Coordinates extends Component
     public $file;
     public $tmp;
     public $hours_number = '';
-    public $course_id = '';
+    // public $course_id = '';
     public $date = '';
     public $default_font;
 
@@ -52,11 +53,12 @@ class Coordinates extends Component
     public $original = '';
 
     function mount(){
+
         $this->date = $this->certificate->date;
         $this->image = $this->certificate->image->image;
         $this->original = $this->certificate->image;
         $this->hours_number = $this->certificate->hours_number;
-        $this->course_id = $this->certificate->course_id;
+        // $this->course_id = $this->certificate->course_id;
         $this->certificate->images->map(function ($image){
             $this->images[$image->lg_id] = $image->image;
         });
@@ -88,7 +90,10 @@ class Coordinates extends Component
 
     public function render()
     {
+        // dd(11);
         $data['courses'] = Course::all();
+        $data['webinars'] = Webinar::all();
+
         $this->image = $this->image ?? $this->certificate->image;
         $data['fonts'] = [];
         $path = public_path("fonts/");
@@ -121,7 +126,7 @@ class Coordinates extends Component
     }
 
     public function submit(){
-        $this->certificate->course_id = $this->course_id;
+        // $this->certificate->course_id = $this->course_id;
         $this->certificate->hours_number = $this->hours_number;
         $this->certificate->date = $this->date;
 
@@ -129,19 +134,19 @@ class Coordinates extends Component
         $this->certificate->name_y = $this->name_['y'];
         $this->certificate->name_color = $this->name_['color'];
         $this->certificate->name_size = $this->name_['size'];
-        $this->certificate->name_font = explode("public/",is_file($this->name_['font']) ? $this->name_['font'] : $this->default_font)[1];
+        $this->certificate->name_font = explode("public\\",is_file($this->name_['font']) ? $this->name_['font'] : $this->default_font)[1];
 
         $this->certificate->hour_x = $this->hour_['x'];
         $this->certificate->hour_y = $this->hour_['y'];
         $this->certificate->hour_color = $this->hour_['color'];
         $this->certificate->hour_size = $this->hour_['size'];
-        $this->certificate->hour_font = explode("public/",is_file($this->hour_['font']) ? $this->hour_['font'] : $this->default_font)[1];
+        $this->certificate->hour_font = explode("public\\",is_file($this->hour_['font']) ? $this->hour_['font'] : $this->default_font)[1];
 
         $this->certificate->date_x = $this->date_['x'];
         $this->certificate->date_y = $this->date_['y'];
         $this->certificate->date_color = $this->date_['color'];
         $this->certificate->date_size = $this->date_['size'];
-        $this->certificate->date_font = explode("public/",is_file($this->date_['font']) ? $this->date_['font'] : $this->default_font)[1];
+        $this->certificate->date_font = explode("public\\",is_file($this->date_['font']) ? $this->date_['font'] : $this->default_font)[1];
 
 
         $this->certificate->save();
@@ -164,27 +169,35 @@ class Coordinates extends Component
         $image = Image::make($disc->get($this->tmp));
 
         if($this->hour_['y'] > 0) {
-            $image->text($this->certificate->hours_number, ($image->width() / 2) + $this->hour_['x'], $this->hour_['y'], function ($font) {
+            $hour_x = $this->hour_['x'] == '' ? 0 : $this->hour_['x'];
+
+            $image->text($this->certificate->hours_number, ($image->width() / 2) + $hour_x, $this->hour_['y'], function ($font) {
                 $font->file($this->hour_['font']);
-                $font->size($this->hour_['size']);
+                $font->size($this->hour_['size'] == '' ? 0 : $this->hour_['size']);
                 $font->color($this->hour_['color']);
                 $font->align('center');
             });
         }
 
         if($this->name_['y'] > 0) {
-            $image->text("Фамилия Имя Отчество", ($image->width() / 2) + $this->name_['x'], $this->name_['y'], function ($font) {
+            $name_x = $this->name_['x'] == '' ? 0 : $this->name_['x'];
+
+            $image->text("Фамилия Имя Отчество", (($image->width() / 2) + $name_x), $this->name_['y'], function ($font) {
                 $font->file($this->name_['font']);
-                $font->size($this->name_['size']);
+                $font->size($this->name_['size'] == '' ? 0 : $this->name_['size']);
                 $font->color($this->name_['color']);
                 $font->align('center');
+
             });
+
+
         }
 
         if($this->date_['y'] > 0) {
-            $image->text($this->date, ($image->width() / 2) +  $this->date_['x'],$this->date_['y'], function ($font) {
+            $date_x = $this->date_['x'] == '' ? 0 : $this->date_['x'];
+            $image->text($this->date, ($image->width() / 2) +  $date_x,$this->date_['y'], function ($font) {
                 $font->file($this->date_['font']);
-                $font->size($this->date_['size']);
+                $font->size($this->date_['size'] == '' ? 0 : $this->date_['size']);
                 $font->color($this->date_['color']);
                 $font->align('center');
             });

@@ -8,6 +8,8 @@ return [
         "reg_num" => "Reg. № ",
         "hourse" => "Number of hours",
         "download" => "Download",
+        "course_certificate" => "Course certificate",
+        "webinar_certificate" => "Webinar certificate"
     ],
     "courses" => [
         "back" => "Back",

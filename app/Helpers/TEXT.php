@@ -3,8 +3,9 @@
 
 namespace App\Helpers;
 
-
+use App\Models\Course;
 use App\Models\Currency;
+use App\Models\Webinar;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
 
@@ -52,4 +53,8 @@ class TEXT
         $cur_name = Str::lower($cur->currency_name) ;
         return $cur_name;
     }
+
+    
+
+
 }

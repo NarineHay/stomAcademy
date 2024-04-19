@@ -77,4 +77,12 @@ class User extends Authenticatable
     {
         return $this->directions->pluck('direction_id')->toArray();
     }
+
+    function access_courses(){
+        return $this->hasMany(Access::class, 'user_id')->whereNotNull('course_id');
+    }
+
+    function access_webinars(){
+        return $this->hasMany(Access::class, 'user_id')->whereNotNull('webinar_id');
+    }
 }
