@@ -12,13 +12,14 @@ return [
     "sort" => [
         "title" => "Sort by:",
         "price" => "Price",
-        "price_asc" => "Price ascending",
-        "price_desc" => "Descending price",
-        "name" => "By name",
-        "pop" => "By popularity	",
+        "price_asc" => "ascending price",
+        "price_desc" => "descending price",
+        "name" => "name",
+        "pop" => "popularity",
         "default" => "Relevancies",
     ],
     "filters" => [
+        "filter" => "Filter",
         "directions" => "Categories",
         "price" => "Payment",
         "lector" => "Lecturers",

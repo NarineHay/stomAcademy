@@ -5,13 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminAccessStoreRequest;
 use App\Jobs\SendAccessMail;
+use App\Mail\SendAccessInfoEmail;
 use App\Models\Access;
 use App\Models\Course;
 use App\Models\User;
 use App\Models\Webinar;
+use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail as FacadesMail;
 use Illuminate\Support\Str;
+use Mail;
 
 class AccessController extends Controller
 {
@@ -86,10 +90,13 @@ class AccessController extends Controller
             })->filter(function ($item){
                 return !is_null($item);
             });
+
+            // dd($new_users);
             foreach ($new_users as $user){
                 $new_user = User::query()->where("email",$user['email'])->first();
                 if(is_null($new_user)){
                     $user['password'] = Str::random(8);
+
                     $new_user = User::create($user);
                     $user_ids[] = $new_user->id;
                 }
@@ -104,12 +111,21 @@ class AccessController extends Controller
                     "access_time" => $access_time,
                     "duration" => $duration
                 ];
-                SendAccessMail::dispatch($data);
+                
+                $subject = 'aaaaa';
+                // SendAccessMail::dispatch($data);
                 //Mail::to($new_user)->send(new UserAccessMail($data));
+                mail::send(new SendAccessInfoEmail($data, $subject));
             }
 
         }else{
             $user_ids = $request->get('user_ids');
+            $subject = 'bbbb';
+            foreach ($user_ids as $user_id) {
+                $user = User::find($user_id);
+
+                FacadesMail::send(new SendAccessInfoEmail($user, $subject));
+            }
         }
 
         foreach ($user_ids as $user_id) {
@@ -126,6 +142,8 @@ class AccessController extends Controller
                 $access->duration = $duration;
             }
             $access->save();
+
+
         }
         return redirect()->route('admin.accesses.index');
     }

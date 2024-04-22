@@ -37,14 +37,20 @@ class CartComponent extends Component
 
         if($this->promo){
             $promo = Promo::query()->where('code',$this->promo)->first();
-            if($promo){
+
+            if($promo != null){
+                $this->promo = 11;
                 $data['prc'] = $promo->prc;
+                $data['total'] = $total*(1 - $data['prc']/100);
+                $data['sub_total'] = $total;
             }
-            $data['total'] = $total*(1 - $data['prc']/100);
-            $data['sub_total'] = $total;
+            else{
+                $data['total'] = $total;
+            }
         }else{
             $data['total'] = $total;
         }
+
 
         return view('livewire.front.cart-component',$data);
     }

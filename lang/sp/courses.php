@@ -12,13 +12,14 @@ return [
     "sort" => [
         "title" => "Ordenar por:",
         "price" => "Precio",
-        "price_asc" => "Precio ascendente",
-        "price_desc" => "Precio descendente",
-        "name" => "Por nombre",
-        "pop" => "Por popularidad",
+        "price_asc" => "precio ascendente",
+        "price_desc" => "precio descendente",
+        "name" => "nombre",
+        "pop" => "popularidad",
         "default" => "Relevancia",
     ],
     "filters" => [
+        "filter" => "Filtrar",
         "directions" => "Áreas de estudio",
         "price" => "Pago",
         "lector" => "Profesores",

@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    {{-- {{dd($validationErrors)}} --}}
+
 
     <div class="mt-3 bg-white br-12 p-4" wire:ignore>
         <label class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#profile-1">
@@ -94,9 +94,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="mt-4">
-                    <button wire:click="savePersonalData" class="btn btn-primary py-2 px-4 br-12">{{ __("profile.save") }}</button>
-                </div> --}}
+
             </div>
         </div>
     </div>
@@ -116,9 +114,7 @@
                         </div>
                     @endforeach
                 </div>
-                {{-- <div class="mt-3">
-                    <button wire:click="directions" class="btn btn-primary py-2 px-4 br-12">{{ __("profile.save") }}</button>
-                </div> --}}
+
             </div>
         </div>
     </div>
@@ -131,23 +127,7 @@
         </div>
     </div>
 
-{{-- {{dd($errors)}} --}}
 
-    {{-- <div class="mt-3 bg-white br-12 p-4" wire:ignore>
-        <label class="d-flex justify-content-between" data-bs-toggle="collapse" data-bs-target="#profile-5">
-            <p class="m-0 f-600 fs-20">{{ __("profile.info.delete_account") }}</p>
-            <i class="fal fa-angle-down fs-24"></i>
-        </label>
-        <div class="collapse show" id="profile-5">
-            <div class="mt-3">
-                <h4>{{ __("profile.info.delete_account_text") }}</h4>
-            </div>
-            <div class="mt-4">
-                <a href="{{route('personal.deleteAccount',\Illuminate\Support\Facades\Auth::user()->id)}}"
-                   class="btn btn-danger py-2 px-4 br-12 text-white">{{ __("profile.info.delete") }}</a>
-            </div>
-        </div>
-    </div> --}}
 
     @if (isset($errors) && count($errors->all()) > 0)
 

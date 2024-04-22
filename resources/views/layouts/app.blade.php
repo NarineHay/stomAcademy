@@ -254,7 +254,7 @@
 
     {{-- MODAL Lector --}}
 
-    <div class="modal fade" id="lectorModal" tabindex="-1" aria-labelledby="lectorModalLabel" aria-hidden="true">
+    <div class="modal fade" id="lectorModal" tabindex="-1" aria-labelledby="lectorModalLabel" aria-hidden="true">888888
         <div class="modal-dialog">
             <livewire:front.become-lector />
         </div>

@@ -1,40 +1,26 @@
 <div>
     <div class="row">
         <div class="col-6 certificate_form">
-            {{-- <div class="form-group">
-                <label for="exampleInputEmail1">КУРС</label>
-                <select class="form-control select2" name="course_id" wire:model="course_id">
-                    @foreach($courses as $course)
-                        <option value="{{ $course->id }}">
-                            {{ $course->info->title}}
-                        </option>
-                    @endforeach
-                </select>
-            </div> --}}
 
             <div class="form-group">
                 <div>
-                    <label for="course" style="margin-right: 10px">
-                        <input type="radio" id="course" name="type" value="course" {{$certificate->course_id != null ? 'checked' : ''}}>
+                    @if ($certificate->course_id != null)
+                        <label for="course" style="margin-right: 10px">
+                            <input type="radio" id="course" name="type" value="course" checked>
                         Курс</label>
 
-                    <label for="webinar">
-                        <input type="radio" id="webinar" name="type" value="webinar" {{$certificate->webinar_id != null ? 'checked' : ''}}>
-                        Вебинар</label>
+                    @endif
+                    @if ($certificate->webinar_id != null)
+                        <label for="webinar">
+                            <input type="radio" id="webinar" name="type" value="webinar" checked>
+                            Вебинар</label>
+                    @endif
                 </div>
             </div>
-            @php
-            use App\Models\Course;
-            use App\Models\Webinar;
-
-            $courses = Course::all();
-            $webinars = Webinar::all();
-
-        @endphp
 
             <div class="form-group @if($certificate->course_id == null) d-none @endif courseDiv" id="">
                 <label for="exampleInputEmail1">Курс</label>
-                <select class="form-control select2" name="course_id">
+                <select class="form-control select2" name="course_id" disabled>
                     @foreach($courses as $course)
                         <option value="{{ $course->id }}" {{ $course->id == $certificate->course_id ? 'selected' : '' }}>
                             {{ $course->info->title }}
@@ -45,7 +31,7 @@
 
             <div class="form-group @if($certificate->webinar_id == null) d-none @endif webinarDiv">
                 <label for="exampleInputEmail1">Вебинар</label>
-                <select class="form-control select2" name="webinar_id">
+                <select class="form-control select2" name="webinar_id" disabled>
                     @foreach($webinars as $webinar)
                         <option value="{{ $webinar->id }}" {{ $webinar->id == $certificate->webinar_id ? 'selected' : '' }}>
                             {{ $webinar->info->title }}

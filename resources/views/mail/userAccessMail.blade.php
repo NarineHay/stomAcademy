@@ -2,7 +2,7 @@
     <p><b>Логин: </b></p> {{$email}}
     <p><b>Пароль: </b></p> {{$password}}
 @endif
-<p>-- {{ $name }} -- </p>
+{{-- <p>-- {{ $name }} -- </p> --}}
     @if($type =='course')
         <p>Вам открыт доступ к просмотру курса {{$course->info->title}}</p>
     @elseif($type =='webinar')

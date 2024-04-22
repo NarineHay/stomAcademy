@@ -91,8 +91,8 @@
                                 </button>
                             </form>
                         </div>
-                       
-                        @if($promo)
+
+                        @if(isset($sub_total))
                             <div class="d-flex justify-content-between mt-2 mt-md-3">
                                 <p class="m-0 f-500">{{ __("profile.cart.sale") }}</p>
                                 <p class="text-danger m-0 f-600">-{{ $prc }}%</p>
@@ -106,8 +106,8 @@
                     <div>
                         <div class="d-flex justify-content-between mt-2 mt-md-5 mb-3 align-items-center">
                             <p class="f-700 fs-16 m-0">{{ __("profile.cart.to_pay") }}</p>
-                            <p class="f-700 fs-24 text-primary m-0">{{ $total }} <i class="icon-{{ \App\Helpers\TEXT::curSymbol() }}"></i></p>
-{{--                            {{$item->webinar->price->html()}}--}}
+                            <p class="f-700 fs-24 text-primary m-0">{{ $total }}<i class="icon-{{ \App\Helpers\TEXT::curSymbol() }}"></i></p>
+
                         </div>
                         <form action="{{ route("personal.cart.order") }}" method="POST">
                             @csrf

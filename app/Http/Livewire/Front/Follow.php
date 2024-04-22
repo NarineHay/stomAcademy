@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front;
 
+use App\Helpers\Sendpulse\Follow as SendpulseFollow;
 use App\Models\Followers;
 use Livewire\Component;
 
@@ -32,10 +33,18 @@ class Follow extends Component
     {
         $this->validate();
 
-        Followers::create([
+        // Followers::create([
+        //     'name' => $this->name,
+        //     'email' => $this->email,
+        //     $this->success = true,
+        // ]);
+
+        $data = [
             'name' => $this->name,
-            'email' => $this->email,
-            $this->success = true,
-        ]);
+            'email' => $this->email
+        ];
+
+
+        SendpulseFollow::follow($data);
     }
 }

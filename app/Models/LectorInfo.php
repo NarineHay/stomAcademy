@@ -13,6 +13,7 @@ class LectorInfo extends Model
 
     protected $fillable = [
         'biography',
-        'lg_id'
+        'lg_id',
+        'user_id'
     ];
 }

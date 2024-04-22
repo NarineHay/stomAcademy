@@ -90,7 +90,6 @@ class Coordinates extends Component
 
     public function render()
     {
-        // dd(11);
         $data['courses'] = Course::all();
         $data['webinars'] = Webinar::all();
 
@@ -134,19 +133,19 @@ class Coordinates extends Component
         $this->certificate->name_y = $this->name_['y'];
         $this->certificate->name_color = $this->name_['color'];
         $this->certificate->name_size = $this->name_['size'];
-        $this->certificate->name_font = explode("public\\",is_file($this->name_['font']) ? $this->name_['font'] : $this->default_font)[1];
+        $this->certificate->name_font = explode("public/",is_file($this->name_['font']) ? $this->name_['font'] : $this->default_font)[1];
 
         $this->certificate->hour_x = $this->hour_['x'];
         $this->certificate->hour_y = $this->hour_['y'];
         $this->certificate->hour_color = $this->hour_['color'];
         $this->certificate->hour_size = $this->hour_['size'];
-        $this->certificate->hour_font = explode("public\\",is_file($this->hour_['font']) ? $this->hour_['font'] : $this->default_font)[1];
+        $this->certificate->hour_font = explode("public/",is_file($this->hour_['font']) ? $this->hour_['font'] : $this->default_font)[1];
 
         $this->certificate->date_x = $this->date_['x'];
         $this->certificate->date_y = $this->date_['y'];
         $this->certificate->date_color = $this->date_['color'];
         $this->certificate->date_size = $this->date_['size'];
-        $this->certificate->date_font = explode("public\\",is_file($this->date_['font']) ? $this->date_['font'] : $this->default_font)[1];
+        $this->certificate->date_font = explode("public/",is_file($this->date_['font']) ? $this->date_['font'] : $this->default_font)[1];
 
 
         $this->certificate->save();

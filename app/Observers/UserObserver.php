@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Language;
+use App\Models\LectorInfo;
 use App\Models\user;
 
 class UserObserver
@@ -10,13 +11,18 @@ class UserObserver
     public function created(user $user)
     {
         $user->userinfo()->create();
-        $lector = $user->lector()->create();
 
-        foreach (Language::all() as $lg){
+        if($user->role == 'lector'){
+            $lector = $user->lector()->create();
 
-            $lector->infos()->create([
-                "lg_id" => $lg->id
-            ]);
+            foreach (Language::all() as $lg){
+
+                LectorInfo::create([
+                    "lg_id" => $lg->id,
+                    'user_id' => $user->id
+                ]);
+
+            }
 
         }
 
