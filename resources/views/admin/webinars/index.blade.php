@@ -23,7 +23,7 @@
                             <option value="0">---</option>
                             @foreach($all_webinars as $webinar)
                                 <option @if($webinar->id == $search_webinar) selected @endif value="{{ $webinar->id }}">
-                                    {{ $webinar->info->title }}
+                                    {{ $webinar->info->title ?? ''}}
                                 </option>
                             @endforeach
                         </select>
@@ -105,7 +105,7 @@
                                             <a><img src="{{\Illuminate\Support\Facades\Storage::url($webinar->image) }}" height="70" alt=""/></a>
                                         </td>
                                         <td>
-                                            <a>{{$webinar->info->title}}</a>
+                                            <a>{{$webinar->info->title ?? ''}}</a>
                                         </td>
                                         <td>
                                             <a>{{$webinar->user->userinfo->fname}} {{$webinar->user->userinfo->lname}}</a>

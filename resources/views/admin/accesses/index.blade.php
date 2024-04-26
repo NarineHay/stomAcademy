@@ -29,7 +29,7 @@
 
                                 @foreach($webinars as $webinar)
                                     <option @if($webinar->id == $search_webinar) selected @endif  value="{{ $webinar->id }}">
-                                        {{ $webinar->info->title }}
+                                        {{ $webinar->info->title ?? '' }}
                                     </option>
                                 @endforeach
                             </select>

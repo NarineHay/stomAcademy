@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Helpers\Sendpulc;
+namespace App\Helpers\Sendpulse;
 
 use Sendpulse\RestApi\ApiClient;
 
 class SendpulseClient
 {
     static function client(){
-        define('API_USER_ID', 'sads');
-        define('API_SECRET', 'sasas');
-        $apiClient = new ApiClient(API_USER_ID, API_SECRET);
+        $api_user_id = env('API_USER_ID');
+        $api_secret = env('API_SECRET');
+        $apiClient = new ApiClient($api_user_id, $api_secret);
 
         return $apiClient;
     }

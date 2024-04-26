@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\PaymentResultController;
 use App\Http\Controllers\CaptchaController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -99,9 +101,13 @@ Route::group(['prefix' => "lector",'middleware' => 'isLector','as' => 'lector.']
     Route::get("/personal",[\App\Http\Controllers\Lector\PersonalController::class,'index'])->name("personal");
     Route::get("/profile",[\App\Http\Controllers\Lector\ProfileController::class,'index'])->name("profile");
 //    Route::get("/webinars",[\App\Http\Controllers\Lector\WebinarsController::class,'index'])->name("webinars");
-    Route::get("/courses",[\App\Http\Controllers\Lector\CoursesController::class,'index'])->name("courses");
-    Route::get("/chats",[\App\Http\Controllers\Lector\ChatsController::class,'index'])->name("chats");
+//     Route::get("/courses",[\App\Http\Controllers\Lector\CoursesController::class,'index'])->name("courses");
+//     Route::get("/chats",[\App\Http\Controllers\Lector\ChatsController::class,'index'])->name("chats");
 });
+
+Route::get("test",[TestController::class, 'index']);
+Route::get('payment-result', PaymentResultController::class);
+
 
 
 //Route::prefix('personal')->middleware("auth")->group(function (){

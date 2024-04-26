@@ -26,7 +26,9 @@ class Follow extends Component
 
     public function render()
     {
-        return view('livewire.front.follow');
+        $data['success'] = $this->success;
+
+        return view('livewire.front.follow',$data);
     }
 
     public function submit()
@@ -44,7 +46,7 @@ class Follow extends Component
             'email' => $this->email
         ];
 
-
         SendpulseFollow::follow($data);
+        $this->success= true;
     }
 }

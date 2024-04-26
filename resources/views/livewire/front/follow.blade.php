@@ -17,11 +17,13 @@
                 <span class="text-danger error">{{ $message }}</span>
             @enderror
         </div>
+
         @if($success)
             <h5 class="text-center text-secondary mb-3 success_h5">{{ __("modals.to_by_lector.success") }}</h5>
         @endif
         <div class="modal-footer">
             <button class="btn btn-primary w-100 f-600 fs-14 px-4 py-3 br-12 white-space send_mail">{{ __("modals.to_by_lector.button") }}</button>
         </div>
+       
     </form>
 </div>

@@ -2,35 +2,37 @@
 
 namespace App\Helpers\Sendpulse;
 
-use App\Helpers\Sendpulc\SendpulseClient;
+use App\Helpers\Sendpulse\SendpulseClient;
 use Sendpulse\RestApi\ApiClient;
 use Sendpulse\RestApi\ApiClientException;
+use Illuminate\Support\Facades\Session;
 
 class Follow
 {
     static function follow($data){
-        // $apiUserId = env('API_USER_ID', '');
-        // $apiSecret = env('API_SECRET', '');
-        // define('API_USER_ID', 'sads');
-        // define('API_SECRET', 'sasas');
+
+        $base = ['ru' => '89464772', 'en' => '89505704'];
+        $lg = app()->getLocale();
+
+        $send_pluse_base = $lg == 'ru' ? $base['ru'] : $base['en'];
+
         $apiClient = SendpulseClient::client();
 
         try {
-            $addEmailsResult = $apiClient->post('addressbooks/33333/emails', [
+            $addEmailsResult = $apiClient->post("addressbooks/$send_pluse_base/emails", [
                 'emails' => [
                     [
                         'email' => $data['email'],
                         'variables' => [
-                            'name' => $data['name'],
-                            'my_var' => 'my_var_value'
+                            'имя' => $data['name']
                         ]
                     ]
                 ]
             ]);
 
-            var_dump($addEmailsResult);
+            return true;
         } catch (ApiClientException $e) {
-            var_dump([
+           return ([
                 'message' => $e->getMessage(),
                 'http_code' => $e->getCode(),
                 'response' => $e->getResponse(),

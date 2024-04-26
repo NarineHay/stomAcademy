@@ -90,7 +90,7 @@
                                         <select class="form-control select2" name="webinar_id">
                                             @foreach($webinars as $webinar)
                                                 <option value="{{ $webinar->id }}">
-                                                    {{ $webinar->info->title }}
+                                                    {{ $webinar->info->title ?? ''}}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -160,7 +160,7 @@
                                         <select class="form-control select2" name="webinar_id">
                                             @foreach($webinars as $webinar)
                                                 <option value="{{ $webinar->id }}">
-                                                    {{ $webinar->info->title }}
+                                                    {{ $webinar->info->title ?? ''}}
                                                 </option>
                                             @endforeach
                                         </select>

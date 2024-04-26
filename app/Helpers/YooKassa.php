@@ -43,26 +43,49 @@ class YooKassa
         $secretKey = env('YOOKASSA_KEY');
         $idempotenceKey = Str::uuid()->toString();
         $client = new Client();
-        $return_url = route("personal.courses",['status' => 'check_status']);
+        // $return_url = route("personal.courses",['status' => 'check_status']);
+        $return_url = url(''). '/payment-result';
+
+
+        $data =[
+            'amount' => [
+                'value' => $total,
+                'currency' => $cur,
+            ],
+            'capture' => true,
+            'confirmation' => [
+                'type' => 'redirect',
+                'return_url' => $return_url
+            ],
+            'description' => implode(",\r\n",$desc),
+        ];
         $response = $client->post('https://api.yookassa.ru/v3/payments', [
             'auth' => [$clientId, $secretKey],
             'headers' => [
-                'Idempotence-Key' => $idempotenceKey,
-                'Content-Type' => 'application/json',
-            ],
-            'json' => [
-                'amount' => [
-                    'value' => $total,
-                    'currency' => $cur,
-                ],
-                'capture' => true,
-                'confirmation' => [
-                    'type' => 'redirect',
-                    'return_url' => $return_url,
-                ],
-                'description' => implode(",\r\n",$desc),
-            ],
+                        'Idempotence-Key' => $idempotenceKey,
+                        'Content-Type' => 'application/json',
+                    ],
+            'json' => $data
         ]);
+        // $response = $client->post('https://api.yookassa.ru/v3/payments', [
+        //     'auth' => [$clientId, $secretKey],
+        //     'headers' => [
+        //         'Idempotence-Key' => $idempotenceKey,
+        //         'Content-Type' => 'application/json',
+        //     ],
+        //     'json' => [
+        //         'amount' => [
+        //             'value' => $total,
+        //             'currency' => $cur,
+        //         ],
+        //         'capture' => true,
+        //         'confirmation' => [
+        //             'type' => 'redirect',
+        //             'return_url' => $return_url,
+        //         ],
+        //         'description' => implode(",\r\n",$desc),
+        //     ],
+        // ]);
         $response = json_decode($response->getBody()->getContents(),256);
 
         $order = new Order();
@@ -95,7 +118,11 @@ class YooKassa
             $response = json_decode($response->getBody()->getContents(),true);
             if($response['status'] == "succeeded"){
                 $order->success();
+                return true;
             }
+            
+            return false;
+
         }
 
     }

@@ -73,39 +73,21 @@ class ChangeInfo extends Component
 
     }
 
-    // protected function validator(array $data)
-    // {
 
-    //     return $this->validator = Validator::make($data, [
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'lname' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'phone' => ['required', 'regex:/^(\+?\d{1,3}|\(\+?\d{1,3}\))?\s?\d{10}$/'],
-    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
-    //     ]);
-    // }
 
     public function render()
     {
-        // dd(22);
 
-        // dd($this->withInput()->withErrors($this->validator->messages()));
         $data['user'] = Auth::user();
         $data['success'] = $this->success_;
 
         $data['directions'] = Direction::all();
         $data['avatar'] = Storage::url($data['user']->userinfo->image ?? "userinfo/unknown.png");
-// dd($data);
+
         return view('livewire.front.change-info',$data);
     }
 
-    // protected $rules = [
-    //     'email' => 'required|email|unique:users',
-    //     // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //     // 'phone' => ['required', 'regex:/^(\+?\d{1,3}|\(\+?\d{1,3}\))?\s?\d{10}$/'],
-    //     // 'password' => ['required', 'string', 'min:8', 'confirmed'],
-    // ];
-
+    
     public function changeName(){
         $data['user'] = Auth::user();
         $data['user']->userinfo->fname = $this->fname;

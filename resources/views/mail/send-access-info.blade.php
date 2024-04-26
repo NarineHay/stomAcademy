@@ -2,10 +2,10 @@
     <p><b>Логин: </b></p> {{$data['email']}}
     <p><b>Пароль: </b></p> {{$data['password']}}
 @endif
-{{-- <p>-- {{ $name }} -- </p> --}}
+
     @if($data['type'] =='course')
         <p>Вам открыт доступ к просмотру курса {{$data['course']->info->title}}</p>
-    @elseif($type =='webinar')
+    @elseif($data['type'] =='webinar')
         <p>Вам открыт доступ к просмотру вебинара {{$data['webinar']->info->title}}</p>
     @endif
 
