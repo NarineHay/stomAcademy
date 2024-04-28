@@ -49,7 +49,9 @@ class YooKassa
 
         $data =[
             'amount' => [
-                'value' => $total,
+                // 'value' => $total,
+                'value' => 1,
+
                 'currency' => $cur,
             ],
             'capture' => true,
