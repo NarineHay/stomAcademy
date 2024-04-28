@@ -24,6 +24,70 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                            <div>
+                                <form action="{{route('admin.payment.index')}}" method="get" class="row g-3 mt-2 d-flex" >
+                                    <div class="mb-3 justify-content-end d-flex w-100" >
+
+                                        <div class="d-flex col-4 justify-content-sm-start">
+                                            <select class="form-control select2" name="user">
+                                                <option value="0"disabled selected>users</option>
+                                                @foreach($users as $user)
+                                                    <option  value="{{ $user->id }}" {{ request()->input('user') == $user->id ? 'selected' : '' }}>
+                                                        {{ $user->userinfo->fname}}{{ $user->userinfo->fname}}/{{$user->email}}/{{$user->userinfo->phone}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex col-4 justify-content-sm-start ">
+                                            <select class="form-control select2" name="lector">
+                                                <option value="0"disabled selected>lectors</option>
+                                                @foreach($lectors as $lector)
+                                                    <option  value="{{ $lector->id }}" {{ request()->input('lector') == $lector->id ? 'selected' : '' }}>
+                                                        {{ $lector->userinfo->fname}}{{ $lector->userinfo->fname}}/{{$lector->email}}/{{$lector->userinfo->phone}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex col-4 justify-content-sm-start ">
+                                            <select class="form-control select2" name="course">
+                                                <option value="0"disabled selected>courses</option>
+                                                @foreach($courses as $course)
+                                                    <option  value="{{ $course->id }}" {{ request()->input('course') == $course->id ? 'selected' : '' }}>
+                                                        {{ $course->info->title}}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="mb-3 justify-content-end d-flex w-100" >
+                                        <div class="d-flex col-3 justify-content-sm-start w-50">
+                                            <select class="form-control select2" name="manager">
+                                                <option value="0" disabled selected>manager</option>
+                                                <option value="yookassa" {{ request()->input('manager') == 'yookassa' ? 'selected' : '' }}>yookassa</option>
+                                                <option value="bepaid" {{ request()->input('manager') == 'bepaid' ? 'selected' : '' }}>bepaid</option>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="col-3">
+                                            <input type="date" class="form-control" id="datefrom" placeholder="Ստեղծման ամսաթիվ" name="from_created_at" value="{{ request()->input('from_created_at') }}">
+                                        </div>
+
+                                        <div class="col-3">
+                                            <input type="date" class="form-control" id="dateto" placeholder="Ստեղծման ամսաթիվ" name="to_created_at" value="{{ request()->input('to_created_at') }}">
+                                        </div>
+
+                                        {{-- <button class="btn btn-primary col-2">Որոնել</button> --}}
+                                        <button class="btn btn-outline-primary ml-2" type="submit" style="height: 38px">Поиск</button>
+
+                                        <a class="btn btn-primary ml-2" href="{{ route('admin.payment.index') }}">очистить</a>
+                                    </div>
+                                </form>
+                            </div>
+
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>

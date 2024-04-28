@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Bepaid;
 use App\Helpers\YooKassa;
+use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
 use App\Models\Course;
 use App\Models\Currency;
@@ -30,7 +32,14 @@ class CartController extends Controller
     }
 
     public function order(Request $request){
-        $url = YooKassa::createOrder($request->get("promo"));
+        $cur = Currency::find(Cookie::get("currency_id",1))->currency_name;
+
+        if($cur == 'RUB'){
+            $url = YooKassa::createOrder($request->get("promo"));
+        }
+        else{
+            $url = Bepaid::createOrder($request->get("promo"));
+        }
         return response()->redirectTo($url);
     }
 

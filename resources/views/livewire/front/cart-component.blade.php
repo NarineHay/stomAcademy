@@ -113,7 +113,23 @@
                             @csrf
                             <input name="promo" wire:model="code" type="text" class="d-none form-control py-2 px-3 br-12 inputStyle promo-input"
                                    placeholder="{{ __("profile.cart.promocode") }}">
-                            <button type="submit" id="checkout-button" class="btn btn-primary br-12 w-100 fs-16 f-600 py-2">{{ __("profile.cart.button") }}</button>
+                                   {{-- <p class="mb-0 f-700 fs-16 m-0">Способы оплаты</p>
+                                   <div class="d-flex justify-content-between mb-2">
+                                        <div class="d-flex">
+                                            <input type="radio" class="mt-1 mx-1" id="yook" value="yookassa" name="payment_type">
+                                            <label for="yook">Yookassa</label>
+                                       </div>
+                                       <div class="d-flex">
+                                            <input type="radio" class="mt-1 mx-1" value="bepaid" name="payment_type">
+                                            <label>Bepaid</label>
+                                       </div>
+
+                                   </div>
+                                    @error('payment_type')
+                                        <p class="text-danger fs-12 mt-0">{{$message}}</p>
+                                    @enderror --}}
+
+                           <button type="submit" id="checkout-button" class="btn btn-primary br-12 w-100 fs-16 f-600 py-2">{{ __("profile.cart.button") }}</button>
                         </form>
                     </div>
                 </div>

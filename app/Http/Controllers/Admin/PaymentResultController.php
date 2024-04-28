@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\Bepaid;
 use App\Helpers\YooKassa;
 use App\Http\Controllers\Controller;
 use App\Traits\Access;
@@ -13,11 +14,20 @@ class PaymentResultController extends Controller
     public function __invoke(Request $request)
     {
 
-        $order_id = $request->orderId;
-        $payment_result = YooKassa::checkStatus($order_id);
+
+        if($request->type == 'yookassa'){
+            $order_id = $request->orderId;
+            $payment_result = YooKassa::checkStatus($order_id);
+
+        }
+        if($request->type == 'bepaid'){
+            $order_id = $request->db_order_id;
+            $uid = $request->uid;
+            $payment_result = Bepaid::checkStatus($uid, $order_id);
+        }
 
         if($payment_result){
-            $payment_completion = $this->setAccess($order_id);
+            $this->setAccess($order_id);
 
             return route("personal.courses");
         }

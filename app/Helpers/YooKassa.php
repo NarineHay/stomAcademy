@@ -44,7 +44,7 @@ class YooKassa
         $idempotenceKey = Str::uuid()->toString();
         $client = new Client();
         // $return_url = route("personal.courses",['status' => 'check_status']);
-        $return_url = url(''). '/payment-result';
+        $return_url = url(''). '/payment-result/yookassa';
 
 
         $data =[
@@ -93,6 +93,8 @@ class YooKassa
         $order->payment_id = $response['id'];
         $order->sum = $total;
         $order->cur = $cur;
+        $order->manager = 'yookassa';
+
         $order->save();
 
         foreach ($items as $item){
@@ -117,10 +119,10 @@ class YooKassa
             ]);
             $response = json_decode($response->getBody()->getContents(),true);
             if($response['status'] == "succeeded"){
-                $order->success();
+                // $order->success();
                 return true;
             }
-            
+
             return false;
 
         }

@@ -9,6 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     const STATUS_SUCCESS = "succeeded";
     const STATUS_PANDING = "pending";
 
