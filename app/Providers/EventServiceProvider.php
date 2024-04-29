@@ -3,12 +3,16 @@
 namespace App\Providers;
 
 use App\Models\BlogInfo;
+use App\Models\Cart;
 use App\Models\CourseInfo;
+use App\Models\Order;
 use App\Models\User;
 use App\Models\UserInfo;
 use App\Models\WebinarInfo;
 use App\Observers\BlogInfoObserver;
+use App\Observers\CartObserver;
 use App\Observers\CourseInfoObserver;
+use App\Observers\OrderObserver;
 use App\Observers\UserInfoObserver;
 use App\Observers\UserObserver;
 use App\Observers\WebinarInfoObserver;
@@ -42,6 +46,9 @@ class EventServiceProvider extends ServiceProvider
         CourseInfo::observe(CourseInfoObserver::class);
         BlogInfo::observe(BlogInfoObserver::class);
         UserInfo::observe(UserInfoObserver::class);
+        Cart::observe(CartObserver::class);
+        Order::observe(OrderObserver::class);
+
     }
 
     /**

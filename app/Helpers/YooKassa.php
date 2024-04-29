@@ -42,9 +42,18 @@ class YooKassa
         $clientId = env('YOOKASSA_ID');
         $secretKey = env('YOOKASSA_KEY');
         $idempotenceKey = Str::uuid()->toString();
+
+        $order = new Order();
+        $order->user_id = Auth::user()->id;
+        $order->payment_id = 1;
+        $order->sum = $total;
+        $order->cur = $cur;
+        $order->manager = 'yookassa';
+
+        $order->save();
         $client = new Client();
         // $return_url = route("personal.courses",['status' => 'check_status']);
-        $return_url = url(''). '/payment-result/yookassa';
+        $return_url = url(''). "/payment-result/$order/yookassa";
 
 
         $data =[
@@ -90,14 +99,7 @@ class YooKassa
         // ]);
         $response = json_decode($response->getBody()->getContents(),256);
 
-        $order = new Order();
-        $order->user_id = Auth::user()->id;
-        $order->payment_id = $response['id'];
-        $order->sum = $total;
-        $order->cur = $cur;
-        $order->manager = 'yookassa';
-
-        $order->save();
+        $order->update(['payment_id' => $response['id']]);
 
         foreach ($items as $item){
             $order->infos()->create([
@@ -106,7 +108,7 @@ class YooKassa
             ]);
         }
 
-        return $response['confirmation']['confirmation_url'];
+        return ['url' => $response['confirmation']['confirmation_url'], 'order' => $order];
     }
 
     static function checkStatus($payment_id){
