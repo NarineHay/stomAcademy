@@ -30,7 +30,7 @@
 
                                         <div class="d-flex col-4 justify-content-sm-start">
                                             <select class="form-control select2" name="user">
-                                                <option value="0"disabled selected>users</option>
+                                                <option value="0"disabled selected>Пользователь</option>
                                                 @foreach($users as $user)
                                                     <option  value="{{ $user->id }}" {{ request()->input('user') == $user->id ? 'selected' : '' }}>
                                                         {{ $user->userinfo->fname}}{{ $user->userinfo->fname}}/{{$user->email}}/{{$user->userinfo->phone}}
@@ -41,7 +41,7 @@
 
                                         <div class="d-flex col-4 justify-content-sm-start ">
                                             <select class="form-control select2" name="lector">
-                                                <option value="0"disabled selected>lectors</option>
+                                                <option value="0"disabled selected>Лектор</option>
                                                 @foreach($lectors as $lector)
                                                     <option  value="{{ $lector->id }}" {{ request()->input('lector') == $lector->id ? 'selected' : '' }}>
                                                         {{ $lector->userinfo->fname}}{{ $lector->userinfo->fname}}/{{$lector->email}}/{{$lector->userinfo->phone}}
@@ -52,7 +52,7 @@
 
                                         <div class="d-flex col-4 justify-content-sm-start ">
                                             <select class="form-control select2" name="course">
-                                                <option value="0"disabled selected>courses</option>
+                                                <option value="0"disabled selected>Курс</option>
                                                 @foreach($courses as $course)
                                                     <option  value="{{ $course->id }}" {{ request()->input('course') == $course->id ? 'selected' : '' }}>
                                                         {{ $course->info->title}}
@@ -65,9 +65,9 @@
                                     <div class="mb-3 justify-content-end d-flex w-100" >
                                         <div class="d-flex col-3 justify-content-sm-start w-50">
                                             <select class="form-control select2" name="manager">
-                                                <option value="0" disabled selected>manager</option>
-                                                <option value="yookassa" {{ request()->input('manager') == 'yookassa' ? 'selected' : '' }}>yookassa</option>
-                                                <option value="bepaid" {{ request()->input('manager') == 'bepaid' ? 'selected' : '' }}>bepaid</option>
+                                                <option value="0" disabled selected>Менеджер</option>
+                                                <option value="yookassa" {{ request()->input('manager') == 'yookassa' ? 'selected' : '' }}>Yookassa</option>
+                                                <option value="bepaid" {{ request()->input('manager') == 'bepaid' ? 'selected' : '' }}>Bepaid</option>
                                             </select>
                                         </div>
 
@@ -83,7 +83,7 @@
                                         {{-- <button class="btn btn-primary col-2">Որոնել</button> --}}
                                         <button class="btn btn-outline-primary ml-2" type="submit" style="height: 38px">Поиск</button>
 
-                                        <a class="btn btn-primary ml-2" href="{{ route('admin.payment.index') }}">очистить</a>
+                                        <a class="btn btn-primary ml-2" href="{{ route('admin.payment.index') }}">Очистить</a>
                                     </div>
                                 </form>
                             </div>

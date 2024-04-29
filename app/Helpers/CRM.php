@@ -1,14 +1,18 @@
 <?php
 
 namespace App\Helpers;
+
+use AmoCRM\OAuth2\Client\Provider\AmoCRM;
 use GuzzleHttp\Client;
+use League\OAuth2\Client\Token\AccessToken;
+
 class CRM
 {
     private $amoAuthUrl = 'https://www.amocrm.com/oauth';
     private $amoTokenUrl = 'https://www.amocrm.com/oauth2/access_token';
     private $clientId = '19063960';
-    private $clientSecret = 'your_client_secret';
-    private $redirectUri = 'https://yourapp.com/oauth/callback';
+    private $clientSecret = '1d324bcb8a02112f93b66377100dbc2c';
+    private $redirectUri = 'https://google.com';
 
     // public function redirectToAmoCRM()
     // {
@@ -23,15 +27,18 @@ class CRM
 
     public function handleCallback()
     {
+        dump(10);
         // $code = $request->query('code');
-
+        $apiClient = new \AmoCRM\Client\AmoCRMApiClient(env("AMO_ID"), env("AMO_SECRET"), "https://stom.mawcompany.com/api/amo");
+        $apiClient->setAccessToken(new AccessToken(['access_token' => env("AMO_TOKEN"),'expires_in' => '1893459600']));
+        dd($apiClient);
         $client = new Client();
         $response = $client->post($this->amoTokenUrl, [
             'form_params' => [
                 'client_id' => $this->clientId,
                 'client_secret' => $this->clientSecret,
                 'grant_type' => 'authorization_code',
-                // 'code' => $code,
+                'code' => '222',
                 'redirect_uri' => $this->redirectUri,
             ]
         ]);
@@ -46,16 +53,61 @@ class CRM
 
     public function addStatusesToPipeline()
     {
-        // Получение токена доступа из сессии или другого места, где он был сохранен
-        $accessToken = session('amo_access_token');
+        $apiClient = new \AmoCRM\Client\AmoCRMApiClient(
+          '19063960',
+           '1d324bcb8a02112f93b66377100dbc2c',
+            'https://stom.mawcompany.com/api/amo',
+        );
+dd($apiClient->getOAuthClient()->getAccessTokenByCode($_GET['code']));
+        if (isset($_GET['code']) && $_GET['code']) {
+            //Вызов функции setBaseDomain требуется для установки контектс аккаунта.
+            if (isset($_GET['referer'])) {
+                $provider->setBaseDomain($_GET['referer']);
+            }
 
-        // Создание клиента Guzzle для отправки запросов
-        $client = new Client([
-            'headers' => [
-                'Authorization' => "Bearer $accessToken",
-                'Content-Type' => 'application/json',
-            ]
-        ]);
+            $token = $provider->getAccessToken('authorization_code', [
+                'code' => $_GET['code']
+            ]);
+dd($token);
+            //todo сохраняем access, refresh токены и привязку к аккаунту и возможно пользователю
+
+            /** @var \AmoCRM\OAuth2\Client\Provider\AmoCRMResourceOwner $ownerDetails */
+            $ownerDetails = $provider->getResourceOwner($token);
+
+            printf('Hello, %s!', $ownerDetails->getName());
+        }
+        $apiClient = new \AmoCRM\Client\AmoCRMApiClient($this->clientId, $this->clientSecret, "https://stom.mawcompany.com/api/amo");
+        $apiClient->setAccessToken(new AccessToken(['access_token' => '457778gyrrf5556','expires_in' => '1893459600']));
+        $client = new Client();
+        // $response = $client->post($this->amoTokenUrl, [
+        //     'form_params' => [
+        //         'client_id' => $this->clientId,
+        //         'client_secret' => $this->clientSecret,
+        //         'grant_type' => 'authorization_code',
+        //         // 'code' => $code,
+        //         'redirect_uri' => $this->redirectUri,
+        //     ]
+        // ]);
+
+//         $leadsService = $apiClient->leads();
+//         // $leads = $leadsService->get();
+//         dd($leadsService);
+//         $accessToken = json_decode($response->getBody())->access_token;
+// dd($accessToken);
+//         // Store the access token in session or database for later use
+//         session(['amo_access_token' => $accessToken]);
+//         dump(12);
+
+//         // Получение токена доступа из сессии или другого места, где он был сохранен
+//         $accessToken = session('amo_access_token');
+// dd($accessToken);
+//         // Создание клиента Guzzle для отправки запросов
+//         $client = new Client([
+//             'headers' => [
+//                 'Authorization' => "Bearer $accessToken",
+//                 'Content-Type' => 'application/json',
+//             ]
+//         ]);
 
         // Данные для создания статусов
         $statusesData = [
@@ -72,6 +124,7 @@ class CRM
 
         // ID воронки, в которую вы хотите добавить статусы
         $pipelineId = '7657865';
+        // $apiClient->statuses(7657865);
 
         // Отправка POST-запроса на эндпоинт API amoCRM для создания статусов
         $response = $client->post("https://api.amocrm.com/v4/leads/pipelines/$pipelineId/statuses", [

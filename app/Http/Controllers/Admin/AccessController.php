@@ -111,7 +111,7 @@ class AccessController extends Controller
                     "access_time" => $access_time,
                     "duration" => $duration
                 ];
-                
+
                 $subject = 'aaaaa';
                 // SendAccessMail::dispatch($data);
                 //Mail::to($new_user)->send(new UserAccessMail($data));
@@ -123,8 +123,8 @@ class AccessController extends Controller
             $subject = 'bbbb';
             foreach ($user_ids as $user_id) {
                 $user = User::find($user_id);
-
-                FacadesMail::send(new SendAccessInfoEmail($user, $subject));
+unset($user->password);
+                mail::send(new SendAccessInfoEmail($user, $subject));
             }
         }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front;
 
+use App\Helpers\CRM;
 use App\Jobs\SendLectorMail;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
@@ -36,6 +37,8 @@ class BecomeLector extends Component
     {
         $data = $this->validate();
         SendLectorMail::dispatch($data);
+        $crm = new CRM();
+        $crm->addStatusesToPipeline();
         $this->success = true;
         $this->name = "";
         $this->email = "";
