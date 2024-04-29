@@ -85,4 +85,9 @@ class User extends Authenticatable
     function access_webinars(){
         return $this->hasMany(Access::class, 'user_id')->whereNotNull('webinar_id');
     }
+
+    function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

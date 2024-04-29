@@ -24,6 +24,11 @@ class Order extends Model
         return $this->belongsTo(User::class,"user_id","id");
     }
 
+    function application()
+    {
+        return $this->hasOne(Application::class, "item_id", "id");
+    }
+
     function success()
     {
         foreach ($this->infos as $info){

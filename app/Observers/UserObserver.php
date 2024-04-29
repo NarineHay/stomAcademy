@@ -5,9 +5,11 @@ namespace App\Observers;
 use App\Models\Language;
 use App\Models\LectorInfo;
 use App\Models\user;
+use App\Traits\Application\CreatApplication;
 
 class UserObserver
 {
+    use CreatApplication;
     public function created(user $user)
     {
         $user->userinfo()->create();
@@ -27,6 +29,7 @@ class UserObserver
         }
 
         $user->balance()->create();
+        $this->creat($user, 'register');
     }
 
     public function updated(user $user)

@@ -11,6 +11,7 @@ use App\Models\Currency;
 use App\Models\Prices;
 use App\Models\Promo;
 use App\Models\Webinar;
+use App\Traits\Application\CreatApplication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
@@ -21,6 +22,8 @@ use Stripe\StripeClient;
 
 class CartController extends Controller
 {
+    
+    use CreatApplication;
     public function index(){
         return view('front.personal.cart');
     }
@@ -35,12 +38,14 @@ class CartController extends Controller
         $cur = Currency::find(Cookie::get("currency_id",1))->currency_name;
 
         if($cur == 'RUB'){
-            $url = YooKassa::createOrder($request->get("promo"));
+            $result = YooKassa::createOrder($request->get("promo"));
         }
         else{
-            $url = Bepaid::createOrder($request->get("promo"));
+            $result = Bepaid::createOrder($request->get("promo"));
         }
-        return response()->redirectTo($url);
+
+        $this->creat($result['order'], 'order');
+        return response()->redirectTo($result['url']);
     }
 
     function addMany(Request $request){
