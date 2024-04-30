@@ -48,7 +48,7 @@ class Bepaid
         $order->payment_id = 1;
         $order->sum = $total;
         $order->cur = $cur;
-        $order->manager = 'bepaid';
+        $order->type = 'bepaid';
 
         $order->save();
 
