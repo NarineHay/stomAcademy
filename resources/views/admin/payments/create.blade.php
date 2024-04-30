@@ -75,7 +75,15 @@
 
                     <div class="form-group">
                         <label for="cur">Валюта*</label>
-                        <input value="{{ old("cur") }}" type="text" name="cur" class="form-control">
+
+                        <select class="form-control select2" name="cur">
+                            <option value="" selected>Валюта</option>
+                            @foreach($currency as $cur)
+                                <option value="{{ $cur->currency_name }}">
+                                    {{ $cur->currency_name ?? ''}}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="form-group">

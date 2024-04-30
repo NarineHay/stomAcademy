@@ -128,7 +128,7 @@
                                         <td>
                                             <ul>
                                                 @foreach($application->infos as $info)
-                                                    <li>{{ $info->item->info->title }}</li>
+                                                    <li>{{ $info->item ? $info->item->info->title : '' }}</li>
                                                 @endforeach
                                             </ul>
                                         </td>

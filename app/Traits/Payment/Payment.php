@@ -14,7 +14,7 @@ trait Payment {
 
     public function payment($request){
 
-        $payments = $this->filter($request)->paginate(10);
+        $payments = $this->filter($request)->orderBy('id', 'desc')->paginate(10);
 
         return $payments;
 

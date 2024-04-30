@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Payment\PaymentStoreRequest;
 use App\Models\Course;
+use App\Models\Currency;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\User;
@@ -35,11 +37,12 @@ class PaymentController extends Controller
         $users = User::where('role', 'user')->get();
         $courses = Course::all();
         $webinars = Webinar::all();
+        $currency = Currency::all();
 
-        return view('admin.payments.create', compact('users', 'courses', 'webinars'));
+        return view('admin.payments.create', compact('users', 'courses', 'webinars', 'currency'));
     }
 
-    public function store(Request $request)
+    public function store(PaymentStoreRequest $request)
     {
 
         $course_ids = $request->course_ids;
@@ -53,9 +56,19 @@ class PaymentController extends Controller
             'status' => 'succeeded'
         ]);
 
-        if(count($course_ids) > 0){
-            $order->infos()->attach(['type'=> 'course','item_id'=>$course_ids]);
+        if(isset($course_ids) && count($course_ids) > 0){
+            foreach ($course_ids as $course_id) {
+                 $order->infos()->create(['item_id' => $course_id, 'type' => 'course']);
+            }
+            // $order->infos()->attach(['type'=> 'course','item_id'=>$course_ids]);
         }
-        return redirect()->route('admin.payments.index');
+
+        if (isset($webinar_ids) && count($webinar_ids) > 0) {
+            foreach ($webinar_ids as $webinar_id) {
+                $order->infos()->create(['item_id' => $webinar_id, 'type' => 'webinar']);
+            }
+        }
+
+        return redirect()->route('admin.payment.index');
     }
 }

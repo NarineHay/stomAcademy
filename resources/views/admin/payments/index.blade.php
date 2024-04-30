@@ -166,9 +166,9 @@
                             </table>
                         </div>
                     </div>
-{{--                    <div class="d-flex justify-content-center">--}}
-{{--                        {{ $payments->links() }}--}}
-{{--                    </div>--}}
+                   <div class="d-flex justify-content-center">
+                       {{ $payments->links() }}
+                   </div>
                 </div>
             </div>
         </div>
