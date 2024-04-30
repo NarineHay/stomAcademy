@@ -5,10 +5,7 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between">
                 <div>
-                    <h1 class="m-0">Оплаты</h1>
-                </div>
-                <div>
-                    <a class="btn btn-primary" href="{{route('admin.payment.create')}}" role="button">Добавить</a>
+                    <h1 class="m-0">Заявки </h1>
                 </div>
             </div>
 
@@ -28,7 +25,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div>
-                                <form action="{{route('admin.payment.index')}}" method="get" class="row g-3 mt-2 d-flex" >
+                                <form action="{{route('admin.application.index')}}" method="get" class="row g-3 mt-2 d-flex" >
                                     <div class="mb-3 justify-content-end d-flex w-100" >
 
                                         <div class="d-flex col-4 justify-content-sm-start">
@@ -54,7 +51,7 @@
                                         </div>
 
                                         <div class="d-flex col-4 justify-content-sm-start ">
-                                            <select class="form-control select2" name="course">
+                                            <select class="form-control select2" name="course_id">
                                                 <option value="" selected>Курс</option>
                                                 @foreach($courses as $course)
                                                     <option  value="{{ $course->id }}" {{ request()->input('course') == $course->id ? 'selected' : '' }}>
@@ -66,21 +63,12 @@
 
                                     </div>
                                     <div class="mb-3 justify-content-end d-flex w-100" >
-                                        <div class="d-flex col-2 justify-content-sm-start">
-                                            <select class="form-control select2" name="manager">
-                                                <option value="" selected>Менеджер</option>
-                                                @foreach($managers as $manager)
-                                                    <option  value="{{ $manager->id }}" {{ request()->input('manager') == $manager->id ? 'selected' : '' }}>
-                                                        {{ $manager->userinfo->fname}}{{ $manager->userinfo->fname}}/{{$manager->email}}/{{$manager->userinfo->phone}}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="d-flex col-2 justify-content-sm-start w-50">
-                                            <select class="form-control select2" name="type">
-                                                <option value=""  selected>Платежная система</option>
-                                                <option value="yookassa" {{ request()->input('type') == 'yookassa' ? 'selected' : '' }}>Yookassa</option>
-                                                <option value="bepaid" {{ request()->input('type') == 'bepaid' ? 'selected' : '' }}>Bepaid</option>
+                                        <div class="d-flex col-3 justify-content-sm-start w-50">
+                                            <select class="form-control select2" name="form">
+                                                <option value="" selected>Форма</option>
+                                                <option value="register" {{ request()->input('form') == 'register' ? 'selected' : '' }}>{{__('application.register')}}</option>
+                                                <option value="cart" {{ request()->input('form') == 'cart' ? 'selected' : '' }}>{{__('application.cart')}}</option>
+                                                <option value="order" {{ request()->input('form') == 'order' ? 'selected' : '' }}>{{__('application.order')}}</option>
                                             </select>
                                         </div>
 
@@ -96,7 +84,7 @@
                                         {{-- <button class="btn btn-primary col-2">Որոնել</button> --}}
                                         <button class="btn btn-outline-primary ml-2" type="submit" style="height: 38px">Поиск</button>
 
-                                        <a class="btn btn-primary ml-2" href="{{ route('admin.payment.index') }}">Очистить</a>
+                                        <a class="btn btn-primary ml-2" href="{{ route('admin.application.index') }}">Очистить</a>
                                     </div>
                                 </form>
                             </div>
@@ -122,43 +110,42 @@
                                     <th>Курс/Вебинар</th>
                                     <th>Сумма</th>
                                     <th>Валюта</th>
+                                    <th>Форма</th>
                                     <th>Статус</th>
                                     <th>Дата</th>
-                                    <th> Кнопки управления</th>
-
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                @foreach($payments as $payment)
+                                @foreach($applications as $application)
                                     <tr>
-                                       <td>
-                                           <a>{{$payment->id}}</a>
-                                       </td>
                                         <td>
-                                            <a>{{$payment->user->name}}</a>
+                                           <a>{{$application->id}}</a>
+                                        </td>
+                                        <td>
+                                            <a>{{$application->user->name}}</a>
                                         </td>
                                         <td>
                                             <ul>
-                                                @foreach($payment->infos as $info)
-                                                    <li>{{ $info->item != null ?  $info->item->info->title : '' }}</li>
+                                                @foreach($application->infos as $info)
+                                                    <li>{{ $info->item->info->title }}</li>
                                                 @endforeach
                                             </ul>
                                         </td>
                                         <td>
-                                            <a>{{ $payment->sum }}</a>
+                                            <a>{{ $application->sum ?? ' - '}}</a>
                                         </td>
                                         <td>
-                                            <a>{{ $payment->cur }}</a>
+                                            <a>{{ $application->cur ?? ' - '}}</a>
                                         </td>
                                         <td>
-                                            <a>{{ $payment->status ? __("payment.$payment->status") : ' - '}}</a>
+                                            <a>{{ __("application.$application->form") }}</a>
                                         </td>
                                         <td>
-                                            <a>{{ $payment->created_at }}</a>
+                                            <a>{{ $application->order_status ?? ' - '}}</a>
                                         </td>
-                                        <td class="project-actions text-right">
-                                            <a class="btn btn-success mx-1" href="{{ route('admin.payment.show', $payment->id) }}">Подробнее счет </a>
+                                        <td>
+                                            <a>{{ $application->created_at }}</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -166,9 +153,9 @@
                             </table>
                         </div>
                     </div>
-{{--                    <div class="d-flex justify-content-center">--}}
-{{--                        {{ $payments->links() }}--}}
-{{--                    </div>--}}
+                   <div class="d-flex justify-content-center">
+                       {{ $applications->links() }}
+                   </div>
                 </div>
             </div>
         </div>

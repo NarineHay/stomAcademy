@@ -52,6 +52,7 @@ class YooKassa
 
         $order->save();
         $client = new Client();
+
         // $return_url = route("personal.courses",['status' => 'check_status']);
         $return_url = url(''). "/payment-result/$order/yookassa";
 
@@ -70,6 +71,7 @@ class YooKassa
             ],
             'description' => implode(",\r\n",$desc),
         ];
+
         $response = $client->post('https://api.yookassa.ru/v3/payments', [
             'auth' => [$clientId, $secretKey],
             'headers' => [
@@ -78,25 +80,7 @@ class YooKassa
                     ],
             'json' => $data
         ]);
-        // $response = $client->post('https://api.yookassa.ru/v3/payments', [
-        //     'auth' => [$clientId, $secretKey],
-        //     'headers' => [
-        //         'Idempotence-Key' => $idempotenceKey,
-        //         'Content-Type' => 'application/json',
-        //     ],
-        //     'json' => [
-        //         'amount' => [
-        //             'value' => $total,
-        //             'currency' => $cur,
-        //         ],
-        //         'capture' => true,
-        //         'confirmation' => [
-        //             'type' => 'redirect',
-        //             'return_url' => $return_url,
-        //         ],
-        //         'description' => implode(",\r\n",$desc),
-        //     ],
-        // ]);
+
         $response = json_decode($response->getBody()->getContents(),256);
 
         $order->update(['payment_id' => $response['id']]);
@@ -108,7 +92,7 @@ class YooKassa
             ]);
         }
 
-        return ['url' => $response['confirmation']['confirmation_url'], 'order' => $order];
+        return ['url' => $response['confirmation']['confirmation_url'], 'order_id' => $order->id];
     }
 
     static function checkStatus($payment_id){

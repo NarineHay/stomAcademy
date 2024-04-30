@@ -207,6 +207,10 @@
                             <a href="{{ route('admin.payment.index') }}"
                                 class="nav-link @if (request()->is('admin/payment*')) active @endif">Оплаты</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.application.index') }}"
+                                class="nav-link @if (request()->is('admin/application*')) active @endif">Заявки </a>
+                        </li>
 
                         <li class="nav-item">
                             <a href="{{ route('admin.pages.index') }}"

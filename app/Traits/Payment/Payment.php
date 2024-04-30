@@ -21,7 +21,7 @@ trait Payment {
     }
 
     public function filter($request){
-        $payments = Order::where("status",Order::STATUS_SUCCESS);
+        $payments = Order::where("status", '!=', null);
 
 
             if (isset($request["user"]) ) {
@@ -29,7 +29,19 @@ trait Payment {
             }
 
             if (isset($request["manager"]) ) {
-                $payments = $payments->where('manager', $request["manager"] );
+                $payments = $payments->where('manager_id', $request["manager"] );
+            }
+
+            if (isset($request["type"]) ) {
+                $payments = $payments->where('type', $request["type"] );
+            }
+
+            if (isset($request["course_id"])) {
+                $course_id = $request["course_id"];
+
+                $payments = $payments->whereHas('infos', function ($query) use ($course_id) {
+                    $query->where('type', 'course')->where('item_id', $course_id);
+                });
             }
 
             if (isset($request["lector"]) ) {

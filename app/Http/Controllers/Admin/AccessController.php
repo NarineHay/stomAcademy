@@ -19,6 +19,7 @@ use Mail;
 
 class AccessController extends Controller
 {
+
     public function index(Request $request)
     {
         $order = $request->get("order", "id");
@@ -123,7 +124,7 @@ class AccessController extends Controller
             $subject = 'bbbb';
             foreach ($user_ids as $user_id) {
                 $user = User::find($user_id);
-unset($user->password);
+                unset($user->password);
                 mail::send(new SendAccessInfoEmail($user, $subject));
             }
         }

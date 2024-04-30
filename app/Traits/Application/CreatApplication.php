@@ -24,7 +24,7 @@ trait CreatApplication
         $application->item_id = $data->id;
         $application->sum = $data->sum ?? null;
         $application->cur = $data->cur ?? null;
-        $application->order_status = $data->order_status ?? null;
+        $application->order_status = $data->status ?? null;
         $application->save();
 
         if($form == 'cart'){
@@ -51,42 +51,56 @@ trait CreatApplication
 
     }
 
-    // public function filter($request)
-    // {
-    //     $payments = Order::where("status", Order::STATUS_SUCCESS);
+    public function application($request){
+        $application = $this->filter($request)->paginate(10);
+
+        return $application;
+    }
+
+    public function filter($request)
+    {
+        $application = Application::where("id", '>', 0);
 
 
-    //     if (isset($request["user"])) {
-    //         $payments = $payments->where('user_id', $request["user"]);
-    //     }
+        if (isset($request["user"])) {
+            $application = $application->where('user_id', $request["user"]);
+        }
 
-    //     if (isset($request["manager"])) {
-    //         $payments = $payments->where('manager', $request["manager"]);
-    //     }
+        if (isset($request["form"])) {
+            $application = $application->where('form', $request["form"]);
+        }
 
-    //     if (isset($request["lector"])) {
-    //         $lector_id = $request["lector"];
-    //         $webinar_ids = Webinar::where('user_id', $lector_id)->pluck('id');
-    //         $course_ids = CourseWebinar::whereIn('webinar_id', $webinar_ids)->pluck('course_id');
+        if (isset($request["course_id"])) {
+            $course_id = $request["course_id"];
 
-    //         $payments = $payments->whereHas('infos', function ($query) use ($webinar_ids, $course_ids) {
-    //             $query->where(function ($subquery) use ($webinar_ids) {
-    //                 $subquery->where('type', 'webinar')->whereIn('item_id', $webinar_ids);
-    //             })->orWhere(function ($subquery) use ($course_ids) {
-    //                 $subquery->where('type', 'course')->whereIn('item_id', $course_ids);
-    //             });
-    //         });
-    //     }
+            $application = $application->whereHas('infos', function ($query) use ($course_id) {
+                $query->where('type', 'course')->where('item_id', $course_id);
+            });
+        }
 
-    //     if (isset($request["from_created_at"]) && $request["from_created_at"] != null) {
-    //         $payments = $payments->whereDate('created_at', '>=', $request["from_created_at"]);
-    //     }
+        if (isset($request["lector"])) {
+            $lector_id = $request["lector"];
+            $webinar_ids = Webinar::where('user_id', $lector_id)->pluck('id');
+            $course_ids = CourseWebinar::whereIn('webinar_id', $webinar_ids)->pluck('course_id');
 
-    //     if (isset($request["to_created_at"]) && $request["to_created_at"] != null) {
-    //         $payments = $payments->whereDate('created_at', '<=', $request["to_created_at"]);
-    //     }
+            $application = $application->whereHas('infos', function ($query) use ($webinar_ids, $course_ids) {
+                $query->where(function ($subquery) use ($webinar_ids) {
+                    $subquery->where('type', 'webinar')->whereIn('item_id', $webinar_ids);
+                })->orWhere(function ($subquery) use ($course_ids) {
+                    $subquery->where('type', 'course')->whereIn('item_id', $course_ids);
+                });
+            });
+        }
 
-    //     return $payments;
+        if (isset($request["from_created_at"]) && $request["from_created_at"] != null) {
+            $application = $application->whereDate('created_at', '>=', $request["from_created_at"]);
+        }
 
-    // }
+        if (isset($request["to_created_at"]) && $request["to_created_at"] != null) {
+            $application = $application->whereDate('created_at', '<=', $request["to_created_at"]);
+        }
+
+        return $application;
+
+    }
 }

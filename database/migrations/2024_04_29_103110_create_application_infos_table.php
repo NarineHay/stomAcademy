@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('application_infos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("application_id");
+            $table->foreign('application_id')->references('id')->on('applications')->onDelete("cascade");
             $table->enum("type", ['course', "webinar"])->nullable();
             $table->integer("item_id")->nullable();
             $table->timestamps();

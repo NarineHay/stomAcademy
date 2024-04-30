@@ -8,6 +8,7 @@ use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
 use App\Models\Course;
 use App\Models\Currency;
+use App\Models\Order;
 use App\Models\Prices;
 use App\Models\Promo;
 use App\Models\Webinar;
@@ -22,7 +23,7 @@ use Stripe\StripeClient;
 
 class CartController extends Controller
 {
-    
+
     use CreatApplication;
     public function index(){
         return view('front.personal.cart');
@@ -44,7 +45,9 @@ class CartController extends Controller
             $result = Bepaid::createOrder($request->get("promo"));
         }
 
-        $this->creat($result['order'], 'order');
+        $order = Order::find($result['order_id']);
+        $this->creat($order, 'order');
+
         return response()->redirectTo($result['url']);
     }
 
