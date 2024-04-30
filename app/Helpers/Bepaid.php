@@ -102,7 +102,7 @@ class Bepaid
         }
 
         // return $response['confirm_url'];
-        return ['url' => $response['confirm_url'], 'order' => $order];
+        return ['url' => $response['confirm_url'], 'order_id' => $order->id];
     }
 
     static function checkStatus($uid, $db_order_id){
