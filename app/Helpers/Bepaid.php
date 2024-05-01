@@ -62,7 +62,7 @@ class Bepaid
             "description" => implode(",\r\n",$desc),
             "currency" => $cur,
             // "amount" => $amount,
-            "amount" => 100,
+            "amount" => 10,
             "infinite" => true,
             "test" => false,
             "immortal" => true,
