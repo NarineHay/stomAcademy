@@ -19,7 +19,7 @@ class OrderObserver
     {
         if($order->status != 'pending' && $order->status != null){
 
-            $order->application()->update(['status', $order->status]);
+            $order->application()->update(['order_status', $order->status]);
         }
     }
 }

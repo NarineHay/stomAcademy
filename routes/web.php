@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PaymentNotificationController;
 use App\Http\Controllers\Admin\PaymentResultController;
 use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\TestController;
@@ -109,6 +110,8 @@ Route::group(['prefix' => "lector",'middleware' => 'isLector','as' => 'lector.']
 
 Route::get("test",[TestController::class, 'index']);
 Route::get('payment-result/{db_order_id}/{type}', PaymentResultController::class);
+Route::get('payment-result-notification', PaymentNotificationController::class);
+
 
 
 
