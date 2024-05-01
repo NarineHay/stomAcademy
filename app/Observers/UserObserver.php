@@ -29,7 +29,7 @@ class UserObserver
         }
 
         $user->balance()->create();
-        $this->creat($user, 'register');
+        $this->creatApp($user, 'register');
     }
 
     public function updated(user $user)
