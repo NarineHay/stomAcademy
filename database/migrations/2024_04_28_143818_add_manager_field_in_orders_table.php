@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->string("payment_id")->nullable()->change();
+            $table->string("token")->nullable()->change();
             $table->string('type')->nullable()->after('cur');
             $table->string('manager_id')->nullable()->after('type');
             $table->string('comment')->nullable()->after('manager_id');

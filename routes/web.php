@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PaymentNotificationController;
 use App\Http\Controllers\Admin\PaymentResultController;
 use App\Http\Controllers\CaptchaController;
@@ -97,6 +98,7 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::resource('chats', \App\Http\Controllers\Admin\HelpController::class);
     Route::resource('videos', \App\Http\Controllers\Admin\VideoController::class);
     Route::resource('application', \App\Http\Controllers\Admin\ApplicationController::class);
+    Route::get('dashboard', DashboardController::class);
 
 });
 
@@ -111,6 +113,7 @@ Route::group(['prefix' => "lector",'middleware' => 'isLector','as' => 'lector.']
 Route::get("test",[TestController::class, 'index']);
 Route::get('payment-result/{db_order_id}/{type}', PaymentResultController::class);
 Route::post('payment-result-notification', PaymentNotificationController::class);
+
 
 
 

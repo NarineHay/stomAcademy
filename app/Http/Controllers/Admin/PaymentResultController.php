@@ -24,8 +24,10 @@ class PaymentResultController extends Controller
         }
         if($request->type == 'bepaid'){
             $order_id = $request->db_order_id;
-            $uid = $request->uid;
-            $payment_result = Bepaid::checkStatus($uid, $order_id);
+            $token = $request->token;
+            if($request->status == 'successful'){
+                $payment_result = Bepaid::checkStatus($token, $order_id);
+            }
         }
 
         if($payment_result){

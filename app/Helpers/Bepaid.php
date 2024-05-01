@@ -57,21 +57,43 @@ class Bepaid
 
 
         $amount = $total * 100;
-        $data = [
-            "name" => implode(",\r\n",$desc),
-            "description" => implode(",\r\n",$desc),
-            "currency" => $cur,
-            // "amount" => $amount,
-            "amount" => 10,
-            "infinite" => true,
-            "test" => true,
-            "immortal" => true,
-            "return_url" => $return_url,
-            "language" => "en",
-            "transaction_type" => "payment"
-        ];
+        // $data = [
+        //     "name" => implode(",\r\n",$desc),
+        //     "description" => implode(",\r\n",$desc),
+        //     "currency" => $cur,
+        //     // "amount" => $amount,
+        //     "amount" => 10,
+        //     "infinite" => true,
+        //     "test" => true,
+        //     "immortal" => true,
+        //     "return_url" => $return_url,
+        //     "language" => "en",
+        //     "transaction_type" => "payment"
+        // ];
 
-        $response = $client->post('https://api.bepaid.by/products', [
+        $data = [
+
+                    "checkout" => [
+                        "test" => true,
+                        "transaction_type" => "payment",
+                        "attempts" => 2,
+                        "settings" => [
+                            "return_url" => $return_url,
+                            "auto_return" => 3,
+                            "button_next_text" => "Вернуться в магазин",
+                            "language" => "en"
+
+                        ],
+                        "order" => [
+                            "currency" => $cur,
+                            "amount" => 10,
+                            "description" => implode(",\r\n",$desc)
+                        ]
+                    ]
+
+                ];
+
+        $response = $client->post('https://checkout.bepaid.by/ctp/api/checkouts', [
             'auth' => [$clientId, $secretKey],
             'headers' => [
                         'Idempotence-Key' => $idempotenceKey,
@@ -82,8 +104,9 @@ class Bepaid
 
         $response = json_decode($response->getBody()->getContents(),256);
 
-        if(isset($response['payment_url'])){
-            $order->update(['payment_id' => $response['id']]);
+        if(isset($response['checkout'])){
+            $token = $response['checkout']['token'];
+            $order->update(['token' => $token ]);
 
             foreach ($items as $item){
                 $order->infos()->create([
@@ -93,14 +116,14 @@ class Bepaid
             }
 
             // return $response['confirm_url'];
-            return ['url' => $response['payment_url'], 'order_id' => $order->id];
+            return ['url' => $response['checkout']['redirect_url'], 'order_id' => $order->id];
         }
 
         return false;
 
     }
 
-    static function checkStatus($uid, $db_order_id){
+    static function checkStatus($token, $db_order_id){
         $clientId = env('BEPAID_ID');
         $secretKey = env('BEPAID_KEY');
         // =======================
@@ -108,23 +131,25 @@ class Bepaid
         // &status=failed
         // &uid=0bb6d4f1-5579-4f1e-8100-894f62a11321
         // ==============================
-        $order = Order::query()->where("id", $db_order_id)->first();
+        $order = Order::query()->where(["id" => $db_order_id, 'token' => $token])->first();
         if($order && $order->status != Order::STATUS_SUCCESS){
-            $client = new Client();
+            // $client = new Client();
 
-            $response = $client->get("https://gateway.bepaid.by/transactions/".$uid, [
-                'auth' => [$clientId, $secretKey],
-            ]);
+            // $response = $client->get("https://gateway.bepaid.by/transactions/".$uid, [
+            //     'auth' => [$clientId, $secretKey],
+            // ]);
 
-            $response = json_decode($response->getBody()->getContents(),true);
-            if($response['transaction']['status'] == "successful"){
-                // $order->success();
+            // $response = json_decode($response->getBody()->getContents(),true);
+            // if($response['transaction']['status'] == "successful"){
+            //     return true;
+            // }
+
                 return true;
-            }
-
-            return false;
-
         }
+
+        return false;
+
+
 
     }
 }

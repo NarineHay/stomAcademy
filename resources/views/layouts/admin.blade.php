@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="/dist/5.12.0/all.css">
     @vite(['resources/sass/admin.scss'])
     @livewireStyles
+    @yield('style')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -339,6 +340,7 @@
     <script src="/admin/dist/js/adminlte.js"></script>
     <script src="/admin/dist/js/demo.js"></script>
     <script src="/admin/dist/js/pages/dashboard.js"></script>
+    @yield('script')
 
 
 </body>
