@@ -16,7 +16,9 @@ class PaymentResultController extends Controller
 
 
         if($request->type == 'yookassa'){
-            $order_id = $request->orderId;
+            $order_id = $request->db_order_id;
+
+            // $order_id = $request->orderId;
             $payment_result = YooKassa::checkStatus($order_id);
 
         }
@@ -27,6 +29,7 @@ class PaymentResultController extends Controller
         }
 
         if($payment_result){
+            // return response()->redirectTo('http://dev.stom-academy.com/courses');
             $this->setAccess($order_id);
 
             return route("personal.courses");

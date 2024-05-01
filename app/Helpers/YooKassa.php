@@ -51,10 +51,10 @@ class YooKassa
         $order->type = 'yookassa';
 
         $order->save();
-        $client = new Client();
 
+        $client = new Client();
         // $return_url = route("personal.courses",['status' => 'check_status']);
-        $return_url = url(''). "/payment-result/$order/yookassa";
+        $return_url = url(''). "/payment-result/$order->id/yookassa";
 
 
         $data =[
@@ -83,22 +83,30 @@ class YooKassa
 
         $response = json_decode($response->getBody()->getContents(),256);
 
-        $order->update(['payment_id' => $response['id']]);
+        if($response['status'] == 'pending'){
+            $order->update(['payment_id' => $response['id']]);
 
-        foreach ($items as $item){
-            $order->infos()->create([
-                "type" => $item['type'],
-                "item_id" => $item['id']
-            ]);
+            foreach ($items as $item){
+                $order->infos()->create([
+                    "type" => $item['type'],
+                    "item_id" => $item['id']
+                ]);
+            }
+
+            return ['url' => $response['confirmation']['confirmation_url'], 'order_id' => $order->id];
+
         }
 
-        return ['url' => $response['confirmation']['confirmation_url'], 'order_id' => $order->id];
+        return false;
+
     }
 
-    static function checkStatus($payment_id){
+    static function checkStatus($order_id){
         $clientId = env('YOOKASSA_ID');
         $secretKey = env('YOOKASSA_KEY');
-        $order = Order::query()->where("payment_id",$payment_id)->first();
+        $order = Order::query()->where("id",$order_id)->first();
+        $payment_id = $order->payment_id;
+        // $order = Order::query()->where("payment_id", $payment_id)->first();
         if($order && $order->status != Order::STATUS_SUCCESS){
             $client = new Client();
 

@@ -45,10 +45,13 @@ class CartController extends Controller
             $result = Bepaid::createOrder($request->get("promo"));
         }
 
-        $order = Order::find($result['order_id']);
-        $this->creat($order, 'order');
+        if($result){
+            $order = Order::find($result['order_id']);
+            $this->creatApp($order, 'order');
 
-        return response()->redirectTo($result['url']);
+            return response()->redirectTo($result['url']);
+        }
+
     }
 
     function addMany(Request $request){

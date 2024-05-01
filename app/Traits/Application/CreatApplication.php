@@ -15,7 +15,7 @@ use Auth;
 trait CreatApplication
 {
 
-    public function creat($data, $form)
+    public function creatApp($data, $form)
     {
 
         $application = new Application();

@@ -53,17 +53,9 @@ class Bepaid
         $order->save();
 
         $client = new Client();
-        $return_url = url(''). "/payment-result/$order/bepaid";
+        $return_url = url(''). "/payment-result/$order->id/bepaid";
 
-        // $data =[
-        //     "name" => "product",
-        //     "description" => "description",
-        //     "currency" => "USD",
-        //     "amount" => 100,
-        //     "return_url" => $return_url,
-        //     "language" => "en"
 
-        // ];
         $amount = $total * 100;
         $data = [
             "name" => implode(",\r\n",$desc),
@@ -89,20 +81,23 @@ class Bepaid
         ]);
 
         $response = json_decode($response->getBody()->getContents(),256);
-// dd( $response);
 
-        $order->update(['payment_id' => $response['id']]);
+        if(isset($response['payment_url'])){
+            $order->update(['payment_id' => $response['id']]);
 
+            foreach ($items as $item){
+                $order->infos()->create([
+                    "type" => $item['type'],
+                    "item_id" => $item['id']
+                ]);
+            }
 
-        foreach ($items as $item){
-            $order->infos()->create([
-                "type" => $item['type'],
-                "item_id" => $item['id']
-            ]);
+            // return $response['confirm_url'];
+            return ['url' => $response['payment_url'], 'order_id' => $order->id];
         }
 
-        // return $response['confirm_url'];
-        return ['url' => $response['confirm_url'], 'order_id' => $order->id];
+        return false;
+
     }
 
     static function checkStatus($uid, $db_order_id){
@@ -120,8 +115,9 @@ class Bepaid
             $response = $client->get("https://gateway.bepaid.by/transactions/".$uid, [
                 'auth' => [$clientId, $secretKey],
             ]);
+
             $response = json_decode($response->getBody()->getContents(),true);
-            if($response['transaction']['status'] == "succeeded"){
+            if($response['transaction']['status'] == "successful"){
                 // $order->success();
                 return true;
             }
