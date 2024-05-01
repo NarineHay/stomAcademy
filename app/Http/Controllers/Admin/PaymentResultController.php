@@ -32,7 +32,7 @@ class PaymentResultController extends Controller
             // return response()->redirectTo('http://dev.stom-academy.com/courses');
             $this->setAccess($order_id);
 
-            return route("personal.courses");
+            return redirect("personal/courses");
         }
 
   }
