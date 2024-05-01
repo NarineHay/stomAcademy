@@ -64,7 +64,7 @@ class Bepaid
             // "amount" => $amount,
             "amount" => 10,
             "infinite" => true,
-            "test" => false,
+            "test" => true,
             "immortal" => true,
             "return_url" => $return_url,
             "language" => "en",

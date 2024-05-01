@@ -14,6 +14,7 @@ class PaymentNotificationController extends Controller
     {
         $response = $request;
         $response = json_decode($response->getBody()->getContents(),true);
+        dd($response);
         if($response['type'] == "notification"){
             $payment_id = $response['object']['id'];
             // $order->success();
@@ -23,5 +24,14 @@ class PaymentNotificationController extends Controller
             }
 
         }
+        // if($response['type'] == "notification"){
+        //     $payment_id = $response['object']['id'];
+        //     // $order->success();
+        //     $order = Order::where('payment_id', $payment_id)->first();
+        //     if($order->status != 'succeeded'){
+        //         $this->setAccess($order->id);
+        //     }
+
+        // }
     }
 }
