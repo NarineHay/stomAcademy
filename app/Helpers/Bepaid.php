@@ -74,7 +74,7 @@ class Bepaid
         $data = [
 
                     "checkout" => [
-                        "test" => true,
+                        "test" => false,
                         "transaction_type" => "payment",
                         "attempts" => 2,
                         "settings" => [

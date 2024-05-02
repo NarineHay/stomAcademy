@@ -48,7 +48,7 @@ class CertificateController extends Controller
         }
 
         $imagePath = Storage::url($certificate->images->where('lg_id',\App\Helpers\LG::get())->first()->image);
-        $temp = public_path("/storage/certificates/".Str::random(16).".jpg");
+        $temp = public_path("storage/certificates/".Str::random(16).".jpg");
         copy(public_path($imagePath),$temp);
         $image = Image::make($temp);
 
