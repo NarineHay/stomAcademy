@@ -16,7 +16,9 @@ class DashboardController extends Controller
         $payment = $this->payment();
         $paymentCurrency = $this->paymentCurrency();
         $paymentSystem = $this->paymentSystem();
+        $paymentDaily = $this->paymentDaily();
 
-        return view('admin.dashboard.index', compact('customers', 'cart', 'payment', 'paymentCurrency', 'paymentSystem'));
+
+        return view('admin.dashboard.index', compact('customers', 'cart', 'payment', 'paymentCurrency', 'paymentSystem', 'paymentDaily'));
     }
 }

@@ -179,63 +179,7 @@
 
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card widget-flat">
-                                <div class="card-body">
-                                    <div id="chartContainer-full" style="height: 370px; width: 100%;"></div>
-                                </div> <!-- end card-body-->
-                            </div> <!-- end card-->
-                        </div> <!-- end col-->
-
-                        <div class="col-sm-3">
-                            <div class="card widget-flat">
-                                <div class="card-body">
-                                    <div class="float-end">
-                                        <i class="mdi mdi-cart-plus widget-icon"></i>
-                                    </div>
-                                    <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Корзина</h5>
-                                    <h3 class="mt-3 mb-3">{{$cart['all_cart']}}</h3>
-                                    <p class="mb-0 text-muted">
-                                        <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$cart['per_mont_cart']}}</span>
-                                        <span class="text-nowrap">за месяц</span>
-                                    </p>
-                                </div> <!-- end card-body-->
-                            </div> <!-- end card-->
-                        </div> <!-- end col-->
-
-                        <div class="col-sm-3">
-                            <div class="card widget-flat">
-                                <div class="card-body">
-                                    <div class="float-end">
-                                        <i class="mdi mdi-currency-usd widget-icon"></i>
-                                    </div>
-                                    <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Оплата</h5>
-                                    <h3 class="mt-3 mb-3">{{$payment['all_payment']}}</h3>
-                                    <p class="mb-0 text-muted">
-                                        <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$payment['per_mont_payment']}}</span>
-                                        <span class="text-nowrap">за месяц</span>
-                                    </p>
-                                </div> <!-- end card-body-->
-                            </div> <!-- end card-->
-                        </div> <!-- end col-->
-
-                        <div class="col-sm-3">
-                            <div class="card widget-flat">
-                                <div class="card-body">
-                                    <div class="float-end">
-                                        <i class="mdi mdi-pulse widget-icon"></i>
-                                    </div>
-                                    <h5 class="text-muted fw-normal mt-0" title="Growth">Сумма Оплат</h5>
-                                    <h3 class="mt-3 mb-3">+ 30.56%</h3>
-                                    <p class="mb-0 text-muted">
-                                        <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
-                                        <span class="text-nowrap">за месяц</span>
-                                    </p>
-                                </div> <!-- end card-body-->
-                            </div> <!-- end card-->
-                        </div> <!-- end col-->
-                    </div> <!-- end row -->
+                 
             <!-- end row -->
 
             <div class="row">
@@ -391,6 +335,9 @@ console.log(res);
         }]
     };
     $("#chartContainer").CanvasJSChart(options);
+
+    var paymentDaily =  '<?php echo $paymentDaily ?>'
+
     var optionsFull = {
 	animationEnabled: true,
 	title: {
@@ -402,19 +349,8 @@ console.log(res);
 	axisY: {
 		labelFontSize: 14
 	},
-	data: [{
-		type: "spline", //change it to line, area, bar, pie, etc
-		dataPoints: [
-			{ x: 10, y: 10 },
-			{ x: 20, y: 12 },
-			{ x: 30, y: 8 },
-			{ x: 40, y: 14 },
-			{ x: 50, y: 6 },
-			{ x: 60, y: 24 },
-			{ x: 70, y: -4 },
-			{ x: 80, y: 10 }
-		]
-	}]
+
+    data: JSON.parse(paymentDaily)
 };
 $("#chartContainer-full").CanvasJSChart(optionsFull);
 

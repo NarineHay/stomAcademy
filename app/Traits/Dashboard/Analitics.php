@@ -146,13 +146,101 @@ trait Analitics {
     }
 
 
-    // public function(){
-    //     $paymentsByCurrencyAndDay = Payment::select(
-    //         'currency',
-    //         DB::raw('DATE(created_at) as payment_day'),
-    //         DB::raw('SUM(amount) as total_amount')
-    //     )
-    //     ->groupBy('currency', 'payment_day')
-    //     ->get();
-    // }
+    public function paymentDaily(){
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
+
+        $paymentsByCurrencyAndDay = order::where('status', 'succeeded')
+            ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
+            ->select(
+            'cur',
+            DB::raw('DATE(created_at) as payment_day'),
+            DB::raw('SUM(sum) as total_amount')
+        )
+        ->groupBy('cur', 'payment_day')
+        ->get()->toArray();
+
+
+        $byGroup = $this->group_by("cur", $paymentsByCurrencyAndDay);
+
+
+
+        // Output the current month currency totals
+
+
+        $result = $this->dailyData($byGroup);
+
+        return json_encode($result);
+
+    }
+
+    public function group_by($key, $data)
+    {
+        $result = array();
+
+        foreach ($data as $val) {
+            if (array_key_exists($key, $val)) {
+                $result[$val[$key]][] = $val;
+            } else {
+                $result[""][] = $val;
+            }
+        }
+
+        return $result;
+    }
+
+    public function dailyData($byGroup){
+        $currentYear = date('Y');
+        $currentMonth = date('m');
+
+        // Calculate the number of days in the current month
+        $daysInMonth = date('t', strtotime("$currentYear-$currentMonth-01"));
+
+        // Initialize an array to store results
+        $result = [];
+
+        // Loop through each currency
+        $i = 0;
+        foreach ($byGroup as $currency => $payments) {
+            $i++;
+            // Initialize an array for the currency with daily totals
+            $currencyData = [];
+
+            // Initialize daily totals array for the currency with default values (0)
+            for ($day = 1; $day <= $daysInMonth; $day++) {
+                $currentDay = sprintf('%04d-%02d-%02d', $currentYear, $currentMonth, $day);
+                // $currencyData[$currentDay] = 0;
+
+                $currencyData[$day]['x'] = date('d', strtotime($currentDay)) * 1;
+                $currencyData[$day]['y'] = 0;
+
+            }
+
+            // ;Populate daily totals for the currency based on payments
+            foreach ($payments as $p => $payment) {
+                $paymentDay = $payment['payment_day'];
+                $totalAmount = (float) $payment['total_amount'];
+                $j = ++$p;
+
+                // Check if the payment day is within the current month
+                if (substr($paymentDay, 0, 7) === "$currentYear-$currentMonth") {
+
+                    $number_day = date('d', strtotime($paymentDay)) * 1;
+                    $currencyData[$number_day]['x'] = date('d', strtotime($paymentDay)) * 1;
+                    $currencyData[$number_day]['y'] = $totalAmount;
+
+                }
+            }
+
+            // Store the currency data in the result array
+
+            $result[$i]['xValueFormatString'] = $currency;
+            $result[$i]['type'] = "spline";
+            $result[$i]['dataPoints'] = array_values($currencyData);
+        }
+
+        return array_values($result);
+
+
+    }
 }
