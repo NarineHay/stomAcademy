@@ -87,7 +87,7 @@ class Bepaid
                         "order" => [
                             "currency" => $cur,
                             "amount" => 10,
-                            "description" => implode(",\r\n",$desc)
+                            "description" => implode(",\r\n",$desc) != "" ? implode(",\r\n",$desc) : "Pyment"
                         ]
                     ]
 

@@ -52,11 +52,11 @@
                                     <div class="float-end">
                                         <i class="mdi mdi-account-multiple widget-icon"></i>
                                     </div>
-                                    <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Customers</h5>
-                                    <h3 class="mt-3 mb-3">36,254</h3>
+                                    <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Клиенты</h5>
+                                    <h3 class="mt-3 mb-3">{{$customers['all_customers']}}</h3>
                                     <p class="mb-0 text-muted">
-                                        <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 5.27%</span>
-                                        <span class="text-nowrap">Since last month</span>
+                                        <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i>{{$customers['per_mont_customers']}}</span>
+                                        <span class="text-nowrap">за месяц</span>
                                     </p>
                                 </div> <!-- end card-body-->
                             </div> <!-- end card-->
@@ -68,11 +68,11 @@
                                     <div class="float-end">
                                         <i class="mdi mdi-cart-plus widget-icon"></i>
                                     </div>
-                                    <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Orders</h5>
-                                    <h3 class="mt-3 mb-3">5,543</h3>
+                                    <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Корзина</h5>
+                                    <h3 class="mt-3 mb-3">{{$cart['all_cart']}}</h3>
                                     <p class="mb-0 text-muted">
-                                        <span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i> 1.08%</span>
-                                        <span class="text-nowrap">Since last month</span>
+                                        <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$cart['per_mont_cart']}}</span>
+                                        <span class="text-nowrap">за месяц</span>
                                     </p>
                                 </div> <!-- end card-body-->
                             </div> <!-- end card-->
@@ -84,11 +84,11 @@
                                     <div class="float-end">
                                         <i class="mdi mdi-currency-usd widget-icon"></i>
                                     </div>
-                                    <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Revenue</h5>
-                                    <h3 class="mt-3 mb-3">$6,254</h3>
+                                    <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Оплата</h5>
+                                    <h3 class="mt-3 mb-3">{{$payment['all_payment']}}</h3>
                                     <p class="mb-0 text-muted">
-                                        <span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i> 7.00%</span>
-                                        <span class="text-nowrap">Since last month</span>
+                                        <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$payment['per_mont_payment']}}</span>
+                                        <span class="text-nowrap">за месяц</span>
                                     </p>
                                 </div> <!-- end card-body-->
                             </div> <!-- end card-->
@@ -100,20 +100,142 @@
                                     <div class="float-end">
                                         <i class="mdi mdi-pulse widget-icon"></i>
                                     </div>
-                                    <h5 class="text-muted fw-normal mt-0" title="Growth">Growth</h5>
+                                    <h5 class="text-muted fw-normal mt-0" title="Growth">Сумма Оплат</h5>
                                     <h3 class="mt-3 mb-3">+ 30.56%</h3>
                                     <p class="mb-0 text-muted">
-                                        <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
-                                        <span class="text-nowrap">Since last month</span>
+                                        <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
+                                        <span class="text-nowrap">за месяц</span>
                                     </p>
                                 </div> <!-- end card-body-->
                             </div> <!-- end card-->
                         </div> <!-- end col-->
                     </div> <!-- end row -->
 
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
+                            <div class="card">
+                                <div class="d-flex card-header justify-content-between align-items-center">
+                                    <h4 class="header-title">Сумма оплат за месяц</h4>
+                                </div>
+
+                                <div class="card-body pt-0">
+                                    <div class="table-responsive">
+                                        <table class="table table-centered table-nowrap table-hover mb-0">
+                                            <tbody>
+                                                @foreach ($paymentCurrency['per_mont_payment_currency'] as $pay)
+                                                    <tr>
+
+                                                        <td>
+                                                            <h5 class="font-14 my-1 fw-normal">{{$pay->cur}}</h5>
+                                                            <span class="text-muted font-13">Валюта</span>
+                                                        </td>
+                                                        <td>
+                                                            <h5 class="font-14 my-1 fw-normal">{{$pay->total}}</h5>
+                                                            <span class="text-muted font-13">Сумма</span>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
 
 
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- end table-responsive-->
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col-->
 
+                        <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
+                            <div class="card">
+                                <div class="d-flex card-header justify-content-between align-items-center">
+                                    <h4 class="header-title">Сумма оплат за год</h4>
+                                </div>
+
+                                <div class="card-body pt-0">
+                                    <div class="table-responsive">
+                                        <table class="table table-centered table-nowrap table-hover mb-0">
+                                            <tbody>
+                                                @foreach ($paymentCurrency['all_payment_currency'] as $pay)
+                                                    <tr>
+
+                                                        <td>
+                                                            <h5 class="font-14 my-1 fw-normal">{{$pay->cur}}</h5>
+                                                            <span class="text-muted font-13">Валюта</span>
+                                                        </td>
+                                                        <td>
+                                                            <h5 class="font-14 my-1 fw-normal">{{$pay->total}}</h5>
+                                                            <span class="text-muted font-13">Сумма</span>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+
+
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- end table-responsive-->
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col-->
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card widget-flat">
+                                <div class="card-body">
+                                    <div id="chartContainer-full" style="height: 370px; width: 100%;"></div>
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col-->
+
+                        <div class="col-sm-3">
+                            <div class="card widget-flat">
+                                <div class="card-body">
+                                    <div class="float-end">
+                                        <i class="mdi mdi-cart-plus widget-icon"></i>
+                                    </div>
+                                    <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Корзина</h5>
+                                    <h3 class="mt-3 mb-3">{{$cart['all_cart']}}</h3>
+                                    <p class="mb-0 text-muted">
+                                        <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$cart['per_mont_cart']}}</span>
+                                        <span class="text-nowrap">за месяц</span>
+                                    </p>
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col-->
+
+                        <div class="col-sm-3">
+                            <div class="card widget-flat">
+                                <div class="card-body">
+                                    <div class="float-end">
+                                        <i class="mdi mdi-currency-usd widget-icon"></i>
+                                    </div>
+                                    <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Оплата</h5>
+                                    <h3 class="mt-3 mb-3">{{$payment['all_payment']}}</h3>
+                                    <p class="mb-0 text-muted">
+                                        <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$payment['per_mont_payment']}}</span>
+                                        <span class="text-nowrap">за месяц</span>
+                                    </p>
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col-->
+
+                        <div class="col-sm-3">
+                            <div class="card widget-flat">
+                                <div class="card-body">
+                                    <div class="float-end">
+                                        <i class="mdi mdi-pulse widget-icon"></i>
+                                    </div>
+                                    <h5 class="text-muted fw-normal mt-0" title="Growth">Сумма Оплат</h5>
+                                    <h3 class="mt-3 mb-3">+ 30.56%</h3>
+                                    <p class="mb-0 text-muted">
+                                        <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
+                                        <span class="text-nowrap">за месяц</span>
+                                    </p>
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col-->
+                    </div> <!-- end row -->
             <!-- end row -->
 
             <div class="row">
@@ -226,16 +348,83 @@
                     </div> <!-- end card-->
                 </div> <!-- end col-->
 
+                <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
+                    <div class="card">
+                        <div class="d-flex card-header justify-content-between align-items-center">
+                            <h4 class="header-title">Top Selling Products</h4>
+                            <a href="javascript:void(0);" class="btn btn-sm btn-light">Export <i class="mdi mdi-download ms-1"></i></a>
+                        </div>
 
+                        <div class="card-body pt-0">
+                            <div id="chartContainer"  style="height: 370px; width: 100%;"> </div>
+                        </div>
+                    </div>
+                </div>
 
 
             </div>
             <!-- end row -->
 
+
+
+
+
+
         </div>
     </section>
 @endsection
-@section('name')
+@section('script')
+<script>
+    window.onload = function () {
+var res =  '<?php echo $paymentSystem ?>'
+console.log(res);
+    var options = {
+        animationEnabled: true,
 
+        data: [{
+            type: "doughnut",
+            innerRadius: "40%",
+            showInLegend: true,
+            legendText: "{label}",
+            indexLabel: "{label}: #percent%",
+            dataPoints: JSON.parse(res)
+        }]
+    };
+    $("#chartContainer").CanvasJSChart(options);
+    var optionsFull = {
+	animationEnabled: true,
+	title: {
+		text: "Spline Chart using jQuery Plugin"
+	},
+	axisX: {
+		labelFontSize: 14
+	},
+	axisY: {
+		labelFontSize: 14
+	},
+	data: [{
+		type: "spline", //change it to line, area, bar, pie, etc
+		dataPoints: [
+			{ x: 10, y: 10 },
+			{ x: 20, y: 12 },
+			{ x: 30, y: 8 },
+			{ x: 40, y: 14 },
+			{ x: 50, y: 6 },
+			{ x: 60, y: 24 },
+			{ x: 70, y: -4 },
+			{ x: 80, y: 10 }
+		]
+	}]
+};
+$("#chartContainer-full").CanvasJSChart(optionsFull);
+
+
+
+    }
+
+
+    </script>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
 @endsection
 
