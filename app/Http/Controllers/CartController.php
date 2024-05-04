@@ -39,10 +39,10 @@ class CartController extends Controller
         $cur = Currency::find(Cookie::get("currency_id",1))->currency_name;
 
         if($cur == 'RUB'){
-            $result = YooKassa::createOrder($request->get("promo"));
+            $result = YooKassa::createOrder($request->get("promo"), 'cart', null);
         }
         else{
-            $result = Bepaid::createOrder($request->get("promo"));
+            $result = Bepaid::createOrder($request->get("promo"), 'cart', null);
         }
 
         if($result){

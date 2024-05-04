@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Payment\PaymentStoreRequest;
 use App\Mail\SendPaymentAccountEmail;
 use App\Models\PaymentAccount;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail as FacadesMail;
@@ -18,8 +19,16 @@ class PaymentStoreAccountController extends Controller
         $course_ids = $request->course_ids;
         $webinar_ids = $request->webinar_ids;
 
+        // if(isset($request->email)){
+
+        // }
+        // else{
+
+        // }
+        $token = md5(strtotime());
         $payment_account = PaymentAccount::create([
-            'user_id' => $request->user_id,
+            'user_id' => $request->user_id ?? null,
+            'token' => $token,
             'sum' => $request->sum,
             'cur' => $request->cur,
             'type' => $request->type,
@@ -43,7 +52,20 @@ class PaymentStoreAccountController extends Controller
         // FacadesMail::to($recipientEmail)
         // ->cc('cc@example.com')
         // ->send(new YourMailable());
-        Mail::send(new SendPaymentAccountEmail($payment_account));
-        return redirect()->route('admin.payment.index');
+
+        if(!empty($request->user_id)){
+            $user = User::find($request->user_id);
+            $url = url('') . "/payment-account/$payment_account->token";
+
+            Mail::send(new SendPaymentAccountEmail($payment_account, $user->email, $url));
+
+            return redirect()->route('admin.payment.index');
+        }
+        else{
+            $url = url('') . "/payment-account-from-newsletter/$payment_account->token";
+            return redirect()->back()->with(['payment_url' => $url]);
+        }
+
+
     }
 }

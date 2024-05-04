@@ -19,10 +19,8 @@
     @endforeach
     <h5>Чтобы получить доступ, пожалуйста оплатите счет</h5>
     <p>{{$item->manager_comment}}</p>
-@php
-     $url = url(''). "/payment-account/$data->id";
-@endphp
-    <a href="{{route('payment_account_to_mail', $data->id)}}">Логин</a>
+
+    <a href="{{$url}}">оплатить</a>
 
 </body>
 </html>

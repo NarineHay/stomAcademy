@@ -14,14 +14,19 @@ class SendPaymentAccountEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $data;
+    public $email;
+    public $url;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($data, $email, $url)
     {
         $this->data = $data;
+        $this->email = $email;
+        $this->url = $url;
 
     }
 
@@ -54,10 +59,14 @@ class SendPaymentAccountEmail extends Mailable
      *
      * @return array
      */
+
     public function build()
     {
+
         return $this->with([
-            'data' => $this->data
-          ])->to($this->data['email']);
+            'data' => $this->data,
+            'url' => $this->url
+        ])->to($this->email);
+
     }
 }

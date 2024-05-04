@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('payment_accounts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("user_id")->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
+            $table->string("token");
             $table->integer("sum");
             $table->string("cur");
             $table->string('type');

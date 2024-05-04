@@ -29,6 +29,11 @@
                 {{ session('success') }}
             </div>
         @endif
+          @if(session('payment_url'))
+            <div class="alert alert-success mb-1 mt-1">
+                {{ session('payment_url') }}
+            </div>
+        @endif
 
         <div class="card card-primary card-outline card-outline-tabs">
                 <div class="card-header p-0 border-bottom-0">
@@ -134,29 +139,25 @@
 
 
                         <div class="tab-pane fade " id="type_tub_2" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
-                            <form class="access_form" action="{{ route('admin.accesses.store',['access_type' => 'new']) }}" method="POST">
+                            <form action="{{ route('admin.payment_create_account') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Пользователь*</label>
-                                        <textarea class="form-control" name="users"></textarea>
-                                    </div>
 
                                     <div class="form-group">
-                                        <div>
-                                            <label  style="margin-right: 10px">
-                                                <input type="radio" id="course" name="type" value="course" checked>
-                                                Курс</label>
+                                        <label for="cur">Платежная система *</label>
 
-                                            <label>
-                                                <input type="radio" id="webinar" name="type" value="webinar">
-                                                Вебинар</label>
-                                        </div>
+                                        <select class="form-control select2" name="type">
+                                            <option value="" disabled selected>Платежная система</option>
+                                            <option value="yookassa" >Yookassa</option>
+                                            <option value="bepaid">Bepaid</option>
+
+                                        </select>
                                     </div>
 
-                                    <div class="form-group courseDiv">
-                                        <label for="exampleInputEmail1">Курс</label>
-                                        <select class="form-control select2" name="course_id">
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Курс*</label>
+                                        <select class="form-control select2" multiple="multiple" name="course_ids[]">
                                             @foreach($courses as $course)
                                                 <option value="{{ $course->id }}">
                                                     {{ $course->info->title }}
@@ -165,40 +166,46 @@
                                         </select>
                                     </div>
 
-                                    <div class="form-group d-none webinarDiv">
-                                        <label for="exampleInputEmail1">Вебинар</label>
-                                        <select class="form-control select2" name="webinar_id">
-                                            @foreach($webinars as $webinar)
-                                                <option value="{{ $webinar->id }}">
-                                                    {{ $webinar->info->title ?? ''}}
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Вебинар*</label>
+                                        <select class="form-control select2" multiple="multiple" name="webinar_ids[]">
+                                                @foreach($webinars as $webinar)
+                                                    <option value="{{ $webinar->id }}">
+                                                        {{ $webinar->info->title ?? ''}}
+                                                    </option>
+                                                @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="sum">Сумма*</label>
+                                        <input value="{{ old("sum") }}" type="text" name="sum" class="form-control" id="sum">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="cur">Валюта*</label>
+
+                                        <select class="form-control select2" name="cur">
+                                            <option value="" selected>Валюта</option>
+                                            @foreach($currency as $cur)
+                                                <option value="{{ $cur->currency_name }}">
+                                                    {{ $cur->currency_name ?? ''}}
                                                 </option>
                                             @endforeach
                                         </select>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Статус просмотра</label>
-                                        <div>
-                                            <label  style="margin-right: 10px">
-                                                <input type="radio" id="temporary" name="access_time" value="1" checked>
-                                                Доступ определенный период</label>
-
-                                            <label >
-                                                <input type="radio" id="permanent" name="access_time" value="0">
-                                                Постоянный доступ</label>
-                                        </div>
+                                        <label for="comment">Комментарий к оплате</label>
+                                        <textarea name="comment" class="form-control">{{ old("comment") }}</textarea>
                                     </div>
 
-                                    <select class="form-control duration" name="duration" >
-                                        @for($i = 5; $i <= 30; $i+=5)
-                                            <option value="{{$i}}">{{ $i }}</option>
-                                        @endfor
-                                    </select>
+
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
 
-                                <div class="card-footer mt-4">
-                                    <button type="submit" class="btn btn-primary">Открыть доступ</button>
-                                </div>
                             </form>
                         </div>
                     </div>
