@@ -161,6 +161,10 @@
                 <nav class="mt-2">
                     <ul class=" nav-pills nav-sidebar flex-column">
                         <li class="nav-item">
+                            <a href="{{ route('admin.dashboard') }}"
+                                class="nav-link @if (request()->is('admin/dashboard*')) active @endif">Дашборд </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('admin.index.index') }}"
                                 class="nav-link @if (request()->is('admin/index*')) active @endif">Главная </a>
                         </li>

@@ -90,10 +90,11 @@
                         <label for="comment">Комментарий*</label>
                         <textarea name="comment" class="form-control">{{ old("comment") }}</textarea>
                     </div>
-
+                </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
+
             </form>
         </div>
     </section>

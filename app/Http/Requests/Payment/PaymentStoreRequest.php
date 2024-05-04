@@ -37,7 +37,11 @@ class PaymentStoreRequest extends FormRequest
             $data['webinar_ids'] = 'required';
 
         }
-        
+
+        if(request()->routeIs('admin.payment_create_account')){
+            $data['type'] = 'required';
+        }
+
         return $data;
     }
 }

@@ -9,7 +9,10 @@
                 </div>
                 <div>
                     <a class="btn btn-primary" href="{{route('admin.payment.create')}}" role="button">Добавить</a>
+                    <a class="btn btn-primary" href="{{route('admin.create_account_index')}}" role="button">Создать счет</a>
+
                 </div>
+
             </div>
 
         </div>

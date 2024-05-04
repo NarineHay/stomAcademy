@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\CreateAccountController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PaymentCreateAccountController;
 use App\Http\Controllers\Admin\PaymentNotificationController;
+use App\Http\Controllers\Admin\PaymentRedirectToLinkController;
 use App\Http\Controllers\Admin\PaymentResultController;
+use App\Http\Controllers\Admin\PaymentStoreAccountController;
 use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -98,7 +102,11 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::resource('chats', \App\Http\Controllers\Admin\HelpController::class);
     Route::resource('videos', \App\Http\Controllers\Admin\VideoController::class);
     Route::resource('application', \App\Http\Controllers\Admin\ApplicationController::class);
-    Route::get('dashboard', DashboardController::class);
+
+    Route::get('create-account', PaymentCreateAccountController::class)->name('create_account_index');
+    Route::post('payment-create-account', PaymentStoreAccountController::class)->name('payment_create_account');
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
+
 
 });
 
@@ -113,9 +121,7 @@ Route::group(['prefix' => "lector",'middleware' => 'isLector','as' => 'lector.']
 Route::get("test",[TestController::class, 'index']);
 Route::get('payment-result/{db_order_id}/{type}', PaymentResultController::class);
 Route::post('payment-result-notification', PaymentNotificationController::class);
-
-
-
+Route::get('payment-account/{id}', PaymentRedirectToLinkController::class)->name('payment_account_to_mail');
 
 
 //Route::prefix('personal')->middleware("auth")->group(function (){

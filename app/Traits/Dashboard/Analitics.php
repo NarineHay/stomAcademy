@@ -2,7 +2,9 @@
 namespace App\Traits\Dashboard;
 
 use App\Models\Cart;
+use App\Models\Course;
 use App\Models\Order;
+use App\Models\OrderInfo;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -170,7 +172,7 @@ trait Analitics {
 
         $result = $this->dailyData($byGroup);
 
-        return json_encode($result);
+        return $result;
 
     }
 
@@ -198,7 +200,7 @@ trait Analitics {
 
         // Initialize an array to store results
         $result = [];
-
+        $result_rub = [];
         // Loop through each currency
         $i = 0;
         foreach ($byGroup as $currency => $payments) {
@@ -234,13 +236,51 @@ trait Analitics {
 
             // Store the currency data in the result array
 
-            $result[$i]['xValueFormatString'] = $currency;
-            $result[$i]['type'] = "spline";
-            $result[$i]['dataPoints'] = array_values($currencyData);
+
+            if($currency == 'RUB'){
+                $result_rub[$i]['xValueFormatString'] = $currency;
+                $result_rub[$i]['type'] = "spline";
+                $result_rub[$i]['dataPoints'] = array_values($currencyData);
+
+            }
+            else{
+                $result[$i]['xValueFormatString'] = $currency;
+                $result[$i]['type'] = "spline";
+                $result[$i]['dataPoints'] = array_values($currencyData);
+
+            }
         }
 
-        return array_values($result);
+        return [
+            'rub' => array_values($result_rub),
+            'other' => array_values($result)
+        ];
 
+
+    }
+
+
+
+
+
+    public function topSellingCources(){
+
+        $orders = Order::where('status','succeeded')->get();
+        $orders = $orders->pluck('infos')->flatten()->where('type', 'course')->pluck('id');
+
+        $order_infos = OrderInfo::whereIn('id',$orders)->select('item_id', DB::raw('COUNT(*) as count'))
+        ->where('type', 'course')
+        ->groupBy('item_id')
+        ->orderByDesc('count')
+        ->limit(5)
+        ->pluck('item_id')->toArray();
+
+        $courses = Course::whereIn('id', $order_infos)
+                 ->orderByRaw(DB::raw("FIELD(id, " . implode(',', $order_infos) . ")")) // Preserve the sequence
+                 ->get();
+
+
+       return $courses;
 
     }
 }
