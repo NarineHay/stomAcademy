@@ -32,5 +32,7 @@ return [
         "register" => "Зарегистрироваться",
         "any_time" => "Уже есть аккаунт?",
         "check_text" => '  Создавая аккаунт, вы соглашаетесь с нашим<br> <a style="color:#828282;" class="text-decoration-underline" href=":href"> Договором  оферты и Политикой конфиденциальности</a>',
+        "conf_payment_account" => "Подтверждение платежного счета",
+        "confirm" => "Подтвердить"
     ],
 ];

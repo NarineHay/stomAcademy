@@ -74,6 +74,10 @@ return [
         'name_webinars_courses' => 'Name of the course/webinar',
         'count_sales' => 'Count of sales',
         'percent' => 'Percent',
+        'lecturer_office' => 'Lecturer office',
+        'amount' => 'Amount',
+        'total' => 'Total',
+        'request_payment' => 'Request payment'
 
 
     ],

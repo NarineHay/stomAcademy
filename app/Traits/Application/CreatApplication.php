@@ -19,7 +19,7 @@ trait CreatApplication
     {
 
         $application = new Application();
-        $application->user_id = $form == 'order' || $form == 'cart' ? Auth::id() : $data->id;
+        $application->user_id = $form == 'order' || $form == 'cart' ? $data->user_id : $data->id;
         $application->form = $form;
         $application->item_id = $data->id;
         $application->sum = $data->sum ?? null;

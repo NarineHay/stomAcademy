@@ -3,6 +3,8 @@
     <p><b>Пароль: </b></p> {{$data['password']}}
 @endif
 
+@if(isset($data['type']))
+
     @if($data['type'] =='course')
         <p>Вам открыт доступ к просмотру курса {{$data['course']->info->title}}</p>
     @elseif($data['type'] =='webinar')
@@ -14,6 +16,7 @@
     @else
         <p>У вас есть постоянный доступ</p>
     @endif
+@endif
 
     <a href="{{route("login")}}">Логин</a>
 

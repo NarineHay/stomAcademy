@@ -29,5 +29,7 @@ return [
         "register" => "Register",
         "any_time" => "Already have an account?",
         "check_text" => 'By creating an account, you agree to our<br> <a style="color:#828282;" class="text-decoration-underline" href="#"> Offer Contract and Privacy Policy</a>',
+        "conf_payment_account" => "Confirmetion an payment account",
+        "confirm" => "Confirm"
     ],
 ];

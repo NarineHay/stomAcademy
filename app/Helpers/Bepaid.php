@@ -15,14 +15,14 @@ use Illuminate\Support\Str;
 class Bepaid
 {
 
-    static function createOrder($promo_code = null, $request_type, $payment_account_token = null)
+    static function createOrder($promo_code = null, $request_type, $payment_account_token = null, $user_id = null)
     {
 
         if($request_type == 'cart'){
             $order = self::createOrderFromCart($promo_code);
         }
         else{
-            $order = self::createOrderFromPaymentAccount($payment_account_token);
+            $order = self::createOrderFromPaymentAccount($payment_account_token, $user_id);
         }
 
         // $items = Auth::user()->cart;
@@ -168,6 +168,7 @@ class Bepaid
         foreach ($items as $item_) {
             if ($item_['type'] == "webinar") {
                 $item = Webinar::query()->where("id", $item_['item_id'])->first();
+
             } elseif ($item_['type'] == "course") {
                 $item = Course::query()->where("id", $item_['item_id'])->first();
             }
@@ -196,7 +197,7 @@ class Bepaid
         foreach ($items as $item) {
             $order->infos()->create([
                 "type" => $item['type'],
-                "item_id" => $item['id']
+                "item_id" => $item['item_id']
             ]);
         }
 
@@ -209,15 +210,16 @@ class Bepaid
     }
 
 
-    static function createOrderFromPaymentAccount($payment_account_token){
+    static function createOrderFromPaymentAccount($payment_account_token, $user_id){
         $desc = [];
         $payment_account = PaymentAccount::where('token', $payment_account_token)->first();
 
         $course_ids = $payment_account->infos->where('type', 'course')->pluck('item_id');
         $webinar_ids = $payment_account->infos->where('type', 'webinar')->pluck('item_id');
+        $userId = $user_id != null ? $user_id : $payment_account->user_id;
 
         $order = Order::create([
-            'user_id' => $payment_account->user_id,
+            'user_id' => $userId,
             'payment_id' => 1,
             'sum' => $payment_account->sum,
             'cur' => $payment_account->cur,
@@ -245,7 +247,7 @@ class Bepaid
 
         return [
             'order' => $order,
-            'desc' => implode(",\r\n", $desc) != "" ? implode(",\r\n", $desc) : "Pyment"
+            'desc' => implode(",\r\n", $desc) != "" ? implode(",\r\n", $desc) : "Payment"
         ];
     }
 }

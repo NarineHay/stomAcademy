@@ -55,6 +55,9 @@ class Lector extends Model
         return count($this->getCourses());
     }
 
+   
+
+
     function getCourses(){
         $sql = 'select courses.id from webinars
                 join course_webinars on course_webinars.webinar_id = webinars.id

@@ -25,12 +25,14 @@ class PaymentStoreRequest extends FormRequest
     {
 
         $data = [
-            'user_id' => 'required',
             'sum' => 'required',
             'cur' => 'required'
-
-
         ];
+
+        if(request()->has('user_id')){
+            $data['user_id'] = 'required';
+
+        }
 
         if(request()->course_ids == null && request()->webinar_ids == null){
             $data['course_ids'] = 'required';

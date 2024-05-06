@@ -8,11 +8,7 @@ use League\OAuth2\Client\Token\AccessToken;
 
 class CRM
 {
-    private $amoAuthUrl = 'https://www.amocrm.com/oauth';
-    private $amoTokenUrl = 'https://www.amocrm.com/oauth2/access_token';
-    private $clientId = '19063960';
-    private $clientSecret = '1d324bcb8a02112f93b66377100dbc2c';
-    private $redirectUri = 'https://google.com';
+
 
     // public function redirectToAmoCRM()
     // {
@@ -27,11 +23,18 @@ class CRM
 
     public function handleCallback()
     {
-        dump(10);
+         $amoAuthUrl = 'https://www.amocrm.com/oauth';
+         $amoTokenUrl = 'https://www.amocrm.com/oauth2/access_token';
+        $clientId = '19063960';
+         $clientSecret = '1d324bcb8a02112f93b66377100dbc2c';
+         $redirectUri = 'https://google.com';
+
+        $apiClient = new \AmoCRM\Client\AmoCRMApiClient($clientId, $clientSecret, $redirectUri);
+        $leadsService = $apiClient->leads();
         // $code = $request->query('code');
-        $apiClient = new \AmoCRM\Client\AmoCRMApiClient(env("AMO_ID"), env("AMO_SECRET"), "https://stom.mawcompany.com/api/amo");
-        $apiClient->setAccessToken(new AccessToken(['access_token' => env("AMO_TOKEN"),'expires_in' => '1893459600']));
-        dd($apiClient);
+        // $apiClient = new \AmoCRM\Client\AmoCRMApiClient(env("AMO_ID"), env("AMO_SECRET"), "https://stom.mawcompany.com/api/amo");
+        // $apiClient->setAccessToken(new AccessToken(['access_token' => env("AMO_TOKEN"),'expires_in' => '1893459600']));
+        dd($leadsService);
         $client = new Client();
         $response = $client->post($this->amoTokenUrl, [
             'form_params' => [
@@ -53,32 +56,42 @@ class CRM
 
     public function addStatusesToPipeline()
     {
+        // $apiClient = new \AmoCRM\Client\AmoCRMApiClient(
+        //   '19063960',
+        //    '1d324bcb8a02112f93b66377100dbc2c',
+        //     'https://stom.mawcompany.com/api/amo',
+        // );
         $apiClient = new \AmoCRM\Client\AmoCRMApiClient(
-          '19063960',
-           '1d324bcb8a02112f93b66377100dbc2c',
-            'https://stom.mawcompany.com/api/amo',
-        );
-dd($apiClient->getOAuthClient()->getAccessTokenByCode($_GET['code']));
-        if (isset($_GET['code']) && $_GET['code']) {
-            //Вызов функции setBaseDomain требуется для установки контектс аккаунта.
-            if (isset($_GET['referer'])) {
-                $provider->setBaseDomain($_GET['referer']);
-            }
+            'stomacademy',
+             'hot-marketing-moss@yandex.ru',
+              '1d324bcb8a02112f93b66377100dbc2c',
+          );
+        $leadsService = $apiClient->leads();
+        dd($leadsService);
+        $lead = $apiClient->lead;
+        $lead['name'] = $_POST['product_name'];
+        $lead['responsible_user_id'] = 2462338;
+        $lead['pipeline_id'] = 1207249;
+        // dd($apiClient);
+        // dd($apiClient->getOAuthClient()->getAccessTokenByCode($_GET['code']));
+        // if (isset($_GET['code']) && $_GET['code']) {
+        //     //Вызов функции setBaseDomain требуется для установки контектс аккаунта.
+        //     if (isset($_GET['referer'])) {
+        //         $provider->setBaseDomain($_GET['referer']);
+        //     }
 
-            $token = $provider->getAccessToken('authorization_code', [
-                'code' => $_GET['code']
-            ]);
-dd($token);
-            //todo сохраняем access, refresh токены и привязку к аккаунту и возможно пользователю
+        //     $token = $provider->getAccessToken('authorization_code', [
+        //         'code' => $_GET['code']
+        //     ]);
+        // dd($token);
+        //     //todo сохраняем access, refresh токены и привязку к аккаунту и возможно пользователю
 
-            /** @var \AmoCRM\OAuth2\Client\Provider\AmoCRMResourceOwner $ownerDetails */
-            $ownerDetails = $provider->getResourceOwner($token);
+        //     /** @var \AmoCRM\OAuth2\Client\Provider\AmoCRMResourceOwner $ownerDetails */
+        //     $ownerDetails = $provider->getResourceOwner($token);
 
-            printf('Hello, %s!', $ownerDetails->getName());
-        }
-        $apiClient = new \AmoCRM\Client\AmoCRMApiClient($this->clientId, $this->clientSecret, "https://stom.mawcompany.com/api/amo");
-        $apiClient->setAccessToken(new AccessToken(['access_token' => '457778gyrrf5556','expires_in' => '1893459600']));
-        $client = new Client();
+        //     printf('Hello, %s!', $ownerDetails->getName());
+        // }
+
         // $response = $client->post($this->amoTokenUrl, [
         //     'form_params' => [
         //         'client_id' => $this->clientId,

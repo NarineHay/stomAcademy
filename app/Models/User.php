@@ -90,4 +90,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    function lector_incomes(){
+        return $this->hasMany(LectorIncome::class);
+    }
 }

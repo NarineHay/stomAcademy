@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CreateAccountController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PaymentAccountConfirmController;
 use App\Http\Controllers\Admin\PaymentCreateAccountController;
 use App\Http\Controllers\Admin\PaymentNotificationController;
 use App\Http\Controllers\Admin\PaymentRedirectFromNewsletterController;
@@ -75,6 +76,10 @@ Route::group(['prefix' => "personal",'middleware' => 'auth','as' => 'personal.']
     Route::get("/cart",[\App\Http\Controllers\CartController::class,'index'])->name("cart");
     Route::post("/cart/order",[\App\Http\Controllers\CartController::class,'order'])->name("cart.order");
     Route::get("/deleteAccount/{id}", [\App\Http\Controllers\InformationController::class,'deleteAccount'])->name('deleteAccount');
+
+    Route::get("/lector",[\App\Http\Controllers\Lector\PersonalController::class,'index'])->name("lector");
+
+
 });
 
 Route::get('certificate-download/{image}/{type}', [\App\Http\Controllers\CertificateController::class, 'download'])->name('download');
@@ -117,13 +122,15 @@ Route::group(['prefix' => "lector",'middleware' => 'isLector','as' => 'lector.']
 //    Route::get("/webinars",[\App\Http\Controllers\Lector\WebinarsController::class,'index'])->name("webinars");
 //     Route::get("/courses",[\App\Http\Controllers\Lector\CoursesController::class,'index'])->name("courses");
 //     Route::get("/chats",[\App\Http\Controllers\Lector\ChatsController::class,'index'])->name("chats");
+
 });
 
 Route::get("test",[TestController::class, 'index']);
 Route::get('payment-result/{db_order_id}/{type}', PaymentResultController::class);
 Route::post('payment-result-notification', PaymentNotificationController::class);
 Route::get('payment-account/{token}', PaymentRedirectToLinkController::class)->name('payment_account_to_mail');
-Route::get('payment-account-from-newsletter/{token}', PaymentRedirectFromNewsletterController::class)->name('payment_account_to_mail');
+Route::get('payment-account-from-newsletter/{token}', PaymentRedirectFromNewsletterController::class)->name('payment_account_newsletter_to_mail');
+Route::post('payment-account-confirm', PaymentAccountConfirmController::class)->name('payment_account_confirm');
 
 
 //Route::prefix('personal')->middleware("auth")->group(function (){

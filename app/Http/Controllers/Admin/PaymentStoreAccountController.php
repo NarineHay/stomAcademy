@@ -8,6 +8,7 @@ use App\Mail\SendPaymentAccountEmail;
 use App\Models\PaymentAccount;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail as FacadesMail;
 use Mail;
@@ -19,13 +20,8 @@ class PaymentStoreAccountController extends Controller
         $course_ids = $request->course_ids;
         $webinar_ids = $request->webinar_ids;
 
-        // if(isset($request->email)){
-
-        // }
-        // else{
-
-        // }
-        $token = md5(strtotime());
+        
+        $token = strtotime(Carbon::now());
         $payment_account = PaymentAccount::create([
             'user_id' => $request->user_id ?? null,
             'token' => $token,
@@ -59,7 +55,7 @@ class PaymentStoreAccountController extends Controller
 
             Mail::send(new SendPaymentAccountEmail($payment_account, $user->email, $url));
 
-            return redirect()->route('admin.payment.index');
+            return redirect()->route('admin.payment.index')->with('success', 'Письмо отправлено пользователю');
         }
         else{
             $url = url('') . "/payment-account-from-newsletter/$payment_account->token";

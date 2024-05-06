@@ -7,5 +7,9 @@ use Illuminate\Http\Request;
 
 class PaymentRedirectFromNewsletterController extends Controller
 {
-    //
+    public function __invoke()
+    {
+        return view('front.payment-account-newsletter');
+
+    }
 }

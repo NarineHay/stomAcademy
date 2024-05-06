@@ -75,7 +75,10 @@ return [
         'name_webinars_courses' => 'Nombre del curso/seminario web',
         'count_sales' => 'Recuento de ventas',
         'percent' => 'Por ciento',
-
+        'lecturer_office' => 'Despacho del profesor',
+        'amount' => 'Cantidad',
+        'total' => 'Total',
+        'request_payment' => 'Solicitar pago'
 
     ],
     "save" => "Guardar",

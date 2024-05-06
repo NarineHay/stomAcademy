@@ -130,9 +130,9 @@ class HomeLogin extends Component
         if(Auth::user() && (Auth::user()->role=="admin" || Auth::user()->role=="moder")){
             return route('admin.users.index');
         }
-        else if(Auth::user()->role=="lector"){
-            return route('lector.personal');
-        }
+        // else if(Auth::user()->role=="lector"){
+        //     return route('lector.personal');
+        // }
         return route('personal.index');
     }
 

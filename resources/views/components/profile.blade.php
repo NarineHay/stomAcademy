@@ -15,6 +15,14 @@
         </div>
     </div>
     <div>
+        
+        @if (Auth::user()->role == 'lector')
+            <div class="d-flex mb-4 mt-4">
+                <i class="fal fa-user-circle me-2 "></i>
+                <a href="{{route('personal.lector')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.lecturer_office')}} </a>
+            </div>
+        @endif
+
         <div class="d-flex mb-4 mt-4">
             <i class="fal fa-play-circle me-2 "></i>
             <a href="{{route('personal.courses')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.my_courses')}} </a>

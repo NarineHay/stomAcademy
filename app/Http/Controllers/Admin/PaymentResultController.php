@@ -6,11 +6,12 @@ use App\Helpers\Bepaid;
 use App\Helpers\YooKassa;
 use App\Http\Controllers\Controller;
 use App\Traits\Access;
+use App\Traits\Lector\AddLectorIncome;
 use Illuminate\Http\Request;
 
 class PaymentResultController extends Controller
 {
-    use Access;
+    use Access, AddLectorIncome;
     public function __invoke(Request $request)
     {
 
@@ -33,7 +34,7 @@ class PaymentResultController extends Controller
         if($payment_result){
             // return response()->redirectTo('http://dev.stom-academy.com/courses');
             $this->setAccess($order_id);
-
+            $this->addIncome($order_id);
             return redirect("personal/courses");
         }
 

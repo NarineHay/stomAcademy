@@ -75,6 +75,10 @@ return [
         'name_webinars_courses' => 'Название курса/вебинара',
         'count_sales' => 'Кол-во продаж',
         'percent' => 'Процент',
+        'lecturer_office' => 'Кабинет лектора',
+        'amount' => 'Cумма',
+        'total' => 'Итого',
+        'request_payment' => 'Запросить выплату'
 
     ],
     "save" => "Сохранить",

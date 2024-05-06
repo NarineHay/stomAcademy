@@ -10,10 +10,10 @@ class PaymentAccount extends Model
     use HasFactory;
 
     protected $guarded = [];
-    
+
     function infos()
     {
-        return $this->hasMany(OrderInfo::class,"order_id","id");
+        return $this->hasMany(PaymentAccountInfo::class, "payment_account_id", "id");
     }
 
     function user()

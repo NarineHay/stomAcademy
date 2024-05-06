@@ -29,5 +29,7 @@ return [
         "register" => "Regístrese",
         "any_time" => "¿Ya tiene una cuenta?",
         "check_text" => 'Al crear una cuenta, acepta nuestra<br> <a style="color:#828282;" class="text-decoration-underline" href="#"> Acuerdo de oferta y política de privacidad</a>',
+        "conf_payment_account" => "Confirmación de cuenta de pago",
+        "confirm" => "Confirmar"
     ],
 ];

@@ -18,7 +18,7 @@
         @endif
     @endforeach
     <h5>Чтобы получить доступ, пожалуйста оплатите счет</h5>
-    <p>{{$item->manager_comment}}</p>
+    <p>{{$data->comment}}</p>
 
     <a href="{{$url}}">оплатить</a>
 

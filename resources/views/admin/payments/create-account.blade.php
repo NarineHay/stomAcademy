@@ -31,7 +31,7 @@
         @endif
           @if(session('payment_url'))
             <div class="alert alert-success mb-1 mt-1">
-                {{ session('payment_url') }}
+                Ссылка на платежный счет:  {{ session('payment_url') }}
             </div>
         @endif
 

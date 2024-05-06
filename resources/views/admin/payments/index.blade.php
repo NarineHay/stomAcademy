@@ -139,7 +139,7 @@
                                            <a>{{$payment->id}}</a>
                                        </td>
                                         <td>
-                                            <a>{{$payment->user->name}}</a>
+                                            <a>{{$payment->user->name ?? ''}}</a>
                                         </td>
                                         <td>
                                             <ul>
