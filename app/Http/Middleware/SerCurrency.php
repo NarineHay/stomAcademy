@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Helpers\LG;
 use App\Models\Currency;
 use Closure;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
@@ -19,10 +20,21 @@ class SerCurrency
      */
     public function handle(Request $request, Closure $next)
     {
-        $browserLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        $userIp = $request->ip();
 
-        $currencyName = $browserLanguage == 'ru' ? 'RUB' :
-                        ($browserLanguage == 'uk' ? 'UAH' :
+        $client = new Client();
+        $response = $client->get('https://ipinfo.io/' . $userIp.'/json');
+        $data = json_decode($response->getBody(), true);
+
+        $browserLanguage = 'USD';
+        if (isset($data['country'])) {
+            $browserLanguage = $data['country']; // ISO country code (e.g., 'US', 'GB', 'CA')
+        }
+
+        // $browserLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
+        $currencyName = $browserLanguage == 'RU' ? 'RUB' :
+                        ($browserLanguage == 'UK' ? 'UAH' :
                         (in_array($browserLanguage, LG::getEuropeCountryCodes()) ? 'EUR' : 'USD'));
 
         $currency = Currency::where('currency_name', $currencyName)->first();
