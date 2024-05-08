@@ -48,6 +48,8 @@ class CertificateController extends Controller
         }
 
         $imagePath = Storage::url($certificate->images->where('lg_id',\App\Helpers\LG::get())->first()->image);
+
+
         $temp = public_path("storage/certificates/".Str::random(16).".jpg");
         copy(public_path($imagePath),$temp);
         $image = Image::make($temp);
@@ -81,8 +83,10 @@ class CertificateController extends Controller
 
         $image->save();
 
-        $temp = Storage::url(explode("storage/",$temp)[1]);
+        $temp_1 = Storage::url(explode("storage/",$temp)[1]);
+        $new_temp = substr($temp_1, 1);
+        chmod( public_path($temp_1) , 0755);
 
-        return response()->download(public_path($temp));
+        return response()->download($new_temp);
     }
 }
