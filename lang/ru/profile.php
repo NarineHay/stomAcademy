@@ -78,7 +78,8 @@ return [
         'lecturer_office' => 'Кабинет лектора',
         'amount' => 'Cумма',
         'total' => 'Итого',
-        'request_payment' => 'Запросить выплату'
+        'request_payment' => 'Запросить выплату',
+        'request_payent_sent' => 'Запрос отправлен'
 
     ],
     "save" => "Сохранить",

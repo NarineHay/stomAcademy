@@ -1,7 +1,8 @@
 <div>
     <form wire:submit.prevent="submit">
+
         <label
-            class="text-white fs-14 lh-14 fw-normal">{{ __("courses.reg.form.label.name") }}</label>
+            class="text-white fs-14 lh-14 fw-normal">{{ __("courses.reg.form.label.name") }} </label>
         <input type="text" class="form-control mb-3 " aria-label="Sizing example input"
                aria-describedby="inputGroup-sizing-default"
                placeholder="{{ __("courses.reg.form.placeholder.name") }}"
@@ -35,6 +36,9 @@
             <span class="text-danger error">{{ $message }}</span>
             @enderror
         </div>
+        <input type="hidden" value="{{$item_id}}" name="course_id">
+        <input type="hidden" value="{{$type}}" name="type">
+
         @if($success)
             <h5 class="text-center text-secondary my-3">{{ __("courses.contacts.form.email_sent") }}</h5>
         @endif

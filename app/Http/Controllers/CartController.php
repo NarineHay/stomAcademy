@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Bepaid;
+use App\Helpers\CRM;
 use App\Helpers\YooKassa;
 use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
@@ -48,7 +49,7 @@ class CartController extends Controller
         if($result){
             $order = Order::find($result['order_id']);
             $this->creatApp($order, 'order');
-
+            CRM::payment($order);
             return response()->redirectTo($result['url']);
         }
 
@@ -72,6 +73,8 @@ class CartController extends Controller
         $cart->item_id = $request->get('id');
         $cart->type = $request->get('type');
         $cart->save();
+
+        CRM::addToCart($cart);
         return redirect()->back();
     }
 

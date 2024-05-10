@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendRegisterInfoEmail;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Mail;
 class RegisterController extends Controller
 {
     use RegistersUsers;
@@ -18,12 +19,13 @@ class RegisterController extends Controller
 
     public function __construct()
     {
+
         $this->middleware('guest');
     }
 
     protected function validator(array $data)
     {
-        
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
@@ -36,6 +38,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $name = $data['name'] . ' ' . $data['lname'];
+
         $user = User::create([
             'name' => $name,
             'email' => $data['email'],
@@ -49,6 +52,7 @@ class RegisterController extends Controller
 
         ]);
 
+       
         return $user;
 
     }

@@ -77,7 +77,8 @@ return [
         'lecturer_office' => 'Lecturer office',
         'amount' => 'Amount',
         'total' => 'Total',
-        'request_payment' => 'Request payment'
+        'request_payment' => 'Request payment',
+        'request_payent_sent' => 'Request sent'
 
 
     ],

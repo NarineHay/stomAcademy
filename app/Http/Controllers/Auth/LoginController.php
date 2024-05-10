@@ -32,7 +32,7 @@ class LoginController extends Controller
         else if(Auth::user()->role=="lector"){
             LG::set(1);
             Carbon::setLocale('ru');
-            return route('lector.profile');
+            return route('lector.information');
         }
         return route('personal.index');
     }

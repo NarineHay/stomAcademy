@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PaymentRedirectToLinkController;
 use App\Http\Controllers\Admin\PaymentResultController;
 use App\Http\Controllers\Admin\PaymentStoreAccountController;
 use App\Http\Controllers\CaptchaController;
+use App\Http\Controllers\Lector\RequestPaymentController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -78,6 +79,8 @@ Route::group(['prefix' => "personal",'middleware' => 'auth','as' => 'personal.']
     Route::get("/deleteAccount/{id}", [\App\Http\Controllers\InformationController::class,'deleteAccount'])->name('deleteAccount');
 
     Route::get("/lector",[\App\Http\Controllers\Lector\PersonalController::class,'index'])->name("lector");
+    Route::get("/lector-request-payment", RequestPaymentController::class)->name("lector_request_payment");
+
 
 
 });

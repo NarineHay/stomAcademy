@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf0759f9b1594be31bfa0ab7feff124c",
+    "content-hash": "6076cfe29b7ba477f688818023f4e15b",
     "packages": [
         {
             "name": "amocrm/amocrm-api-library",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amocrm/amocrm-api-php.git",
-                "reference": "ea4bc87a8b3c1040d5ab38f98f0c535ded5e8cc2"
+                "reference": "4056aeb25cbd64e5bc039cb9e999b37b448a5337"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amocrm/amocrm-api-php/zipball/ea4bc87a8b3c1040d5ab38f98f0c535ded5e8cc2",
-                "reference": "ea4bc87a8b3c1040d5ab38f98f0c535ded5e8cc2",
+                "url": "https://api.github.com/repos/amocrm/amocrm-api-php/zipball/4056aeb25cbd64e5bc039cb9e999b37b448a5337",
+                "reference": "4056aeb25cbd64e5bc039cb9e999b37b448a5337",
                 "shasum": ""
             },
             "require": {
@@ -30,7 +30,7 @@
                 "nesbot/carbon": "^2.52 || ^3.0.0",
                 "php": ">=7.1 || >=8.0",
                 "ramsey/uuid": "^3 || ^4",
-                "symfony/dotenv": "3.* || 4.* || 5.* || 6.*"
+                "symfony/dotenv": "3.* || 4.* || 5.* || 6.* || 7.*"
             },
             "require-dev": {
                 "phpunit/phpunit": "7.* || 8.* || 9.*",
@@ -76,9 +76,9 @@
             ],
             "support": {
                 "issues": "https://github.com/amocrm/amocrm-api-php/issues",
-                "source": "https://github.com/amocrm/amocrm-api-php/tree/1.7.0"
+                "source": "https://github.com/amocrm/amocrm-api-php/tree/1.8.0"
             },
-            "time": "2024-03-25T11:56:17+00:00"
+            "time": "2024-05-07T11:42:06+00:00"
         },
         {
             "name": "amocrm/oauth2-amocrm",

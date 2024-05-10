@@ -1,30 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
-    <p>Вам выставлен счет по этим продуктам</p>
-    @foreach ($data->infos as $item)
-
-        @if($item->type =='course')
-            <p>курс:  {{$item->item->info->title}}</p>
-        @else
-            <p>вебинар: {{$item->item->info->title}}</p>
-        @endif
-    @endforeach
-    <h5>Чтобы получить доступ, пожалуйста оплатите счет</h5>
-    <p>{{$data->comment}}</p>
-
-    <a href="{{$url}}">оплатить</a>
-
-</body>
-</html> --}}
-
 <!DOCTYPE html>
 <html>
 
@@ -32,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=400" />
-    <title>Рега на вебинар</title>
+    <title>Регистрация</title>
     <link rel="shortcut icon" href="https://tilda.ws/img/tildafavicon.ico" />
     <style type="text/css">
         .ExternalClass {
@@ -117,29 +90,19 @@
             }
         }
 
-        @media only screen and (max-width: 480px) {
-            .t636__img-wrapper {
-                width: 45% !important;
-            }
-
-            .t636__content-wrapper {
-                width: 55% !important;
-            }
-        }
-
     </style>
 </head>
 
 <body cellpadding="0" cellspacing="0" style="padding: 0; margin: 0; border: 0; width:100%; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; background-color: #ffffff;">
     <!--allrecords-->
-    <table id="allrecords" class="t-records" data-tilda-email="yes" data-tilda-project-id="3081274" data-tilda-page-id="48163365" data-tilda-page-alias="" cellpadding="0" cellspacing="0" style="width:100%; border-collapse:collapse; border-spacing:0; padding:0; margin:0; border:0;">
+    <table id="allrecords" class="t-records" data-tilda-email="yes" data-tilda-project-id="3081274" data-tilda-page-id="37749513" data-tilda-page-alias="" cellpadding="0" cellspacing="0" style="width:100%; border-collapse:collapse; border-spacing:0; padding:0; margin:0; border:0;">
         <tr>
             <td style="background-color: #ffffff; ">
                 <!--record_mail-->
-                <table id="rec742254679" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="324">
+                <table id="rec742232193" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="324">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254679" class="r" style="margin: 0 auto;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin742232193" class="r" style="margin: 0 auto;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:15px;padding-bottom:15px;padding-left:0;padding-right:0;">
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -155,132 +118,26 @@
                 </table>
                 <!--/record-->
                 <!--record_mail-->
-                <table id="rec742254680" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="329">
+                <table id="rec742226953" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="329">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254680" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
-                                <tr>
-                                    <td style="padding-top:15px;padding-bottom:0px;padding-left:30px;padding-right:30px;">
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
-                                            <tr>
-                                                <td style="text-align: left; padding: 0 0 0;">
-                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;">Добрый день! <br />Вас приветствует платформа Stom Academy. <br /><br />Вы провели регистрацию на курс/вебинар:</div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-                <!--/record-->
-                <!--record_mail-->
-                <table id="rec742255004" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="636">
-                    <tr>
-                        <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742255004" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
-                                <tr>
-                                    <td style="padding-top:30px;padding-bottom:30px;padding-left:30px;padding-right:30px;">
-                                        <!-- Workaround: Calculate border radius for Outlook-->
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
-
-                                            @foreach ($data->infos as $item)
-
-                                            @if($item->type =='course')
-                                                <tr style="padding-top: 10px;">
-                                                    @if ($item->item->image != null)
-                                                            @php
-                                                                $path = explode("/", $item->item->image)[2];
-                                                                $image_path = env('APP_URL'). "storage/course/$path";
-                                                            @endphp
-                                                            <td class="t636__img-wrapper" valign="top" style="width: 165px;"> <a href="/">
-
-                                                                <img width="165" style="display: block; width: 100% !important;"
-                                                                src="{{$image_path}}">
-                                                                </a>
-                                                            </td>
-                                                        @endif
-                                                    <td class="t636__content-wrapper" valign="top" style="padding-left: 20px;">
-
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%;">
-                                                            <tr>
-                                                                <td style="text-align: left; padding-bottom: 5px;">
-                                                                    <a href="{{ route("course.show",$item->item->info->slug) }} " style="text-decoration: none; color: #222222;">
-                                                                        <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#222222;font-size:20px;line-height:1.2;padding-bottom:5px; padding: 0;">
-                                                                            Курс: {{$item->item->info->title}}</div>
-                                                                    </a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="text-align: left;">
-                                                                    {{-- <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#777777;font-size:14px;line-height:1.4; padding: 0;">Carlos de Salvador Planas</div> --}}
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-
-                                            @else
-                                                <tr style="padding-top: 10px;">
-                                                        @if ($item->item->image != null)
-                                                            @php
-                                                                $path = explode("/", $item->item->image)[2];
-                                                                $image_path = env('APP_URL'). "storage/webinar/$path";
-                                                            @endphp
-                                                            <td class="t636__img-wrapper" valign="top" style="width: 165px;"> <a href="/">
-
-                                                                <img width="165" style="display: block; width: 100% !important;"
-                                                                src="{{$image_path}}">
-                                                                </a>
-                                                            </td>
-                                                        @endif
-
-                                                    <td class="t636__content-wrapper" valign="top" style="padding-left: 20px;">
-
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%;">
-                                                            <tr>
-                                                                <td style="text-align: left; padding-bottom: 5px;">
-                                                                    <a href="{{ route("webinar.show",$item->item->info->slug) }}" style="text-decoration: none; color: #222222;">
-                                                                        <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#222222;font-size:20px;line-height:1.2;padding-bottom:5px; padding: 0;">
-                                                                            Бебинар: {{$item->item->info->title}}</div>
-                                                                    </a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="text-align: left;">
-                                                                    <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#777777;font-size:14px;line-height:1.4; padding: 0;">
-                                                                        {{-- {{$item->getLectors()->name}} --}}
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-
-                                            @endif
-                                        @endforeach
-
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-                <!--/record-->
-                <!--record_mail-->
-                <table id="rec742256514" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="329">
-                    <tr>
-                        <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742256514" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin742226953" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:15px;padding-bottom:0px;padding-left:30px;padding-right:30px;">
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
                                             <tr>
                                                 <td style="text-align: left; padding: 0 0 0;">
                                                     <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;">
-                                                        Стоимость: {{$data->sum}} {{$data->cur}}
-                                                        {{-- /<del>5400 RUB</del> --}}
-                                                        <br /><br />Сразу после оплаты видео станет доступно к просмотру в вашем личном кабинете.</div>
+                                                        Здравствуйте, <strong></strong>{{$data['name']}}. Вы успешно зарегистрировались на платформе Stom Academy.<br /><br />
+
+                                                        @if(isset($data['password']))
+                                                            <strong>Ваши данные для входа в личный кабинет</strong>
+                                                            <strong>:</strong><br />
+                                                            Логин/Почта: {{$data['email']}}<br />
+                                                            Пароль: {{$data['password']}}<br /><br />
+                                                        @endif
+                                                        <br />
+                                                        Ваши видео-курсы и сертификаты в сможете найти в своем профиле. Спасибо за регистрацию.</div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -292,10 +149,10 @@
                 </table>
                 <!--/record-->
                 <!--record_mail-->
-                <table id="rec742254681" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="618">
+                <table id="rec742227853" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="618">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254681" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin742227853" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:30px;padding-bottom:30px;padding-left:30px;padding-right:30px;">
                                         <!-- Workaround: Calculate border radius for Outlook-->
@@ -305,8 +162,8 @@
                                                     <table border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;" align="center">
                                                         <tr>
                                                             <td>
-                                                                <!--[if mso]> <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:52px;v-text-anchor:middle;mso-wrap-style:none;mso-position-horizontal:center;" arcsize="9%" stroke="f" fillcolor="#0082c3"> <w:anchorlock/> <center style="text-decoration: none; padding: 15px 30px; font-size: 15px; text-align: center; font-weight: bold; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; width: 100%;color:#ffffff;"> Оплатить </center> </v:roundrect> <![endif]-->
-                                                                <!--[if !mso]--> <a style="display: table-cell; text-decoration: none; padding: 15px 30px; font-size: 15px; text-align: center; font-weight: bold; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; width: 100%;color:#ffffff; border:0px solid ; background-color:#0082c3; border-radius: 3px;" href="{{$url}}"> Оплатить </a>
+                                                                <!--[if mso]> <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:52px;v-text-anchor:middle;mso-wrap-style:none;mso-position-horizontal:center;" arcsize="9%" stroke="f" fillcolor="#0082c3"> <w:anchorlock/> <center style="text-decoration: none; padding: 15px 30px; font-size: 15px; text-align: center; font-weight: bold; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; width: 100%;color:#ffffff;"> Войти в профиль </center> </v:roundrect> <![endif]-->
+                                                                <!--[if !mso]--> <a style="display: table-cell; text-decoration: none; padding: 15px 30px; font-size: 15px; text-align: center; font-weight: bold; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; width: 100%;color:#ffffff; border:0px solid ; background-color:#0082c3; border-radius: 3px;" href="{{ url(''). "/"}}"> Войти в профиль </a>
                                                                 <!--[endif]-->
                                                             </td>
                                                         </tr>
@@ -322,10 +179,10 @@
                 </table>
                 <!--/record-->
                 <!--record_mail-->
-                <table id="rec742254682" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="617">
+                <table id="rec609875932" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="617">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254682" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin609875932" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:0px;padding-bottom:0px;padding-left:30px;padding-right:30px;">
                                         <table valign="top" border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
@@ -343,10 +200,10 @@
                 </table>
                 <!--/record-->
                 <!--record_mail-->
-                <table id="rec742254683" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="637">
+                <table id="rec609875941" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="637">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254683" class="r" style="margin: 0 auto;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin609875941" class="r" style="margin: 0 auto;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:0px;padding-bottom:0px;padding-left:30px;padding-right:30px;">
                                         <table valign="top" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -368,10 +225,10 @@
                 </table>
                 <!--/record-->
                 <!--record_mail-->
-                <table id="rec742254684" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="323">
+                <table id="rec609875942" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="323">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254684" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin609875942" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:0px;padding-bottom:0px;padding-left:30px;padding-right:30px;">
                                         <table valign="top" border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
@@ -389,10 +246,10 @@
                 </table>
                 <!--/record-->
                 <!--record_mail-->
-                <table id="rec742254685" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="637">
+                <table id="rec609875943" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="637">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254685" class="r" style="margin: 0 auto;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin609875943" class="r" style="margin: 0 auto;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:0px;padding-bottom:0px;padding-left:30px;padding-right:30px;">
                                         <table valign="top" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -414,10 +271,10 @@
                 </table>
                 <!--/record-->
                 <!--record_mail-->
-                <table id="rec742254686" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="329">
+                <table id="rec609875944" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="329">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254686" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin609875944" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:15px;padding-bottom:30px;padding-left:30px;padding-right:30px;">
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
@@ -435,10 +292,10 @@
                 </table>
                 <!--/record-->
                 <!--record_mail-->
-                <table id="rec742254687" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="628">
+                <table id="rec609875945" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="628">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254687" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin609875945" class="r" style="margin: 0 auto;background-color:#ffffff;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:30px;padding-bottom:15px;padding-left:30px;padding-right:30px;">
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="width:100%; margin: 0 auto;table-layout: fixed;">
@@ -471,10 +328,10 @@
                 </table>
                 <!--/record-->
                 <!--record_mail-->
-                <table id="rec742254688" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="637">
+                <table id="rec609875946" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="637">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254688" class="r" style="margin: 0 auto;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin609875946" class="r" style="margin: 0 auto;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:0px;padding-bottom:0px;padding-left:30px;padding-right:30px;">
                                         <table valign="top" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -496,15 +353,15 @@
                 </table>
                 <!--/record-->
                 <!--record_mail-->
-                <table id="rec742254689" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="620">
+                <table id="rec742228968" style="width:100%; border-collapse:collapse; border-spacing:0; margin:0; border:0;" cellpadding="0" cellspacing="0" data-record-type="620">
                     <tr>
                         <td style="padding-left:15px; padding-right:15px; ">
-                            <table id="recin742254689" class="r" style="margin: 0 auto;border-spacing: 0;width:600px;" align="center">
+                            <table id="recin742228968" class="r" style="margin: 0 auto;border-spacing: 0;width:600px;" align="center">
                                 <tr>
                                     <td style="padding-top:0px;padding-bottom:0px;padding-left:0;padding-right:0;">
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                             <tr>
-                                                <td align="center"> <img width="580" style="display:block; width:580px;" src="https://static.tildacdn.biz/tild3831-3534-4438-b562-396130316464/6rko3xH75iw.jpg"> </td>
+                                                <td align="center"> <img width="580" style="display:block; width:580px;" src="https://static.tildacdn.biz/tild3935-3961-4032-a162-356531633232/6rko3xH75iw.jpg"> </td>
                                             </tr>
                                         </table>
                                     </td>
@@ -521,5 +378,3 @@
 </body>
 
 </html>
-
-

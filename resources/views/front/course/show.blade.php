@@ -750,8 +750,11 @@
                             </ul>
                         </div>
                         <div class="main5-2">
+                            @php
+                                $kk = 55;
+                            @endphp
                             <h3 class="text-white f-700 fs-32 lh-32">{{ __("courses.reg.form.title") }}</h3>
-                            <livewire:front.reg-online-course-form/>
+                            <livewire:front.reg-online-course-form :item_id="$course->id" :type="$course->getTable()" >
                         </div>
                     </div>
 
@@ -795,7 +798,7 @@
                                     </div>
                                     <div class="collapse  accordion-show" id="faq1">
                                         <div class="p-3">
-                                            <span class="m-0">{!! __("courses.faq.faq1_answer") !!}}</span>
+                                            <span class="m-0">{!! __("courses.faq.faq1_answer") !!}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -813,7 +816,7 @@
                                     </div>
                                     <div class="collapse accordion-show" id="faq2">
                                         <div class="p-3">
-                                            <span class="m-0">{!! __("courses.faq.faq2_answer") !!}}</span>
+                                            <span class="m-0">{!! __("courses.faq.faq2_answer") !!}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -831,7 +834,7 @@
                                     </div>
                                     <div class="collapse  accordion-show" id="faq3">
                                         <div class="p-3">
-                                            <span class="m-0">{!! __("courses.faq.faq3_answer") !!}}</span>
+                                            <span class="m-0">{!! __("courses.faq.faq3_answer") !!}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -849,7 +852,7 @@
                                     </div>
                                     <div class="collapse  accordion-show" id="faq4">
                                         <div class="p-3">
-                                            <span class="m-0">{!! __("courses.faq.faq4_answer") !!}}</span>
+                                            <span class="m-0">{!! __("courses.faq.faq4_answer") !!}</span>
                                         </div>
                                     </div>
                                 </div>

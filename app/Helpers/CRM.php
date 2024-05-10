@@ -2,154 +2,222 @@
 
 namespace App\Helpers;
 
+use AmoCRM\Client\AmoCRMApiClient;
+use AmoCRM\Collections\CustomFieldsValuesCollection;
+use AmoCRM\Collections\Leads\LeadsCollection;
+use AmoCRM\Exceptions\AmoCRMApiException;
+use AmoCRM\Exceptions\AmoCRMMissedTokenException;
+use AmoCRM\Models\CustomFieldsValues\TextCustomFieldValuesModel;
+use AmoCRM\Models\CustomFieldsValues\ValueCollections\TextCustomFieldValueCollection;
+use AmoCRM\Models\CustomFieldsValues\ValueModels\TextCustomFieldValueModel;
+use AmoCRM\Models\LeadModel;
 use AmoCRM\OAuth2\Client\Provider\AmoCRM;
+use App\Models\User;
+use Exception;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
 use League\OAuth2\Client\Token\AccessToken;
+use League\OAuth2\Client\Token\AccessTokenInterface;
 
 class CRM
 {
 
 
-    // public function redirectToAmoCRM()
-    // {
-    //     $query = http_build_query([
-    //         'client_id' => $this->clientId,
-    //         'redirect_uri' => $this->redirectUri,
-    //         'response_type' => 'code',
-    //     ]);
-
-    //     return redirect("$this->amoAuthUrl?$query");
-    // }
-
-    public function handleCallback()
+     static function addStatusesToPipeline($data)
     {
-         $amoAuthUrl = 'https://www.amocrm.com/oauth';
-         $amoTokenUrl = 'https://www.amocrm.com/oauth2/access_token';
-        $clientId = '19063960';
-         $clientSecret = '1d324bcb8a02112f93b66377100dbc2c';
-         $redirectUri = 'https://google.com';
+        $bearerToken = App::getLocale() == 'ru' ? env('CRM_BEARER_TOKEN_RU') : env('CRM_BEARER_TOKEN_EN');
+        // $bearerToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImJmNjlhODA4OGIyYWFlYzY2Mjg5MjI3Y2QxMmU1MTQ3YWQyZmUxYzJkNGIzYWJjMTM2MTY2Y2RjMWI5YzdiYzAyNDIwNmZmY2VlZmQxNzYyIn0.eyJhdWQiOiJkOTk0YzAwZC1lYTcyLTQyYjctYThlNy05YjhmZjhiODM3ZGUiLCJqdGkiOiJiZjY5YTgwODhiMmFhZWM2NjI4OTIyN2NkMTJlNTE0N2FkMmZlMWMyZDRiM2FiYzEzNjE2NmNkYzFiOWM3YmMwMjQyMDZmZmNlZWZkMTc2MiIsImlhdCI6MTcxNTA0MTk1OCwibmJmIjoxNzE1MDQxOTU4LCJleHAiOjE4NDA3NTIwMDAsInN1YiI6IjE3ODMxMjYiLCJncmFudF90eXBlIjoiIiwiYWNjb3VudF9pZCI6MTkwNjM5NjAsImJhc2VfZG9tYWluIjoiYW1vY3JtLnJ1IiwidmVyc2lvbiI6Miwic2NvcGVzIjpbImNybSIsImZpbGVzIiwiZmlsZXNfZGVsZXRlIiwibm90aWZpY2F0aW9ucyIsInB1c2hfbm90aWZpY2F0aW9ucyJdLCJoYXNoX3V1aWQiOiJhYzdhZDE5NC1lYmIyLTQ5YTQtYTNlZS01MWJjYjQxYzlhNTUifQ.b93EpYCSe38_sXd_5q0nIFDzVpgFItvxsNqbcuZoHvJrpiId1xG1uMkL82g5Log0mPymytmER00hFmxyB4tjRzNzfhdE6KJthOPQSTBudKlbiBIEvipOvgYc4_vSsS76Mf3KfeZ7P9MZgxHGC66dEbTrB27XK4K7pJ0l32yampqnud-a8QbEWh5F8HcBuTf0agu-0bY7kS4AZx3d8l8WnyCiTjX7K95zJP4nr0oBBsZ8BxVF5NvI1OFVBniZH0pT5p3QipVRigt2UpaD-RFkni5udREZn2tnaDfmaFoJdIX8kuMWIU_Z9pPfHPvYWQ_d1huq24B1expUKjcRqPlm7A';
+        // Адрес API amoCRM и путь для добавления сделки
+        $apiUrl = App::getLocale() == 'ru' ? 'https://stomacademy.amocrm.ru/api/v4/leads' : 'https://engstom.amocrm.ru/api/v4/leads';
 
-        $apiClient = new \AmoCRM\Client\AmoCRMApiClient($clientId, $clientSecret, $redirectUri);
-        $leadsService = $apiClient->leads();
-        // $code = $request->query('code');
-        // $apiClient = new \AmoCRM\Client\AmoCRMApiClient(env("AMO_ID"), env("AMO_SECRET"), "https://stom.mawcompany.com/api/amo");
-        // $apiClient->setAccessToken(new AccessToken(['access_token' => env("AMO_TOKEN"),'expires_in' => '1893459600']));
-        dd($leadsService);
-        $client = new Client();
-        $response = $client->post($this->amoTokenUrl, [
-            'form_params' => [
-                'client_id' => $this->clientId,
-                'client_secret' => $this->clientSecret,
-                'grant_type' => 'authorization_code',
-                'code' => '222',
-                'redirect_uri' => $this->redirectUri,
-            ]
-        ]);
+        try {
+            $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . $bearerToken,
+                    'Content-Type' => 'application/json'
+                ])->post($apiUrl, [
+                    'json' => $data
+                ]);
+                // Получаем тело ответа
+                $response = json_decode($response->getBody()->getContents(),256);
+                // dd($response);
+                return true;
 
-        $accessToken = json_decode($response->getBody())->access_token;
+            } catch (Exception $e) {
+                // dd($e->getMessage());
+                // Обработка ошибок при отправке запроса
+                return false;
+                // echo "Error adding deal: " . $e->getMessage();
+            }
 
-        // Store the access token in session or database for later use
-        session(['amo_access_token' => $accessToken]);
 
-        // return redirect()->route('dashboard');
     }
 
-    public function addStatusesToPipeline()
-    {
-        // $apiClient = new \AmoCRM\Client\AmoCRMApiClient(
-        //   '19063960',
-        //    '1d324bcb8a02112f93b66377100dbc2c',
-        //     'https://stom.mawcompany.com/api/amo',
-        // );
-        $apiClient = new \AmoCRM\Client\AmoCRMApiClient(
-            'stomacademy',
-             'hot-marketing-moss@yandex.ru',
-              '1d324bcb8a02112f93b66377100dbc2c',
-          );
-        $leadsService = $apiClient->leads();
-        dd($leadsService);
-        $lead = $apiClient->lead;
-        $lead['name'] = $_POST['product_name'];
-        $lead['responsible_user_id'] = 2462338;
-        $lead['pipeline_id'] = 1207249;
-        // dd($apiClient);
-        // dd($apiClient->getOAuthClient()->getAccessTokenByCode($_GET['code']));
-        // if (isset($_GET['code']) && $_GET['code']) {
-        //     //Вызов функции setBaseDomain требуется для установки контектс аккаунта.
-        //     if (isset($_GET['referer'])) {
-        //         $provider->setBaseDomain($_GET['referer']);
-        //     }
+    static function becomeLector($data){
 
-        //     $token = $provider->getAccessToken('authorization_code', [
-        //         'code' => $_GET['code']
-        //     ]);
-        // dd($token);
-        //     //todo сохраняем access, refresh токены и привязку к аккаунту и возможно пользователю
-
-        //     /** @var \AmoCRM\OAuth2\Client\Provider\AmoCRMResourceOwner $ownerDetails */
-        //     $ownerDetails = $provider->getResourceOwner($token);
-
-        //     printf('Hello, %s!', $ownerDetails->getName());
-        // }
-
-        // $response = $client->post($this->amoTokenUrl, [
-        //     'form_params' => [
-        //         'client_id' => $this->clientId,
-        //         'client_secret' => $this->clientSecret,
-        //         'grant_type' => 'authorization_code',
-        //         // 'code' => $code,
-        //         'redirect_uri' => $this->redirectUri,
-        //     ]
-        // ]);
-
-//         $leadsService = $apiClient->leads();
-//         // $leads = $leadsService->get();
-//         dd($leadsService);
-//         $accessToken = json_decode($response->getBody())->access_token;
-// dd($accessToken);
-//         // Store the access token in session or database for later use
-//         session(['amo_access_token' => $accessToken]);
-//         dump(12);
-
-//         // Получение токена доступа из сессии или другого места, где он был сохранен
-//         $accessToken = session('amo_access_token');
-// dd($accessToken);
-//         // Создание клиента Guzzle для отправки запросов
-//         $client = new Client([
-//             'headers' => [
-//                 'Authorization' => "Bearer $accessToken",
-//                 'Content-Type' => 'application/json',
-//             ]
-//         ]);
-
-        // Данные для создания статусов
-        $statusesData = [
-            [
-                'name' => 'Новый', // Название статуса
-
-            ],
-            [
-                'name' => 'В работе',
-
-            ],
-            // Добавьте больше статусов по мере необходимости
+        $leadData = [
+            'name' => "Заявк  стать лектором \n
+                        имя: $data[name] \n
+                        эл. почта: $data[email] \n
+                        телефон: $data[phone]",
+            'status_id' => self::getStatusId()['becomeLector'],
+            'pipeline_id' => self::getPiplineId()
         ];
 
-        // ID воронки, в которую вы хотите добавить статусы
-        $pipelineId = '7657865';
-        // $apiClient->statuses(7657865);
+        self::addStatusesToPipeline($leadData);
 
-        // Отправка POST-запроса на эндпоинт API amoCRM для создания статусов
-        $response = $client->post("https://api.amocrm.com/v4/leads/pipelines/$pipelineId/statuses", [
-            'json' => ['_embedded' => ['statuses' => $statusesData]],
-        ]);
+    }
 
-        // Проверка успешности запроса
-        if ($response->getStatusCode() === 200) {
-            return "Статусы успешно добавлены!";
-        } else {
-            return "Не удалось добавить статусы.";
+    static function requestPayment($data){
+
+        $leadData = [
+            'name' => "Запрос  на выплату \n
+                        ID: $data[id]
+                        имя: $data[name] \n
+                        эл. почта: $data[email] \n
+                        телефон: $data[phone]",
+            'status_id' => self::getStatusId()['becomeLector'],
+            'pipeline_id' => self::getPiplineId()
+        ];
+
+        self::addStatusesToPipeline($leadData);
+
+    }
+
+
+    static function regOnlineCoureRu($data){
+        $leadData = [
+
+            'name' => "Регистрация на онлайн-курс",
+            'price' => $data['price'],
+            'custom_fields_values' => [
+                [
+                    "field_id" => 603044,
+                    "values" => [
+                       [
+                          "value" => $data['email']
+                       ]
+
+                    ]
+                ],
+                [
+                    "field_id" => 603046,
+                    "values" => [
+                       [
+                          "value" => $data['phone']
+                       ]
+                    ]
+                ],
+                [
+                    "field_id" => 603048,
+                    "values" => [
+                       [
+                          "value" => " Названия курса: $data[course_name] \n Тип: $data[type] \n Стоимость: $data[price]  $data[cur]"
+                       ]
+                    ]
+                ]
+            ],
+            'status_id' => 63299725,
+            'pipeline_id' => 7657865
+        ];
+
+        self::addStatusesToPipeline($leadData);
+    }
+
+    static function regOnlineCoureEN($data){
+        $leadData = [
+
+            'name' => "Регистрация на онлайн-курс",
+            'price' => $data['price'],
+            'custom_fields_values' => [
+                [
+                    "field_id" => 606981,
+                    "values" => [
+                       [
+                          "value" => $data['email']
+                       ]
+
+                    ]
+                ],
+                [
+                    "field_id" => 606267,
+                    "values" => [
+                       [
+                          "value" => $data['phone']
+                       ]
+                    ]
+                ],
+                [
+                    "field_id" => 610869,
+                    "values" => [
+                       [
+                          "value" => " Названия курса: $data[course_name] \n Тип: $data[type] \n Стоимость: $data[price]  $data[cur]"
+                       ]
+                    ]
+                ]
+            ],
+            'status_id' => 63300046,
+            'pipeline_id' => 7657918
+        ];
+
+        self::addStatusesToPipeline($leadData);
+    }
+
+    static function addToCart($data){
+        // $user = User::find($data->user_id);
+        $item_name = $data->item->infos->where('lg_id', 1)->first()->title;
+        $item_type = $data->type;
+
+        $leadData = [
+            'name' => "Добовление в корзину \n
+                        названия: $item_name  \n
+                        тип: $item_type   \n",
+            'status_id' => self::getStatusId()['addToCart'],
+            'pipeline_id' => self::getPiplineId()
+        ];
+
+        self::addStatusesToPipeline($leadData);
+
+    }
+
+    static function payment($data){
+        $user = User::find($data->user_id);
+
+        $leadData = [
+            'name' => "Оплата \n
+                        эл. почта: $user->email \n
+                        Cумма: $data->sum  \n
+                        Валюта: $data->cur   \n",
+            'status_id' => self::getStatusId()['order'],
+            'pipeline_id' => self::getPiplineId()
+        ];
+
+        self::addStatusesToPipeline($leadData);
+
+    }
+
+    static function getPiplineId(){
+        return App::getLocale() == 'ru' ? 7657865 : 7657918;
+
+    }
+
+    static function getStatusId(){
+
+        if(App::getLocale() == 'ru'){
+            return [
+                "becomeLector" => 65470045,
+                "addToCart" => 63300021,
+                "order" => 63300025
+            ];
         }
+        else{
+            return [
+                "becomeLector" => 65469342,
+                "addToCart" => 63300046,
+                "order" => 63300126
+            ];
+        }
+
     }
 
 }

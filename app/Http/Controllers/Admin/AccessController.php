@@ -101,11 +101,13 @@ class AccessController extends Controller
                     $new_user = User::create($user);
                     $user_ids[] = $new_user->id;
                 }
+                $name = $new_user->fname . ' ' . $new_user->lname;
                 $data = [
                     "password" => $user['password'] ?? null,
                     "email" => $new_user->email,
-                    "fname" => $new_user->fname,
-                    "lname" => $new_user->lname,
+                    // "fname" => $new_user->fname,
+                    // "lname" => $new_user->lname,
+                    "name" => $name,
                     "type" => $type,
                     "course" => $course,
                     "webinar" => $webinar,
@@ -113,7 +115,7 @@ class AccessController extends Controller
                     "duration" => $duration
                 ];
 
-                $subject = 'aaaaa';
+                $subject = 'Вам добавлены новые видео в личный кабинет';
                 // SendAccessMail::dispatch($data);
                 //Mail::to($new_user)->send(new UserAccessMail($data));
                 mail::send(new SendAccessInfoEmail($data, $subject));
@@ -121,11 +123,17 @@ class AccessController extends Controller
 
         }else{
             $user_ids = $request->get('user_ids');
-            $subject = 'bbbb';
+            $subject = 'Вам добавлены новые видео в личный кабинет';
             foreach ($user_ids as $user_id) {
                 $user = User::find($user_id);
                 unset($user->password);
-                mail::send(new SendAccessInfoEmail($user, $subject));
+                $data = [
+                    "email" => $user->email,
+                    "name" => $user->name
+
+                ];
+
+                mail::send(new SendAccessInfoEmail($data, $subject));
             }
         }
 

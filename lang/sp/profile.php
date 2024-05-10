@@ -78,7 +78,8 @@ return [
         'lecturer_office' => 'Despacho del profesor',
         'amount' => 'Cantidad',
         'total' => 'Total',
-        'request_payment' => 'Solicitar pago'
+        'request_payment' => 'Solicitar pago',
+        'request_payent_sent' => 'Solicitud enviada'
 
     ],
     "save" => "Guardar",

@@ -64,11 +64,15 @@
                                         <div class=""><strong>Всего: {{$total}} $</strong></div>
                                     </div>
                                     <div class="w-100 d-flex justify-content-end ">
-                                        <button type="submit"  class="btn btn-primary br-12  fs-16 f-600 py-2 mt-2">{{ __("profile.profile.request_payment") }}</button>
+                                        <a href="{{route('personal.lector_request_payment')}}"  class="btn btn-primary br-12  fs-16 f-600 py-2 mt-2">{{ __("profile.profile.request_payment") }}</a>
 
                                     </div>
                                 @endif
-
+                                @if(session('success'))
+                                    <div class="alert alert-success mb-1 mt-1">
+                                        {{ __("profile.profile.".session('success')) }}
+                                    </div>
+                                @endif
 
                             </div>
                         </div>

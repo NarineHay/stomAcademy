@@ -14,4 +14,9 @@ class Cart extends Model
         'item_id',
         'type'
     ];
+
+    function item()
+    {
+        return $this->belongsTo($this->type == "webinar" ? Webinar::class : Course::class,"item_id","id");
+    }
 }

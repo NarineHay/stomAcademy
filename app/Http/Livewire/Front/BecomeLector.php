@@ -36,9 +36,17 @@ class BecomeLector extends Component
     public function submit()
     {
         $data = $this->validate();
-        SendLectorMail::dispatch($data);
-        $crm = new CRM();
-        $crm->addStatusesToPipeline();
+        // SendLectorMail::dispatch($data);
+
+        $leadData = [
+            'name' => 'Заявк  стать лектором \n',
+            'status_id' => 65470045,
+            'price' => 1000,
+            'pipeline_id' => 7657865
+        ];
+
+        // $crm = new CRM();
+        $crm = CRM::becomeLector($data);
         $this->success = true;
         $this->name = "";
         $this->email = "";

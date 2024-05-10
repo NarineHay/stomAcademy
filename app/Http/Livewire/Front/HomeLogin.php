@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire\Front;
 
+use App\Mail\SendRegisterInfoEmail;
 use App\Models\User;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-
+use Mail;
 class HomeLogin extends Component
 {
     public $name = null;
@@ -122,6 +123,9 @@ class HomeLogin extends Component
 
         ]);
 
+        $subject = 'Вы успешно зарегистрировались на платформе Stom Academy';
+
+        mail::send(new SendRegisterInfoEmail($this->all(), $subject));
 
         return $this->login();
     }
