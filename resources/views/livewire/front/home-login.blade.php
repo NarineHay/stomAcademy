@@ -23,7 +23,7 @@
     <div class="mt-4 text-center">
         <span class="text-secondary me-1 fs-14 f-500 m-0">{{ __("header.form.first_time") }}</span>
         {{-- @if (request()->routeIs('home')) --}}
-            <a class="text-primary fs-14 f-500 m-0" href="{{route('login', ['type' => 'register'])}}">{{ __("header.form.register") }}</a>
+            <a class="text-primary fs-14 f-500 m-0" href="{{route('register')}}">{{ __("header.form.register") }}</a>
         {{-- @else
             <a wire:click="changeType" class="text-primary fs-14 f-500 m-0" id="register_id">{{ __("header.form.register") }}</a>
         @endif --}}

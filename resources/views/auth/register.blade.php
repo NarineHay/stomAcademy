@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -74,4 +74,14 @@
         </div>
     </div>
 </div>
+@endsection --}}
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="d-flex justify-content-center" style="padding: 130px 0 50px;">
+        <livewire:front.home-register/>
+    </div>
+</div>
+
 @endsection

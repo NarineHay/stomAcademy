@@ -10,49 +10,51 @@ use Livewire\Component;
 use Mail;
 class HomeLogin extends Component
 {
-    public $name = null;
-    public $lname = null;
-    public $phone = null;
+    // public $name = null;
+    // public $lname = null;
+    // public $phone = null;
     public $email = null;
     public $password = null;
-    public $password_re = null;
-    public $password_confirmation = null;
-    public $captcha = null;
+    // public $password_re = null;
+    // public $password_confirmation = null;
+    // public $captcha = null;
 
     public $error = false;
 
-    public $type = "login";
+    // public $type = "login";
     // public $showRecaptcha = false;
 
     public function render()
     {
-        $previousUrl = url()->previous();
+        return view('livewire.front.home-login');
 
-        // Parse the URL to retrieve the route name
-        $previousRouteName = app('router')->getRoutes()->match(app('request')->create($previousUrl))->getName();
+        // $previousUrl = url()->previous();
 
-        if(request()->type == 'register'){
-            $this->type = "register";
-        }
+        // // Parse the URL to retrieve the route name
+        // $previousRouteName = app('router')->getRoutes()->match(app('request')->create($previousUrl))->getName();
 
-        if($this->type == "login"){
-            return view('livewire.front.home-login');
-        }else{
-            return view('livewire.front.home-register');
-        }
-    }
-
-    public function changeType(){
-        // if($this->type == "login"){
+        // if(request()->type == 'register'){
         //     $this->type = "register";
-        //     $this->showRecaptcha = true;
         // }
-        // else{
-        //     $this->type = "login";
 
+        // if($this->type == "login"){
+        //     return view('livewire.front.home-login');
+        // }else{
+        //     return view('livewire.front.home-register');
         // }
-        $this->type = $this->type == "login" ? "register" : "login";
     }
+
+    // public function changeType(){
+    //     // if($this->type == "login"){
+    //     //     $this->type = "register";
+    //     //     $this->showRecaptcha = true;
+    //     // }
+    //     // else{
+    //     //     $this->type = "login";
+
+    //     // }
+    //     $this->type = $this->type == "login" ? "register" : "login";
+    // }
 
     public function login(){
         if(Auth::attempt(['email' => $this->email,'password' => $this->password])){
@@ -62,15 +64,15 @@ class HomeLogin extends Component
         }
     }
 
-    protected $rules = [
-        'email' => 'required|email|unique:users',
-        'name' => 'required|string|max:255',
-        'lname' => 'required|string|max:255',
-        'password' => 'required|min:8|confirmed',
-        // 'captcha' => 'required|captcha',
-        // 'g-recaptcha-response' => 'required|recaptcha',
-        'phone' => 'required|regex:/^\+?\d{1,3}(\s?\d{3,4}){2,3}$/',
-    ];
+    // protected $rules = [
+    //     'email' => 'required|email|unique:users',
+    //     'name' => 'required|string|max:255',
+    //     'lname' => 'required|string|max:255',
+    //     'password' => 'required|min:8|confirmed',
+    //     // 'captcha' => 'required|captcha',
+    //     // 'g-recaptcha-response' => 'required|recaptcha',
+    //     'phone' => 'required|regex:/^\+?\d{1,3}(\s?\d{3,4}){2,3}$/',
+    // ];
 
     // private function getRecaptchaResponse()
     // {
@@ -85,50 +87,50 @@ class HomeLogin extends Component
     //     return $body->success ? $request->input('g-recaptcha-response') : null;
     // }
 
-    public function register(){
+    // public function register(){
 
-        $this->validate();
+    //     $this->validate();
 
-        // if($this->name == null || $this->lname == null){
-        //      $this->error = "Пароли не совпадают555";
-        //      return;
+    //     // if($this->name == null || $this->lname == null){
+    //     //      $this->error = "Пароли не совпадают555";
+    //     //      return;
 
-        // }
-        // if(User::query()->where("email",$this->email)->exists()){
-        //     $this->error = "Почта ужа используется";
-        //     return;
-        // }
+    //     // }
+    //     // if(User::query()->where("email",$this->email)->exists()){
+    //     //     $this->error = "Почта ужа используется";
+    //     //     return;
+    //     // }
 
-        // if($this->password != $this->password_re){
-        //     $this->error = "Пароли не совпадают";
-        //     return;
-        // }
+    //     // if($this->password != $this->password_re){
+    //     //     $this->error = "Пароли не совпадают";
+    //     //     return;
+    //     // }
 
-        // if(strlen($this->password) < 8){
-        //     $this->error = "Пароль должен содержать не менее 8 символов";
-        //     return;
-        // }
+    //     // if(strlen($this->password) < 8){
+    //     //     $this->error = "Пароль должен содержать не менее 8 символов";
+    //     //     return;
+    //     // }
 
-        $name = $this->name . ' ' . $this->lname;
-        $user = User::create([
-            'name' => $name,
-            'email' => $this->email,
-            'password' => $this->password
-        ]);
+    //     $name = $this->name . ' ' . $this->lname;
+    //     $user = User::create([
+    //         'name' => $name,
+    //         'email' => $this->email,
+    //         'password' => $this->password
+    //     ]);
 
-        $user->userinfo()->update([
-            "fname" => $this->name,
-            "lname" => $this->lname,
-            "phone" => $this->phone
+    //     $user->userinfo()->update([
+    //         "fname" => $this->name,
+    //         "lname" => $this->lname,
+    //         "phone" => $this->phone
 
-        ]);
+    //     ]);
 
-        $subject = 'Вы успешно зарегистрировались на платформе Stom Academy';
+    //     $subject = 'Вы успешно зарегистрировались на платформе Stom Academy';
 
-        mail::send(new SendRegisterInfoEmail($this->all(), $subject));
+    //     mail::send(new SendRegisterInfoEmail($this->all(), $subject));
 
-        return $this->login();
-    }
+    //     return $this->login();
+    // }
 
     function redirectPath(){
         if(Auth::user() && (Auth::user()->role=="admin" || Auth::user()->role=="moder")){
