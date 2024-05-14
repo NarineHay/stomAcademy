@@ -40,13 +40,14 @@ class RegisterController extends Controller
         ]);
     }
 
-    private function getRecaptchaResponse()
+    private function getRecaptchaResponse($g_recaptcha_response)
     {
+
         $client = new Client();
         $response = $client->post('https://www.google.com/recaptcha/api/siteverify', [
             'form_params' => [
                 'secret' => config('services.recaptcha.secret'),
-                'response' => $this->input('g-recaptcha-response'),
+                'response' => $g_recaptcha_response,
             ],
         ]);
 
@@ -59,7 +60,7 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        if ($this->getRecaptchaResponse()) {
+        if ($this->getRecaptchaResponse($data['g-recaptcha-response'])) {
 
             $name = $data['name'] . ' ' . $data['lname'];
 
@@ -78,21 +79,15 @@ class RegisterController extends Controller
 
             $subject = 'Вы успешно зарегистрировались на платформе Stom Academy';
 
-            mail::send(new SendRegisterInfoEmail($this->all(), $subject));
+            mail::send(new SendRegisterInfoEmail($data, $subject));
 
-            // return $this->login();
-            return response()->redirectTo($this->redirectPath());
+            return $user;
+
         } else {
             return redirect()->back()->with('status', 'Please Complete the Recaptcha Again to proceed');
         }
-        // return $user;
 
     }
 
 
-
-    function redirectPath(){
-
-        return route('account');
-    }
 }

@@ -5,7 +5,7 @@
     <div class="form-group w-100">
         <label for="exampleInputName"
             class="mt-2 mb-1 text-secondary f-500 fs-12 m-0">{{ __('header.form.name') }}</label><span class="text-danger">*</span>
-        <input type="text" name="name" class="form-control text-secondary br-12" id="exampleInputName">
+        <input type="text" name="name" class="form-control text-secondary br-12" id="exampleInputName" value="{{old('name')}}">
         @error('name')
             <span class="error text-danger fs-12">{{ $message }}</span>
         @enderror
@@ -14,7 +14,7 @@
     <div class="form-group w-100">
         <label for="exampleInputLName"
             class="mt-2 mb-1 text-secondary f-500 fs-12 m-0">{{ __('header.form.lname') }}</label><span class="text-danger">*</span>
-        <input type="text" name="lname" class="form-control text-secondary br-12" id="exampleInputLName">
+        <input type="text" name="lname" class="form-control text-secondary br-12" id="exampleInputLName" value="{{old('lname')}}">
         @error('lname')
             <span class="error text-danger fs-12">{{ $message }}</span>
         @enderror
@@ -24,7 +24,7 @@
         <label for="exampleInputEmail1"
             class="mt-2 mb-1 text-secondary f-500 fs-12 m-0">{{ __('header.form.email') }}</label><span class="text-danger">*</span>
         <input type="email" name="email" class="form-control text-secondary br-12" id="exampleInputEmail1"
-            aria-describedby="emailHelp">
+            aria-describedby="emailHelp" value="{{old('email')}}">
         @error('email')
             <span class="error text-danger fs-12">{{ $message }}</span>
         @enderror
@@ -34,7 +34,7 @@
     <div class="form-group w-100">
         <label for="exampleInputPhone"
             class="mt-2 mb-1 text-secondary f-500 fs-12 m-0">{{ __('header.form.phone') }}</label><span class="text-danger">*</span>
-        <input type="text" name="phone" class="form-control text-secondary br-12" id="exampleInputPhone">
+        <input type="text" name="phone" class="form-control text-secondary br-12" id="exampleInputPhone" value="{{old('phone')}}">
         @error('phone')
             <span class="error text-danger fs-12">{{ $message }}</span>
         @enderror
