@@ -80,14 +80,20 @@ class RegisterController extends Controller
             $subject = 'Вы успешно зарегистрировались на платформе Stom Academy';
 
             mail::send(new SendRegisterInfoEmail($data, $subject));
-
+            
             return $user;
 
         } else {
             return redirect()->back()->with('status', 'Please Complete the Recaptcha Again to proceed');
         }
+        // return $user;
 
     }
 
+    function redirectPath()
+    {
+
+        return route('personal.index');
+    }
 
 }
