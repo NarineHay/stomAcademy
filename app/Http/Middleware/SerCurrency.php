@@ -26,15 +26,15 @@ class SerCurrency
         $response = $client->get('https://ipinfo.io/' . $userIp.'/json');
         $data = json_decode($response->getBody(), true);
 
-        $browserLanguage = 'USD';
+        $browserLanguage = 'us';
         if (isset($data['country'])) {
-            $browserLanguage = $data['country']; // ISO country code (e.g., 'US', 'GB', 'CA')
+            $browserLanguage = strtolower($data['country']); // ISO country code (e.g., 'US', 'GB', 'CA')
         }
 
         // $browserLanguage = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
-        $currencyName = $browserLanguage == 'RU' ? 'RUB' :
-                        ($browserLanguage == 'UK' ? 'UAH' :
+        $currencyName = $browserLanguage == 'ru' ? 'RUB' :
+                        ($browserLanguage == 'uk' ? 'UAH' :
                         (in_array($browserLanguage, LG::getEuropeCountryCodes()) ? 'EUR' : 'USD'));
 
         $currency = Currency::where('currency_name', $currencyName)->first();
