@@ -67,19 +67,20 @@ class Coordinates extends Component
         $this->name_['y'] = $this->certificate->name_y;
         $this->name_['color'] = $this->certificate->name_color;
         $this->name_['size'] = $this->certificate->name_size;
-        $this->name_['font'] = public_path($this->certificate->name_font);
+        $this->name_['font'] = $this->certificate->name_font != null ? public_path($this->certificate->name_font) : $this->certificate->name_font;
+
 
         $this->hour_['x'] = $this->certificate->hour_x;
         $this->hour_['y'] = $this->certificate->hour_y;
         $this->hour_['color'] = $this->certificate->hour_color;
         $this->hour_['size'] = $this->certificate->hour_size;
-        $this->hour_['font'] = public_path($this->certificate->hour_font);
+        $this->hour_['font'] = $this->certificate->hour_font != null ? public_path($this->certificate->hour_font) : $this->certificate->hour_font;
 
         $this->date_['x'] = $this->certificate->date_x;
         $this->date_['y'] = $this->certificate->date_y;
         $this->date_['color'] = $this->certificate->date_color;
         $this->date_['size'] = $this->certificate->date_size;
-        $this->date_['font'] = public_path($this->certificate->date_font);
+        $this->date_['font'] = $this->certificate->date_font != null ? public_path($this->certificate->date_font) : $this->certificate->date_font;
     }
 
 
@@ -110,7 +111,6 @@ class Coordinates extends Component
         }
         $this->default_font = $data['fonts'][0]['path'];
 
-
         if(!$this->name_['font']){
             $this->name_['font'] = $data['fonts'][0]['path'];
         }
@@ -133,19 +133,19 @@ class Coordinates extends Component
         $this->certificate->name_y = $this->name_['y'];
         $this->certificate->name_color = $this->name_['color'];
         $this->certificate->name_size = $this->name_['size'];
-        $this->certificate->name_font = explode("/public/",is_file($this->name_['font']) ? $this->name_['font'] : $this->default_font)[1];
+        $this->certificate->name_font = explode("public\\",is_file($this->name_['font']) ? $this->name_['font'] : $this->default_font)[1];
 
         $this->certificate->hour_x = $this->hour_['x'];
         $this->certificate->hour_y = $this->hour_['y'];
         $this->certificate->hour_color = $this->hour_['color'];
         $this->certificate->hour_size = $this->hour_['size'];
-        $this->certificate->hour_font = explode("/public/",is_file($this->hour_['font']) ? $this->hour_['font'] : $this->default_font)[1];
+        $this->certificate->hour_font = explode("public\\",is_file($this->hour_['font']) ? $this->hour_['font'] : $this->default_font)[1];
 
         $this->certificate->date_x = $this->date_['x'];
         $this->certificate->date_y = $this->date_['y'];
         $this->certificate->date_color = $this->date_['color'];
         $this->certificate->date_size = $this->date_['size'];
-        $this->certificate->date_font = explode("/public/",is_file($this->date_['font']) ? $this->date_['font'] : $this->default_font)[1];
+        $this->certificate->date_font = explode("public\\",is_file($this->date_['font']) ? $this->date_['font'] : $this->default_font)[1];
 
 
         $this->certificate->save();
@@ -171,6 +171,7 @@ class Coordinates extends Component
             $hour_x = $this->hour_['x'] == '' ? 0 : $this->hour_['x'];
 
             $image->text($this->certificate->hours_number, ($image->width() / 2) + $hour_x, $this->hour_['y'], function ($font) {
+
                 $font->file($this->hour_['font']);
                 $font->size($this->hour_['size'] == '' ? 0 : $this->hour_['size']);
                 $font->color($this->hour_['color']);
@@ -181,7 +182,7 @@ class Coordinates extends Component
         if($this->name_['y'] > 0) {
             $name_x = $this->name_['x'] == '' ? 0 : $this->name_['x'];
 
-            $image->text("Фамилия Имя Отчество", (($image->width() / 2) + $name_x), $this->name_['y'], function ($font) {
+            $image->text("Фамилия Имя Отчество", ($image->width() / 2) + $name_x, $this->name_['y'], function ($font) {
                 $font->file($this->name_['font']);
                 $font->size($this->name_['size'] == '' ? 0 : $this->name_['size']);
                 $font->color($this->name_['color']);

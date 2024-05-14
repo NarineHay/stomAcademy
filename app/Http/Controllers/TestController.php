@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Amo;
 use App\Helpers\CRM;
 use App\Models\Order;
 use App\Traits\Access;
@@ -16,6 +17,14 @@ use Illuminate\Support\Facades\Http as FacadesHttp;
 class TestController extends Controller
 {
     use LectorAddLectorIncome;
+
+    protected $amoCRMService;
+
+    public function __construct(Amo $amoCRMService)
+    {
+        $this->amoCRMService = $amoCRMService;
+    }
+
     public function index(){
         // $crm = new CRM();
         // $crm->addStatusesToPipeline();
@@ -64,5 +73,35 @@ try {
         dd(12);
         $data = Order::find(23);
         $this->addIncome($data);
+    }
+
+
+    public function getAuthorizationCode(Request $request)
+    {
+        // Redirect the user to AmoCRM's authorization URL
+        $url = "https://www.amocrm.com/oauth?client_id=" . config('services.amocrm.client_id') .
+            "&redirect_uri=" . config('services.amocrm.redirect_uri') .
+            "&response_type=code";
+        return redirect($url);
+    }
+
+    public function handleAuthorizationCallback(Request $request)
+    {
+        $authorizationCode = $request->get('code');
+        $this->amoCRMService->getAccessToken($authorizationCode);
+
+        return redirect()->route('search.contact');
+    }
+
+    public function searchContact(Request $request)
+    {
+        // $email = $request->input('email');
+        $email = 'abs@mail.ru';
+
+        // $contact = $this->amoCRMService->searchContactByEmail($email);
+        $contact = CRM::searchContactByEmail($email);
+
+dd( $contact);
+        return response()->json($contact);
     }
 }

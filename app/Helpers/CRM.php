@@ -53,6 +53,26 @@ class CRM
 
     }
 
+    static function searchContactByEmail($email)
+    {
+        $bearerToken = App::getLocale() == 'ru' ? env('CRM_BEARER_TOKEN_RU') : env('CRM_BEARER_TOKEN_EN');
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $bearerToken,
+            'Content-Type' => 'application/json'
+        ])->get("https://stomacademy.amocrm.ru/api/v4/contacts?query=newmed2003@yandex.ru" );
+        // $response = $this->httpClient->get("https://stomacademy.amocrm.ru/api/v4/contacts", [
+        //     'headers' => [
+        //         'Authorization' => "Bearer {$bearerToken}",
+        //         'Content-Type' => 'application/json',
+        //     ],
+        //     'query' => [
+        //         'query' => $email,
+        //     ],
+        // ]);
+
+        return json_decode($response->getBody(), true);
+    }
+
     static function becomeLector($data){
 
         $leadData = [
