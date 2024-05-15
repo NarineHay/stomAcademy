@@ -24,23 +24,33 @@ class CRM
 {
 
 
-     static function addStatusesToPipeline($data)
+     static function addStatusesToPipeline($leadData, $data)
     {
         $bearerToken = App::getLocale() == 'ru' ? env('CRM_BEARER_TOKEN_RU') : env('CRM_BEARER_TOKEN_EN');
-        // $bearerToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImJmNjlhODA4OGIyYWFlYzY2Mjg5MjI3Y2QxMmU1MTQ3YWQyZmUxYzJkNGIzYWJjMTM2MTY2Y2RjMWI5YzdiYzAyNDIwNmZmY2VlZmQxNzYyIn0.eyJhdWQiOiJkOTk0YzAwZC1lYTcyLTQyYjctYThlNy05YjhmZjhiODM3ZGUiLCJqdGkiOiJiZjY5YTgwODhiMmFhZWM2NjI4OTIyN2NkMTJlNTE0N2FkMmZlMWMyZDRiM2FiYzEzNjE2NmNkYzFiOWM3YmMwMjQyMDZmZmNlZWZkMTc2MiIsImlhdCI6MTcxNTA0MTk1OCwibmJmIjoxNzE1MDQxOTU4LCJleHAiOjE4NDA3NTIwMDAsInN1YiI6IjE3ODMxMjYiLCJncmFudF90eXBlIjoiIiwiYWNjb3VudF9pZCI6MTkwNjM5NjAsImJhc2VfZG9tYWluIjoiYW1vY3JtLnJ1IiwidmVyc2lvbiI6Miwic2NvcGVzIjpbImNybSIsImZpbGVzIiwiZmlsZXNfZGVsZXRlIiwibm90aWZpY2F0aW9ucyIsInB1c2hfbm90aWZpY2F0aW9ucyJdLCJoYXNoX3V1aWQiOiJhYzdhZDE5NC1lYmIyLTQ5YTQtYTNlZS01MWJjYjQxYzlhNTUifQ.b93EpYCSe38_sXd_5q0nIFDzVpgFItvxsNqbcuZoHvJrpiId1xG1uMkL82g5Log0mPymytmER00hFmxyB4tjRzNzfhdE6KJthOPQSTBudKlbiBIEvipOvgYc4_vSsS76Mf3KfeZ7P9MZgxHGC66dEbTrB27XK4K7pJ0l32yampqnud-a8QbEWh5F8HcBuTf0agu-0bY7kS4AZx3d8l8WnyCiTjX7K95zJP4nr0oBBsZ8BxVF5NvI1OFVBniZH0pT5p3QipVRigt2UpaD-RFkni5udREZn2tnaDfmaFoJdIX8kuMWIU_Z9pPfHPvYWQ_d1huq24B1expUKjcRqPlm7A';
         // Адрес API amoCRM и путь для добавления сделки
         $apiUrl = App::getLocale() == 'ru' ? 'https://stomacademy.amocrm.ru/api/v4/leads' : 'https://engstom.amocrm.ru/api/v4/leads';
+
+        $contact = self::searchContactByEmail($data['email']);
+
+        if($contact){
+            $contact_id = $contact;
+        }
+        else{
+            $contact_id = self::addContact($data);
+        }
+
+        $leadData['_embedded']['contacts'][0]['id'] = $contact_id;
 
         try {
             $response = Http::withHeaders([
                     'Authorization' => 'Bearer ' . $bearerToken,
                     'Content-Type' => 'application/json'
                 ])->post($apiUrl, [
-                    'json' => $data
+                    'json' => $leadData
                 ]);
                 // Получаем тело ответа
                 $response = json_decode($response->getBody()->getContents(),256);
-                // dd($response);
+
                 return true;
 
             } catch (Exception $e) {
@@ -56,51 +66,58 @@ class CRM
     static function searchContactByEmail($email)
     {
         $bearerToken = App::getLocale() == 'ru' ? env('CRM_BEARER_TOKEN_RU') : env('CRM_BEARER_TOKEN_EN');
+        $apiUrl = App::getLocale() == 'ru' ? 'https://stomacademy.amocrm.ru/api/v4/contacts' : 'https://engstom.amocrm.ru/api/v4/contacts';
+
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $bearerToken,
             'Content-Type' => 'application/json'
-        ])->get("https://stomacademy.amocrm.ru/api/v4/contacts?query=newmed2003@yandex.ru" );
-        // $response = $this->httpClient->get("https://stomacademy.amocrm.ru/api/v4/contacts", [
-        //     'headers' => [
-        //         'Authorization' => "Bearer {$bearerToken}",
-        //         'Content-Type' => 'application/json',
-        //     ],
-        //     'query' => [
-        //         'query' => $email,
-        //     ],
-        // ]);
+        ])->get("$apiUrl?query=$email" );
 
-        return json_decode($response->getBody(), true);
+
+        $contact = json_decode($response->getBody(), true);
+
+        return $contact !=null ? $contact['_embedded']['contacts'][0]['id'] : false;
+    }
+
+    static function addContact($data)
+    {
+        $bearerToken = App::getLocale() == 'ru' ? env('CRM_BEARER_TOKEN_RU') : env('CRM_BEARER_TOKEN_EN');
+        $apiUrl = App::getLocale() == 'ru' ? 'https://stomacademy.amocrm.ru/api/v4/contacts' : 'https://engstom.amocrm.ru/api/v4/contacts';
+        $data = self::contactData($data);
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $bearerToken,
+            'Content-Type' => 'application/json'
+        ])->post($apiUrl, [
+            'json' => $data
+        ]);
+
+        $contact = json_decode($response->getBody()->getContents(),256);
+
+        return $contact !=null && isset($contact['_embedded']) ? $contact['_embedded']['contacts'][0]['id'] : false;
     }
 
     static function becomeLector($data){
 
         $leadData = [
-            'name' => "Заявк  стать лектором \n
-                        имя: $data[name] \n
-                        эл. почта: $data[email] \n
-                        телефон: $data[phone]",
+            'name' => "Заявк  стать лектором",
             'status_id' => self::getStatusId()['becomeLector'],
             'pipeline_id' => self::getPiplineId()
         ];
 
-        self::addStatusesToPipeline($leadData);
+        self::addStatusesToPipeline($leadData, $data);
 
     }
 
     static function requestPayment($data){
 
         $leadData = [
-            'name' => "Запрос  на выплату \n
-                        ID: $data[id]
-                        имя: $data[name] \n
-                        эл. почта: $data[email] \n
-                        телефон: $data[phone]",
+            'name' => "Запрос  на выплату \n",
             'status_id' => self::getStatusId()['becomeLector'],
             'pipeline_id' => self::getPiplineId()
         ];
 
-        self::addStatusesToPipeline($leadData);
+        self::addStatusesToPipeline($leadData, $data);
 
     }
 
@@ -111,23 +128,6 @@ class CRM
             'name' => "Регистрация на онлайн-курс",
             'price' => $data['price'],
             'custom_fields_values' => [
-                [
-                    "field_id" => 603044,
-                    "values" => [
-                       [
-                          "value" => $data['email']
-                       ]
-
-                    ]
-                ],
-                [
-                    "field_id" => 603046,
-                    "values" => [
-                       [
-                          "value" => $data['phone']
-                       ]
-                    ]
-                ],
                 [
                     "field_id" => 603048,
                     "values" => [
@@ -141,7 +141,7 @@ class CRM
             'pipeline_id' => 7657865
         ];
 
-        self::addStatusesToPipeline($leadData);
+        self::addStatusesToPipeline($leadData, $data);
     }
 
     static function regOnlineCoureEN($data){
@@ -150,23 +150,7 @@ class CRM
             'name' => "Регистрация на онлайн-курс",
             'price' => $data['price'],
             'custom_fields_values' => [
-                [
-                    "field_id" => 606981,
-                    "values" => [
-                       [
-                          "value" => $data['email']
-                       ]
 
-                    ]
-                ],
-                [
-                    "field_id" => 606267,
-                    "values" => [
-                       [
-                          "value" => $data['phone']
-                       ]
-                    ]
-                ],
                 [
                     "field_id" => 610869,
                     "values" => [
@@ -180,23 +164,23 @@ class CRM
             'pipeline_id' => 7657918
         ];
 
-        self::addStatusesToPipeline($leadData);
+        self::addStatusesToPipeline($leadData, $data);
     }
 
     static function addToCart($data){
-        // $user = User::find($data->user_id);
+        $user = User::find($data->user_id);
         $item_name = $data->item->infos->where('lg_id', 1)->first()->title;
         $item_type = $data->type;
 
         $leadData = [
             'name' => "Добовление в корзину \n
-                        названия: $item_name  \n
-                        тип: $item_type   \n",
+                        $item_name  \n",
+
             'status_id' => self::getStatusId()['addToCart'],
             'pipeline_id' => self::getPiplineId()
         ];
 
-        self::addStatusesToPipeline($leadData);
+        self::addStatusesToPipeline($leadData, $user);
 
     }
 
@@ -205,14 +189,13 @@ class CRM
 
         $leadData = [
             'name' => "Оплата \n
-                        эл. почта: $user->email \n
                         Cумма: $data->sum  \n
                         Валюта: $data->cur   \n",
             'status_id' => self::getStatusId()['order'],
             'pipeline_id' => self::getPiplineId()
         ];
 
-        self::addStatusesToPipeline($leadData);
+        self::addStatusesToPipeline($leadData, $user);
 
     }
 
@@ -227,16 +210,50 @@ class CRM
             return [
                 "becomeLector" => 65470045,
                 "addToCart" => 63300021,
-                "order" => 63300025
+                "order" => 63300025,
+                "contact_email" => 135245,
+                "contact_phone" => 135243
+
             ];
         }
         else{
             return [
                 "becomeLector" => 65469342,
-                "addToCart" => 63300046,
-                "order" => 63300126
+                "addToCart" => 63300122,
+                "order" => 63300126,
+                "contact_email" => 38191,
+                "contact_phone" => 38189
+
             ];
         }
+
+    }
+
+
+    static function contactData($data){
+
+        return [
+            "first_name" => $data['name'] ?? '',
+            "last_name" => $data['lname'] ?? '',
+            "custom_fields_values" => [
+                [
+                    "field_id" => self::getStatusId()['contact_email'],
+                    "values" => [
+                        [
+                            "value" => $data['email'] ?? ''
+                        ]
+                    ]
+                ],
+                [
+                    "field_id" => self::getStatusId()['contact_phone'],
+                    "values" => [
+                        [
+                            "value" => $data['phone'] ?? ''
+                        ]
+                    ]
+                ]
+            ]
+        ];
 
     }
 
