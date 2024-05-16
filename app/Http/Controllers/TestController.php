@@ -38,16 +38,6 @@ class TestController extends Controller
                 $lector = Lector::where('user_id', $item->user_id)->first();
                 if($lector->per_of_sales){
 
-
-                    $data = [
-                        'user_id' => $item->user_id,
-                        'item_id' => $item->id,
-                        'type' => "webinar",
-                        'price_id' => $item->price_id,
-                        'price_2_id' => $item->price_2_id,
-                        'per_of_sales' => $lector->per_of_sales ?? 0,
-                    ];
-                    $lector_income = LectorIncome::create($data);
                     $lector_income_currency = [];
                     foreach ($currencies as $key => $curr) {
                         $curr_name = strtolower($curr->currency_name);
@@ -57,14 +47,33 @@ class TestController extends Controller
                         $lector_income_currency["price_$curr_name"] = $total_price;
 
                     }
-                    $lector_income_currency['lector_income_id'] = $lector_income->id;
-                    LectorIncomesCurrency::create($lector_income_currency);
+
+                    $data = [
+                        'user_id' => $item->user_id,
+                        'item_id' => $item->id,
+                        'type' => "webinar",
+                        'price_id' => $item->price_id,
+                        'price_2_id' => $item->price_2_id,
+                        'per_of_sales' => $lector->per_of_sales ?? 0,
+                        'price_byn' => $lector_income_currency['price_byn'],
+                        'price_rub' => $lector_income_currency['price_rub'],
+                        'price_usd' => $lector_income_currency['price_usd'],
+                        'price_eur' => $lector_income_currency['price_eur'],
+                        'price_uah' => $lector_income_currency['price_uah'],
+
+                    ];
+
+                    $lector_income = LectorIncome::create($data);
+
+
+                    // LectorIncomesCurrency::create($lector_income_currency);
 
                 }
                 // array_push($webinars, $item);
             } else {
                 $item = Course::query()->where("id", $order_item->item_id)->first();
                 $lectors = $item->getLectors();
+
                 // dd($item->webinars_object);
                 // ====== course price currency ===============================
                 $course_price_curr = [];
@@ -85,22 +94,26 @@ class TestController extends Controller
 
                     }
                 }
+
                 // ================================================
 
-                foreach ($lectors as $key => $lector) {
+                foreach ($lectors as $key => $lec) {
+                    $lector = $lec->lector;
+
                     if($lector->per_of_sales){
 
-                        $data = [
-                            'user_id' => $lector->id,
-                            'item_id' => $item->id,
-                            'type' => "course",
-                            'price_id' => $item->price_id,
-                            'price_2_id' => $item->price_2_id,
-                            'per_of_sales' => $lector->per_of_sales ?? 0,
-                        ];
-                        $lector_income = LectorIncome::create($data);
+                        // $data = [
+                        //     'user_id' => $lector->id,
+                        //     'item_id' => $item->id,
+                        //     'type' => "course",
+                        //     'price_id' => $item->price_id,
+                        //     'price_2_id' => $item->price_2_id,
+                        //     'per_of_sales' => $lector->per_of_sales ?? 0,
+                        // ];
+                        // $lector_income = LectorIncome::create($data);
                         $lector_income_currency = [];
-                        $course_webinars = $item->webinars_object()->where('user_id', $lector->id)->get();
+                        $course_webinars = $item->webinars_object()->where('user_id', $lector->user_id)->get();
+
                         foreach ($course_webinars as $webin) {
 
 
@@ -131,12 +144,30 @@ class TestController extends Controller
 
                             }
                         }
-                        $lector_income_currency['lector_income_id'] = $lector_income->id;
-                        LectorIncomesCurrency::create($lector_income_currency);
+
+                        $data = [
+                            'user_id' => $lector->user_id,
+                            'item_id' => $item->id,
+                            'type' => "course",
+                            'price_id' => $item->price_id,
+                            'price_2_id' => $item->price_2_id,
+                            'per_of_sales' => $lector->per_of_sales ?? 0,
+                            'price_byn' => $lector_income_currency['price_byn'],
+                            'price_rub' => $lector_income_currency['price_rub'],
+                            'price_usd' => $lector_income_currency['price_usd'],
+                            'price_eur' => $lector_income_currency['price_eur'],
+                            'price_uah' => $lector_income_currency['price_uah'],
+
+                        ];
+
+                        $lector_income = LectorIncome::create($data);
+
+                        // $lector_income_currency['lector_income_id'] = $lector_income->id;
+                        // LectorIncomesCurrency::create($lector_income_currency);
 
                     }
                 }
-            
+
             }
         }
     }

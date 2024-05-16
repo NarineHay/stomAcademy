@@ -22,6 +22,11 @@ return new class extends Migration
             $table->float('per_of_sales');
             $table->unsignedBigInteger('price_id')->nullable();
             $table->unsignedBigInteger('price_2_id')->nullable();
+            $table->float('price_byn');
+            $table->float('price_rub');
+            $table->float('price_usd');
+            $table->float('price_eur');
+            $table->float('price_uah');
             $table->timestamps();
         });
     }
