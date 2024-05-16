@@ -128,10 +128,8 @@ Route::group(['prefix' => "lector",'middleware' => 'isLector','as' => 'lector.']
 
 });
 
-// Route::get("test",[TestController::class, 'searchContact']);
-Route::get('/amocrm/authorize', [TestController::class, 'getAuthorizationCode'])->name('amocrm.authorize');
-Route::get('/amocrm/callback', [TestController::class, 'handleAuthorizationCallback'])->name('amocrm.callback');
-Route::get('/amocrm/search-contact', [TestController::class, 'searchContact'])->name('search.contact');
+Route::get("test",[TestController::class, 'lect']);
+
 
 Route::get('payment-result/{db_order_id}/{type}', PaymentResultController::class);
 Route::post('payment-result-notification', PaymentNotificationController::class);

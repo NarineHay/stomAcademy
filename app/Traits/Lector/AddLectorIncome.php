@@ -21,11 +21,18 @@ trait AddLectorIncome {
         $webinars = [];
         foreach ($items as $key => $item) {
             if ($item->type == "webinar") {
-                $item = Webinar::query()->where("id", $item->item_id)->first();
+                // $item = Webinar::query()->where("id", $item->item_id)->first();
+                $lector = Lector::where('user_id', $item->user_id)->first();
 
+                $data = [
+                    'user_id' => $item->user_id,
+                    'item_id' => $item->id,
+                    'type' => "webinar",
+                    'per_of_sales' => $lector->per_of_sales,
+                ];
                 array_push($webinars, $item);
             } else {
-                $item = Course::query()->where("id", $item->item_id)->first();
+                $course = Course::query()->where("id", $item->item_id)->first();
                 $course_webinars = $item->webinars_object;
                 foreach ($course_webinars as $value) {
                     array_push($webinars, $value);

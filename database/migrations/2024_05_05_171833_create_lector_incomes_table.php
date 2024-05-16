@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete("cascade");
-            $table->integer('webinar_id');
+            $table->string('type');
+            $table->integer('item_id');
             $table->float('per_of_sales');
-            $table->integer('webinar_price');
-            $table->integer('total_price');
+            $table->unsignedBigInteger('price_id')->nullable();
+            $table->unsignedBigInteger('price_2_id')->nullable();
             $table->timestamps();
         });
     }

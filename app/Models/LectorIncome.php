@@ -20,5 +20,9 @@ class LectorIncome extends Model
         return $this->belongsTo(Webinar::class, 'webinar_id');
     }
 
-   
+    function lector_income_currency(){
+        return $this->HasOne(LectorIncomesCurrency::class);
+    }
+
+
 }
