@@ -25,9 +25,10 @@ class TestController extends Controller
 {
     use LectorAddLectorIncome;
 
-    public function lect(){
+    public function lect()
+    {
 
-        $items = OrderInfo::where('order_id',41)->get();
+        $items = OrderInfo::where('order_id', 44)->get();
         $currencies = Currency::all();
 
         $webinars = [];
@@ -35,65 +36,88 @@ class TestController extends Controller
             if ($order_item->type == "webinar") {
                 $item = Webinar::query()->where("id", $order_item->item_id)->first();
                 $lector = Lector::where('user_id', $item->user_id)->first();
+                if($lector->per_of_sales){
 
-                $data = [
-                    'user_id' => $item->user_id,
-                    'item_id' => $item->id,
-                    'type' => "webinar",
-                    'price_id'=> $item->price_id,
-                    'price_2_id'=> $item->price_2_id,
-                    'per_of_sales' => $lector->per_of_sales,
-                ];
-                $lector_income = LectorIncome::create($data);
-                $lector_income_currency = [];
-                foreach ($currencies as $key => $curr) {
-                    $curr_name = strtolower($curr->currency_name);
-                    $price = $item->sale ? $item->sale->$curr_name : $item->price->$curr_name;
-                    $total_price = $price * $lector->per_of_sales / 100;
 
-                    $lector_income_currency["price_$curr_name"] = $total_price;
+                    $data = [
+                        'user_id' => $item->user_id,
+                        'item_id' => $item->id,
+                        'type' => "webinar",
+                        'price_id' => $item->price_id,
+                        'price_2_id' => $item->price_2_id,
+                        'per_of_sales' => $lector->per_of_sales ?? 0,
+                    ];
+                    $lector_income = LectorIncome::create($data);
+                    $lector_income_currency = [];
+                    foreach ($currencies as $key => $curr) {
+                        $curr_name = strtolower($curr->currency_name);
+                        $price = $item->sale ? $item->sale->$curr_name : $item->price->$curr_name;
+                        $total_price = $price * $lector->per_of_sales / 100;
+
+                        $lector_income_currency["price_$curr_name"] = $total_price;
+
+                    }
+                    $lector_income_currency['lector_income_id'] = $lector_income->id;
+                    LectorIncomesCurrency::create($lector_income_currency);
 
                 }
-                $lector_income_currency['lector_income_id'] = $lector_income->id;
-                LectorIncomesCurrency::create($lector_income_currency);
-
-
                 // array_push($webinars, $item);
             } else {
                 $item = Course::query()->where("id", $order_item->item_id)->first();
                 $lectors = $item->getLectors();
                 // dd($item->webinars_object);
                 // ====== course price currency ===============================
-                foreach ($item->webinars_object() as $item_object) {
+                $course_price_curr = [];
+                $course_webinars = $item->webinars_object()->get();
 
-                    $course_price_curr = [];
+                foreach ($course_webinars as $item_object) {
+
                     foreach ($currencies as $key => $curr) {
                         $curr_name = strtolower($curr->currency_name);
-                        $course_price_curr[$curr] += $item_object->sale ? $item_object->sale->$curr_name : $item_object->price->$curr_name;
+                        if(isset($course_price_curr[$curr_name])){
+                            $course_price_curr[$curr_name] += $item_object->sale ? $item_object->sale->$curr_name : $item_object->price->$curr_name;
+
+                        }
+                        else{
+                            $course_price_curr[$curr_name] = $item_object->sale ? $item_object->sale->$curr_name : $item_object->price->$curr_name;
+
+                        }
 
                     }
                 }
                 // ================================================
 
-                    foreach ($lectors as $key => $lector) {
+                foreach ($lectors as $key => $lector) {
+                    if($lector->per_of_sales){
+
                         $data = [
                             'user_id' => $lector->id,
                             'item_id' => $item->id,
                             'type' => "course",
-                            'price_id'=> $item->price_id,
-                            'price_2_id'=> $item->price_2_id,
-                            'per_of_sales' => $lector->per_of_sales,
+                            'price_id' => $item->price_id,
+                            'price_2_id' => $item->price_2_id,
+                            'per_of_sales' => $lector->per_of_sales ?? 0,
                         ];
                         $lector_income = LectorIncome::create($data);
                         $lector_income_currency = [];
-                        $course_webinars = $item->webinars_object->where('user_id',$lector->id)->get();
+                        $course_webinars = $item->webinars_object()->where('user_id', $lector->id)->get();
                         foreach ($course_webinars as $webin) {
 
-                            $object_price_curr = [];
+
+                            $object_price_curr= [];
+
                             foreach ($currencies as $key => $curr) {
                                 $curr_name = strtolower($curr->currency_name);
-                                $object_price_curr['total_price'][$curr] += $webin->sale ? $webin->sale->$curr_name : $webin->price->$curr_name;
-                                $object_price_curr['price'][$curr] = $webin->sale ? $webin->sale->$curr_name : $webin->price->$curr_name;
+
+                                if (isset($object_price_curr['total_price'][$curr_name])) {
+                                    $object_price_curr['total_price'][$curr_name] += $webin->sale ? $webin->sale->$curr_name : $webin->price->$curr_name;
+
+                                } else {
+                                    $object_price_curr['total_price'][$curr_name] = $webin->sale ? $webin->sale->$curr_name : $webin->price->$curr_name;
+
+                                }
+
+                                $object_price_curr['price'][$curr_name] = $webin->sale ? $webin->sale->$curr_name : $webin->price->$curr_name;
 
 
 
@@ -101,7 +125,7 @@ class TestController extends Controller
                             foreach ($currencies as $key => $curr) {
                                 $curr_name = strtolower($curr->currency_name);
                                 $course_price = $item->sale ? $item->sale->$curr_name : $item->price->$curr_name;
-                                $total_price = ($course_price_curr[$curr] /  $object_price_curr['total_price'][$curr] * $course_price) * $lector->per_of_sales / 100;
+                                $total_price = ($course_price_curr[$curr_name] / $object_price_curr['total_price'][$curr_name] * $course_price) * $lector->per_of_sales / 100;
 
                                 $lector_income_currency["price_$curr_name"] = $total_price;
 
@@ -111,11 +135,8 @@ class TestController extends Controller
                         LectorIncomesCurrency::create($lector_income_currency);
 
                     }
-                // dd($course);
-                // $course_webinars = $item->webinars_object;
-                // foreach ($course_webinars as $value) {
-                //     array_push($webinars, $value);
-                // }
+                }
+            
             }
         }
     }
