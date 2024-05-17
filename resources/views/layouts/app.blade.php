@@ -32,7 +32,7 @@
         <header class="position-relative headerBorder">
             <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-3 align-items-center">
                 <div>
-                    <a href="/"><img src="/dist/image/.png" alt="logoPic"></a>
+                    <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
                 </div>
 
                 <div class="d-flex align-items-center justify-content-between flex-row-reverse flex-lg-row">

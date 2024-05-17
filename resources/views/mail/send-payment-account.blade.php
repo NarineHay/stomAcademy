@@ -183,83 +183,98 @@
                                 <tr>
                                     <td style="padding-top:30px;padding-bottom:30px;padding-left:30px;padding-right:30px;">
                                         <!-- Workaround: Calculate border radius for Outlook-->
-                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
 
-                                            @foreach ($data->infos as $item)
+                                            @foreach ($data->infos as $key => $item)
+                                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout: fixed;">
 
-                                            @if($item->type =='course')
-                                                <tr style="padding-top: 10px;">
-                                                    @if ($item->item->image != null)
-                                                            @php
-                                                                $path = explode("/", $item->item->image)[2];
-                                                                $image_path = env('APP_URL'). "storage/course/$path";
-                                                            @endphp
-                                                            <td class="t636__img-wrapper" valign="top" style="width: 165px;"> <a href="/">
-
-                                                                <img width="165" style="display: block; width: 100% !important;"
-                                                                src="{{$image_path}}">
-                                                                </a>
-                                                            </td>
-                                                        @endif
-                                                    <td class="t636__content-wrapper" valign="top" style="padding-left: 20px;">
-
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%;">
-                                                            <tr>
-                                                                <td style="text-align: left; padding-bottom: 5px;">
-                                                                    <a href="{{ route("course.show",$item->item->info->slug) }} " style="text-decoration: none; color: #222222;">
-                                                                        <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#222222;font-size:20px;line-height:1.2;padding-bottom:5px; padding: 0;">
-                                                                            Курс: {{$item->item->info->title}}</div>
-                                                                    </a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="text-align: left;">
-                                                                    {{-- <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#777777;font-size:14px;line-height:1.4; padding: 0;">Carlos de Salvador Planas</div> --}}
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-
-                                            @else
-                                                <tr style="padding-top: 10px;">
+                                                @if($item->type =='course')
+                                                    <tr style="padding-top: 10px;">
                                                         @if ($item->item->image != null)
-                                                            @php
-                                                                $path = explode("/", $item->item->image)[2];
-                                                                $image_path = env('APP_URL'). "storage/webinar/$path";
-                                                            @endphp
-                                                            <td class="t636__img-wrapper" valign="top" style="width: 165px;"> <a href="/">
+                                                                @php
+                                                                    $path = explode("/", $item->item->image)[2];
+                                                                    $image_path = env('APP_URL'). "storage/course/$path";
+                                                                @endphp
+                                                                <td class="t636__img-wrapper" valign="top" style="width: 165px;"> <a href="/">
 
-                                                                <img width="165" style="display: block; width: 100% !important;"
-                                                                src="{{$image_path}}">
-                                                                </a>
-                                                            </td>
-                                                        @endif
-
-                                                    <td class="t636__content-wrapper" valign="top" style="padding-left: 20px;">
-
-                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%;">
-                                                            <tr>
-                                                                <td style="text-align: left; padding-bottom: 5px;">
-                                                                    <a href="{{ route("webinar.show",$item->item->info->slug) }}" style="text-decoration: none; color: #222222;">
-                                                                        <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#222222;font-size:20px;line-height:1.2;padding-bottom:5px; padding: 0;">
-                                                                            Бебинар: {{$item->item->info->title}}</div>
-                                                                    </a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="text-align: left;">
-                                                                    <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#777777;font-size:14px;line-height:1.4; padding: 0;">
-                                                                        {{-- {{$item->getLectors()->name}} --}}
-                                                                    </div>
+                                                                    <img width="165" style="display: block; width: 100% !important;"
+                                                                    src="{{$image_path}}">
+                                                                    </a>
                                                                 </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
+                                                            @endif
+                                                        <td class="t636__content-wrapper" valign="top" style="padding-left: 20px;">
+
+                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%;">
+                                                                <tr>
+                                                                    <td style="text-align: left; padding-bottom: 5px;">
+                                                                        <a href="{{ route("course.show",$item->item->info->slug) }} " style="text-decoration: none; color: #222222;">
+                                                                            <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#222222;font-size:20px;line-height:1.2;padding-bottom:5px; padding: 0;">
+                                                                                Курс: {{$item->item->info->title}}</div>
+                                                                        </a> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="text-align: left;">
+                                                                        {{-- <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#777777;font-size:14px;line-height:1.4; padding: 0;">Carlos de Salvador Planas</div> --}}
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+
+                                                @else
+                                                    <tr style="padding-top: 10px;">
+                                                            @if ($item->item->image != null)
+                                                                @php
+                                                                    $path = explode("/", $item->item->image)[2];
+                                                                    $image_path = env('APP_URL'). "storage/webinar/$path";
+                                                                @endphp
+                                                                <td class="t636__img-wrapper" valign="top" style="width: 165px;"> <a href="/">
+
+                                                                    <img width="165" style="display: block; width: 100% !important;"
+                                                                    src="{{$image_path}}">
+                                                                    </a>
+                                                                </td>
+                                                            @endif
+
+                                                        <td class="t636__content-wrapper" valign="top" style="padding-left: 20px;">
+
+                                                            <table border="0" cellpadding="0" cellspacing="0" width="100%;">
+                                                                <tr>
+                                                                    <td style="text-align: left; padding-bottom: 5px;">
+                                                                        <a href="{{ route("webinar.show",$item->item->info->slug) }}" style="text-decoration: none; color: #222222;">
+                                                                            <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#222222;font-size:20px;line-height:1.2;padding-bottom:5px; padding: 0;">
+                                                                                Бебинар: {{$item->item->info->title}}</div>
+                                                                        </a> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="text-align: left;">
+                                                                        <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#777777;font-size:14px;line-height:1.4; padding: 0;">
+                                                                            {{-- {{$item->getLectors()->name}} --}}
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+
+                                                @endif
+                                            </table>
+                                            @if ($key != count($data->infos) - 1)
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
+                                                        <td style="height: 20px;"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="height:1px; background-color:#e0e0e0;"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="height: 20px;"></td>
+                                                    </tr>
+                                                </table>
 
                                             @endif
                                         @endforeach
 
-                                        </table>
+
                                     </td>
                                 </tr>
                             </table>

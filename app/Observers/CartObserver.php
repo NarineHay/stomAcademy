@@ -10,7 +10,7 @@ class CartObserver
 
     public function created(Cart $cart)
     {
-
+        $this->creatApp($cart, 'cart');
         // $this->create($cart, 'cart');
     }
 }

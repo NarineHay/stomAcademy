@@ -31,27 +31,30 @@
                                     </thead>
 
                                     <tbody>
-                                    @php $total = 0 @endphp
+                                    @php
+                                        $total = 0;
+                                        $cur = strtolower(\App\Models\Currency::getCur());
+                                    @endphp
                                     @foreach($data as $item)
-                                    {{-- {{dd($item->webinar)}} --}}
-                                        @php $total += $item->total_price @endphp
+
+                                        @php $total += $item->{"total_price_$cur"}; @endphp
 
                                         <tr>
                                             <td>
-                                                <a class="text-primary" href="{{ route("course.show", $item->webinar) }}">{{$item->webinar->info->title}}</a>
+                                                <a class="text-primary" href="{{ route("$item->type.show", $item->item->info->slug) }}">{{$item->item->info->title}}</a>
                                             </td>
                                             <td>
                                                 <a>{{$item->count ?? ""}}</a>
                                             </td>
-                                            <td>
-                                                <a >{{$item->webinat_total_price ?? ""}}</a>
-                                            </td>
-                                            <td>
-                                                <a >{{$item->per_of_sales ?? ""}}</a>
-                                            </td>
 
                                             <td>
-                                                <a >{{$item->total_price ?? ""}} $</a>
+                                                <a >{{$item->item->sale ? $item->item->sale->pure() : $item->item->price->pure()}}</a>
+                                            </td>
+                                            <td>
+                                                <a>{{Auth::user()->lector->per_of_sales ?? 0}}</a>
+                                            </td>
+                                            <td>
+                                                <a >{{$item->{"total_price_$cur"} ?? ""}}  <i class={{"icon-$cur"}}></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -61,7 +64,7 @@
 
                                 @if ($total > 0 && count($data) > 0)
                                     <div class="w-100 d-flex justify-content-end ">
-                                        <div class=""><strong>Всего: {{$total}} $</strong></div>
+                                        <div class=""><strong>Всего: {{$total}} <i class={{"icon-$cur"}}></i></strong></div>
                                     </div>
                                     <div class="w-100 d-flex justify-content-end ">
                                         <a href="{{route('personal.lector_request_payment')}}"  class="btn btn-primary br-12  fs-16 f-600 py-2 mt-2">{{ __("profile.profile.request_payment") }}</a>

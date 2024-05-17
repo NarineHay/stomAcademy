@@ -15,14 +15,28 @@ class LectorIncome extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    function lector()
+    {
+        return $this->belongsTo(Lector::class, 'user_id');
+    }
+
     function webinar()
     {
         return $this->belongsTo(Webinar::class, 'webinar_id');
     }
 
-    function lector_income_currency(){
-        return $this->HasOne(LectorIncomesCurrency::class);
+
+    function item()
+    {
+        return $this->belongsTo($this->type == "webinar" ? Webinar::class : Course::class,"item_id","id");
     }
 
+    function price(){
+        return $this->hasOne(Prices::class,"id","price_id");
+    }
+
+    function sale(){
+        return $this->hasOne(Prices::class,"id","price_2_id");
+    }
 
 }
