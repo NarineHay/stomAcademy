@@ -52,7 +52,7 @@ trait CreatApplication
     }
 
     public function application($request){
-        $application = $this->filter($request)->paginate(10);
+        $application = $this->filter($request)->orderBy('id', 'desc')->paginate(10);
 
         return $application;
     }

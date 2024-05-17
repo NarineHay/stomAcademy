@@ -28,7 +28,8 @@ trait AddLectorIncome {
             if ($order_item->type == "webinar") {
                 $item = Webinar::query()->where("id", $order_item->item_id)->first();
                 $lector = Lector::where('user_id', $item->user_id)->first();
-                if ($lector->per_of_sales) {
+
+                if($lector->per_of_sales){
 
                     $lector_income_currency = [];
                     foreach ($currencies as $key => $curr) {
@@ -60,43 +61,45 @@ trait AddLectorIncome {
                 }
 
             } else {
+
                 $item = Course::query()->where("id", $order_item->item_id)->first();
                 $lectors = $item->getLectors();
 
-                // ====== course price currency ===============================
-                $course_price_curr = [];
-                $course_webinars = $item->webinars_object()->get();
-
-                foreach ($course_webinars as $item_object) {
-
-                    foreach ($currencies as $key => $curr) {
-                        $curr_name = strtolower($curr->currency_name);
-                        if (isset($course_price_curr[$curr_name])) {
-                            $course_price_curr[$curr_name] += $item_object->sale ? $item_object->sale->$curr_name : $item_object->price->$curr_name;
-
-                        } else {
-                            $course_price_curr[$curr_name] = $item_object->sale ? $item_object->sale->$curr_name : $item_object->price->$curr_name;
-
-                        }
-
-                    }
-                }
-
-                // ================================================
 
                 foreach ($lectors as $key => $lec) {
                     $lector = $lec->lector;
 
-                    if ($lector->per_of_sales) {
+                    if($lector->per_of_sales){
+
+                        // ====== course price currency ===============================
+                        $course_price_curr = [];
+                        $course_webinars = $item->webinars_object()->get();
+
+                        foreach ($course_webinars as $item_object) {
+
+                            foreach ($currencies as $key => $curr) {
+                                $curr_name = strtolower($curr->currency_name);
+
+
+                                if(isset($course_price_curr[$curr_name])){
+                                    $course_price_curr[$curr_name] += $item_object->sale ? $item_object->sale->$curr_name : $item_object->price->$curr_name;
+
+                                }
+                                else{
+                                    $course_price_curr[$curr_name] = $item_object->sale ? $item_object->sale->$curr_name : $item_object->price->$curr_name;
+
+                                }
+
+                            }
+
+                        }
 
 
                         $lector_income_currency = [];
                         $course_webinars = $item->webinars_object()->where('user_id', $lector->user_id)->get();
+                        $object_price_curr= [];
 
                         foreach ($course_webinars as $webin) {
-
-
-                            $object_price_curr = [];
 
                             foreach ($currencies as $key => $curr) {
                                 $curr_name = strtolower($curr->currency_name);
@@ -111,17 +114,18 @@ trait AddLectorIncome {
 
                                 $object_price_curr['price'][$curr_name] = $webin->sale ? $webin->sale->$curr_name : $webin->price->$curr_name;
 
-
-
                             }
-                            foreach ($currencies as $key => $curr) {
-                                $curr_name = strtolower($curr->currency_name);
-                                $course_price = $item->sale ? $item->sale->$curr_name : $item->price->$curr_name;
-                                $total_price = ($course_price_curr[$curr_name] / $object_price_curr['total_price'][$curr_name] * $course_price) * $lector->per_of_sales / 100;
 
-                                $lector_income_currency["price_$curr_name"] = $total_price;
+                        }
 
-                            }
+                        foreach ($currencies as $key => $curr) {
+                            $curr_name = strtolower($curr->currency_name);
+                            $course_price = $item->sale ? $item->sale->$curr_name : $item->price->$curr_name;
+
+                            $total_price = ($object_price_curr['total_price'][$curr_name] / $course_price_curr[$curr_name] * $course_price) * $lector->per_of_sales / 100;
+
+                            $lector_income_currency["price_$curr_name"] = $total_price;
+
                         }
 
                         $data = [

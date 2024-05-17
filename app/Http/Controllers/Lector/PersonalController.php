@@ -12,10 +12,16 @@ class PersonalController extends Controller
 {
     public function index(){
 
-       $data = LectorIncome::where('user_id', Auth::id())
-       ->select('per_of_sales', 'webinar_id', DB::raw('SUM(total_price) as total_price'), DB::raw('SUM(webinar_price) as webinat_total_price'), DB::raw('COUNT(*) as count'))
-       ->groupBy('webinar_id', 'per_of_sales')
-       ->get();
+        $data = LectorIncome::where('user_id', Auth::id())
+            ->groupBy('item_id', 'type')
+            ->select('item_id', 'type',
+            DB::raw('SUM(price_byn) as total_price_byn'),
+            DB::raw('SUM(price_rub) as total_price_rub'),
+            DB::raw('SUM(price_usd) as total_price_usd'),
+            DB::raw('SUM(price_eur) as total_price_eur'),
+            DB::raw('SUM(price_uah) as total_price_uah'),
+            DB::raw('COUNT(*) as count'))
+            ->get();
 
         return view('front.lector.information', compact('data'));
     }

@@ -23,13 +23,13 @@ class SerCurrency
         $userIp = $request->ip();
 
         $client = new Client();
-        // $response = $client->get('https://ipinfo.io/' . $userIp.'/json');
-        // $data = json_decode($response->getBody(), true);
+        $response = $client->get('https://ipinfo.io/' . $userIp.'/json');
+        $data = json_decode($response->getBody(), true);
 
         $browserLanguage = 'us';
-        // if (isset($data['country'])) {
-        //     $browserLanguage = strtolower($data['country']); // ISO country code (e.g., 'US', 'GB', 'CA')
-        // }
+        if (isset($data['country'])) {
+            $browserLanguage = strtolower($data['country']); // ISO country code (e.g., 'US', 'GB', 'CA')
+        }
 
         $currencyName = $browserLanguage == 'ru' ? 'RUB' :
                         ($browserLanguage == 'uk' ? 'UAH' :
