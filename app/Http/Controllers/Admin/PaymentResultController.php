@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Helpers\Bepaid;
+use App\Helpers\CRM;
 use App\Helpers\YooKassa;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Traits\Access;
 use App\Traits\Lector\AddLectorIncome;
 use Illuminate\Http\Request;
@@ -33,8 +35,12 @@ class PaymentResultController extends Controller
 
         if($payment_result){
             // return response()->redirectTo('http://dev.stom-academy.com/courses');
+            $order = Order::find($order_id);
             $this->setAccess($order_id);
             $this->addIncome($order_id);
+            
+            CRM::payment($order);
+
             return redirect("personal/courses");
         }
 

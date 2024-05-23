@@ -49,7 +49,7 @@ class CartController extends Controller
         if($result){
             $order = Order::find($result['order_id']);
             $this->creatApp($order, 'order');
-            CRM::payment($order);
+            // CRM::payment($order);
             return response()->redirectTo($result['url']);
         }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\CRM;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Payment\PaymentStoreRequest;
 use App\Models\Course;
@@ -10,12 +11,13 @@ use App\Models\Order;
 use App\Models\Payment;
 use App\Models\User;
 use App\Models\Webinar;
+use App\Traits\Lector\AddLectorIncome;
 use App\Traits\Payment\Payment as PaymentPayment;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    use PaymentPayment;
+    use PaymentPayment, AddLectorIncome;
     public function index(Request $request){
 
         $payments = $this->payment($request->all());
@@ -68,6 +70,9 @@ class PaymentController extends Controller
                 $order->infos()->create(['item_id' => $webinar_id, 'type' => 'webinar']);
             }
         }
+
+        $this->addIncome($order->id);
+        CRM::payment($order);
 
         return redirect()->route('admin.payment.index');
     }
