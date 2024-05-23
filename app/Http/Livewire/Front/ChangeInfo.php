@@ -87,7 +87,7 @@ class ChangeInfo extends Component
         return view('livewire.front.change-info',$data);
     }
 
-    
+
     public function changeName(){
         $data['user'] = Auth::user();
         $data['user']->userinfo->fname = $this->fname;
@@ -145,7 +145,6 @@ class ChangeInfo extends Component
 
         $data['user']->name = $this->name;
         $data['user']->email = $this->email;
-        $data['user']->password = $this->password;
 
         $data['user']->save();
 
@@ -162,7 +161,7 @@ class ChangeInfo extends Component
 
         $this->directions($request);
 
-        $this->success_ = "Success";
+        $this->success_ = __('profile.save_changes');
     }
 
     public function directions(Request $request){

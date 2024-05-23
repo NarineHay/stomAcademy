@@ -438,7 +438,7 @@
 
     <!--Blog-->
 
-    @if ($blogs->count() > 0)
+    {{-- @if ($blogs->count() > 0)
         <div class="container mt-4 mt-lg-6 useful_articles">
             <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row ">
                 <div>
@@ -463,13 +463,9 @@
                                 <div class="p-3 p-lg-4 d-flex flex-column align-items-start justify-content-between">
                                     <p class="text-primary text-uppercase f-700 fs-10 m-0">
                                         {{ $blog->directions->title }}
-                                        {{--                                    {{ dd($blog->info->status) }} --}}
                                     </p>
                                     <h5 class="f-700 mt-2 m-0 text-black fs-16">
-                                        {{--                                <span href="{{route('blog.show',$blog->id)}}" class="text-black"> --}}
-                                        {{--                                <span class="text-black"> --}}
                                         {{ $blog->info->title }}
-                                        {{--                                </span> --}}
                                     </h5>
                                     <p class="fs-14 f-500 m-0">
                                         <i
@@ -482,7 +478,7 @@
                 </div>
             </div>
         </div>
-    @endif
+    @endif --}}
 
     <!--lectors-->
     @if ($lectors->count() > 0)

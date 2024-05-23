@@ -83,6 +83,8 @@ return [
 
     ],
     "save" => "Guardar",
+    "save_changes" => "los cambios se guardaron exitosamente",
+
     "history" => [
         "search" => "Buscar en",
         "title" => "Historial de compras"

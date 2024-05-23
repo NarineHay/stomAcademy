@@ -83,6 +83,7 @@ return [
 
     ],
     "save" => "Save",
+    "save_changes" => "Changes successfully saved",
     "history" => [
         "search" => "Search",
         "title" => "Purchase History"
