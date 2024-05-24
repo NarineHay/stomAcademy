@@ -21,8 +21,14 @@ class Order extends Model
 
     function user()
     {
-        return $this->belongsTo(User::class,"user_id","id");
+        return $this->belongsTo(User::class, "user_id");
     }
+
+    function manager()
+    {
+        return $this->belongsTo(User::class, "manager_id");
+    }
+
 
     function application()
     {

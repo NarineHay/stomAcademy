@@ -121,7 +121,7 @@
 {{--                                        </div>--}}
 {{--                                    </th>--}}
                                     <th>ID</th>
-                                    <th>Фио Клиента</th>
+                                    <th>Эл. почта</th>
                                     <th>Курс/Вебинар</th>
                                     <th>Сумма</th>
                                     <th>Валюта</th>
@@ -134,12 +134,13 @@
 
                                 <tbody>
                                 @foreach($payments as $payment)
+
                                     <tr>
                                        <td>
                                            <a>{{$payment->id}}</a>
                                        </td>
                                         <td>
-                                            <a>{{$payment->user->name ?? ''}}</a>
+                                            <a>{{App\Helpers\User::getEmail($payment->user_id)}}</a>
                                         </td>
                                         <td>
                                             <ul>

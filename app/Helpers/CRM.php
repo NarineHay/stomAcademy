@@ -233,8 +233,10 @@ class CRM
     static function contactData($data){
 
         return [
-            "first_name" => $data['name'] ?? '',
-            "last_name" => $data['lname'] ?? '',
+            // "first_name" => $data['name'] ?? '',
+            // "last_name" => $data['lname'] ?? '',
+            "first_name" => $data->userinfo->fname ?? '',
+            "last_name" => $data->userinfo->lname ?? '',
             "custom_fields_values" => [
                 [
                     "field_id" => self::getStatusId()['contact_email'],

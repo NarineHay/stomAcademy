@@ -20,7 +20,7 @@ class PaymentStoreAccountController extends Controller
         $course_ids = $request->course_ids;
         $webinar_ids = $request->webinar_ids;
 
-        
+
         $token = strtotime(Carbon::now());
         $payment_account = PaymentAccount::create([
             'user_id' => $request->user_id ?? null,
@@ -58,7 +58,7 @@ class PaymentStoreAccountController extends Controller
             return redirect()->route('admin.payment.index')->with('success', 'Письмо отправлено пользователю');
         }
         else{
-            $url = url('') . "/payment-account-from-newsletter/$payment_account->token";
+            $url = url('') . "/payment-link/$payment_account->token";
             return redirect()->back()->with(['payment_url' => $url]);
         }
 

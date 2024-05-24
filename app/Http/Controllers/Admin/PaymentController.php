@@ -14,6 +14,7 @@ use App\Models\Webinar;
 use App\Traits\Lector\AddLectorIncome;
 use App\Traits\Payment\Payment as PaymentPayment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -55,6 +56,7 @@ class PaymentController extends Controller
             'sum' => $request->sum,
             'cur' => $request->cur,
             'comment' => $request->comment,
+            'manager_id' => Auth::id(),
             'status' => 'succeeded'
         ]);
 
