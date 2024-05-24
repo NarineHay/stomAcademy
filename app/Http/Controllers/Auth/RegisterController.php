@@ -33,7 +33,6 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'regex:/^(\+?\d{1,3}|\(\+?\d{1,3}\))?\s?\d{10}$/'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            // 'captcha' => 'required|captcha',
             'g-recaptcha-response' => 'required',
 
 
@@ -80,13 +79,12 @@ class RegisterController extends Controller
             $subject = 'Вы успешно зарегистрировались на платформе Stom Academy';
 
             mail::send(new SendRegisterInfoEmail($data, $subject));
-            
+
             return $user;
 
         } else {
             return redirect()->back()->with('status', 'Please Complete the Recaptcha Again to proceed');
         }
-        // return $user;
 
     }
 

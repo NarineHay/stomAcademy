@@ -153,7 +153,7 @@
                                             <tr>
                                                 <td style="text-align: left; padding: 0 0 0;">
                                                     <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;">
-                                                        Здравствуйте, <strong></strong>{{$data['name']}}<br /><br />Вам добавлены новые видео в личный кабинет.<br /><br />
+                                                        Здравствуйте, <strong></strong>{{$data['name'] ?? ''}}<br /><br />Вам добавлены новые видео в личный кабинет.<br /><br />
                                                         @if(isset($data['type']))
 
                                                             @if($data['type'] =='course')

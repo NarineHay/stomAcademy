@@ -8,7 +8,7 @@ use Closure;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
-
+use Stevebauman\Location\Facades\Location;
 class SerCurrency
 {
     /**
@@ -21,14 +21,15 @@ class SerCurrency
     public function handle(Request $request, Closure $next)
     {
         $userIp = $request->ip();
+        $currentUserInfo = Location::get($userIp);
 
-        $client = new Client();
-        $response = $client->get('https://ipinfo.io/' . $userIp.'/json');
-        $data = json_decode($response->getBody(), true);
+        // $client = new Client();
+        // $response = $client->get('https://ipinfo.io/' . $userIp.'/json');
+        // $data = json_decode($response->getBody(), true);
 
         $browserLanguage = 'us';
-        if (isset($data['country'])) {
-            $browserLanguage = strtolower($data['country']); // ISO country code (e.g., 'US', 'GB', 'CA')
+        if (isset($currentUserInfo->countryCode)) {
+            $browserLanguage = strtolower($currentUserInfo->countryCode); // ISO country code (e.g., 'US', 'GB', 'CA')
         }
 
         $currencyName = $browserLanguage == 'ru' ? 'RUB' :

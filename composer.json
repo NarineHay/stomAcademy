@@ -19,6 +19,7 @@
         "livewire/livewire": "^2.12",
         "mews/captcha": "^3.3",
         "sendpulse/rest-api": "2.0.1.1",
+        "stevebauman/location": "^7.2",
         "stripe/stripe-php": "^10.16"
     },
     "require-dev": {

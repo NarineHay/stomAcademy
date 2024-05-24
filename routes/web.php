@@ -134,7 +134,7 @@ Route::get("test",[TestController::class, 'lect']);
 Route::get('payment-result/{db_order_id}/{type}', PaymentResultController::class);
 Route::post('payment-result-notification', PaymentNotificationController::class);
 Route::get('payment-account/{token}', PaymentRedirectToLinkController::class)->name('payment_account_to_mail');
-Route::get('payment-account-from-newsletter/{token}', PaymentRedirectFromNewsletterController::class)->name('payment_account_newsletter_to_mail');
+Route::get('payment-link/{token}', PaymentRedirectFromNewsletterController::class)->name('payment_account_newsletter_to_mail');
 Route::post('payment-account-confirm', PaymentAccountConfirmController::class)->name('payment_account_confirm');
 
 
