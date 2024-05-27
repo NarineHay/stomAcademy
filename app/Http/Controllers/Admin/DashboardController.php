@@ -20,10 +20,10 @@ class DashboardController extends Controller
         $payment = $this->payment();
         $paymentCurrency = $this->paymentCurrency();
         $paymentSystem = $this->paymentSystem();
-        $paymentDailyRUB = json_encode($this->paymentDaily()['rub']);
-        $paymentDaily = json_encode($this->paymentDaily()['other']);
+        $paymentDailyUSD = json_encode($this->paymentDaily()['usd']);
+        $paymentDailyAll = json_encode($this->paymentDaily()['all']);
         $topSellingCources = $this->topSellingCources();
 
-        return view('admin.dashboard.index', compact('allCourses', 'allWebinars', 'customers', 'cart', 'payment', 'paymentCurrency', 'paymentSystem', 'paymentDaily', 'paymentDailyRUB', 'topSellingCources'));
+        return view('admin.dashboard.index', compact('allCourses', 'allWebinars', 'customers', 'cart', 'payment', 'paymentCurrency', 'paymentSystem', 'paymentDailyAll', 'paymentDailyUSD', 'topSellingCources'));
     }
 }

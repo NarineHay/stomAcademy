@@ -31,6 +31,10 @@
                             </div>
                             <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Клиенты</h5>
                             <h3 class="mt-3 mb-3">{{$customers['all_customers']}}</h3>
+                            {{-- <p class="mb-0 text-muted">
+                                <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i>{{$customers['per_mont_customers']}}</span>
+                                <span class="text-nowrap">в день</span>
+                            </p> --}}
                             <p class="mb-0 text-muted">
                                 <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i>{{$customers['per_mont_customers']}}</span>
                                 <span class="text-nowrap">за месяц</span>
@@ -48,6 +52,10 @@
                             <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Корзина</h5>
                             <h3 class="mt-3 mb-3">{{$cart['all_cart']}}</h3>
                             <p class="mb-0 text-muted">
+                                <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i>{{$cart['per_day_cart']}}</span>
+                                <span class="text-nowrap">в день</span>
+                            </p>
+                            <p class="mb-0 text-muted">
                                 <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$cart['per_mont_cart']}}</span>
                                 <span class="text-nowrap">за месяц</span>
                             </p>
@@ -63,6 +71,10 @@
                             </div>
                             <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Оплата</h5>
                             <h3 class="mt-3 mb-3">{{$payment['all_payment']}}</h3>
+                            <p class="mb-0 text-muted">
+                                <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$payment['per_day_payment']}}</span>
+                                <span class="text-nowrap">в день</span>
+                            </p>
                             <p class="mb-0 text-muted">
                                 <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$payment['per_mont_payment']}}</span>
                                 <span class="text-nowrap">за месяц</span>
@@ -93,7 +105,7 @@
                 <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                     <div class="card">
                         <div class="d-flex card-header justify-content-between align-items-center">
-                            <h4 class="header-title">Сумма оплат  по дням (RUB)</h4>
+                            <h4 class="header-title">Сумма оплат  по дням (USD)</h4>
                         </div>
 
                         <div class="card-body pt-0">
@@ -246,8 +258,8 @@
 @section('script')
     <script>
             var res =  '<?php echo $paymentSystem ?>'
-            var paymentDaily =  '<?php echo $paymentDaily ?>'
-            var paymentDailyRUB =  '<?php echo $paymentDailyRUB ?>'
+            var paymentDailyAll =  '<?php echo $paymentDailyAll ?>'
+            var paymentDailyUSD =  '<?php echo $paymentDailyUSD ?>'
     </script>
     <script src="{{asset('admin/dist/js/pages/admin-dashboard.js')}}"></script>
     <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
