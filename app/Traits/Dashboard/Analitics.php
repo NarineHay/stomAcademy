@@ -13,7 +13,7 @@ trait Analitics {
 
     public function customers(){
 
-        $all_customers = User::all()->count();
+        $all_customers = User::where('role', 'user')->get()->count();
 
         $startOfMonth = Carbon::now()->startOfMonth();
         $endOfMonth = Carbon::now()->endOfMonth();
@@ -38,15 +38,19 @@ trait Analitics {
 
         $startOfMonth = Carbon::now()->startOfMonth();
         $endOfMonth = Carbon::now()->endOfMonth();
+        $today = Carbon::today();
 
         $per_mont_cart = Cart::where('created_at', '<=', $endOfMonth)
                          ->where('created_at', '>=', $startOfMonth)
                          ->count();
 
+        $per_day_cart = Cart::whereDate('created_at', $today)->count();
+
 
         return [
             'all_cart' => $all_cart,
-            'per_mont_cart' => $per_mont_cart
+            'per_mont_cart' => $per_mont_cart,
+            'per_day_cart' => $per_day_cart
 
         ];
     }
@@ -57,16 +61,19 @@ trait Analitics {
 
         $startOfMonth = Carbon::now()->startOfMonth();
         $endOfMonth = Carbon::now()->endOfMonth();
+        $today = Carbon::today();
 
         $per_mont_payment = Order::where('status', 'succeeded')
                     ->where('created_at', '<=', $endOfMonth)
                     ->where('created_at', '>=', $startOfMonth)
                     ->count();
 
+        $per_day_payment = Order::where('status', 'succeeded')->whereDate('created_at', $today)->count();
 
         return [
             'all_payment' => $all_payment,
-            'per_mont_payment' => $per_mont_payment
+            'per_mont_payment' => $per_mont_payment,
+            'per_day_payment' => $per_day_payment
 
         ];
 
@@ -213,7 +220,10 @@ trait Analitics {
                 $currentDay = sprintf('%04d-%02d-%02d', $currentYear, $currentMonth, $day);
                 // $currencyData[$currentDay] = 0;
 
-                $currencyData[$day]['x'] = date('d', strtotime($currentDay)) * 1;
+                $currencyDataAll[$day]['x'] = date('d', strtotime($currentDay)) * 1;
+                $currencyDataAll[$day]['y'] = 0;
+
+                $currencyData[$day]['x'] = date('Y-m-d', strtotime($currentDay));
                 $currencyData[$day]['y'] = 0;
 
             }
@@ -228,7 +238,10 @@ trait Analitics {
                 if (substr($paymentDay, 0, 7) === "$currentYear-$currentMonth") {
 
                     $number_day = date('d', strtotime($paymentDay)) * 1;
-                    $currencyData[$number_day]['x'] = date('d', strtotime($paymentDay)) * 1;
+                    $currencyDataAll[$number_day]['x'] = date('d', strtotime($paymentDay)) * 1;
+                    $currencyDataAll[$number_day]['y'] = $totalAmount;
+
+                    $currencyData[$number_day]['x'] = date('Y-m-d', strtotime($paymentDay));
                     $currencyData[$number_day]['y'] = $totalAmount;
 
                 }
@@ -237,23 +250,23 @@ trait Analitics {
             // Store the currency data in the result array
 
 
-            if($currency == 'RUB'){
-                $result_rub[$i]['xValueFormatString'] = $currency;
-                $result_rub[$i]['type'] = "spline";
-                $result_rub[$i]['dataPoints'] = array_values($currencyData);
+            if($currency == 'USD'){
+                $result_usd[$i]['xValueFormatString'] = $currency;
+                $result_usd[$i]['type'] = "spline";
+                $result_usd[$i]['dataPoints'] = array_values($currencyData);
 
             }
-            else{
-                $result[$i]['xValueFormatString'] = $currency;
-                $result[$i]['type'] = "spline";
-                $result[$i]['dataPoints'] = array_values($currencyData);
 
-            }
+            $result[$i]['xValueFormatString'] = $currency;
+            $result[$i]['type'] = "spline";
+            $result[$i]['dataPoints'] = array_values($currencyDataAll);
+
+
         }
-
+// dd(array_values($result));
         return [
-            'rub' => array_values($result_rub),
-            'other' => array_values($result)
+            'usd' => array_values($result_usd),
+            'all' => array_values($result)
         ];
 
 
