@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CreateAccountController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ExchangeRatesController;
 use App\Http\Controllers\Admin\PaymentAccountConfirmController;
 use App\Http\Controllers\Admin\PaymentCreateAccountController;
 use App\Http\Controllers\Admin\PaymentNotificationController;
@@ -115,6 +116,8 @@ Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],fu
     Route::get('create-account', PaymentCreateAccountController::class)->name('create_account_index');
     Route::post('payment-create-account', PaymentStoreAccountController::class)->name('payment_create_account');
     Route::get('dashboard', DashboardController::class)->name('dashboard');
+    Route::resource('exchange-rates', ExchangeRatesController::class);
+
 
 
 });

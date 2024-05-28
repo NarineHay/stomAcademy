@@ -236,6 +236,14 @@
                             <a href="{{ route('admin.videos.index') }}"
                                 class="nav-link @if (request()->is('admin/videos*')) active @endif">Видео</a>
                         </li>
+
+                        @if (Auth::user()->role == 'admin')
+                            <li class="nav-item">
+                                <a href="{{ route('admin.exchange-rates.create') }}"
+                                    class="nav-link @if (request()->is('admin/videos*')) active @endif">Валюта</a>
+                            </li>
+                        @endif
+
                     </ul>
                 </nav>
             </div>
