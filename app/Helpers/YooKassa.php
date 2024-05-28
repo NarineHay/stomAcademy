@@ -24,41 +24,12 @@ class YooKassa
             $order = self::createOrderFromPaymentAccount($payment_account_token, $user_id);
         }
 
-        // $items = Auth::user()->cart;
-        // $cur = Currency::getCur();
-        // $desc = [];
-        // $total = 0;
-        // foreach ($items as $item_){
-        //     if($item_['type'] == "webinar"){
-        //         $item = Webinar::query()->where("id",$item_['item_id'])->first();
-        //     }elseif($item_['type'] == "course"){
-        //         $item = Course::query()->where("id",$item_['item_id'])->first();
-        //     }
-
-        //     $total += $item->sale ? $item->sale->pure() : $item->price->pure();
-        //     $desc[] = $item->info->title;
-        // }
-
-        // if($promo_code){
-        //     $promo = Promo::query()->where('code',$promo_code)->first();
-        //     if($promo){
-        //         $total = $total*(1 - $promo->prc/100);
-        //     }
-        // }
 
 
         $clientId = env('YOOKASSA_ID');
         $secretKey = env('YOOKASSA_KEY');
         $idempotenceKey = Str::uuid()->toString();
 
-        // $order = new Order();
-        // $order->user_id = Auth::user()->id;
-        // $order->payment_id = 1;
-        // $order->sum = $total;
-        // $order->cur = $cur;
-        // $order->type = 'yookassa';
-
-        // $order->save();
         $order_id = $order['order']->id;
 
         $client = new Client();
@@ -95,14 +66,6 @@ class YooKassa
         if($response['status'] == 'pending'){
             // $order->update(['payment_id' => $response['id']]);
             $order['order']->update(['payment_id' => $response['id']]);
-
-
-            // foreach ($items as $item){
-            //     $order->infos()->create([
-            //         "type" => $item['type'],
-            //         "item_id" => $item['id']
-            //     ]);
-            // }
 
             return ['url' => $response['confirmation']['confirmation_url'], 'order_id' => $order_id];
 
@@ -166,7 +129,7 @@ class YooKassa
         $order->payment_id = 1;
         $order->sum = $total;
         $order->cur = $cur;
-        $order->type = 'bepaid';
+        $order->type = 'yookasa';
 
         $order->save();
 

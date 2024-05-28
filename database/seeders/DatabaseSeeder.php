@@ -47,5 +47,7 @@ class DatabaseSeeder extends Seeder
         // end dev
 
         $this->call(VideosSeeder::class);
+        $this->call(ExchangeRatesSeed::class);
+
     }
 }

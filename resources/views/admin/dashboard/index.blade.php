@@ -11,9 +11,7 @@
                 <div>
                     <h1 class="m-0">Все страницы</h1>
                 </div>
-                <div>
-                    <a class="btn btn-primary" href="{{route('admin.pages.create')}}" role="button">Добавить</a>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -29,7 +27,7 @@
                             <div class="float-end">
                                 <i class="mdi mdi-account-multiple widget-icon"></i>
                             </div>
-                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Клиенты</h5>
+                            <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Кол-во пользователей</h5>
                             <h3 class="mt-3 mb-3">{{$customers['all_customers']}}</h3>
                             {{-- <p class="mb-0 text-muted">
                                 <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i>{{$customers['per_mont_customers']}}</span>
@@ -49,12 +47,14 @@
                             <div class="float-end">
                                 <i class="mdi mdi-cart-plus widget-icon"></i>
                             </div>
-                            <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Корзина</h5>
-                            <h3 class="mt-3 mb-3">{{$cart['all_cart']}}</h3>
-                            <p class="mb-0 text-muted">
+                            <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Доб-вл в корзину</h5>
+                            {{-- <h3 class="mt-3 mb-3">{{$cart['all_cart']}}</h3> --}}
+                            <h3 class="mt-3 mb-3">{{$cart['per_day_cart']}} в день</h3>
+
+                            {{-- <p class="mb-0 text-muted">
                                 <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i>{{$cart['per_day_cart']}}</span>
                                 <span class="text-nowrap">в день</span>
-                            </p>
+                            </p> --}}
                             <p class="mb-0 text-muted">
                                 <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$cart['per_mont_cart']}}</span>
                                 <span class="text-nowrap">за месяц</span>
@@ -69,12 +69,14 @@
                             <div class="float-end">
                                 <i class="mdi mdi-currency-usd widget-icon"></i>
                             </div>
-                            <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Оплата</h5>
-                            <h3 class="mt-3 mb-3">{{$payment['all_payment']}}</h3>
-                            <p class="mb-0 text-muted">
+                            <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Кол-во оплат</h5>
+                            {{-- <h3 class="mt-3 mb-3">{{$payment['all_payment']}}</h3> --}}
+                            <h3 class="mt-3 mb-3">{{$payment['per_day_payment']}} в день</h3>
+
+                            {{-- <p class="mb-0 text-muted">
                                 <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$payment['per_day_payment']}}</span>
                                 <span class="text-nowrap">в день</span>
-                            </p>
+                            </p> --}}
                             <p class="mb-0 text-muted">
                                 <span class="text-primary me-2"><i class="mdi mdi-arrow-down-bold"></i> {{$payment['per_mont_payment']}}</span>
                                 <span class="text-nowrap">за месяц</span>
@@ -89,11 +91,11 @@
                             <div class="float-end">
                                 <i class="mdi mdi-pulse widget-icon"></i>
                             </div>
-                            <h5 class="text-muted fw-normal mt-0" title="Growth">Количество курсов</h5>
-                            <h3 class="mt-3 mb-3">{{$allCourses}}</h3>
+                            <h5 class="text-muted fw-normal mt-0" title="Growth">Сумма оплат</h5>
+                            <h3 class="mt-3 mb-3">{{$paymentCurrency['total_per_day_payment_currency']}} USD в день</h3>
                             <p class="mb-0 text-muted">
-                                <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i> {{$allWebinars}}</span>
-                                <span class="text-nowrap">вебинар</span>
+                                <span class="text-primary me-2"><i class="mdi mdi-arrow-up-bold"></i> {{$paymentCurrency['total_per_mont_payment_currency']}} </span>
+                                <span class="text-nowrap">USD за месяц</span>
                             </p>
                         </div> <!-- end card-body-->
                     </div> <!-- end card-->
@@ -105,7 +107,7 @@
                 <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                     <div class="card">
                         <div class="d-flex card-header justify-content-between align-items-center">
-                            <h4 class="header-title">Сумма оплат  по дням (USD)</h4>
+                            <h4 class="header-title">Оплат в USD с временной шкалой</h4>
                         </div>
 
                         <div class="card-body pt-0">
@@ -117,7 +119,7 @@
                 <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                     <div class="card">
                         <div class="d-flex card-header justify-content-between align-items-center">
-                            <h4 class="header-title">Сумма оплат  по дням</h4>
+                            <h4 class="header-title">Оплат по Валютам</h4>
                         </div>
 
                         <div class="card-body pt-0">
@@ -133,7 +135,7 @@
                 <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                     <div class="card">
                         <div class="d-flex card-header justify-content-between align-items-center">
-                            <h4 class="header-title">Сумма оплат за месяц</h4>
+                            <h4 class="header-title">По валютам за месяц</h4>
                         </div>
 
                         <div class="card-body pt-0">
@@ -153,7 +155,16 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        <tr class="bg-light bg-gradient">
 
+                                            <td>
+                                                <h5 class="font-14 my-1 fw-normal">Итого в USD</h5>
+                                            </td>
+                                            <td>
+                                                <h5 class="font-14 my-1 fw-normal">{{$paymentCurrency['total_per_mont_payment_currency']}}</h5>
+                                                <span class="text-muted font-13">Сумма</span>
+                                            </td>
+                                        </tr>
 
                                     </tbody>
                                 </table>
@@ -165,7 +176,7 @@
                 <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                     <div class="card">
                         <div class="d-flex card-header justify-content-between align-items-center">
-                            <h4 class="header-title">Сумма оплат за год</h4>
+                            <h4 class="header-title">По валютам за год</h4>
                         </div>
 
                         <div class="card-body pt-0">
@@ -185,7 +196,16 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        <tr class="bg-light bg-gradient">
 
+                                            <td>
+                                                <h5 class="font-14 my-1 fw-normal">Итого в USD</h5>
+                                            </td>
+                                            <td>
+                                                <h5 class="font-14 my-1 fw-normal">{{$paymentCurrency['total_payment_currency']}}</h5>
+                                                <span class="text-muted font-13">Сумма</span>
+                                            </td>
+                                        </tr>
 
                                     </tbody>
                                 </table>
@@ -234,7 +254,7 @@
                 <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                     <div class="card">
                         <div class="d-flex card-header justify-content-between align-items-center">
-                            <h4 class="header-title">платёжные системы</h4>
+                            <h4 class="header-title">Популярность платежных систем</h4>
                         </div>
 
                         <div class="card-body pt-0">

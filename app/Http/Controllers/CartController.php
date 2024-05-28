@@ -24,6 +24,19 @@ use Stripe\StripeClient;
 
 class CartController extends Controller
 {
+    public function __construct(Request $request) {
+
+
+        // Проверяем условие и устанавливаем куки
+        // if (isset($request->cur) && $request->cur == 'UAH') {
+        //     // Устанавливаем cookie с именем 'currency_id', значением '3' и сроком действия 60 минут
+        //     Cookie::queue(Cookie::make('currency_id', 3, 60));
+        // }
+        // personal.cart.order
+
+        // Cookie::queue(Cookie::make('currency_id', $request->cur_id, 60));
+
+    }
 
     use CreatApplication;
     public function index(){
@@ -35,6 +48,16 @@ class CartController extends Controller
         $cur = Currency::find($id);
         return Str::lower($cur->currency_name);
     }
+    public function setCookie()
+    {
+        $minutes = 30;
+        $response = response('Cookie has been set');
+
+        // Attach the cookie to the response
+        $response->withCookie(cookie()->forever('currency_id', 3));
+
+        return $response;
+    }
 
     public function order(Request $request){
         $cur = Currency::find(Cookie::get("currency_id",1))->currency_name;
@@ -43,6 +66,15 @@ class CartController extends Controller
             $result = YooKassa::createOrder($request->get("promo"), 'cart', null);
         }
         else{
+        
+
+            // if (Currency::getCur() == 'UAH') {
+            //     // $this->setCookie();
+            //     // return $response;
+            //     // Cookie::queue(Cookie::make('currency_id', 3, 60));
+            //     // request()->cookie('currency_id',3,5);
+            //     dd($request->cookie('currency_id'));
+            // }
             $result = Bepaid::createOrder($request->get("promo"), 'cart', null);
         }
 

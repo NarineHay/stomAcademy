@@ -139,11 +139,11 @@
                                 <a href="{{route('personal.certificates')}}"
                                    class="text-decoration-none text-black fs-14 f-500">Сертификаты</a>
                             </div>
-                            <div class="d-flex my-2">
+                            {{-- <div class="d-flex my-2">
                                 <i class="fal fa-file-certificate me-2"></i>
                                 <a href="{{route('personal.history')}}"
                                    class="text-decoration-none text-black fs-14 f-500">История покупок</a>
-                            </div>
+                            </div> --}}
 
                             <div class="d-flex my-2 d-none">
                                 <i class="fal fa-cart-arrow-down me-2"></i>
