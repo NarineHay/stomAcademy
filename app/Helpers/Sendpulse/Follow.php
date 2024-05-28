@@ -11,10 +11,10 @@ class Follow
 {
     static function follow($data){
 
-        $base = ['ru' => '89464772', 'en' => '89505704'];
+        $base = ['ru' => '89436645', 'en' => '89312335', 'sp' => '89596009'];
         $lg = app()->getLocale();
 
-        $send_pluse_base = $lg == 'ru' ? $base['ru'] : $base['en'];
+        $send_pluse_base = $base[$lg];
 
         $apiClient = SendpulseClient::client();
 

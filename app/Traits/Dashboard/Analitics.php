@@ -1,8 +1,10 @@
 <?php
 namespace App\Traits\Dashboard;
 
+use App\Helpers\ExchangeRates;
 use App\Models\Cart;
 use App\Models\Course;
+use App\Models\ExchangeRate;
 use App\Models\Order;
 use App\Models\OrderInfo;
 use App\Models\User;
@@ -87,6 +89,10 @@ trait Analitics {
 
         $startOfYear = Carbon::now()->startOfYear();
         $endOfYear = Carbon::now()->endOfYear();
+        $today = Carbon::today();
+
+        // ==================== Per Year ========================================
+        $total_payment_currency = '';
 
         $all_payment_currency = Order::where('status', 'succeeded')
             ->whereBetween('created_at', [$startOfYear, $endOfYear])
@@ -94,15 +100,16 @@ trait Analitics {
             ->groupBy('cur')
             ->get();
 
-        // $all_payment_currency = $all_payment_currency->map(function ($payment) {
-        //     return [
-        //         'label' => $payment->cur,
-        //         'y' => $payment->total,
-        //     ];
-        // })->toArray();
+        $total_payment_currency = $all_payment_currency->map(function ($payment) {
+            $cur = ExchangeRates::exchange($payment->cur);
 
-        // $all_payment_currency = json_encode($all_payment_currency);
+            return  $payment->total * $cur;
+        })->toArray();
 
+        $total_payment_currency = array_sum($total_payment_currency);
+
+        // ==================== Per mont ========================================
+        $total_per_mont_payment_currency = '';
 
         $per_mont_payment_currency = Order::where('status', 'succeeded')
         ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
@@ -110,9 +117,38 @@ trait Analitics {
         ->groupBy('cur')
         ->get();
 
+        $total_per_mont_payment_currency = $per_mont_payment_currency->map(function ($payment) {
+            $cur = ExchangeRates::exchange($payment->cur);
+
+            return $payment->total * $cur;
+        })->toArray();
+
+        $total_per_mont_payment_currency = array_sum($total_per_mont_payment_currency);
+
+        // ==================== Per day ========================================
+        $total_per_day_payment_currency = '';
+
+        $per_day_payment_currency = Order::where('status', 'succeeded')
+                ->whereDate('created_at', $today)
+                ->select('cur', DB::raw('SUM(sum) as total'))
+                ->groupBy('cur')
+                ->get();
+
+        $total_per_day_payment_currency = $per_day_payment_currency->map(function ($payment) {
+            $cur = ExchangeRates::exchange($payment->cur);
+
+            return $payment->total * $cur;
+        })->toArray();
+
+        $total_per_day_payment_currency = array_sum($total_per_day_payment_currency);
+
+
         return [
             'all_payment_currency' => $all_payment_currency,
             'per_mont_payment_currency' => $per_mont_payment_currency,
+            'total_payment_currency' => $total_payment_currency,
+            'total_per_mont_payment_currency' => $total_per_mont_payment_currency,
+            'total_per_day_payment_currency' => $total_per_day_payment_currency
         ];
 
 
@@ -210,6 +246,7 @@ trait Analitics {
         $result_rub = [];
         // Loop through each currency
         $i = 0;
+
         foreach ($byGroup as $currency => $payments) {
             $i++;
             // Initialize an array for the currency with daily totals
@@ -227,12 +264,17 @@ trait Analitics {
                 $currencyData[$day]['y'] = 0;
 
             }
+            // $exchangeTotalAmount = 0;
 
             // ;Populate daily totals for the currency based on payments
             foreach ($payments as $p => $payment) {
                 $paymentDay = $payment['payment_day'];
                 $totalAmount = (float) $payment['total_amount'];
                 $j = ++$p;
+
+                $cur = ExchangeRates::exchange($currency);
+                $exchangeTotalAmount = $totalAmount * $cur;
+
 
                 // Check if the payment day is within the current month
                 if (substr($paymentDay, 0, 7) === "$currentYear-$currentMonth") {
@@ -242,20 +284,17 @@ trait Analitics {
                     $currencyDataAll[$number_day]['y'] = $totalAmount;
 
                     $currencyData[$number_day]['x'] = date('Y-m-d', strtotime($paymentDay));
-                    $currencyData[$number_day]['y'] = $totalAmount;
+                    $currencyData[$number_day]['y'] = $exchangeTotalAmount;
 
                 }
             }
 
             // Store the currency data in the result array
 
+            $result_usd[$i]['xValueFormatString'] = 'usddd';
+            $result_usd[$i]['type'] = "spline";
+            $result_usd[$i]['dataPoints'] = array_values($currencyData);
 
-            if($currency == 'USD'){
-                $result_usd[$i]['xValueFormatString'] = $currency;
-                $result_usd[$i]['type'] = "spline";
-                $result_usd[$i]['dataPoints'] = array_values($currencyData);
-
-            }
 
             $result[$i]['xValueFormatString'] = $currency;
             $result[$i]['type'] = "spline";
@@ -263,9 +302,12 @@ trait Analitics {
 
 
         }
-// dd(array_values($result));
+
+        $array_values_result_usd = array_values($result_usd);
+        $result_usd = $this->ExchangesUsdOerDay($array_values_result_usd);
+
         return [
-            'usd' => array_values($result_usd),
+            'usd' => [$result_usd],
             'all' => array_values($result)
         ];
 
@@ -296,4 +338,39 @@ trait Analitics {
        return $courses;
 
     }
+
+    public function ExchangesUsdOerDay($data){
+        $mergedDataPoints = [];
+
+        // Merge all dataPoints arrays
+        foreach ($data as $dataset) {
+            if (isset($dataset['dataPoints']) && is_array($dataset['dataPoints'])) {
+                foreach ($dataset['dataPoints'] as $dataPoint) {
+                    $x = $dataPoint['x'];
+                    $y = $dataPoint['y'];
+                    if (isset($mergedDataPoints[$x])) {
+                        $mergedDataPoints[$x] += $y;
+                    } else {
+                        $mergedDataPoints[$x] = $y;
+                    }
+                }
+            }
+        }
+
+        // Format merged data points into the desired structure
+        $formattedDataPoints = [];
+        foreach ($mergedDataPoints as $x => $y) {
+            $formattedDataPoints[] = ['x' => $x, 'y' => $y];
+        }
+
+        $result_usd = [
+            "xValueFormatString" => "usddd",
+            "type" => "spline",
+            "dataPoints" => $formattedDataPoints
+        ];
+
+        return $result_usd;
+
+    }
+
 }

@@ -20,4 +20,9 @@ class Currency extends Model
         $id = intval(Cookie::get("currency_id",1));
         return Currency::find($id)->currency_name;
     }
+
+    static function getCurId(){
+        return intval(Cookie::get("currency_id",1));
+
+    }
 }

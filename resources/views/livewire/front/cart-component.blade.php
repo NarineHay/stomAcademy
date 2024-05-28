@@ -26,7 +26,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
                                     <i class="far fa-clock"></i>
-                                    <p class="m-0 ms-1 ms-md-2 f-500">{{$item->webinar->duration}} мин</p>
+                                    <p class="m-0 ms-1 ms-md-2 f-500">{{$item->webinar->duration}} {{__('lectors.min')}}</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
                                     <i class="fas fa-tasks"></i>
@@ -56,7 +56,7 @@
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
                                     <i class="far fa-clock"></i>
                                     <p class="m-0 ms-1 ms-md-2 f-500">{{$item->course->webinars_object_sum_duration}}
-                                        мин</p>
+                                        {{__('lectors.min')}}</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center py-2 px-2 px-xxl-3 fs-14">
                                     <i class="fas fa-tasks"></i>
@@ -109,7 +109,11 @@
                             <p class="f-700 fs-24 text-primary m-0">{{ $total }}<i class="icon-{{ \App\Helpers\TEXT::curSymbol() }}"></i></p>
 
                         </div>
-                        <form action="{{ route("personal.cart.order") }}" method="POST">
+                        @php
+                            $cur_id = \App\Models\Currency::getCurId() == 5 ? 3 : \App\Models\Currency::getCurId();
+                            Cookie::queue(Cookie::make('currency_id', $cur_id, 60));
+                        @endphp
+                        <form action="{{ route("personal.cart.order", ['cur_id' => $cur_id ]) }}" method="POST">
                             @csrf
                             <input name="promo" wire:model="code" type="text" class="d-none form-control py-2 px-3 br-12 inputStyle promo-input"
                                    placeholder="{{ __("profile.cart.promocode") }}">

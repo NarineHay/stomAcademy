@@ -15,7 +15,7 @@
         </div>
     </div>
     <div>
-        
+
         @if (Auth::user()->role == 'lector')
             <div class="d-flex mb-4 mt-4">
                 <i class="fal fa-user-circle me-2 "></i>
@@ -31,10 +31,10 @@
             <i class="fal fa-box-alt me-2"></i>
             <a href="{{route('personal.certificates')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.certificates')}} </a>
         </div>
-        <div class="d-flex mb-4 mt-4">
+        {{-- <div class="d-flex mb-4 mt-4">
             <i class="fal fa-file-certificate me-2"></i>
             <a href="{{route('personal.history')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.purchase_history')}} </a>
-        </div>
+        </div> --}}
         <div class="d-flex mb-4 mt-4">
             <i class="fal fa-cart-arrow-down me-2"></i>
             <a href="{{route('personal.cart')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.cart')}} </a>

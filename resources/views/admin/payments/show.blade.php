@@ -60,7 +60,7 @@
 
                     <div class="form-group">
                         <label >Ответсвенный менеджер: </label>
-                        <span>{{$payment->manager != null ? $payment->manager->name : ' - '}}</span>
+                        <span>{{$payment->manager != null ? $payment->manager->userinfo->fname . ' ' . $payment->manager->userinfo->lname : ' - '}}</span>
                     </div>
 
                     <div class="form-group">
