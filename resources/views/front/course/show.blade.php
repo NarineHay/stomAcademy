@@ -160,7 +160,7 @@
                                             {{--                                            <i class="fas fa-play"></i>--}}
                                             {{--                                        </div>--}}
                                         </div>
-                                        <div class="card-txts">
+                                        <div class="mt-4 card-txts">
                                             {{--                                    <p class="fs-25 card-title-txt fw-bolder">{{ $course->info->title }}</p>--}}
                                             <p class="m-0 text-secondary fs-14 f-500 card-price-txt">{{ __("courses.price_all") }}</p>
                                             <h3 class="f-700 mt-0 text-primary">
@@ -235,20 +235,8 @@
 
                                         </form>
 
-                                        <div class="d-flex flex-row flex-wrap justify-content-between div-icons">
-                                            <div class="mb-2">
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                          d="M9.99992 2.50004C5.85778 2.50004 2.49992 5.8579 2.49992 10C2.49992 14.1422 5.85778 17.5 9.99992 17.5C14.1421 17.5 17.4999 14.1422 17.4999 10C17.4999 5.8579 14.1421 2.50004 9.99992 2.50004ZM0.833252 10C0.833252 4.93743 4.93731 0.833374 9.99992 0.833374C15.0625 0.833374 19.1666 4.93743 19.1666 10C19.1666 15.0626 15.0625 19.1667 9.99992 19.1667C4.93731 19.1667 0.833252 15.0626 0.833252 10Z"
-                                                          fill="#191F70"/>
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                          d="M9.99992 4.16671C10.4602 4.16671 10.8333 4.5398 10.8333 5.00004V9.48501L13.7059 10.9214C14.1176 11.1272 14.2844 11.6277 14.0786 12.0394C13.8728 12.451 13.3722 12.6179 12.9606 12.4121L9.62724 10.7454C9.34492 10.6042 9.16658 10.3157 9.16658 10V5.00004C9.16658 4.5398 9.53968 4.16671 9.99992 4.16671Z"
-                                                          fill="#191F70"/>
-                                                </svg>
-                                                <span
-                                                    class="ms-2 f-500 fs-14 lh-20">{{ $course->getDuration() }}</span>
-                                            </div>
+                                        <div class=" flex-row flex-wrap justify-content-between div-icons">
+
 
                                             <div class="mb-2">
                                                 <svg width="16" height="20" viewBox="0 0 16 20" fill="none"
@@ -266,9 +254,22 @@
                                                 <span
                                                     class="ms-2 f-500 fs-14 lh-20">{{ __("courses.certificate") }}</span>
                                             </div>
-                                            <div class="d-flex">
+                                            <div class="mb-2 d-flex">
                                                 <i class="fal fa-infinity" style="color: #191F70; font-size:20px;"></i>
-                                                <p class="ms-2 f-500 fs-14 lh-20">{{ __("courses.infinity") }}</p>
+                                                <span class="ms-2 f-500 fs-14 lh-20">{{ __("courses.infinity") }}</span>
+                                            </div>
+                                            <div class="mb-2">
+                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M9.99992 2.50004C5.85778 2.50004 2.49992 5.8579 2.49992 10C2.49992 14.1422 5.85778 17.5 9.99992 17.5C14.1421 17.5 17.4999 14.1422 17.4999 10C17.4999 5.8579 14.1421 2.50004 9.99992 2.50004ZM0.833252 10C0.833252 4.93743 4.93731 0.833374 9.99992 0.833374C15.0625 0.833374 19.1666 4.93743 19.1666 10C19.1666 15.0626 15.0625 19.1667 9.99992 19.1667C4.93731 19.1667 0.833252 15.0626 0.833252 10Z"
+                                                          fill="#191F70"/>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M9.99992 4.16671C10.4602 4.16671 10.8333 4.5398 10.8333 5.00004V9.48501L13.7059 10.9214C14.1176 11.1272 14.2844 11.6277 14.0786 12.0394C13.8728 12.451 13.3722 12.6179 12.9606 12.4121L9.62724 10.7454C9.34492 10.6042 9.16658 10.3157 9.16658 10V5.00004C9.16658 4.5398 9.53968 4.16671 9.99992 4.16671Z"
+                                                          fill="#191F70"/>
+                                                </svg>
+                                                <span
+                                                    class="ms-2 f-500 fs-14 lh-20">{{ $course->getDuration() }}</span>
                                             </div>
                                         </div>
 

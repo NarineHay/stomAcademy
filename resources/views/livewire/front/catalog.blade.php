@@ -92,7 +92,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 ms-3">
+                    {{-- <div class="mt-4 ms-3">
                         <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
                                data-bs-toggle="collapse" data-bs-target="#fg-3"><span>{{ __("courses.filters.price") }}</span><i
                                 class="fal fa-angle-right"></i></label>
@@ -105,8 +105,8 @@
                             </div>
 
                         </div>
-                    </div>
-                    <div class="mt-4 ms-3">
+                    </div> --}}
+                    {{-- <div class="mt-4 ms-3">
                         <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
                                data-bs-toggle="collapse" data-bs-target="#fg-2"><span>{{ __("courses.menu.lectors") }}</span><i
                                 class="fal fa-angle-right"></i></label>
@@ -120,7 +120,7 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -284,7 +284,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-4 ms-3">
+                {{-- <div class="mt-4 ms-3">
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
                            data-bs-toggle="collapse" data-bs-target="#fg-3"><span>{{ __("courses.filters.price") }}</span><i
                             class="fal fa-angle-right"></i></label>
@@ -297,8 +297,8 @@
                         </div>
 
                     </div>
-                </div>
-                <div class="mt-4 ms-3">
+                </div> --}}
+                {{-- <div class="mt-4 ms-3">
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor"
                            data-bs-toggle="collapse" data-bs-target="#fg-2"><span>{{ __("courses.filters.lector") }}</span><i
                             class="fal fa-angle-right"></i></label>
@@ -312,7 +312,7 @@
                             @endforeach
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

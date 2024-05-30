@@ -50,12 +50,14 @@
 {{--                    @endif--}}
 {{--                </a></button>--}}
 
-            <div class="offcanvas offcanvas-end" style="width: 232px;" data-bs-scroll="true" data-bs-backdrop="false"
+            <div class="offcanvas offcanvas-end" style="width: auto;" data-bs-scroll="true" data-bs-backdrop="false"
                  tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
 
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasScrollingLabel"></h5>
-                    <button type="button" class="btn-close btn_close_for_menu"></button>
+                <div class="offcanvas-header" style="background: #191f70">
+                    {{-- <h5 class="offcanvas-title" id="offcanvasScrollingLabel"></h5> --}}
+                    <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
+                    <button type="button" class="btn-close btn-close-white btn_close_for_menu" aria-label="Close"></button>
+
                 </div>
 
 
@@ -116,9 +118,9 @@
                         <div class="mb-2 my-4 my-lg-6 text-center d-flex align-items-center justify-content-start" style="z-index: 1" >
                             <img src="{{\Illuminate\Support\Facades\Storage::url($user->userinfo->image ?? "userinfo/unknown.png") }}"
                                 alt="profilePic" class="rounded-circle me-2" width="36px" height="36px">
-                            <h5 class="f-700 m-0">{{$user->userinfo->fname}}
+                            <h5 class="f-700 m-0">{{$user->userinfo->fname ?? ''}} {{ $user->userinfo->lname ?? $user->email }}
                                 <span class="fs-15">
-                                    {{ $user->userinfo->lname ?? $user->email }}
+
                                 </span>
                             </h5>
                         </div>
