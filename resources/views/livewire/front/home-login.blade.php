@@ -1,5 +1,11 @@
-<div class="bg-white d-flex justify-content-center flex-column align-items-center br-12 p-4">
-    <p class="fs-20 f-600 text-center text-dark m-0">{{ __("header.form.title") }}</p>
+<div class="br-12">
+    {{-- <div class="w-100 text-center p-2 " style="background: #191f70"> --}}
+    <div class="w-100 text-center p-2 " style="background: #fff">
+
+        <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
+    </div>
+    <div class="bg-white d-flex justify-content-center flex-column align-items-center br-12 px-4">
+    <p class="fs-20 f-600 text-center text-dark m-0">{{ __("header.form.title") }} </p>
     <div class="form-group w-100">
         <label for="exampleInputEmail1" class="mt-4 mb-1 text-secondary f-500 fs-12 m-0">{{ __("header.form.email") }}</label>
         <input type="email" wire:model="email" class="form-control text-secondary br-12" id="exampleInputEmail1"
@@ -28,6 +34,7 @@
             <a wire:click="changeType" class="text-primary fs-14 f-500 m-0" id="register_id">{{ __("header.form.register") }}</a>
         @endif --}}
 
+    </div>
     </div>
 </div>
 

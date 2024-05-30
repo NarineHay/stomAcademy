@@ -12,7 +12,7 @@
                                     aria-expanded="false">{{ __("profile.courses.directions") }}
                             </button>
                             <div class="dropdown-menu p-3  border-0" aria-labelledby="dropdownMenuButton1"
-                                 style="padding-right: 40px !important;">
+                                 style="padding-right: 40px !important; width: max-content">
 
                                 @foreach($directions as $direction)
                                     <div class="form-check">
@@ -93,9 +93,9 @@
                 <button wire:click="loadNext"
                         class="w-100 fs-14 f-500 mt-3 mt-lg-6 py-3 br-12 show_more_btn bg-transparent text-black">{{ __("profile.courses.show_more") }}</button>
             @endif
-            <div class="mt-4 d-flex justify-content-center d-lg-block">
+            {{-- <div class="mt-4 d-flex justify-content-center d-lg-block">
                 <nav>{{ $webinars->links() }}</nav>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

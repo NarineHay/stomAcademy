@@ -53,18 +53,18 @@
         </div>
         <div class="position-relative w-100 d-none d-lg-block right_col" style="z-index: 2">
             <div class="profile_webinar_chat_right"></div>
-            <div class="py-5 py-lg-6 px-4 mt-0">
+            <div class="pt-5 px-4 mt-4">
                 <h4 class="mb-4">{{ __("index.online_chat") }}</h4>
                 <livewire:front.personal-courses-chat :webinar_id="$webinar->id"/>
             </div>
-            <div class="row other_webinars mt-2">
+            <div class="row other_webinars mt-4">
                 @if(count($other_webinars)>0)
-                    <h4 class="mb-0" style="padding-left:30px;padding-right: 30px ">Лекции из курса.</h4>
+                    <h4 class="mb-0 f-700" style="padding-left:30px;padding-right: 30px ">Лекции из курса.</h4>
                 @endif
                 @foreach($other_webinars as $k => $webinar)
                     <a href="{{ route("personal.courses.show",$webinar->id) }}" style="color: inherit"
-                       class="col-12 my-3 md-sm-0">
-                        <div class="d-flex justify-content-between align-items-center py-2 px-3 fs-14">
+                       class="col-12 my-3 md-sm-0 ">
+                        <div class="d-flex justify-content-between align-items-center py-2 px-3 fs-14 bg-white">
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" alt="addPic"
                                  style="width: 60px; height: 40px; object-fit: cover " class="img-swip">
                             <p class="ms-4 m-0 f-700">{{$webinar->info->title}}</p>
