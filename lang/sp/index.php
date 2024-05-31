@@ -23,7 +23,7 @@ return [
     ],
     "subscribe" => [
         "title" => "¿Notificarnos nuevas conferencias?",
-        "text" => "Nada de spam, ¡sólo negocios!",
+        "text" => "Deja un correo electrónico y recibe información actualizada sobre los cursos y eventos de la plataforma Stom Academy.",
         "button" => "Suscríbase",
     ],
     "full-address" => '<br><br>

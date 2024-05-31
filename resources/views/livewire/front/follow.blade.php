@@ -1,10 +1,14 @@
 <div class="modal-content">
     <form wire:submit.prevent="submit" method="post">
+        <div class="w-100">
+            <img class="w-100" src="{{asset('dist/image/letter.jpg')}}">
+        </div>
         <div class="modal-header">
             <h1 class="modal-title fs-5 f-700" id="lectorFollowModalLabel">{{ __("modals.follow.h1") }}</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+            <p class="fs-16 mb-3" style="margin-top: -30px;">{{ __("modals.follow.text") }}</p>
             <input wire:model="name" type="text" class=" form-control py-3 mb-4 @if(strlen($name) > 0) focus @endif" aria-label="Sizing example input"
                    aria-describedby="inputGroup-sizing-default" placeholder="{{ __("modals.name") }}">
             @error('name')
@@ -24,6 +28,6 @@
         <div class="modal-footer">
             <button class="btn btn-primary w-100 f-600 fs-14 px-4 py-3 br-12 white-space send_mail">{{ __("modals.to_by_lector.button") }}</button>
         </div>
-       
+
     </form>
 </div>

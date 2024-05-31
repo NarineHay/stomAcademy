@@ -1,4 +1,4 @@
-<div class="container mb-4 mb-md-6 pt-6">
+<div class="container mb-4 mb-ms-4 pt-6">
     <div class="d-flex mt-lg-3">
         <a href="{{route('home')}}"><p class="fs-12 text-secondary">{{ __("header.menu.home") }}</p></a>
         <a><p class="fs-12 ms-3 main">{{ __("header.menu.courses") }}</p></a>

@@ -1,6 +1,8 @@
 <div class="modal-content">
     <form wire:submit.prevent="submit" method="post">
-
+        <div class="w-100">
+            <img class="w-100" src="{{asset('dist/image/letter.jpg')}}">
+        </div>
         <div class="modal-header">
             <h1 class="modal-title fs-5 f-700" id="lectorModalLabel">{{ __("modals.to_by_lector.h1") }}</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
