@@ -53,10 +53,13 @@
             <div class="offcanvas offcanvas-end" style="width: auto;" data-bs-scroll="true" data-bs-backdrop="false"
                  tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
 
-                <div class="offcanvas-header" style="background: #191f70">
+                <div class="offcanvas-header">
                     {{-- <h5 class="offcanvas-title" id="offcanvasScrollingLabel"></h5> --}}
-                    <a href="/"><img src="/dist/image/logo.png" alt="logoPic"></a>
-                    <button type="button" class="btn-close btn-close-white btn_close_for_menu" aria-label="Close"></button>
+                    <div style="width: 162px">
+                        <a href="/"><img class="w-100" src="/dist/image/logo-dark.png" alt="logoPic"></a>
+                    </div>
+                    {{-- <a href="/"><img src="/dist/image/logo-dark.png" alt="logoPic"></a> --}}
+                    <button type="button" class="btn-close btn-close btn_close_for_menu" aria-label="Close"></button>
 
                 </div>
 

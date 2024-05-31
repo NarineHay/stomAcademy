@@ -10,7 +10,8 @@ return [
         "button" => "Enviar solicitud"
     ],
     "follow" => [
-        "h1" => "¿Notificarme nuevas conferencias?",
+        "h1" => "Le informamos sobre nuevas conferencias y eventos",
+        "text" => "Deja un correo electrónico y recibe información actualizada sobre los cursos y eventos de la plataforma Stom Academy.",
         "success" => "Está suscrito",
         "button" => "Suscribirse",
     ],

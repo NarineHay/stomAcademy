@@ -32,6 +32,10 @@ body, html {
   height: 100%;
 }
 
+.br-10{
+    border-radius: 10px;
+}
+
 .br-12, .useful_articles .useful_article_row, .images img {
   border-radius: 12px;
   overflow: hidden;

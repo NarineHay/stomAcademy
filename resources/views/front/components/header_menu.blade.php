@@ -15,9 +15,9 @@
             <li><a href="{{ route("about") }}"
                    class="text-decoration-none ms-3 me-2 me-xl-3 ms-xl-4 text-white fs-16 f-600">{{ __("header.menu.about") }}</a>
             </li>
-            <li><a href="{{ route("blog.index") }}"
+            {{-- <li><a href="{{ route("blog.index") }}"
                    class="text-decoration-none ms-3 me-2 me-xl-3 ms-xl-4 text-white fs-16 f-600">{{ __("header.menu.blog") }}</a>
-            </li>
+            </li> --}}
             <li><a href="{{ route("contacts") }}"
                    class="text-decoration-none ms-3 me-2 me-xl-3 ms-xl-4 text-white fs-16 f-600">{{ __("header.menu.contact") }}</a>
             </li>

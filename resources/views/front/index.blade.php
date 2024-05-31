@@ -251,7 +251,101 @@
 
     <!--Webinars-->
     @if ($webinars->count() > 0)
-        <div class="container mt-4 mt-lg-6 useful_articles overflow-auto">
+    <div class="container mt-4 mt-lg-6">
+        <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row ff">
+                <div>
+                    <h3 class="f-700 m-0">{{ __('index.new_courses') }}</h3>
+                </div>
+                <div class="ms-lg-4 mt-2 mt-lg-0">
+                    <a href="{{ route('course.index') }}" class="text-info text-decoration-underline">
+                        <p class="m-0 f-700 fs-16">{{ __('index.show_all') }}<i class="far fa-angle-right ms-2"></i>
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="slider_navigation AdditionsSwiper_nav mb-4 d-none d-md-flex flex-row-reverse">
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+        <div class="swiper AdditionsSwiper">
+            <div class="swiper-wrapper">
+                @foreach ($webinars as $webinar)
+                    @if ($webinar->info->enabled)
+                        <div class="swiper-slide">
+                            <a href="{{ route('course.show', $webinar->info->slug) }}" style="color: inherit"
+                                class="d-block bg-white br-12">
+                                <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}"
+                                    alt="addPic" style="width: 386px; height: 214px; object-fit: cover "
+                                    class="img-swip">
+                                <div class="p-3">
+                                    @if ($webinar->directions->first())
+                                        <p class="text-primary text-uppercase f-700 mt-2 fs-10">
+                                            {{ $webinar->directions->first()->title }}</p>
+                                    @endif
+                                    <p class="f-700 fs-16 min-h-75 courseTxt-index">{{ $webinar->info->title }}</p>
+                                    <div class="mt-2 d-flex justify-content-between">
+                                        <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
+                                            <span>
+                                                <i class="far fa-clock me-1"></i>
+                                                <span class="me-2 fs-14 f-500">{{ $webinar->getDuration() }}</span>
+                                            </span>
+                                            <span>
+                                                <i class="fas fa-tasks me-1"></i>
+                                                <span class="fs-14 f-500">{{ $webinar->webinars_count }}
+                                                    {{ __('index.video') }}</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-2 mb-1 align-items-center">
+                                        @if ($webinar->getLectors()->count() == 1)
+                                            <div class="d-flex align-items-center">
+                                                <img class="rounded-circle border-white me-3 img_r_42"
+                                                    src="{{ \Illuminate\Support\Facades\Storage::url($webinar->getLectors()->first()->lector->photo) }}"
+                                                    alt="videoPic">
+                                                <p class="m-0 f-500 fs-15 d-none d-sm-block">
+                                                    {{ $webinar->getLectors()->first()->userInfo->fullName }}</p>
+                                            </div>
+                                        @else
+                                            <div>
+                                                @foreach ($webinar->getLectors() as $k => $user)
+                                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($user->lector->photo ?? $user->userInfo->image) }}"
+                                                        class="@if ($k > 0) m-25 @endif me-1 rounded-circle img_r_42"
+                                                        alt="videoPic">
+                                                @endforeach
+
+                                            </div>
+                                        @endif
+                                        <span class="price_box d-flex flex-column" style="min-height: 50px">
+
+                                            @if ($webinar->sale)
+                                                <span
+                                                    class="f-700 text-primary fs-16 me-2 me-xl-0">{{ $webinar->sale->html() }}</span>
+                                                <span
+                                                    class="f-700 text-secondary del fs-16">{{ $webinar->price->html() }}</span>
+                                            @else
+                                                <span
+                                                    class="f-700 text-primary fs-16 me-1">{{ $webinar->price->html() }}</span>
+                                            @endif
+                                        </span>
+                                    </div>
+                                    <form method="POST" action="{{ route('addToCart') }}" class="buy_form">
+                                        @csrf
+                                        <input type="hidden" value="{{ $webinar->id }}" name="id">
+                                        <input type="hidden" value="course" name="type">
+                                        <button
+                                            class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __('index.buy_webinar') }}</button>
+                                    </form>
+                                </div>
+                            </a>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    </div>
+        {{-- <div class="container mt-4 mt-lg-6 useful_articles overflow-auto">
             <div class="d-flex justify-content-between">
                 <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row ">
                     <div>
@@ -337,7 +431,7 @@
                     @endforeach
                 </div>
             </div>
-        </div>
+        </div> --}}
     @endif
 
     {{--    NEW VIDEOS GRID --}}
