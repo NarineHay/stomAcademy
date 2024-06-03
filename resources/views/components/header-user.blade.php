@@ -56,7 +56,7 @@
                 <div class="offcanvas-header">
                     {{-- <h5 class="offcanvas-title" id="offcanvasScrollingLabel"></h5> --}}
                     <div style="width: 162px">
-                        <a href="/"><img class="w-100" src="/dist/image/logo-dark.png" alt="logoPic"></a>
+                        <a href="/"><img class="w-100" src="/dist/image/logo-dark.svg" alt="logoPic"></a>
                     </div>
                     {{-- <a href="/"><img src="/dist/image/logo-dark.png" alt="logoPic"></a> --}}
                     <button type="button" class="btn-close btn-close btn_close_for_menu" aria-label="Close"></button>

@@ -32,7 +32,7 @@
         <header class="position-relative headerBorder">
             <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-3 align-items-center">
                 <div style="width: 202px">
-                    <a href="/"><img class="w-100" src="/dist/image/logo.png" alt="logoPic"></a>
+                    <a href="/"><img class="w-100" src="/dist/image/logo.svg" alt="logoPic"></a>
                 </div>
 
                 <div class="d-flex align-items-center justify-content-between flex-row-reverse flex-lg-row">
@@ -91,7 +91,7 @@
         <header class="position-relative bg-primary ">
             <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-3 align-items-center">
                 <div style="width: 202px">
-                    <a href="/"><img class="w-100" src="/dist/image/logo.png" alt="logoPic"></a>
+                    <a href="/"><img class="w-100" src="/dist/image/logo.svg" alt="logoPic"></a>
                 </div>
                 <div class="d-flex align-items-center justify-content-between  flex-row-reverse flex-lg-row">
                     @include('front.components.header_menu')
@@ -131,7 +131,7 @@
         <header class="position-relative bg-primary ">
             <div class="container d-flex justify-content-between pt-lg-3 pt-2 p-3 align-items-center">
                 <div style="width: 202px">
-                    <a href="/"><img class="w-100" src="/dist/image/logo.png" alt="logoPic"></a>
+                    <a href="/"><img class="w-100" src="/dist/image/logo.svg" alt="logoPic"></a>
                 </div>
                 <div class="d-flex align-items-center justify-content-between  flex-row-reverse flex-lg-row">
                     @include('front.components.header_menu')
@@ -152,7 +152,7 @@
             <div class="row footer-border-bottom">
                 <div class="col-12 col-lg-3 mt-5 mt-lg-6 mb-2 mb-md-3 fs-12">
                     <div style="width: 202px">
-                        <a href="/"><img class="w-100" src="/dist/image/logo.png" alt="logoPic"></a>
+                        <a href="/"><img class="w-100" src="/dist/image/logo.svg" alt="logoPic"></a>
                     </div>
                     {{-- <a href="/"><img src="/dist/image/logo.png" alt="footerLogoPic"></a> --}}
                     <p class="mt-3 fs-12">
