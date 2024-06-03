@@ -8,7 +8,7 @@
     <div class="bg-white d-flex justify-content-center flex-column align-items-center br-12 p-4">
         @if (request()->routeIs('login'))
             <div class="mb-3" style="width: 202px">
-                <a href="/"><img class="w-100" src="/dist/image/logo-dark.png" alt="logoPic"></a>
+                <a href="/"><img class="w-100" src="/dist/image/logo-dark.svg" alt="logoPic"></a>
             </div>
         @endif
     <p class="fs-20 f-600 text-center text-dark m-0">{{ __("header.form.title") }} </p>
@@ -21,7 +21,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <label for="exampleInputPassword1"
                    class="mb-1 text-secondary f-500 fs-12 m-0">{{ __("header.form.password") }}</label>
-            <span class="text-primary fs-12 f-500 m-0">{{ __("header.form.password_forget") }}</span>
+            <a href="{{ route('password.request') }}"><span class="text-primary fs-12 f-500 m-0">{{ __("header.form.password_forget") }}</span></a>
         </div>
         <div class="position-relative password_container">
             <input wire:model="password" type="password" class="form-control br-12" id="exampleInputPassword1">

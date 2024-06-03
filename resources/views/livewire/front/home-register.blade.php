@@ -1,7 +1,7 @@
 <div class="bg-white d-flex justify-content-center flex-column align-items-center br-12 p-4">
     @if (request()->routeIs('register'))
         <div class="mb-3" style="width: 202px">
-            <a href="/"><img class="w-100" src="/dist/image/logo-dark.png" alt="logoPic"></a>
+            <a href="/"><img class="w-100" src="/dist/image/logo-dark.svg" alt="logoPic"></a>
         </div>
     @endif
     <p class="fs-20 f-600 text-center text-dark m-0">{{ __('header.form.register') }}</p>
