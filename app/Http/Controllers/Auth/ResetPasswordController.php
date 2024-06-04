@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ResetPasswordController extends Controller
 {
@@ -27,14 +30,33 @@ class ResetPasswordController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-    protected function redirectTo()
+
+
+    public function reset(Request $request)
+    {
+
+        $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return back()->withErrors(['email' => 'No user found with this email address.']);
+        }
+
+        $user->password = $request->password;
+        $user->save();
+
+        Auth::login($user);
+
+        return response()->redirectTo($this->redirectPath());
+    }
+
+    protected function redirectPath()
     {
         return route('personal.index');
     }
-
-    // function redirectPath()
-    // {
-
-    //     return route('personal.index');
-    // }
 }
