@@ -43,6 +43,11 @@ class User extends Authenticatable
             set: fn ($value) => Hash::make($value),
         );
     }
+    // protected function password()
+    // {
+    //     return Hash::make($value),
+    //     );
+    // }
 
     function userinfo(){
         return $this->hasOne(UserInfo::class,"user_id","id");
