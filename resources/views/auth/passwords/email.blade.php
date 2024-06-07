@@ -48,10 +48,10 @@
 {{-- ==================================== --}}
 <div class="container">
     @if (session('status'))
-    <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-    </div>
-@endif
+        <div class="alert alert-success mt-2" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
     <div class="d-flex justify-content-center" style="padding: 80px 0 80px;">
 
         <div class="bg-white d-flex justify-content-center flex-column align-items-center br-12 p-4">

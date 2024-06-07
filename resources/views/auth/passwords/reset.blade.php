@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -61,5 +61,67 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
+    <div class="container">
+        <div class="d-flex justify-content-center" style="padding: 80px 0 80px;">
+            <div class="bg-white d-flex justify-content-center flex-column align-items-center br-12 p-4">
+                <div class="mb-3" style="width: 202px">
+                    <a href="/"><img class="w-100" src="/dist/image/logo-dark.svg" alt="logoPic"></a>
+                </div>
+                <p class="fs-20 f-600 text-center text-dark m-0">{{ __('header.form.register') }}</p>
+                <form method="post" action="{{route('password.update')}}">
+                    @csrf
+                    <input type="hidden" name="token" value="{{ $token }}">
+
+                    <div class="form-group w-100">
+                        <label for="exampleInputEmail1"
+                            class="mt-2 mb-1 text-secondary f-500 fs-12 m-0">{{ __('header.form.email') }}</label><span class="text-danger">*</span>
+                        <input type="email" name="email" class="form-control text-secondary br-12" id="exampleInputEmail1" required autocomplete="email" autofocus
+                            aria-describedby="emailHelp" value="{{$email ?? old('email')}}">
+                        @error('email')
+                            <span class="error text-danger fs-12">{{ $message }}</span>
+                        @enderror
+
+                    </div>
+
+
+                    <div class="form-group mt-2 mb-2 w-100">
+                        {{-- <div class="d-flex justify-content-between align-items-center"> --}}
+                            <label for="exampleInputPassword1"
+                                class="mb-1 text-secondary f-500 fs-12 m-0">{{ __('header.form.password') }}</label><span class="text-danger">*</span>
+                        {{-- </div> --}}
+                        <div class="position-relative password_container">
+                            <input name="password" type="password" class="form-control br-12" id="exampleInputPassword1">
+                            <i class="fal fa-eye text-secondary position-absolute top-0 end-0 mt-2 me-2 cursor"></i>
+                            <i class="fal eye fa-eye-slash text-secondary position-absolute top-0 end-0 mt-2 me-2 cursor"></i>
+                        </div>
+                        @error('password')
+                            <span class="error text-danger fs-12">{{ $message }}</span>
+                        @enderror
+
+                    </div>
+                    <div class="form-group mt-2 mb-2 w-100">
+                        {{-- <div class="d-flex justify-content-between align-items-center"> --}}
+                            <label for="exampleInputPassword2"
+                                class="mb-1 text-secondary f-500 fs-12 m-0">{{ __('header.form.password_re') }}</label><span class="text-danger">*</span>
+                            {{--                    <span class="text-primary fs-12 f-500 m-0">{{ __("header.form.password_forget") }}</span> --}}
+                        {{-- </div> --}}
+                        <div class="position-relative password_container">
+                            <input name="password_confirmation" type="password" class="form-control br-12"
+                                id="exampleInputPassword2" required autocomplete="new-password">
+                            <i class="fal fa-eye text-secondary position-absolute top-0 end-0 mt-2 me-2 cursor"></i>
+                            <i class="fal eye fa-eye-slash text-secondary position-absolute top-0 end-0 mt-2 me-2 cursor"></i>
+                        </div>
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-primary mt-3 w-100 fs-14 f-600 py-2 br-12">{{ __('header.form.register') }}</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
 @endsection
