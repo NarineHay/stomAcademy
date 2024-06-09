@@ -1,0 +1,14 @@
+.about-course-txt p
+{
+    font-size: 15px !important;
+    font-weight: 500!important;
+    margin-bottom: 5px !important;
+}
+
+.courses-show-div .div-menu-2:before {
+    opacity: .7 !important;
+}
+
+.backgraund-wite{
+    height: unset !important;
+}

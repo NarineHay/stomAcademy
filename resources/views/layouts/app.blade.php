@@ -17,9 +17,13 @@
     <link rel="stylesheet" href="/dist/icon-moon.css">
     <link rel="stylesheet" href="/dist_plyr/plyr.css">
     <link rel="stylesheet" href="/dist/new.css">
+
     @vite(['resources/sass/lib.scss', 'resources/js/script.js'])
+    <link rel="stylesheet" href="/dist/css/index.css">
+
     @livewireStyles
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script async src="https://www.google.com/recaptcha/api.js"></script>
     @yield('header-script')
 
@@ -257,7 +261,8 @@
 
     {{-- MODAL Lector --}}
 
-    <div class="modal fade" id="lectorModal" tabindex="-1" aria-labelledby="lectorModalLabel" aria-hidden="true">888888
+    <div class="modal fade" id="lectorModal" tabindex="-1" aria-labelledby="lectorModalLabel" aria-hidden="true">
+        888888
         <div class="modal-dialog">
             <livewire:front.become-lector />
         </div>
@@ -291,25 +296,20 @@
     <script src="/dist_plyr/plyr.js"></script>
 
     <script type="text/javascript">
+        // $(function() {
+        //     $('body').on("click", ".btn-refresh", function(){
+        //             console.log(88877777);
+        //           $.ajax({
+        //              type:'GET',
+        //              url:'/refresh-captcha',
+        //              success:function(data){
+        //                 $(".captcha span").html(data.captcha);
+        //              }
+        //           });
+        //         });
 
-
-
-// $(function() {
-//     $('body').on("click", ".btn-refresh", function(){
-//             console.log(88877777);
-//           $.ajax({
-//              type:'GET',
-//              url:'/refresh-captcha',
-//              success:function(data){
-//                 $(".captcha span").html(data.captcha);
-//              }
-//           });
-//         });
-
-//             })
-
-
-        </script>
+        //             })
+    </script>
     <script>
         // const players = Plyr.setup('.js-player');
         const player = new Plyr('#player', {

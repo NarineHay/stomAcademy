@@ -66,7 +66,7 @@ class CartController extends Controller
             $result = YooKassa::createOrder($request->get("promo"), 'cart', null);
         }
         else{
-        
+
 
             // if (Currency::getCur() == 'UAH') {
             //     // $this->setCookie();
