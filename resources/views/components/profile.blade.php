@@ -43,7 +43,7 @@
             <i class="fal fa-comment me-2"></i>
             <a href="{{route('personal.help')}}" class="text-decoration-none text-black fs-14 f-500">{{__('profile.profile.support')}} </a>
         </div>
-        <div class="d-flex mb-4 mt-4">
+        <div class="d-flex mb-2 mt-4">
             <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <i class="fal fa-sign-out"></i>

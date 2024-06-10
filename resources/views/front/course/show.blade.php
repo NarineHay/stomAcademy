@@ -14,7 +14,7 @@
                         <a><span class="fs-12 f-500 m-0">{{ $course->info->title}}</span></a>
                     </div>
                     <div class="d-block d-lg-none pt-4">
-                        <div class="about-course1">
+                        <div class="about-course1 pb-4">
                             <h1 class="text-white fw-bolder fs-24 lh-30">{{ $course->info->title }}</h1>
                             @if($course->webinars)
                                 <p class="text-white fs-13"> {{ __("courses.under_title",['count' => $course->webinars->count()]) }}</p>
@@ -62,12 +62,12 @@
             </div>
 
             <div class="main2">
-                <div class="backgraund-wite"
+                <div class="backgraund-wite "
                      style="width: 100%; background: white;">
-                    <div class="container eng-doctors-txt sss" style="background: white">
+                    <div class="container eng-doctors-txt sss pb-1" style="background: white">
                         <div class="row  bg-white">
                             <div class="d-none d-lg-block col-12 col-lg-8">
-                                <div class="about-course1">
+                                <div class="about-course1 pb-4 h-auto">
                                     <h1 class="text-primary fw-bolder fs-30 lh-40">{{ $course->info->title }}</h1>
                                     @if($course->webinars)
                                         <p>{{ __("courses.under_title",['count' => $course->webinars->count()]) }}</p>
@@ -281,16 +281,16 @@
                     </div>
                 </div>
 
-                <div class="container eng-doctors-txt sss">
+                <div class="container eng-doctors-txt pb-1 sss">
                     <div class="row">
                         <div class=" d-lg-block col-12 col-lg-8">
 
                             @if($course->info->description != null && $course->info->description != '<p><br></p>')
-                                <div class="about-course-txt d-lg-block d-none">
+                                <div class="about-course-txt d-lg-block d-none" >
                                     <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
-                                    <p class="fs-16 lh-27 f-500 mb-0">
+                                    {{-- <p class="fs-16 lh-27 f-500 mb-0 new-style" style="font-weight: 400 !important; font-size: 15px"> --}}
                                         {!! $course->info->description !!}
-                                    </p>
+                                    {{-- </p> --}}
                                 </div>
                             @endif
                             @if(!$course->webinars)
@@ -357,39 +357,42 @@
                             @endif
 
                         </div>
+                        @if (isset($course->info->description))
+                            <div class="col-12 d-block d-lg-none">
+                                {{-- <div class="section-menu d-block d-lg-none mt-4">
+                                    <ul class="pb-3">
+                                        <li><a href="#about-course-txt"
+                                            class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.about") }}</a>
+                                        </li>
+                                        <li><a href="#course-program"
+                                            class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.program") }}</a>
+                                        </li>
+                                        <li><a href="#lectors"
+                                            class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.lectors") }}</a></li>
+                                        <li><a href="#registration"
+                                            class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.register") }}</a>
+                                        </li>
+                                        <li><a href="#faq"
+                                            class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.faq") }}</a>
+                                        </li>
+                                        <li><a href="#other-courses"
+                                            class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.other") }}</a>
+                                        </li>
+                                        <li><a href="#contacts"
+                                            class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.contacts") }}</a></li>
+                                    </ul>
 
-                        <div class="col-12 d-block d-lg-none">
-                            <div class="section-menu d-block d-lg-none mt-4">
-                                <ul class="pb-3">
-                                    <li><a href="#about-course-txt"
-                                           class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.about") }}</a>
-                                    </li>
-                                    <li><a href="#course-program"
-                                           class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.program") }}</a>
-                                    </li>
-                                    <li><a href="#lectors"
-                                           class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.lectors") }}</a></li>
-                                    <li><a href="#registration"
-                                           class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.register") }}</a>
-                                    </li>
-                                    <li><a href="#faq"
-                                           class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.faq") }}</a>
-                                    </li>
-                                    <li><a href="#other-courses"
-                                           class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.other") }}</a>
-                                    </li>
-                                    <li><a href="#contacts"
-                                           class="fs-14 lh-17 color-23 f-500">{{ __("courses.menu.contacts") }}</a></li>
-                                </ul>
+                                </div> --}}
+                                <div id="about-course-txt" class="about-course-txt d-block d-lg-none mt-4">
+                                    <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
+                                    <p class="fs-16 lh-27 f-500">
+                                        {!! $course->info->description !!}
+                                    </p>
+                                </div>
+                            </div>
 
-                            </div>
-                            <div id="about-course-txt" class="about-course-txt d-block d-lg-none mt-4">
-                                <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
-                                <p class="fs-16 lh-27 f-500">
-                                    {!! $course->info->description !!}
-                                </p>
-                            </div>
-                        </div>
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -667,7 +670,7 @@
                             <div
                                 class="lector-cards row">
                                 @foreach($course->getLectors() as $lector)
-                                    <div class="card1 col-12 col-lg-4">
+                                    <div class="card1 col-6 col-lg-4 col-sm-6  ">
                                         <a href="{{ route("lectors.show",$lector->userInfo->slug) }}"
                                            class="card br-12 mb-3 text-dark">
                                             <div class="row g-0">
@@ -1020,4 +1023,9 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--    @endif--}}
+<script>
+    CKEDITOR.replace('editor1', {
+        customConfig: '{{ asset("dist/css/index.css") }}'
+    });
+</script>
 @endsection

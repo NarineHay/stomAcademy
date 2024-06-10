@@ -255,10 +255,10 @@
         <div class="d-flex justify-content-between">
             <div class="d-flex align-items-lg-end mb-4 flex-column flex-lg-row ff">
                 <div>
-                    <h3 class="f-700 m-0">{{ __('index.new_courses') }}</h3>
+                    <h3 class="f-700 m-0">{{ __('index.lectia') }}</h3>
                 </div>
                 <div class="ms-lg-4 mt-2 mt-lg-0">
-                    <a href="{{ route('course.index') }}" class="text-info text-decoration-underline">
+                    <a href="{{ route('webinar.index') }}" class="text-info text-decoration-underline">
                         <p class="m-0 f-700 fs-16">{{ __('index.show_all') }}<i class="far fa-angle-right ms-2"></i>
                         </p>
                     </a>
@@ -274,7 +274,7 @@
                 @foreach ($webinars as $webinar)
                     @if ($webinar->info->enabled)
                         <div class="swiper-slide">
-                            <a href="{{ route('course.show', $webinar->info->slug) }}" style="color: inherit"
+                            <a href="{{ route('webinar.show', $webinar->info->slug) }}" style="color: inherit"
                                 class="d-block bg-white br-12">
                                 <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}"
                                     alt="addPic" style="width: 386px; height: 214px; object-fit: cover "
@@ -333,7 +333,7 @@
                                     <form method="POST" action="{{ route('addToCart') }}" class="buy_form">
                                         @csrf
                                         <input type="hidden" value="{{ $webinar->id }}" name="id">
-                                        <input type="hidden" value="course" name="type">
+                                        <input type="hidden" value="webinar" name="type">
                                         <button
                                             class="btn btn-primary w-100 f-600 br-12 mt-3 py-2 fs-14">{{ __('index.buy_webinar') }}</button>
                                     </form>
