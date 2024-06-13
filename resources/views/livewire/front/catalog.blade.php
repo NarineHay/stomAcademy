@@ -83,7 +83,7 @@
                                         <li>
                                             <input wire:model="selectedDirections" type="checkbox"
                                                    id="dir-{{ $direction->id }}" value="{{ $direction->id }}"
-                                                   class="mt-2">
+                                                   class="form-check-input">
                                             <label for="dir-{{ $direction->id }}"
                                                    class="f-500 fs-14">{{ $direction->title }}</label><br>
                                         </li>
@@ -268,7 +268,7 @@
                                     <li>
 {{--                                        @if($direction->id != null)--}}
                                         <input wire:model="selectedDirections" type="checkbox"
-                                               id="dir-{{ $direction->id }}" value="{{ $direction->id }}" class="mt-2">
+                                               id="dir-{{ $direction->id }}" value="{{ $direction->id }}" class=" form-check-input">
                                         <label for="dir-{{ $direction->id }}"
                                                class="f-500 fs-14">{{ $direction->title }}</label><br>
 {{--                                        @endif--}}

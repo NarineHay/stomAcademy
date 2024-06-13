@@ -99,7 +99,7 @@
                                            type="checkbox"
                                            id="dir-{{ $direction->id }}"
                                            value="{{ $direction->id }}"
-                                           class="cursor mt-2">
+                                           class="cursor mt-2 form-check-input">
                                     <label for="dir-{{ $direction->id }}" class="f-500 cursor fs-16">{{ $direction->title }}</label><br>
                                 </li>
                             @endforeach

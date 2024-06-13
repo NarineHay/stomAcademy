@@ -104,7 +104,7 @@
                             <ul class="list-unstyled m-0 p-0">
                                 @foreach($directions as $direction)
                                     <li>
-                                        <input wire:model="selectedDirections" type="checkbox" id="dir-{{ $direction->id }}" value="{{ $direction->id }}" class="mt-2">
+                                        <input wire:model="selectedDirections" type="checkbox" id="dir-{{ $direction->id }}" value="{{ $direction->id }}" class=" form-check-input">
                                         <label for="dir-{{ $direction->id }}" class="f-500 fs-14">{{ $direction->title }}</label><br>
                                     </li>
                                 @endforeach
@@ -116,9 +116,9 @@
                     <label class="f-600 fs-16 d-flex justify-content-between align-items-center fg-label cursor" data-bs-toggle="collapse" data-bs-target="#fg-3"><span>Оплата</span><i class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-3">
                         <div class="mt-2">
-                            <input type="checkbox" id="vehicle13" name="vehicle1" class="mt-2 cursor">
+                            <input type="checkbox" id="vehicle13" name="vehicle1" class="cursor form-check-input">
                             <label for="vehicle13" class="f-500 fs-14 cursor">Оплаченный</label><br>
-                            <input type="checkbox" id="vehicle14" name="vehicle2" class="mt-2 cursor">
+                            <input type="checkbox" id="vehicle14" name="vehicle2" class="cursor form-check-input">
                             <label for="vehicle14" class="f-500 fs-14 cursor">Бесплатно</label><br>
                         </div>
 
@@ -129,7 +129,7 @@
                     <div class="collapse show" id="fg-2">
                         <div class="mt-2">
                             @foreach($lectors as $user)
-                                <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}" value="{{ $user->id }}" class="mt-2 cursor">
+                                <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}" value="{{ $user->id }}" class="cursor form-check-input">
                                 <label for="lec-{{ $user->id }}" class="f-500 fs-14 cursor">{{ $user->userInfo->fullName }}</label><br>
                             @endforeach
                         </div>

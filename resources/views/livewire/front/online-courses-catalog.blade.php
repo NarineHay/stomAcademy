@@ -115,7 +115,7 @@
                                 @foreach($directions as $direction)
                                     <li>
                                         <input wire:model="selectedDirections" type="checkbox" id="dir-{{ $direction->id }}"
-                                               value="{{ $direction->id }}" class="mt-2">
+                                               value="{{ $direction->id }}" class=" form-check-input">
                                         <label for="dir-{{ $direction->id }}"
                                                class="f-500 fs-14">{{ $direction->title }}</label><br>
                                     </li>
@@ -130,9 +130,9 @@
                             class="fal fa-angle-right"></i></label>
                     <div class="collapse show" id="fg-3">
                         <div class="mt-2">
-                            <input type="checkbox" id="vehicle13" name="vehicle1" class="mt-2 cursor">
+                            <input type="checkbox" id="vehicle13" name="vehicle1" class="cursor form-check-input">
                             <label for="vehicle13" class="f-500 fs-14 cursor">Оплаченный</label><br>
-                            <input type="checkbox" id="vehicle14" name="vehicle2" class="mt-2 cursor">
+                            <input type="checkbox" id="vehicle14" name="vehicle2" class="cursor form-check-input">
                             <label for="vehicle14" class="f-500 fs-14 cursor">Бесплатно</label><br>
                         </div>
 
@@ -146,7 +146,7 @@
                         <div class="mt-2">
                             @foreach($lectors as $user)
                                 <input wire:model="selectedLectors" type="checkbox" id="lec-{{ $user->id }}"
-                                       value="{{ $user->id }}" class="mt-2 cursor">
+                                       value="{{ $user->id }}" class="cursor form-check-input">
                                 <label for="lec-{{ $user->id }}" class="f-500 fs-14 cursor">{{$user->name}}</label><br>
                             @endforeach
                         </div>

@@ -1,14 +1,24 @@
+body{
+    font-family: Gilroy !important;
+}
 .about-course-txt p
 {
     font-size: 15px !important;
-    font-weight: 500!important;
+    font-weight: 400!important;
     margin-bottom: 5px !important;
 }
 
 .courses-show-div .div-menu-2:before {
-    opacity: .7 !important;
+    opacity: 0.7 !important;
 }
 
 .backgraund-wite{
     height: unset !important;
+}
+
+/* .eng-doctors-txt{
+    min-height: 200px;
+} */
+.course_card_static{
+    margin-top: -206px !important;
 }
