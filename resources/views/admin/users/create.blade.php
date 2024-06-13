@@ -89,7 +89,7 @@
                         @foreach($directions as $direction)
                             <li>
                                 <label class="form-check-label">
-                                    <input @if(old('directions') && in_array($direction->id,old('directions'))) checked @endif type="checkbox" value="{{$direction->id}}" class="mr-2" name="direction[]">
+                                    <input @if(old('directions') && in_array($direction->id,old('directions'))) checked @endif type="checkbox" value="{{$direction->id}}" class="mr-2 " name="direction[]">
                                         <span>{{$direction->title}}</span>
                                 </label>
                             </li>
