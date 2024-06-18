@@ -26,7 +26,7 @@
 {{--            <i class="fal fa-comment me-2"></i>--}}
 {{--            <a href="{{route('lector.chats')}}" class="text-decoration-none text-black fs-14 f-500">Поддержка</a>--}}
 {{--        </div>--}}
-        <div class="d-flex mb-4 mt-4">
+        <div class="d-flex mb-5 mt-4">
             <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <i class="fal fa-sign-out"></i>
