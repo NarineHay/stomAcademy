@@ -1,0 +1,14 @@
+.courses-show-div .main2 .course_card_static {
+    margin-top: -150px;
+    position: absolute;
+    width: 100%;
+    z-index: 1000 !important;
+}
+
+@media(max-width: 767px){
+    .courses-show-div .many-lector .card .image{
+        height: 220px !important;
+    }
+
+}
+

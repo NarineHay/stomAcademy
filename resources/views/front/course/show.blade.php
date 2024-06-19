@@ -1,4 +1,7 @@
 @extends("layouts.app")
+@section('header-script')
+    <link rel="stylesheet" href="/css/courses.css">
+@endsection
 
 @section("content")
     <div class="w-100 overflow-hidden ">
@@ -287,7 +290,7 @@
 
                             @if($course->info->description != null && $course->info->description != '<p><br></p>')
                                 <div class="about-course-txt d-lg-block d-none" >
-                                    <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
+                                    <h2 class="f-700 fs-32 lh-40 mt-3">{{ __("courses.desc_title") }}</h2>
                                     {{-- <p class="fs-16 lh-27 f-500 mb-0 new-style" style="font-weight: 400 !important; font-size: 15px"> --}}
                                         {!! $course->info->description !!}
                                     {{-- </p> --}}
@@ -400,54 +403,98 @@
                                 <form action="{{ route('addManyToCart') }}" method="POST">
                                     @csrf
                                     @foreach($course->webinars_object as $k => $webinar)
-                                        <div
-                                            class="d-flex justify-content-between align-items-md-center flex-column flex-md-row w-100 py-2 course_item">
-                                            <div class="d-flex" style="flex:0 0 30%">
-                                                <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
-                                                <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>
-                                            </div>
-                                            <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">
-                                                <img
-                                                    src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"
-                                                    class="me-2 videoPic img_r_42 rounded-5"
-                                                    alt="videoPic">
-                                                <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>
-                                            </div>
-                                            <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">
-                                                <i class="far fa-clock me-1"></i>
-                                                <span
-                                                    class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
-                                            </div>
-                                            <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between"
-                                                 style="flex:0 0 10%">
-                                                @if($webinar->sale)
-                                                    <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
-                                                       style="gap: 5px">
-                                                        <span>{{ $webinar->sale->html() }} </span>
-                                                        <del
-                                                            class="fs-16 f-700 align-middle strikethrough">{{ $webinar->price->html() }}</del>
-                                                    </p>
-                                                @else
-                                                    <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
-                                                       style="gap: 5px">
-                                                        <span>{{ $webinar->price->html() }}</span>
-                                                    </p>
-                                                @endif
-                                                {{--                                                <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>--}}
+                                        <div class="d-none d-lg-block d-sm-none">
+                                            <div
+
+                                                class="d-flex justify-content-between align-items-md-center flex-column flex-md-row w-100 py-2 course_item  ">
+                                                <div class="d-flex" style="flex:0 0 30%">
+                                                    <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
+                                                    <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>
+                                                </div>
+                                                <div class="d-flex align-items-center mt-3 mt-md-0" style="flex:0 0 30%">
+                                                    <img
+                                                        src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"
+                                                        class="me-2 videoPic img_r_42 rounded-5"
+                                                        alt="videoPic">
+                                                    <p class="m-0 f-500 fs-14 color-23 lh-17">{{ $webinar->user->userInfo->fullName }}</p>
+                                                </div>
+                                                <div class="d-flex d-none d-lg-block" style="flex:0 0 20%">
+                                                    <i class="far fa-clock me-1"></i>
+                                                    <span
+                                                        class="me-2 f-500 f-14">{{ $webinar->getDuration() }}</span>
+                                                </div>
+                                                <div class="d-flex align-items-center mt-4 mt-md-0 justify-content-between"
+                                                    style="flex:0 0 10%">
+                                                    @if($webinar->sale)
+                                                        <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
+                                                        style="gap: 5px">
+                                                            <span>{{ $webinar->sale->html() }} </span>
+                                                            <del
+                                                                class="fs-16 f-700 align-middle strikethrough">{{ $webinar->price->html() }}</del>
+                                                        </p>
+                                                    @else
+                                                        <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
+                                                        style="gap: 5px">
+                                                            <span>{{ $webinar->price->html() }}</span>
+                                                        </p>
+                                                    @endif
+                                                    {{--                                                <p class="m-0 f-700 fs-16 text-primary pe-3">{{ $webinar->price->html() }}</p>--}}
 
 
-                                                <input name="item_id[]" value="{{ $webinar->id }}" type="checkbox" class="form-check-input"
-                                                       data-price="{{ $webinar->sale ? $webinar->sale->pure() : $webinar->price->pure() }}">
+                                                    <input name="item_id[]" value="{{ $webinar->id }}" type="checkbox" class="form-check-input"
+                                                        data-price="{{ $webinar->sale ? $webinar->sale->pure() : $webinar->price->pure() }}">
+                                                </div>
                                             </div>
                                         </div>
+                                         {{-- ================ for xs block ======================= --}}
+                                         <div class="d-lg-none ">
+                                            <div
+                                            class="d-flex justify-content-between align-items-md-center flex-column flex-md-row w-100 py-2 course_item ">
+                                                <div class="d-flex w-100 justify-content-between ">
+                                                    <div class="d-flex">
+                                                        <p class="fs-16 f-500 m-0 color-23">{{ $k + 1 }}</p>
+                                                        <p class="fs-16 f-700 ms-4 m-0 lh-20 color-23 d-flex flex-wrap">{!! $webinar->directions->map(function ($d){ return $d->title; })->join(",<br>")  !!}</p>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mt-md-0 ">
+                                                        <img
+                                                            src="{{ \Illuminate\Support\Facades\Storage::url($webinar->user->lector->photo) }}"
+                                                            class="videoPic img_r_42 rounded-5"
+                                                            alt="videoPic">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="d-flex w-100 align-items-center mt-3 mt-md-0 justify-content-between"
+                                                    >
+                                                    @if($webinar->sale)
+                                                        <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
+                                                            style="gap: 5px">
+                                                            <span>{{ $webinar->sale->html() }} </span>
+                                                            <del
+                                                                class="fs-16 f-700 align-middle strikethrough">{{ $webinar->price->html() }}</del>
+                                                        </p>
+                                                    @else
+                                                        <p class="m-0 f-700 fs-16 text-primary pe-3 d-flex align-items-center"
+                                                            style="gap: 5px">
+                                                            <span>{{ $webinar->price->html() }}</span>
+                                                        </p>
+                                                    @endif
+
+                                                    <input name="item_id[]" value="{{ $webinar->id }}" type="checkbox" class="form-check-input me-2"
+                                                            data-price="{{ $webinar->sale ? $webinar->sale->pure() : $webinar->price->pure() }}">
+                                                </div>
+                                            </div>
+                                         </div>
+                                         {{-- ===================================================== --}}
                                     @endforeach
                                 </form>
                             </div>
-                            <div class="modal-footer d-none">
+                            <div class="modal-footer justify-content-between justify-content-lg-end justify-content-md-end">
                                 <h5><span class="me-2">{{ __("courses.total") }} (<span class="co">0</span>)</span><span
-                                        class="total"></span> <i class="icon-{{ \App\Helpers\TEXT::curHtml() }}"></i>
+                                    class="total"></span> <i class="icon-{{ \App\Helpers\TEXT::curHtml() }}"></i>
                                 </h5>
                                 <button class="btn btn-primary buyButton">{{ __("index.buy_webinar") }}</button>
+
                             </div>
                         </div>
                     </div>

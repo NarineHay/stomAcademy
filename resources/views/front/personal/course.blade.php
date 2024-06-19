@@ -2,7 +2,7 @@
 
 @section("profile-content")
     <div class="d-flex flex-row">
-        <div class="py-5 py-lg-6 px-4 mt-0 min-width-class">
+        <div class="py-4 py-lg-6 px-lg-4 mt-0 min-width-class">
             <p class="m-0 f-500 fs-14 cursor">
                 <a class="text-black" href="{{ route("personal.courses") }}"><i
                         class="fal fa-arrow-left me-3"></i>{{ __("profile.courses.back") }}</a></p>
@@ -31,7 +31,7 @@
 
 
             </div>
-            <div class="mt-lg-4 mt-6 pt-6 pt-lg-0">
+            <div class="mt-lg-4 mt-4 pt-5 pt-lg-0">
                 <div>
                     <p class="m-0 text-primary fs-10 f-700">{{ $webinar->directions->map(function ($item){ return $item->title; })->join(", ") }}</p>
                     <p class="m-0 fs-24 f-700 mt-2">{{ $webinar->info->title }}</p>
@@ -62,8 +62,8 @@
                     <h4 class="mb-0 f-700" style="padding-left:30px;padding-right: 30px ">Лекции из курса.</h4>
                 @endif
                 @foreach($other_webinars as $k => $webinar)
-                    <a href="{{ route("personal.courses.show",$webinar->id) }}" style="color: inherit"
-                       class="col-12 md-sm-0 my-2">
+                    <a href="{{ route("personal.courses.show",$webinar->id) }}" style="color: inherit;margin-top:18px; margin-bottom:18px"
+                       class="col-12 md-sm-0" >
                         <div class="d-flex justify-content-between align-items-center py-2 px-3 fs-14 bg-white" style="border-radius: 10px">
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" alt="addPic"
                                  style="width: 60px; height: 40px; object-fit: cover " class="img-swip">

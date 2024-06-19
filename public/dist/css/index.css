@@ -22,3 +22,15 @@ body{
 .course_card_static{
     margin-top: -206px !important;
 }
+
+.btn-primary:hover{
+    color: #fff ;
+    background-color: #0094FF ;
+    border-color: #0094FF ;
+}
+
+.btn-reg:hover{
+    color: #191F70 !important;
+    background-color: #fff !important;
+    border-color: #fff ;
+}
