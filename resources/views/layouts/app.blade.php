@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="/dist/icon-moon.css">
     <link rel="stylesheet" href="/dist_plyr/plyr.css">
     <link rel="stylesheet" href="/dist/new.css">
+    <link rel="stylesheet" href="/css/catalog.css">
+
+
 
     @vite(['resources/sass/lib.scss', 'resources/js/script.js'])
     <link rel="stylesheet" href="/dist/css/index.css">
