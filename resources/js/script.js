@@ -326,14 +326,16 @@ document.querySelectorAll("form").forEach(function (form){
         form.addEventListener("submit",function (e){
             e.preventDefault();
             let formData = new FormData(form);
+            console.log(111222333)
             showLoader()
             axios.post(form.getAttribute("action"), formData)
                 .then(response => {
                     // console.log(response.data);
-                    // hideLoader();
+                    hideLoader();
                     cartSuccessModal.show();
                 })
                 .catch(error => {
+                    hideLoader();
                     let error_obj = error.toJSON();
                     if(error_obj.status == 401){
                         location.href = "/login";
