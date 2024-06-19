@@ -1,4 +1,7 @@
 @extends("layouts.app")
+@section('header-script')
+    <link rel="stylesheet" href="/css/courses.css">
+@endsection
 
 @section("content")
     <div class="w-100 overflow-hidden ">
@@ -287,7 +290,7 @@
 
                             @if($course->info->description != null && $course->info->description != '<p><br></p>')
                                 <div class="about-course-txt d-lg-block d-none" >
-                                    <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
+                                    <h2 class="f-700 fs-32 lh-40 mt-3">{{ __("courses.desc_title") }}</h2>
                                     {{-- <p class="fs-16 lh-27 f-500 mb-0 new-style" style="font-weight: 400 !important; font-size: 15px"> --}}
                                         {!! $course->info->description !!}
                                     {{-- </p> --}}

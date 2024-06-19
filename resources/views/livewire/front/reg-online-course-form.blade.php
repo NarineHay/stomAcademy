@@ -43,7 +43,7 @@
             <h5 class="text-center text-secondary my-3">{{ __("courses.contacts.form.email_sent") }}</h5>
         @endif
         <button type="submit"
-            class="btn btn-outline-primary w-100 fs-18 f-600 br-12 lh-23 text-white py-3 mt-3"
+            class="btn btn-outline-primary btn-reg w-100 fs-18 f-600 br-12 lh-23 text-white py-3 mt-3"
             style="background-color: #5CB0FF;">{{ __("courses.reg.form.button") }}
         </button>
     </form>

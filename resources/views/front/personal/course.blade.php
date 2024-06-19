@@ -62,8 +62,8 @@
                     <h4 class="mb-0 f-700" style="padding-left:30px;padding-right: 30px ">Лекции из курса.</h4>
                 @endif
                 @foreach($other_webinars as $k => $webinar)
-                    <a href="{{ route("personal.courses.show",$webinar->id) }}" style="color: inherit"
-                       class="col-12 md-sm-0" style="margin-top: 18px, margin-bottom: 18px">
+                    <a href="{{ route("personal.courses.show",$webinar->id) }}" style="color: inherit;margin-top:18px; margin-bottom:18px"
+                       class="col-12 md-sm-0" >
                         <div class="d-flex justify-content-between align-items-center py-2 px-3 fs-14 bg-white" style="border-radius: 10px">
                             <img src="{{ \Illuminate\Support\Facades\Storage::url($webinar->image) }}" alt="addPic"
                                  style="width: 60px; height: 40px; object-fit: cover " class="img-swip">
