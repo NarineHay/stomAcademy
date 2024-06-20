@@ -100,7 +100,7 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        dd(11);
+     
         $cart = new Cart();
         $cart->user_id = Auth::user()->id;
         $cart->item_id = $request->get('id');

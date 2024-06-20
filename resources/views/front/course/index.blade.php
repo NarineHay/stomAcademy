@@ -6,8 +6,8 @@
             <livewire:front.catalog type="courses" />
         </div>
     </div>
-    <div id="loader">
-        <span class="loader"></span>
+    <div id="cart-loader">
+        <span class="cart-loader"></span>
     </div>
 @endsection
 @push('scripts')
