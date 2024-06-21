@@ -12,11 +12,13 @@ use Illuminate\Support\Facades\Auth;
 
 class UserCoursesController extends Controller
 {
+   
     public function index(){
         return view('front.personal.courses');
     }
 
     public function show($id){
+
         $data['webinar'] = Webinar::findOrFail($id);
         $course_id = CourseWebinar::query()->where("webinar_id",$id)->first();
         $data['other_webinars'] = [];
@@ -25,6 +27,7 @@ class UserCoursesController extends Controller
             ->where("course_id",$course_id->course_id)
             ->first();
         if($accesses){
+
             $data['other_webinars'] = Webinar::query()
                 ->whereIn("id",CourseWebinar::query()->where("course_id",$course_id->course_id)->get()->map(function ($item){
                     return $item->webinar_id;

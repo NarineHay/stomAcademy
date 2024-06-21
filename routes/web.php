@@ -73,7 +73,7 @@ Route::group(['prefix' => "personal",'middleware' => 'auth','as' => 'personal.']
     Route::get("/help",[\App\Http\Controllers\HelpController::class,'index'])->name("help");
     Route::get("/courses",[\App\Http\Controllers\UserCoursesController::class,'index'])->name("courses");
     Route::get("/conferences",[\App\Http\Controllers\UserConferencesController::class,'index'])->name("conferences");
-    Route::get("/courses/{id}",[\App\Http\Controllers\UserCoursesController::class,'show'])->name("courses.show");
+    Route::get("/courses/{id}",[\App\Http\Controllers\UserCoursesController::class,'show'])->name("courses.show")->middleware('check_access');
     Route::get("/settings",[\App\Http\Controllers\SettingsController::class,'index'])->name("settings");
     Route::get("/cart",[\App\Http\Controllers\CartController::class,'index'])->name("cart");
     Route::post("/cart/order",[\App\Http\Controllers\CartController::class,'order'])->name("cart.order");

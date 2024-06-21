@@ -73,7 +73,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <form class="dublicat_form" method="POST" action="{{route('addToCart')}}">
+                            <form class="dublicat_form add-to-cart" method="POST" action="{{route('addToCart')}}">
                                 @csrf
                                 <input type="hidden" value="{{ $webinar->id }}" name="id">
                                 <input type="hidden" value="webinar" name="type">

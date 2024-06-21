@@ -961,7 +961,7 @@
                                                         @endif
                                     </span>
                                                 </div>
-                                                <form method="POST" action="{{route('addToCart')}}">
+                                                <form method="POST" action="{{route('addToCart')}}" class='add-to-cart'>
                                                     @csrf
                                                     <input type="hidden" value="{{ $course_->id }}" name="id">
                                                     <input type="hidden" value="course" name="type">
@@ -1059,9 +1059,17 @@
 {{--            </div>--}}
 {{--        </div>--}}
 {{--    @endif--}}
-<script>
+<div id="cart-loader">
+    <span class="cart-loader"></span>
+</div>
+
+{{-- <script>
     CKEDITOR.replace('editor1', {
         customConfig: '{{ asset("dist/css/index.css") }}'
     });
-</script>
+</script> --}}
+@push('scripts')
+    <script src="{{asset('js/add-to-cart.js')}}"></script>
+@endpush
+
 @endsection
