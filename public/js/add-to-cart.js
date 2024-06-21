@@ -1,42 +1,51 @@
-$(document).ready(function() {
-        $('.dublicat_form').on('submit', function (e) {
+document.querySelectorAll('.add-to-cart').forEach(el => {
+    el.addEventListener('submit', addToCart);
+  });
 
-            e.preventDefault();
-            
-            let form = $(this)[0]; // Get the form element
-            let formData = new FormData(form);
+function addToCart(e) {
 
-            showLoader()
-            // axios.post(form.getAttribute("action"), formData)
-            //     .then(response => {
-            //         // console.log(response.data);
-            //         hideLoader();
-            //         cartSuccessModal.show();
-            //     })
-            //     .catch(error => {
-            //         hideLoader();
-            //         let error_obj = error.toJSON();
-            //         if(error_obj.status == 401){
-            //             location.href = "/login";
-            //         }
-            //     })
-            //     .finally(() => {
-            //         // Hide the loader in both success and error scenarios
-            //         hideLoader();
-            //     });
+    e.preventDefault();
 
+    let form = $(this)[0]; // Get the form element
+    let formData = new FormData(form);
+
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    showLoader()
+
+    fetch(form.getAttribute("action"), {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        },
+        body: formData
+    })
+        .then(response => {
+
+            cartSuccessModal.show();
         })
+        .catch(error => {
+            console.log(222)
+            // let error_obj = error.toJSON();
+            // if(error_obj.status == 401){
+            //     location.href = "/login";
+            // }
+        })
+        .finally(() => {
+            // Hide the loader in both success and error scenarios
+            hideLoader();
+        });
 
-    function showLoader() {
-        document.getElementById('loader').style.display = 'block';
-    }
-
-    // Function to hide the loader
-    function hideLoader() {
-        document.getElementById('loader').style.display = 'none';
-    }
-})
+}
 
 
 
 
+function showLoader() {
+    document.getElementById('cart-loader').style.display = 'flex';
+}
+
+// Function to hide the loader
+function hideLoader() {
+    document.getElementById('cart-loader').style.display = 'none';
+}
