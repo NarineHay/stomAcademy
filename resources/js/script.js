@@ -320,12 +320,37 @@ send_mail.addEventListener('click',function () {
 })
 
 let cartSuccessModal = new Modal('#cartSuccessModal');
+// document.querySelectorAll("form").forEach(function (form){
+//     let action = form.getAttribute("action");
+//     if(action && (action.indexOf("addManyToCart") > -1 || action.indexOf("addToCart") > -1)){
+//         form.addEventListener("submit",function (e){
+//             e.preventDefault();
+//             let formData = new FormData(form);
+//             axios.post(form.getAttribute("action"), formData)
+//                 .then(response => {
+//                     // console.log(response.data);
+//                     cartSuccessModal.show();
+//                 })
+//                 .catch(error => {
+//                     let error_obj = error.toJSON();
+//                     if(error_obj.status == 401){
+//                         location.href = "/login";
+//                     }
+//                 });
+//         })
+//     }
+
+// })
+
 document.querySelectorAll("form").forEach(function (form){
     let action = form.getAttribute("action");
     if(action && (action.indexOf("addManyToCart") > -1 || action.indexOf("addToCart") > -1)){
         form.addEventListener("submit",function (e){
             e.preventDefault();
             let formData = new FormData(form);
+
+            showLoader()
+
             axios.post(form.getAttribute("action"), formData)
                 .then(response => {
                     // console.log(response.data);
@@ -336,9 +361,21 @@ document.querySelectorAll("form").forEach(function (form){
                     if(error_obj.status == 401){
                         location.href = "/login";
                     }
+                })
+                .finally(() => {
+                    // Hide the loader in both success and error scenarios
+                    hideLoader();
                 });
         })
     }
 
 })
 
+function showLoader() {
+    document.getElementById('cart-loader').style.display = 'flex';
+}
+
+// Function to hide the loader
+function hideLoader() {
+    document.getElementById('cart-loader').style.display = 'none';
+}

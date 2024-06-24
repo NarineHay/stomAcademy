@@ -13,7 +13,5 @@
     <div id="cart-loader">
         <span class="cart-loader"></span>
     </div>
-    @push('scripts')
-        <script src="{{asset('js/add-to-cart.js')}}"></script>
-    @endpush
+ 
 @endsection
