@@ -65,7 +65,7 @@
             </div>
 
             <div class="main2">
-                <div class="backgraund-wite "
+                <div class="backgraund-wite " id="divInfo"
                      style="width: 100%; background: white;">
                     <div class="container eng-doctors-txt sss pb-1" style="background: white">
                         <div class="row  bg-white">
@@ -284,7 +284,7 @@
                     </div>
                 </div>
 
-                <div class="container eng-doctors-txt pb-1 sss">
+                <div class="container eng-doctors-txt pb-1 sss" id="summery">
                     <div class="row">
                         <div class=" d-lg-block col-12 col-lg-8">
 
@@ -375,7 +375,7 @@
                                     </ul>
 
                                 </div> --}}
-                                <div id="about-course-txt" class="about-course-txt d-block d-lg-none mt-4">
+                                <div id="about-course-txt" class="about-course-txt d-block d-lg-none mt-lg-4">
                                     <h2 class="f-700 fs-32 lh-40">{{ __("courses.desc_title") }}</h2>
                                     <p class="fs-16 lh-27 f-500">
                                         {!! $course->info->description !!}
@@ -493,7 +493,7 @@
                                 <h5><span class="me-2">{{ __("courses.total") }} (<span class="co">0</span>)</span><span
                                     class="total"></span> <i class="icon-{{ \App\Helpers\TEXT::curHtml() }}"></i>
                                 </h5>
-                                <button class="btn btn-primary buyButton">{{ __("index.buy_webinar") }}</button>
+                                <button class="btn btn-primary py-2 px-3" style="font-size:18px">{{ __("index.buy_webinar") }}</button>
 
                             </div>
                         </div>
@@ -504,7 +504,7 @@
                         <div class="row">
                             {{--                            <div class="col-xl-7 col-12">--}}
                             <div class="col-12 mt-4">
-                                <div class="mt-5 mt-lg-0">
+                                <div class="mt-3 mt-lg-0">
                                     <h3 class="f-700 m-0 lh-40 pb-2">{{ __("courses.menu.program") }}</h3>
                                     <div class="mt-2">
 
@@ -1068,8 +1068,53 @@
         customConfig: '{{ asset("dist/css/index.css") }}'
     });
 </script> --}}
-@push('scripts')
-    <script src="{{asset('js/add-to-cart.js')}}"></script>
-@endpush
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        function adjustMargin() {
+           
+            var engDoctorsTxt = document.querySelector('#divInfo');
+            var divStatic = document.querySelector('.course_card_static').offsetHeight;
+            var divSummery = document.querySelector('#summery').offsetHeight;
+
+            console.log(divStatic)
+            margin_bottom = divStatic * 68 / 100
+            if (engDoctorsTxt) {
+        
+                var viewportWidth = window.innerWidth;
+
+                if (viewportWidth > 2000) {
+                    engDoctorsTxt.style.marginBottom = "50px";
+                    
+                }
+                else if (viewportWidth > 1200) {
+                    
+                    divSummery < 118 ? engDoctorsTxt.style.marginBottom = "50px" : engDoctorsTxt.style.marginBottom = "0px";
+                } else if (viewportWidth <= 1200 && viewportWidth > 992) {
+                    console.log(viewportWidth, 990)
+
+                    engDoctorsTxt.style.marginBottom = "30px";
+                } else if (viewportWidth <= 992 && viewportWidth > 767) {
+                    console.log(viewportWidth, 780)
+
+                    engDoctorsTxt.style.marginBottom = "554px";
+                } else if (viewportWidth <= 767 && viewportWidth > 576) {
+                    console.log(viewportWidth, 750)
+
+                    engDoctorsTxt.style.marginBottom = "454px";
+                } else {
+                    console.log(viewportWidth, 120)
+
+                    engDoctorsTxt.style.marginBottom = margin_bottom+"px";
+                }
+            }
+        }
+
+        // Initial adjustment
+        adjustMargin();
+
+        // Adjust on window resize
+        window.addEventListener('resize', adjustMargin);
+    });
+    </script>
 @endsection

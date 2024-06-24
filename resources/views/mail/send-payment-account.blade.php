@@ -1,30 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
-    <p>Вам выставлен счет по этим продуктам</p>
-    @foreach ($data->infos as $item)
-
-        @if($item->type =='course')
-            <p>курс:  {{$item->item->info->title}}</p>
-        @else
-            <p>вебинар: {{$item->item->info->title}}</p>
-        @endif
-    @endforeach
-    <h5>Чтобы получить доступ, пожалуйста оплатите счет</h5>
-    <p>{{$data->comment}}</p>
-
-    <a href="{{$url}}">оплатить</a>
-
-</body>
-</html> --}}
-
 <!DOCTYPE html>
 <html>
 
@@ -164,7 +137,7 @@
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
                                             <tr>
                                                 <td style="text-align: left; padding: 0 0 0;">
-                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;">Добрый день! <br />Вас приветствует платформа Stom Academy. <br /><br />Вы провели регистрацию на курс/вебинар:</div>
+                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;">  {{__('mail.reg_courses.good_afternoon')}}<br />{{__('mail.reg_courses.welcome')}} <br /><br />{{__('mail.reg_courses.registered')}} </div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -208,7 +181,7 @@
                                                                     <td style="text-align: left; padding-bottom: 5px;">
                                                                         <a href="{{ route("course.show",$item->item->info->slug) }} " style="text-decoration: none; color: #222222;">
                                                                             <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#222222;font-size:20px;line-height:1.2;padding-bottom:5px; padding: 0;">
-                                                                                Курс: {{$item->item->info->title}}</div>
+                                                                                {{__('mail.reg_courses.course')}} {{$item->item->info->title}}</div>
                                                                         </a> </td>
                                                                 </tr>
                                                                 <tr>
@@ -242,7 +215,7 @@
                                                                     <td style="text-align: left; padding-bottom: 5px;">
                                                                         <a href="{{ route("webinar.show",$item->item->info->slug) }}" style="text-decoration: none; color: #222222;">
                                                                             <div style="font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#222222;font-size:20px;line-height:1.2;padding-bottom:5px; padding: 0;">
-                                                                                Бебинар: {{$item->item->info->title}}</div>
+                                                                                {{__('mail.reg_courses.webinar')}}  {{$item->item->info->title}}</div>
                                                                         </a> </td>
                                                                 </tr>
                                                                 <tr>
@@ -293,9 +266,9 @@
                                             <tr>
                                                 <td style="text-align: left; padding: 0 0 0;">
                                                     <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;">
-                                                        Стоимость: {{$data->sum}} {{$data->cur}}
+                                                        {{__('mail.reg_courses.cast')}} {{$data->sum}} {{$data->cur}}
                                                         {{-- /<del>5400 RUB</del> --}}
-                                                        <br /><br />Сразу после оплаты видео станет доступно к просмотру в вашем личном кабинете.</div>
+                                                        <br /><br />{{__('mail.reg_courses.text')}}</div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -321,7 +294,7 @@
                                                         <tr>
                                                             <td>
                                                                 <!--[if mso]> <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:52px;v-text-anchor:middle;mso-wrap-style:none;mso-position-horizontal:center;" arcsize="9%" stroke="f" fillcolor="#0082c3"> <w:anchorlock/> <center style="text-decoration: none; padding: 15px 30px; font-size: 15px; text-align: center; font-weight: bold; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; width: 100%;color:#ffffff;"> Оплатить </center> </v:roundrect> <![endif]-->
-                                                                <!--[if !mso]--> <a style="display: table-cell; text-decoration: none; padding: 15px 30px; font-size: 15px; text-align: center; font-weight: bold; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; width: 100%;color:#ffffff; border:0px solid ; background-color:#0082c3; border-radius: 3px;" href="{{$url}}"> Оплатить </a>
+                                                                <!--[if !mso]--> <a style="display: table-cell; text-decoration: none; padding: 15px 30px; font-size: 15px; text-align: center; font-weight: bold; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; width: 100%;color:#ffffff; border:0px solid ; background-color:#0082c3; border-radius: 3px;" href="{{$url}}"> {{__('mail.reg_courses.pay')}} </a>
                                                                 <!--[endif]-->
                                                             </td>
                                                         </tr>
@@ -346,7 +319,7 @@
                                         <table valign="top" border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
                                             <tr>
                                                 <td style="text-align: center; padding: 0 0 0;">
-                                                    <div style="margin: 0 auto; font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#8c8c8c;font-size:14px;line-height:1.4;max-width:350px;">Если у вас возникли какие либо вопросы, можете связаться с нами по контактам ниже.</div>
+                                                    <div style="margin: 0 auto; font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#8c8c8c;font-size:14px;line-height:1.4;max-width:350px;">{{__('mail.info_text')}}</div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -392,7 +365,7 @@
                                         <table valign="top" border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
                                             <tr>
                                                 <td style="text-align: center; padding: 0 0 0;">
-                                                    <div style="margin: 0 auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:26px;line-height:1.3;"><strong>Контакты:</strong></div>
+                                                    <div style="margin: 0 auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:26px;line-height:1.3;"><strong>{{__('mail.contacts')}}</strong></div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -438,7 +411,7 @@
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
                                             <tr>
                                                 <td style="text-align: left; padding: 0 0 0;">
-                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:14px;line-height:1.4;"><span style="color: rgb(7, 0, 0);">При необходимости получения дополнительной информации вы всегда <br /> сможете связаться с вашим персональным менеджером.<br /><br /> <strong>Почта:</strong> <br />info@stom-academy.com<br /><br /><strong>Телефоны:</strong><br /> Беларусь: +375 (29) 503-32-47 (Viber, WhatsApp, Telegram)! <br /> Россия: +7(499)113-19-28 <br /> Украина: +380 (94) 711-41-28 <br /> Литва: +370 (5) 208-09-69</span> <br /></div>
+                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:14px;line-height:1.4;"><span style="color: rgb(7, 0, 0);">{{__('mail.reset_passwoed.manager_text1')}} <br /> {{__('mail.reset_passwoed.manager_text2')}}<br /><br /> <strong>{{__('mail.mail')}}</strong> <br />info@stom-academy.com<br /><br /><strong>{{__('mail.phone')}}</strong><br /> {{__('mail.belarus')}} +375 (29) 503-32-47 (Viber, WhatsApp, Telegram)! <br /> {{__('mail.russia')}} +7(499)113-19-28 <br /> {{__('mail.ukraine')}} +380 (94) 711-41-28 <br /> {{__('mail.lithuania')}} +370 (5) 208-09-69</span> <br /></div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -473,7 +446,7 @@
                                             <tr>
                                                 <td style="text-align: center; padding-top: 38px;">
                                                     <div style="margin: 0 auto; font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#222222;font-size:15px;line-height:1.5;max-width:450px;">
-                                                        <div style="color:#080000;" data-customstyle="yes"><strong>▲Присоединяйтесь к нам в социальных сетях▲</strong></div>
+                                                        <div style="color:#080000;" data-customstyle="yes"><strong>▲{{__('mail.join_us')}}▲</strong></div>
                                                     </div>
                                                 </td>
                                             </tr>

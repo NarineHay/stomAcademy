@@ -127,7 +127,7 @@
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
                                             <tr>
                                                 <td style="text-align: left; padding: 0 0 0;">
-                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;">Здравствуйте, мы получили запрос на сброс пароля для учетной записи с почтой {{$email}}.<br /> <br /> Вы можете сбросить пароль, перейдя по ссылке ниже: <br /><br /></div>
+                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;">{{__('mail.reset_passwoed.title')}}  {{$email}}.<br /> <br /> {{__('mail.reset_passwoed.you_can')}} <br /><br /></div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -153,7 +153,7 @@
                                                         <tr>
                                                             <td>
                                                                 <!--[if mso]> <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:52px;v-text-anchor:middle;mso-wrap-style:none;mso-position-horizontal:center;" arcsize="9%" stroke="f" fillcolor="#0082c3"> <w:anchorlock/> <center style="text-decoration: none; padding: 15px 30px; font-size: 15px; text-align: center; font-weight: bold; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; width: 100%;color:#ffffff;"> Сменить пароль </center> </v:roundrect> <![endif]-->
-                                                                <!--[if !mso]--> <a style="display: table-cell; text-decoration: none; padding: 15px 30px; font-size: 15px; text-align: center; font-weight: bold; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; width: 100%;color:#ffffff; border:0px solid ; background-color:#0082c3; border-radius: 3px;" href="{{$url}}"> Сменить пароль </a>
+                                                                <!--[if !mso]--> <a style="display: table-cell; text-decoration: none; padding: 15px 30px; font-size: 15px; text-align: center; font-weight: bold; font-family:Helvetica Neue, Helvetica, Arial, sans-serif; width: 100%;color:#ffffff; border:0px solid ; background-color:#0082c3; border-radius: 3px;" href="{{$url}}"> {{__('mail.reset_passwoed.reset_passwoed')}} </a>
                                                                 <!--[endif]-->
                                                             </td>
                                                         </tr>
@@ -178,7 +178,7 @@
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
                                             <tr>
                                                 <td style="text-align: left; padding: 0 0 0;">
-                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;">У вас есть 24 часа, чтобы подобрать пароль. После этого вам придется запросить новый.<br /><br />Не просили новый пароль? Вы можете проигнорировать это письмо.</div>
+                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;"> {{__('mail.reset_passwoed.valid_time')}}<br /><br />{{__('mail.reset_passwoed.filter')}}</div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -224,7 +224,7 @@
                                         <table valign="top" border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
                                             <tr>
                                                 <td style="text-align: center; padding: 0 0 0;">
-                                                    <div style="margin: 0 auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:26px;line-height:1.3;"><strong>Контакты:</strong></div>
+                                                    <div style="margin: 0 auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:26px;line-height:1.3;"><strong>{{__('mail.contacts')}}</strong></div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -270,7 +270,7 @@
                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="width: 100%;">
                                             <tr>
                                                 <td style="text-align: left; padding: 0 0 0;">
-                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:14px;line-height:1.4;"><span style="color: rgb(7, 0, 0);">При необходимости получения дополнительной информации вы всегда <br /> сможете связаться с вашим персональным менеджером.<br /><br /> <strong>Почта:</strong> <br />info@stom-academy.com<br /><br /><strong>Телефоны:</strong><br /> Беларусь: +375 (29) 503-32-47 (Viber, WhatsApp, Telegram)! <br /> Россия: +7(499)113-19-28 <br /> Украина: +380 (94) 711-41-28 <br /> Литва: +370 (5) 208-09-69</span> <br /></div>
+                                                    <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:14px;line-height:1.4;"><span style="color: rgb(7, 0, 0);">{{__('mail.reset_passwoed.manager_text1')}} <br /> {{__('mail.reset_passwoed.manager_text2')}}<br /><br /> <strong>{{__('mail.mail')}}</strong> <br />info@stom-academy.com<br /><br /><strong>{{__('mail.phone')}}</strong><br /> {{__('mail.belarus')}} +375 (29) 503-32-47 (Viber, WhatsApp, Telegram)! <br /> {{__('mail.russia')}} +7(499)113-19-28 <br /> {{__('mail.ukraine')}} +380 (94) 711-41-28 <br /> {{__('mail.lithuania')}} +370 (5) 208-09-69</span> <br /></div>
                                                 </td>
                                             </tr>
                                         </table>
@@ -305,7 +305,7 @@
                                             <tr>
                                                 <td style="text-align: center; padding-top: 38px;">
                                                     <div style="margin: 0 auto; font-weight: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#222222;font-size:15px;line-height:1.5;max-width:450px;">
-                                                        <div style="color:#080000;" data-customstyle="yes"><strong>▲Присоединяйтесь к нам в социальных сетях▲</strong></div>
+                                                        <div style="color:#080000;" data-customstyle="yes"><strong>▲{{__('mail.join_us')}}▲</strong></div>
                                                     </div>
                                                 </td>
                                             </tr>

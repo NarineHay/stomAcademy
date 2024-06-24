@@ -1,11 +1,12 @@
 body{
-    font-family: Gilroy !important;
+    font-family: Gilroy, Arial, sans-serif !important;
 }
-.about-course-txt p
+.about-course-txt p, .about-course-txt p>span
 {
-    font-size: 15px !important;
+    font-size: 16px !important;
     font-weight: 400!important;
     margin-bottom: 5px !important;
+    color: #000 !important;
 }
 
 .courses-show-div .div-menu-2:before {
