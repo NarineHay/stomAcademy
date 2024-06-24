@@ -7,6 +7,7 @@ body{
     font-weight: 400!important;
     margin-bottom: 5px !important;
     color: #000 !important;
+    line-height: unset !important;
 }
 
 .courses-show-div .div-menu-2:before {
