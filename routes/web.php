@@ -96,7 +96,7 @@ Route::middleware("auth")->group(function (){
 });
 
 
-Route::group(['prefix' => "admin",'middleware' => 'isModer','as' => 'admin.'],function () {
+Route::group(['prefix' => "admin",'middleware' => 'isModer', 'as' => 'admin.'],function () {
     Route::resource("index",\App\Http\Controllers\Admin\IndexController::class);
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('lectors', \App\Http\Controllers\Admin\LectorController::class);

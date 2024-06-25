@@ -44,7 +44,7 @@ return [
             "your_details" => "Your login details",
             "login" => "Login/Mail: ",
             "password" => "Password:",
-            "text" => `If you can't remember your password, click "Forgot Password?" on the login page.`,
+            "text" => "If you can't remember your password, click 'Forgot Password?' on the login page.",
             "log_in" => "Sign in to profile"
     ],
 

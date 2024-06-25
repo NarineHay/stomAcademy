@@ -32,6 +32,11 @@ class LG
         return array_map('strtolower', $codes);
     }
 
+
+    static function languages(){
+        return  Language::all();
+    }
+
     static function getEuropeCountryCodes(){
         return ['at', 'be', 'bg', 'cy', 'cz', 'de', 'dk', 'ee', 'es', 'fi', 'fr', 'gr', 'hu', 'hr', 'ie', 'it', 'lt', 'lu', 'lv', 'mt', 'nl', 'pl', 'pt', 'ro', 'se', 'si', 'sk'];
     }

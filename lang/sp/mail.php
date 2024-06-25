@@ -44,7 +44,7 @@ return [
             "your_details" => "Sus datos de acceso",
             "login" => "Login/Mail: ",
             "password" => "Contraseña:",
-            "text" => `Si no recuerda su contraseña, haga clic en "¿Olvidó su contraseña?" en la página de inicio de sesión.`,
+            "text" => "Si no recuerda su contraseña, haga clic en '¿Olvidó su contraseña?' en la página de inicio de sesión.",
             "log_in" => "Iniciar sesión en el perfil"
     ],
 

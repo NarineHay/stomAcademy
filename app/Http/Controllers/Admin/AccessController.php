@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\LG;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminAccessStoreRequest;
 use App\Jobs\SendAccessMail;
@@ -12,13 +13,19 @@ use App\Models\User;
 use App\Models\Webinar;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail as FacadesMail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Mail;
 
 class AccessController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin.locale')->only(['index', 'create', 'edit']);
+    }
 
     public function index(Request $request)
     {
@@ -63,6 +70,14 @@ class AccessController extends Controller
         $webinar_id = $request->get('webinar_id');
         $access_time = $request->boolean("access_time");
         $duration = $request->get('duration');
+        $code = $request->get('lang');
+
+        $lang_id = LG::getId($code);
+        $lang = Str::lower( $code);
+
+        // LG::set($lang_id);
+        App::setLocale($lang);
+        Session::put('lg', $lang_id);
 
         if ($type == "course") {
             $course = Course::find($course_id);

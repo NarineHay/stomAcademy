@@ -114,6 +114,16 @@
                                             <option value="{{$i}}">{{ $i }}</option>
                                         @endfor
                                     </select>
+
+                                    <div class="form-group my-4">
+                                        <label for="exampleInputEmail1">Выберите язык письма для отправки</label>
+                                        <select class="form-control lang" name="lang" >
+                                            @foreach (App\Helpers\LG::languages() as $lang)
+                                                <option value="{{$lang->code}}">{{ $lang->name }}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="card-footer mt-4">
@@ -184,6 +194,18 @@
                                             <option value="{{$i}}">{{ $i }}</option>
                                         @endfor
                                     </select>
+
+                                    <div class="form-group my-4">
+                                        <label for="exampleInputEmail1">Выберите язык письма для отправки</label>
+                                        <select class="form-control lang" name="lang" >
+                                            @foreach (App\Helpers\LG::languages() as $lang)
+                                                <option value="{{$lang->code}}">{{ $lang->name }}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+
+
                                 </div>
 
                                 <div class="card-footer mt-4">

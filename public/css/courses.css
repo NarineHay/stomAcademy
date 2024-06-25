@@ -1,3 +1,10 @@
+body, li, p, h6, h5, h4, h3, h2, h1, span{
+    font-family: Gilroy, Arial, sans-serif !important;
+}
+#lectors li, p, h4{
+    font-family: Gilroy, Arial, sans-serif !important;
+
+}
 .courses-show-div .main2 .course_card_static {
     margin-top: -150px;
     position: absolute;

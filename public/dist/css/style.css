@@ -1,5 +1,5 @@
 body, html {
-  font-family: "Gilroy";
+  font-family: Gilroy, Arial, sans-serif !important;
   color: #232323;
   background-color: #F9F9F9;
 }
