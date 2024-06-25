@@ -18,7 +18,7 @@ return [
     "lectors" => "Nuestros profesores",
     "to_by_lector" => [
         "title" => "¿Quiere ser profesor?",
-        "text" => "Envíe su solicitud y en breve nos pondremos en contacto con usted",
+        "text" => "Rellene el formulario y nos pondremos en contacto con usted sobre la cooperación.",
         "button" => "Enviar solicitud",
     ],
     "subscribe" => [

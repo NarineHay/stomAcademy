@@ -266,7 +266,7 @@
                                             <tr>
                                                 <td style="text-align: left; padding: 0 0 0;">
                                                     <div style="margin-right: auto; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; color:#333333;font-size:20px;line-height:1.4;">
-                                                        {{__('mail.reg_courses.cast')}} {{$data->sum}} {{$data->cur}}
+                                                        {{__('mail.reg_courses.cost')}} {{$data->sum}} {{$data->cur}}
                                                         {{-- /<del>5400 RUB</del> --}}
                                                         <br /><br />{{__('mail.reg_courses.text')}}</div>
                                                 </td>

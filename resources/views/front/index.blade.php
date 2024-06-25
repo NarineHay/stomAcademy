@@ -628,7 +628,7 @@
                     </div>
                     <div class="ms-4 mt-2">
                         <h4 class="f-700">{{ __('index.to_by_lector.title') }}</h4>
-                        <p class="fs-16 mb-4">{{ __('index.to_by_lector.text') }}</p>
+                        <p class="fs-16 mb-4">{!! __('index.to_by_lector.text') !!}</p>
                         <button class="btn btn-primary f-600 fs-14 px-4 py-2 br-12 white-space" data-bs-toggle="modal"
                             data-bs-target="#lectorModal">{{ __('index.to_by_lector.button') }}
                         </button>

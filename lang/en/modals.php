@@ -15,5 +15,10 @@ return [
         "success" => "You are subscribed ",
         "button" => "Subscribe",
     ],
-    "text_1" => "Send a request and we will contact you about cooperation."
+    "add_to_card" => [
+        "h4" => "Successfully added to cart",
+        "go_to_cart" => "Go to cart",
+        "continue" => "Continue shopping"
+    ],
+    "text_1" => "Fill out the form and we will contact you about cooperation."
 ];

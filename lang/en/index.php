@@ -18,7 +18,7 @@ return [
     "lectors" => "Our Lecturers",
     "to_by_lector" => [
         "title" => "Do you want to be a lecturer?",
-        "text" => "Leave a mail and receive up-to-date information about courses and events of the Stom Academy platform.",
+        "text" => "Fill out the form and we will contact you about collaboration.",
         "button" => "Send a request",
     ],
     "subscribe" => [

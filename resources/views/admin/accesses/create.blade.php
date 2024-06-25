@@ -116,8 +116,8 @@
                                     </select>
 
                                     <div class="form-group my-4">
-                                        <label for="exampleInputEmail1">Выберите язык письма для отправки</label>
-                                        <select class="form-control lang" name="lang" >
+                                        <label for="lang">Выберите язык письма для отправки</label>
+                                        <select class="form-control lang" name="lang" id="lang">
                                             @foreach (App\Helpers\LG::languages() as $lang)
                                                 <option value="{{$lang->code}}">{{ $lang->name }}</option>
                                             @endforeach
@@ -196,8 +196,8 @@
                                     </select>
 
                                     <div class="form-group my-4">
-                                        <label for="exampleInputEmail1">Выберите язык письма для отправки</label>
-                                        <select class="form-control lang" name="lang" >
+                                        <label for="lang_1">Выберите язык письма для отправки</label>
+                                        <select class="form-control lang" name="lang" id="lang_1">
                                             @foreach (App\Helpers\LG::languages() as $lang)
                                                 <option value="{{$lang->code}}">{{ $lang->name }}</option>
                                             @endforeach

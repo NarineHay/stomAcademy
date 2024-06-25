@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\LG;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Payment\PaymentStoreRequest;
 use App\Mail\SendPaymentAccountEmail;
@@ -9,8 +10,11 @@ use App\Models\PaymentAccount;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail as FacadesMail;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 use Mail;
 
 class PaymentStoreAccountController extends Controller
@@ -19,7 +23,14 @@ class PaymentStoreAccountController extends Controller
     {
         $course_ids = $request->course_ids;
         $webinar_ids = $request->webinar_ids;
+        $code = $request->lang;
 
+        $lang_id = LG::getId($code);
+        $lang = Str::lower($code);
+
+        // LG::set($lang_id);
+        App::setLocale($lang);
+        Session::put('lg', $lang_id);
 
         $token = strtotime(Carbon::now());
         $payment_account = PaymentAccount::create([

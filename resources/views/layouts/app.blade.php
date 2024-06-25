@@ -336,10 +336,10 @@
                         data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="d-flex justify-content-center flex-column align-items-center mt-2">
                         <i class="fal fa-shopping-bag fs-75"></i>
-                        <h4 class="mt-3">Успешно добавлено в корзину</h4>
+                        <h4 class="mt-3">{{ __('modals.add_to_card.h4')}}</h4>
                         <div class="mt-3 mb-3 d-flex gap-2">
-                            <a href="{{ route('personal.cart') }}" class="btn btn-primary">Перейти в корзину</a>
-                            <a class="btn btn-secondary text-white" data-bs-dismiss="modal">Продолжить покупки</a>
+                            <a href="{{ route('personal.cart') }}" class="btn btn-primary">{{ __('modals.add_to_card.go_to_cart')}}</a>
+                            <a class="btn btn-secondary text-white" data-bs-dismiss="modal">{{ __('modals.add_to_card.continue')}}</a>
                         </div>
                     </div>
 
@@ -347,7 +347,7 @@
             </div>
         </div>
     </div>
-    
+
     @livewireScripts
 
     @stack('scripts')

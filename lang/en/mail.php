@@ -24,7 +24,7 @@ return [
    'reg_courses' => [
             "good_afternoon" => "Good afternoon!",
             "welcome" => "Welcome to the Stom Academy platform.",
-            "registered " => "You have registered for the course/webinar:",
+            "registered" => "You have registered for the course/webinar:",
             "course" => "Course:",
             "webinar" => "Webinar:",
             "cost" => "Cost:",

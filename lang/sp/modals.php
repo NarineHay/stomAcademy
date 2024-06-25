@@ -15,5 +15,10 @@ return [
         "success" => "Está suscrito",
         "button" => "Suscribirse",
     ],
-    "text_1" => "Envíe una solicitud y nos pondremos en contacto con usted sobre la cooperación."
+    "add_to_card" => [
+        "h4" => "Añadido con éxito a la cesta",
+        "go_to_cart" => "Ir a la cesta",
+        "continue" => "Continuar comprando"
+    ],
+    "text_1" => "Rellene el formulario y nos pondremos en contacto con usted sobre la cooperación."
 ];

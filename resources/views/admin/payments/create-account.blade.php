@@ -121,6 +121,16 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="lang">Выберите язык письма для отправки</label>
+                                        <select class="form-control lang" name="lang" id="lang">
+                                            @foreach (App\Helpers\LG::languages() as $lang)
+                                                <option value="{{$lang->code}}">{{ $lang->name }}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="comment">Комментарий к оплате</label>
                                         <textarea name="comment" class="form-control">{{ old("comment") }}</textarea>
                                     </div>
